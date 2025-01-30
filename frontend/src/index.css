@@ -1,0 +1,74 @@
+@tailwind utilities;
+@import "tailwindcss";
+@import "tailwindcss/preflight";
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+@theme {
+    --light-primary: #e6f7f0;
+    --light-primary-hover: #d9f3e8;
+    --light-primary-active: #b0e6cf;
+    --normal-primary: #00af64;
+    --normal-primary-hover: #009e5a;
+    --normal-primary-active: #008c50;
+    --dark-primary: #00834b;
+    --dark-primary-hover: #00693c;
+    --dark-primary-active: #004f2d;
+    --darker-primary: #003d23;
+
+    --light-secondary: #fff4e6;
+    --light-secondary-hover: #ffefd9;
+    --light-secondary-active: #ffdeb0;
+    --normal-secondary: #ff9500;
+    --normal-secondary-hover: #e68600;
+    --normal-secondary-active: #cc7700;
+    --dark-secondary: #bf7000;
+    --dark-secondary-hover: #995900;
+    --dark-secondary-active: #734300;
+    --darker-secondary: #593400;
+
+    --light-foreground: #5ba0fb;
+    --light-foreground-hover: #31609e;
+    --light-foreground-active: #20416d;
+    --normal-foreground: #10233d;
+    --normal-foreground-hover: #0e2037;
+    --normal-foreground-active: #0d1c31;
+    --dark-foreground: #0c1a2e;
+    --dark-foreground-hover: #0a1525;
+    --dark-foreground-active: #07101b;
+    --darker-foreground: #060c15;
+
+    --white-background: #ffffff;
+    --white-background-hover: #fcfdfd;
+    --white-background-active: #f5f7f9;
+    --light-background: #fcfdfd;
+    --light-background-hover: #f5f7f9;
+    --light-background-active: #f0f3f6;
+    --normal-background: #f9fafb;
+    --normal-background-hover: #f2f4f7;
+    --normal-background-active: #ebeef2;
+    --dark-background: #f6f8f9;
+
+    --light-gray: #fafcff;
+    --light-gray-hover: #f7faff;
+    --light-gray-active: #eff5ff;
+    --normal-gray: #cce0ff;
+    --normal-gray-hover: #b8cae6;
+    --normal-gray-active: #a3b3cc;
+    --dark-gray: #99a8bf;
+    --dark-gray-hover: #7a8699;
+    --dark-gray-active: #5c6573;
+    --darker-gray: #474e59;
+}
