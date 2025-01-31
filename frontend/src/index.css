@@ -72,5 +72,13 @@ body {
     --color-gray-dark-active: #5c6573;
     --color-gray-darker: #474e59;
 
-    font-family: var(--font-sans);
+    --font-family-primary: var(--font-sans);
+
+    --font-size-xxxl: 58px;
+    --font-size-xxl: 42px;
+    --font-size-xl: 30px;
+    --font-size-lg: 22px;
+    --font-size-ms: 16px;
+    --font-size-sm: 12px;
+    --font-size-x: 8px;
 }
