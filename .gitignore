@@ -45,3 +45,10 @@ app-example
 app-example
 .expo
 expo-env.d.ts
+*.pem
+
+.env*.local
+
+*.tsbuildinfo
+
+app-example
