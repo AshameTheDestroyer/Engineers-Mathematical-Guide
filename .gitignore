@@ -36,3 +36,12 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+app-example
+.expo
+expo-env.d.ts
