@@ -1,0 +1,84 @@
+@tailwind utilities;
+@import "tailwindcss";
+@import "tailwindcss/preflight";
+
+:root {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+@theme {
+    --color-primary-light: #e6f7f0;
+    --color-primary-light-hover: #d9f3e8;
+    --color-primary-light-active: #b0e6cf;
+    --color-primary-normal: #00af64;
+    --color-primary-normal-hover: #009e5a;
+    --color-primary-normal-active: #008c50;
+    --color-primary-dark: #00834b;
+    --color-primary-dark-hover: #00693c;
+    --color-primary-dark-active: #004f2d;
+    --color-primary-darker: #003d23;
+
+    --color-secondary-light: #fff4e6;
+    --color-secondary-light-hover: #ffefd9;
+    --color-secondary-light-active: #ffdeb0;
+    --color-secondary-normal: #ff9500;
+    --color-secondary-normal-hover: #e68600;
+    --color-secondary-normal-active: #cc7700;
+    --color-secondary-dark: #bf7000;
+    --color-secondary-dark-hover: #995900;
+    --color-secondary-dark-active: #734300;
+    --color-secondary-darker: #593400;
+
+    --color-foreground-light: #5ba0fb;
+    --color-foreground-light-hover: #31609e;
+    --color-foreground-light-active: #20416d;
+    --color-foreground-normal: #10233d;
+    --color-foreground-normal-hover: #0e2037;
+    --color-foreground-normal-active: #0d1c31;
+    --color-foreground-dark: #0c1a2e;
+    --color-foreground-dark-hover: #0a1525;
+    --color-foreground-dark-active: #07101b;
+    --color-foreground-darker: #060c15;
+
+    --color-background-white: #ffffff;
+    --color-background-white-hover: #fcfdfd;
+    --color-background-white-active: #f5f7f9;
+    --color-background-light: #fcfdfd;
+    --color-background-light-hover: #f5f7f9;
+    --color-background-light-active: #f0f3f6;
+    --color-background-normal: #f9fafb;
+    --color-background-normal-hover: #f2f4f7;
+    --color-background-normal-active: #ebeef2;
+    --color-background-dark: #f6f8f9;
+
+    --color-gray-light: #fafcff;
+    --color-gray-light-hover: #f7faff;
+    --color-gray-light-active: #eff5ff;
+    --color-gray-normal: #cce0ff;
+    --color-gray-normal-hover: #b8cae6;
+    --color-gray-normal-active: #a3b3cc;
+    --color-gray-dark: #99a8bf;
+    --color-gray-dark-hover: #7a8699;
+    --color-gray-dark-active: #5c6573;
+    --color-gray-darker: #474e59;
+
+    --font-family-primary: var(--font-sans);
+
+    --font-size-xxxl: 58px;
+    --font-size-xxl: 42px;
+    --font-size-xl: 30px;
+    --font-size-lg: 22px;
+    --font-size-ms: 16px;
+    --font-size-sm: 12px;
+    --font-size-x: 8px;
+}
