@@ -1,0 +1,1 @@
+type Nullish = null | undefined;
