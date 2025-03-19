@@ -5,7 +5,7 @@ import { MainContent } from "./components/MainContent";
 
 export const LandingPage: FC = () => {
     return (
-        <Page>
+        <Page className="from- to-secondary-normal bg-gradient-to-r from-orange-500">
             <Header />
             <MainContent />
         </Page>

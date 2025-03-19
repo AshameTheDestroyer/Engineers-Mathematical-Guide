@@ -4,19 +4,19 @@ export const LINKS = [
         href: "kdowkodwa",
     },
     {
-        text: "Slide1",
+        text: "About",
         href: "kdowkodwa",
     },
     {
-        text: "Slide2",
+        text: "Contact Us",
         href: "kdowkodwa",
     },
     {
-        text: "Slide3",
+        text: "Refrences",
         href: "kdowkodwa",
     },
     {
-        text: "Slide4",
+        text: "Help",
         href: "kdowkodwa",
     },
 ];
