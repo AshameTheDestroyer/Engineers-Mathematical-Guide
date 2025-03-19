@@ -1,9 +1,11 @@
-const LOCAL_STORAGE_KEY: string = "chess";
+const LOCAL_STORAGE_KEY: string = "EMG";
 export default LOCAL_STORAGE_KEY;
 
 export function GetFromLocalStorage<T>(key: string): T | undefined {
     try {
-        return JSON.parse(localStorage.getItem(`${LOCAL_STORAGE_KEY}-${key}`) ?? "") as T;
+        return JSON.parse(
+            localStorage.getItem(`${LOCAL_STORAGE_KEY}-${key}`) ?? ""
+        ) as T;
     } catch {
         return undefined;
     }
