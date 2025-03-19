@@ -71,3 +71,11 @@
 
     --spacing-page: 40px;
 }
+
+@layer utilities {
+    .centralize {
+        display: flex;
+        place-items: center;
+        place-content: center;
+    }
+}
