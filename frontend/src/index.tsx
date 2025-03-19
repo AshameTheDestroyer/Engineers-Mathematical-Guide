@@ -4,6 +4,7 @@ import { useState, useEffect, createContext, FC } from "react";
 
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 
+import "./extensions";
 import "./global.css";
 
 type MainStateProps = {
