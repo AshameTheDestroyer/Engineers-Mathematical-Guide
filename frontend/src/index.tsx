@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect, createContext, FC } from "react";
 
-import { Home } from "./pages/Home/Home";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 
 import "./global.css";
 
@@ -39,7 +39,7 @@ const Index: FC = () => {
         <MainContext.Provider value={state}>
             <HashRouter basename={window.location.pathname || ""}>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<LandingPage />} />
                 </Routes>
             </HashRouter>
         </MainContext.Provider>
