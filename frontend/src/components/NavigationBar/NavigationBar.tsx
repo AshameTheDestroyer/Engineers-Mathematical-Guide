@@ -10,9 +10,9 @@ export type NavigationBarProps = {
 export const NavigationBar: FC<NavigationBarProps> = ({ links }) => {
     return (
         <nav>
-            <ul className="flex flex-row gap-5">
-                {links.map((link) => (
-                    <li>
+            <ul className="flex flex-row place-content-around gap-5">
+                {links.map((link, i) => (
+                    <li key={i}>
                         <a href={link.href} className="underline decoration-2">
                             {link.text}
                         </a>
