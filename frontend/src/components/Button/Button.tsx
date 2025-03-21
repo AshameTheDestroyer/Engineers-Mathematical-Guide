@@ -8,6 +8,9 @@ export type ButtonProps = {
     variant?: "primary" | "secondary" | "default";
     icon?: {
         source: string;
+        width?: number;
+        height?: number;
+        alternative: string;
         placement: "left" | "right";
     };
 } & ComponentProps &
@@ -18,6 +21,7 @@ export type ButtonProps = {
 
 export const Button: FC<ButtonProps> = ({
     link,
+    icon,
     onClick,
     children,
     className,
@@ -64,9 +68,18 @@ export const Button: FC<ButtonProps> = ({
             {...props}
         >
             <div
-                className="rounded-xl border-2 px-4 py-2 transition duration-200"
+                className="flex place-content-center place-items-center gap-2 rounded-xl border-2 px-4 py-2 transition duration-200"
                 data-content
             >
+                {icon != null && (
+                    <img
+                        className={icon.placement == "right" ? "order-1" : ""}
+                        src={icon.source}
+                        width={icon.width}
+                        height={icon.height}
+                        alt={icon.alternative}
+                    />
+                )}
                 {children}
             </div>
             <div
