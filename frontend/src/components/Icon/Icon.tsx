@@ -7,6 +7,7 @@ export type IconProps = {
     width?: number;
     height?: number;
     stroke?: string;
+    thickness?: number;
 } & ChildlessComponentProps;
 
 export const Icon: FC<IconProps> = ({
@@ -16,6 +17,7 @@ export const Icon: FC<IconProps> = ({
     source,
     height,
     stroke,
+    thickness,
     className,
 }) => {
     const [svgContent, setSvgContent] = useState<string>();
@@ -40,18 +42,7 @@ export const Icon: FC<IconProps> = ({
                     throw new Error("Invalid SVG content.");
                 }
 
-                if (fill) {
-                    svgElement.setAttribute("fill", fill);
-                }
-                if (width) {
-                    svgElement.setAttribute("width", width.toString());
-                }
-                if (height) {
-                    svgElement.setAttribute("height", height.toString());
-                }
-                if (stroke) {
-                    svgElement.setAttribute("stroke", stroke);
-                }
+                InjectProperties(svgElement);
 
                 const serializer = new XMLSerializer();
                 const updatedSvgContent =
@@ -66,7 +57,30 @@ export const Icon: FC<IconProps> = ({
         };
 
         fetchSvg();
-    }, [id, fill, width, source, height, stroke]);
+    }, [fill, width, source, height, stroke, thickness]);
+
+    function InjectProperties(svgElement: SVGElement) {
+        Object.entries({
+            width,
+            height,
+        }).forEach(
+            ([key, value]) =>
+                value != null && svgElement.setAttribute(key, value.toString())
+        );
+
+        Object.entries({
+            fill,
+            stroke,
+            "stroke-width": thickness?.toString(),
+        }).forEach(
+            ([key, value]) =>
+                value != null &&
+                [
+                    svgElement,
+                    ...svgElement.querySelectorAll(`& [${key}]`),
+                ].forEach((child) => child.setAttribute(key, value))
+        );
+    }
 
     if (error) {
         return <div>{error}</div>;

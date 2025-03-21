@@ -71,9 +71,7 @@ export const Button: FC<ButtonProps> = ({
                 {icon != null && (
                     <Icon
                         className={icon.placement == "right" ? "order-1" : ""}
-                        width={icon.width}
-                        source={icon.source}
-                        height={icon.height}
+                        {...icon}
                     />
                 )}
                 {children}
