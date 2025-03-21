@@ -19,7 +19,6 @@ export const Header: FC = () => {
                         width: 24,
                         placement: "left",
                         source: signup_icon,
-                        alternative: "Sign up Icon.",
                     }}
                 >
                     Sign up
@@ -31,7 +30,6 @@ export const Header: FC = () => {
                         width: 24,
                         placement: "right",
                         source: login_icon,
-                        alternative: "Login Icon.",
                     }}
                 >
                     Login

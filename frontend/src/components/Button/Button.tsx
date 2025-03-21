@@ -1,16 +1,13 @@
 import { twMerge } from "tailwind-merge";
+import { Icon, IconProps } from "../Icon/Icon";
+import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes, FC } from "react";
 import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
-import { useNavigate } from "react-router-dom";
 
 export type ButtonProps = {
     link?: string;
     variant?: "primary" | "secondary" | "default";
-    icon?: {
-        source: string;
-        width?: number;
-        height?: number;
-        alternative: string;
+    icon?: IconProps & {
         placement: "left" | "right";
     };
 } & ComponentProps &
@@ -72,12 +69,11 @@ export const Button: FC<ButtonProps> = ({
                 data-content
             >
                 {icon != null && (
-                    <img
+                    <Icon
                         className={icon.placement == "right" ? "order-1" : ""}
-                        src={icon.source}
                         width={icon.width}
+                        source={icon.source}
                         height={icon.height}
-                        alt={icon.alternative}
                     />
                 )}
                 {children}
