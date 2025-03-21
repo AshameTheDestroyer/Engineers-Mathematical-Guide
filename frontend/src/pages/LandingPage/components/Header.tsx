@@ -10,8 +10,10 @@ export const Header: FC = () => {
             <Logo />
             <NavigationBar links={LINKS} />
             <div className="flex gap-4">
-                <Button>Sign up</Button>
-                <Button variant="primary">Login</Button>
+                <Button link="/registration/signup">Sign up</Button>
+                <Button variant="primary" link="/registration/login">
+                    Login
+                </Button>
             </div>
         </div>
     );
