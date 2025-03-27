@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Icon from "../../../assets/icons/logo.png";
+import Icon from "@icons/logo.png";
 
 // export const MainContent: FC = () => {
 //     return (

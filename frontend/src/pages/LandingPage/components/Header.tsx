@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { LINKS } from "../../../constants/links";
-import { Logo } from "../../../components/Logo/Logo";
-import { Button } from "../../../components/Button/Button";
-import { NavigationBar } from "../../../components/NavigationBar/NavigationBar";
+import { LINKS } from "@constants/links";
+import { Logo } from "@components/Logo/Logo";
+import { Button } from "@components/Button/Button";
+import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 
-import login_icon from "../../../assets/icons/login.svg";
-import signup_icon from "../../../assets/icons/user.svg";
+import login_icon from "@icons/login.svg";
+import signup_icon from "@icons/user.svg";
 
 export const Header: FC = () => {
     return (

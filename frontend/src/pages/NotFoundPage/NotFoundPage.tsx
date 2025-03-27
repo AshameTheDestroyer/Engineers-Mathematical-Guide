@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Page } from "../../components/Page/Page";
+import { Page } from "@components/Page/Page";
 
 export const NotFoundPage: FC = () => {
     return (

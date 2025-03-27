@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
-import { Icon, IconProps } from "../Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes, FC } from "react";
+import { Icon, IconProps } from "@components/Icon/Icon";
 import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
 
 export type ButtonProps = {

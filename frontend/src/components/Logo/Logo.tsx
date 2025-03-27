@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import logoIcon from "/src/assets/icons/logo.png";
+import logoIcon from "@icons/logo.png";
 
 export const Logo: FC = () => {
     return (
