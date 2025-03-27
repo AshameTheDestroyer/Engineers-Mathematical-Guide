@@ -3,6 +3,7 @@ import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
 import { HEADER_ROUTES } from "@constants/HeaderRoutes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
+import { Header as Header_ } from "@components/Header/Header";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 
 import login_icon from "@icons/login.svg";
@@ -10,7 +11,7 @@ import signup_icon from "@icons/user.svg";
 
 export const Header: FC = () => {
     return (
-        <header className="-m-page mb-page px-page bg-background-normal sticky top-0 z-10 flex flex-row place-items-center justify-between gap-8 py-[calc(var(--spacing-page)/2)]">
+        <Header_ className="bg-background-normal">
             <Logo />
             <NavigationBar routes={HEADER_ROUTES} className="grow" />
             <ButtonBox>
@@ -36,6 +37,6 @@ export const Header: FC = () => {
                     Login
                 </Button>
             </ButtonBox>
-        </header>
+        </Header_>
     );
 };
