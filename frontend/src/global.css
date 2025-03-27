@@ -5,6 +5,8 @@
 
 body {
     font-family: "Exo 2", "El Messiri", sans-serif;
+
+    overflow-x: hidden;
 }
 
 @theme {
