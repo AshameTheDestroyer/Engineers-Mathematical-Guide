@@ -94,3 +94,25 @@ body {
         aspect-ratio: 1;
     }
 }
+
+@layer base {
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-background-dark;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-background-dark-hover rounded-xl;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-background-dark-active;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        @apply bg-background-darker;
+    }
+}
