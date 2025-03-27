@@ -3,6 +3,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect, createContext, FC } from "react";
 
 import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 
 import "./extensions";
 import "./global.css";
@@ -41,6 +42,7 @@ const Index: FC = () => {
             <HashRouter basename={window.location.pathname || ""}>
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </HashRouter>
         </MainContext.Provider>
