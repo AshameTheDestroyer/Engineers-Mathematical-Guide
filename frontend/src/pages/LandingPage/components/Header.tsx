@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { LINKS } from "@constants/links";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
+import { HEADER_ROUTES } from "@constants/HeaderRoutes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 
@@ -12,7 +12,7 @@ export const Header: FC = () => {
     return (
         <div className="-m-page mb-page p-page bg-background-normal flex flex-row place-items-center justify-between gap-8">
             <Logo />
-            <NavigationBar links={LINKS} className="grow" />
+            <NavigationBar routes={HEADER_ROUTES} className="grow" />
             <ButtonBox>
                 <Button
                     link="/registration/signup"

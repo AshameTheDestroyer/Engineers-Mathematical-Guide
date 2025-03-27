@@ -1,22 +1,22 @@
-export const LINKS = [
+export const HEADER_ROUTES = [
     {
         text: "Home",
-        href: "kdowkodwa",
+        href: "/",
     },
     {
         text: "About",
-        href: "kdowkodwa",
+        href: "/about",
     },
     {
         text: "Contact Us",
-        href: "kdowkodwa",
+        href: "/contact-us",
     },
     {
         text: "Refrences",
-        href: "kdowkodwa",
+        href: "/references",
     },
     {
         text: "Help",
-        href: "kdowkodwa",
+        href: "/help",
     },
 ];

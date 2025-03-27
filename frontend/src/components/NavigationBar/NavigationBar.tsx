@@ -1,8 +1,9 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type NavigationBarProps = ChildlessComponentProps & {
-    links: Array<{
+    routes: Array<{
         text: string;
         href: string;
     }>;
@@ -10,15 +11,15 @@ export type NavigationBarProps = ChildlessComponentProps & {
 
 export const NavigationBar: FC<NavigationBarProps> = ({
     id,
-    links,
+    routes,
     className,
 }) => {
     return (
         <nav id={id} className={className}>
             <ul className="flex flex-row place-content-around gap-5">
-                {links.map((link, i) => (
+                {routes.map((link, i) => (
                     <li key={i}>
-                        <a href={link.href}>{link.text}</a>
+                        <Link to={link.href}>{link.text}</Link>
                     </li>
                 ))}
             </ul>
