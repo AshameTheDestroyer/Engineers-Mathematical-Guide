@@ -57,11 +57,12 @@ export const MainContent: FC = () => {
                     كَلَامٌ ذُو قِيمَةٍ.
                 </p>
                 <ButtonBox direction="row">
-                    <Button className="grow-[0.6]" link="odwkaodk">
+                    <Button className="grow-[0.6]" link="/learn-more">
                         إقرأ المزيد
                     </Button>
                     <Button
                         className="grow"
+                        link="/app"
                         variant="primary"
                         icon={{
                             placement: "right",
