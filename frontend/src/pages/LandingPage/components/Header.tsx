@@ -10,7 +10,7 @@ import signup_icon from "@icons/user.svg";
 
 export const Header: FC = () => {
     return (
-        <div className="-m-page mb-page p-page bg-background-normal flex flex-row place-items-center justify-between gap-8">
+        <header className="-m-page mb-page px-page bg-background-normal sticky top-0 z-10 flex flex-row place-items-center justify-between gap-8 py-[calc(var(--spacing-page)/2)]">
             <Logo />
             <NavigationBar routes={HEADER_ROUTES} className="grow" />
             <ButtonBox>
@@ -36,6 +36,6 @@ export const Header: FC = () => {
                     Login
                 </Button>
             </ButtonBox>
-        </div>
+        </header>
     );
 };
