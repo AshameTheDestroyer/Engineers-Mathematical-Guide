@@ -54,16 +54,16 @@ body {
     --color-foreground-dark-active: #07101b;
     --color-foreground-darker: #060c15;
 
-    --color-background-white: #ffffff;
-    --color-background-white-hover: #fcfdfd;
-    --color-background-white-active: #f5f7f9;
-    --color-background-light: #fcfdfd;
-    --color-background-light-hover: #f5f7f9;
-    --color-background-light-active: #f0f3f6;
-    --color-background-normal: #f9fafb;
-    --color-background-normal-hover: #f2f4f7;
-    --color-background-normal-active: #ebeef2;
-    --color-background-dark: #f6f8f9;
+    --color-background-light: #fffefb;
+    --color-background-light-hover: #f0efea;
+    --color-background-light-active: #dad9d3;
+    --color-background-normal: #fcf7f1;
+    --color-background-normal-hover: #ece4dc;
+    --color-background-normal-active: #d5ccc3;
+    --color-background-dark: #f7e7da;
+    --color-background-dark-hover: #e4cebc;
+    --color-background-dark-active: #ccb4a1;
+    --color-background-darker: #b09582;
 
     --color-gray-light: #fafcff;
     --color-gray-light-hover: #f7faff;

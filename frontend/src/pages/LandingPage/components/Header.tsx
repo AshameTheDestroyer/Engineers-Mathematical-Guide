@@ -10,7 +10,7 @@ import signup_icon from "@icons/user.svg";
 
 export const Header: FC = () => {
     return (
-        <div className="-m-page mb-page p-page flex flex-row place-items-center justify-between gap-8">
+        <div className="-m-page mb-page p-page bg-background-normal flex flex-row place-items-center justify-between gap-8">
             <Logo />
             <NavigationBar links={LINKS} className="grow" />
             <ButtonBox>
