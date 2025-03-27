@@ -72,7 +72,11 @@ export const MainContent: FC = () => {
                     </Button>
                 </div>
             </section>
-            <img src={Icon} alt="pi-image" className="w-100" />
+            <img
+                className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)]"
+                src={Icon}
+                alt="pi-image"
+            />
         </div>
     );
 };
