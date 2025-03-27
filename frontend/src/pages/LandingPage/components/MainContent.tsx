@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Icon from "@icons/logo.png";
 import { Button } from "@components/Button/Button";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 
+import pi_image from "@images/pi.png";
 import arrow_icon from "@icons/arrow.svg";
 
 // export const MainContent: FC = () => {
@@ -75,8 +75,8 @@ export const MainContent: FC = () => {
             </section>
             <img
                 className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)]"
-                src={Icon}
-                alt="pi-image"
+                src={pi_image}
+                alt="pi image"
             />
         </div>
     );
