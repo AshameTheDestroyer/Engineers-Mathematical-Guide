@@ -1,5 +1,8 @@
 import { FC } from "react";
 import Icon from "@icons/logo.png";
+import { Button } from "@components/Button/Button";
+
+import arrow_icon from "@icons/arrow.svg";
 
 // export const MainContent: FC = () => {
 //     return (
@@ -8,13 +11,29 @@ import Icon from "@icons/logo.png";
 //                 <h2 className="text-primary-normal text-3xl font-bold">
 //                     Engineers' Mathematical Guide
 //                 </h2>
-//                 <h4 className="text-xl">Learn By Doing</h4>
+//                 <h4 className="text-xl">Learn By Doing!</h4>
 //                 <p>
 //                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
 //                     Dicta, tempora reprehenderit magni, enim eum possimus, fugit
 //                     sunt maxime amet error vel. Placeat, deserunt? Perspiciatis
 //                     sit dolorem dicta obcaecati, numquam ad.
 //                 </p>
+//                 <div className="flex place-items-stretch gap-4">
+//                     <Button className="grow-[0.6]" link="odwkaodk">
+//                         Learn More
+//                     </Button>
+//                     <Button
+//                         className="grow"
+//                         variant="primary"
+//                         icon={{
+//                             placement: "right",
+//                             source: arrow_icon,
+//                             className: "rotate-90",
+//                         }}
+//                     >
+//                         Start Your Journey Now
+//                     </Button>
+//                 </div>
 //             </section>
 //             <img src={Icon} alt="pi-image" className="w-100" />
 //         </div>
@@ -36,6 +55,22 @@ export const MainContent: FC = () => {
                     يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا
                     كَلَامٌ ذُو قِيمَةٍ.
                 </p>
+                <div className="flex place-items-stretch gap-4">
+                    <Button className="grow-[0.6]" link="odwkaodk">
+                        إقرأ المزيد
+                    </Button>
+                    <Button
+                        className="grow"
+                        variant="primary"
+                        icon={{
+                            placement: "right",
+                            source: arrow_icon,
+                            className: "rotate-90",
+                        }}
+                    >
+                        إبدأ رحلتك الآن
+                    </Button>
+                </div>
             </section>
             <img src={Icon} alt="pi-image" className="w-100" />
         </div>
