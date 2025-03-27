@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Icon from "@icons/logo.png";
 import { Button } from "@components/Button/Button";
+import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 
 import arrow_icon from "@icons/arrow.svg";
 
@@ -55,7 +56,7 @@ export const MainContent: FC = () => {
                     يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا
                     كَلَامٌ ذُو قِيمَةٍ.
                 </p>
-                <div className="flex place-items-stretch gap-4">
+                <ButtonBox direction="row">
                     <Button className="grow-[0.6]" link="odwkaodk">
                         إقرأ المزيد
                     </Button>
@@ -70,7 +71,7 @@ export const MainContent: FC = () => {
                     >
                         إبدأ رحلتك الآن
                     </Button>
-                </div>
+                </ButtonBox>
             </section>
             <img
                 className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)]"

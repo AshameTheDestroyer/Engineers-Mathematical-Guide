@@ -2,6 +2,7 @@ import { FC } from "react";
 import { LINKS } from "@constants/links";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
+import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 
 import login_icon from "@icons/login.svg";
@@ -12,7 +13,7 @@ export const Header: FC = () => {
         <div className="-m-page mb-page p-page flex flex-row place-items-center justify-between gap-8">
             <Logo />
             <NavigationBar links={LINKS} className="grow" />
-            <div className="flex gap-4">
+            <ButtonBox>
                 <Button
                     link="/registration/signup"
                     icon={{
@@ -34,7 +35,7 @@ export const Header: FC = () => {
                 >
                     Login
                 </Button>
-            </div>
+            </ButtonBox>
         </div>
     );
 };
