@@ -3,6 +3,7 @@ import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
 import { HEADER_ROUTES } from "@constants/HeaderRoutes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
+import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 import {
     Header as Header_,
@@ -38,6 +39,7 @@ export const Header: FC = () => {
             <Logo />
             <NavigationBar routes={HEADER_ROUTES} className="grow" />
             <ButtonBox>
+                <ThemeToggle />
                 <Button
                     link="/registration/signup"
                     icon={{
