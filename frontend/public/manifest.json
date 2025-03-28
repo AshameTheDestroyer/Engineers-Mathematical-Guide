@@ -1,0 +1,15 @@
+{
+    "short_name": "Mathware",
+    "name": "Mathware - Engineers' Mathematical Guide",
+    "icons": [
+        {
+            "src": "src/assets/images/logo.png",
+            "type": "image/png",
+            "sizes": "1600x1600"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#00af64",
+    "background_color": "#fffefb"
+}
