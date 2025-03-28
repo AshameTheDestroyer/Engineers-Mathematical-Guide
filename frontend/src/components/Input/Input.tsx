@@ -16,7 +16,7 @@ interface CustomInputProps {
 const Input: React.FC<CustomInputProps> = ({
     type,
     name,
-    value,
+    value: externalValue,
     onChange,
     className,
     error,
@@ -24,11 +24,20 @@ const Input: React.FC<CustomInputProps> = ({
     variant = "default",
 }) => {
     const [isFocused, setIsFocused] = useState(false);
+    const [internalValue, setInternalValue] = useState<string | number>("");
 
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
 
-    const isLabelUp = isFocused || (value && value.toString().trim() !== "");
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (onChange) {
+            onChange(event);
+        }
+        setInternalValue(event.target.value);
+    };
+
+    const isLabelUp =
+        isFocused || (externalValue || internalValue).toString().trim() !== "";
 
     return (
         <div className="relative mb-4">
@@ -42,8 +51,8 @@ const Input: React.FC<CustomInputProps> = ({
             <input
                 type={type}
                 name={name}
-                value={value}
-                onChange={onChange}
+                value={externalValue ?? internalValue}
+                onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 className={`peer block w-full rounded-md border px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 ${
