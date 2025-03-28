@@ -3,8 +3,8 @@ import { Icon } from "@components/Icon/Icon";
 import { Button } from "@components/Button/Button";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 
-import pi_image from "@images/pi.png";
 import cog_icon from "@icons/cog.svg";
+import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
 
 // export const MainContent: FC = () => {
@@ -78,6 +78,7 @@ export const MainContent: FC = () => {
             </section>
             <img
                 className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)]"
+                loading="lazy"
                 src={pi_image}
                 alt="pi image"
             />
