@@ -23,6 +23,9 @@
         "noFallthroughCasesInSwitch": true,
         "baseUrl": ".",
         "paths": {
+            "@/*": [
+                "src/*"
+            ],
             "@icons/*": [
                 "src/assets/icons/*"
             ],

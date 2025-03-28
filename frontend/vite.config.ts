@@ -6,6 +6,7 @@ export default defineConfig({
     plugins: [react(), tailwindcss()],
     resolve: {
         alias: {
+            "@": "/src",
             "@icons": "/src/assets/icons",
             "@audios": "/src/assets/audios",
             "@images": "/src/assets/images",
