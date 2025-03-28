@@ -39,7 +39,6 @@ export const Header: FC = () => {
             <Logo />
             <NavigationBar routes={HEADER_ROUTES} className="grow" />
             <ButtonBox>
-                <ThemeToggle />
                 <Button
                     link="/registration/signup"
                     icon={{
@@ -61,6 +60,7 @@ export const Header: FC = () => {
                 >
                     Login
                 </Button>
+                <ThemeToggle />
             </ButtonBox>
         </Header_>
     );
