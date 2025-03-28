@@ -1,10 +1,11 @@
 import ReactDOM from "react-dom/client";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
+import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { useState, useEffect, createContext, FC } from "react";
+import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
-const NotFoundPage = LazyImport("./pages/NotFoundPage/NotFoundPage");
 
 import "./extensions";
 import "./global.css";
@@ -46,24 +47,14 @@ const Index: FC = () => {
                         path="/"
                         element={
                             <Lazy
-                                loadingFallback={"loading..."}
-                                errorFallback={(_error) => "error!"}
+                                loadingFallback={<LoadingPage />}
+                                errorFallback={(_error) => <NotFoundPage />}
                             >
                                 <LandingPage />
                             </Lazy>
                         }
                     />
-                    <Route
-                        path="*"
-                        element={
-                            <Lazy
-                                loadingFallback={"loading..."}
-                                errorFallback={(_error) => "error!"}
-                            >
-                                <NotFoundPage />
-                            </Lazy>
-                        }
-                    />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </HashRouter>
         </MainContext.Provider>
