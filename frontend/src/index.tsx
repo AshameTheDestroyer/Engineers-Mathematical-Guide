@@ -4,6 +4,7 @@ import { useState, useEffect, createContext, FC } from "react";
 
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import Signup from "./pages/Signup/SignUp";
 
 import "./extensions";
 import "./global.css";
@@ -43,6 +44,7 @@ const Index: FC = () => {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="*" element={<NotFoundPage />} />
+                    <Route path="/registration/signup" element={<Signup />} />
                 </Routes>
             </HashRouter>
         </MainContext.Provider>
