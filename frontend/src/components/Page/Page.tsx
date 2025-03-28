@@ -7,7 +7,7 @@ export const Page: FC<ComponentProps> = ({ id, className, children }) => {
         <main
             id={id}
             className={twMerge(
-                "page p-page flex min-h-screen flex-col",
+                "page p-page relative flex min-h-screen flex-col",
                 className
             )}
         >
