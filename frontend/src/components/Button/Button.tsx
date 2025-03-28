@@ -89,8 +89,8 @@ export const Button: FC<ButtonProps> = ({
             </div>
             <div
                 className={twMerge(
-                    isThick ? "-bottom-2" : "-bottom-1",
-                    "absolute inset-x-0 top-auto z-[-1] h-8 rounded-b-xl border-2 transition duration-200"
+                    isThick ? "-bottom-2 h-8" : "-bottom-1 h-6",
+                    "absolute inset-x-0 top-auto z-[-1] rounded-b-xl border-2 transition duration-200"
                 )}
                 data-thickness
             />
