@@ -14,7 +14,7 @@ type MainStateProps = {
     ToggleDarkTheme: () => void;
 };
 
-const MainContext = createContext<MainStateProps>(null!);
+export const MainContext = createContext<MainStateProps>(null!);
 
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 
