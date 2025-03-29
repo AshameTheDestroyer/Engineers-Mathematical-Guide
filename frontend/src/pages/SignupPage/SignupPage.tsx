@@ -1,11 +1,11 @@
-import React from "react";
-import Input from "../../components/Input/Input";
-import Checkbox from "../../components/Checkbox/Checkbox";
-import { Button } from "@/components/Button/Button";
-import { NavLink } from "react-router-dom";
+import { FC } from "react";
+import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo/Logo";
+import Input from "../../components/Input/Input";
+import { Button } from "@/components/Button/Button";
+import Checkbox from "../../components/Checkbox/Checkbox";
 
-export default function Signup() {
+export const SignupPage: FC = () => {
     return (
         <section className="flex min-h-screen">
             <div className="flex w-full flex-row">
@@ -35,7 +35,8 @@ export default function Signup() {
                         />
                         <Button>SignUp</Button>
                         <p>
-                            Already a member? <NavLink>login</NavLink>
+                            Already a member?{" "}
+                            <Link to="/registration/login">login</Link>
                         </p>
                     </form>
                 </main>
@@ -47,4 +48,4 @@ export default function Signup() {
             </div>
         </section>
     );
-}
+};
