@@ -6,7 +6,7 @@ import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 export const DesignTestPage: FC = () => {
     return (
         <Page className="gap-8">
-            <ThemeToggle className="right-page fixed" />
+            <ThemeToggle className="right-page fixed" variant="primary" />
 
             <ColourCollection
                 title="Primary Colours"
