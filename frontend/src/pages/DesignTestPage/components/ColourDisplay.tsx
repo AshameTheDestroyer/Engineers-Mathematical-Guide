@@ -56,8 +56,8 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                 className
             )}
         >
-            <h1>{colourName}</h1>
-            <p>{colourValue}</p>
+            <h3>{colourName}</h3>
+            <p className="text-xl">{colourValue}</p>
         </button>
     );
 };
