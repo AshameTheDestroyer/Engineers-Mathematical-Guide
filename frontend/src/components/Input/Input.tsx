@@ -90,7 +90,7 @@ const Input: React.FC<CustomInputProps> = ({
         return variantClass.label.normal;
     };
 
-    const inputType = type === "password" && showPassword ? "text" : type;
+    const inputType = type == "password" && showPassword ? "text" : type;
 
     return (
         <div className="relative mb-4">
@@ -109,7 +109,7 @@ const Input: React.FC<CustomInputProps> = ({
                         variantClass.focus,
                         variantClass.hover,
                         variantClass.border,
-                        type === "password" ? "pr-10" : "",
+                        type == "password" ? "pr-10" : "",
                         "peer block w-full rounded-md border px-4 py-2 focus:ring-2",
                         error
                             ? "border-red-500 text-red-800 outline-red-800"
@@ -123,7 +123,7 @@ const Input: React.FC<CustomInputProps> = ({
                     onChange={handleChange}
                     value={value_ ?? value}
                 />
-                {type === "password" && (
+                {type == "password" && (
                     <button
                         className={twJoin(
                             variantClass.text,
