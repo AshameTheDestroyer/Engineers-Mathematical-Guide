@@ -17,37 +17,37 @@ interface CustomInputProps {
 
 const variantClasses = {
     default: {
-        text: "text-red-50",
-        border: "border-red-600",
-        hover: "hover:bg-red-600",
-        focus: "focus:border-blue-200 focus:text-blue-200",
+        text: "text-foreground-normal",
+        border: "border-foreground-normal",
+        hover: "hover:border-foreground-normal-hover",
+        focus: "focus:border-foreground-normal-active",
         label: {
-            normal: "text-gray-500",
-            focused: "text-blue-500",
+            normal: "text-foreground-normal",
+            focused: "text-foreground-normal-active",
             filled: "text-blue-500",
             error: "text-red-500",
         },
     },
     primary: {
-        text: "text-blue-50",
-        border: "border-blue-600",
-        hover: "hover:bg-blue-600",
-        focus: "focus:border-green-400 focus:text-green-400",
+        text: "text-primary-normal",
+        border: "border-primary-normal",
+        hover: "hover:border-primary-normal-hover",
+        focus: "focus:border-primary-normal-active",
         label: {
-            normal: "text-gray-500",
-            focused: "text-green-500",
+            normal: "text-primary-normal",
+            focused: "text-primary-normal-active",
             filled: "text-green-500",
             error: "text-red-500",
         },
     },
     secondary: {
-        text: "text-gray-50",
-        border: "border-gray-600",
-        hover: "hover:bg-gray-600",
-        focus: "focus:border-yellow-600 focus:text-yellow-600",
+        text: "text-secondary-normal",
+        border: "border-secondary-normal",
+        hover: "hover:border-secondary-normal-hover",
+        focus: "focus:border-secondary-normal-active",
         label: {
-            normal: "text-gray-500",
-            focused: "text-yellow-600",
+            normal: "text-secondary-normal",
+            focused: "text-secondary-normal-active",
             filled: "text-yellow-600",
             error: "text-red-500",
         },
@@ -81,7 +81,6 @@ const Input: React.FC<CustomInputProps> = ({
         isFocused || (externalValue || internalValue).toString().trim() !== "";
     const variantStyle = variantClasses[variant];
 
-    // Determine label color based on state
     const getLabelColor = () => {
         if (error) return variantStyle.label.error;
         if (isFocused) return variantStyle.label.focused;
@@ -105,7 +104,7 @@ const Input: React.FC<CustomInputProps> = ({
                 onChange={handleChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                className={`peer block w-full rounded-md border px-4 py-2 focus:outline-none focus:ring-2 ${
+                className={`peer block w-full rounded-md border px-4 py-2 ${variantStyle.focus} focus:ring-2 ${
                     error
                         ? "border-red-500 text-red-800 outline-red-800"
                         : `border-gray-300 ${variantStyle.focus}`

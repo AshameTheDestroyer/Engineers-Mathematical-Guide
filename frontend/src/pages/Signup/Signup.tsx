@@ -7,7 +7,7 @@ export default function Signup() {
         <section className="flex flex-col">
             <div className="flex w-full flex-row">
                 <main className="p-4 md:w-1/2">
-                    <form className="w-100" action="">
+                    <form className="w-100 mt-10" action="">
                         <Input type="text" name="email" label="Email" />
                         <Checkbox
                             label="I agree with the application"
