@@ -56,11 +56,11 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
             id={id}
             ref={divReference}
             className={twMerge(
-                "not-active:[:is(:hover,:focus-within)]:scale-110 cursor-pointer rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
+                "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
                 className
             )}
         >
-            <h3>{colourName}</h3>
+            <h3 className="grow">{colourName}</h3>
             <p className="text-xl">{colourValue}</p>
         </button>
     );
