@@ -1,12 +1,15 @@
+import { MainContext } from "@/index";
 import { twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export type ColourDisplayProps = ChildlessComponentProps;
 
 export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
     const divReference = useRef<HTMLButtonElement>(null);
     const [colourValue, setColourValue] = useState("");
+
+    const { isDarkThemed } = useContext(MainContext);
 
     const colourName = useMemo(
         () =>
@@ -33,7 +36,7 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                     .toString()
             )
         );
-    }, []);
+    }, [isDarkThemed]);
 
     function RGBToHex(text: string) {
         return (
