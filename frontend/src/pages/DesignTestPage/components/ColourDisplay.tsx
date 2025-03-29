@@ -1,6 +1,7 @@
 import { MainContext } from "@/index";
 import { twMerge } from "tailwind-merge";
 import { RGBToHex } from "@/functions/RGBToHex";
+import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 
@@ -45,6 +46,9 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
             ref={divReference}
             className={twMerge(
                 "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
+                colourRGB != null && IsDarkColour(colourRGB)
+                    ? "text-white"
+                    : "text-black",
                 className
             )}
         >
