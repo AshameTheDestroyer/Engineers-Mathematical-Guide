@@ -83,19 +83,19 @@ export const MainContent: FC = () => {
                 alt="pi image"
             />
             <Icon
-                className="text-background-dark -left-page absolute bottom-0 z-[-1] -translate-x-1/4 translate-y-1/4 animate-spin [animation-duration:60s]"
+                className="text-background-dark -left-page absolute bottom-0 z-[-1] -translate-x-1/4 translate-y-1/4 animate-spin transition duration-200 [animation-duration:60s]"
                 width={400}
                 height={400}
                 source={cog_icon}
             />
             <Icon
-                className="text-background-dark -left-page absolute bottom-0 z-[-1] translate-x-[70%] translate-y-[40%] rotate-[-5deg] animate-spin [animation-direction:reverse] [animation-duration:60s]"
+                className="text-background-dark -left-page absolute bottom-0 z-[-1] translate-x-[70%] translate-y-[40%] rotate-[-5deg] animate-spin transition duration-200 [animation-direction:reverse] [animation-duration:60s]"
                 width={350}
                 height={350}
                 source={cog_icon}
             />
             <Icon
-                className="text-background-dark -right-page absolute top-0 translate-x-1/4 translate-y-2/3 animate-spin [animation-direction:reverse] [animation-duration:60s]"
+                className="text-background-dark -right-page absolute top-0 z-[-1] translate-x-1/4 translate-y-2/3 animate-spin transition duration-200 [animation-direction:reverse] [animation-duration:60s]"
                 width={250}
                 height={250}
                 source={cog_icon}

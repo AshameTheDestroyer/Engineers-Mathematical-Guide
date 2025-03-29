@@ -33,7 +33,7 @@ export const Header: FC = () => {
     return (
         <Header_
             ref={headerReference}
-            className="bg-background-normal transition-[opacity] duration-300"
+            className="bg-background-normal transition duration-200"
             // onScroll={onScroll}
         >
             <Logo />
