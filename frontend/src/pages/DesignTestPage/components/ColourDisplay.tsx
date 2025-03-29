@@ -6,10 +6,10 @@ import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 export type ColourDisplayProps = ChildlessComponentProps;
 
 export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
+    const { isDarkThemed } = useContext(MainContext);
+
     const divReference = useRef<HTMLButtonElement>(null);
     const [colourValue, setColourValue] = useState("");
-
-    const { isDarkThemed } = useContext(MainContext);
 
     const colourName = useMemo(
         () =>
