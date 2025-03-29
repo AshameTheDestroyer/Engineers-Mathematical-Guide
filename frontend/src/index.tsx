@@ -48,8 +48,8 @@ const Index: FC = () => {
                         path="/"
                         element={
                             <Lazy
+                                errorFallback={<NotFoundPage />}
                                 loadingFallback={<LoadingPage />}
-                                errorFallback={(_error) => <NotFoundPage />}
                             >
                                 <LandingPage />
                             </Lazy>

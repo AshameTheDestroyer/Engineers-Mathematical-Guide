@@ -1,8 +1,5 @@
+import { ErrorBoundary, ErrorBoundaryProps } from "react-error-boundary";
 import { FC, lazy, PropsWithChildren, Suspense, SuspenseProps } from "react";
-import {
-    ErrorBoundary,
-    ErrorBoundaryProps,
-} from "../ErrorBoundary/ErrorBoundary";
 
 export function LazyImport(modulePath: string) {
     const exportName =
