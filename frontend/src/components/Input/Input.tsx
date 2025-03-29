@@ -1,21 +1,17 @@
 import { Icon } from "../Icon/Icon";
-import React, { useState } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
+import React, { InputHTMLAttributes, useState } from "react";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 import eye_open from "@icons/eye_open.svg";
 import eye_closed from "@icons/eye_closed.svg";
 
 export type CustomInputProps = {
-    type: string;
-    name: string;
     label: string;
     error?: string;
-    value?: string;
     variant?: Variant;
-    className?: string;
-    placeholder?: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+} & ChildlessComponentProps &
+    InputHTMLAttributes<HTMLInputElement>;
 
 const variantClasses = {
     default: {
@@ -61,17 +57,21 @@ const Input: React.FC<CustomInputProps> = ({
     name,
     error,
     label,
+    onBlur,
+    onFocus,
     onChange,
     className,
     value: value_,
     variant = "default",
+    ...props
 }) => {
     const [value, setValue] = useState<string>("");
     const [isFocused, setIsFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const variantClass = variantClasses[variant];
-    const isLabelUp = isFocused || (value_ ?? value).trimAll() !== "";
+    const isLabelUp =
+        isFocused || (value_ ?? value).toString().trimAll() !== "";
 
     const getLabelColor = () => {
         if (error) return variantClass.label.error;
@@ -107,9 +107,10 @@ const Input: React.FC<CustomInputProps> = ({
                     name={name}
                     value={value_ ?? value}
                     type={type == "password" && showPassword ? "text" : type}
-                    onBlur={(_e) => setIsFocused(false)}
-                    onFocus={(_e) => setIsFocused(true)}
+                    onBlur={(e) => (setIsFocused(false), onBlur?.(e))}
+                    onFocus={(e) => (setIsFocused(true), onFocus?.(e))}
                     onChange={(e) => (setValue(e.target.value), onChange?.(e))}
+                    {...props}
                 />
                 {type == "password" && (
                     <button
