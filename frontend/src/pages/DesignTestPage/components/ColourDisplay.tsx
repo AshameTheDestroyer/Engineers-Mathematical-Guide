@@ -1,8 +1,8 @@
 import { MainContext } from "@/index";
 import { twMerge } from "tailwind-merge";
 import { RGBToHex } from "@/functions/RGBToHex";
-import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 
 export type ColourDisplayProps = ChildlessComponentProps;
@@ -27,17 +27,19 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
     );
 
     useEffect(() => {
-        if (divReference.current == null) {
-            return;
-        }
+        setTimeout(() => {
+            if (divReference.current == null) {
+                return;
+            }
 
-        const colourRGB = divReference.current
-            .computedStyleMap()
-            .get("background-color")!
-            .toString() as RGB;
+            const colourRGB = divReference.current
+                .computedStyleMap()
+                .get("background-color")!
+                .toString() as RGB;
 
-        setColourRGB(colourRGB);
-        setColourHex(RGBToHex(colourRGB));
+            setColourRGB(colourRGB);
+            setColourHex(RGBToHex(colourRGB));
+        });
     }, [isDarkThemed]);
 
     return (
