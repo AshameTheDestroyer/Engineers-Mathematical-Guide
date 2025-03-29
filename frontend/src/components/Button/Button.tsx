@@ -62,6 +62,7 @@ export const Button: FC<ButtonProps> = ({
                 variantClassName,
                 className
             )}
+            type="button"
             role={link != null ? "link" : "button"}
             onClick={(e) => (onClick?.(e), link != null && Navigator(link))}
             {...props}
