@@ -1,8 +1,10 @@
-import React from "react";
+import { FC } from "react";
+import { Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
+import { Button } from "@/components/Button/Button";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
-export default function Signup() {
+export const SignupPage: FC = () => {
     return (
         <section className="flex flex-col">
             <div className="flex w-full flex-row">
@@ -14,10 +16,15 @@ export default function Signup() {
                             link=""
                             linkText="terms and conditions"
                         />
+                        <Button>SignUp</Button>
+                        <p>
+                            Already a member?{" "}
+                            <Link to="/registration/login">login</Link>
+                        </p>
                     </form>
                 </main>
                 <section className="h-160 bg-primary-normal w-full md:w-1/2"></section>
             </div>
         </section>
     );
-}
+};
