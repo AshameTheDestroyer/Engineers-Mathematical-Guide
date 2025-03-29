@@ -326,6 +326,30 @@ body.dark-themed {
     --color-tertiary-darker: #060c15;
 }
 
+body.dark-themed {
+    --color-background-light: #151b23;
+    --color-background-light-hover: #11161d;
+    --color-background-light-active: #0d1118;
+    --color-background-normal: #0d1117;
+    --color-background-normal-hover: #0a0d13;
+    --color-background-normal-active: #05070a;
+    --color-background-dark: #020407;
+    --color-background-dark-hover: #010203;
+    --color-background-dark-active: #000102;
+    --color-background-darker: #000000;
+
+    --color-foreground-light: #ccb4a1;
+    --color-foreground-light-hover: #e4cebc;
+    --color-foreground-light-active: #f7e7da;
+    --color-foreground-normal: #d5ccc3;
+    --color-foreground-normal-hover: #ece4dc;
+    --color-foreground-normal-active: #fcf7f1;
+    --color-foreground-dark: #dad9d3;
+    --color-foreground-dark-hover: #f0efea;
+    --color-foreground-dark-active: #fffefb;
+    --color-foreground-darker: #ffffff;
+}
+
 @layer utilities {
     .centralize {
         display: flex;
