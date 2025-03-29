@@ -1,8 +1,8 @@
-import React from "react";
+import { FC } from "react";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
-export default function Signup() {
+export const SignupPage: FC = () => {
     return (
         <section className="flex flex-col">
             <div className="flex w-full flex-row">
@@ -20,4 +20,4 @@ export default function Signup() {
             </div>
         </section>
     );
-}
+};
