@@ -52,6 +52,7 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                 colourRGB != null && IsDarkColour(colourRGB)
                     ? "text-white"
                     : "text-black",
+                !isDarkThemed && "shadow-lg shadow-[#0000004c]",
                 className
             )}
             onClick={(_e) =>
