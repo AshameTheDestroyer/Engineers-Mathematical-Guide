@@ -104,6 +104,17 @@ body {
 }
 
 body.dark-themed {
+    --color-tertiary-light: #5ba0fb;
+    --color-tertiary-light-hover: #31609e;
+    --color-tertiary-light-active: #20416d;
+    --color-tertiary-normal: #10233d;
+    --color-tertiary-normal-hover: #0e2037;
+    --color-tertiary-normal-active: #0d1c31;
+    --color-tertiary-dark: #0c1a2e;
+    --color-tertiary-dark-hover: #0b1525;
+    --color-tertiary-dark-active: #07101b;
+    --color-tertiary-darker: #060c15;
+
     --color-background-light: #151b23;
     --color-background-light-hover: #11161d;
     --color-background-light-active: #0d1118;
