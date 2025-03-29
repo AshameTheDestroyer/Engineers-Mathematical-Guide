@@ -26,7 +26,7 @@ const variantClasses = {
         label: {
             normal: "text-foreground-normal",
             focused: "text-foreground-normal-active",
-            filled: "text-blue-500",
+            filled: "text-foreground-light",
             error: "text-red-500",
         },
     },
@@ -38,7 +38,7 @@ const variantClasses = {
         label: {
             normal: "text-primary-normal",
             focused: "text-primary-normal-active",
-            filled: "text-green-500",
+            filled: "text-primary-normal",
             error: "text-red-500",
         },
     },
@@ -70,16 +70,6 @@ const Input: React.FC<CustomInputProps> = ({
     const [isFocused, setIsFocused] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
-    const handleFocus = () => setIsFocused(true);
-    const handleBlur = () => setIsFocused(false);
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (onChange) {
-            onChange(event);
-        }
-        setValue(event.target.value);
-    };
-
     const variantClass = variantClasses[variant];
     const isLabelUp = isFocused || (value_ ?? value).trimAll() !== "";
 
@@ -89,8 +79,6 @@ const Input: React.FC<CustomInputProps> = ({
         if (isFocused) return variantClass.label.focused;
         return variantClass.label.normal;
     };
-
-    const inputType = type == "password" && showPassword ? "text" : type;
 
     return (
         <div className="relative mb-4">
@@ -117,11 +105,11 @@ const Input: React.FC<CustomInputProps> = ({
                         className
                     )}
                     name={name}
-                    type={inputType}
-                    onBlur={handleBlur}
-                    onFocus={handleFocus}
-                    onChange={handleChange}
                     value={value_ ?? value}
+                    type={type == "password" && showPassword ? "text" : type}
+                    onBlur={(_e) => setIsFocused(false)}
+                    onFocus={(_e) => setIsFocused(true)}
+                    onChange={(e) => (setValue(e.target.value), onChange?.(e))}
                 />
                 {type == "password" && (
                     <button
