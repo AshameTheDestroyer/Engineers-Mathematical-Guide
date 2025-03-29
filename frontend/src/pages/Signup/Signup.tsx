@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
+import { Button } from "@/components/Button/Button";
 
 export default function Signup() {
     return (
@@ -28,6 +29,7 @@ export default function Signup() {
                             link=""
                             linkText="terms and conditions"
                         />
+                        <Button>SignUp</Button>
                     </form>
                 </main>
                 <section className="from-primary-normal to-primary-dark-active min-h-screen w-full bg-gradient-to-r md:w-1/2"></section>
