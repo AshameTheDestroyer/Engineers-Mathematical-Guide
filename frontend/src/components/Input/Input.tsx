@@ -1,5 +1,9 @@
+import { Icon } from "../Icon/Icon";
 import React, { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
+
+import eye_open from "@icons/eye_open.svg";
+import eye_closed from "@icons/eye_closed.svg";
 
 export type CustomInputProps = {
     type: string;
@@ -126,14 +130,17 @@ const Input: React.FC<CustomInputProps> = ({
                 />
                 {type === "password" && (
                     <button
-                        className={`absolute right-3 top-1/2 -translate-y-1/2 ${variantStyle.text}`}
+                        className={twJoin(
+                            variantStyle.text,
+                            "absolute right-3 top-1/2 -translate-y-1/2"
+                        )}
                         type="button"
                         onClick={togglePasswordVisibility}
                         aria-label={
                             showPassword ? "Hide password" : "Show password"
                         }
                     >
-                        {showPassword ? "👁️" : "👁️‍🗨️"}
+                        <Icon source={showPassword ? eye_closed : eye_open} />
                     </button>
                 )}
             </div>
