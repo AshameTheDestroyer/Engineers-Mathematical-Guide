@@ -4,6 +4,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { useState, useEffect, createContext, FC } from "react";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { DesignTestPage } from "./pages/DesignTestPage/DesignTestPage";
 
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
 
@@ -54,6 +55,7 @@ const Index: FC = () => {
                             </Lazy>
                         }
                     />
+                    <Route path="design-test" element={<DesignTestPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </HashRouter>
