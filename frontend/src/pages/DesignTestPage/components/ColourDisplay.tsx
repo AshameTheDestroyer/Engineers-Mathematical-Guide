@@ -42,8 +42,9 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                 .replace("rgb(", "")
                 .replace(")", "")
                 .split(", ")
-                .map((c) => Number(c).toString(16).toUpperCase())
+                .map((c) => Number(c).toString(16).padStart(2, "0"))
                 .join("")
+                .toUpperCase()
         );
     }
 
