@@ -1,10 +1,13 @@
 import { FC } from "react";
 import { Page } from "@/components/Page/Page";
 import { ColourCollection } from "./components/ColourCollection";
+import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 
 export const DesignTestPage: FC = () => {
     return (
         <Page className="gap-8">
+            <ThemeToggle className="right-page fixed" />
+
             <ColourCollection
                 title="Primary Colours"
                 classNames={[
