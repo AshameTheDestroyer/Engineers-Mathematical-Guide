@@ -55,11 +55,11 @@ export const Button: FC<ButtonProps> = ({
     return (
         <button
             className={twMerge(
+                variantClassName,
                 "relative isolate cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
                     : "active:[&>[data-content]]:translate-y-1",
-                variantClassName,
                 className
             )}
             type="button"

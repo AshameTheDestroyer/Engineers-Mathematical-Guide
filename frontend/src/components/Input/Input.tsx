@@ -102,7 +102,7 @@ const Input: React.FC<CustomInputProps> = ({
             <label
                 className={twMerge(
                     getLabelColor(),
-                    `absolute left-4 transition-all duration-300`,
+                    "absolute left-4 transition-all duration-300",
                     isLabelUp ? "-top-6 text-base" : "top-1/2 -translate-y-1/2"
                 )}
             >
