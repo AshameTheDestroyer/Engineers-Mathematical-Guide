@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 
 interface CustomCheckboxProps {
-    name: string;
     value?: boolean;
     onChange?: (checked: boolean) => void;
     className?: string;

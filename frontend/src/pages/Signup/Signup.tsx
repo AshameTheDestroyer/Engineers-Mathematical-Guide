@@ -4,11 +4,24 @@ import Checkbox from "../../components/Checkbox/Checkbox";
 
 export default function Signup() {
     return (
-        <section className="flex flex-col">
+        <section className="flex min-h-screen">
             <div className="flex w-full flex-row">
-                <main className="p-4 md:w-1/2">
-                    <form className="w-100 mt-10" action="">
+                <main className="flex items-center justify-center p-4 md:w-1/2">
+                    <form
+                        className="flex w-full max-w-md flex-col gap-5 rounded-lg p-6"
+                        action=""
+                    >
                         <Input type="text" name="email" label="Email" />
+                        <Input
+                            type="password"
+                            name="password"
+                            label="Enter new Password"
+                        />
+                        <Input
+                            type="password"
+                            name="password"
+                            label="Confirm Password"
+                        />
                         <Checkbox
                             label="I agree with the application"
                             link=""
@@ -16,7 +29,7 @@ export default function Signup() {
                         />
                     </form>
                 </main>
-                <section className="h-160 bg-primary-normal w-full md:w-1/2"></section>
+                <section className="from-primary-normal to-primary-dark-active min-h-screen w-full bg-gradient-to-r md:w-1/2"></section>
             </div>
         </section>
     );

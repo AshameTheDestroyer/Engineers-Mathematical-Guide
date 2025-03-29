@@ -110,9 +110,9 @@ const Input: React.FC<CustomInputProps> = ({
                         : `border-gray-300 ${variantStyle.focus}`
                 } ${className}`}
             />
-            {type === "password" && (
-                <div className="-ml-4 h-3 w-3 bg-black">show</div>
-            )}
+            {/* {type === "password" && (
+                <div className="-ml-4 h-3 w-3 bg-black"></div>
+            )} */}
 
             {error && <p className="mt-1 text-red-500">{error}</p>}
         </div>
