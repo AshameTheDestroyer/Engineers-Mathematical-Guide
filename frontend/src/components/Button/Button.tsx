@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconProps } from "@components/Icon/Icon";
-import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
+import { ComponentProps } from "@types_/ComponentProps";
 
 export type ButtonProps = {
     link?: string;
@@ -12,10 +12,7 @@ export type ButtonProps = {
         placement: "left" | "right";
     };
 } & ComponentProps &
-    ComponentEventProps<
-        HTMLButtonElement,
-        ButtonHTMLAttributes<HTMLButtonElement>
-    >;
+    ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
     link,
