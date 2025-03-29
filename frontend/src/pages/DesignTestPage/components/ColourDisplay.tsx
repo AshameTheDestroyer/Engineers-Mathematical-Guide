@@ -48,11 +48,11 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
             ref={divReference}
             title="Click to copy colour."
             className={twMerge(
-                "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
+                !isDarkThemed && "shadow-lg shadow-[#0000004c]",
                 colourRGB != null && IsDarkColour(colourRGB)
                     ? "text-white"
                     : "text-black",
-                !isDarkThemed && "shadow-lg shadow-[#0000004c]",
+                "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
                 className
             )}
             onClick={(_e) =>
