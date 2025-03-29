@@ -14,7 +14,9 @@ export default function Signup() {
                         className="flex w-full max-w-md flex-col gap-5 rounded-lg p-6"
                         action=""
                     >
-                        <h1 className="mb-6 text-xl">Create new account</h1>
+                        <h1 className="mb-6 text-xl font-bold">
+                            Create new account
+                        </h1>
                         <Input type="text" name="email" label="Email" />
                         <Input
                             type="password"
