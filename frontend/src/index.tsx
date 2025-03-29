@@ -55,7 +55,12 @@ const Index: FC = () => {
                             </Lazy>
                         }
                     />
-                    <Route path="design-test" element={<DesignTestPage />} />
+                    {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
+                        <Route
+                            path="design-test"
+                            element={<DesignTestPage />}
+                        />
+                    )}
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </HashRouter>
