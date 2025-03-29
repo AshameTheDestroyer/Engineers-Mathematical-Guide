@@ -1,5 +1,6 @@
 import { MainContext } from "@/index";
 import { twMerge } from "tailwind-merge";
+import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
 
@@ -33,23 +34,10 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                 divReference.current
                     .computedStyleMap()
                     .get("background-color")!
-                    .toString()
+                    .toString() as RGB
             )
         );
     }, [isDarkThemed]);
-
-    function RGBToHex(text: string) {
-        return (
-            "#" +
-            text
-                .replace("rgb(", "")
-                .replace(")", "")
-                .split(", ")
-                .map((c) => Number(c).toString(16).padStart(2, "0"))
-                .join("")
-                .toUpperCase()
-        );
-    }
 
     return (
         <button
