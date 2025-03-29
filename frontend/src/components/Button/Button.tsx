@@ -34,9 +34,9 @@ export const Button: FC<ButtonProps> = ({
         switch (variant) {
             case "default":
                 return (className = `
-                        [&>[data-content]]:bg-white [&>*]:border-gray-normal [&>[data-thickness]]:bg-gray-normal text-foreground-light
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-gray-normal [&:where(&:hover,&:focus-within)]:text-foreground-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-gray-normal-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-gray-normal-hover
-                        active:[&>[data-content]]:bg-gray-normal active:text-foreground-light-active active:[&>[data-thickness]]:bg-gray-normal-active active:[&>*]:border-gray-normal-active
+                        [&>[data-content]]:bg-tertiary-light [&>*]:border-tertiary-light-active [&>[data-thickness]]:bg-tertiary-light-active text-tertiary-normal
+                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-tertiary-light-hover [&:where(&:hover,&:focus-within)]:text-tertiary-normal-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-tertiary-light-active [&:where(&:hover,&:focus-within)]:[&>*]:border-tertiary-light-active
+                        active:[&>[data-content]]:bg-tertiary-light-active active:text-tertiary-normal-active active:[&>[data-thickness]]:bg-tertiary-light-active active:[&>*]:border-tertiary-normal-hover
                     `);
             case "primary":
                 return (className = `
