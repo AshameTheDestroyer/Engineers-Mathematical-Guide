@@ -2,17 +2,17 @@ import React, { useState } from "react";
 
 type Variant = "primary" | "secondary" | "default";
 
-interface CustomInputProps {
+export type CustomInputProps = {
     type: string;
     name: string;
+    label: string;
+    error?: string;
+    variant?: Variant;
+    className?: string;
     placeholder?: string;
     value?: string | number;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    className?: string;
-    error?: string;
-    label: string;
-    variant?: Variant;
-}
+};
 
 const variantClasses = {
     default: {
