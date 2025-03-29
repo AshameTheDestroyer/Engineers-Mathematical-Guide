@@ -1,4 +1,4 @@
-export function RGBToHex(text: RGB | RGBA): HEX {
+export function RGBToHex(text: RGB | RGBA): Hex {
     if (!text.startsWith("rgb")) {
         throw new Error("Text wasn't in the correct format.");
     }
@@ -14,5 +14,5 @@ export function RGBToHex(text: RGB | RGBA): HEX {
                     .padStart(2, "0")
             )
             .join("")
-            .toUpperCase()) as HEX;
+            .toUpperCase()) as Hex;
 }
