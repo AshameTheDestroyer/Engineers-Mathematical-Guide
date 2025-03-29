@@ -33,7 +33,7 @@ export const SignupPage: FC = () => {
                             link=""
                             linkText="terms and conditions"
                         />
-                        <Button>SignUp</Button>
+                        <Button>Sign up</Button>
                         <p>
                             Already a member?{" "}
                             <Link to="/registration/login">login</Link>
