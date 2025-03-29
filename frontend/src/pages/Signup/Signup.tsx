@@ -2,6 +2,8 @@ import React from "react";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { Button } from "@/components/Button/Button";
+import { NavLink } from "react-router-dom";
+import { Logo } from "@/components/Logo/Logo";
 
 export default function Signup() {
     return (
@@ -30,9 +32,16 @@ export default function Signup() {
                             linkText="terms and conditions"
                         />
                         <Button>SignUp</Button>
+                        <p>
+                            Already a member? <NavLink>login</NavLink>
+                        </p>
                     </form>
                 </main>
-                <section className="from-primary-normal to-primary-dark-active min-h-screen w-full bg-gradient-to-r md:w-1/2"></section>
+                <section className="from-primary-normal to-primary-dark-active relative min-h-screen w-full bg-gradient-to-r md:w-1/2">
+                    <div className="absolute bottom-4 right-4 rounded p-2 text-white">
+                        <Logo />
+                    </div>
+                </section>
             </div>
         </section>
     );
