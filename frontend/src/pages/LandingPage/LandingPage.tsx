@@ -5,7 +5,7 @@ import { MainContent } from "./components/MainContent";
 
 export const LandingPage: FC = () => {
     return (
-        <Page className="overflow-hidden">
+        <Page className="bg-background-light">
             <Header />
             <MainContent />
         </Page>
