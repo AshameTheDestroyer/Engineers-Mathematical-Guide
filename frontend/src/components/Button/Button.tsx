@@ -7,7 +7,7 @@ import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
 export type ButtonProps = {
     link?: string;
     isThick?: boolean;
-    variant?: "primary" | "secondary" | "default";
+    variant?: Variant;
     icon?: IconProps & {
         placement: "left" | "right";
     };

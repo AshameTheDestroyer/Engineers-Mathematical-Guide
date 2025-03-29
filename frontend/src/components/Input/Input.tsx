@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-type Variant = "primary" | "secondary" | "default";
-
 export type CustomInputProps = {
     type: string;
     name: string;
