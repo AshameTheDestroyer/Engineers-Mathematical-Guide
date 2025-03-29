@@ -154,22 +154,18 @@ body.dark-themed {
 
 @layer base {
     ::-webkit-scrollbar {
-        @apply w-2;
+        @apply w-3;
     }
 
     ::-webkit-scrollbar-track {
-        @apply bg-background-dark;
+        @apply bg-background-darker;
     }
 
     ::-webkit-scrollbar-thumb {
-        @apply bg-background-dark-hover rounded-xl;
+        @apply bg-background-normal border-background-darker rounded-xl border-2;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-background-dark-active;
-    }
-
-    ::-webkit-scrollbar-thumb:active {
-        @apply bg-background-darker;
+        @apply bg-background-normal-hover;
     }
 }
