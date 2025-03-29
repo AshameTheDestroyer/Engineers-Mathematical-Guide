@@ -1,10 +1,10 @@
-export function RGBToHex(text: RGB | RGBA): Hex {
-    if (!text.startsWith("rgb")) {
-        throw new Error("Text wasn't in the correct format.");
-    }
+import { AssertColourIsRGB } from "./AssertColourIs";
+
+export function RGBToHex(colour: RGB | RGBA): Hex {
+    AssertColourIsRGB(colour);
 
     return ("#" +
-        text
+        colour
             .replace(/rgba?\(/, "")
             .replace(")", "")
             .split(",")
