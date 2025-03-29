@@ -18,8 +18,8 @@ export const ColourCollection: FC<ColourCollectionProps> = ({
         <div id={id} className={twMerge("flex flex-col gap-4", className)}>
             <h1 className="text-xl font-bold">{title}</h1>
             <div className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
-                {classNames.map((className) => (
-                    <ColourDisplay className={className} />
+                {classNames.map((className, i) => (
+                    <ColourDisplay key={i} className={className} />
                 ))}
             </div>
         </div>
