@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type CustomInputProps = {
     type: string;
@@ -54,16 +55,16 @@ const variantClasses = {
 const Input: React.FC<CustomInputProps> = ({
     type,
     name,
-    value: externalValue,
-    onChange,
-    className,
     error,
     label,
+    onChange,
+    className,
     variant = "default",
+    value: externalValue,
 }) => {
     const [isFocused, setIsFocused] = useState(false);
-    const [internalValue, setInternalValue] = useState<string | number>("");
     const [showPassword, setShowPassword] = useState(false);
+    const [internalValue, setInternalValue] = useState<string | number>("");
 
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
@@ -95,30 +96,38 @@ const Input: React.FC<CustomInputProps> = ({
     return (
         <div className="relative mb-4">
             <label
-                className={`absolute left-4 transition-all duration-300 ${
+                className={twMerge(
+                    getLabelColor(),
+                    `absolute left-4 transition-all duration-300`,
                     isLabelUp ? "-top-6 text-base" : "top-1/2 -translate-y-1/2"
-                } ${getLabelColor()}`}
+                )}
             >
                 {label}
             </label>
             <div className="relative">
                 <input
-                    type={inputType}
-                    name={name}
-                    value={externalValue ?? internalValue}
-                    onChange={handleChange}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    className={`peer block w-full rounded-md border px-4 py-2 ${variantStyle.border} ${variantStyle.hover} ${variantStyle.focus} focus:ring-2 ${
+                    className={twMerge(
+                        variantStyle.focus,
+                        variantStyle.hover,
+                        variantStyle.border,
+                        type === "password" ? "pr-10" : "",
+                        "peer block w-full rounded-md border px-4 py-2 focus:ring-2",
                         error
                             ? "border-red-500 text-red-800 outline-red-800"
-                            : `${variantStyle.border} ${variantStyle.text}`
-                    } ${className} ${type === "password" ? "pr-10" : ""}`}
+                            : variantStyle.border + " " + variantStyle.text,
+                        className
+                    )}
+                    name={name}
+                    type={inputType}
+                    onBlur={handleBlur}
+                    onFocus={handleFocus}
+                    onChange={handleChange}
+                    value={externalValue ?? internalValue}
                 />
                 {type === "password" && (
                     <button
-                        type="button"
                         className={`absolute right-3 top-1/2 -translate-y-1/2 ${variantStyle.text}`}
+                        type="button"
                         onClick={togglePasswordVisibility}
                         aria-label={
                             showPassword ? "Hide password" : "Show password"
