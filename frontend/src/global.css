@@ -6,7 +6,7 @@
 body {
     font-family: "Exo 2", "El Messiri", sans-serif;
 
-    overflow-x: hidden;
+    @apply text-foreground-darker bg-background-light overflow-x-hidden;
 }
 
 @theme {
@@ -45,16 +45,16 @@ body {
     --color-secondary-dark-active: #734300;
     --color-secondary-darker: #593400;
 
-    --color-foreground-light: #5ba0fb;
-    --color-foreground-light-hover: #31609e;
-    --color-foreground-light-active: #20416d;
-    --color-foreground-normal: #10233d;
-    --color-foreground-normal-hover: #0e2037;
-    --color-foreground-normal-active: #0d1c31;
-    --color-foreground-dark: #0c1a2e;
-    --color-foreground-dark-hover: #0b1525;
-    --color-foreground-dark-active: #07101b;
-    --color-foreground-darker: #060c15;
+    --color-tertiary-light: #eff6ff;
+    --color-tertiary-light-hover: #e6f1fe;
+    --color-tertiary-light-active: #cce2fe;
+    --color-tertiary-normal: #5ba0fb;
+    --color-tertiary-normal-hover: #5290e2;
+    --color-tertiary-normal-active: #4980c9;
+    --color-tertiary-dark: #4478bc;
+    --color-tertiary-dark-hover: #376097;
+    --color-tertiary-dark-active: #294871;
+    --color-tertiary-darker: #203858;
 
     --color-background-light: #fffefb;
     --color-background-light-hover: #f0efea;
@@ -67,6 +67,17 @@ body {
     --color-background-dark-active: #ccb4a1;
     --color-background-darker: #b09582;
 
+    --color-foreground-light: #000000;
+    --color-foreground-light-hover: #000102;
+    --color-foreground-light-active: #010203;
+    --color-foreground-normal: #020407;
+    --color-foreground-normal-hover: #05070a;
+    --color-foreground-normal-active: #0a0d13;
+    --color-foreground-dark: #0d1117;
+    --color-foreground-dark-hover: #0d1118;
+    --color-foreground-dark-active: #11161d;
+    --color-foreground-darker: #151b23;
+
     --color-gray-light: #fafcff;
     --color-gray-light-hover: #f7faff;
     --color-gray-light-active: #eff5ff;
@@ -78,7 +89,42 @@ body {
     --color-gray-dark-active: #5c6573;
     --color-gray-darker: #474e59;
 
+    --color-vibrant-red: #ff595e;
+    --color-vibrant-red-light: #ff99c8;
+    --color-vibrant-yellow: #ffca3a;
+    --color-vibrant-yellow-light: #fcf6bd;
+    --color-vibrant-green: #8ac926;
+    --color-vibrant-green-light: #d0f4de;
+    --color-vibrant-blue: #1982c4;
+    --color-vibrant-blue-light: #a9def9;
+    --color-vibrant-purple: #6a4c93;
+    --color-vibrant-purple-light: #e4c1f9;
+
     --spacing-page: 40px;
+}
+
+body.dark-themed {
+    --color-background-light: #151b23;
+    --color-background-light-hover: #11161d;
+    --color-background-light-active: #0d1118;
+    --color-background-normal: #0d1117;
+    --color-background-normal-hover: #0a0d13;
+    --color-background-normal-active: #05070a;
+    --color-background-dark: #020407;
+    --color-background-dark-hover: #010203;
+    --color-background-dark-active: #000102;
+    --color-background-darker: #000000;
+
+    --color-foreground-light: #ccb4a1;
+    --color-foreground-light-hover: #e4cebc;
+    --color-foreground-light-active: #f7e7da;
+    --color-foreground-normal: #d5ccc3;
+    --color-foreground-normal-hover: #ece4dc;
+    --color-foreground-normal-active: #fcf7f1;
+    --color-foreground-dark: #dad9d3;
+    --color-foreground-dark-hover: #f0efea;
+    --color-foreground-dark-active: #fffefb;
+    --color-foreground-darker: #ffffff;
 }
 
 @layer utilities {
