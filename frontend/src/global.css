@@ -6,7 +6,7 @@
 body {
     font-family: "Exo 2", "El Messiri", sans-serif;
 
-    @apply text-foreground-darker bg-background-light overflow-x-hidden;
+    @apply text-foreground-darker bg-background-light overflow-x-hidden transition duration-200;
 }
 
 @theme {
