@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 type Variant = "primary" | "secondary" | "default";
 
@@ -66,6 +65,7 @@ const Input: React.FC<CustomInputProps> = ({
 }) => {
     const [isFocused, setIsFocused] = useState(false);
     const [internalValue, setInternalValue] = useState<string | number>("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
@@ -75,6 +75,10 @@ const Input: React.FC<CustomInputProps> = ({
             onChange(event);
         }
         setInternalValue(event.target.value);
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
     };
 
     const isLabelUp =
@@ -88,6 +92,8 @@ const Input: React.FC<CustomInputProps> = ({
         return variantStyle.label.normal;
     };
 
+    const inputType = type === "password" && showPassword ? "text" : type;
+
     return (
         <div className="relative mb-4">
             <label
@@ -97,23 +103,33 @@ const Input: React.FC<CustomInputProps> = ({
             >
                 {label}
             </label>
-            <input
-                type={type}
-                name={name}
-                value={externalValue ?? internalValue}
-                onChange={handleChange}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-                className={`peer block w-full rounded-md border px-4 py-2 ${variantStyle.focus} focus:ring-2 ${
-                    error
-                        ? "border-red-500 text-red-800 outline-red-800"
-                        : `border-gray-300 ${variantStyle.focus}`
-                } ${className}`}
-            />
-            {/* {type === "password" && (
-                <div className="-ml-4 h-3 w-3 bg-black"></div>
-            )} */}
-
+            <div className="relative">
+                <input
+                    type={inputType}
+                    name={name}
+                    value={externalValue ?? internalValue}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className={`peer block w-full rounded-md border px-4 py-2 ${variantStyle.border} ${variantStyle.hover} ${variantStyle.focus} focus:ring-2 ${
+                        error
+                            ? "border-red-500 text-red-800 outline-red-800"
+                            : `${variantStyle.border} ${variantStyle.text}`
+                    } ${className} ${type === "password" ? "pr-10" : ""}`}
+                />
+                {type === "password" && (
+                    <button
+                        type="button"
+                        className={`absolute right-3 top-1/2 -translate-y-1/2 ${variantStyle.text}`}
+                        onClick={togglePasswordVisibility}
+                        aria-label={
+                            showPassword ? "Hide password" : "Show password"
+                        }
+                    >
+                        {showPassword ? "👁️" : "👁️‍🗨️"}
+                    </button>
+                )}
+            </div>
             {error && <p className="mt-1 text-red-500">{error}</p>}
         </div>
     );
