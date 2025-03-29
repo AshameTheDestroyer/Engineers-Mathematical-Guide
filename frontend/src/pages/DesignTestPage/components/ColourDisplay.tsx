@@ -8,9 +8,10 @@ export type ColourDisplayProps = ChildlessComponentProps;
 
 export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
     const { isDarkThemed } = useContext(MainContext);
-
     const divReference = useRef<HTMLButtonElement>(null);
-    const [colourValue, setColourValue] = useState("");
+
+    const [colourHex, setColourHex] = useState<Hex>();
+    const [colourRGB, setColourRGB] = useState<RGB>();
 
     const colourName = useMemo(
         () =>
@@ -29,14 +30,13 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
             return;
         }
 
-        setColourValue(
-            RGBToHex(
-                divReference.current
-                    .computedStyleMap()
-                    .get("background-color")!
-                    .toString() as RGB
-            )
-        );
+        const colourRGB = divReference.current
+            .computedStyleMap()
+            .get("background-color")!
+            .toString() as RGB;
+
+        setColourRGB(colourRGB);
+        setColourHex(RGBToHex(colourRGB));
     }, [isDarkThemed]);
 
     return (
@@ -48,8 +48,9 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
                 className
             )}
         >
-            <h3 className="grow">{colourName}</h3>
-            <p className="text-xl">{colourValue}</p>
+            <h3 className="grow place-content-center">{colourName}</h3>
+            <p className="text-xl">{colourHex != null && colourHex}</p>
+            <p>{colourRGB != null && colourRGB}</p>
         </button>
     );
 };
