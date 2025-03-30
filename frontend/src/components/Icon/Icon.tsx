@@ -20,44 +20,38 @@ export const Icon: FC<IconProps> = ({
     thickness,
     className,
 }) => {
-    const [svgContent, setSvgContent] = useState<string>();
+    const [svg, setSVG] = useState<string>();
     const [error, setError] = useState<string>();
 
     useEffect(() => {
-        const fetchSvg = async () => {
-            try {
-                const response = await fetch(source);
-                if (!response.ok) {
-                    throw new Error(
-                        `Failed to fetch SVG: ${response.statusText}.`
-                    );
-                }
-                const svgText = await response.text();
-
-                const parser = new DOMParser();
-                const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
-                const svgElement = svgDoc.querySelector("svg");
-
-                if (!svgElement) {
-                    throw new Error("Invalid SVG content.");
-                }
-
-                InjectProperties(svgElement);
-
-                const serializer = new XMLSerializer();
-                const updatedSvgContent =
-                    serializer.serializeToString(svgElement);
-
-                setSvgContent(updatedSvgContent);
-            } catch (error) {
-                if (error instanceof Error) {
-                    setError(error.message);
-                }
-            }
-        };
-
-        fetchSvg();
+        FetchSVG();
     }, [fill, width, source, height, stroke, thickness]);
+
+    async function FetchSVG() {
+        try {
+            const response = await fetch(source);
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch SVG: ${response.statusText}.`);
+            }
+
+            const text = await response.text();
+
+            const svg = new DOMParser().parseFromString(text, "image/svg+xml");
+            const svgElement = svg.querySelector("svg");
+
+            if (svgElement == null) {
+                throw new Error("Invalid SVG content.");
+            }
+
+            InjectProperties(svgElement);
+            setSVG(new XMLSerializer().serializeToString(svgElement));
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            }
+        }
+    }
 
     function InjectProperties(svgElement: SVGElement) {
         Object.entries({
@@ -87,11 +81,11 @@ export const Icon: FC<IconProps> = ({
     }
 
     return (
-        svgContent && (
+        svg && (
             <div
                 id={id}
                 className={className}
-                dangerouslySetInnerHTML={{ __html: svgContent }}
+                dangerouslySetInnerHTML={{ __html: svg }}
             />
         )
     );
