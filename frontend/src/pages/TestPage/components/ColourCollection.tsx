@@ -1,27 +1,32 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { ColourDisplay } from "./ColourDisplay";
-import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { Collection, CollectionProps } from "./Collection";
 
-export type ColourCollectionProps = ChildlessComponentProps & {
-    title: string;
+export type ColourCollectionProps = Omit<CollectionProps, "children"> & {
     classNames: Array<string>;
 };
 
 export const ColourCollection: FC<ColourCollectionProps> = ({
     id,
+    inner,
     title,
     className,
     classNames,
 }) => {
     return (
-        <div id={id} className={twMerge("flex flex-col gap-4", className)}>
-            <h1 className="text-xl font-bold">{title}</h1>
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-4">
-                {classNames.map((className, i) => (
-                    <ColourDisplay key={i} className={className} />
-                ))}
-            </div>
-        </div>
+        <Collection
+            id={id}
+            className={twMerge(
+                "[&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]",
+                className
+            )}
+            inner={inner}
+            title={title}
+        >
+            {classNames.map((className, i) => (
+                <ColourDisplay key={i} className={className} />
+            ))}
+        </Collection>
     );
 };
