@@ -46,6 +46,19 @@ export const ButtonCollection: FC = () => {
                     </Button>
                 </ButtonBox>
             </Collection>
+            <Collection title="Linked" inner>
+                <ButtonBox>
+                    <Button variant="default" link="/" icon={homeIcon}>
+                        Default
+                    </Button>
+                    <Button variant="primary" link="/" icon={homeIcon}>
+                        Primary
+                    </Button>
+                    <Button variant="secondary" link="/" icon={homeIcon}>
+                        Secondary
+                    </Button>
+                </ButtonBox>
+            </Collection>
             <Collection title="Icon-ed" inner className="[&>div]:flex-col">
                 <ButtonBox>
                     <Button variant="default" icon={arrowRightIcon}>
@@ -66,19 +79,6 @@ export const ButtonCollection: FC = () => {
                         Primary
                     </Button>
                     <Button variant="secondary" icon={arrowLeftIcon}>
-                        Secondary
-                    </Button>
-                </ButtonBox>
-            </Collection>
-            <Collection title="Linked" inner>
-                <ButtonBox>
-                    <Button variant="default" link="/" icon={homeIcon}>
-                        Default
-                    </Button>
-                    <Button variant="primary" link="/" icon={homeIcon}>
-                        Primary
-                    </Button>
-                    <Button variant="secondary" link="/" icon={homeIcon}>
                         Secondary
                     </Button>
                 </ButtonBox>
