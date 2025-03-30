@@ -1,13 +1,14 @@
 import ReactDOM from "react-dom/client";
+import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { useState, useEffect, createContext, FC, ReactNode } from "react";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
 const DesignPage = LazyImport("./pages/TestPage/pages/DesignPage");
+const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import "./extensions";
 import "./global.css";
@@ -79,6 +80,14 @@ const Index: FC = () => {
                                 element={
                                     <LazyComponent>
                                         <DesignPage />
+                                    </LazyComponent>
+                                }
+                            />
+                            <Route
+                                path="components"
+                                element={
+                                    <LazyComponent>
+                                        <ComponentsPage />
                                     </LazyComponent>
                                 }
                             />
