@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
-import { HEADER_ROUTES } from "@constants/HeaderRoutes";
+import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
@@ -22,7 +22,7 @@ export const Header: FC = () => {
             }}
         >
             <Logo />
-            <NavigationBar routes={HEADER_ROUTES} className="grow" />
+            <NavigationBar className="grow" routes={LANDING_PAGE_ROUTES} />
             <ButtonBox>
                 <Button
                     link="/registration/signup"
