@@ -9,7 +9,7 @@ import arrow_icon from "@icons/arrow.svg";
 export const ComponentsPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
-            <Collection title="Button">
+            <Collection title="Button Component">
                 <Collection title="Normal" inner>
                     <ButtonBox>
                         <Button variant="default">Default</Button>
