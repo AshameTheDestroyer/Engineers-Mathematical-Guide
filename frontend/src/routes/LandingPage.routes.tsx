@@ -1,4 +1,4 @@
-const HEADER_ROUTES_ = [
+const LANDING_PAGE_ROUTES_ = [
     {
         text: "Home",
         href: "/",
@@ -12,7 +12,7 @@ const HEADER_ROUTES_ = [
         href: "/contact-us",
     },
     {
-        text: "Refrences",
+        text: "References",
         href: "/references",
     },
     {
@@ -21,7 +21,7 @@ const HEADER_ROUTES_ = [
     },
 ];
 
-export const HEADER_ROUTES =
+export const LANDING_PAGE_ROUTES =
     import.meta.env["VITE_ENVIRONMENT"] != "development"
-        ? HEADER_ROUTES_
-        : [...HEADER_ROUTES_, { text: "TEST", href: "/test" }];
+        ? LANDING_PAGE_ROUTES_
+        : [...LANDING_PAGE_ROUTES_, { text: "TEST", href: "/test" }];
