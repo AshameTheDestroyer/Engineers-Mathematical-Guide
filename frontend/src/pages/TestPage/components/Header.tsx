@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Logo } from "@/components/Logo/Logo";
 import { Header as Header_ } from "@/components/Header/Header";
+import { LANDING_PAGE_ROUTES } from "@/routes/TestPage.routes";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 
@@ -16,9 +17,7 @@ export const Header: FC = () => {
             }}
         >
             <Logo />
-            <NavigationBar
-                routes={[{ href: "/test/design", text: "Design" }]}
-            />
+            <NavigationBar className="grow" routes={LANDING_PAGE_ROUTES} />
             <ThemeToggle variant="primary" />
         </Header_>
     );
