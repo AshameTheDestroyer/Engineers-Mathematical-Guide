@@ -3,7 +3,7 @@ import { Page } from "@/components/Page/Page";
 import { ColourCollection } from "./components/ColourCollection";
 import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
 
-export const DesignTestPage: FC = () => {
+export const TestPage: FC = () => {
     return (
         <Page className="gap-8">
             <ThemeToggle className="right-page fixed z-10" variant="primary" />
