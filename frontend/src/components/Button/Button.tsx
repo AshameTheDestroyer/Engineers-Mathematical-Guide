@@ -26,40 +26,32 @@ export const Button: FC<ButtonProps> = ({
 }) => {
     const Navigator = useNavigate();
 
-    const variantClassName = (() => {
-        let className: string = "";
-        switch (variant) {
-            case "default":
-                return (className = `
-                        [&>[data-content]]:bg-tertiary-light [&>*]:border-tertiary-light-active [&>[data-thickness]]:bg-tertiary-light-active text-tertiary-normal
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-tertiary-light-hover [&:where(&:hover,&:focus-within)]:text-tertiary-normal-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-tertiary-light-active [&:where(&:hover,&:focus-within)]:[&>*]:border-tertiary-light-active
-                        active:[&>[data-content]]:bg-tertiary-light-active active:text-tertiary-normal-active active:[&>[data-thickness]]:bg-tertiary-light-active active:[&>*]:border-tertiary-normal-hover
-                    `);
-            case "primary":
-                return (className = `
-                        [&>[data-content]]:bg-primary-normal [&>*]:border-primary-dark text-primary-light font-bold [&>[data-thickness]]:bg-primary-dark
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-primary-normal-hover [&:where(&:hover,&:focus-within)]:text-primary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-primary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-primary-dark-hover
-                        active:[&>[data-content]]:bg-primary-normal-active active:text-primary-light-active active:[&>[data-thickness]]:bg-primary-dark-active active:[&>*]:border-primary-dark-active
-                    `);
-            case "secondary":
-                return (className = `
-                        [&>[data-content]]:bg-secondary-normal [&>*]:border-secondary-dark text-secondary-light font-bold [&>[data-thickness]]:bg-secondary-dark
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-secondary-normal-hover [&:where(&:hover,&:focus-within)]:text-secondary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-secondary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-secondary-dark-hover
-                        active:[&>[data-content]]:bg-secondary-normal-active active:text-secondary-light-active active:[&>[data-thickness]]:bg-secondary-dark-active active:[&>*]:border-secondary-dark-active
-                    `);
-            default:
-                return className;
-        }
-    })();
+    const variantClassNames: VariantClassNames = {
+        default: {
+            idle: "[&>[data-content]]:bg-tertiary-light [&>*]:border-tertiary-light-active [&>[data-thickness]]:bg-tertiary-light-active text-tertiary-normal",
+            hover: "[&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-tertiary-light-hover [&:where(&:hover,&:focus-within)]:text-tertiary-normal-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-tertiary-light-active [&:where(&:hover,&:focus-within)]:[&>*]:border-tertiary-light-active",
+            active: "active:[&>[data-content]]:bg-tertiary-light-active active:text-tertiary-normal-active active:[&>[data-thickness]]:bg-tertiary-light-active active:[&>*]:border-tertiary-normal-hover",
+        },
+        primary: {
+            idle: "[&>[data-content]]:bg-primary-normal [&>*]:border-primary-dark text-primary-light font-bold [&>[data-thickness]]:bg-primary-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-primary-normal-hover [&:where(&:hover,&:focus-within)]:text-primary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-primary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-primary-dark-hover",
+            active: "active:[&>[data-content]]:bg-primary-normal-active active:text-primary-light-active active:[&>[data-thickness]]:bg-primary-dark-active active:[&>*]:border-primary-dark-active",
+        },
+        secondary: {
+            idle: "[&>[data-content]]:bg-secondary-normal [&>*]:border-secondary-dark text-secondary-light font-bold [&>[data-thickness]]:bg-secondary-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-secondary-normal-hover [&:where(&:hover,&:focus-within)]:text-secondary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-secondary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-secondary-dark-hover",
+            active: "active:[&>[data-content]]:bg-secondary-normal-active active:text-secondary-light-active active:[&>[data-thickness]]:bg-secondary-dark-active active:[&>*]:border-secondary-dark-active",
+        },
+    };
 
     return (
         <button
             className={twMerge(
-                variantClassName,
+                Object.values(variantClassNames[variant]),
                 "relative isolate cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
-                    : "active:[&>[data-content]]:translate-y-1",
+                    : "active:[&>1[data-content]]:translate-y-1",
                 className
             )}
             type="button"

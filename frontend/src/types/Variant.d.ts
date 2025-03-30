@@ -1,1 +1,2 @@
-type Variant = "primary" | "secondary" | "default";
+type Variant = "default" | "primary" | "secondary";
+type VariantClassNames = Record<Variant, Record<string, string>>;
