@@ -4,6 +4,10 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { useState, useEffect, createContext, FC, ReactNode } from "react";
+import {
+    SetInLocalStorage,
+    GetFromLocalStorage,
+} from "./functions/HandleLocalStorage";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -37,21 +41,20 @@ const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => (
 
 const Index: FC = () => {
     const [state, setState] = useState<MainStateProps>({
-        isDarkThemed: true,
+        isDarkThemed: Boolean(GetFromLocalStorage("isDarkThemed")),
 
         ToggleDarkTheme,
     });
 
     useEffect(() => {
-        document.body.classList.toggle("dark-themed");
-    }, []);
+        SetInLocalStorage("isDarkThemed", state.isDarkThemed);
+        document.body.classList[state.isDarkThemed ? "add" : "remove"](
+            "dark-themed"
+        );
+    }, [state.isDarkThemed]);
 
     function ToggleDarkTheme(): void {
-        state.isDarkThemed = !state.isDarkThemed;
-        setState({ ...state });
-
-        document.body.classList.toggle("light-themed");
-        document.body.classList.toggle("dark-themed");
+        setState({ ...state, isDarkThemed: !state.isDarkThemed });
     }
 
     return (

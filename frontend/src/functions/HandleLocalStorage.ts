@@ -1,5 +1,4 @@
-const LOCAL_STORAGE_KEY: string = "EMG";
-export default LOCAL_STORAGE_KEY;
+export const LOCAL_STORAGE_KEY: string = "MATHWARE-EMG";
 
 export function GetFromLocalStorage<T>(key: string): T | undefined {
     try {
