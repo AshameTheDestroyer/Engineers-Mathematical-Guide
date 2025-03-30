@@ -8,21 +8,18 @@ import arrow_icon from "@icons/arrow.svg";
 
 export const ButtonCollection: FC = () => {
     const arrowRightIcon: ButtonProps["icon"] = {
-        width: 24,
         source: arrow_icon,
         placement: "right",
         className: "rotate-90",
     };
 
     const arrowLeftIcon: ButtonProps["icon"] = {
-        width: 24,
         source: arrow_icon,
         placement: "left",
         className: "-rotate-90",
     };
 
     const homeIcon: ButtonProps["icon"] = {
-        width: 24,
         source: home_icon,
         placement: "left",
     };

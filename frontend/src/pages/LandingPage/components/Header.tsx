@@ -27,7 +27,6 @@ export const Header: FC = () => {
                 <Button
                     link="/registration/signup"
                     icon={{
-                        width: 24,
                         placement: "left",
                         source: signup_icon,
                     }}
@@ -38,7 +37,6 @@ export const Header: FC = () => {
                     variant="primary"
                     link="/registration/login"
                     icon={{
-                        width: 24,
                         placement: "right",
                         source: login_icon,
                     }}

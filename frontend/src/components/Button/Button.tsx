@@ -78,6 +78,8 @@ export const Button: FC<ButtonProps> = ({
             >
                 {icon != null && (
                     <Icon
+                        width={24}
+                        height={24}
                         {...icon}
                         className={twMerge(
                             icon.className,
