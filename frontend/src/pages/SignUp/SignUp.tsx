@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../../components/Input/Input";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import { Button } from "@/components/Button/Button";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo/Logo";
 
 export default function Signup() {
@@ -36,9 +36,12 @@ export default function Signup() {
                         <Button>SignUp</Button>
                         <p>
                             Already a member?{" "}
-                            <NavLink className="border-b-1 text-foreground-light">
+                            <Link
+                                to=""
+                                className="border-b-1 text-foreground-light"
+                            >
                                 login
-                            </NavLink>
+                            </Link>
                         </p>
                     </form>
                 </main>

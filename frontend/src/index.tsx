@@ -2,9 +2,9 @@ import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect, createContext, FC } from "react";
 
+import { SignupPage } from "./pages/SignupPage/SignupPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import Signup from "./pages/Signup/SignUp";
 
 import "./extensions";
 import "./global.css";
@@ -44,7 +44,10 @@ const Index: FC = () => {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="*" element={<NotFoundPage />} />
-                    <Route path="/registration/signup" element={<Signup />} />
+                    <Route
+                        path="/registration/signup"
+                        element={<SignupPage />}
+                    />
                 </Routes>
             </HashRouter>
         </MainContext.Provider>

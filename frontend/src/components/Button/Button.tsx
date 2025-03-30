@@ -2,20 +2,17 @@ import { twMerge } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconProps } from "@components/Icon/Icon";
-import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
+import { ComponentProps } from "@types_/ComponentProps";
 
 export type ButtonProps = {
     link?: string;
     isThick?: boolean;
-    variant?: "primary" | "secondary" | "default";
+    variant?: Variant;
     icon?: IconProps & {
         placement: "left" | "right";
     };
 } & ComponentProps &
-    ComponentEventProps<
-        HTMLButtonElement,
-        ButtonHTMLAttributes<HTMLButtonElement>
-    >;
+    ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
     link,
@@ -58,13 +55,14 @@ export const Button: FC<ButtonProps> = ({
     return (
         <button
             className={twMerge(
+                variantClassName,
                 "relative isolate cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
                     : "active:[&>[data-content]]:translate-y-1",
-                variantClassName,
                 className
             )}
+            type="button"
             role={link != null ? "link" : "button"}
             onClick={(e) => (onClick?.(e), link != null && Navigator(link))}
             {...props}
