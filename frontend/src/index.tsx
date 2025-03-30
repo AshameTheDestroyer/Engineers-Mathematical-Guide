@@ -32,6 +32,49 @@ const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => (
     </Lazy>
 );
 
+const IndexRoutes: FC = () => {
+    return (
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    <LazyPage>
+                        <LandingPage />
+                    </LazyPage>
+                }
+            />
+            {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
+                <Route
+                    path="test"
+                    element={
+                        <LazyPage>
+                            <TestPage />
+                        </LazyPage>
+                    }
+                >
+                    <Route
+                        path="design"
+                        element={
+                            <LazyComponent>
+                                <DesignPage />
+                            </LazyComponent>
+                        }
+                    />
+                    <Route
+                        path="components"
+                        element={
+                            <LazyComponent>
+                                <ComponentsPage />
+                            </LazyComponent>
+                        }
+                    />
+                </Route>
+            )}
+            <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+    );
+};
+
 const Index: FC = () => {
     const [state, _setState] = useState<MainStateProps>({});
 
@@ -39,45 +82,7 @@ const Index: FC = () => {
         <MainContext.Provider value={state}>
             <ThemeContextProvider>
                 <HashRouter basename={window.location.pathname || ""}>
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={
-                                <LazyPage>
-                                    <LandingPage />
-                                </LazyPage>
-                            }
-                        />
-                        {import.meta.env["VITE_ENVIRONMENT"] ==
-                            "development" && (
-                            <Route
-                                path="test"
-                                element={
-                                    <LazyPage>
-                                        <TestPage />
-                                    </LazyPage>
-                                }
-                            >
-                                <Route
-                                    path="design"
-                                    element={
-                                        <LazyComponent>
-                                            <DesignPage />
-                                        </LazyComponent>
-                                    }
-                                />
-                                <Route
-                                    path="components"
-                                    element={
-                                        <LazyComponent>
-                                            <ComponentsPage />
-                                        </LazyComponent>
-                                    }
-                                />
-                            </Route>
-                        )}
-                        <Route path="*" element={<NotFoundPage />} />
-                    </Routes>
+                    <IndexRoutes />
                 </HashRouter>
             </ThemeContextProvider>
         </MainContext.Provider>
