@@ -12,8 +12,8 @@ import {
 
 type ThemeStateProps = {
     isDarkThemed: boolean;
-
-    ToggleDarkTheme: () => void;
+    ToggleIsDarkThemed: () => void;
+    SetIsDarkThemed: (value: boolean) => void;
 };
 
 export const ThemeContext = createContext<ThemeStateProps>(null!);
@@ -25,8 +25,8 @@ export const ThemeContextProvider: FC<ThemeContextProviderProps> = ({
 }) => {
     const [state, setState] = useState<ThemeStateProps>({
         isDarkThemed: Boolean(GetFromLocalStorage("isDarkThemed")),
-
-        ToggleDarkTheme,
+        SetIsDarkThemed,
+        ToggleIsDarkThemed,
     });
 
     useEffect(() => {
@@ -36,7 +36,11 @@ export const ThemeContextProvider: FC<ThemeContextProviderProps> = ({
         );
     }, [state.isDarkThemed]);
 
-    function ToggleDarkTheme(): void {
+    function SetIsDarkThemed(value: boolean): void {
+        setState((state) => ({ ...state, isDarkThemed: value }));
+    }
+
+    function ToggleIsDarkThemed(): void {
         setState((state) => ({ ...state, isDarkThemed: !state.isDarkThemed }));
     }
 
