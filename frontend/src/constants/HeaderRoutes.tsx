@@ -1,4 +1,4 @@
-export const HEADER_ROUTES = [
+const HEADER_ROUTES_ = [
     {
         text: "Home",
         href: "/",
@@ -20,3 +20,8 @@ export const HEADER_ROUTES = [
         href: "/help",
     },
 ];
+
+export const HEADER_ROUTES =
+    import.meta.env["VITE_ENVIRONMENT"] != "development"
+        ? HEADER_ROUTES_
+        : [...HEADER_ROUTES_, { text: "TEST", href: "/test" }];
