@@ -2,12 +2,9 @@ import ReactDOM from "react-dom/client";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
+import { useState, createContext, FC, ReactNode } from "react";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import { useState, useEffect, createContext, FC, ReactNode } from "react";
-import {
-    SetInLocalStorage,
-    GetFromLocalStorage,
-} from "./functions/HandleLocalStorage";
+import { ThemeContextProvider } from "./components/ThemeContextProvider/ThemeContextProvider";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -17,11 +14,7 @@ const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 import "./extensions";
 import "./global.css";
 
-type MainStateProps = {
-    isDarkThemed: boolean;
-
-    ToggleDarkTheme: () => void;
-};
+type MainStateProps = {};
 
 export const MainContext = createContext<MainStateProps>(null!);
 
@@ -40,65 +33,53 @@ const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => (
 );
 
 const Index: FC = () => {
-    const [state, setState] = useState<MainStateProps>({
-        isDarkThemed: Boolean(GetFromLocalStorage("isDarkThemed")),
-
-        ToggleDarkTheme,
-    });
-
-    useEffect(() => {
-        SetInLocalStorage("isDarkThemed", state.isDarkThemed);
-        document.body.classList[state.isDarkThemed ? "add" : "remove"](
-            "dark-themed"
-        );
-    }, [state.isDarkThemed]);
-
-    function ToggleDarkTheme(): void {
-        setState({ ...state, isDarkThemed: !state.isDarkThemed });
-    }
+    const [state, _setState] = useState<MainStateProps>({});
 
     return (
         <MainContext.Provider value={state}>
-            <HashRouter basename={window.location.pathname || ""}>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <LazyPage>
-                                <LandingPage />
-                            </LazyPage>
-                        }
-                    />
-                    {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
+            <ThemeContextProvider>
+                <HashRouter basename={window.location.pathname || ""}>
+                    <Routes>
                         <Route
-                            path="test"
+                            path="/"
                             element={
                                 <LazyPage>
-                                    <TestPage />
+                                    <LandingPage />
                                 </LazyPage>
                             }
-                        >
+                        />
+                        {import.meta.env["VITE_ENVIRONMENT"] ==
+                            "development" && (
                             <Route
-                                path="design"
+                                path="test"
                                 element={
-                                    <LazyComponent>
-                                        <DesignPage />
-                                    </LazyComponent>
+                                    <LazyPage>
+                                        <TestPage />
+                                    </LazyPage>
                                 }
-                            />
-                            <Route
-                                path="components"
-                                element={
-                                    <LazyComponent>
-                                        <ComponentsPage />
-                                    </LazyComponent>
-                                }
-                            />
-                        </Route>
-                    )}
-                    <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-            </HashRouter>
+                            >
+                                <Route
+                                    path="design"
+                                    element={
+                                        <LazyComponent>
+                                            <DesignPage />
+                                        </LazyComponent>
+                                    }
+                                />
+                                <Route
+                                    path="components"
+                                    element={
+                                        <LazyComponent>
+                                            <ComponentsPage />
+                                        </LazyComponent>
+                                    }
+                                />
+                            </Route>
+                        )}
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                </HashRouter>
+            </ThemeContextProvider>
         </MainContext.Provider>
     );
 };
