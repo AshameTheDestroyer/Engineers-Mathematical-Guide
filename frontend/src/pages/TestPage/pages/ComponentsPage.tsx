@@ -3,6 +3,7 @@ import { Button } from "@/components/Button/Button";
 import { Collection } from "../components/Collection";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 
+import home_icon from "@icons/home.svg";
 import arrow_icon from "@icons/arrow.svg";
 
 export const ComponentsPage: FC = () => {
@@ -95,6 +96,43 @@ export const ComponentsPage: FC = () => {
                                 source: arrow_icon,
                                 placement: "left",
                                 className: "-rotate-90",
+                            }}
+                        >
+                            Secondary
+                        </Button>
+                    </ButtonBox>
+                </Collection>
+                <Collection title="Linked" inner>
+                    <ButtonBox>
+                        <Button
+                            variant="default"
+                            link="/"
+                            icon={{
+                                width: 24,
+                                source: home_icon,
+                                placement: "left",
+                            }}
+                        >
+                            Default
+                        </Button>
+                        <Button
+                            variant="primary"
+                            link="/"
+                            icon={{
+                                width: 24,
+                                source: home_icon,
+                                placement: "left",
+                            }}
+                        >
+                            Primary
+                        </Button>
+                        <Button
+                            variant="secondary"
+                            link="/"
+                            icon={{
+                                width: 24,
+                                source: home_icon,
+                                placement: "left",
                             }}
                         >
                             Secondary
