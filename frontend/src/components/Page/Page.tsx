@@ -7,7 +7,7 @@ export const Page: FC<ComponentProps> = ({ id, className, children }) => {
         <main
             id={id}
             className={twMerge(
-                "page p-page relative isolate flex min-h-screen flex-col overflow-hidden transition duration-200",
+                "page p-page relative isolate flex min-h-screen flex-col transition duration-200",
                 className
             )}
         >
