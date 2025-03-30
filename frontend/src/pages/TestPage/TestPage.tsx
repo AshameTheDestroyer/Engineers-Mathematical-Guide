@@ -17,7 +17,7 @@ export const TestPage: FC = () => {
     }, []);
 
     return (
-        <Page className="gap-8">
+        <Page>
             <Header
                 className="bg-background-dark transition duration-200"
                 isSticky
