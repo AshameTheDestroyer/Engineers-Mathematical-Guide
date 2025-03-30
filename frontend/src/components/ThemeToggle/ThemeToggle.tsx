@@ -13,7 +13,7 @@ export const ThemeToggle: FC<ThemeToggleProps> = ({
     className,
     ...props
 }) => {
-    const { isDarkThemed, ToggleDarkTheme } = useContext(ThemeContext);
+    const { isDarkThemed, ToggleIsDarkThemed } = useContext(ThemeContext);
 
     return (
         <IconButton
@@ -23,7 +23,7 @@ export const ThemeToggle: FC<ThemeToggleProps> = ({
             icon={{
                 source: isDarkThemed ? light_theme_icon : dark_theme_icon,
             }}
-            onClick={(e) => (ToggleDarkTheme(), onClick?.(e))}
+            onClick={(e) => (ToggleIsDarkThemed(), onClick?.(e))}
             {...props}
         />
     );
