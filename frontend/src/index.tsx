@@ -2,11 +2,12 @@ import ReactDOM from "react-dom/client";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import { Lazy as Lazy_, LazyImport } from "./components/Lazy/Lazy";
+import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { useState, useEffect, createContext, FC, ReactNode } from "react";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
+const DesignPage = LazyImport("./pages/TestPage/pages/DesignPage");
 
 import "./extensions";
 import "./global.css";
@@ -21,10 +22,16 @@ export const MainContext = createContext<MainStateProps>(null!);
 
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 
-const Lazy: FC<{ children: ReactNode }> = ({ children }) => (
-    <Lazy_ errorFallback={<NotFoundPage />} loadingFallback={<LoadingPage />}>
+const LazyPage: FC<{ children: ReactNode }> = ({ children }) => (
+    <Lazy errorFallback={<NotFoundPage />} loadingFallback={<LoadingPage />}>
         {children}
-    </Lazy_>
+    </Lazy>
+);
+
+const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => (
+    <Lazy errorFallback={"Error!"} loadingFallback={"Loading..."}>
+        {children}
+    </Lazy>
 );
 
 const Index: FC = () => {
@@ -53,20 +60,29 @@ const Index: FC = () => {
                     <Route
                         path="/"
                         element={
-                            <Lazy>
+                            <LazyPage>
                                 <LandingPage />
-                            </Lazy>
+                            </LazyPage>
                         }
                     />
                     {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
                         <Route
                             path="test"
                             element={
-                                <Lazy>
+                                <LazyPage>
                                     <TestPage />
-                                </Lazy>
+                                </LazyPage>
                             }
-                        />
+                        >
+                            <Route
+                                path="design"
+                                element={
+                                    <LazyComponent>
+                                        <DesignPage />
+                                    </LazyComponent>
+                                }
+                            />
+                        </Route>
                     )}
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
