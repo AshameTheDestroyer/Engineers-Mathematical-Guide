@@ -21,8 +21,6 @@ export const ThemeToggle: FC<ThemeToggleProps> = ({
             className={className}
             variant="secondary"
             icon={{
-                width: 24,
-                height: 24,
                 source: isDarkThemed ? light_theme_icon : dark_theme_icon,
             }}
             onClick={(e) => (ToggleDarkTheme(), onClick?.(e))}
