@@ -5,6 +5,26 @@ export const DesignPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
             <ColourCollection
+                title="Vibrant Colours"
+                classNames={[
+                    "bg-vibrant-red",
+                    "bg-vibrant-yellow",
+                    "bg-vibrant-green",
+                    "bg-vibrant-blue",
+                    "bg-vibrant-purple",
+                ]}
+            />
+            <ColourCollection
+                title="Vibrant Light Colours"
+                classNames={[
+                    "bg-vibrant-red-light",
+                    "bg-vibrant-yellow-light",
+                    "bg-vibrant-green-light",
+                    "bg-vibrant-blue-light",
+                    "bg-vibrant-purple-light",
+                ]}
+            />
+            <ColourCollection
                 title="Primary Colours"
                 classNames={[
                     "bg-primary-light",
@@ -92,26 +112,6 @@ export const DesignPage: FC = () => {
                     "bg-gray-dark-hover",
                     "bg-gray-dark-active",
                     "bg-gray-darker",
-                ]}
-            />
-            <ColourCollection
-                title="Vibrant Colours"
-                classNames={[
-                    "bg-vibrant-red",
-                    "bg-vibrant-yellow",
-                    "bg-vibrant-green",
-                    "bg-vibrant-blue",
-                    "bg-vibrant-purple",
-                ]}
-            />
-            <ColourCollection
-                title="Vibrant Light Colours"
-                classNames={[
-                    "bg-vibrant-red-light",
-                    "bg-vibrant-yellow-light",
-                    "bg-vibrant-green-light",
-                    "bg-vibrant-blue-light",
-                    "bg-vibrant-purple-light",
                 ]}
             />
         </div>
