@@ -1,43 +1,61 @@
 import { twMerge } from "tailwind-merge";
-import { FC, RefObject, useEffect } from "react";
 import { ComponentProps } from "@types_/ComponentProps";
+import { FC, useEffect, useRef, useState } from "react";
 
 export type HeaderProps = ComponentProps & {
     isSticky?: boolean;
-    ref?: RefObject<HTMLDivElement>;
-    onScroll?: (rect: Record<"top" | "left", number>) => void;
+    onScroll?: (
+        direction: "up" | "down",
+        headerElement: HTMLDivElement
+    ) => void;
 };
 
 export const Header: FC<HeaderProps> = ({
     id,
-    ref,
     children,
     isSticky,
     onScroll,
     className,
 }) => {
+    const headerReference = useRef<HTMLDivElement>(null);
+    const [direction, setDirection] = useState<"up" | "down">("up");
+
+    function ScrollCallback() {
+        if (headerReference.current == null) {
+            return;
+        }
+
+        setDirection(
+            window.scrollY < headerReference.current.clientHeight
+                ? "up"
+                : "down"
+        );
+    }
+
     useEffect(() => {
         if (onScroll == null) {
             return;
         }
 
-        const scrollCallback = () =>
-            onScroll({
-                top: window.scrollY,
-                left: window.scrollX,
-            });
-
-        window.addEventListener("scroll", scrollCallback);
+        window.addEventListener("scroll", ScrollCallback);
 
         return () => {
-            window.removeEventListener("scroll", scrollCallback);
+            window.removeEventListener("scroll", ScrollCallback);
         };
     }, [onScroll]);
+
+    useEffect(() => {
+        if (headerReference.current == null) {
+            return;
+        }
+
+        onScroll?.(direction, headerReference.current);
+    }, [direction]);
 
     return (
         <header
             id={id}
-            ref={ref}
+            ref={headerReference}
             className={twMerge(
                 isSticky ? "sticky top-0" : "",
                 "-m-page mb-page px-page z-10 flex place-items-center justify-between gap-8 py-[calc(var(--spacing-page)/2)]",

@@ -5,7 +5,7 @@ import { MainContent } from "./components/MainContent";
 
 export const LandingPage: FC = () => {
     return (
-        <Page className="bg-background-light">
+        <Page className="bg-background-normal">
             <Header />
             <MainContent />
         </Page>
