@@ -2,7 +2,9 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { ComponentProps } from "@types_/ComponentProps";
 
-export const Page: FC<ComponentProps> = ({ id, className, children }) => {
+export type PageProps = ComponentProps;
+
+export const Page: FC<PageProps> = ({ id, className, children }) => {
     return (
         <main
             id={id}
