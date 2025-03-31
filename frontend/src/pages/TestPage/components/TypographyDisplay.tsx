@@ -29,7 +29,7 @@ export const TypographyDisplay: FC<TypographyDisplayProps> = ({
             <span
                 className={twJoin(
                     !isDarkThemed && "shadow-lg shadow-[#0000004c]",
-                    "bg-secondary-normal min-w-20 place-self-center rounded-2xl py-2 text-center text-lg uppercase"
+                    "bg-tertiary-normal min-w-20 place-self-center rounded-2xl py-2 text-center text-lg uppercase"
                 )}
             >
                 {sizeName}
