@@ -3,6 +3,10 @@
 
 @import "tailwindcss";
 
+:root {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Exo 2", "El Messiri", sans-serif;
 
