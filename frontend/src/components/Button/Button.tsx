@@ -11,13 +11,14 @@ export type ButtonProps = {
     icon?: IconProps & {
         placement: "left" | "right";
     };
-} & ComponentProps &
+} & ComponentProps<HTMLButtonElement> &
     ComponentEventProps<
         HTMLButtonElement,
         ButtonHTMLAttributes<HTMLButtonElement>
     >;
 
 export const Button: FC<ButtonProps> = ({
+    id,
     link,
     icon,
     isThick,
@@ -49,6 +50,7 @@ export const Button: FC<ButtonProps> = ({
 
     return (
         <button
+            id={id}
             className={twMerge(
                 Object.values(variantClassNames[variant]),
                 "relative isolate cursor-pointer",

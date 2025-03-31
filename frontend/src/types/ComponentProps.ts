@@ -1,11 +1,15 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, Ref } from "react";
 
-export type ChildlessComponentProps = {
+export type ChildlessComponentProps<
+    TRef extends HTMLElement | undefined = undefined,
+> = {
     id?: string;
     className?: string;
+    ref?: TRef extends undefined ? undefined : Ref<TRef>;
 };
 
-export type ComponentProps = PropsWithChildren<ChildlessComponentProps>;
+export type ComponentProps<TRef extends HTMLElement | undefined = undefined> =
+    PropsWithChildren<ChildlessComponentProps<TRef>>;
 
 export type ComponentEventProps<
     T1 extends HTMLElement,
