@@ -48,13 +48,17 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
             ref={divReference}
             title="Click to copy colour."
             className={twMerge(
-                !isDarkThemed && "shadow-lg shadow-[#0000004c]",
                 colourRGB != null && IsDarkColour(colourRGB)
                     ? "text-white"
                     : "text-black",
                 "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
                 className
             )}
+            style={{
+                boxShadow: isDarkThemed
+                    ? `0 0 25px 5px var(--color-${colourName?.replaceAll(" ", "-").toLocaleLowerCase()})`
+                    : "0 15px 25px -3px #0000004c",
+            }}
             onClick={(_e) =>
                 colourHex != null &&
                 navigator.clipboard.writeText(colourHex?.toLowerCase())
