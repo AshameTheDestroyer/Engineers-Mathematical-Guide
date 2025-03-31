@@ -20,18 +20,6 @@ export const Header: FC<HeaderProps> = ({
     const headerReference = useRef<HTMLDivElement>(null);
     const [direction, setDirection] = useState<"up" | "down">("up");
 
-    function ScrollCallback() {
-        if (headerReference.current == null) {
-            return;
-        }
-
-        setDirection(
-            window.scrollY < headerReference.current.clientHeight
-                ? "up"
-                : "down"
-        );
-    }
-
     useEffect(() => {
         if (onScroll == null) {
             return;
@@ -51,6 +39,18 @@ export const Header: FC<HeaderProps> = ({
 
         onScroll?.(direction, headerReference.current);
     }, [direction]);
+
+    function ScrollCallback() {
+        if (headerReference.current == null) {
+            return;
+        }
+
+        setDirection(
+            window.scrollY < headerReference.current.clientHeight
+                ? "up"
+                : "down"
+        );
+    }
 
     return (
         <header
