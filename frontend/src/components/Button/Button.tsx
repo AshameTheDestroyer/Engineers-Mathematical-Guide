@@ -56,7 +56,7 @@ export const Button: FC<ButtonProps> = ({
                 "relative isolate cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
-                    : "active:[&>1[data-content]]:translate-y-1",
+                    : "active:[&>[data-content]]:translate-y-1",
                 className
             )}
             type="button"
