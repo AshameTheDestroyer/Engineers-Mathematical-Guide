@@ -10,7 +10,7 @@ export const TestPage: FC = () => {
 
     useEffect(() => {
         if (location.pathname == "/test") {
-            Navigate("/test/design");
+            Navigate("/test/colours");
         }
     }, []);
 

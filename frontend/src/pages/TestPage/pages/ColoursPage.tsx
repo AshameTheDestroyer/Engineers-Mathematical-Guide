@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ColourCollection } from "../components/ColourCollection";
 
-export const DesignPage: FC = () => {
+export const ColoursPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
             <ColourCollection

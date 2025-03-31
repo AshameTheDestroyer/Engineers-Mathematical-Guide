@@ -8,7 +8,7 @@ import { ThemeContextProvider } from "./components/ThemeContextProvider/ThemeCon
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
-const DesignPage = LazyImport("./pages/TestPage/pages/DesignPage");
+const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import "./extensions";
@@ -53,10 +53,10 @@ const IndexRoutes: FC = () => {
                     }
                 >
                     <Route
-                        path="design"
+                        path="colours"
                         element={
                             <LazyComponent>
-                                <DesignPage />
+                                <ColoursPage />
                             </LazyComponent>
                         }
                     />
