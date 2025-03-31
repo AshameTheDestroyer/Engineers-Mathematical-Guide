@@ -1,5 +1,5 @@
 const LANDING_PAGE_ROUTES_ = [
-    { text: "Design", href: "/test/design" },
+    { text: "Colours", href: "/test/colours" },
     { text: "Components", href: "/test/components" },
 ];
 
