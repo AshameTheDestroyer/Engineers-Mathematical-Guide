@@ -9,6 +9,7 @@ import { ThemeContextProvider } from "./components/ThemeContextProvider/ThemeCon
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
+const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import "./extensions";
@@ -57,6 +58,14 @@ const IndexRoutes: FC = () => {
                         element={
                             <LazyComponent>
                                 <ColoursPage />
+                            </LazyComponent>
+                        }
+                    />
+                    <Route
+                        path="typography"
+                        element={
+                            <LazyComponent>
+                                <TypographyPage />
                             </LazyComponent>
                         }
                     />
