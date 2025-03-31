@@ -16,7 +16,7 @@ export const ButtonBox: FC<ButtonBoxProps> = ({
         <div
             id={id}
             className={twMerge(
-                "flex place-items-stretch gap-4",
+                "flex flex-wrap place-items-stretch gap-4",
                 direction == "column" ? "flex-col" : "flex-row",
                 className
             )}
