@@ -5,7 +5,7 @@ import cog_icon from "@icons/cog.svg";
 import { twMerge } from "tailwind-merge";
 
 export type CogIconProps = Omit<IconProps, "source" | "width" | "height"> & {
-    size: number;
+    size?: number;
 };
 
 export const CogIcon: FC<CogIconProps> = ({

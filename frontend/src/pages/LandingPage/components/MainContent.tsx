@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Button } from "@components/Button/Button";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
+import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 
 import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
@@ -81,13 +82,9 @@ export const MainContent: FC = () => {
                 src={pi_image}
                 alt="pi image"
             />
-            <CogIcon
-                className="text-background-dark -left-page absolute bottom-0 z-[-1] -translate-x-1/4 translate-y-1/4"
+            <DoubleCogIcon
+                className="text-background-dark -left-page -bottom-1/10 absolute z-[-1]"
                 size={400}
-            />
-            <CogIcon
-                className="text-background-dark -left-page absolute bottom-0 z-[-1] translate-x-[70%] translate-y-[40%] rotate-[-5deg] [animation-direction:reverse]"
-                size={350}
             />
             <CogIcon
                 className="text-background-dark -right-page absolute top-0 z-[-1] translate-x-1/4 translate-y-2/3 [animation-direction:reverse]"
