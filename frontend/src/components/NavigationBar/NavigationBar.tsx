@@ -16,7 +16,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({
 }) => {
     return (
         <nav id={id} className={className}>
-            <ul className="flex flex-row place-content-around gap-5">
+            <ul className="flex flex-row flex-wrap place-content-around gap-5">
                 {routes.map((link, i) => (
                     <li key={i}>
                         <Link to={link.href}>{link.text}</Link>
