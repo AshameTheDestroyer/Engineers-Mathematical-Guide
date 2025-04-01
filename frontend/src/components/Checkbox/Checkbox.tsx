@@ -9,6 +9,8 @@ export type CheckboxProps = {
     onChange: (checked: boolean) => void;
     isThick?: boolean;
     variant?: Variant;
+    link?: string;
+    linkText?: string;
     icon?: IconProps & {
         placement: "left" | "right";
     };
@@ -21,6 +23,8 @@ export const Checkbox: FC<CheckboxProps> = ({
     isThick,
     icon,
     className,
+    link,
+    linkText,
     variant = "default",
     ...props
 }) => {
@@ -91,7 +95,14 @@ export const Checkbox: FC<CheckboxProps> = ({
                 )}
             </div>
 
-            {label && <span>{label}</span>}
+            {label && (
+                <span>
+                    {label}
+                    <a href={link} className="ml-2">
+                        {linkText}
+                    </a>
+                </span>
+            )}
 
             {icon != null && (
                 <Icon

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo/Logo";
 import Input from "../../components/Input/Input";
@@ -6,6 +6,7 @@ import { Button } from "@/components/Button/Button";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
 export const SignupPage: FC = () => {
+    const [isChecked, setisChecked] = useState(true);
     return (
         <section className="flex min-h-screen">
             <div className="flex w-full flex-col sm:flex-row">
@@ -39,6 +40,8 @@ export const SignupPage: FC = () => {
                             label="I agree with the application"
                             link=""
                             linkText="terms and conditions"
+                            checked={true}
+                            onChange={setisChecked}
                         />
                         <Button>Sign up</Button>
                         <p>
