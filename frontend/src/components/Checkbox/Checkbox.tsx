@@ -1,82 +1,53 @@
-import { twMerge } from "tailwind-merge";
-import { FC } from "react";
-import { Icon, IconProps } from "@components/Icon/Icon";
-import { ComponentProps } from "@types_/ComponentProps";
+import React from "react";
+import { useState } from "react";
+import { ComponentProps } from "react";
 
-export type CheckboxProps = {
-    label?: string;
-    checked: boolean;
-    onChange: (checked: boolean) => void;
-    isThick?: boolean;
-    link?: string;
+export type CustomCheckboxProps = {
+    value?: boolean;
+    onChange?: (checked: boolean) => void;
+    label: string;
     linkText?: string;
-} & ComponentProps;
+    link?: string;
+    isThick?: boolean;
+    variant?: Variant;
+};
 
-export const Checkbox: FC<CheckboxProps> = ({
-    label,
-    checked,
+const Checkbox: React.FC<CustomCheckboxProps> = ({
     onChange,
-    isThick,
-    className,
+    label,
     link,
     linkText,
-    ...props
+    variant = "default",
 }) => {
-    return (
-        <label
-            className={twMerge(
-                "relative inline-flex cursor-pointer items-center gap-2",
-                className
-            )}
-        >
-            {/* Hidden native checkbox */}
-            <input
-                type="checkbox"
-                className="hidden"
-                checked={checked}
-                onChange={(e) => onChange(e.target.checked)}
-                {...props}
-            />
-            {/* Styled checkbox */}
-            <div
-                className={twMerge(
-                    isThick ? "h-8 w-8" : "h-6 w-6",
-                    "flex items-center justify-center rounded border-2 transition duration-200",
-                    checked
-                        ? "border-blue-500 bg-blue-500"
-                        : "border-gray-300 bg-white"
-                )}
-                data-content
-            >
-                {checked && (
-                    <svg
-                        className="h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L7 12.586l7.293-7.293a1 1 0 011.414 0z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                )}
-            </div>
+    const [isChecked, setIsChecked] = useState(false);
 
-            {/* Label with optional link */}
-            {label && (
-                <span>
-                    {label}
-                    {link && linkText && (
-                        <a href={link} className="ml-2 text-blue-600 underline">
-                            {linkText}
-                        </a>
-                    )}
-                </span>
-            )}
+    const handleToggle = () => {
+        const newCheckedState = !isChecked;
+        setIsChecked(newCheckedState);
+        if (onChange) {
+            onChange(newCheckedState);
+        }
+    };
+
+    return (
+        <label className="flex cursor-pointer items-center">
+            <div
+                className={`border-primary-dark flex h-6 w-6 items-center justify-center rounded-[0.5rem] border-2 transition-colors duration-300 ${className} ${
+                    isChecked
+                        ? "bg-primary-normal border-transparent"
+                        : "bg-white"
+                }`}
+                onClick={handleToggle}
+            >
+                {isChecked && <span className="text-white">✓</span>}
+            </div>
+            <span className="ml-2 font-medium">
+                {label}
+                <a className="ml-1 text-blue-600" href={link}>
+                    {linkText}
+                </a>
+            </span>
         </label>
     );
 };
-
 export default Checkbox;
