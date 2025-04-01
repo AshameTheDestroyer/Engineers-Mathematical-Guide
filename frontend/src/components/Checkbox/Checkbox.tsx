@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
 export type CustomCheckboxProps = {
     value?: boolean;
@@ -31,17 +32,42 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
         }
     };
 
+    const variantClass = (() => {
+        let className: string = "";
+        switch (variant) {
+            case "default":
+                return (className = `bg-foreground-dark`);
+            case "primary":
+                return (className = `bg-primary-dark`);
+            case "secondary":
+                return (className = `bg-secondary-dark`);
+            default:
+                return className;
+        }
+    })();
+
     return (
-        <label className="flex cursor-pointer items-center">
+        <label className="flex h-10 cursor-pointer items-center">
             <div
-                className={`border-primary-dark flex h-6 w-6 items-center justify-center rounded-[0.5rem] border-2 transition-colors duration-300 ${className} ${
-                    isChecked
-                        ? "bg-primary-normal border-transparent"
-                        : "bg-white"
-                }`}
+                className={twMerge(
+                    variantClass,
+                    `transition-h relative flex w-6 rounded-[0.5rem] duration-300`,
+                    isChecked ? "h-6" : "h-8"
+                )}
                 onClick={handleToggle}
             >
-                {isChecked && <span className="text-white">✓</span>}
+                <div
+                    className={twMerge(
+                        variantClass,
+                        `absolute flex h-6 w-6 items-center justify-center rounded-[0.5rem] border-2 transition-colors duration-300`,
+                        className,
+                        isChecked
+                            ? `${variantClass} border-transparent`
+                            : "bg-white"
+                    )}
+                >
+                    {isChecked && <span className="text-white">✓</span>}
+                </div>
             </div>
             <span className="ml-2 font-medium">
                 {label}
