@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { ThemeContext } from "@/components/ThemeContextProvider/ThemeContextProvider";
+import { useTheme } from "./useTheme";
 
 export const useShadow = (colour?: string) => {
-    const { isDarkThemed } = useContext(ThemeContext);
+    const { isDarkThemed } = useTheme();
 
     return isDarkThemed
         ? colour == null
