@@ -6,7 +6,7 @@ import { Button } from "@/components/Button/Button";
 import Checkbox from "../../components/Checkbox/Checkbox";
 
 export const SignupPage: FC = () => {
-    const [isChecked, setisChecked] = useState(true);
+    const [isChecked, setIsChecked] = useState(true);
     return (
         <section className="flex min-h-screen">
             <div className="flex w-full flex-col sm:flex-row">
@@ -41,7 +41,7 @@ export const SignupPage: FC = () => {
                             link=""
                             linkText="terms and conditions"
                             checked={true}
-                            onChange={setisChecked}
+                            onChange={setIsChecked}
                         />
                         <Button>Sign up</Button>
                         <p>
