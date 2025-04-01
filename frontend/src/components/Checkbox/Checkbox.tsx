@@ -33,14 +33,20 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
     };
 
     const variantClass = (() => {
-        let className: string = "";
+        let className: Array<string> = [];
         switch (variant) {
             case "default":
-                return (className = `bg-foreground-dark`);
+                return (className = [
+                    "bg-foreground-dark",
+                    "text-foreground-normal",
+                ]);
             case "primary":
-                return (className = `bg-primary-dark`);
+                return (className = ["bg-primary-dark", "text-primary-normal"]);
             case "secondary":
-                return (className = `bg-secondary-dark`);
+                return (className = [
+                    "bg-secondary-dark",
+                    "text-secondary-normal",
+                ]);
             default:
                 return className;
         }
@@ -50,19 +56,19 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
         <label className="flex h-10 cursor-pointer items-center">
             <div
                 className={twMerge(
-                    variantClass,
+                    variantClass[0],
                     `transition-h relative flex w-6 rounded-[0.5rem] duration-300`,
-                    isChecked ? "h-6" : "h-8"
+                    isChecked ? "h-6" : "h-7"
                 )}
                 onClick={handleToggle}
             >
                 <div
                     className={twMerge(
-                        variantClass,
+                        variantClass[0],
                         `absolute flex h-6 w-6 items-center justify-center rounded-[0.5rem] border-2 transition-colors duration-300`,
                         className,
                         isChecked
-                            ? `${variantClass} border-transparent`
+                            ? `${variantClass[0]} border-transparent`
                             : "bg-white"
                     )}
                 >
@@ -71,7 +77,7 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
             </div>
             <span className="ml-2 font-medium">
                 {label}
-                <a className="ml-1 text-blue-600" href={link}>
+                <a className={`ml-1 ${variantClass[1]} underline`} href={link}>
                     {linkText}
                 </a>
             </span>
