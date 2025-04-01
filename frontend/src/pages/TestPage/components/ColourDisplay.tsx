@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { useShadow } from "@/hooks/useShadow";
 import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { IsDarkColour } from "@/functions/CalculateColourLuminance";
@@ -26,6 +27,10 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
         [className]
     );
 
+    const shadow = useShadow(
+        `var(--color-${colourName?.replaceAll(" ", "-").toLocaleLowerCase()})`
+    );
+
     useEffect(() => {
         setTimeout(() => {
             if (divReference.current == null) {
@@ -46,19 +51,15 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
         <button
             id={id}
             ref={divReference}
-            title="Click to copy colour."
             className={twMerge(
                 colourRGB != null && IsDarkColour(colourRGB)
                     ? "text-white"
                     : "text-black",
-                "not-active:[:is(:hover,:focus-within)]:scale-110 flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold transition-[scale] duration-200",
+                "not-active:[:is(:hover,:focus-within)]:scale-110 shadow-glow flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold shadow-red-500 transition-[scale] duration-200",
                 className
             )}
-            style={{
-                boxShadow: isDarkThemed
-                    ? `0 0 25px 5px var(--color-${colourName?.replaceAll(" ", "-").toLocaleLowerCase()})`
-                    : "0 15px 25px -3px #0000004c",
-            }}
+            title="Click to copy colour."
+            style={{ boxShadow: shadow }}
             onClick={(_e) =>
                 colourHex != null &&
                 navigator.clipboard.writeText(colourHex?.toLowerCase())
