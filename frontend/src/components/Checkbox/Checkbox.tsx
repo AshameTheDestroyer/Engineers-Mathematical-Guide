@@ -8,12 +8,8 @@ export type CheckboxProps = {
     checked: boolean;
     onChange: (checked: boolean) => void;
     isThick?: boolean;
-    variant?: Variant;
     link?: string;
     linkText?: string;
-    icon?: IconProps & {
-        placement: "left" | "right";
-    };
 } & ComponentProps;
 
 export const Checkbox: FC<CheckboxProps> = ({
@@ -21,47 +17,19 @@ export const Checkbox: FC<CheckboxProps> = ({
     checked,
     onChange,
     isThick,
-    icon,
     className,
     link,
     linkText,
-    variant = "default",
     ...props
 }) => {
-    const variantClassName = (() => {
-        let className: string = "";
-        switch (variant) {
-            case "default":
-                return (className = `
-                        [&>[data-content]]:bg-white [&>*]:border-gray-normal [&>[data-thickness]]:bg-gray-normal text-foreground-light
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-gray-normal [&:where(&:hover,&:focus-within)]:text-foreground-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-gray-normal-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-gray-normal-hover
-                        active:[&>[data-content]]:bg-gray-normal active:text-foreground-light-active active:[&>[data-thickness]]:bg-gray-normal-active active:[&>*]:border-gray-normal-active
-                    `);
-            case "primary":
-                return (className = `
-                        [&>[data-content]]:bg-primary-normal [&>*]:border-primary-dark text-primary-light font-bold [&>[data-thickness]]:bg-primary-dark
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-primary-normal-hover [&:where(&:hover,&:focus-within)]:text-primary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-primary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-primary-dark-hover
-                        active:[&>[data-content]]:bg-primary-normal-active active:text-primary-light-active active:[&>[data-thickness]]:bg-primary-dark-active active:[&>*]:border-primary-dark-active
-                    `);
-            case "secondary":
-                return (className = `
-                        [&>[data-content]]:bg-secondary-normal [&>*]:border-secondary-dark text-secondary-light font-bold [&>[data-thickness]]:bg-secondary-dark
-                        [&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-secondary-normal-hover [&:where(&:hover,&:focus-within)]:text-secondary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-secondary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-secondary-dark-hover
-                        active:[&>[data-content]]:bg-secondary-normal-active active:text-secondary-light-active active:[&>[data-thickness]]:bg-secondary-dark-active active:[&>*]:border-secondary-dark-active
-                    `);
-            default:
-                return className;
-        }
-    })();
-
     return (
         <label
             className={twMerge(
-                variantClassName,
                 "relative inline-flex cursor-pointer items-center gap-2",
                 className
             )}
         >
+            {/* Hidden native checkbox */}
             <input
                 type="checkbox"
                 className="hidden"
@@ -69,6 +37,7 @@ export const Checkbox: FC<CheckboxProps> = ({
                 onChange={(e) => onChange(e.target.checked)}
                 {...props}
             />
+            {/* Styled checkbox */}
             <div
                 className={twMerge(
                     isThick ? "h-8 w-8" : "h-6 w-6",
@@ -95,23 +64,16 @@ export const Checkbox: FC<CheckboxProps> = ({
                 )}
             </div>
 
+            {/* Label with optional link */}
             {label && (
                 <span>
                     {label}
-                    <a href={link} className="ml-2">
-                        {linkText}
-                    </a>
-                </span>
-            )}
-
-            {icon != null && (
-                <Icon
-                    {...icon}
-                    className={twMerge(
-                        icon.className,
-                        icon.placement == "right" ? "order-1" : ""
+                    {link && linkText && (
+                        <a href={link} className="ml-2 text-blue-600 underline">
+                            {linkText}
+                        </a>
                     )}
-                />
+                </span>
             )}
         </label>
     );
