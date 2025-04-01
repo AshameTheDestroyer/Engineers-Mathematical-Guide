@@ -1,15 +1,15 @@
 import { twMerge } from "tailwind-merge";
+import { useTheme } from "@/hooks/useTheme";
 import { useShadow } from "@/hooks/useShadow";
 import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { IsDarkColour } from "@/functions/CalculateColourLuminance";
-import { FC, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { ThemeContext } from "@/components/ThemeContextProvider/ThemeContextProvider";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 
 export type ColourDisplayProps = ChildlessComponentProps;
 
 export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
-    const { isDarkThemed } = useContext(ThemeContext);
+    const { isDarkThemed } = useTheme();
     const divReference = useRef<HTMLButtonElement>(null);
 
     const [colourRGB, setColourRGB] = useState<RGB>();

@@ -1,7 +1,7 @@
+import { FC, useMemo } from "react";
+import { useTheme } from "@/hooks/useTheme";
 import { twJoin, twMerge } from "tailwind-merge";
-import { FC, useContext, useMemo } from "react";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { ThemeContext } from "@/components/ThemeContextProvider/ThemeContextProvider";
 
 export type TypographyDisplayProps = ChildlessComponentProps & {
     text: string;
@@ -12,7 +12,7 @@ export const TypographyDisplay: FC<TypographyDisplayProps> = ({
     text,
     className,
 }) => {
-    const { isDarkThemed } = useContext(ThemeContext);
+    const { isDarkThemed } = useTheme();
 
     const sizeName = useMemo(
         () =>
