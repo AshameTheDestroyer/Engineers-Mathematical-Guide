@@ -7,6 +7,7 @@ export type CustomCheckboxProps = {
     onChange?: (checked: boolean) => void;
     label: string;
     linkText?: string;
+    className?: string;
     link?: string;
     isThick?: boolean;
     variant?: Variant;
@@ -16,6 +17,7 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
     onChange,
     label,
     link,
+    className,
     linkText,
     variant = "default",
 }) => {
