@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type CustomCheckboxProps = {
