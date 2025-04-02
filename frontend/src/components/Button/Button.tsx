@@ -65,11 +65,11 @@ export const Button: FC<ButtonProps> = ({
             {...props}
         >
             <div
+                data-content
                 className={twMerge(
                     isThick ? "px-4 py-2" : "px-2 py-1",
                     "flex h-full place-content-center place-items-center gap-2 rounded-xl border-2 transition duration-200"
                 )}
-                data-content
             >
                 {icon != null && (
                     <Icon
@@ -85,11 +85,11 @@ export const Button: FC<ButtonProps> = ({
                 {children}
             </div>
             <div
+                data-thickness
                 className={twMerge(
                     isThick ? "-bottom-2 h-8" : "-bottom-1 h-6",
                     "absolute inset-x-0 top-auto z-[-1] rounded-b-xl border-2 transition duration-200"
                 )}
-                data-thickness
             />
         </button>
     );
