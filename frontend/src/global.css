@@ -28,6 +28,8 @@ body {
     --text-8xl: 7rem;
     --text-9xl: 8rem;
 
+    --spacing-page: 2.5rem;
+
     --color-primary-light: #e6f7f0;
     --color-primary-light-hover: #d9f3e8;
     --color-primary-light-active: #b0e6cf;
@@ -104,8 +106,6 @@ body {
     --color-vibrant-blue-light: #a9def9;
     --color-vibrant-purple: #6a4c93;
     --color-vibrant-purple-light: #e4c1f9;
-
-    --spacing-page: 40px;
 }
 
 body.dark-themed {
