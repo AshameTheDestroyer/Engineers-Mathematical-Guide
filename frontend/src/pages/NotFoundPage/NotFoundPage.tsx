@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Page } from "@components/Page/Page";
-import { Icon } from "@components/Icon/Icon";
 import { Button } from "@components/Button/Button";
+import { CogIcon } from "@/components/CogIcon/CogIcon";
+import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 
-import cog_icon from "@icons/cog.svg";
 import home_icon from "@icons/home.svg";
 
 export const NotFoundPage: FC = () => {
@@ -25,29 +25,17 @@ export const NotFoundPage: FC = () => {
                 >
                     Return Home
                 </Button>
-                <Icon
-                    className="-left-page absolute bottom-0 z-[-1] -translate-x-1/4 translate-y-1/4 animate-spin text-white [animation-duration:60s]"
-                    width={400}
-                    height={400}
-                    source={cog_icon}
+                <DoubleCogIcon
+                    className="-left-page -bottom-1/10 absolute z-[-1] text-white"
+                    size={400}
                 />
-                <Icon
-                    className="-left-page absolute bottom-0 z-[-1] translate-x-[70%] translate-y-[40%] rotate-[-5deg] animate-spin text-white [animation-direction:reverse] [animation-duration:60s]"
-                    width={350}
-                    height={350}
-                    source={cog_icon}
+                <CogIcon
+                    className="-left-page absolute top-0 -translate-y-1/2 translate-x-[10vw] text-white [animation-direction:reverse]"
+                    size={250}
                 />
-                <Icon
-                    className="-right-page absolute top-0 translate-x-1/4 translate-y-2/3 animate-spin text-white [animation-direction:reverse] [animation-duration:60s]"
-                    width={250}
-                    height={250}
-                    source={cog_icon}
-                />
-                <Icon
-                    className="-left-page absolute top-0 -translate-y-1/2 translate-x-[10vw] animate-spin text-white [animation-direction:reverse] [animation-duration:60s]"
-                    width={250}
-                    height={250}
-                    source={cog_icon}
+                <CogIcon
+                    className="-right-page absolute top-0 z-[-1] translate-x-1/4 translate-y-2/3 text-white [animation-direction:reverse]"
+                    size={250}
                 />
             </div>
         </Page>
