@@ -11,6 +11,7 @@ export type CustomCheckboxProps = {
     link?: string;
     isThick?: boolean;
     variant?: Variant;
+    checked: boolean;
 };
 
 const Checkbox: React.FC<CustomCheckboxProps> = ({
