@@ -38,13 +38,19 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
                 return (className = [
                     "bg-foreground-dark",
                     "text-foreground-normal",
+                    "border-foreground-normal border-2",
                 ]);
             case "primary":
-                return (className = ["bg-primary-dark", "text-primary-normal"]);
+                return (className = [
+                    "bg-primary-dark",
+                    "text-primary-normal",
+                    "border-primary-normal border-2",
+                ]);
             case "secondary":
                 return (className = [
                     "bg-secondary-dark",
                     "text-secondary-normal",
+                    "border-secondary-normal border-2",
                 ]);
             default:
                 return className;
@@ -53,6 +59,7 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
 
     return (
         <label className="flex h-10 cursor-pointer items-center">
+            <input type="checkbox" className="index hidden" />
             <div
                 className={twMerge(
                     variantClass[0],
@@ -64,7 +71,8 @@ const Checkbox: React.FC<CustomCheckboxProps> = ({
                 <div
                     className={twMerge(
                         variantClass[0],
-                        `absolute flex h-6 w-6 items-center justify-center rounded-[0.5rem] border-2 transition-colors duration-300`,
+                        variantClass[2],
+                        `absolute flex h-6 w-6 items-center justify-center rounded-[0.5rem] transition-colors duration-300`,
                         className,
                         isChecked
                             ? `${variantClass[0]} border-transparent`

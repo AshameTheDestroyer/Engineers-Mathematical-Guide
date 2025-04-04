@@ -1,5 +1,5 @@
 import { FC, useRef } from "react";
-import { Logo } from "@components/Logo/Logo";
+import { Logo } from "@/components/Logo/Logo";
 import { Button } from "@components/Button/Button";
 import { HEADER_ROUTES } from "@constants/HeaderRoutes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
