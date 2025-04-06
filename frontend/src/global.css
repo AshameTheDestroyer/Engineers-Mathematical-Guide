@@ -111,6 +111,52 @@ body {
     --color-vibrant-blue-light: #a9def9;
     --color-vibrant-purple: #6a4c93;
     --color-vibrant-purple-light: #e4c1f9;
+
+    /* palettes */
+
+    --color-default-background-light: #fffefb;
+    --color-default-background-light-hover: #f0efea;
+    --color-default-background-light-active: #dad9d3;
+    --color-default-background-normal: #fcf7f1;
+    --color-default-background-normal-hover: #ece4dc;
+    --color-default-background-normal-active: #d5ccc3;
+    --color-default-background-dark: #f7e7da;
+    --color-default-background-dark-hover: #e4cebc;
+    --color-default-background-dark-active: #ccb4a1;
+    --color-default-background-darker: #b09582;
+
+    --color-default-foreground-light: #000000;
+    --color-default-foreground-light-hover: #000102;
+    --color-default-foreground-light-active: #010203;
+    --color-default-foreground-normal: #020407;
+    --color-default-foreground-normal-hover: #05070a;
+    --color-default-foreground-normal-active: #0a0d13;
+    --color-default-foreground-dark: #0d1117;
+    --color-default-foreground-dark-hover: #0d1118;
+    --color-default-foreground-dark-active: #11161d;
+    --color-default-foreground-darker: #151b23;
+
+    --color-sakura-background-light: hsl(335, 100%, 99%);
+    --color-sakura-background-light-hover: hsl(340, 17%, 93%);
+    --color-sakura-background-light-active: hsl(341, 9%, 84%);
+    --color-sakura-background-normal: hsl(323, 65%, 97%);
+    --color-sakura-background-normal-hover: hsl(320, 30%, 89%);
+    --color-sakura-background-normal-active: hsl(320, 18%, 80%);
+    --color-sakura-background-dark: hsl(317, 64%, 91%);
+    --color-sakura-background-dark-hover: hsl(317, 43%, 82%);
+    --color-sakura-background-dark-active: hsl(317, 30%, 72%);
+    --color-sakura-background-darker: hsl(315, 23%, 60%);
+
+    --color-sakura-foreground-light: hsl(0, 0%, 0%);
+    --color-sakura-foreground-light-hover: hsl(326, 100%, 0%);
+    --color-sakura-foreground-light-active: hsl(326, 50%, 1%);
+    --color-sakura-foreground-normal: hsl(332, 56%, 2%);
+    --color-sakura-foreground-normal-hover: hsl(332, 33%, 3%);
+    --color-sakura-foreground-normal-active: hsl(336, 31%, 6%);
+    --color-sakura-foreground-dark: hsl(332, 28%, 7%);
+    --color-sakura-foreground-dark-hover: hsl(334, 30%, 7%);
+    --color-sakura-foreground-dark-active: hsl(331, 26%, 9%);
+    --color-sakura-foreground-darker: hsl(330, 25%, 11%);
 }
 
 body.dark-themed {
