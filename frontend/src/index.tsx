@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
@@ -22,7 +23,7 @@ export const MainContext = createContext<MainStateProps>(null!);
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 
 const LazyPage: FC<{ children: ReactNode }> = ({ children }) => (
-    <Lazy errorFallback={<NotFoundPage />} loadingFallback={<LoadingPage />}>
+    <Lazy errorFallback={<ErrorPage />} loadingFallback={<LoadingPage />}>
         {children}
     </Lazy>
 );
