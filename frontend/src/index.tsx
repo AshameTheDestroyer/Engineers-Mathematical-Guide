@@ -10,6 +10,7 @@ import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvi
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
+const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
@@ -75,6 +76,14 @@ const IndexRoutes: FC = () => {
                         element={
                             <LazyComponent>
                                 <ComponentsPage />
+                            </LazyComponent>
+                        }
+                    />
+                    <Route
+                        path="palettes"
+                        element={
+                            <LazyComponent>
+                                <PalettesPage />
                             </LazyComponent>
                         }
                     />
