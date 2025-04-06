@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
-import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
-import { ThemeToggle } from "@/components/ThemeToggle/ThemeToggle";
+import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
+import { ThemeToggle } from "@/components/ThemeModeToggle/ThemeModeToggle";
 
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";

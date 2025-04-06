@@ -3,8 +3,8 @@ import { useTheme } from "@/hooks/useTheme";
 import { useShadow } from "@/hooks/useShadow";
 import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 import { FC, useEffect, useMemo, useRef, useState } from "react";
+import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 
 export type ColourDisplayProps = ChildlessComponentProps;
 
