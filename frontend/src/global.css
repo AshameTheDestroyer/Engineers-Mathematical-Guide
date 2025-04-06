@@ -289,7 +289,7 @@ body {
     --color-pearl-foreground-dark-hover: #050505;
     --color-pearl-foreground-dark-active: #0a0a0a;
     --color-pearl-foreground-darker: #010101;
-    
+
     --color-honey-background-light: #fff9e6;
     --color-honey-background-light-hover: #f5edd6;
     --color-honey-background-light-active: #e8dfc4;
@@ -334,27 +334,27 @@ body {
     --color-crimson-foreground-dark-active: #1a0000;
     --color-crimson-foreground-darker: #040000;
 
---color-dusk-background-light: #ede6f5;
---color-dusk-background-light-hover: #ddd6e8;
---color-dusk-background-light-active: #cbc4d9;
---color-dusk-background-normal: #d1c8e8;
---color-dusk-background-normal-hover: #c0b8d8;
---color-dusk-background-normal-active: #aca4c8;
---color-dusk-background-dark: #8c84b8;
---color-dusk-background-dark-hover: #7468a0;
---color-dusk-background-dark-active: #5c528b;
---color-dusk-background-darker: #443873;
-
---color-dusk-foreground-light: #0a001a;
---color-dusk-foreground-light-hover: #100026;
---color-dusk-foreground-light-active: #180033;
---color-dusk-foreground-normal: #05000f;
---color-dusk-foreground-normal-hover: #0a001a;
---color-dusk-foreground-normal-active: #100026;
---color-dusk-foreground-dark: #030008;
---color-dusk-foreground-dark-hover: #05000f;
---color-dusk-foreground-dark-active: #0a001a;
---color-dusk-foreground-darker: #010004;
+    --color-dusk-background-light: #ede6f5;
+    --color-dusk-background-light-hover: #ddd6e8;
+    --color-dusk-background-light-active: #cbc4d9;
+    --color-dusk-background-normal: #d1c8e8;
+    --color-dusk-background-normal-hover: #c0b8d8;
+    --color-dusk-background-normal-active: #aca4c8;
+    --color-dusk-background-dark: #8c84b8;
+    --color-dusk-background-dark-hover: #7468a0;
+    --color-dusk-background-dark-active: #5c528b;
+    --color-dusk-background-darker: #443873;
+    
+    --color-dusk-foreground-light: #0a001a;
+    --color-dusk-foreground-light-hover: #100026;
+    --color-dusk-foreground-light-active: #180033;
+    --color-dusk-foreground-normal: #05000f;
+    --color-dusk-foreground-normal-hover: #0a001a;
+    --color-dusk-foreground-normal-active: #100026;
+    --color-dusk-foreground-dark: #030008;
+    --color-dusk-foreground-dark-hover: #05000f;
+    --color-dusk-foreground-dark-active: #0a001a;
+    --color-dusk-foreground-darker: #010004;
       
 }
 
