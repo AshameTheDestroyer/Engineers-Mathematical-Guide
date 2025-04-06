@@ -6,6 +6,7 @@ import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { useState, createContext, FC, ReactNode } from "react";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
+import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -100,9 +101,11 @@ const Index: FC = () => {
     return (
         <MainContext.Provider value={state}>
             <ThemeModeProvider>
-                <HashRouter basename={window.location.pathname || ""}>
-                    <IndexRoutes />
-                </HashRouter>
+                <ThemePaletteProvider>
+                    <HashRouter basename={window.location.pathname || ""}>
+                        <IndexRoutes />
+                    </HashRouter>
+                </ThemePaletteProvider>
             </ThemeModeProvider>
         </MainContext.Provider>
     );
