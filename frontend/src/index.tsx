@@ -4,7 +4,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { useState, createContext, FC, ReactNode } from "react";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
-import { ThemeContextProvider } from "./components/ThemeContextProvider/ThemeContextProvider";
+import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -89,11 +89,11 @@ const Index: FC = () => {
 
     return (
         <MainContext.Provider value={state}>
-            <ThemeContextProvider>
+            <ThemeModeProvider>
                 <HashRouter basename={window.location.pathname || ""}>
                     <IndexRoutes />
                 </HashRouter>
-            </ThemeContextProvider>
+            </ThemeModeProvider>
         </MainContext.Provider>
     );
 };
