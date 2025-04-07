@@ -3,7 +3,10 @@ import { twMerge } from "tailwind-merge";
 import { IconProps } from "../Icon/Icon";
 import { Button, ButtonProps } from "@components/Button/Button";
 
-export type IconButtonProps = Omit<ButtonProps, "children" | "icon"> & {
+export type IconButtonProps = Omit<
+    ButtonProps,
+    "children" | "icon" | "doesTextGrow"
+> & {
     icon: IconProps;
 };
 
