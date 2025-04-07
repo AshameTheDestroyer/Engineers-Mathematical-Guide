@@ -101,7 +101,7 @@ export const DropDown: FC<DropDownProps> = ({
             </Button_>
             <div
                 className={twJoin(
-                    "bg-background-light border-background-darker absolute z-10 grid w-full min-w-max overflow-hidden rounded-lg transition-[grid-template-rows_box-shadow] duration-200",
+                    "bg-background-light border-background-dark absolute z-10 grid w-full min-w-max overflow-hidden rounded-lg transition-[grid-template-rows_box-shadow] duration-200",
                     positionClassNames[position],
                     isOpen ? "border-2 shadow-lg" : "border-0"
                 )}
