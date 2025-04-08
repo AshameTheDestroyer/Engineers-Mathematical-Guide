@@ -2,6 +2,7 @@ import {
     FC,
     useState,
     useEffect,
+    useContext,
     createContext,
     PropsWithChildren,
 } from "react";
@@ -18,6 +19,8 @@ type ThemeModeStateProps = {
 };
 
 export const ThemeModeContext = createContext<ThemeModeStateProps>(null!);
+
+export const useThemeMode = () => useContext(ThemeModeContext);
 
 export type ThemeModeProviderProps = PropsWithChildren;
 

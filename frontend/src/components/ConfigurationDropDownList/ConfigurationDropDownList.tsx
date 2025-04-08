@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useThemeMode } from "@/hooks/useThemeMode";
 import { Button } from "@/components/Button/Button";
 import { DropDown } from "@/components/DropDown/DropDown";
-import { useThemePalette } from "@/hooks/useThemePalette";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
+import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
 import {
     DropDownList,
     DropDownListProps,

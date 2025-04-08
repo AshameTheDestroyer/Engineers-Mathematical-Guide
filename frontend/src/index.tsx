@@ -3,8 +3,8 @@ import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
-import { useState, createContext, FC, ReactNode } from "react";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
 
@@ -21,6 +21,8 @@ import "./global.css";
 type MainStateProps = {};
 
 export const MainContext = createContext<MainStateProps>(null!);
+
+export const useMain = () => useContext(MainContext);
 
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 

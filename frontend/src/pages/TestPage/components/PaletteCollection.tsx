@@ -2,8 +2,8 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "@/components/Button/Button";
 import { ColourCollection } from "./ColourCollection";
-import { useThemePalette } from "@/hooks/useThemePalette";
 import { Collection, CollectionProps } from "./Collection";
+import { useThemePalette } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
 
 export type PaletteCollectionProps = Omit<CollectionProps, "children"> & {
     classNames: {
