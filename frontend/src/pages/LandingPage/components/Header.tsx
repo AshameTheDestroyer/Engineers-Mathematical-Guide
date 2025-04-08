@@ -5,7 +5,7 @@ import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
-import { ConfigurationDropDownList } from "./ConfigurationDropDownList";
+import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
@@ -43,7 +43,10 @@ export const Header: FC = () => {
                 >
                     Login
                 </Button>
-                <ConfigurationDropDownList />
+                <ConfigurationDropDownList
+                    variant="secondary"
+                    position="bottom-end"
+                />
             </ButtonBox>
         </Header_>
     );
