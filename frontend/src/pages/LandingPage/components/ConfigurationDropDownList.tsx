@@ -58,8 +58,9 @@ export const ConfigurationDropDownList: FC = () => {
                 position="left-start"
                 icon={{ placement: "left", className: "-rotate-90" }}
             >
-                {themePalettes.map((_themePalette) => (
+                {themePalettes.map((_themePalette, i) => (
                     <Button
+                        key={i}
                         variant={
                             _themePalette == themePalette ||
                             (_themePalette == "default" &&
