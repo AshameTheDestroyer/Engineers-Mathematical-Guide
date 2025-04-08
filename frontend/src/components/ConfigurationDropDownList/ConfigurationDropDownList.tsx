@@ -13,9 +13,12 @@ import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import monitor_icon from "@icons/monitor.svg";
 
-export type ConfigurationDropDownList = Omit<DropDownListProps, "children">;
+export type ConfigurationDropDownListProps = Omit<
+    DropDownListProps,
+    "children"
+>;
 
-export const ConfigurationDropDownList: FC<ConfigurationDropDownList> = ({
+export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
     id,
     ref,
     icon,
