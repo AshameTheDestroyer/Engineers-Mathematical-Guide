@@ -1,10 +1,10 @@
 import { twMerge } from "tailwind-merge";
-import { useThemeMode } from "@/hooks/useThemeMode";
 import { useShadow } from "@/hooks/useShadow";
 import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { IsDarkColour } from "@/functions/CalculateColourLuminance";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
 export type ColourDisplayProps = ChildlessComponentProps;
 
