@@ -32,7 +32,7 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
             title={title}
         >
             <Button
-                className="text- absolute right-0 top-0 translate-y-[var(--line-height)]"
+                className="absolute right-0 top-0 translate-y-[var(--line-height)]"
                 onClick={(_e) => SetThemePalette(title.toLowerCase())}
             >
                 Apply
