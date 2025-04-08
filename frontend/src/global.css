@@ -114,27 +114,27 @@ body {
 
     /* palettes */
 
-    --color-default-background-light: #fffefb;
-    --color-default-background-light-hover: #f0efea;
-    --color-default-background-light-active: #dad9d3;
-    --color-default-background-normal: #fcf7f1;
-    --color-default-background-normal-hover: #ece4dc;
-    --color-default-background-normal-active: #d5ccc3;
-    --color-default-background-dark: #f7e7da;
-    --color-default-background-dark-hover: #e4cebc;
-    --color-default-background-dark-active: #ccb4a1;
-    --color-default-background-darker: #b09582;
+    --color-caramel-background-light: #fffefb;
+    --color-caramel-background-light-hover: #f0efea;
+    --color-caramel-background-light-active: #dad9d3;
+    --color-caramel-background-normal: #fcf7f1;
+    --color-caramel-background-normal-hover: #ece4dc;
+    --color-caramel-background-normal-active: #d5ccc3;
+    --color-caramel-background-dark: #f7e7da;
+    --color-caramel-background-dark-hover: #e4cebc;
+    --color-caramel-background-dark-active: #ccb4a1;
+    --color-caramel-background-darker: #b09582;
 
-    --color-default-foreground-light: #000000;
-    --color-default-foreground-light-hover: #000102;
-    --color-default-foreground-light-active: #010203;
-    --color-default-foreground-normal: #020407;
-    --color-default-foreground-normal-hover: #05070a;
-    --color-default-foreground-normal-active: #0a0d13;
-    --color-default-foreground-dark: #0d1117;
-    --color-default-foreground-dark-hover: #0d1118;
-    --color-default-foreground-dark-active: #11161d;
-    --color-default-foreground-darker: #151b23;
+    --color-caramel-foreground-light: #000000;
+    --color-caramel-foreground-light-hover: #000102;
+    --color-caramel-foreground-light-active: #010203;
+    --color-caramel-foreground-normal: #020407;
+    --color-caramel-foreground-normal-hover: #05070a;
+    --color-caramel-foreground-normal-active: #0a0d13;
+    --color-caramel-foreground-dark: #0d1117;
+    --color-caramel-foreground-dark-hover: #0d1118;
+    --color-caramel-foreground-dark-active: #11161d;
+    --color-caramel-foreground-darker: #151b23;
 
     --color-sakura-background-light: #fffafc;
     --color-sakura-background-light-hover: #f0eaec;
@@ -324,28 +324,6 @@ body.dark-themed {
     --color-tertiary-dark-hover: #0b1525;
     --color-tertiary-dark-active: #07101b;
     --color-tertiary-darker: #060c15;
-
-    --color-background-light: #151b23;
-    --color-background-light-hover: #11161d;
-    --color-background-light-active: #0d1118;
-    --color-background-normal: #0d1117;
-    --color-background-normal-hover: #0a0d13;
-    --color-background-normal-active: #05070a;
-    --color-background-dark: #020407;
-    --color-background-dark-hover: #010203;
-    --color-background-dark-active: #000102;
-    --color-background-darker: #000000;
-
-    --color-foreground-light: #ccb4a1;
-    --color-foreground-light-hover: #e4cebc;
-    --color-foreground-light-active: #f7e7da;
-    --color-foreground-normal: #d5ccc3;
-    --color-foreground-normal-hover: #ece4dc;
-    --color-foreground-normal-active: #fcf7f1;
-    --color-foreground-dark: #dad9d3;
-    --color-foreground-dark-hover: #f0efea;
-    --color-foreground-dark-active: #fffefb;
-    --color-foreground-darker: #ffffff;
 }
 
 @layer utilities {

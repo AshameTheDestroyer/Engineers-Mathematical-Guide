@@ -5,31 +5,31 @@ export const PalettesPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
             <PaletteCollection
-                title="Default"
+                title="Caramel"
                 classNames={{
                     background: [
-                        "bg-default-background-light",
-                        "bg-default-background-light-hover",
-                        "bg-default-background-light-active",
-                        "bg-default-background-normal",
-                        "bg-default-background-normal-hover",
-                        "bg-default-background-normal-active",
-                        "bg-default-background-dark",
-                        "bg-default-background-dark-hover",
-                        "bg-default-background-dark-active",
-                        "bg-default-background-darker",
+                        "bg-caramel-background-light",
+                        "bg-caramel-background-light-hover",
+                        "bg-caramel-background-light-active",
+                        "bg-caramel-background-normal",
+                        "bg-caramel-background-normal-hover",
+                        "bg-caramel-background-normal-active",
+                        "bg-caramel-background-dark",
+                        "bg-caramel-background-dark-hover",
+                        "bg-caramel-background-dark-active",
+                        "bg-caramel-background-darker",
                     ],
                     foreground: [
-                        "bg-default-foreground-light",
-                        "bg-default-foreground-light-hover",
-                        "bg-default-foreground-light-active",
-                        "bg-default-foreground-normal",
-                        "bg-default-foreground-normal-hover",
-                        "bg-default-foreground-normal-active",
-                        "bg-default-foreground-dark",
-                        "bg-default-foreground-dark-hover",
-                        "bg-default-foreground-dark-active",
-                        "bg-default-foreground-darker",
+                        "bg-caramel-foreground-light",
+                        "bg-caramel-foreground-light-hover",
+                        "bg-caramel-foreground-light-active",
+                        "bg-caramel-foreground-normal",
+                        "bg-caramel-foreground-normal-hover",
+                        "bg-caramel-foreground-normal-active",
+                        "bg-caramel-foreground-dark",
+                        "bg-caramel-foreground-dark-hover",
+                        "bg-caramel-foreground-dark-active",
+                        "bg-caramel-foreground-darker",
                     ],
                 }}
             />

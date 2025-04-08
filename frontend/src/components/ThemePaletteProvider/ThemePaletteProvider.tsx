@@ -12,9 +12,9 @@ import {
 } from "react";
 
 export type ThemePaletteStateProps = {
-    themePalette?: string;
+    themePalette: string;
     themePalettes: Array<string>;
-    SetThemePalette: (themePalette?: string) => void;
+    SetThemePalette: (themePalette: string) => void;
 };
 
 export const ThemePaletteContext = createContext<ThemePaletteStateProps>(null!);
@@ -41,14 +41,14 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     const [state, setState] = useState<ThemePaletteStateProps>({
         SetThemePalette,
         themePalettes: GetThemePalettes(),
-        themePalette: GetFromLocalStorage("theme-palette"),
+        themePalette: GetFromLocalStorage("theme-palette") ?? "caramel",
     });
 
     useEffect(() => {
         UpdateThemePaletteVariables(state.themePalette);
     }, [isDarkThemed, state.themePalette]);
 
-    function SetThemePalette(themePalette?: string) {
+    function SetThemePalette(themePalette: string) {
         SetInLocalStorage("theme-palette", themePalette);
         setState((state) => ({ ...state, themePalette }));
     }
