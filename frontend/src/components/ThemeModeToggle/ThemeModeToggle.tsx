@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeMode } from "@/hooks/useThemeMode";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton";
 
 import light_theme_icon from "@icons/sun.svg";
@@ -13,7 +13,7 @@ export const ThemeToggle: FC<ThemeToggleProps> = ({
     className,
     ...props
 }) => {
-    const { isDarkThemed, ToggleThemeMode } = useTheme();
+    const { isDarkThemed, ToggleThemeMode } = useThemeMode();
 
     return (
         <IconButton

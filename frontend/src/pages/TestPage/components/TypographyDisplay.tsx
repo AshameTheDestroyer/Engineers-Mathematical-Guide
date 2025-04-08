@@ -1,5 +1,5 @@
 import { FC, useMemo } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeMode } from "@/hooks/useThemeMode";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
@@ -12,7 +12,7 @@ export const TypographyDisplay: FC<TypographyDisplayProps> = ({
     text,
     className,
 }) => {
-    const { isDarkThemed } = useTheme();
+    const { isDarkThemed } = useThemeMode();
 
     const sizeName = useMemo(
         () =>

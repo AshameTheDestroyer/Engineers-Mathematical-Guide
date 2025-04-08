@@ -1,7 +1,7 @@
-import { useTheme } from "./useTheme";
+import { useThemeMode } from "./useThemeMode";
 
 export const useShadow = (colour?: string) => {
-    const { isDarkThemed } = useTheme();
+    const { isDarkThemed } = useThemeMode();
 
     return isDarkThemed
         ? colour == null
