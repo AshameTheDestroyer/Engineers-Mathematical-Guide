@@ -49,48 +49,48 @@ export const DropDownCollection: FC = () => {
             <Collection title="Normal" inner className="[&>div]:flex-col">
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
-                        variant="default"
                         text="Default"
+                        variant="default"
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
-                        variant="primary"
                         text="Primary"
+                        variant="primary"
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
-                        variant="secondary"
                         text="Secondary"
+                        variant="secondary"
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                 </ButtonBox>
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         text="Default"
                         variant="default"
+                        position="bottom-end"
                         icon={{ placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Primary"
                         variant="primary"
+                        position="bottom-end"
                         icon={{ placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         icon={{ placement: "left" }}
                     >
                         <DropDownChildren />
@@ -100,28 +100,28 @@ export const DropDownCollection: FC = () => {
             <Collection title="Thick" inner className="[&>div]:flex-col">
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Default"
                         variant="default"
+                        position="bottom-end"
                         icon={thickArrowIcon}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Primary"
                         variant="primary"
+                        position="bottom-end"
                         icon={thickArrowIcon}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         icon={thickArrowIcon}
                     >
                         <DropDownChildren />
@@ -129,28 +129,28 @@ export const DropDownCollection: FC = () => {
                 </ButtonBox>
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Default"
                         variant="default"
+                        position="bottom-end"
                         icon={{ ...thickArrowIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Primary"
                         variant="primary"
+                        position="bottom-end"
                         icon={{ ...thickArrowIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         isThick
                         text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         icon={{ ...thickArrowIcon, placement: "left" }}
                     >
                         <DropDownChildren />
@@ -159,23 +159,23 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection title="Text-less" inner>
                 <DropDown
-                    position="bottom-end"
+                    icon={cogIcon}
                     variant="default"
-                    icon={cogIcon}
+                    position="bottom-end"
                 >
                     <DropDownChildren />
                 </DropDown>
                 <DropDown
-                    position="bottom-end"
+                    icon={cogIcon}
                     variant="primary"
-                    icon={cogIcon}
+                    position="bottom-end"
                 >
                     <DropDownChildren />
                 </DropDown>
                 <DropDown
-                    position="bottom-end"
-                    variant="secondary"
                     icon={cogIcon}
+                    variant="secondary"
+                    position="bottom-end"
                 >
                     <DropDownChildren />
                 </DropDown>
@@ -183,51 +183,51 @@ export const DropDownCollection: FC = () => {
             <Collection title="Icon-ed" inner className="[&>div]:flex-col">
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         text="Default"
+                        icon={homeIcon}
                         variant="default"
-                        icon={homeIcon}
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Primary"
-                        variant="primary"
                         icon={homeIcon}
+                        variant="primary"
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
+                        icon={homeIcon}
                         text="Secondary"
                         variant="secondary"
-                        icon={homeIcon}
+                        position="bottom-end"
                     >
                         <DropDownChildren />
                     </DropDown>
                 </ButtonBox>
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         text="Default"
                         variant="default"
+                        position="bottom-end"
                         icon={{ ...homeIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Primary"
                         variant="primary"
+                        position="bottom-end"
                         icon={{ ...homeIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         icon={{ ...homeIcon, placement: "left" }}
                     >
                         <DropDownChildren />
@@ -235,34 +235,34 @@ export const DropDownCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
-                className="[&>div]:flex-col"
                 inner
+                className="[&>div]:flex-col"
                 title="Close on Interaction"
             >
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         text="Default"
                         icon={userIcon}
                         variant="default"
+                        position="bottom-end"
                         doesCloseOnInteraction
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Primary"
                         icon={userIcon}
                         variant="primary"
+                        position="bottom-end"
                         doesCloseOnInteraction
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
-                        text="Secondary"
                         icon={userIcon}
+                        text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         doesCloseOnInteraction
                     >
                         <DropDownChildren />
@@ -270,27 +270,27 @@ export const DropDownCollection: FC = () => {
                 </ButtonBox>
                 <ButtonBox>
                     <DropDown
-                        position="bottom-end"
                         text="Default"
                         variant="default"
+                        position="bottom-end"
                         doesCloseOnInteraction
                         icon={{ ...userIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Primary"
                         variant="primary"
+                        position="bottom-end"
                         doesCloseOnInteraction
                         icon={{ ...userIcon, placement: "left" }}
                     >
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        position="bottom-end"
                         text="Secondary"
                         variant="secondary"
+                        position="bottom-end"
                         doesCloseOnInteraction
                         icon={{ ...userIcon, placement: "left" }}
                     >
