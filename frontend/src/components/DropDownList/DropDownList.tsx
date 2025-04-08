@@ -2,9 +2,9 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { DropDown, DropDownProps } from "../DropDown/DropDown";
 
-export type DropDownList = DropDownProps;
+export type DropDownListProps = DropDownProps;
 
-export const DropDownList: FC<DropDownList> = ({
+export const DropDownList: FC<DropDownListProps> = ({
     id,
     ref,
     children,
