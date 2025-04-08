@@ -3,6 +3,7 @@ import { Button } from "@/components/Button/Button";
 import { DropDown } from "@/components/DropDown/DropDown";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
     DropDownList,
     DropDownListProps,
@@ -11,6 +12,7 @@ import {
 import cog_icon from "@icons/cog.svg";
 import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
+import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
 
 export type ConfigurationDropDownListProps = Omit<
@@ -27,6 +29,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
 }) => {
     const { themeMode, SetThemeMode } = useThemeMode();
     const { themePalette, themePalettes, SetThemePalette } = useThemePalette();
+    const { language, direction, SetLanguage, SetDirection } =
+        useLocalization();
 
     return (
         <DropDownList
@@ -86,6 +90,56 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                         {_themePalette.toTitleCase()}
                     </Button>
                 ))}
+            </DropDown>
+            <DropDown
+                doesTextGrow
+                position="left-start"
+                text="Writing Direction"
+                icon={{ placement: "left", className: "-rotate-90" }}
+            >
+                <Button
+                    doesTextGrow
+                    icon={{
+                        placement: "left",
+                        source: arrow_icon,
+                        className: "rotate-90",
+                    }}
+                    variant={direction == "ltr" ? "primary" : "default"}
+                    onClick={(_e) => SetDirection("ltr")}
+                >
+                    Left to Right
+                </Button>
+                <Button
+                    doesTextGrow
+                    icon={{
+                        placement: "left",
+                        source: arrow_icon,
+                        className: "-rotate-90",
+                    }}
+                    variant={direction == "rtl" ? "primary" : "default"}
+                    onClick={(_e) => SetDirection("rtl")}
+                >
+                    Right to Left
+                </Button>
+            </DropDown>
+            <DropDown
+                doesTextGrow
+                text="Language"
+                position="left-start"
+                icon={{ placement: "left", className: "-rotate-90" }}
+            >
+                <Button
+                    variant={language == "en" ? "primary" : "default"}
+                    onClick={(_e) => SetLanguage("en")}
+                >
+                    English
+                </Button>
+                <Button
+                    variant={language == "ar" ? "primary" : "default"}
+                    onClick={(_e) => SetLanguage("ar")}
+                >
+                    عَربيٌّ
+                </Button>
             </DropDown>
         </DropDownList>
     );
