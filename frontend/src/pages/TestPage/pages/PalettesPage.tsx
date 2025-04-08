@@ -150,35 +150,6 @@ export const PalettesPage: FC = () => {
                 }}
             />
             <PaletteCollection
-                title="Moss"
-                classNames={{
-                    background: [
-                        "bg-moss-background-light",
-                        "bg-moss-background-light-hover",
-                        "bg-moss-background-light-active",
-                        "bg-moss-background-normal",
-                        "bg-moss-background-normal-hover",
-                        "bg-moss-background-normal-active",
-                        "bg-moss-background-dark",
-                        "bg-moss-background-dark-hover",
-                        "bg-moss-background-dark-active",
-                        "bg-moss-background-darker",
-                    ],
-                    foreground: [
-                        "bg-moss-foreground-light",
-                        "bg-moss-foreground-light-hover",
-                        "bg-moss-foreground-light-active",
-                        "bg-moss-foreground-normal",
-                        "bg-moss-foreground-normal-hover",
-                        "bg-moss-foreground-normal-active",
-                        "bg-moss-foreground-dark",
-                        "bg-moss-foreground-dark-hover",
-                        "bg-moss-foreground-dark-active",
-                        "bg-moss-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
                 title="Dusk"
                 classNames={{
                     background: [
