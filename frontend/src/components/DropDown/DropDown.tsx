@@ -25,13 +25,28 @@ export const DropDown: FC<DropDownProps> = ({
     doesCloseOnInteraction,
     ...props
 }) => {
+    const containerReference = useRef<HTMLDivElement>(null);
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const dropDownElementRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        if (!isOpen) {
+            containerReference.current?.style.setProperty("overflow", "hidden");
+            return;
+        }
+
+        const timeoutID = setTimeout(() => {
+            containerReference.current?.style.setProperty(
+                "overflow",
+                "visible"
+            );
+        }, 200);
+
         document.addEventListener("click", CloseDropDown);
 
         return () => {
+            clearTimeout(timeoutID);
             document.removeEventListener("click", CloseDropDown);
         };
     }, [isOpen]);
@@ -43,7 +58,10 @@ export const DropDown: FC<DropDownProps> = ({
 
         const clickedElement = (e.target as HTMLElement).closest(".drop-down");
 
-        if (clickedElement == dropDownElementRef.current) {
+        if (
+            clickedElement == dropDownElementRef.current ||
+            dropDownElementRef.current?.contains(clickedElement)
+        ) {
             return;
         }
 
@@ -103,12 +121,13 @@ export const DropDown: FC<DropDownProps> = ({
                 className={twJoin(
                     positionClassNames[position],
                     isOpen ? "border-2 shadow-lg" : "border-0",
-                    "bg-background-light border-background-dark absolute z-10 grid w-full min-w-max overflow-hidden rounded-lg transition-[grid-template-rows_box-shadow] duration-200"
+                    "bg-background-light border-background-dark absolute z-10 grid w-full min-w-max rounded-lg transition-[grid-template-rows_box-shadow] duration-200"
                 )}
             >
                 <div
+                    ref={containerReference}
                     className={twJoin(
-                        "flex flex-col overflow-hidden transition-all duration-200",
+                        "flex flex-col transition-all duration-200",
                         isOpen ? "p-2" : "p-0"
                     )}
                     onClick={() => doesCloseOnInteraction && setIsOpen(false)}
