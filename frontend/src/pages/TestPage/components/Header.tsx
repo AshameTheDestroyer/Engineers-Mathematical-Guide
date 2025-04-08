@@ -18,10 +18,7 @@ export const Header: FC = () => {
         >
             <Logo />
             <NavigationBar className="grow" routes={LANDING_PAGE_ROUTES} />
-            <ConfigurationDropDownList
-                variant="primary"
-                position="bottom-end"
-            />
+            <ConfigurationDropDownList variant="primary" />
         </Header_>
     );
 };

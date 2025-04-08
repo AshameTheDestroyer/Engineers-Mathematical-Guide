@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Button } from "@/components/Button/Button";
-import { DropDown } from "@/components/DropDown/DropDown";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
+import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
 import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
@@ -15,9 +15,9 @@ import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
 
-export type ConfigurationDropDownListProps = Omit<
-    DropDownListProps,
-    "children"
+export type ConfigurationDropDownListProps = WithPartial<
+    Omit<DropDownListProps, "children">,
+    "position"
 >;
 
 export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
@@ -25,6 +25,7 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
     ref,
     icon,
     className,
+    position: _position,
     ...props
 }) => {
     const { themeMode, SetThemeMode } = useThemeMode();
@@ -32,19 +33,31 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
     const { language, direction, SetLanguage, SetDirection } =
         useLocalization();
 
+    const position: Position =
+        _position ?? (direction == "ltr" ? "bottom-end" : "bottom-start");
+
+    const nestedDropDownPosition: Position =
+        direction == "ltr" ? "left-start" : "right-end";
+
+    const nestedDropDownIcon: DropDownProps["icon"] = {
+        placement: "left",
+        className: direction == "ltr" ? "-rotate-90" : "rotate-90",
+    };
+
     return (
         <DropDownList
             id={id}
             ref={ref}
             className={className}
+            position={position}
             icon={icon ?? { source: cog_icon }}
             {...props}
         >
             <DropDown
                 doesTextGrow
                 text="Theme Mode"
-                position="left-start"
-                icon={{ placement: "left", className: "-rotate-90" }}
+                icon={nestedDropDownIcon}
+                position={nestedDropDownPosition}
             >
                 <Button
                     doesTextGrow
@@ -74,8 +87,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
             <DropDown
                 doesTextGrow
                 text="Theme Palette"
-                position="left-start"
-                icon={{ placement: "left", className: "-rotate-90" }}
+                icon={nestedDropDownIcon}
+                position={nestedDropDownPosition}
             >
                 {themePalettes.map((_themePalette, i) => (
                     <Button
@@ -93,9 +106,9 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
             </DropDown>
             <DropDown
                 doesTextGrow
-                position="left-start"
                 text="Writing Direction"
-                icon={{ placement: "left", className: "-rotate-90" }}
+                position={nestedDropDownPosition}
+                icon={nestedDropDownIcon}
             >
                 <Button
                     doesTextGrow
@@ -125,8 +138,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
             <DropDown
                 doesTextGrow
                 text="Language"
-                position="left-start"
-                icon={{ placement: "left", className: "-rotate-90" }}
+                icon={nestedDropDownIcon}
+                position={nestedDropDownPosition}
             >
                 <Button
                     variant={language == "en" ? "primary" : "default"}
