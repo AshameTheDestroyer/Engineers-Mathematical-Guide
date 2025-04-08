@@ -9,6 +9,7 @@ import drop_down_icon from "@icons/triangle_arrow.svg";
 export type DropDownProps = {
     text?: string;
     position: Position;
+    doesHaveMinimumWidth?: boolean;
     doesCloseOnInteraction?: boolean;
     icon?: WithPartial<ButtonProps["icon"] & {}, "source" | "placement">;
 } & ComponentProps<HTMLDivElement> &
@@ -22,6 +23,7 @@ export const DropDown: FC<DropDownProps> = ({
     position,
     children,
     className,
+    doesHaveMinimumWidth,
     doesCloseOnInteraction,
     ...props
 }) => {
@@ -120,8 +122,9 @@ export const DropDown: FC<DropDownProps> = ({
             <div
                 className={twJoin(
                     positionClassNames[position],
+                    doesHaveMinimumWidth ? "w-full" : "",
                     isOpen ? "border-2 shadow-lg" : "border-0",
-                    "bg-background-light border-background-dark absolute z-10 grid w-full min-w-max rounded-lg transition-[grid-template-rows_box-shadow] duration-200"
+                    "bg-background-light border-background-dark absolute z-10 grid min-w-max rounded-lg transition-[grid-template-rows_box-shadow] duration-200"
                 )}
             >
                 <div
