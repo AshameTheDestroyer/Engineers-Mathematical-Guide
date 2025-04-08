@@ -69,16 +69,16 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     }
 
     function UpdateThemePaletteVariables(themePalette?: string) {
-        PALETTE_VARIABLES.map((paletteVariable) => {
+        PALETTE_VARIABLES.map((paletteVariable, i) => {
             document.body.style.setProperty(
-                `--color-background-${paletteVariable}`,
+                `--color-background-${isDarkThemed ? PALETTE_VARIABLES.at(-1 * (i + 1)) : paletteVariable}`,
                 themePalette != null
                     ? `var(--color-${themePalette}-${isDarkThemed ? "foreground" : "background"}-${paletteVariable})`
                     : ""
             );
 
             document.body.style.setProperty(
-                `--color-foreground-${paletteVariable}`,
+                `--color-foreground-${isDarkThemed ? PALETTE_VARIABLES.at(-1 * (i + 1)) : paletteVariable}`,
                 themePalette != null
                     ? `var(--color-${themePalette}-${isDarkThemed ? "background" : "foreground"}-${paletteVariable})`
                     : ""
