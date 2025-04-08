@@ -1,4 +1,4 @@
-import { useThemeMode } from "@/hooks/useThemeMode";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import {
     SetInLocalStorage,
     GetFromLocalStorage,
@@ -7,6 +7,7 @@ import {
     FC,
     useState,
     useEffect,
+    useContext,
     createContext,
     PropsWithChildren,
 } from "react";
@@ -18,6 +19,8 @@ export type ThemePaletteStateProps = {
 };
 
 export const ThemePaletteContext = createContext<ThemePaletteStateProps>(null!);
+
+export const useThemePalette = () => useContext(ThemePaletteContext);
 
 const PALETTE_VARIABLES = [
     "light",
