@@ -92,35 +92,6 @@ export const PalettesPage: FC = () => {
                 }}
             />
             <PaletteCollection
-                title="Amber"
-                classNames={{
-                    background: [
-                        "bg-amber-background-light",
-                        "bg-amber-background-light-hover",
-                        "bg-amber-background-light-active",
-                        "bg-amber-background-normal",
-                        "bg-amber-background-normal-hover",
-                        "bg-amber-background-normal-active",
-                        "bg-amber-background-dark",
-                        "bg-amber-background-dark-hover",
-                        "bg-amber-background-dark-active",
-                        "bg-amber-background-darker",
-                    ],
-                    foreground: [
-                        "bg-amber-foreground-light",
-                        "bg-amber-foreground-light-hover",
-                        "bg-amber-foreground-light-active",
-                        "bg-amber-foreground-normal",
-                        "bg-amber-foreground-normal-hover",
-                        "bg-amber-foreground-normal-active",
-                        "bg-amber-foreground-dark",
-                        "bg-amber-foreground-dark-hover",
-                        "bg-amber-foreground-dark-active",
-                        "bg-amber-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
                 title="Moss"
                 classNames={{
                     background: [
@@ -233,35 +204,6 @@ export const PalettesPage: FC = () => {
                         "bg-crimson-foreground-dark-hover",
                         "bg-crimson-foreground-dark-active",
                         "bg-crimson-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
-                title="Slate"
-                classNames={{
-                    background: [
-                        "bg-slate-background-light",
-                        "bg-slate-background-light-hover",
-                        "bg-slate-background-light-active",
-                        "bg-slate-background-normal",
-                        "bg-slate-background-normal-hover",
-                        "bg-slate-background-normal-active",
-                        "bg-slate-background-dark",
-                        "bg-slate-background-dark-hover",
-                        "bg-slate-background-dark-active",
-                        "bg-slate-background-darker",
-                    ],
-                    foreground: [
-                        "bg-slate-foreground-light",
-                        "bg-slate-foreground-light-hover",
-                        "bg-slate-foreground-light-active",
-                        "bg-slate-foreground-normal",
-                        "bg-slate-foreground-normal-hover",
-                        "bg-slate-foreground-normal-active",
-                        "bg-slate-foreground-dark",
-                        "bg-slate-foreground-dark-hover",
-                        "bg-slate-foreground-dark-active",
-                        "bg-slate-foreground-darker",
                     ],
                 }}
             />
