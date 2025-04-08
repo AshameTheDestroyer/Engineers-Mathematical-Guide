@@ -5,6 +5,35 @@ export const PalettesPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
             <PaletteCollection
+                title="Azure"
+                classNames={{
+                    background: [
+                        "bg-azure-background-light",
+                        "bg-azure-background-light-hover",
+                        "bg-azure-background-light-active",
+                        "bg-azure-background-normal",
+                        "bg-azure-background-normal-hover",
+                        "bg-azure-background-normal-active",
+                        "bg-azure-background-dark",
+                        "bg-azure-background-dark-hover",
+                        "bg-azure-background-dark-active",
+                        "bg-azure-background-darker",
+                    ],
+                    foreground: [
+                        "bg-azure-foreground-light",
+                        "bg-azure-foreground-light-hover",
+                        "bg-azure-foreground-light-active",
+                        "bg-azure-foreground-normal",
+                        "bg-azure-foreground-normal-hover",
+                        "bg-azure-foreground-normal-active",
+                        "bg-azure-foreground-dark",
+                        "bg-azure-foreground-dark-hover",
+                        "bg-azure-foreground-dark-active",
+                        "bg-azure-foreground-darker",
+                    ],
+                }}
+            />
+            <PaletteCollection
                 title="Caramel"
                 classNames={{
                     background: [
@@ -34,31 +63,89 @@ export const PalettesPage: FC = () => {
                 }}
             />
             <PaletteCollection
-                title="Sakura"
+                title="Crimson"
                 classNames={{
                     background: [
-                        "bg-sakura-background-light",
-                        "bg-sakura-background-light-hover",
-                        "bg-sakura-background-light-active",
-                        "bg-sakura-background-normal",
-                        "bg-sakura-background-normal-hover",
-                        "bg-sakura-background-normal-active",
-                        "bg-sakura-background-dark",
-                        "bg-sakura-background-dark-hover",
-                        "bg-sakura-background-dark-active",
-                        "bg-sakura-background-darker",
+                        "bg-crimson-background-light",
+                        "bg-crimson-background-light-hover",
+                        "bg-crimson-background-light-active",
+                        "bg-crimson-background-normal",
+                        "bg-crimson-background-normal-hover",
+                        "bg-crimson-background-normal-active",
+                        "bg-crimson-background-dark",
+                        "bg-crimson-background-dark-hover",
+                        "bg-crimson-background-dark-active",
+                        "bg-crimson-background-darker",
                     ],
                     foreground: [
-                        "bg-sakura-foreground-light",
-                        "bg-sakura-foreground-light-hover",
-                        "bg-sakura-foreground-light-active",
-                        "bg-sakura-foreground-normal",
-                        "bg-sakura-foreground-normal-hover",
-                        "bg-sakura-foreground-normal-active",
-                        "bg-sakura-foreground-dark",
-                        "bg-sakura-foreground-dark-hover",
-                        "bg-sakura-foreground-dark-active",
-                        "bg-sakura-foreground-darker",
+                        "bg-crimson-foreground-light",
+                        "bg-crimson-foreground-light-hover",
+                        "bg-crimson-foreground-light-active",
+                        "bg-crimson-foreground-normal",
+                        "bg-crimson-foreground-normal-hover",
+                        "bg-crimson-foreground-normal-active",
+                        "bg-crimson-foreground-dark",
+                        "bg-crimson-foreground-dark-hover",
+                        "bg-crimson-foreground-dark-active",
+                        "bg-crimson-foreground-darker",
+                    ],
+                }}
+            />
+            <PaletteCollection
+                title="Dusk"
+                classNames={{
+                    background: [
+                        "bg-dusk-background-light",
+                        "bg-dusk-background-light-hover",
+                        "bg-dusk-background-light-active",
+                        "bg-dusk-background-normal",
+                        "bg-dusk-background-normal-hover",
+                        "bg-dusk-background-normal-active",
+                        "bg-dusk-background-dark",
+                        "bg-dusk-background-dark-hover",
+                        "bg-dusk-background-dark-active",
+                        "bg-dusk-background-darker",
+                    ],
+                    foreground: [
+                        "bg-dusk-foreground-light",
+                        "bg-dusk-foreground-light-hover",
+                        "bg-dusk-foreground-light-active",
+                        "bg-dusk-foreground-normal",
+                        "bg-dusk-foreground-normal-hover",
+                        "bg-dusk-foreground-normal-active",
+                        "bg-dusk-foreground-dark",
+                        "bg-dusk-foreground-dark-hover",
+                        "bg-dusk-foreground-dark-active",
+                        "bg-dusk-foreground-darker",
+                    ],
+                }}
+            />
+            <PaletteCollection
+                title="Honey"
+                classNames={{
+                    background: [
+                        "bg-honey-background-light",
+                        "bg-honey-background-light-hover",
+                        "bg-honey-background-light-active",
+                        "bg-honey-background-normal",
+                        "bg-honey-background-normal-hover",
+                        "bg-honey-background-normal-active",
+                        "bg-honey-background-dark",
+                        "bg-honey-background-dark-hover",
+                        "bg-honey-background-dark-active",
+                        "bg-honey-background-darker",
+                    ],
+                    foreground: [
+                        "bg-honey-foreground-light",
+                        "bg-honey-foreground-light-hover",
+                        "bg-honey-foreground-light-active",
+                        "bg-honey-foreground-normal",
+                        "bg-honey-foreground-normal-hover",
+                        "bg-honey-foreground-normal-active",
+                        "bg-honey-foreground-dark",
+                        "bg-honey-foreground-dark-hover",
+                        "bg-honey-foreground-dark-active",
+                        "bg-honey-foreground-darker",
                     ],
                 }}
             />
@@ -121,93 +208,6 @@ export const PalettesPage: FC = () => {
                 }}
             />
             <PaletteCollection
-                title="Dusk"
-                classNames={{
-                    background: [
-                        "bg-dusk-background-light",
-                        "bg-dusk-background-light-hover",
-                        "bg-dusk-background-light-active",
-                        "bg-dusk-background-normal",
-                        "bg-dusk-background-normal-hover",
-                        "bg-dusk-background-normal-active",
-                        "bg-dusk-background-dark",
-                        "bg-dusk-background-dark-hover",
-                        "bg-dusk-background-dark-active",
-                        "bg-dusk-background-darker",
-                    ],
-                    foreground: [
-                        "bg-dusk-foreground-light",
-                        "bg-dusk-foreground-light-hover",
-                        "bg-dusk-foreground-light-active",
-                        "bg-dusk-foreground-normal",
-                        "bg-dusk-foreground-normal-hover",
-                        "bg-dusk-foreground-normal-active",
-                        "bg-dusk-foreground-dark",
-                        "bg-dusk-foreground-dark-hover",
-                        "bg-dusk-foreground-dark-active",
-                        "bg-dusk-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
-                title="Azure"
-                classNames={{
-                    background: [
-                        "bg-azure-background-light",
-                        "bg-azure-background-light-hover",
-                        "bg-azure-background-light-active",
-                        "bg-azure-background-normal",
-                        "bg-azure-background-normal-hover",
-                        "bg-azure-background-normal-active",
-                        "bg-azure-background-dark",
-                        "bg-azure-background-dark-hover",
-                        "bg-azure-background-dark-active",
-                        "bg-azure-background-darker",
-                    ],
-                    foreground: [
-                        "bg-azure-foreground-light",
-                        "bg-azure-foreground-light-hover",
-                        "bg-azure-foreground-light-active",
-                        "bg-azure-foreground-normal",
-                        "bg-azure-foreground-normal-hover",
-                        "bg-azure-foreground-normal-active",
-                        "bg-azure-foreground-dark",
-                        "bg-azure-foreground-dark-hover",
-                        "bg-azure-foreground-dark-active",
-                        "bg-azure-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
-                title="Crimson"
-                classNames={{
-                    background: [
-                        "bg-crimson-background-light",
-                        "bg-crimson-background-light-hover",
-                        "bg-crimson-background-light-active",
-                        "bg-crimson-background-normal",
-                        "bg-crimson-background-normal-hover",
-                        "bg-crimson-background-normal-active",
-                        "bg-crimson-background-dark",
-                        "bg-crimson-background-dark-hover",
-                        "bg-crimson-background-dark-active",
-                        "bg-crimson-background-darker",
-                    ],
-                    foreground: [
-                        "bg-crimson-foreground-light",
-                        "bg-crimson-foreground-light-hover",
-                        "bg-crimson-foreground-light-active",
-                        "bg-crimson-foreground-normal",
-                        "bg-crimson-foreground-normal-hover",
-                        "bg-crimson-foreground-normal-active",
-                        "bg-crimson-foreground-dark",
-                        "bg-crimson-foreground-dark-hover",
-                        "bg-crimson-foreground-dark-active",
-                        "bg-crimson-foreground-darker",
-                    ],
-                }}
-            />
-            <PaletteCollection
                 title="Pearl"
                 classNames={{
                     background: [
@@ -237,31 +237,31 @@ export const PalettesPage: FC = () => {
                 }}
             />
             <PaletteCollection
-                title="Honey"
+                title="Sakura"
                 classNames={{
                     background: [
-                        "bg-honey-background-light",
-                        "bg-honey-background-light-hover",
-                        "bg-honey-background-light-active",
-                        "bg-honey-background-normal",
-                        "bg-honey-background-normal-hover",
-                        "bg-honey-background-normal-active",
-                        "bg-honey-background-dark",
-                        "bg-honey-background-dark-hover",
-                        "bg-honey-background-dark-active",
-                        "bg-honey-background-darker",
+                        "bg-sakura-background-light",
+                        "bg-sakura-background-light-hover",
+                        "bg-sakura-background-light-active",
+                        "bg-sakura-background-normal",
+                        "bg-sakura-background-normal-hover",
+                        "bg-sakura-background-normal-active",
+                        "bg-sakura-background-dark",
+                        "bg-sakura-background-dark-hover",
+                        "bg-sakura-background-dark-active",
+                        "bg-sakura-background-darker",
                     ],
                     foreground: [
-                        "bg-honey-foreground-light",
-                        "bg-honey-foreground-light-hover",
-                        "bg-honey-foreground-light-active",
-                        "bg-honey-foreground-normal",
-                        "bg-honey-foreground-normal-hover",
-                        "bg-honey-foreground-normal-active",
-                        "bg-honey-foreground-dark",
-                        "bg-honey-foreground-dark-hover",
-                        "bg-honey-foreground-dark-active",
-                        "bg-honey-foreground-darker",
+                        "bg-sakura-foreground-light",
+                        "bg-sakura-foreground-light-hover",
+                        "bg-sakura-foreground-light-active",
+                        "bg-sakura-foreground-normal",
+                        "bg-sakura-foreground-normal-hover",
+                        "bg-sakura-foreground-normal-active",
+                        "bg-sakura-foreground-dark",
+                        "bg-sakura-foreground-dark-hover",
+                        "bg-sakura-foreground-dark-active",
+                        "bg-sakura-foreground-darker",
                     ],
                 }}
             />
