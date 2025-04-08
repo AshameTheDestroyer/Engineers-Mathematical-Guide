@@ -3,6 +3,7 @@ import { FC, useState, createContext, PropsWithChildren } from "react";
 
 export type ThemePaletteStateProps = {
     themePalette?: string;
+    themePalettes: Array<string>;
     SetThemePalette: (themePalette?: string) => void;
 };
 
@@ -37,12 +38,16 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     children,
 }) => {
     const [state, setState] = useState<ThemePaletteStateProps>({
-        themePalette: GetFromLocalStorage("theme-palette"),
         SetThemePalette,
+        themePalettes: GetThemePalettes(),
+        themePalette: GetFromLocalStorage("theme-palette"),
     });
 
     function SetThemePalette(themePalette?: string) {
-        setState((state) => ({ ...state, themePalette }));
+        setState((state) => ({
+            ...state,
+            themePalette: themePalette == "default" ? undefined : themePalette,
+        }));
 
         PALETTE_VARIABLES.map((paletteVariable) =>
             document.body.style.setProperty(
@@ -50,6 +55,21 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
                 themePalette != null
                     ? `var(--color-${themePalette}-${paletteVariable})`
                     : ""
+            )
+        );
+    }
+
+    function GetThemePalettes(): Array<string> {
+        const root = document.querySelector(":root") as HTMLElement;
+        const styles = [...root.computedStyleMap().keys()];
+        const paletteRegex = /--color-(.*?)-background/;
+
+        return Array.from(
+            new Set(
+                styles
+                    .filter((style) => paletteRegex.test(style))
+                    .map((palette) => palette.match(paletteRegex)?.[1])
+                    .filter((palette) => palette != null)
             )
         );
     }

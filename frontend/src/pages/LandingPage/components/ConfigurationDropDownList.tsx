@@ -1,8 +1,9 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/Button/Button";
 import { DropDown } from "@/components/DropDown/DropDown";
 import { DropDownList } from "@/components/DropDownList/DropDownList";
+import { ThemePaletteContext } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
 
 import cog_icon from "@icons/cog.svg";
 import sun_icon from "@icons/sun.svg";
@@ -11,6 +12,8 @@ import monitor_icon from "@icons/monitor.svg";
 
 export const ConfigurationDropDownList: FC = () => {
     const { themeMode, SetThemeMode } = useTheme();
+    const { themePalette, themePalettes, SetThemePalette } =
+        useContext(ThemePaletteContext);
 
     return (
         <DropDownList
@@ -55,9 +58,20 @@ export const ConfigurationDropDownList: FC = () => {
                 position="left-start"
                 icon={{ placement: "left", className: "-rotate-90" }}
             >
-                <Button>Default</Button>
-                <Button>Sakura</Button>
-                <Button>Moss</Button>
+                {themePalettes.map((_themePalette) => (
+                    <Button
+                        variant={
+                            _themePalette == themePalette ||
+                            (_themePalette == "default" &&
+                                themePalette == undefined)
+                                ? "primary"
+                                : "default"
+                        }
+                        onClick={(_e) => SetThemePalette(_themePalette)}
+                    >
+                        {_themePalette.toTitleCase()}
+                    </Button>
+                ))}
             </DropDown>
         </DropDownList>
     );
