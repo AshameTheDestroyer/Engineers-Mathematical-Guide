@@ -1,4 +1,4 @@
-import { useThemeMode } from "./useThemeMode";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
 export const useShadow = (colour?: string) => {
     const { isDarkThemed } = useThemeMode();
