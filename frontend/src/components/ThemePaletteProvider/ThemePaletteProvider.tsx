@@ -1,5 +1,15 @@
-import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
-import { FC, useState, createContext, PropsWithChildren } from "react";
+import { useTheme } from "@/hooks/useTheme";
+import {
+    SetInLocalStorage,
+    GetFromLocalStorage,
+} from "@/functions/HandleLocalStorage";
+import {
+    FC,
+    useState,
+    useEffect,
+    createContext,
+    PropsWithChildren,
+} from "react";
 
 export type ThemePaletteStateProps = {
     themePalette?: string;
@@ -10,26 +20,16 @@ export type ThemePaletteStateProps = {
 export const ThemePaletteContext = createContext<ThemePaletteStateProps>(null!);
 
 const PALETTE_VARIABLES = [
-    "background-light",
-    "background-light-hover",
-    "background-light-active",
-    "background-normal",
-    "background-normal-hover",
-    "background-normal-active",
-    "background-dark",
-    "background-dark-hover",
-    "background-dark-active",
-    "background-darker",
-    "foreground-light",
-    "foreground-light-hover",
-    "foreground-light-active",
-    "foreground-normal",
-    "foreground-normal-hover",
-    "foreground-normal-active",
-    "foreground-dark",
-    "foreground-dark-hover",
-    "foreground-dark-active",
-    "foreground-darker",
+    "light",
+    "light-hover",
+    "light-active",
+    "normal",
+    "normal-hover",
+    "normal-active",
+    "dark",
+    "dark-hover",
+    "dark-active",
+    "darker",
 ];
 
 export type ThemePaletteProviderProps = PropsWithChildren;
@@ -37,26 +37,20 @@ export type ThemePaletteProviderProps = PropsWithChildren;
 export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     children,
 }) => {
+    const { isDarkThemed } = useTheme();
     const [state, setState] = useState<ThemePaletteStateProps>({
         SetThemePalette,
         themePalettes: GetThemePalettes(),
         themePalette: GetFromLocalStorage("theme-palette"),
     });
 
-    function SetThemePalette(themePalette?: string) {
-        setState((state) => ({
-            ...state,
-            themePalette: themePalette == "default" ? undefined : themePalette,
-        }));
+    useEffect(() => {
+        UpdateThemePaletteVariables(state.themePalette);
+    }, [isDarkThemed, state.themePalette]);
 
-        PALETTE_VARIABLES.map((paletteVariable) =>
-            document.body.style.setProperty(
-                `--color-${paletteVariable}`,
-                themePalette != null
-                    ? `var(--color-${themePalette}-${paletteVariable})`
-                    : ""
-            )
-        );
+    function SetThemePalette(themePalette?: string) {
+        SetInLocalStorage("theme-palette", themePalette);
+        setState((state) => ({ ...state, themePalette }));
     }
 
     function GetThemePalettes(): Array<string> {
@@ -72,6 +66,24 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
                     .filter((palette) => palette != null)
             )
         );
+    }
+
+    function UpdateThemePaletteVariables(themePalette?: string) {
+        PALETTE_VARIABLES.map((paletteVariable) => {
+            document.body.style.setProperty(
+                `--color-background-${paletteVariable}`,
+                themePalette != null
+                    ? `var(--color-${themePalette}-${isDarkThemed ? "foreground" : "background"}-${paletteVariable})`
+                    : ""
+            );
+
+            document.body.style.setProperty(
+                `--color-foreground-${paletteVariable}`,
+                themePalette != null
+                    ? `var(--color-${themePalette}-${isDarkThemed ? "background" : "foreground"}-${paletteVariable})`
+                    : ""
+            );
+        });
     }
 
     return (
