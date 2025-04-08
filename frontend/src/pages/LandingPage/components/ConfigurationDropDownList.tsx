@@ -10,7 +10,7 @@ import moon_icon from "@icons/moon.svg";
 import monitor_icon from "@icons/monitor.svg";
 
 export const ConfigurationDropDownList: FC = () => {
-    const { SetThemeMode } = useTheme();
+    const { themeMode, SetThemeMode } = useTheme();
 
     return (
         <DropDownList
@@ -27,6 +27,7 @@ export const ConfigurationDropDownList: FC = () => {
                 <Button
                     doesTextGrow
                     icon={{ placement: "left", source: sun_icon }}
+                    variant={themeMode == "light" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("light")}
                 >
                     Light
@@ -34,6 +35,7 @@ export const ConfigurationDropDownList: FC = () => {
                 <Button
                     doesTextGrow
                     icon={{ placement: "left", source: moon_icon }}
+                    variant={themeMode == "dark" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("dark")}
                 >
                     Dark
@@ -41,6 +43,7 @@ export const ConfigurationDropDownList: FC = () => {
                 <Button
                     doesTextGrow
                     icon={{ placement: "left", source: monitor_icon }}
+                    variant={themeMode == "system" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("system")}
                 >
                     System
