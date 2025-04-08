@@ -62,9 +62,7 @@ export const ConfigurationDropDownList: FC = () => {
                     <Button
                         key={i}
                         variant={
-                            _themePalette == themePalette ||
-                            (_themePalette == "default" &&
-                                themePalette == undefined)
+                            _themePalette == themePalette
                                 ? "primary"
                                 : "default"
                         }
