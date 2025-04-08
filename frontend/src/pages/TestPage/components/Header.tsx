@@ -3,7 +3,7 @@ import { Logo } from "@/components/Logo/Logo";
 import { Header as Header_ } from "@/components/Header/Header";
 import { LANDING_PAGE_ROUTES } from "@/routes/TestPage.routes";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
-import { ThemeToggle } from "@/components/ThemeModeToggle/ThemeModeToggle";
+import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export const Header: FC = () => {
     return (
@@ -18,7 +18,10 @@ export const Header: FC = () => {
         >
             <Logo />
             <NavigationBar className="grow" routes={LANDING_PAGE_ROUTES} />
-            <ThemeToggle variant="primary" />
+            <ConfigurationDropDownList
+                variant="primary"
+                position="bottom-end"
+            />
         </Header_>
     );
 };
