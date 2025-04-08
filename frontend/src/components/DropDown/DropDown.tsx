@@ -27,9 +27,9 @@ export const DropDown: FC<DropDownProps> = ({
     doesCloseOnInteraction,
     ...props
 }) => {
-    const containerReference = useRef<HTMLDivElement>(null);
-
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
+    const containerReference = useRef<HTMLDivElement>(null);
     const dropDownElementRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -96,7 +96,7 @@ export const DropDown: FC<DropDownProps> = ({
             id={id}
             data-is-open={isOpen}
             ref={dropDownElementRef}
-            data-has-custom-icon={icon != null}
+            data-has-custom-icon={icon?.source != null}
             className={twMerge("drop-down relative flex", className)}
         >
             <Button_

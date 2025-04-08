@@ -43,10 +43,7 @@ export const Header: FC = () => {
                 >
                     Login
                 </Button>
-                <ConfigurationDropDownList
-                    variant="secondary"
-                    position="bottom-end"
-                />
+                <ConfigurationDropDownList variant="secondary" />
             </ButtonBox>
         </Header_>
     );

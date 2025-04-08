@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Collection } from "./Collection";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import cog_icon from "@icons/cog.svg";
 import user_icon from "@icons/user.svg";
@@ -9,6 +10,8 @@ import home_icon from "@icons/home.svg";
 import arrow_icon from "@icons/arrow.svg";
 
 export const DropDownCollection: FC = () => {
+    const { direction } = useLocalization();
+
     const cogIcon: DropDownProps["icon"] = {
         source: cog_icon,
         placement: "right",
@@ -301,7 +304,11 @@ export const DropDownCollection: FC = () => {
             <Collection title="Positioned" inner className="[&>div]:flex-col">
                 <ButtonBox className="grid grid-cols-5 grid-rows-5">
                     <DropDown
-                        className="[grid-column:2] [grid-row:1]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:2] [grid-row:1]"
+                                : "[grid-column:4] [grid-row:1]"
+                        }
                         variant="default"
                         position="top-start"
                         icon={{ ...arrowIcon, className: "-rotate-30" }}
@@ -317,7 +324,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:4] [grid-row:1]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:4] [grid-row:1]"
+                                : "[grid-column:2] [grid-row:1]"
+                        }
                         variant="default"
                         position="top-end"
                         icon={{ ...arrowIcon, className: "rotate-30" }}
@@ -325,7 +336,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:5] [grid-row:2]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:5] [grid-row:2]"
+                                : "[grid-column:1] [grid-row:2]"
+                        }
                         variant="default"
                         position="right-start"
                         icon={{ ...arrowIcon, className: "rotate-60" }}
@@ -333,7 +348,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:5] [grid-row:3]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:5] [grid-row:3]"
+                                : "[grid-column:1] [grid-row:3]"
+                        }
                         variant="default"
                         position="right-center"
                         icon={{ ...arrowIcon, className: "rotate-90" }}
@@ -341,7 +360,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:5] [grid-row:4]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:5] [grid-row:4]"
+                                : "[grid-column:1] [grid-row:4]"
+                        }
                         variant="default"
                         position="right-end"
                         icon={{ ...arrowIcon, className: "rotate-120" }}
@@ -349,7 +372,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:4] [grid-row:5]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:4] [grid-row:5]"
+                                : "[grid-column:2] [grid-row:5]"
+                        }
                         variant="default"
                         position="bottom-start"
                         icon={{ ...arrowIcon, className: "rotate-150" }}
@@ -365,7 +392,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:2] [grid-row:5]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:2] [grid-row:5]"
+                                : "[grid-column:4] [grid-row:5]"
+                        }
                         variant="default"
                         position="bottom-end"
                         icon={{ ...arrowIcon, className: "-rotate-150" }}
@@ -373,7 +404,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:1] [grid-row:4]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:1] [grid-row:4]"
+                                : "[grid-column:5] [grid-row:4]"
+                        }
                         variant="default"
                         position="left-start"
                         icon={{ ...arrowIcon, className: "-rotate-120" }}
@@ -381,7 +416,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:1] [grid-row:3]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:1] [grid-row:3]"
+                                : "[grid-column:5] [grid-row:3]"
+                        }
                         variant="default"
                         position="left-center"
                         icon={{ ...arrowIcon, className: "-rotate-90" }}
@@ -389,7 +428,11 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        className="[grid-column:1] [grid-row:2]"
+                        className={
+                            direction == "ltr"
+                                ? "[grid-column:1] [grid-row:2]"
+                                : "[grid-column:5] [grid-row:2]"
+                        }
                         variant="default"
                         position="left-end"
                         icon={{ ...arrowIcon, className: "-rotate-60" }}
