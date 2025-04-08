@@ -3,64 +3,41 @@ import { Button } from "@components/Button/Button";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
 
-// export const MainContent: FC = () => {
-//     return (
-//         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
-//             <section className="w-150 flex flex-col gap-5">
-//                 <h2 className="text-primary-normal text-3xl font-bold">
-//                     Engineers' Mathematical Guide
-//                 </h2>
-//                 <h4 className="text-xl">Learn By Doing!</h4>
-//                 <p>
-//                     Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-//                     Dicta, tempora reprehenderit magni, enim eum possimus, fugit
-//                     sunt maxime amet error vel. Placeat, deserunt? Perspiciatis
-//                     sit dolorem dicta obcaecati, numquam ad.
-//                 </p>
-//                 <div className="flex place-items-stretch gap-4">
-//                     <Button className="grow-[0.6]" link="odwkaodk">
-//                         Learn More
-//                     </Button>
-//                     <Button
-//                         className="grow"
-//                         variant="primary"
-//                         icon={{
-//                             placement: "right",
-//                             source: arrow_icon,
-//                             className: "rotate-90",
-//                         }}
-//                     >
-//                         Start Your Journey Now
-//                     </Button>
-//                 </div>
-//             </section>
-//             <img src={Icon} alt="pi-image" className="w-100" />
-//         </div>
-//     );
-// };
-
 export const MainContent: FC = () => {
+    const { language, direction } = useLocalization();
+
+    const title =
+        language == "ar"
+            ? "دَليلُ المُهَنْدِسينَ في الرِّياضِيّات"
+            : "Engineers' Mathematical Guide";
+    const subtitle =
+        language == "ar" ? "تَعَلَّمْ عَنْ طَريقِ الفِعْل" : "Learn By Doing!";
+    const placeholderText =
+        language == "ar"
+            ? "كَلَامٌ عَرَبِيٌّ كَثِيرٌ لَا مَعْنًى مِنْهُ وَلَا مَغْزًى، كُلُّ الْمَطْلُوبِ هُنَا هُوَ فَقَطْ مَلْءُ الْمُحْتَوَى بِجُمَلٍ كَبِيرَةٍ بِحَيْثُ يُعْطَى لَنَا مَثَالٌ عَمَّا يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا كَلَامٌ ذُو قِيمَةٍ."
+            : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, tempora reprehenderit magni, enim eum possimus, fugit sunt maxime amet error vel. Placeat, deserunt? Perspiciatis sit dolorem dicta obcaecati, numquam ad.";
+    const readMoreText = language == "ar" ? "إقرأ المزيد" : "Learn More";
+    const startJourneyText =
+        language == "ar" ? "إبدأ رحلتك الآن" : "Start Your Journey Now";
+
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
             <section className="w-150 flex flex-col gap-5">
                 <h2 className="text-primary-normal text-3xl font-bold">
-                    دَليلُ المُهَنْدِسينَ في الرِّياضِيّات
+                    {title}
                 </h2>
-                <h4 className="text-xl">تَعَلَّمْ عَنْ طَريقِ الفِعْل</h4>
-                <p>
-                    كَلَامٌ عَرَبِيٌّ كَثِيرٌ لَا مَعْنًى مِنْهُ وَلَا مَغْزًى،
-                    كُلُّ الْمَطْلُوبِ هُنَا هُوَ فَقَطْ مَلْءُ الْمُحْتَوَى
-                    بِجُمَلٍ كَبِيرَةٍ بِحَيْثُ يُعْطَى لَنَا مَثَالٌ عَمَّا
-                    يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا
-                    كَلَامٌ ذُو قِيمَةٍ.
-                </p>
-                <ButtonBox direction="row">
+                <h3 className="text-xl">{subtitle}</h3>
+                <p>{placeholderText}</p>
+                <ButtonBox
+                    direction={direction == "ltr" ? "row" : "reverse-row"}
+                >
                     <Button className="grow-[0.6]" link="/learn-more">
-                        إقرأ المزيد
+                        {readMoreText}
                     </Button>
                     <Button
                         className="grow"
@@ -72,7 +49,7 @@ export const MainContent: FC = () => {
                             className: "rotate-90",
                         }}
                     >
-                        إبدأ رحلتك الآن
+                        {startJourneyText}
                     </Button>
                 </ButtonBox>
             </section>
