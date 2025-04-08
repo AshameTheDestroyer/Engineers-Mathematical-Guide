@@ -1,7 +1,7 @@
 import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { Collection, CollectionProps } from "./Collection";
 import { TypographyDisplay, TypographyDisplayProps } from "./TypographyDisplay";
-import { twMerge } from "tailwind-merge";
 
 export type TypographyCollectionProps = TypographyDisplayProps &
     Omit<CollectionProps, "children"> & {
