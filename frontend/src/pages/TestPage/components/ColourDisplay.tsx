@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeMode } from "@/hooks/useThemeMode";
 import { useShadow } from "@/hooks/useShadow";
 import { RGBToHex } from "@/functions/RGBToHex";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
@@ -9,7 +9,7 @@ import { IsDarkColour } from "@/functions/CalculateColourLuminance";
 export type ColourDisplayProps = ChildlessComponentProps;
 
 export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
-    const { isDarkThemed } = useTheme();
+    const { isDarkThemed } = useThemeMode();
     const divReference = useRef<HTMLButtonElement>(null);
 
     const [colourRGB, setColourRGB] = useState<RGB>();

@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeMode } from "@/hooks/useThemeMode";
 import {
     SetInLocalStorage,
     GetFromLocalStorage,
@@ -37,7 +37,7 @@ export type ThemePaletteProviderProps = PropsWithChildren;
 export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     children,
 }) => {
-    const { isDarkThemed } = useTheme();
+    const { isDarkThemed } = useThemeMode();
     const [state, setState] = useState<ThemePaletteStateProps>({
         SetThemePalette,
         themePalettes: GetThemePalettes(),
