@@ -1,8 +1,8 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { useThemeMode } from "@/hooks/useThemeMode";
 import { Button } from "@/components/Button/Button";
 import { DropDown } from "@/components/DropDown/DropDown";
-import { ThemePaletteContext } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
+import { useThemePalette } from "@/hooks/useThemePalette";
 import {
     DropDownList,
     DropDownListProps,
@@ -26,8 +26,7 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
     ...props
 }) => {
     const { themeMode, SetThemeMode } = useThemeMode();
-    const { themePalette, themePalettes, SetThemePalette } =
-        useContext(ThemePaletteContext);
+    const { themePalette, themePalettes, SetThemePalette } = useThemePalette();
 
     return (
         <DropDownList

@@ -1,9 +1,9 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "@/components/Button/Button";
 import { ColourCollection } from "./ColourCollection";
+import { useThemePalette } from "@/hooks/useThemePalette";
 import { Collection, CollectionProps } from "./Collection";
-import { ThemePaletteContext } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
 
 export type PaletteCollectionProps = Omit<CollectionProps, "children"> & {
     classNames: {
@@ -19,7 +19,7 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
     className,
     classNames,
 }) => {
-    const { SetThemePalette } = useContext(ThemePaletteContext);
+    const { SetThemePalette } = useThemePalette();
 
     return (
         <Collection
