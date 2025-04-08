@@ -169,16 +169,16 @@ body {
     --color-lagoon-background-dark-active: #528b8b;
     --color-lagoon-background-darker: #387373;
 
-    --color-lagoon-foreground-light: #001a1a;
-    --color-lagoon-foreground-light-hover: #002626;
-    --color-lagoon-foreground-light-active: #003333;
-    --color-lagoon-foreground-normal: #000f0f;
-    --color-lagoon-foreground-normal-hover: #001a1a;
-    --color-lagoon-foreground-normal-active: #002626;
-    --color-lagoon-foreground-dark: #000808;
-    --color-lagoon-foreground-dark-hover: #000f0f;
+    --color-lagoon-foreground-light: #000000;
+    --color-lagoon-foreground-light-hover: #000101;
+    --color-lagoon-foreground-light-active: #000404;
+    --color-lagoon-foreground-normal: #000707;
+    --color-lagoon-foreground-normal-hover: #000a0a;
+    --color-lagoon-foreground-normal-active: #000f0f;
+    --color-lagoon-foreground-dark: #001010;
+    --color-lagoon-foreground-dark-hover: #001515;
     --color-lagoon-foreground-dark-active: #001a1a;
-    --color-lagoon-foreground-darker: #000404;
+    --color-lagoon-foreground-darker: #002020;
 
     --color-moss-background-light: #e6f5e6;
     --color-moss-background-light-hover: #d6e8d6;
@@ -191,16 +191,16 @@ body {
     --color-moss-background-dark-active: #528b52;
     --color-moss-background-darker: #387338;
 
-    --color-moss-foreground-light: #001a00;
-    --color-moss-foreground-light-hover: #002600;
-    --color-moss-foreground-light-active: #003300;
-    --color-moss-foreground-normal: #000f00;
-    --color-moss-foreground-normal-hover: #001a00;
-    --color-moss-foreground-normal-active: #002600;
-    --color-moss-foreground-dark: #000800;
-    --color-moss-foreground-dark-hover: #000f00;
+    --color-moss-foreground-light: #000000;
+    --color-moss-foreground-light-hover: #000100;
+    --color-moss-foreground-light-active: #000400;
+    --color-moss-foreground-normal: #000700;
+    --color-moss-foreground-normal-hover: #000a00;
+    --color-moss-foreground-normal-active: #000f00;
+    --color-moss-foreground-dark: #001200;
+    --color-moss-foreground-dark-hover: #001500;
     --color-moss-foreground-dark-active: #001a00;
-    --color-moss-foreground-darker: #000400;
+    --color-moss-foreground-darker: #002000;
 
     --color-azure-background-light: #e6f0f8;
     --color-azure-background-light-hover: #d6e0e8;
@@ -213,16 +213,16 @@ body {
     --color-azure-background-dark-active: #52688b;
     --color-azure-background-darker: #384c73;
 
-    --color-azure-foreground-light: #00102a;
-    --color-azure-foreground-light-hover: #001a3a;
-    --color-azure-foreground-light-active: #00264a;
-    --color-azure-foreground-normal: #000a1a;
-    --color-azure-foreground-normal-hover: #00102a;
-    --color-azure-foreground-normal-active: #001a3a;
-    --color-azure-foreground-dark: #000514;
-    --color-azure-foreground-dark-hover: #000a1a;
+    --color-azure-foreground-light: #000000;
+    --color-azure-foreground-light-hover: #000102;
+    --color-azure-foreground-light-active: #000107;
+    --color-azure-foreground-normal: #00020a;
+    --color-azure-foreground-normal-hover: #000410;
+    --color-azure-foreground-normal-active: #00071a;
+    --color-azure-foreground-dark: #000a24;
+    --color-azure-foreground-dark-hover: #000d28;
     --color-azure-foreground-dark-active: #00102a;
-    --color-azure-foreground-darker: #00030a;
+    --color-azure-foreground-darker: #00132d;
 
     --color-pearl-background-light: #f8f8f8;
     --color-pearl-background-light-hover: #e8e8e8;
@@ -235,16 +235,16 @@ body {
     --color-pearl-background-dark-active: #8b8b8b;
     --color-pearl-background-darker: #737373;
 
-    --color-pearl-foreground-light: #0a0a0a;
-    --color-pearl-foreground-light-hover: #141414;
-    --color-pearl-foreground-light-active: #1e1e1e;
-    --color-pearl-foreground-normal: #050505;
-    --color-pearl-foreground-normal-hover: #0a0a0a;
-    --color-pearl-foreground-normal-active: #141414;
-    --color-pearl-foreground-dark: #020202;
-    --color-pearl-foreground-dark-hover: #050505;
-    --color-pearl-foreground-dark-active: #0a0a0a;
-    --color-pearl-foreground-darker: #010101;
+    --color-pearl-foreground-light: #000000;
+    --color-pearl-foreground-light-hover: #030303;
+    --color-pearl-foreground-light-active: #060606;
+    --color-pearl-foreground-normal: #090909;
+    --color-pearl-foreground-normal-hover: #0b0b0b;
+    --color-pearl-foreground-normal-active: #0d0d0d;
+    --color-pearl-foreground-dark: #111111;
+    --color-pearl-foreground-dark-hover: #141414;
+    --color-pearl-foreground-dark-active: #181818;
+    --color-pearl-foreground-darker: #1e1e1e;
 
     --color-honey-background-light: #fff9e6;
     --color-honey-background-light-hover: #f5edd6;
@@ -257,16 +257,16 @@ body {
     --color-honey-background-dark-active: #b59252;
     --color-honey-background-darker: #9a7a38;
 
-    --color-honey-foreground-light: #1a1400;
-    --color-honey-foreground-light-hover: #262000;
-    --color-honey-foreground-light-active: #332c00;
-    --color-honey-foreground-normal: #0f0c00;
-    --color-honey-foreground-normal-hover: #1a1600;
-    --color-honey-foreground-normal-active: #262100;
-    --color-honey-foreground-dark: #080600;
-    --color-honey-foreground-dark-hover: #0f0c00;
-    --color-honey-foreground-dark-active: #1a1400;
-    --color-honey-foreground-darker: #040300;
+    --color-honey-foreground-light: #000000;
+    --color-honey-foreground-light-hover: #010100;
+    --color-honey-foreground-light-active: #010400;
+    --color-honey-foreground-normal: #030800;
+    --color-honey-foreground-normal-hover: #060a00;
+    --color-honey-foreground-normal-active: #090d00;
+    --color-honey-foreground-dark: #0d1000;
+    --color-honey-foreground-dark-hover: #0f1200;
+    --color-honey-foreground-dark-active: #1a1500;
+    --color-honey-foreground-darker: #1f1800;
 
     --color-crimson-background-light: #f8e6e6;
     --color-crimson-background-light-hover: #e8d6d6;
@@ -279,16 +279,16 @@ body {
     --color-crimson-background-dark-active: #8b5252;
     --color-crimson-background-darker: #733838;
 
-    --color-crimson-foreground-light: #1a0000;
-    --color-crimson-foreground-light-hover: #260000;
-    --color-crimson-foreground-light-active: #330000;
-    --color-crimson-foreground-normal: #0f0000;
-    --color-crimson-foreground-normal-hover: #1a0000;
-    --color-crimson-foreground-normal-active: #260000;
-    --color-crimson-foreground-dark: #080000;
-    --color-crimson-foreground-dark-hover: #0f0000;
+    --color-crimson-foreground-light: #000000;
+    --color-crimson-foreground-light-hover: #010000;
+    --color-crimson-foreground-light-active: #040000;
+    --color-crimson-foreground-normal: #070000;
+    --color-crimson-foreground-normal-hover: #0a0000;
+    --color-crimson-foreground-normal-active: #0f0000;
+    --color-crimson-foreground-dark: #120000;
+    --color-crimson-foreground-dark-hover: #150000;
     --color-crimson-foreground-dark-active: #1a0000;
-    --color-crimson-foreground-darker: #040000;
+    --color-crimson-foreground-darker: #200000;
 
     --color-dusk-background-light: #ede6f5;
     --color-dusk-background-light-hover: #ddd6e8;
@@ -301,16 +301,16 @@ body {
     --color-dusk-background-dark-active: #5c528b;
     --color-dusk-background-darker: #443873;
 
-    --color-dusk-foreground-light: #0a001a;
-    --color-dusk-foreground-light-hover: #100026;
-    --color-dusk-foreground-light-active: #180033;
+    --color-dusk-foreground-light: #000000;
+    --color-dusk-foreground-light-hover: #010004;
+    --color-dusk-foreground-light-active: #030008;
     --color-dusk-foreground-normal: #05000f;
-    --color-dusk-foreground-normal-hover: #0a001a;
-    --color-dusk-foreground-normal-active: #100026;
-    --color-dusk-foreground-dark: #030008;
-    --color-dusk-foreground-dark-hover: #05000f;
-    --color-dusk-foreground-dark-active: #0a001a;
-    --color-dusk-foreground-darker: #010004;
+    --color-dusk-foreground-normal-hover: #070018;
+    --color-dusk-foreground-normal-active: #0a0024;
+    --color-dusk-foreground-dark: #100024;
+    --color-dusk-foreground-dark-hover: #130026;
+    --color-dusk-foreground-dark-active: #150030;
+    --color-dusk-foreground-darker: #170030;
 }
 
 body.dark-themed {
