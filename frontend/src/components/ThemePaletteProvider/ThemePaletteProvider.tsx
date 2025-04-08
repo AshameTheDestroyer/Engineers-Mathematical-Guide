@@ -1,11 +1,5 @@
 import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
-import {
-    FC,
-    useState,
-    createContext,
-    PropsWithChildren,
-    useEffect,
-} from "react";
+import { FC, useState, createContext, PropsWithChildren } from "react";
 
 export type ThemePaletteStateProps = {
     themePalette?: string;
@@ -59,12 +53,6 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
             )
         );
     }
-
-    useEffect(() => {
-        // if (initialPalette) {
-        SetThemePalette("lagoon");
-        // }
-    }, []);
 
     return (
         <ThemePaletteContext.Provider value={state}>
