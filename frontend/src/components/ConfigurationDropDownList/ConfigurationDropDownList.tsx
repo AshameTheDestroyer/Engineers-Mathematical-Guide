@@ -2,24 +2,37 @@ import { FC, useContext } from "react";
 import { useTheme } from "@/hooks/useTheme";
 import { Button } from "@/components/Button/Button";
 import { DropDown } from "@/components/DropDown/DropDown";
-import { DropDownList } from "@/components/DropDownList/DropDownList";
 import { ThemePaletteContext } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
+import {
+    DropDownList,
+    DropDownListProps,
+} from "@/components/DropDownList/DropDownList";
 
 import cog_icon from "@icons/cog.svg";
 import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import monitor_icon from "@icons/monitor.svg";
 
-export const ConfigurationDropDownList: FC = () => {
+export type ConfigurationDropDownList = Omit<DropDownListProps, "children">;
+
+export const ConfigurationDropDownList: FC<ConfigurationDropDownList> = ({
+    id,
+    ref,
+    icon,
+    className,
+    ...props
+}) => {
     const { themeMode, SetThemeMode } = useTheme();
     const { themePalette, themePalettes, SetThemePalette } =
         useContext(ThemePaletteContext);
 
     return (
         <DropDownList
-            variant="secondary"
-            position="bottom-end"
-            icon={{ source: cog_icon }}
+            id={id}
+            ref={ref}
+            className={className}
+            icon={icon ?? { source: cog_icon }}
+            {...props}
         >
             <DropDown
                 doesTextGrow
