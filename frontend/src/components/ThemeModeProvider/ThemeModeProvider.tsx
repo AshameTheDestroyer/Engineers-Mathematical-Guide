@@ -35,9 +35,9 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
 
     useEffect(() => {
         SetInLocalStorage("theme-mode", state.themeMode);
-        document.body.classList[state.themeMode == "dark" ? "add" : "remove"](
-            "dark-themed"
-        );
+        document.body.classList[
+            GetIsDarkThemed(state.themeMode) ? "add" : "remove"
+        ]("dark-themed");
     }, [state.themeMode]);
 
     function SetThemeMode(themeMode: ThemeMode) {
@@ -61,7 +61,17 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
     }
 
     function GetIsDarkThemed(themeMode: ThemeMode): boolean {
-        return themeMode == "dark"; // || (themeMode == "system" && GetBrowserTheme() == "dark")
+        return (
+            themeMode == "dark" ||
+            (themeMode == "system" && GetIsSystemDarkThemed())
+        );
+    }
+
+    function GetIsSystemDarkThemed(): boolean {
+        return (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+        );
     }
 
     return (
