@@ -11,23 +11,23 @@ import arrow_icon from "@icons/arrow.svg";
 import locales from "@localization/landing_page.json";
 
 export const MainContent: FC = () => {
-    const { language, direction } = useLocalization();
+    const { language, direction, GetLocale } = useLocalization();
 
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
             <section className="w-150 flex flex-col gap-5">
                 <h2 className="text-primary-normal text-3xl font-bold">
-                    {locales.title[language as "en" | "ar"]}
+                    {GetLocale(locales.title, language)}
                 </h2>
                 <h3 className="text-xl">
-                    {locales.subtitle[language as "en" | "ar"]}
+                    {GetLocale(locales.subtitle, language)}
                 </h3>
-                <p>{locales.body[language as "en" | "ar"]}</p>
+                <p>{GetLocale(locales.body, language)} </p>
                 <ButtonBox
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
                     <Button className="grow-[0.6]" link="/learn-more">
-                        {locales.buttons.learn[language as "en" | "ar"]}
+                        {GetLocale(locales.buttons.learn, language)}
                     </Button>
                     <Button
                         className="grow"
@@ -39,7 +39,7 @@ export const MainContent: FC = () => {
                             className: "rotate-90",
                         }}
                     >
-                        {locales.buttons.start[language as "en" | "ar"]}
+                        {GetLocale(locales.buttons.start, language)}
                     </Button>
                 </ButtonBox>
             </section>
