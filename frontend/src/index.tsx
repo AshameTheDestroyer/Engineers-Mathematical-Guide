@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
@@ -18,6 +19,8 @@ const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import "./extensions";
 import "./global.css";
+
+const queryClient = new QueryClient();
 
 type MainStateProps = {};
 
@@ -103,15 +106,19 @@ const Index: FC = () => {
 
     return (
         <MainContext.Provider value={state}>
-            <LocalizationProvider>
-                <ThemeModeProvider>
-                    <ThemePaletteProvider>
-                        <HashRouter basename={window.location.pathname || ""}>
-                            <IndexRoutes />
-                        </HashRouter>
-                    </ThemePaletteProvider>
-                </ThemeModeProvider>
-            </LocalizationProvider>
+            <QueryClientProvider client={queryClient}>
+                <LocalizationProvider>
+                    <ThemeModeProvider>
+                        <ThemePaletteProvider>
+                            <HashRouter
+                                basename={window.location.pathname || ""}
+                            >
+                                <IndexRoutes />
+                            </HashRouter>
+                        </ThemePaletteProvider>
+                    </ThemeModeProvider>
+                </LocalizationProvider>
+            </QueryClientProvider>
         </MainContext.Provider>
     );
 };
