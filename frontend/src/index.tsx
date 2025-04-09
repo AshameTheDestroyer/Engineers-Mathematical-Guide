@@ -4,6 +4,7 @@ import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { environmentVariables } from "./services/EnvironmentVariables";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
@@ -53,7 +54,7 @@ const IndexRoutes: FC = () => {
                     </LazyPage>
                 }
             />
-            {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
+            {environmentVariables.ENVIRONMENT == "development" && (
                 <Route
                     path="test"
                     element={

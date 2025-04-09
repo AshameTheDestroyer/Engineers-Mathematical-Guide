@@ -1,3 +1,5 @@
+import { environmentVariables } from "@/services/EnvironmentVariables";
+
 const LANDING_PAGE_ROUTES_: Array<Anchor> = [
     {
         text: "Home",
@@ -22,6 +24,6 @@ const LANDING_PAGE_ROUTES_: Array<Anchor> = [
 ];
 
 export const LANDING_PAGE_ROUTES =
-    import.meta.env["VITE_ENVIRONMENT"] != "development"
+    environmentVariables.ENVIRONMENT != "development"
         ? LANDING_PAGE_ROUTES_
         : [...LANDING_PAGE_ROUTES_, { text: "TEST", href: "/test" }];
