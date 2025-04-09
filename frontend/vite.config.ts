@@ -18,6 +18,7 @@ export default defineConfig({
             "@hooks": "/src/hooks",
             "@pages": "/src/pages",
             "@types_": "/src/types",
+            "@localization": "/public/localization",
         },
     },
 });
