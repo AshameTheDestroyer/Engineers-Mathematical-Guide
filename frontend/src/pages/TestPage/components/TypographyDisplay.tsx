@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
-import { useThemeMode } from "@/hooks/useThemeMode";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
 export type TypographyDisplayProps = ChildlessComponentProps & {
     text: string;
