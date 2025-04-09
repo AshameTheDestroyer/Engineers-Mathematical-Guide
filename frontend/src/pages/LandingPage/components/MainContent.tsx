@@ -11,7 +11,7 @@ import arrow_icon from "@icons/arrow.svg";
 import locales from "@localization/landing_page.json";
 
 export const MainContent: FC = () => {
-    const { language, direction, GetLocale } = useLocalization();
+    const { language, GetLocale, direction } = useLocalization();
 
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
