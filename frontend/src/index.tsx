@@ -1,10 +1,10 @@
 import ReactDOM from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
