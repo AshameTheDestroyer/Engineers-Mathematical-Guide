@@ -59,6 +59,9 @@
             "@types_/*": [
                 "src/types/*"
             ],
+            "@localization/*": [
+                "public/localization/*"
+            ],
         }
     },
     "include": [
