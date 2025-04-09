@@ -14,6 +14,7 @@ import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
+import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 
 export type ConfigurationDropDownListProps = WithPartial<
     Omit<DropDownListProps, "children">,
@@ -93,6 +94,11 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 {themePalettes.map((_themePalette, i) => (
                     <Button
                         key={i}
+                        doesTextGrow
+                        icon={{
+                            placement: "left",
+                            source: PALETTE_ICONS[_themePalette],
+                        }}
                         variant={
                             _themePalette == themePalette
                                 ? "primary"
