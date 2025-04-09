@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button } from "@/components/Button/Button";
+import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
 import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
@@ -14,7 +15,6 @@ import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
-import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 
 export type ConfigurationDropDownListProps = WithPartial<
     Omit<DropDownListProps, "children">,
