@@ -1,10 +1,11 @@
 import axios from "axios";
+import { environmentVariables } from "./EnvironmentVariables";
 import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
 
 const HTTPInstance = axios.create({
     timeout: 5000,
+    baseURL: environmentVariables.BACKEND_API_URL,
     headers: { "Content-Type": "application/json" },
-    baseURL: import.meta.env["VITE_BACKEND_API_URL"],
 });
 
 HTTPInstance.interceptors.request.use(
