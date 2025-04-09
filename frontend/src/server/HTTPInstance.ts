@@ -3,8 +3,8 @@ import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
 
 const HTTPInstance = axios.create({
     timeout: 5000,
-    baseURL: "https://api.example.com",
     headers: { "Content-Type": "application/json" },
+    baseURL: import.meta.env["VITE_BACKEND_API_URL"],
 });
 
 HTTPInstance.interceptors.request.use(
