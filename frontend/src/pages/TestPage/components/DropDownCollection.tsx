@@ -8,6 +8,8 @@ import cog_icon from "@icons/cog.svg";
 import user_icon from "@icons/user.svg";
 import home_icon from "@icons/home.svg";
 import arrow_icon from "@icons/arrow.svg";
+import { DropDownList } from "@/components/DropDownList/DropDownList";
+import { Button } from "@/components/Button/Button";
 
 export const DropDownCollection: FC = () => {
     const { direction } = useLocalization();
@@ -440,6 +442,58 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                 </ButtonBox>
+            </Collection>
+            <Collection title="List" inner className="[&>div]:flex-col">
+                <DropDownList position="bottom-end" text="Nested">
+                    <DropDown
+                        doesTextGrow
+                        text="Default"
+                        variant="default"
+                        position={
+                            direction == "ltr" ? "right-end" : "left-start"
+                        }
+                        icon={{
+                            className:
+                                direction == "ltr" ? "rotate-90" : "-rotate-90",
+                        }}
+                    >
+                        <Button variant="default">Button 1</Button>
+                        <Button variant="default">Button 2</Button>
+                        <Button variant="default">Button 3</Button>
+                    </DropDown>
+                    <DropDown
+                        doesTextGrow
+                        text="Primary"
+                        variant="primary"
+                        position={
+                            direction == "ltr" ? "right-end" : "left-start"
+                        }
+                        icon={{
+                            className:
+                                direction == "ltr" ? "rotate-90" : "-rotate-90",
+                        }}
+                    >
+                        <Button variant="primary">Button 1</Button>
+                        <Button variant="primary">Button 2</Button>
+                        <Button variant="primary">Button 3</Button>
+                    </DropDown>
+                    <DropDown
+                        doesTextGrow
+                        text="Secondary"
+                        variant="secondary"
+                        position={
+                            direction == "ltr" ? "right-end" : "left-start"
+                        }
+                        icon={{
+                            className:
+                                direction == "ltr" ? "rotate-90" : "-rotate-90",
+                        }}
+                    >
+                        <Button variant="secondary">Button 1</Button>
+                        <Button variant="secondary">Button 2</Button>
+                        <Button variant="secondary">Button 3</Button>
+                    </DropDown>
+                </DropDownList>
             </Collection>
         </Collection>
     );
