@@ -1,8 +1,8 @@
 import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { Icon, IconProps } from "../Icon/Icon";
 
 import cog_icon from "@icons/cog.svg";
-import { twMerge } from "tailwind-merge";
 
 export type CogIconProps = Omit<IconProps, "source" | "width" | "height"> & {
     size?: number;
