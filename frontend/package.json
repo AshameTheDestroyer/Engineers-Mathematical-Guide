@@ -11,6 +11,8 @@
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.0.9",
+        "lucide": "^0.487.0",
+        "lucide-react": "^0.487.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-error-boundary": "^5.0.0",
