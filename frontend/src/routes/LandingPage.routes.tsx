@@ -1,4 +1,4 @@
-const LANDING_PAGE_ROUTES_ = [
+const LANDING_PAGE_ROUTES_: Array<Anchor> = [
     {
         text: "Home",
         href: "/",
