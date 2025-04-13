@@ -1,6 +1,6 @@
 import { environmentVariables } from "@/services/EnvironmentVariables";
 
-const LANDING_PAGE_ROUTES_ = [
+const LANDING_PAGE_ROUTES_: Array<Anchor> = [
     {
         text: "Home",
         href: "/",
