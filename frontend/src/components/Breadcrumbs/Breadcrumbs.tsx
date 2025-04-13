@@ -1,62 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { Icon } from "../Icon/Icon";
+import { twJoin, twMerge } from "tailwind-merge";
+import { Link, useLocation } from "react-router-dom";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-type BreadcrumbItem = {
-    text: string;
-    href?: string;
-    icon?: React.ReactNode;
-};
+import arrow_icon from "@icons/arrow.svg";
 
-type BreadcrumbsProps = {
-    items: BreadcrumbItem[];
-    separator?: React.ReactNode;
-    className?: string;
-    activeItemClasses?: string;
-    inactiveItemClasses?: string;
-    separatorClasses?: string;
-};
+export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
 
-const Breadcrumbs = ({
-    items,
-    separator = <ChevronRight className="mx-2 h-4 w-4 text-gray-400" />,
-    className = "",
-    activeItemClasses = "text-gray-600 font-medium",
-    inactiveItemClasses = "text-blue-600 hover:text-blue-800 transition-colors duration-200",
-    separatorClasses = "",
-}: BreadcrumbsProps) => {
+export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
+    const location = useLocation();
+    const paths = location.pathname.split("/");
+
     return (
         <nav
-            style={{ boxShadow: "none" }}
-            className={`flex items-center text-sm ${className} bg-inherit`}
-            aria-label="Breadcrumb"
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "flex items-center bg-inherit text-sm shadow-[none!important]",
+                className
+            )}
         >
             <ol className="flex items-center space-x-1 overflow-x-auto py-2">
-                {items.map((item, index) => (
-                    <React.Fragment key={index}>
+                {paths.map((path, i) => (
+                    <React.Fragment key={i}>
                         <li className="flex items-center">
-                            {item.icon && (
-                                <span className="mr-2 text-gray-500">
-                                    {item.icon}
-                                </span>
-                            )}
-                            {!item.href ? (
-                                <span
-                                    className={`${activeItemClasses} text-md flex items-center whitespace-nowrap`}
-                                >
-                                    {item.text}
-                                </span>
-                            ) : (
-                                <Link
-                                    to={item.href}
-                                    className={`${inactiveItemClasses} text-md flex items-center whitespace-nowrap hover:underline`}
-                                >
-                                    {item.text}
-                                </Link>
-                            )}
+                            <Link
+                                to={path}
+                                className={twJoin(
+                                    i == paths.length - 1
+                                        ? "text-tertiary-normal"
+                                        : "",
+                                    "text-md flex items-center whitespace-nowrap"
+                                )}
+                            >
+                                {i == 0 ? "/" : path.toTitleCase()}
+                            </Link>
                         </li>
-                        {index < items.length - 1 && (
-                            <li className={separatorClasses}>{separator}</li>
+                        {i < paths.length - 1 && (
+                            <li>
+                                <Icon
+                                    className="mx-2 rotate-90 text-gray-400"
+                                    width={24}
+                                    height={24}
+                                    source={arrow_icon}
+                                />
+                            </li>
                         )}
                     </React.Fragment>
                 ))}
@@ -64,5 +53,3 @@ const Breadcrumbs = ({
         </nav>
     );
 };
-
-export default Breadcrumbs;

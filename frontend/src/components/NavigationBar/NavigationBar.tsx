@@ -1,7 +1,7 @@
 import { FC } from "react";
 // import { Link } from "react-router-dom";
+import { Breadcrumbs } from "../Breadcrumbs/Breadcrumbs";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
-import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 export type NavigationBarProps = ChildlessComponentProps & {
     routes: Array<{
@@ -24,7 +24,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({
                     </li>
                 ))} */}
                 <Breadcrumbs
-                    items={routes}
+                    anchors={routes}
                     className="rounded-lg p-4 shadow-sm"
                     activeItemClasses="text-indigo-700 font-semibold"
                     inactiveItemClasses="text-gray-500 hover:text-indigo-500"
