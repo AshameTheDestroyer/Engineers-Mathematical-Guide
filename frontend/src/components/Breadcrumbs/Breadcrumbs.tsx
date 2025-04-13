@@ -5,18 +5,11 @@ import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
-import arrow_icon from "@icons/direction_arrow.svg";
+import arrow_icon from "@icons/arrow.svg";
 
-export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement> & {
-    length?: number;
-};
+export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
 
-export const Breadcrumbs: FC<BreadcrumbsProps> = ({
-    id,
-    ref,
-    length,
-    className,
-}) => {
+export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
 
@@ -88,7 +81,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                                 </Link>
                             )}
                         </li>
-                        {i < shownPaths.length - 1 && (
+                        {i < paths.length - 1 && (
                             <li>
                                 <Icon
                                     className={twJoin(
