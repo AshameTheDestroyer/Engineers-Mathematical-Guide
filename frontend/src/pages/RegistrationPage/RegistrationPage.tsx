@@ -1,17 +1,11 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { Logo } from "@/components/Logo/Logo";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 
 export const RegistrationPage: FC = () => {
-    const location = useLocation();
-    const Navigate = useNavigate();
-
-    useEffect(() => {
-        if (location.pathname == "/registration") {
-            Navigate("/registration/signup");
-        }
-    }, [location.pathname]);
+    useDefaultRoute("/registration", "/signup");
 
     return (
         <Page>
