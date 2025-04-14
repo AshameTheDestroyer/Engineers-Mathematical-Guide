@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Icon } from "../Icon/Icon";
 import { twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
@@ -10,12 +10,12 @@ export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement> & {
     length?: number;
 };
 
-export const Breadcrumbs = ({
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({
     id,
     ref,
     length,
     className,
-}: BreadcrumbsProps) => {
+}) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
 
