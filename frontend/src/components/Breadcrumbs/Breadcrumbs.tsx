@@ -27,7 +27,7 @@ export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
                         <li className="flex items-center">
                             <Link
                                 className="text-md flex items-center whitespace-nowrap"
-                                to={`/${path}`}
+                                to={`/${paths.slice(0, i + 1).join("/")}`}
                             >
                                 {i == 0 ? "/" : path.toTitleCase()}
                             </Link>
