@@ -9,9 +9,7 @@ export const TestPage: FC = () => {
     const location = useLocation();
     const Navigate = useNavigate();
 
-    const [progress, setProgress] = useState(5);
-
-    const handleComplete = () => {
+    const func = () => {
         alert("Progress completed!");
     };
 
@@ -30,8 +28,8 @@ export const TestPage: FC = () => {
                 minimum={5}
                 maximum={50}
                 variant="primary"
-                onProgress={(val) => console.log("progress:", val)}
-                onComplete={handleComplete}
+                onProgress={(val) => console.log(val)}
+                onComplete={func}
             />
             <JumpToTopButton />
         </Page>
