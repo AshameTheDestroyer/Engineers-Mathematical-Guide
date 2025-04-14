@@ -1,4 +1,6 @@
-const LANDING_PAGE_ROUTES_ = [
+import { environmentVariables } from "@/services/EnvironmentVariables";
+
+const LANDING_PAGE_ROUTES_: Array<Anchor> = [
     { text: "Colours", href: "/test/colours" },
     { text: "Typography", href: "/test/typography" },
     { text: "Components", href: "/test/components" },
@@ -6,6 +8,6 @@ const LANDING_PAGE_ROUTES_ = [
 ];
 
 export const LANDING_PAGE_ROUTES =
-    import.meta.env["VITE_ENVIRONMENT"] == "development"
+    environmentVariables.ENVIRONMENT == "development"
         ? LANDING_PAGE_ROUTES_
         : [];

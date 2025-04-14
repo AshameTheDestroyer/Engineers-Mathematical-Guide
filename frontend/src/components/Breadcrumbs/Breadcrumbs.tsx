@@ -1,62 +1,99 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import React, { FC } from "react";
+import { Icon } from "../Icon/Icon";
+import { twMerge } from "tailwind-merge";
+import { Link, useLocation } from "react-router-dom";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-type BreadcrumbItem = {
-    text: string;
-    href?: string;
-    icon?: React.ReactNode;
+import arrow_icon from "@icons/direction_arrow.svg";
+
+export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement> & {
+    length?: number;
 };
 
-type BreadcrumbsProps = {
-    items: BreadcrumbItem[];
-    separator?: React.ReactNode;
-    className?: string;
-    activeItemClasses?: string;
-    inactiveItemClasses?: string;
-    separatorClasses?: string;
-};
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({
+    id,
+    ref,
+    length,
+    className,
+}) => {
+    const location = useLocation();
+    const paths = location.pathname == "/" ? [] : location.pathname.split("/");
 
-const Breadcrumbs = ({
-    items,
-    separator = <ChevronRight className="mx-2 h-4 w-4 text-gray-400" />,
-    className = "",
-    activeItemClasses = "text-gray-600 font-medium",
-    inactiveItemClasses = "text-blue-600 hover:text-blue-800 transition-colors duration-200",
-    separatorClasses = "",
-}: BreadcrumbsProps) => {
+    if (length != null && length < 2) {
+        throw Error("Length cannot be less than 2.");
+    }
+
+    const shownPaths = GenerateShownPaths()
+        .filter(FilterDots)
+        .filter((path, i, paths) => i == paths.indexOf(path));
+
+    function GenerateShownPaths() {
+        if (length == null) {
+            return paths;
+        }
+
+        const startIndex = length % 2 == 0 ? length / 2 : (length - 1) / 2;
+        const endIndex =
+            length % 2 == 0
+                ? paths.length - length / 2
+                : paths.length - (length + 1) / 2;
+
+        return [
+            ...paths.slice(0, startIndex),
+            undefined,
+            ...paths.slice(endIndex),
+        ];
+    }
+
+    function FilterDots(path?: string) {
+        return length != null && paths.length > length ? true : path != null;
+    }
+
+    function GetFullPath(i: number, path: string) {
+        if (i == 0) {
+            return "/";
+        }
+
+        return paths
+            .filter((path) => path != null)
+            .slice(0, paths.indexOf(path) + 1)
+            .join("/");
+    }
+
     return (
         <nav
-            style={{ boxShadow: "none" }}
-            className={`flex items-center text-sm ${className} bg-inherit`}
-            aria-label="Breadcrumb"
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "flex items-center bg-inherit text-sm shadow-[none!important]",
+                className
+            )}
         >
             <ol className="flex items-center space-x-1 overflow-x-auto py-2">
-                {items.map((item, index) => (
-                    <React.Fragment key={index}>
-                        <li className="flex items-center">
-                            {item.icon && (
-                                <span className="mr-2 text-gray-500">
-                                    {item.icon}
-                                </span>
-                            )}
-                            {!item.href ? (
-                                <span
-                                    className={`${activeItemClasses} text-md flex items-center whitespace-nowrap`}
-                                >
-                                    {item.text}
-                                </span>
+                {shownPaths.map((path, i) => (
+                    <React.Fragment key={i}>
+                        <li className="text-md flex items-center">
+                            {path == null ? (
+                                <p>...</p>
                             ) : (
-                                <Link
-                                    to={item.href}
-                                    className={`${inactiveItemClasses} text-md flex items-center whitespace-nowrap hover:underline`}
-                                >
-                                    {item.text}
+                                <Link to={GetFullPath(i, path)}>
+                                    {path == null
+                                        ? "..."
+                                        : i == 0
+                                          ? "/"
+                                          : path?.toTitleCase()}
                                 </Link>
                             )}
                         </li>
-                        {index < items.length - 1 && (
-                            <li className={separatorClasses}>{separator}</li>
+                        {i < shownPaths.length - 1 && (
+                            <li>
+                                <Icon
+                                    className="mx-2 rotate-90"
+                                    width={24}
+                                    height={24}
+                                    source={arrow_icon}
+                                />
+                            </li>
                         )}
                     </React.Fragment>
                 ))}
@@ -64,5 +101,3 @@ const Breadcrumbs = ({
         </nav>
     );
 };
-
-export default Breadcrumbs;
