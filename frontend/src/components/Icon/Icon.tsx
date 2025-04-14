@@ -1,4 +1,5 @@
-import { useState, useEffect, FC } from "react";
+import { FC } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type IconProps = {
@@ -20,38 +21,23 @@ export const Icon: FC<IconProps> = ({
     thickness,
     className,
 }) => {
-    const [svg, setSVG] = useState<string>();
-    const [error, setError] = useState<string>();
-
-    useEffect(() => {
-        FetchSVG();
-    }, [fill, width, source, height, stroke, thickness]);
-
-    async function FetchSVG() {
-        try {
-            const response = await fetch(source);
-
-            if (!response.ok) {
-                throw new Error(`Failed to fetch SVG: ${response.statusText}.`);
-            }
-
-            const text = await response.text();
-
-            const svg = new DOMParser().parseFromString(text, "image/svg+xml");
-            const svgElement = svg.querySelector("svg");
-
-            if (svgElement == null) {
-                throw new Error("Invalid SVG content.");
-            }
-
-            InjectProperties(svgElement);
-            setSVG(new XMLSerializer().serializeToString(svgElement));
-        } catch (error) {
-            if (error instanceof Error) {
-                setError(error.message);
-            }
-        }
-    }
+    const { data, isLoading, isError } = useQuery({
+        queryKey: [`ICON-${source}`, fill, width, height, stroke, thickness],
+        queryFn: () =>
+            fetch(source)
+                .then((response) => response.text())
+                .then((text) =>
+                    new DOMParser().parseFromString(text, "image/svg+xml")
+                )
+                .then((svg) => svg.querySelector("svg")!)
+                .then(InjectProperties)
+                .then(
+                    (svgElement) =>
+                        new XMLSerializer().serializeToString(svgElement) ??
+                        "<svg></svg>"
+                )
+                .catch(console.error),
+    });
 
     function InjectProperties(svgElement: SVGElement) {
         Object.entries({
@@ -74,19 +60,17 @@ export const Icon: FC<IconProps> = ({
                     ...svgElement.querySelectorAll(`& [${key}]`),
                 ].forEach((child) => child.setAttribute(key, value))
         );
-    }
 
-    if (error) {
-        return <div>{error}</div>;
+        return svgElement;
     }
 
     return (
-        svg && (
-            <div
-                id={id}
-                className={className}
-                dangerouslySetInnerHTML={{ __html: svg }}
-            />
-        )
+        <div
+            id={id}
+            className={className}
+            dangerouslySetInnerHTML={{
+                __html: isLoading ? "..." : isError ? "ERR" : (data ?? ""),
+            }}
+        />
     );
 };

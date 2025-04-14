@@ -8,36 +8,26 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
 
-export const MainContent: FC = () => {
-    const { language, direction } = useLocalization();
+import locales from "@localization/landing_page.json";
 
-    const title =
-        language == "ar"
-            ? "دَليلُ المُهَنْدِسينَ في الرِّياضِيّات"
-            : "Engineers' Mathematical Guide";
-    const subtitle =
-        language == "ar" ? "تَعَلَّمْ عَنْ طَريقِ الفِعْل" : "Learn By Doing!";
-    const placeholderText =
-        language == "ar"
-            ? "كَلَامٌ عَرَبِيٌّ كَثِيرٌ لَا مَعْنًى مِنْهُ وَلَا مَغْزًى، كُلُّ الْمَطْلُوبِ هُنَا هُوَ فَقَطْ مَلْءُ الْمُحْتَوَى بِجُمَلٍ كَبِيرَةٍ بِحَيْثُ يُعْطَى لَنَا مَثَالٌ عَمَّا يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا كَلَامٌ ذُو قِيمَةٍ."
-            : "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, tempora reprehenderit magni, enim eum possimus, fugit sunt maxime amet error vel. Placeat, deserunt? Perspiciatis sit dolorem dicta obcaecati, numquam ad.";
-    const readMoreText = language == "ar" ? "إقرأ المزيد" : "Learn More";
-    const startJourneyText =
-        language == "ar" ? "إبدأ رحلتك الآن" : "Start Your Journey Now";
+export const MainContent: FC = () => {
+    const { language, direction, GetLocale } = useLocalization();
 
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
             <section className="w-150 flex flex-col gap-5">
                 <h2 className="text-primary-normal text-3xl font-bold">
-                    {title}
+                    {GetLocale(locales.title, language)}
                 </h2>
-                <h3 className="text-xl">{subtitle}</h3>
-                <p>{placeholderText}</p>
+                <h3 className="text-xl">
+                    {GetLocale(locales.subtitle, language)}
+                </h3>
+                <p>{GetLocale(locales.body, language)} </p>
                 <ButtonBox
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
                     <Button className="grow-[0.6]" link="/learn-more">
-                        {readMoreText}
+                        {GetLocale(locales.buttons.learn, language)}
                     </Button>
                     <Button
                         className="grow"
@@ -49,7 +39,7 @@ export const MainContent: FC = () => {
                             className: "rotate-90",
                         }}
                     >
-                        {startJourneyText}
+                        {GetLocale(locales.buttons.start, language)}
                     </Button>
                 </ButtonBox>
             </section>

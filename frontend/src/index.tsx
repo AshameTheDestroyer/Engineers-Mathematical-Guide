@@ -4,6 +4,8 @@ import { Lazy, LazyImport } from "./components/Lazy/Lazy";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { environmentVariables } from "./services/EnvironmentVariables";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
@@ -18,6 +20,8 @@ const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import "./extensions";
 import "./global.css";
+
+const queryClient = new QueryClient();
 
 type MainStateProps = {};
 
@@ -50,7 +54,7 @@ const IndexRoutes: FC = () => {
                     </LazyPage>
                 }
             />
-            {import.meta.env["VITE_ENVIRONMENT"] == "development" && (
+            {environmentVariables.ENVIRONMENT == "development" && (
                 <Route
                     path="test"
                     element={
@@ -103,15 +107,19 @@ const Index: FC = () => {
 
     return (
         <MainContext.Provider value={state}>
-            <LocalizationProvider>
-                <ThemeModeProvider>
-                    <ThemePaletteProvider>
-                        <HashRouter basename={window.location.pathname || ""}>
-                            <IndexRoutes />
-                        </HashRouter>
-                    </ThemePaletteProvider>
-                </ThemeModeProvider>
-            </LocalizationProvider>
+            <QueryClientProvider client={queryClient}>
+                <LocalizationProvider>
+                    <ThemeModeProvider>
+                        <ThemePaletteProvider>
+                            <HashRouter
+                                basename={window.location.pathname || ""}
+                            >
+                                <IndexRoutes />
+                            </HashRouter>
+                        </ThemePaletteProvider>
+                    </ThemeModeProvider>
+                </LocalizationProvider>
+            </QueryClientProvider>
         </MainContext.Provider>
     );
 };
