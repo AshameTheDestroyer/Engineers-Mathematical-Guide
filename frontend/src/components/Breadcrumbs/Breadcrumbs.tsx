@@ -18,27 +18,47 @@ export const Breadcrumbs = ({
 }: BreadcrumbsProps) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
-    const shownPaths =
-        length == null
-            ? paths
-            : [
-                  ...paths.slice(
-                      0,
-                      length % 2 == 0 ? length / 2 : (length - 1) / 2
-                  ),
-                  undefined,
-                  ...paths.slice(
-                      length % 2 == 0
-                          ? paths.length - length / 2
-                          : paths.length - (length + 1) / 2
-                  ),
-              ]
-                  .filter((path) =>
-                      length != null && paths.length > length
-                          ? true
-                          : path != null
-                  )
-                  .filter((path, i, paths) => i == paths.indexOf(path));
+
+    if (length != null && length < 2) {
+        throw Error("Length cannot be less than 2.");
+    }
+
+    const shownPaths = GenerateShownPaths()
+        .filter(FilterDots)
+        .filter((path, i, paths) => i == paths.indexOf(path));
+
+    function GenerateShownPaths() {
+        if (length == null) {
+            return paths;
+        }
+
+        const startIndex = length % 2 == 0 ? length / 2 : (length - 1) / 2;
+        const endIndex =
+            length % 2 == 0
+                ? paths.length - length / 2
+                : paths.length - (length + 1) / 2;
+
+        return [
+            ...paths.slice(0, startIndex),
+            undefined,
+            ...paths.slice(endIndex),
+        ];
+    }
+
+    function FilterDots(path?: string) {
+        return length != null && paths.length > length ? true : path != null;
+    }
+
+    function GetFullPath(i: number, path: string) {
+        if (i == 0) {
+            return "/";
+        }
+
+        return paths
+            .filter((path) => path != null)
+            .slice(0, paths.indexOf(path) + 1)
+            .join("/");
+    }
 
     return (
         <nav
@@ -56,21 +76,7 @@ export const Breadcrumbs = ({
                             {path == null ? (
                                 <p>...</p>
                             ) : (
-                                <Link
-                                    to={
-                                        i == 0
-                                            ? "/"
-                                            : paths
-                                                  .filter(
-                                                      (path) => path != null
-                                                  )
-                                                  .slice(
-                                                      0,
-                                                      paths.indexOf(path) + 1
-                                                  )
-                                                  .join("/")
-                                    }
-                                >
+                                <Link to={GetFullPath(i, path)}>
                                     {path == null
                                         ? "..."
                                         : i == 0
