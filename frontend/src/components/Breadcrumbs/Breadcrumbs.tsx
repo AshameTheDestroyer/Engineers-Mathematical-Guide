@@ -6,11 +6,39 @@ import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 import arrow_icon from "@icons/direction_arrow.svg";
 
-export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
+export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement> & {
+    length?: number;
+};
 
-export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({
+    id,
+    ref,
+    length,
+    className,
+}: BreadcrumbsProps) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
+    const shownPaths =
+        length == null
+            ? paths
+            : [
+                  ...paths.slice(
+                      0,
+                      length % 2 == 0 ? length / 2 : (length - 1) / 2
+                  ),
+                  undefined,
+                  ...paths.slice(
+                      length % 2 == 0
+                          ? paths.length - length / 2
+                          : paths.length - (length + 1) / 2
+                  ),
+              ]
+                  .filter((path) =>
+                      length != null && paths.length > length
+                          ? true
+                          : path != null
+                  )
+                  .filter((path, i, paths) => i == paths.indexOf(path));
 
     return (
         <nav
@@ -22,17 +50,36 @@ export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
             )}
         >
             <ol className="flex items-center space-x-1 overflow-x-auto py-2">
-                {paths.map((path, i) => (
+                {shownPaths.map((path, i) => (
                     <React.Fragment key={i}>
-                        <li className="flex items-center">
-                            <Link
-                                className="text-md flex items-center whitespace-nowrap"
-                                to={`/${paths.slice(0, i + 1).join("/")}`}
-                            >
-                                {i == 0 ? "/" : path.toTitleCase()}
-                            </Link>
+                        <li className="text-md flex items-center">
+                            {path == null ? (
+                                <p>...</p>
+                            ) : (
+                                <Link
+                                    to={
+                                        i == 0
+                                            ? "/"
+                                            : paths
+                                                  .filter(
+                                                      (path) => path != null
+                                                  )
+                                                  .slice(
+                                                      0,
+                                                      paths.indexOf(path) + 1
+                                                  )
+                                                  .join("/")
+                                    }
+                                >
+                                    {path == null
+                                        ? "..."
+                                        : i == 0
+                                          ? "/"
+                                          : path?.toTitleCase()}
+                                </Link>
+                            )}
                         </li>
-                        {i < paths.length - 1 && (
+                        {i < shownPaths.length - 1 && (
                             <li>
                                 <Icon
                                     className="mx-2 rotate-90"
