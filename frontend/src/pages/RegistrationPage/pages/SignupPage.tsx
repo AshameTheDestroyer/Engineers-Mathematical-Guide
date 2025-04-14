@@ -6,7 +6,7 @@ import Checkbox from "../../../components/Checkbox/Checkbox";
 
 export const SignupPage: FC = () => {
     return (
-        <main className="flex h-5/6 items-center justify-center p-4 md:w-1/2">
+        <main className="flex items-center justify-center p-4">
             <form
                 className="flex w-full max-w-md flex-col gap-5 rounded-lg p-6"
                 action=""
