@@ -1,16 +1,16 @@
 import React from "react";
 import { Icon } from "../Icon/Icon";
-import { twJoin, twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-import arrow_icon from "@icons/arrow.svg";
+import arrow_icon from "@icons/direction_arrow.svg";
 
 export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
 
 export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
     const location = useLocation();
-    const paths = location.pathname.split("/");
+    const paths = location.pathname == "/" ? [] : location.pathname.split("/");
 
     return (
         <nav
@@ -26,13 +26,8 @@ export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
                     <React.Fragment key={i}>
                         <li className="flex items-center">
                             <Link
-                                to={path}
-                                className={twJoin(
-                                    i == paths.length - 1
-                                        ? "text-tertiary-normal"
-                                        : "",
-                                    "text-md flex items-center whitespace-nowrap"
-                                )}
+                                className="text-md flex items-center whitespace-nowrap"
+                                to={`/${path}`}
                             >
                                 {i == 0 ? "/" : path.toTitleCase()}
                             </Link>
