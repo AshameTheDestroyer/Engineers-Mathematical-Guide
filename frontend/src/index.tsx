@@ -15,8 +15,13 @@ const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
 const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
+const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
+const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
+const RegistrationPage = LazyImport(
+    "./pages/RegistrationPage/RegistrationPage"
+);
 
 import "./extensions";
 import "./global.css";
@@ -54,6 +59,31 @@ const IndexRoutes: FC = () => {
                     </LazyPage>
                 }
             />
+            <Route
+                path="registration"
+                element={
+                    <LazyPage>
+                        <RegistrationPage />
+                    </LazyPage>
+                }
+            >
+                <Route
+                    path="signup"
+                    element={
+                        <LazyComponent>
+                            <SignupPage />
+                        </LazyComponent>
+                    }
+                />
+                <Route
+                    path="login"
+                    element={
+                        <LazyComponent>
+                            <LoginPage />
+                        </LazyComponent>
+                    }
+                />
+            </Route>
             {environmentVariables.ENVIRONMENT == "development" && (
                 <Route
                     path="test"
