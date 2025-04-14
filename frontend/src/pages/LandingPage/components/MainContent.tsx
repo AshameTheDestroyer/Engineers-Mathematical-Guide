@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button } from "@components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
@@ -11,23 +12,26 @@ import arrow_icon from "@icons/arrow.svg";
 import locales from "@localization/landing_page.json";
 
 export const MainContent: FC = () => {
-    const { language, GetLocale, direction } = useLocalization();
+    const { direction } = useLocalization();
 
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
             <section className="w-150 flex flex-col gap-5">
-                <h2 className="text-primary-normal text-3xl font-bold">
-                    {GetLocale(locales.title, language)}
-                </h2>
-                <h3 className="text-xl">
-                    {GetLocale(locales.subtitle, language)}
-                </h3>
-                <p>{GetLocale(locales.body, language)} </p>
+                <Locale
+                    className="text-primary-normal text-3xl font-bold"
+                    variant="h1"
+                >
+                    {locales.title}
+                </Locale>
+                <Locale variant="h2" className="text-xl">
+                    {locales.subtitle}
+                </Locale>
+                <Locale variant="p">{locales.body}</Locale>
                 <ButtonBox
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
                     <Button className="grow-[0.6]" link="/learn-more">
-                        {GetLocale(locales.buttons.learn, language)}
+                        <Locale>{locales.buttons.learn}</Locale>
                     </Button>
                     <Button
                         className="grow"
@@ -39,7 +43,7 @@ export const MainContent: FC = () => {
                             className: "rotate-90",
                         }}
                     >
-                        {GetLocale(locales.buttons.start, language)}
+                        <Locale>{locales.buttons.start}</Locale>
                     </Button>
                 </ButtonBox>
             </section>
