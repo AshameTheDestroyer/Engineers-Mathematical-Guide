@@ -1,17 +1,20 @@
 import { FC } from "react";
 import { Button } from "@components/Button/Button";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
+import locales from "@localization/not_found_page.json";
 
 import home_icon from "@icons/home.svg";
+import { useLocation } from "react-router-dom";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export const NotFoundPage: FC = () => {
+    const { GetLocale, language } = useLocalization();
     return (
         <FallbackPage>
-            <h1 className="text-3xl font-bold">Page Not Found</h1>
-            <p>
-                Please check your route carefully, because the URL you provided
-                does not exist.
-            </p>
+            <h1 className="text-3xl font-bold">
+                {GetLocale(locales.title, language)}
+            </h1>
+            <p>{GetLocale(locales.body, language)}</p>
             <Button
                 className="[&>div]:px-8"
                 link="/"
@@ -20,7 +23,7 @@ export const NotFoundPage: FC = () => {
                     placement: "left",
                 }}
             >
-                Return Home
+                {GetLocale(locales.button, language)}
             </Button>
         </FallbackPage>
     );
