@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
-import arrow_icon from "@icons/arrow.svg";
+import arrow_icon from "@icons/direction_arrow.svg";
 
 export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
 
