@@ -1,12 +1,27 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
+import ProgressBar from "@/components/ProgressBarComponent/ProgressBar";
 
 export const TestPage: FC = () => {
     const location = useLocation();
     const Navigate = useNavigate();
+
+    const [progress, setProgress] = useState(5);
+
+    const handleComplete = () => {
+        alert("Progress completed!");
+    };
+
+    const increment = () => {
+        setProgress((prev) => Math.min(prev + 5, 50));
+    };
+
+    const decrement = () => {
+        setProgress((prev) => Math.max(prev - 5, 5));
+    };
 
     useEffect(() => {
         if (location.pathname == "/test") {
@@ -18,6 +33,14 @@ export const TestPage: FC = () => {
         <Page>
             <Header />
             <Outlet />
+            <ProgressBar
+                value={30}
+                minimum={5}
+                maximum={50}
+                variant="primary"
+                onProgress={(val) => console.log("progress:", val)}
+                onComplete={handleComplete}
+            />
             <JumpToTopButton />
         </Page>
     );
