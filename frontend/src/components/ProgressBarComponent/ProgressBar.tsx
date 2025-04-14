@@ -45,9 +45,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 className={`${variantColors[variant]} h-4 rounded-full transition-all duration-300 ease-out`}
                 style={{ width: `${percentage}%` }}
                 role="progressbar"
-                // aria-valuenow={clampedValue}
-                // aria-valuemin={minimum}
-                // aria-valuemax={maximum}
             />
         </div>
     );
