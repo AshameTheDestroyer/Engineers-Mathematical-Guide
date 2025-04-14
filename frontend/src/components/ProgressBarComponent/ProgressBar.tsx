@@ -1,17 +1,10 @@
 import React, { useEffect } from "react";
 
-type ProgressBarVariant =
-    | "primary"
-    | "secondary"
-    | "success"
-    | "danger"
-    | "warning";
-
 type ProgressBarProps = {
     value: number;
     minimum?: number;
     maximum: number;
-    variant?: ProgressBarVariant;
+    variant?: Variant;
     onProgress?: (value: number) => void;
     onComplete?: () => void;
 };
@@ -41,22 +34,20 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
     }, [clampedValue, maximum, onProgress, onComplete]);
 
     const variantColors = {
-        primary: "bg-blue-500",
-        secondary: "bg-gray-500",
-        success: "bg-green-500",
-        danger: "bg-red-500",
-        warning: "bg-yellow-500",
+        primary: "bg-primary-dark",
+        secondary: "bg-secondary-dark",
+        default: "bg-gray-dark",
     };
 
     return (
-        <div className="h-4 w-full rounded-full bg-gray-200">
+        <div className="bg- bg-gray-darker h-4 w-full rounded-full">
             <div
                 className={`${variantColors[variant]} h-4 rounded-full transition-all duration-300 ease-out`}
                 style={{ width: `${percentage}%` }}
                 role="progressbar"
-                aria-valuenow={clampedValue}
-                aria-valuemin={minimum}
-                aria-valuemax={maximum}
+                // aria-valuenow={clampedValue}
+                // aria-valuemin={minimum}
+                // aria-valuemax={maximum}
             />
         </div>
     );

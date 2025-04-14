@@ -15,14 +15,6 @@ export const TestPage: FC = () => {
         alert("Progress completed!");
     };
 
-    const increment = () => {
-        setProgress((prev) => Math.min(prev + 5, 50));
-    };
-
-    const decrement = () => {
-        setProgress((prev) => Math.max(prev - 5, 5));
-    };
-
     useEffect(() => {
         if (location.pathname == "/test") {
             Navigate("/test/colours");
