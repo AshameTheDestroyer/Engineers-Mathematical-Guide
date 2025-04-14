@@ -11,7 +11,7 @@ export const RegistrationPage: FC = () => {
         if (location.pathname == "/registration") {
             Navigate("/registration/signup");
         }
-    }, []);
+    }, [location.pathname]);
 
     return (
         <Page>

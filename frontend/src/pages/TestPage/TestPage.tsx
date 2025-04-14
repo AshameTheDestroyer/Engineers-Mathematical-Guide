@@ -12,7 +12,7 @@ export const TestPage: FC = () => {
         if (location.pathname == "/test") {
             Navigate("/test/colours");
         }
-    }, []);
+    }, [location.pathname]);
 
     return (
         <Page>
