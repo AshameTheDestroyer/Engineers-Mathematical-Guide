@@ -35,7 +35,7 @@ export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
                         {i < paths.length - 1 && (
                             <li>
                                 <Icon
-                                    className="mx-2 rotate-90 text-gray-400"
+                                    className="mx-2 rotate-90"
                                     width={24}
                                     height={24}
                                     source={arrow_icon}
