@@ -1,20 +1,19 @@
 import { FC } from "react";
 import { Button } from "@components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
-import locales from "@localization/not_found_page.json";
 
 import home_icon from "@icons/home.svg";
-import { useLocation } from "react-router-dom";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import locales from "@localization/not_found_page.json";
 
 export const NotFoundPage: FC = () => {
-    const { GetLocale, language } = useLocalization();
     return (
         <FallbackPage>
-            <h1 className="text-3xl font-bold">
-                {GetLocale(locales.title, language)}
-            </h1>
-            <p>{GetLocale(locales.body, language)}</p>
+            <Locale variant="h1" className="text-3xl font-bold">
+                {locales.title}
+            </Locale>
+            <Locale variant="p">{locales.body}</Locale>
             <Button
                 className="[&>div]:px-8"
                 link="/"
@@ -23,7 +22,7 @@ export const NotFoundPage: FC = () => {
                     placement: "left",
                 }}
             >
-                {GetLocale(locales.button, language)}
+                <Locale>{locales.button}</Locale>
             </Button>
         </FallbackPage>
     );
