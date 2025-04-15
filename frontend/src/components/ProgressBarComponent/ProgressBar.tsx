@@ -62,13 +62,13 @@ export const ProgressBar: FC<ProgressBarProps> = ({
             ref={ref}
             className={twMerge(
                 variantClassNames[variant],
-                "border-3 relative flex h-5 w-full rounded-full",
+                "relative flex h-5 w-full rounded-full border-2",
                 className
             )}
         >
             <div
                 role="progressbar"
-                className="border-3 -m-[3px] rounded-full transition-all duration-300 ease-out"
+                className="-m-[2px] rounded-full border-2 transition-all duration-300 ease-out"
                 style={{ width: `${GetPercentage(value)}%` }}
             />
             {checkpoints?.map((checkpoint, i) => {
@@ -87,7 +87,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                     <div
                         key={i}
                         data-reached={value >= checkpointValue}
-                        className="border-3 absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(100%-3px)] -translate-y-1/2 place-content-center place-items-center rounded-full font-bold"
+                        className="absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(100%-2px)] -translate-y-1/2 place-content-center place-items-center rounded-full border-2 font-bold"
                         style={{ left: `${GetPercentage(checkpointValue)}%` }}
                     >
                         {typeof checkpoint != "number" &&
