@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
-import { twMerge } from "tailwind-merge";
 import { Icon, IconProps } from "../Icon/Icon";
+import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
@@ -49,28 +49,35 @@ export const ProgressBar: FC<ProgressBarProps> = ({
 
     const variantClassNames = {
         default:
-            "[&>div]:bg-tertiary-light [&>div]:border-tertiary-dark border-tertiary-dark bg-tertiary-normal-hover text-tertiary-normal [&>div[data-reached=false]]:bg-tertiary-normal-hover [&>div[data-reached=false]]:text-tertiary-dark",
+            "[&_[data-bar],&_[data-checkpoint]]:bg-tertiary-light [&_[data-bar],&_[data-checkpoint]]:border-tertiary-dark border-tertiary-dark bg-tertiary-normal-hover text-tertiary-normal [&_[data-reached=false]]:bg-tertiary-normal-hover [&_[data-reached=false]]:text-tertiary-dark",
         primary:
-            "[&>div]:bg-primary-normal [&>div]:border-primary-darker border-primary-darker bg-primary-dark-hover text-primary-light [&>div[data-reached=false]]:bg-primary-dark-hover [&>div[data-reached=false]]:text-primary-dark-active",
+            "[&_[data-bar],&_[data-checkpoint]]:bg-primary-normal [&_[data-bar],&_[data-checkpoint]]:border-primary-darker border-primary-darker bg-primary-dark-hover text-primary-light [&_[data-reached=false]]:bg-primary-dark-hover [&_[data-reached=false]]:text-primary-dark-active",
         secondary:
-            "[&>div]:bg-secondary-normal [&>div]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover text-primary-light [&>div[data-reached=false]]:bg-secondary-dark-hover [&>div[data-reached=false]]:text-secondary-dark-active",
+            "[&_[data-bar],&_[data-checkpoint]]:bg-secondary-normal [&_[data-bar],&_[data-checkpoint]]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover text-primary-light [&_[data-reached=false]]:bg-secondary-dark-hover [&_[data-reached=false]]:text-secondary-dark-active",
     };
 
     return (
         <div
             id={id}
             ref={ref}
+            role="progressbar"
             className={twMerge(
                 variantClassNames[variant],
                 "relative flex h-5 w-full rounded-full border-2",
                 className
             )}
         >
-            <div
-                role="progressbar"
-                className="-m-[2px] rounded-full border-2 transition-all duration-300 ease-out"
-                style={{ width: `${GetPercentage(value)}%` }}
-            />
+            <div className="-m-[2px] box-content w-full overflow-hidden rounded-full border-2 border-transparent">
+                <div
+                    data-bar
+                    role="progressbar"
+                    className={twJoin(
+                        value == minimum ? "invisible" : "",
+                        "-m-[2px] box-content h-full rounded-full border-2 transition-all duration-300 ease-out"
+                    )}
+                    style={{ width: `${GetPercentage(value)}%` }}
+                />
+            </div>
             {checkpoints?.map((checkpoint, i) => {
                 const checkpointValue =
                     typeof checkpoint == "number"
@@ -86,8 +93,9 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                 return (
                     <div
                         key={i}
+                        data-checkpoint
                         data-reached={value >= checkpointValue}
-                        className="absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(100%-2px)] -translate-y-1/2 place-content-center place-items-center rounded-full border-2 font-bold"
+                        className="absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(50%-2px)] -translate-y-1/2 place-content-center place-items-center rounded-full border-2 font-bold"
                         style={{ left: `${GetPercentage(checkpointValue)}%` }}
                     >
                         {typeof checkpoint != "number" &&
