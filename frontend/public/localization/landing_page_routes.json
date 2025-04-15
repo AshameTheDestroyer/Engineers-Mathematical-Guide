@@ -1,0 +1,8 @@
+{
+    "home": { "en": "Home", "ar": "الصّفحة الرّئيسيّة" },
+    "about": { "en": "About", "ar": "حول" },
+    "contact-us": { "en": "Contact Us", "ar": "تواصل معنا" },
+    "references": { "en": "References", "ar": "المراجع" },
+    "help": { "en": "Help", "ar": "مساعدة" },
+    "test": { "en": "TEST", "ar": "للاختبار" }
+}

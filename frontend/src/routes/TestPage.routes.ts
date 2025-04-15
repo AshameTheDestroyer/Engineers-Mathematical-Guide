@@ -1,10 +1,10 @@
 import { environmentVariables } from "@/services/EnvironmentVariables";
 
 const LANDING_PAGE_ROUTES_: Array<Anchor> = [
-    { text: "Colours", href: "/test/colours" },
-    { text: "Typography", href: "/test/typography" },
-    { text: "Components", href: "/test/components" },
-    { text: "Palettes", href: "/test/palettes" },
+    { text: "colours", href: "/test/colours" },
+    { text: "typography", href: "/test/typography" },
+    { text: "components", href: "/test/components" },
+    { text: "palettes", href: "/test/palettes" },
 ];
 
 export const LANDING_PAGE_ROUTES =
