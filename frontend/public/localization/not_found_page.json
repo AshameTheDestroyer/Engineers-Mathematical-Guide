@@ -1,14 +1,14 @@
 {
     "title": {
         "en": "Page Not Found",
-        "ar": "الصفحة غير متوفرة"
+        "ar": "الصّفحة غير متوفّرة"
     },
     "body": {
         "en": "Please check your route carefully, because the URL you provided does not exist.",
-        "ar": "الصفحة غير متوفرة ضمن المسار المدخل، الرجاء التحقق من صحة المسار"
+        "ar": "يرجى التّحقّق من مسار الصّفحة، لأنّ الرّابط المعطى غير متوفّر."
     },
     "button": {
-            "en": "Return Home",
-            "ar": "العودة"
+        "en": "Return Home",
+        "ar": "العودة للصّفحة الرّئيسيّة"
     }
 }
