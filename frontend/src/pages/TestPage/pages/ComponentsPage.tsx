@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { InputCollection } from "../components/InputCollection";
 import { ButtonCollection } from "../components/ButtonCollection";
 import { DropDownCollection } from "../components/DropDownCollection";
 import { IconButtonCollection } from "../components/IconButtonCollection";
@@ -11,6 +12,7 @@ export const ComponentsPage: FC = () => {
             <IconButtonCollection />
             <DropDownCollection />
             <ProgressBarCollection />
+            <InputCollection />
         </div>
     );
 };
