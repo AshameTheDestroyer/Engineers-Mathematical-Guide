@@ -25,15 +25,15 @@ export const TypographyPage: FC = () => {
     return (
         <div className="grid grid-cols-[repeat(auto-fill,minmax(max(30rem,40vw),1fr))] gap-8">
             <TypographyCollection
+                classNames={textSizes}
                 title="English"
                 text={englishSentence}
-                classNames={textSizes}
             />
             <TypographyCollection
-                title="عَربيٌّ"
-                className="[direction:rtl]"
-                text={arabicSentence}
                 classNames={textSizes}
+                className="[direction:rtl]"
+                title="عَربيٌّ"
+                text={arabicSentence}
             />
         </div>
     );
