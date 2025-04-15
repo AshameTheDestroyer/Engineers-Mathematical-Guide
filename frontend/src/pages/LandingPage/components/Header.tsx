@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
@@ -11,6 +12,7 @@ import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownLis
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
 
+import locales from "@localization/landing_page.json";
 import route_locales from "@localization/landing_page_routes.json";
 
 export const Header: FC = () => {
@@ -43,7 +45,7 @@ export const Header: FC = () => {
                         source: signup_icon,
                     }}
                 >
-                    Sign up
+                    <Locale>{locales.buttons.signup}</Locale>
                 </Button>
                 <Button
                     variant="primary"
@@ -53,7 +55,7 @@ export const Header: FC = () => {
                         source: login_icon,
                     }}
                 >
-                    Login
+                    <Locale>{locales.buttons.login}</Locale>
                 </Button>
                 <ConfigurationDropDownList variant="secondary" />
             </ButtonBox>
