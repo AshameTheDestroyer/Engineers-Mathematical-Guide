@@ -28,21 +28,30 @@ export const IconButtonCollection: FC = () => {
 
     return (
         <Collection title="Icon Button Component">
-            <Collection title="Normal" inner>
+            <Collection
+                title="Normal"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <IconButton variant="default" icon={cogIcon} />
                     <IconButton variant="primary" icon={cogIcon} />
                     <IconButton variant="secondary" icon={cogIcon} />
                 </ButtonBox>
             </Collection>
-            <Collection title="Thick" inner>
+            <Collection
+                title="Thick"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <IconButton variant="default" isThick icon={userIcon} />
                     <IconButton variant="primary" isThick icon={userIcon} />
                     <IconButton variant="secondary" isThick icon={userIcon} />
                 </ButtonBox>
             </Collection>
-            <Collection title="Linked" inner>
+            <Collection
+                title="Linked"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <IconButton variant="default" link="/" icon={homeIcon} />
                     <IconButton variant="primary" link="/" icon={homeIcon} />

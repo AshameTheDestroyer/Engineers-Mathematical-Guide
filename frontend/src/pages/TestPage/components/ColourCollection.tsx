@@ -9,20 +9,22 @@ export type ColourCollectionProps = Omit<CollectionProps, "children"> & {
 
 export const ColourCollection: FC<ColourCollectionProps> = ({
     id,
-    inner,
+    ref,
     title,
     className,
+    typography,
     classNames,
 }) => {
     return (
         <Collection
             id={id}
+            ref={ref}
             className={twMerge(
                 "[&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))]",
                 className
             )}
-            inner={inner}
             title={title}
+            typography={typography}
         >
             {classNames.map((className, i) => (
                 <ColourDisplay key={i} className={className} />

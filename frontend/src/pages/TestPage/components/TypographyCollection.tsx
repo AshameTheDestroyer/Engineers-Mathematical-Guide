@@ -10,21 +10,23 @@ export type TypographyCollectionProps = TypographyDisplayProps &
 
 export const TypographyCollection: FC<TypographyCollectionProps> = ({
     id,
+    ref,
     text,
     title,
-    inner,
     className,
     classNames,
+    typography,
 }) => {
     return (
         <Collection
             id={id}
+            ref={ref}
             className={twMerge(
                 "[&>div]:flex-col [&>div]:flex-nowrap",
                 className
             )}
             title={title}
-            inner={inner}
+            typography={typography}
         >
             {classNames.map((className, i) => (
                 <TypographyDisplay key={i} className={className} text={text} />
