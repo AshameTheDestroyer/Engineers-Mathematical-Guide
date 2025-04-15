@@ -1,24 +1,10 @@
 {
     "title": {
-        "en": "Engineers' Mathematical Guide",
-        "ar": "دَليلُ المُهَنْدِسينَ في الرِّياضِيّات"
+        "en": "Loading...",
+        "ar": "جارٍ التّحميل..."
     },
     "subtitle": {
-        "en": "Learn By Doing!",
-        "ar": "تَعَلَّمْ عَنْ طَريقِ الفِعْل!"
-    },
-    "body": {
-        "en": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta, tempora reprehenderit magni, enim eum possimus, fugit sunt maxime amet error vel. Placeat, deserunt? Perspiciatis sit dolorem dicta obcaecati, numquam ad.",
-        "ar": "كَلَامٌ عَرَبِيٌّ كَثِيرٌ لَا مَعْنًى مِنْهُ وَلَا مَغْزًى، كُلُّ الْمَطْلُوبِ هُنَا هُوَ فَقَطْ مَلْءُ الْمُحْتَوَى بِجُمَلٍ كَبِيرَةٍ بِحَيْثُ يُعْطَى لَنَا مَثَالٌ عَمَّا يُمْكِنُ أَنْ يَظْهَرَ فِي حَالِ كَانَ هُنَالِكَ فِعْلًا كَلَامٌ ذُو قِيمَةٍ."
-    },
-    "buttons": {
-        "start": {
-            "en": "Start Your Journey Now",
-            "ar": "إبدأ رحلتك الآن"
-        },
-        "learn": {
-            "en": "Learn More",
-            "ar": "إقرأ المزيد"
-        }
+        "en": "Please wait a moment till the page finally loads.",
+        "ar": "يرجى الانتظار لحظةً ريثما يتمّ تحميل الصّفحة."
     }
 }
