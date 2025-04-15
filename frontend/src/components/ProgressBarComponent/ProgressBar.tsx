@@ -76,7 +76,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                     role="progressbar"
                     className={twJoin(
                         value == minimum ? "invisible" : "",
-                        "-m-[2px] box-content h-full rounded-full border-2 transition-all duration-300 ease-out"
+                        "-m-[2px] box-content h-full rounded-full border-2 transition-all duration-300"
                     )}
                     style={{ width: `${GetPercentage(value)}%` }}
                 />
