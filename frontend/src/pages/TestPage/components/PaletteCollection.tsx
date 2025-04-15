@@ -14,9 +14,10 @@ export type PaletteCollectionProps = Omit<CollectionProps, "children"> & {
 
 export const PaletteCollection: FC<PaletteCollectionProps> = ({
     id,
+    ref,
     title,
-    inner,
     className,
+    typography,
     classNames,
 }) => {
     const { SetThemePalette } = useThemePalette();
@@ -24,12 +25,13 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
     return (
         <Collection
             id={id}
+            ref={ref}
             className={twMerge(
                 "relative [&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(max(30rem,40vw),1fr))]",
                 className
             )}
-            inner={inner}
             title={title}
+            typography={typography}
         >
             <Button
                 className="absolute right-0 top-0 translate-y-[var(--line-height)]"
@@ -38,14 +40,14 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
                 Apply
             </Button>
             <ColourCollection
-                inner
                 title="Background"
                 classNames={classNames.background}
+                typography={{ variant: "h2", className: "text-lg" }}
             />
             <ColourCollection
-                inner
                 title="Foreground"
                 classNames={classNames.foreground}
+                typography={{ variant: "h2", className: "text-lg" }}
             />
         </Collection>
     );

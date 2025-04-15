@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Collection } from "./Collection";
+import { Button } from "@/components/Button/Button";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { DropDownList } from "@/components/DropDownList/DropDownList";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -8,8 +10,6 @@ import cog_icon from "@icons/cog.svg";
 import user_icon from "@icons/user.svg";
 import home_icon from "@icons/home.svg";
 import arrow_icon from "@icons/arrow.svg";
-import { DropDownList } from "@/components/DropDownList/DropDownList";
-import { Button } from "@/components/Button/Button";
 
 export const DropDownCollection: FC = () => {
     const { direction } = useLocalization();
@@ -51,7 +51,11 @@ export const DropDownCollection: FC = () => {
 
     return (
         <Collection title="Drop Down Component">
-            <Collection title="Normal" inner className="[&>div]:flex-col">
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
+                title="Normal"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <DropDown
                         text="Default"
@@ -102,7 +106,11 @@ export const DropDownCollection: FC = () => {
                     </DropDown>
                 </ButtonBox>
             </Collection>
-            <Collection title="Thick" inner className="[&>div]:flex-col">
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
+                title="Thick"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <DropDown
                         isThick
@@ -162,7 +170,11 @@ export const DropDownCollection: FC = () => {
                     </DropDown>
                 </ButtonBox>
             </Collection>
-            <Collection title="Text-less" inner>
+            <Collection
+                className="[&>div]:gap-4"
+                title="Text-less"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <DropDown
                     icon={cogIcon}
                     variant="default"
@@ -185,7 +197,11 @@ export const DropDownCollection: FC = () => {
                     <DropDownChildren />
                 </DropDown>
             </Collection>
-            <Collection title="Icon-ed" inner className="[&>div]:flex-col">
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
+                title="Icon-ed"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <DropDown
                         text="Default"
@@ -240,9 +256,9 @@ export const DropDownCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
-                inner
-                className="[&>div]:flex-col"
-                title="Close on Interaction"
+                className="[&>div]:flex-col [&>div]:gap-4"
+                title="Closes on Interaction"
+                typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
                     <DropDown
@@ -303,7 +319,11 @@ export const DropDownCollection: FC = () => {
                     </DropDown>
                 </ButtonBox>
             </Collection>
-            <Collection title="Positioned" inner className="[&>div]:flex-col">
+            <Collection
+                className="[&>div]:flex-col"
+                title="Positioned"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox className="grid grid-cols-5 grid-rows-5">
                     <DropDown
                         className={
@@ -443,7 +463,11 @@ export const DropDownCollection: FC = () => {
                     </DropDown>
                 </ButtonBox>
             </Collection>
-            <Collection title="List" inner className="[&>div]:flex-col">
+            <Collection
+                className="[&>div]:flex-col"
+                title="List"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <DropDownList position="bottom-end" text="Nested">
                     <DropDown
                         doesTextGrow

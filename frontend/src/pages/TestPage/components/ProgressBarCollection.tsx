@@ -11,12 +11,20 @@ export const ProgressBarCollection: FC = () => {
             className="[&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(40vw,1fr))]"
             title="Progress Bar Component"
         >
-            <Collection title="Normal" inner className="[&>div]:gap-8">
+            <Collection
+                className="[&>div]:gap-8"
+                title="Normal"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ProgressBar variant="default" value={25} />
                 <ProgressBar variant="primary" value={50} />
                 <ProgressBar variant="secondary" value={75} />
             </Collection>
-            <Collection title="Checkpoint-ed" inner className="[&>div]:gap-8">
+            <Collection
+                className="[&>div]:gap-8"
+                title="Checkpoint-ed"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ProgressBar
                     value={25}
                     variant="default"
@@ -33,7 +41,11 @@ export const ProgressBarCollection: FC = () => {
                     checkpoints={[25, 50, 75]}
                 />
             </Collection>
-            <Collection title="Ranged" inner className="[&>div]:gap-8">
+            <Collection
+                className="[&>div]:gap-8"
+                title="Ranged"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ProgressBar
                     value={375}
                     minimum={300}
@@ -58,8 +70,8 @@ export const ProgressBarCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:gap-8"
-                inner
                 title="Icon-ed Checkpoints"
+                typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ProgressBar
                     value={33}

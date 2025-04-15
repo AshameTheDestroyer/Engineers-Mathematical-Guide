@@ -1,31 +1,38 @@
 import { FC } from "react";
-import { twJoin, twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 import { ComponentProps } from "@/types/ComponentProps";
+import {
+    Typography,
+    TypographyProps,
+} from "@/components/Typography/Typography";
 
-export type CollectionProps = ComponentProps & {
+export type CollectionProps = ComponentProps<HTMLDivElement> & {
     title: string;
-    inner?: boolean;
+    typography?: TypographyProps;
 };
 
 export const Collection: FC<CollectionProps> = ({
     id,
+    ref,
     title,
-    inner,
     children,
     className,
+    typography,
 }) => {
     return (
-        <div id={id} className={twMerge("flex flex-col gap-4", className)}>
-            {!inner ? (
-                <h1 className="text-xl font-bold">{title}</h1>
-            ) : (
-                <h2 className="text-lg font-bold">{title}</h2>
-            )}
-            <div
-                className={twJoin("flex flex-wrap", !inner ? "gap-8" : "gap-4")}
+        <div
+            id={id}
+            ref={ref}
+            className={twMerge("flex flex-col gap-4", className)}
+        >
+            <Typography
+                variant="h1"
+                {...typography}
+                className={twMerge("text-xl font-bold", typography?.className)}
             >
-                {children}
-            </div>
+                {title}
+            </Typography>
+            <div className="flex flex-wrap gap-8">{children}</div>
         </div>
     );
 };

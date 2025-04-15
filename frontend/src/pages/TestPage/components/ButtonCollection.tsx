@@ -26,14 +26,20 @@ export const ButtonCollection: FC = () => {
 
     return (
         <Collection title="Button Component">
-            <Collection title="Normal" inner>
+            <Collection
+                title="Normal"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <Button variant="default">Default</Button>
                     <Button variant="primary">Primary</Button>
                     <Button variant="secondary">Secondary</Button>
                 </ButtonBox>
             </Collection>
-            <Collection title="Thick" inner>
+            <Collection
+                title="Thick"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <Button variant="default" isThick>
                         Default
@@ -46,7 +52,10 @@ export const ButtonCollection: FC = () => {
                     </Button>
                 </ButtonBox>
             </Collection>
-            <Collection title="Linked" inner>
+            <Collection
+                title="Linked"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <Button variant="default" link="/" icon={homeIcon}>
                         Default
@@ -59,7 +68,11 @@ export const ButtonCollection: FC = () => {
                     </Button>
                 </ButtonBox>
             </Collection>
-            <Collection title="Icon-ed" inner className="[&>div]:flex-col">
+            <Collection
+                title="Icon-ed"
+                className="[&>div]:flex-col [&>div]:gap-4"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
                 <ButtonBox>
                     <Button variant="default" icon={arrowRightIcon}>
                         Default
