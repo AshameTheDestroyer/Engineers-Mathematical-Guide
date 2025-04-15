@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Typography, { TypographyProps } from "../Typography/Typography";
+import { Typography, TypographyProps } from "../Typography/Typography";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 export type LocaleProps = {

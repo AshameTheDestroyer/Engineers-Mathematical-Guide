@@ -5,7 +5,7 @@ export type TypographyProps = ComponentProps<HTMLElement> & {
     variant: TypographyElement;
 };
 
-const Typography: FC<TypographyProps> = ({
+export const Typography: FC<TypographyProps> = ({
     id,
     ref,
     variant,
@@ -20,5 +20,3 @@ const Typography: FC<TypographyProps> = ({
         </Element>
     );
 };
-
-export default Typography;
