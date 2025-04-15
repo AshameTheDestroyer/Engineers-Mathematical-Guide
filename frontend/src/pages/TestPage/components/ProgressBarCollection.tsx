@@ -9,8 +9,8 @@ export const ProgressBarCollection: FC = () => {
     return (
         <Collection title="Progress Bar Component" className="[&>div]:flex-col">
             <Collection title="Normal" inner className="[&>div]:gap-8">
-                <ProgressBar variant="default" value={75} />
-                <ProgressBar variant="primary" value={75} />
+                <ProgressBar variant="default" value={0} />
+                <ProgressBar variant="primary" value={50} />
                 <ProgressBar variant="secondary" value={75} />
             </Collection>
             <Collection title="Checkpoint-ed" inner className="[&>div]:gap-8">
@@ -20,12 +20,12 @@ export const ProgressBarCollection: FC = () => {
                     checkpoints={[25, 50, 75]}
                 />
                 <ProgressBar
-                    value={25}
+                    value={50}
                     variant="primary"
                     checkpoints={[25, 50, 75]}
                 />
                 <ProgressBar
-                    value={25}
+                    value={75}
                     variant="secondary"
                     checkpoints={[25, 50, 75]}
                 />
@@ -36,7 +36,7 @@ export const ProgressBarCollection: FC = () => {
                 title="Icon-ed Checkpoints"
             >
                 <ProgressBar
-                    value={50}
+                    value={33}
                     variant="default"
                     checkpoints={[
                         { value: 33, icon: { source: sun_icon } },
@@ -52,7 +52,7 @@ export const ProgressBarCollection: FC = () => {
                     ]}
                 />
                 <ProgressBar
-                    value={50}
+                    value={66}
                     variant="secondary"
                     checkpoints={[
                         { value: 33, icon: { source: sun_icon } },
