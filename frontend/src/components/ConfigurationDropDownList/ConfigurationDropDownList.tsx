@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Locale } from "../Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
@@ -15,6 +16,8 @@ import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
+
+import locales from "@localization/configuration_drop_down_list.json";
 
 export type ConfigurationDropDownListProps = WithPartial<
     Omit<DropDownListProps, "children">,
@@ -56,47 +59,64 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
         >
             <DropDown
                 doesTextGrow
-                text="Theme Mode"
                 icon={nestedDropDownIcon}
                 position={nestedDropDownPosition}
+                text={
+                    <Locale variant="p" className="text-end">
+                        {locales["theme-mode"].title}
+                    </Locale>
+                }
             >
                 <Button
                     doesTextGrow
-                    icon={{ placement: "left", source: sun_icon }}
+                    icon={{
+                        placement: direction == "ltr" ? "left" : "right",
+                        source: sun_icon,
+                    }}
                     variant={themeMode == "light" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("light")}
                 >
-                    Light
+                    <Locale>{locales["theme-mode"].values.light}</Locale>
                 </Button>
                 <Button
                     doesTextGrow
-                    icon={{ placement: "left", source: moon_icon }}
+                    icon={{
+                        placement: direction == "ltr" ? "left" : "right",
+                        source: moon_icon,
+                    }}
                     variant={themeMode == "dark" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("dark")}
                 >
-                    Dark
+                    <Locale>{locales["theme-mode"].values.dark}</Locale>
                 </Button>
                 <Button
                     doesTextGrow
-                    icon={{ placement: "left", source: monitor_icon }}
+                    icon={{
+                        placement: direction == "ltr" ? "left" : "right",
+                        source: monitor_icon,
+                    }}
                     variant={themeMode == "system" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("system")}
                 >
-                    System
+                    <Locale>{locales["theme-mode"].values.system}</Locale>
                 </Button>
             </DropDown>
             <DropDown
                 doesTextGrow
-                text="Theme Palette"
                 icon={nestedDropDownIcon}
                 position={nestedDropDownPosition}
+                text={
+                    <Locale variant="p" className="text-end">
+                        {locales["theme-palette"].title}
+                    </Locale>
+                }
             >
                 {themePalettes.map((_themePalette, i) => (
                     <Button
                         key={i}
                         doesTextGrow
                         icon={{
-                            placement: "left",
+                            placement: direction == "ltr" ? "left" : "right",
                             source: PALETTE_ICONS[_themePalette],
                         }}
                         variant={
@@ -106,46 +126,64 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                         }
                         onClick={(_e) => SetThemePalette(_themePalette)}
                     >
-                        {_themePalette.toTitleCase()}
+                        <Locale>
+                            {
+                                locales["theme-palette"].values[
+                                    _themePalette as keyof (typeof locales)["theme-palette"]["values"]
+                                ]
+                            }
+                        </Locale>
                     </Button>
                 ))}
             </DropDown>
             <DropDown
                 doesTextGrow
-                text="Writing Direction"
-                position={nestedDropDownPosition}
                 icon={nestedDropDownIcon}
+                position={nestedDropDownPosition}
+                text={
+                    <Locale variant="p" className="text-end">
+                        {locales["writing-direction"].title}
+                    </Locale>
+                }
             >
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: "left",
+                        placement: direction == "ltr" ? "left" : "right",
                         source: arrow_icon,
                         className: "rotate-90",
                     }}
                     variant={direction == "ltr" ? "primary" : "default"}
                     onClick={(_e) => SetDirection("ltr")}
                 >
-                    Left to Right
+                    <Locale>
+                        {locales["writing-direction"].values["left-to-right"]}
+                    </Locale>
                 </Button>
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: "left",
+                        placement: direction == "ltr" ? "left" : "right",
                         source: arrow_icon,
                         className: "-rotate-90",
                     }}
                     variant={direction == "rtl" ? "primary" : "default"}
                     onClick={(_e) => SetDirection("rtl")}
                 >
-                    Right to Left
+                    <Locale>
+                        {locales["writing-direction"].values["right-to-left"]}
+                    </Locale>
                 </Button>
             </DropDown>
             <DropDown
                 doesTextGrow
-                text="Language"
                 icon={nestedDropDownIcon}
                 position={nestedDropDownPosition}
+                text={
+                    <Locale variant="p" className="text-end">
+                        {locales["language"].title}
+                    </Locale>
+                }
             >
                 <Button
                     variant={language == "en" ? "primary" : "default"}

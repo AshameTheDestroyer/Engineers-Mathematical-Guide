@@ -2,15 +2,15 @@ import { twJoin, twMerge } from "tailwind-merge";
 import { IconButton } from "../IconButton/IconButton";
 import { Button, ButtonProps } from "../Button/Button";
 import { ComponentProps } from "@/types/ComponentProps";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import drop_down_icon from "@icons/triangle_arrow.svg";
 
 export type DropDownProps = {
-    text?: string;
     position: Position;
     doesHaveMinimumWidth?: boolean;
     doesCloseOnInteraction?: boolean;
+    text?: PropsWithChildren["children"];
     icon?: WithPartial<ButtonProps["icon"] & {}, "source" | "placement">;
 } & ComponentProps<HTMLDivElement> &
     Omit<ButtonProps, "ref" | "icon" | "link">;

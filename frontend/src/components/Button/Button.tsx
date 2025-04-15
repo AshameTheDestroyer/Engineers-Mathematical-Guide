@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconProps } from "@components/Icon/Icon";
@@ -70,7 +70,6 @@ export const Button: FC<ButtonProps> = ({
                 data-content
                 className={twMerge(
                     isThick ? "px-4 py-2" : "px-2 py-1",
-                    doesTextGrow ? "[&>*:last-child]:grow" : "",
                     "flex h-full w-full place-content-center place-items-center gap-2 rounded-xl border-2 transition duration-200"
                 )}
             >
@@ -85,18 +84,17 @@ export const Button: FC<ButtonProps> = ({
                         )}
                     />
                 )}
-                {typeof children == "string" ? (
-                    <p
-                        className={
+                {children != null && (
+                    <div
+                        className={twJoin(
+                            doesTextGrow ? "grow" : "",
                             icon?.placement == "left"
                                 ? "text-end"
                                 : "text-start"
-                        }
+                        )}
                     >
                         {children}
-                    </p>
-                ) : (
-                    children
+                    </div>
                 )}
             </div>
             <div
