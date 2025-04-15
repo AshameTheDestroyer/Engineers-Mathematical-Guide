@@ -1,0 +1,88 @@
+{
+    "theme-mode": {
+        "title": {
+            "en": "Theme Mode",
+            "ar": "نَمط الألوان"
+        },
+        "values": {
+            "light": {
+                "en": "Light",
+                "ar": "فاتِح"
+            },
+            "dark": {
+                "en": "Dark",
+                "ar": "داكِن"
+            },
+            "system": {
+                "en": "System",
+                "ar": "حسب النّظام"
+            }
+        }
+    },
+    "theme-palette": {
+        "title": {
+            "en": "Theme Palette",
+            "ar": "لَوح الألوان"
+        },
+        "values": {
+            "azure": {
+                "en": "Azure",
+                "ar": "لازَوَرديّ"
+            },
+            "caramel": {
+                "en": "Caramel",
+                "ar": "كَراميل"
+            },
+            "crimson": {
+                "en": "Crimson",
+                "ar": "قُرمُز"
+            },
+            "dusk": {
+                "en": "Dusk",
+                "ar": "غَسَق"
+            },
+            "honey": {
+                "en": "Honey",
+                "ar": "عَسَل"
+            },
+            "lagoon": {
+                "en": "Lagoon",
+                "ar": "بُحَيرة"
+            },
+            "moss": {
+                "en": "Moss",
+                "ar": "طُحْلُب"
+            },
+            "pearl": {
+                "en": "Pearl",
+                "ar": "لُؤلُؤ"
+            },
+            "sakura": {
+                "en": "Sakura",
+                "ar": "كَرَز"
+            }
+        }
+    },
+    "writing-direction": {
+        "title": {
+            "en": "Writing Direction",
+            "ar": "جهةُ الكِتابة"
+        },
+        "values": {
+            "left-to-right": {
+                "en": "Left to Right",
+                "ar": "مِن اليّسار لليّمين"
+            },
+            "right-to-left": {
+                "en": "Right to Left",
+                "ar": "مِن اليّمين لليّسار"
+            }
+        }
+    },
+    "language": {
+        "title": {
+            "en": "Language",
+            "ar": "اللّغةُ"
+        }
+    }
+}
