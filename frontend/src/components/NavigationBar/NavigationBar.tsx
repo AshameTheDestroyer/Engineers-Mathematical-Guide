@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type NavigationBarProps = ChildlessComponentProps & {
-    routes: Array<{
-        text: string;
-        href: string;
-    }>;
+    routes: Array<Anchor>;
 };
 
 export const NavigationBar: FC<NavigationBarProps> = ({
