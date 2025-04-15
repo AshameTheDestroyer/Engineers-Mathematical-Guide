@@ -1,53 +1,71 @@
-import React, { useEffect } from "react";
+import { FC, useEffect } from "react";
+import { twMerge } from "tailwind-merge";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-type ProgressBarProps = {
+export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
     value: number;
+    maximum?: number;
     minimum?: number;
-    maximum: number;
     variant?: Variant;
-    onProgress?: (value: number) => void;
     onComplete?: () => void;
+    onProgress?: (value: number) => void;
 };
 
-const ProgressBar: React.FC<ProgressBarProps> = ({
+export const ProgressBar: FC<ProgressBarProps> = ({
+    id,
+    ref,
     value,
-    minimum = 0,
-    maximum,
-    variant = "primary",
+    className,
     onProgress,
     onComplete,
+    minimum = 0,
+    maximum = 100,
+    variant = "primary",
 }) => {
     if (minimum >= maximum) {
-        throw new Error("Minimum must be less than maximum");
+        throw new Error("Minimum value must be less than maximum value.");
     }
 
-    const clampedValue = Math.max(minimum, Math.min(value, maximum));
+    if (value < minimum || value > maximum) {
+        throw new Error(
+            "Value is out of bounds of minimum value and maximum value."
+        );
+    }
 
-    const percentage = ((clampedValue - minimum) / (maximum - minimum)) * 100;
+    const percentage = ((value - minimum) / (maximum - minimum)) * 100;
 
     useEffect(() => {
-        onProgress?.(clampedValue);
+        onProgress?.(value);
 
-        if (clampedValue >= maximum) {
+        if (value == maximum) {
             onComplete?.();
         }
-    }, [clampedValue, maximum, onProgress, onComplete]);
+    }, [value, onProgress, onComplete]);
 
-    const variantColors = {
-        primary: "bg-primary-dark",
-        secondary: "bg-secondary-dark",
-        default: "bg-gray-dark",
+    const variantClassNames = {
+        default:
+            "[&>div]:bg-tertiary-light border-tertiary-normal bg-tertiary-dark",
+        primary:
+            "[&>div]:bg-primary-normal border-primary-dark bg-primary-darker",
+        secondary:
+            "[&>div]:bg-secondary-normal border-secondary-dark bg-secondary-darker",
     };
 
     return (
-        <div className="bg-gray-darker m-5 h-4 w-full rounded-full">
+        <div
+            id={id}
+            ref={ref}
+            className={twMerge(
+                variantClassNames[variant],
+                "flex h-4 w-full rounded-full border-2",
+                className
+            )}
+        >
             <div
-                className={`${variantColors[variant]} h-4 rounded-full transition-all duration-300 ease-out`}
-                style={{ width: `${percentage}%` }}
                 role="progressbar"
+                className="rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${percentage}%` }}
             />
         </div>
     );
 };
-
-export default ProgressBar;
