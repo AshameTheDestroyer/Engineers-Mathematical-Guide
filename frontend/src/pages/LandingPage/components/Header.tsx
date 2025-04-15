@@ -5,12 +5,17 @@ import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
 
+import route_locales from "@localization/landing_page_routes.json";
+
 export const Header: FC = () => {
+    const { GetLocaleOfRoutes, language } = useLocalization();
+
     return (
         <Header_
             className="bg-background-dark transition duration-200"
@@ -22,7 +27,14 @@ export const Header: FC = () => {
             }}
         >
             <Logo />
-            <NavigationBar className="grow" routes={LANDING_PAGE_ROUTES} />
+            <NavigationBar
+                className="grow"
+                routes={GetLocaleOfRoutes(
+                    LANDING_PAGE_ROUTES,
+                    route_locales,
+                    language
+                )}
+            />
             <ButtonBox>
                 <Button
                     link="/registration/signup"

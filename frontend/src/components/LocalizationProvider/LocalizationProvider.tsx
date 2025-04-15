@@ -17,6 +17,11 @@ export type LocalizationStateProps = {
     SetLanguage: (language: string) => void;
     SetDirection: (direction: "rtl" | "ltr") => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
+    GetLocaleOfRoutes: (
+        routes: Array<Anchor>,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) => Array<Anchor>;
 };
 
 export const LocalizationContext = createContext<LocalizationStateProps>(null!);
@@ -32,6 +37,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         GetLocale,
         SetLanguage,
         SetDirection,
+        GetLocaleOfRoutes,
         language: GetFromLocalStorage("language") ?? "en",
         direction: GetFromLocalStorage("direction") ?? "ltr",
     });
@@ -56,6 +62,25 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
             // Fetch translation API and return result.
         }
         return locale;
+    }
+
+    function GetLocaleOfRoutes(
+        routes: Array<Anchor>,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) {
+        const routeLocales = routes.map((route) => ({
+            locale: locales[route.text],
+            href: route.href,
+        }));
+
+        return routeLocales.map(
+            (routeLocale) =>
+                ({
+                    text: GetLocale(routeLocale.locale, language),
+                    href: routeLocale.href,
+                }) as Anchor
+        );
     }
 
     return (
