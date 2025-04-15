@@ -7,7 +7,10 @@ import moon_icon from "@icons/moon.svg";
 
 export const ProgressBarCollection: FC = () => {
     return (
-        <Collection title="Progress Bar Component" className="[&>div]:flex-col">
+        <Collection
+            className="[&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(40vw,1fr))]"
+            title="Progress Bar Component"
+        >
             <Collection title="Normal" inner className="[&>div]:gap-8">
                 <ProgressBar variant="default" value={0} />
                 <ProgressBar variant="primary" value={50} />
