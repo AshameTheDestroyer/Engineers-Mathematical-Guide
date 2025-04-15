@@ -44,11 +44,11 @@ export const ProgressBar: FC<ProgressBarProps> = ({
 
     const variantClassNames = {
         default:
-            "[&>div]:bg-tertiary-light border-tertiary-normal bg-tertiary-dark",
+            "[&>div]:bg-tertiary-light [&>div]:border-tertiary-dark border-tertiary-dark bg-tertiary-normal-hover",
         primary:
-            "[&>div]:bg-primary-normal border-primary-dark bg-primary-darker",
+            "[&>div]:bg-primary-normal [&>div]:border-primary-darker border-primary-darker bg-primary-dark-hover",
         secondary:
-            "[&>div]:bg-secondary-normal border-secondary-dark bg-secondary-darker",
+            "[&>div]:bg-secondary-normal [&>div]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover",
     };
 
     return (
@@ -57,13 +57,13 @@ export const ProgressBar: FC<ProgressBarProps> = ({
             ref={ref}
             className={twMerge(
                 variantClassNames[variant],
-                "flex h-4 w-full rounded-full border-2",
+                "border-3 flex h-5 w-full rounded-full",
                 className
             )}
         >
             <div
                 role="progressbar"
-                className="rounded-full transition-all duration-300 ease-out"
+                className="border-3 -m-[3px] rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${percentage}%` }}
             />
         </div>
