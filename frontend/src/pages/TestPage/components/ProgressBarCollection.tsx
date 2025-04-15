@@ -41,6 +41,29 @@ export const ProgressBarCollection: FC = () => {
                     checkpoints={[25, 50, 75]}
                 />
             </Collection>
+            <Collection title="Ranged" inner className="[&>div]:gap-8">
+                <ProgressBar
+                    value={400}
+                    minimum={350}
+                    maximum={650}
+                    variant="default"
+                    checkpoints={[350, 650]}
+                />
+                <ProgressBar
+                    value={500}
+                    minimum={350}
+                    maximum={650}
+                    variant="primary"
+                    checkpoints={[350, 650]}
+                />
+                <ProgressBar
+                    value={600}
+                    minimum={350}
+                    maximum={650}
+                    variant="secondary"
+                    checkpoints={[350, 650]}
+                />
+            </Collection>
             <Collection
                 className="[&>div]:gap-8"
                 title="Ranged"
