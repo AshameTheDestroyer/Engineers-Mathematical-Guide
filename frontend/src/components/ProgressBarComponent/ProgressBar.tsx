@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
+import { Icon, IconProps } from "../Icon/Icon";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
@@ -8,8 +9,8 @@ export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
     minimum?: number;
     variant?: Variant;
     onComplete?: () => void;
-    checkpoints?: Array<number>;
     onProgress?: (value: number) => void;
+    checkpoints?: Array<number | { value: number; icon: IconProps }>;
 };
 
 export const ProgressBar: FC<ProgressBarProps> = ({
@@ -71,7 +72,12 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                 style={{ width: `${GetPercentage(value)}%` }}
             />
             {checkpoints?.map((checkpoint, i) => {
-                if (checkpoint < minimum || checkpoint > maximum) {
+                const checkpointValue =
+                    typeof checkpoint == "number"
+                        ? checkpoint
+                        : checkpoint.value;
+
+                if (checkpointValue < minimum || checkpointValue > maximum) {
                     throw new Error(
                         "Checkpoints are out of bounds of minimum value and maximum value."
                     );
@@ -80,11 +86,16 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                 return (
                     <div
                         key={i}
-                        data-reached={value >= checkpoint}
+                        data-reached={value >= checkpointValue}
                         className="border-3 absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(100%-3px)] -translate-y-1/2 place-content-center place-items-center rounded-full font-bold"
-                        style={{ left: `${GetPercentage(checkpoint)}%` }}
+                        style={{ left: `${GetPercentage(checkpointValue)}%` }}
                     >
-                        {checkpoint}
+                        {typeof checkpoint != "number" &&
+                        "icon" in checkpoint ? (
+                            <Icon width={24} height={24} {...checkpoint.icon} />
+                        ) : (
+                            checkpointValue
+                        )}
                     </div>
                 );
             })}
