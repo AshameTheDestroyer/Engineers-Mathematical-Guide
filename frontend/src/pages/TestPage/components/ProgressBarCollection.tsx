@@ -12,7 +12,7 @@ export const ProgressBarCollection: FC = () => {
             title="Progress Bar Component"
         >
             <Collection title="Normal" inner className="[&>div]:gap-8">
-                <ProgressBar variant="default" value={0} />
+                <ProgressBar variant="default" value={25} />
                 <ProgressBar variant="primary" value={50} />
                 <ProgressBar variant="secondary" value={75} />
             </Collection>
@@ -35,25 +35,25 @@ export const ProgressBarCollection: FC = () => {
             </Collection>
             <Collection title="Ranged" inner className="[&>div]:gap-8">
                 <ProgressBar
-                    value={400}
-                    minimum={350}
-                    maximum={650}
+                    value={375}
+                    minimum={300}
+                    maximum={600}
                     variant="default"
-                    checkpoints={[350, 650]}
+                    checkpoints={[300, 600]}
                 />
                 <ProgressBar
-                    value={500}
-                    minimum={350}
-                    maximum={650}
+                    value={450}
+                    minimum={300}
+                    maximum={600}
                     variant="primary"
-                    checkpoints={[350, 650]}
+                    checkpoints={[300, 600]}
                 />
                 <ProgressBar
-                    value={600}
-                    minimum={350}
-                    maximum={650}
+                    value={525}
+                    minimum={300}
+                    maximum={600}
                     variant="secondary"
-                    checkpoints={[350, 650]}
+                    checkpoints={[300, 600]}
                 />
             </Collection>
             <Collection
