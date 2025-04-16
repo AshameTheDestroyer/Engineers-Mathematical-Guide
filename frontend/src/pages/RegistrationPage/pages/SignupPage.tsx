@@ -13,75 +13,72 @@ export const SignupPage: FC = () => {
     const { direction } = useLocalization();
 
     return (
-        <main className="flex items-center justify-center p-4">
-            <form
-                className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
-                action=""
-            >
-                <Typography variant="h1" className="text-xl font-bold">
-                    Create new account
-                </Typography>
-                <main className="flex flex-col gap-6">
-                    <Input
-                        required
-                        type="email"
-                        name="email"
-                        placeholder="example@gmail.com"
-                    />
-                    <PasswordInput
-                        required
-                        name="password"
-                        placeholder="Enter new password"
-                    />
-                    <PasswordInput
-                        required
-                        name="confirm-password"
-                        placeholder="Re-enter previous password"
-                    />
-                </main>
-                <Checkbox
+        <form
+            className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
+            action=""
+        >
+            <Typography variant="h1" className="text-xl font-bold">
+                Create new account
+            </Typography>
+            <main className="flex flex-col gap-6">
+                <Input
                     required
-                    variant="secondary"
-                    name="terms-and-conditions"
-                    label={
-                        <RichText
-                            ExtractedTextRenders={(text) => (
-                                <Link
-                                    className="text-secondary-normal underline"
-                                    to="/registration/terms-and-conditions"
-                                >
-                                    {text}
-                                </Link>
-                            )}
-                        >
-                            I agree with the application's **Terms &
-                            Conditions**.
-                        </RichText>
-                    }
+                    type="email"
+                    name="email"
+                    placeholder="example@gmail.com"
                 />
-                <ButtonBox
-                    className="[&>button]:grow"
-                    direction={direction == "ltr" ? "row" : "reverse-row"}
-                >
-                    <Button type="reset">Clear</Button>
-                    <Button variant="primary" type="submit">
-                        Sign up
-                    </Button>
-                </ButtonBox>
-                <RichText
-                    variant="p"
-                    ExtractedTextRenders={(text) => (
-                        <Link
-                            className="text-primary-normal underline"
-                            to="/registration/login"
-                        >
-                            {text}
-                        </Link>
-                    )}
-                >
-                    Already a member? **Login**.
-                </RichText>
-            </form>
-        </main>
+                <PasswordInput
+                    required
+                    name="password"
+                    placeholder="Enter new password"
+                />
+                <PasswordInput
+                    required
+                    name="confirm-password"
+                    placeholder="Re-enter previous password"
+                />
+            </main>
+            <Checkbox
+                required
+                variant="secondary"
+                name="terms-and-conditions"
+                label={
+                    <RichText
+                        ExtractedTextRenders={(text) => (
+                            <Link
+                                className="text-secondary-normal underline"
+                                to="/registration/terms-and-conditions"
+                            >
+                                {text}
+                            </Link>
+                        )}
+                    >
+                        I agree with the application's **Terms & Conditions**.
+                    </RichText>
+                }
+            />
+            <ButtonBox
+                className="[&>button]:grow"
+                direction={direction == "ltr" ? "row" : "reverse-row"}
+            >
+                <Button type="reset">Clear</Button>
+                <Button variant="primary" type="submit">
+                    Sign up
+                </Button>
+            </ButtonBox>
+            <RichText
+                variant="p"
+                ExtractedTextRenders={(text) => (
+                    <Link
+                        className="text-primary-normal underline"
+                        to="/registration/login"
+                    >
+                        {text}
+                    </Link>
+                )}
+            >
+                Already a member? **Login**.
+            </RichText>
+        </form>
     );
 };

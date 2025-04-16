@@ -12,63 +12,61 @@ export const LoginPage: FC = () => {
     const { direction } = useLocalization();
 
     return (
-        <main className="flex items-center justify-center p-4">
-            <form
-                className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
-                action=""
+        <form
+            className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
+            action=""
+        >
+            <Typography variant="h1" className="text-xl font-bold">
+                Enter your information
+            </Typography>
+            <main className="flex flex-col gap-6">
+                <Input
+                    required
+                    type="email"
+                    name="email"
+                    placeholder="example@gmail.com"
+                />
+                <PasswordInput
+                    required
+                    name="password"
+                    placeholder="Enter your password"
+                />
+            </main>
+            <RichText
+                variant="p"
+                ExtractedTextRenders={(text) => (
+                    <Link
+                        className="text-secondary-normal underline"
+                        to="/registration/reset-password"
+                    >
+                        {text}
+                    </Link>
+                )}
             >
-                <Typography variant="h1" className="text-xl font-bold">
-                    Enter your information
-                </Typography>
-                <main className="flex flex-col gap-6">
-                    <Input
-                        required
-                        type="email"
-                        name="email"
-                        placeholder="example@gmail.com"
-                    />
-                    <PasswordInput
-                        required
-                        name="password"
-                        placeholder="Enter your password"
-                    />
-                </main>
-                <RichText
-                    variant="p"
-                    ExtractedTextRenders={(text) => (
-                        <Link
-                            className="text-secondary-normal underline"
-                            to="/registration/reset-password"
-                        >
-                            {text}
-                        </Link>
-                    )}
-                >
-                    Forgot your password? **Reset Password**.
-                </RichText>
-                <ButtonBox
-                    className="[&>button]:grow"
-                    direction={direction == "ltr" ? "row" : "reverse-row"}
-                >
-                    <Button type="reset">Clear</Button>
-                    <Button variant="primary" type="submit">
-                        Login
-                    </Button>
-                </ButtonBox>
-                <RichText
-                    variant="p"
-                    ExtractedTextRenders={(text) => (
-                        <Link
-                            className="text-primary-normal underline"
-                            to="/registration/signup"
-                        >
-                            {text}
-                        </Link>
-                    )}
-                >
-                    Doesn't have an account? **Sign up**.
-                </RichText>
-            </form>
-        </main>
+                Forgot your password? **Reset Password**.
+            </RichText>
+            <ButtonBox
+                className="[&>button]:grow"
+                direction={direction == "ltr" ? "row" : "reverse-row"}
+            >
+                <Button type="reset">Clear</Button>
+                <Button variant="primary" type="submit">
+                    Login
+                </Button>
+            </ButtonBox>
+            <RichText
+                variant="p"
+                ExtractedTextRenders={(text) => (
+                    <Link
+                        className="text-primary-normal underline"
+                        to="/registration/signup"
+                    >
+                        {text}
+                    </Link>
+                )}
+            >
+                Doesn't have an account? **Sign up**.
+            </RichText>
+        </form>
     );
 };
