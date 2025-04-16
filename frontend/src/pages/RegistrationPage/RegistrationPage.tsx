@@ -36,7 +36,9 @@ export const RegistrationPage: FC = () => {
                     className={twJoin(
                         direction == "ltr" ? "right-page" : "left-page",
                         "bottom-page absolute max-sm:bottom-[calc(var(--spacing-page)/4)] max-sm:scale-75",
-                        "max-lg:left-1/2 max-lg:-translate-x-1/2"
+                        direction == "ltr"
+                            ? "max-lg:right-1/2 max-lg:translate-x-1/2"
+                            : "max-lg:left-1/2 max-lg:-translate-x-1/2"
                     )}
                 />
             </section>
