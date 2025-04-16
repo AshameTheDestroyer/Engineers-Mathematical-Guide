@@ -68,10 +68,8 @@ export const Input: FC<InputProps> = ({
                 htmlFor={inputID}
             >
                 {label ?? name.toTitleCase()}
-                {required ? (
+                {required && (
                     <span className="text-vibrant-red font-bold">*</span>
-                ) : (
-                    ""
                 )}
             </Typography>
         </div>
