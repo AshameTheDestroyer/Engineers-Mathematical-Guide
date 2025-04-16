@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import Input from "../../../components/Input/Input";
 import { Button } from "@/components/Button/Button";
-import Checkbox from "../../../components/Checkbox/Checkbox";
+import { Input } from "../../../components/Input/Input";
+import { Checkbox } from "@/components/Checkbox/Checkbox";
 
 export const SignupPage: FC = () => {
     return (
@@ -13,37 +13,45 @@ export const SignupPage: FC = () => {
             >
                 <h1 className="mb-6 text-xl font-bold">Create new account</h1>
                 <Input
-                    type="text"
+                    type="email"
                     name="email"
-                    label="Email"
                     placeholder="example@gmail.com"
                 />
                 <Input
                     type="password"
                     name="password"
-                    label="Password"
                     placeholder="Enter new password"
                 />
                 <Input
                     type="password"
-                    name="password"
-                    label="Confirm Password"
-                    placeholder="Re-enter same password"
+                    name="confirm-password"
+                    placeholder="Re-enter previous password"
                 />
                 <Checkbox
-                    link=""
-                    checked={true}
-                    linkText="terms and conditions"
-                    label="I agree with the application"
+                    variant="default"
+                    checked
+                    indeterminate
+                    name="terms-and-conditions"
+                    label={
+                        <>
+                            I agree with the application's{" "}
+                            <Link
+                                className="text-secondary-normal underline"
+                                to="/registration/terms-and-conditions"
+                            >
+                                Terms & Conditions.
+                            </Link>
+                        </>
+                    }
                 />
                 <Button>Sign up</Button>
                 <p>
-                    Already a member?
+                    Already a member?{" "}
                     <Link
-                        className="border-b-1 text-foreground-light ml-2"
+                        className="text-primary-normal underline"
                         to="/registration/login"
                     >
-                        login
+                        Login.
                     </Link>
                 </p>
             </form>

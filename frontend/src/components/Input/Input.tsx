@@ -1,12 +1,17 @@
 import { twMerge } from "tailwind-merge";
-import { FC, InputHTMLAttributes, LabelHTMLAttributes } from "react";
 import { Typography } from "../Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import {
+    FC,
+    InputHTMLAttributes,
+    LabelHTMLAttributes,
+    PropsWithChildren,
+} from "react";
 
 export type InputProps = {
     name: string;
-    label?: string;
     variant?: Variant;
+    label?: PropsWithChildren["children"];
 } & ChildlessComponentProps<HTMLDivElement> &
     Omit<InputHTMLAttributes<HTMLInputElement>, "children">;
 
