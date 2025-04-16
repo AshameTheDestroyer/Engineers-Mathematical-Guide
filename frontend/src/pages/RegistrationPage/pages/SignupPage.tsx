@@ -54,7 +54,6 @@ export const SignupPage: FC = () => {
                 />
                 <Checkbox
                     required
-                    variant="secondary"
                     name="terms-and-conditions"
                     label={
                         <RichText
