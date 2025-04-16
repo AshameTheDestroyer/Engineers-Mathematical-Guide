@@ -26,15 +26,14 @@ export const RichText: FC<TextActionProps> = ({
         "g"
     );
 
-    const texts = children?.split(extractorRegExp);
-
     const isTextExtracted = (text: string) =>
         text.startsWith(extractor) && text.endsWith(extractor);
 
+    const texts = children?.split(extractorRegExp);
     const extractedTexts = texts?.filter(isTextExtracted);
 
-    const Content = () =>
-        texts?.map((text, i) => (
+    const Content: FC = () => {
+        return texts?.map((text, i) => (
             <Fragment key={i}>
                 {isTextExtracted(text)
                     ? ExtractedTextRenders(
@@ -44,6 +43,7 @@ export const RichText: FC<TextActionProps> = ({
                     : text}
             </Fragment>
         ));
+    };
 
     if (variant == null) {
         return <Content />;
