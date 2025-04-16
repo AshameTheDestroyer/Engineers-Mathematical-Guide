@@ -3,14 +3,14 @@ import { FC, InputHTMLAttributes } from "react";
 import { Typography } from "../Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-export type CustomInputProps = {
+export type InputProps = {
     name: string;
     label?: string;
     variant?: Variant;
 } & ChildlessComponentProps<HTMLDivElement> &
     InputHTMLAttributes<HTMLInputElement>;
 
-export const Input: FC<CustomInputProps> = ({
+export const Input: FC<InputProps> = ({
     id,
     ref,
     name,
