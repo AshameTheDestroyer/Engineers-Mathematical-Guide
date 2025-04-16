@@ -39,7 +39,8 @@ export const PasswordInput: FC<PasswordInputProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    "[&>input]:pr-12 [&>label]:max-w-[calc(100%-var(--spacing)*14)]",
+                    direction == "ltr" ? "[&>input]:pr-12" : "[&>input]:pl-12",
+                    "[&>label]:max-w-[calc(100%-var(--spacing)*14)]",
                     className
                 )}
                 name={name}
