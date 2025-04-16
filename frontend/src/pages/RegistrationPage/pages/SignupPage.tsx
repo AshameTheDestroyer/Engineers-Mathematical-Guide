@@ -30,8 +30,6 @@ export const SignupPage: FC = () => {
                 />
                 <Checkbox
                     variant="default"
-                    checked
-                    indeterminate
                     name="terms-and-conditions"
                     label={
                         <RichText
