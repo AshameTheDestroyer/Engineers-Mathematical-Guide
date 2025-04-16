@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { twJoin } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
@@ -7,10 +8,20 @@ import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export const SignupPage: FC = () => {
+    const { direction } = useLocalization();
+
     return (
         <main className="flex items-center justify-center p-4">
+            <ConfigurationDropDownList
+                className={twJoin(
+                    direction == "ltr" ? "right-page" : "left-page",
+                    "top-page absolute z-10"
+                )}
+            />
             <form
                 className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
                 action=""
@@ -56,7 +67,10 @@ export const SignupPage: FC = () => {
                         </RichText>
                     }
                 />
-                <ButtonBox className="[&>button]:grow">
+                <ButtonBox
+                    className="[&>button]:grow"
+                    direction={direction == "ltr" ? "row" : "reverse-row"}
+                >
                     <Button type="reset">Clear</Button>
                     <Button variant="primary" type="submit">
                         Sign up
