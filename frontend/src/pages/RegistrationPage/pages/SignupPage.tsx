@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
+import { RichText } from "@/components/RichText/RichText";
 
 export const SignupPage: FC = () => {
     return (
@@ -33,27 +34,35 @@ export const SignupPage: FC = () => {
                     indeterminate
                     name="terms-and-conditions"
                     label={
-                        <>
-                            I agree with the application's{" "}
-                            <Link
-                                className="text-secondary-normal underline"
-                                to="/registration/terms-and-conditions"
-                            >
-                                Terms & Conditions.
-                            </Link>
-                        </>
+                        <RichText
+                            ExtractedTextRenders={(text) => (
+                                <Link
+                                    className="text-secondary-normal underline"
+                                    to="/registration/terms-and-conditions"
+                                >
+                                    {text}
+                                </Link>
+                            )}
+                        >
+                            I agree with the application's **Terms &
+                            Conditions**.
+                        </RichText>
                     }
                 />
                 <Button>Sign up</Button>
-                <p>
-                    Already a member?{" "}
-                    <Link
-                        className="text-primary-normal underline"
-                        to="/registration/login"
-                    >
-                        Login.
-                    </Link>
-                </p>
+                <RichText
+                    variant="p"
+                    ExtractedTextRenders={(text) => (
+                        <Link
+                            className="text-primary-normal underline"
+                            to="/registration/login"
+                        >
+                            {text}
+                        </Link>
+                    )}
+                >
+                    Already a member? **Login**.
+                </RichText>
             </form>
         </main>
     );
