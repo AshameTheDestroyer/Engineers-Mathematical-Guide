@@ -64,7 +64,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    "[&>label]:translate-none flex flex-row-reverse place-items-center border-0 [&>input]:hidden [&>input]:w-auto [&>label]:pointer-events-auto [&>label]:static",
+                    "flex flex-row-reverse place-items-start border-0 [&>input]:hidden [&>input]:w-auto [&>label]:pointer-events-auto [&>label]:static [&>label]:translate-y-1.5 [&>label]:text-wrap",
                     className
                 )}
                 name={name}

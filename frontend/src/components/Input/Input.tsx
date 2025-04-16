@@ -58,12 +58,12 @@ export const Input: FC<InputProps> = ({
         >
             <input
                 id={inputID}
-                className="w-full rounded-[inherit] px-6 py-2"
+                className="w-full text-ellipsis rounded-[inherit] px-6 py-2"
                 placeholder={placeholder ?? ""}
                 {...props}
             />
             <Typography<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement>>
-                className="bg-background-light pointer-events-none absolute inset-x-4 top-1/2 -translate-y-1/2 px-2 transition-all duration-200"
+                className="bg-background-light pointer-events-none absolute inset-x-4 top-1/2 max-w-[calc(100%-var(--spacing)*10)] -translate-y-1/2 overflow-clip text-ellipsis text-nowrap px-2 transition-all duration-200"
                 variant="label"
                 htmlFor={inputID}
             >
