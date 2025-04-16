@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
+import { FC, useEffect, useState } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Input, InputProps } from "../Input/Input";
-import React, { useEffect, useState } from "react";
 import { IconButton } from "../IconButton/IconButton";
 
 import check_icon from "@icons/check.svg";
@@ -10,7 +10,7 @@ export type CustomCheckboxProps = Omit<InputProps, "type"> & {
     variant?: Variant;
 };
 
-export const Checkbox: React.FC<CustomCheckboxProps> = ({
+export const Checkbox: FC<CustomCheckboxProps> = ({
     id,
     ref,
     name,
