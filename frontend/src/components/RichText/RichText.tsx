@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, Fragment, PropsWithChildren } from "react";
 import { Typography, TypographyProps } from "../Typography/Typography";
 
 export type TextActionProps = {
@@ -34,14 +34,16 @@ export const RichText: FC<TextActionProps> = ({
     const extractedTexts = texts?.filter(isTextExtracted);
 
     const Content = () =>
-        texts?.map((text) =>
-            isTextExtracted(text)
-                ? ExtractedTextRenders(
-                      text.slice(extractor.length, -extractor.length),
-                      extractedTexts?.indexOf(text)!
-                  )
-                : text
-        );
+        texts?.map((text, i) => (
+            <Fragment key={i}>
+                {isTextExtracted(text)
+                    ? ExtractedTextRenders(
+                          text.slice(extractor.length, -extractor.length),
+                          extractedTexts?.indexOf(text)!
+                      )
+                    : text}
+            </Fragment>
+        ));
 
     if (variant == null) {
         return <Content />;
