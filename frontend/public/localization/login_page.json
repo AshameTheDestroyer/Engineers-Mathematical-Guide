@@ -1,0 +1,46 @@
+{
+    "title": {
+        "en": "Enter your information",
+        "ar": "أدخلْ مَعلوماتِك"
+    },
+    "inputs": {
+        "email": {
+            "label": {
+                "en": "Email",
+                "ar": "الإيميل"
+            },
+            "placeholder": {
+                "en": "example@gmail.com",
+                "ar": "أدخلْ إيميلك"
+            }
+        },
+        "password": {
+            "label": {
+                "en": "Password",
+                "ar": "كلمةُ المُرور"
+            },
+            "placeholder": {
+                "en": "Enter new password",
+                "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
+            }
+        }
+    },
+    "forgot-password": {
+        "en": "Forgot your password? **Reset Password**.",
+        "ar": "نَسيتَ كَلمةَ مُرورك؟ **أعدْ ضَبطَ كَلمةِ المُرور**."
+    },
+    "buttons": {
+        "login": {
+            "en": "Login",
+            "ar": "تَسجيلُ الدّخول"
+        },
+        "clear": {
+            "en": "Clear",
+            "ar": "مسحُ المَكتوب"
+        }
+    },
+    "last-option": {
+        "en": "Don't have an account? **Sign up**.",
+        "ar": "لَيسَ لَديكَ حِساب؟ **أنشئْ حِساباً**."
+    }
+}

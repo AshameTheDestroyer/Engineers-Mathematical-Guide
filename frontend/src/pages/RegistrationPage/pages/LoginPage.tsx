@@ -1,32 +1,42 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
-import { Typography } from "@/components/Typography/Typography";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/login_page.json";
+
 export const LoginPage: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, GetLocale, language } = useLocalization();
 
     return (
         <form className="flex h-full w-full flex-col gap-8" action="">
-            <Typography variant="h1" className="text-xl font-bold">
-                Enter your information
-            </Typography>
+            <Locale variant="h1" className="text-xl font-bold">
+                {locales.title}
+            </Locale>
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
                     type="email"
                     name="email"
-                    placeholder="example@gmail.com"
+                    label={<Locale>{locales.inputs.email.label}</Locale>}
+                    placeholder={GetLocale(
+                        locales.inputs.email.placeholder,
+                        language
+                    )}
                 />
                 <PasswordInput
                     required
                     name="password"
-                    placeholder="Enter your password"
+                    label={<Locale>{locales.inputs.password.label}</Locale>}
+                    placeholder={GetLocale(
+                        locales.inputs.password.placeholder,
+                        language
+                    )}
                 />
             </main>
             <RichText
@@ -40,15 +50,17 @@ export const LoginPage: FC = () => {
                     </Link>
                 )}
             >
-                Forgot your password? **Reset Password**.
+                {GetLocale(locales["forgot-password"], language)}
             </RichText>
             <ButtonBox
                 className="[&>button]:grow"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
-                <Button type="reset">Clear</Button>
+                <Button type="reset">
+                    <Locale>{locales.buttons.clear}</Locale>
+                </Button>
                 <Button variant="primary" type="submit">
-                    Login
+                    <Locale>{locales.buttons.login}</Locale>
                 </Button>
             </ButtonBox>
             <RichText
@@ -62,7 +74,7 @@ export const LoginPage: FC = () => {
                     </Link>
                 )}
             >
-                Doesn't have an account? **Sign up**.
+                {GetLocale(locales["last-option"], language)}
             </RichText>
         </form>
     );
