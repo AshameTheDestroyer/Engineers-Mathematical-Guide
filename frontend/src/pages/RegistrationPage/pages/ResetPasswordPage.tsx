@@ -1,35 +1,43 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
-import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/reset_password_page.json";
+
 export const ResetPasswordPage: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, GetLocale, language } = useLocalization();
 
     return (
         <form className="flex h-full w-full flex-col gap-8" action="">
-            <Typography variant="h1" className="text-xl font-bold">
-                Get code via email
-            </Typography>
+            <Locale variant="h1" className="text-xl font-bold">
+                {locales.title}
+            </Locale>
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
                     type="email"
                     name="email"
-                    placeholder="example@gmail.com"
+                    label={<Locale>{locales.inputs.email.label}</Locale>}
+                    placeholder={GetLocale(
+                        locales.inputs.email.placeholder,
+                        language
+                    )}
                 />
             </main>
             <ButtonBox
                 className="[&>button]:grow"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
-                <Button type="reset">Clear</Button>
+                <Button type="reset">
+                    <Locale>{locales.buttons.clear}</Locale>
+                </Button>
                 <Button variant="primary" type="submit">
-                    Send Code
+                    <Locale>{locales.buttons["send-code"]}</Locale>
                 </Button>
             </ButtonBox>
             <RichText
@@ -43,7 +51,7 @@ export const ResetPasswordPage: FC = () => {
                     </Link>
                 )}
             >
-                Changed your mind? **Go Back**.
+                {GetLocale(locales["last-option"], language)}
             </RichText>
         </form>
     );
