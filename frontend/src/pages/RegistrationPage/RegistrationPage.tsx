@@ -23,10 +23,20 @@ export const RegistrationPage: FC = () => {
             <main className="flex w-full min-w-[25vw] max-w-[min(30rem,80vw)] items-center justify-center">
                 <Outlet />
             </main>
-            <section className="from-primary-normal -my-page -mr-page relative h-screen place-self-stretch self-stretch bg-gradient-to-l to-transparent max-lg:hidden">
-                <div className="absolute bottom-4 right-4 rounded p-2 text-white">
-                    <Logo />
-                </div>
+            <section
+                className={twJoin(
+                    direction == "ltr"
+                        ? "-mr-page bg-gradient-to-l"
+                        : "-ml-page bg-gradient-to-r",
+                    "from-primary-normal -my-page relative h-screen place-self-stretch self-stretch to-transparent max-lg:hidden"
+                )}
+            >
+                <Logo
+                    className={twJoin(
+                        direction == "ltr" ? "right-page" : "left-page",
+                        "bottom-page absolute"
+                    )}
+                />
             </section>
         </Page>
     );
