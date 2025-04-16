@@ -1,0 +1,56 @@
+{
+    "title": {
+        "en": "Create new account",
+        "ar": "أنشئْ حِساباً جَديداً"
+    },
+    "inputs": {
+        "email": {
+            "label": {
+                "en": "Email",
+                "ar": "الإيميل"
+            },
+            "placeholder": {
+                "en": "example@gmail.com",
+                "ar": "ادخلْ إيميلك"
+            }
+        },
+        "password": {
+            "label": {
+                "en": "Password",
+                "ar": "كلمةُ المُرور"
+            },
+            "placeholder": {
+                "en": "Enter new password",
+                "ar": "ادخلْ كلمةَ مُرورٍ جديدةٍ"
+            }
+        },
+        "confirm-password": {
+            "label": {
+                "en": "Confirm Password",
+                "ar": "تأكيدُ كلمةِ المُرور"
+            },
+            "placeholder": {
+                "en": "Re-enter previous password",
+                "ar": "أعدْ إدخالَ كلمةِ المُرورِ السّابقةِ"
+            }
+        },
+        "terms-and-conditions": {
+            "en": "I agree with the application's **Terms & Conditions**.",
+            "ar": "أوافقُ على ما يُقدّمهُ التّطبيقُ مِن **مَعاييرٍ وضَوابطٍ**."
+        }
+    },
+    "buttons": {
+        "signup": {
+            "en": "Sign up",
+            "ar": "إنشاءُ حِساب"
+        },
+        "clear": {
+            "en": "Clear",
+            "ar": "مسحُ المَكتوب"
+        }
+    },
+    "last-option": {
+        "en": "Already a member? **Login**.",
+        "ar": "لديكَ حِسابٌ بِالفعل؟ **سجّلْ دخولَك**."
+    }
+}

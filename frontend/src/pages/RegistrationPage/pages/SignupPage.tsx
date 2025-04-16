@@ -1,38 +1,56 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
-import { Typography } from "@/components/Typography/Typography";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/signup_page.json";
+
 export const SignupPage: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, GetLocale, language } = useLocalization();
 
     return (
         <form className="flex h-full w-full flex-col gap-8" action="">
-            <Typography variant="h1" className="text-xl font-bold">
-                Create new account
-            </Typography>
+            <Locale variant="h1" className="text-xl font-bold">
+                {locales.title}
+            </Locale>
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
                     type="email"
                     name="email"
-                    placeholder="example@gmail.com"
+                    label={<Locale>{locales.inputs.email.label}</Locale>}
+                    placeholder={GetLocale(
+                        locales.inputs.email.placeholder,
+                        language
+                    )}
                 />
                 <PasswordInput
                     required
                     name="password"
-                    placeholder="Enter new password"
+                    label={<Locale>{locales.inputs.password.label}</Locale>}
+                    placeholder={GetLocale(
+                        locales.inputs.password.placeholder,
+                        language
+                    )}
                 />
                 <PasswordInput
                     required
                     name="confirm-password"
-                    placeholder="Re-enter previous password"
+                    placeholder={GetLocale(
+                        locales.inputs["confirm-password"].placeholder,
+                        language
+                    )}
+                    label={
+                        <Locale>
+                            {locales.inputs["confirm-password"].label}
+                        </Locale>
+                    }
                 />
                 <Checkbox
                     required
@@ -49,8 +67,10 @@ export const SignupPage: FC = () => {
                                 </Link>
                             )}
                         >
-                            I agree with the application's **Terms &
-                            Conditions**.
+                            {GetLocale(
+                                locales.inputs["terms-and-conditions"],
+                                language
+                            )}
                         </RichText>
                     }
                 />
@@ -59,9 +79,11 @@ export const SignupPage: FC = () => {
                 className="[&>button]:grow"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
-                <Button type="reset">Clear</Button>
+                <Button type="reset">
+                    <Locale>{locales.buttons.clear}</Locale>
+                </Button>
                 <Button variant="primary" type="submit">
-                    Sign up
+                    <Locale>{locales.buttons.signup}</Locale>
                 </Button>
             </ButtonBox>
             <RichText
@@ -75,7 +97,7 @@ export const SignupPage: FC = () => {
                     </Link>
                 )}
             >
-                Already a member? **Login**.
+                {GetLocale(locales["last-option"], language)}
             </RichText>
         </form>
     );
