@@ -8,7 +8,7 @@ export type InputProps = {
     label?: string;
     variant?: Variant;
 } & ChildlessComponentProps<HTMLDivElement> &
-    InputHTMLAttributes<HTMLInputElement>;
+    Omit<InputHTMLAttributes<HTMLInputElement>, "children">;
 
 export const Input: FC<InputProps> = ({
     id,
