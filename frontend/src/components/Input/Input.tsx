@@ -1,11 +1,12 @@
 import { twMerge } from "tailwind-merge";
 import { Typography } from "../Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
     FC,
+    PropsWithChildren,
     InputHTMLAttributes,
     LabelHTMLAttributes,
-    PropsWithChildren,
 } from "react";
 
 export type InputProps = {
@@ -27,6 +28,7 @@ export const Input: FC<InputProps> = ({
     ...props
 }) => {
     const inputID = `input-${name}`;
+    const { direction } = useLocalization();
 
     const variantClassNames: VariantClassNames = {
         default: {
@@ -52,7 +54,10 @@ export const Input: FC<InputProps> = ({
             ref={ref}
             className={twMerge(
                 Object.values(variantClassNames[variant]),
-                "relative rounded-xl border-2 transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:right-auto [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
+                "relative rounded-xl border-2 transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
+                direction == "ltr"
+                    ? "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:right-auto"
+                    : "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:left-auto",
                 className
             )}
         >

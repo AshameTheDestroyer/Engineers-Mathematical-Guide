@@ -1,11 +1,12 @@
 import { Icon } from "../Icon/Icon";
 import { createPortal } from "react-dom";
 import { FC, useEffect, useState } from "react";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Input, InputProps } from "../Input/Input";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import eye_open_icon from "@icons/eye_open.svg";
 import eye_closed_icon from "@icons/eye_closed.svg";
-import { twMerge } from "tailwind-merge";
 
 export type PasswordInputProps = Omit<InputProps, "type">;
 
@@ -16,6 +17,8 @@ export const PasswordInput: FC<PasswordInputProps> = ({
     className,
     ...props
 }) => {
+    const { direction } = useLocalization();
+
     const [isPasswordShown, setIsPasswordShown] = useState(false);
     const [buttonParent, setButtonParent] = useState<HTMLDivElement>();
 
@@ -46,7 +49,10 @@ export const PasswordInput: FC<PasswordInputProps> = ({
             {buttonParent != null &&
                 createPortal(
                     <button
-                        className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"
+                        className={twJoin(
+                            direction == "ltr" ? "right-4" : "left-4",
+                            "absolute top-1/2 -translate-y-1/2 cursor-pointer"
+                        )}
                         type="button"
                         onClick={(_e) =>
                             setIsPasswordShown(
