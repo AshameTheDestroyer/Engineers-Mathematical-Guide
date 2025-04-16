@@ -14,21 +14,25 @@ export const SignupPage: FC = () => {
             >
                 <h1 className="mb-6 text-xl font-bold">Create new account</h1>
                 <Input
+                    required
                     type="email"
                     name="email"
                     placeholder="example@gmail.com"
                 />
                 <Input
+                    required
                     type="password"
                     name="password"
                     placeholder="Enter new password"
                 />
                 <Input
+                    required
                     type="password"
                     name="confirm-password"
                     placeholder="Re-enter previous password"
                 />
                 <Checkbox
+                    required
                     variant="default"
                     name="terms-and-conditions"
                     label={

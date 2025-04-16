@@ -20,6 +20,7 @@ export const Input: FC<InputProps> = ({
     ref,
     name,
     label,
+    required,
     className,
     placeholder,
     variant = "default",
@@ -67,6 +68,11 @@ export const Input: FC<InputProps> = ({
                 htmlFor={inputID}
             >
                 {label ?? name.toTitleCase()}
+                {required ? (
+                    <span className="text-vibrant-red font-bold">*</span>
+                ) : (
+                    ""
+                )}
             </Typography>
         </div>
     );
