@@ -4,6 +4,7 @@ import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 
 export const SignupPage: FC = () => {
     return (
@@ -51,9 +52,12 @@ export const SignupPage: FC = () => {
                         </RichText>
                     }
                 />
-                <Button variant="primary" type="submit">
-                    Sign up
-                </Button>
+                <ButtonBox className="[&>button]:grow">
+                    <Button type="reset">Clear</Button>
+                    <Button variant="primary" type="submit">
+                        Sign up
+                    </Button>
+                </ButtonBox>
                 <RichText
                     variant="p"
                     ExtractedTextRenders={(text) => (
