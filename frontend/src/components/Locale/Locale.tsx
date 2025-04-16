@@ -12,6 +12,7 @@ export const Locale: FC<LocaleProps> = ({
     variant,
     children,
     className,
+    ...props
 }) => {
     const { GetLocale, language } = useLocalization();
     const locale = GetLocale(children, language);
@@ -21,7 +22,13 @@ export const Locale: FC<LocaleProps> = ({
     }
 
     return (
-        <Typography id={id} className={className} ref={ref} variant={variant}>
+        <Typography
+            id={id}
+            ref={ref}
+            className={className}
+            variant={variant}
+            {...props}
+        >
             {locale}
         </Typography>
     );
