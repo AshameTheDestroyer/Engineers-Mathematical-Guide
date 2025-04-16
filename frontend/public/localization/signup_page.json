@@ -7,11 +7,11 @@
         "email": {
             "label": {
                 "en": "Email",
-                "ar": "الإيميل"
+                "ar": "البَريدُ الإلكترونيّ"
             },
             "placeholder": {
                 "en": "example@gmail.com",
-                "ar": "أدخلْ إيميلك"
+                "ar": "أدخلْ بَريدكَ الإلكترونيّ"
             }
         },
         "password": {
