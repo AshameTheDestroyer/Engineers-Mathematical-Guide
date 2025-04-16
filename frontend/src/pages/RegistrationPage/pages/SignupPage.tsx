@@ -51,7 +51,9 @@ export const SignupPage: FC = () => {
                         </RichText>
                     }
                 />
-                <Button variant="primary">Sign up</Button>
+                <Button variant="primary" type="submit">
+                    Sign up
+                </Button>
                 <RichText
                     variant="p"
                     ExtractedTextRenders={(text) => (
