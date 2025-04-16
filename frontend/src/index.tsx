@@ -19,6 +19,9 @@ const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
 const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
+const ResetPasswordPage = LazyImport(
+    "./pages/RegistrationPage/pages/ResetPasswordPage"
+);
 const RegistrationPage = LazyImport(
     "./pages/RegistrationPage/RegistrationPage"
 );
@@ -80,6 +83,14 @@ const IndexRoutes: FC = () => {
                     element={
                         <LazyComponent>
                             <LoginPage />
+                        </LazyComponent>
+                    }
+                />
+                <Route
+                    path="reset-password"
+                    element={
+                        <LazyComponent>
+                            <ResetPasswordPage />
                         </LazyComponent>
                     }
                 />
