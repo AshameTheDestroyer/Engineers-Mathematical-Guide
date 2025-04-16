@@ -50,7 +50,7 @@ export const Input: FC<InputProps> = ({
         >
             <input
                 id={`input-${name}`}
-                className="w-full px-6 py-2"
+                className="w-full rounded-[inherit] px-6 py-2"
                 placeholder={placeholder ?? ""}
                 {...props}
             />
