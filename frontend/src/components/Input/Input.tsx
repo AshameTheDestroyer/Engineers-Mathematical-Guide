@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import React, { InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import { Typography } from "../Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
@@ -10,18 +10,13 @@ export type CustomInputProps = {
 } & ChildlessComponentProps<HTMLDivElement> &
     InputHTMLAttributes<HTMLInputElement>;
 
-export const Input: React.FC<CustomInputProps> = ({
+export const Input: FC<CustomInputProps> = ({
     id,
     ref,
-    type,
     name,
     label,
-    onBlur,
-    onFocus,
-    onChange,
     className,
     placeholder,
-    value: value_,
     variant = "default",
     ...props
 }) => {
