@@ -5,33 +5,38 @@ import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { Typography } from "@/components/Typography/Typography";
 
 export const SignupPage: FC = () => {
     return (
         <main className="flex items-center justify-center p-4">
             <form
-                className="flex w-full max-w-md flex-col gap-5 rounded-lg p-6"
+                className="flex w-full max-w-md flex-col gap-8 rounded-lg p-6"
                 action=""
             >
-                <h1 className="mb-6 text-xl font-bold">Create new account</h1>
-                <Input
-                    required
-                    type="email"
-                    name="email"
-                    placeholder="example@gmail.com"
-                />
-                <Input
-                    required
-                    type="password"
-                    name="password"
-                    placeholder="Enter new password"
-                />
-                <Input
-                    required
-                    type="password"
-                    name="confirm-password"
-                    placeholder="Re-enter previous password"
-                />
+                <Typography variant="h1" className="text-xl font-bold">
+                    Create new account
+                </Typography>
+                <main className="flex flex-col gap-6">
+                    <Input
+                        required
+                        type="email"
+                        name="email"
+                        placeholder="example@gmail.com"
+                    />
+                    <Input
+                        required
+                        type="password"
+                        name="password"
+                        placeholder="Enter new password"
+                    />
+                    <Input
+                        required
+                        type="password"
+                        name="confirm-password"
+                        placeholder="Re-enter previous password"
+                    />
+                </main>
                 <Checkbox
                     required
                     variant="secondary"
