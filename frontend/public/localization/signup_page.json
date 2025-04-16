@@ -11,7 +11,7 @@
             },
             "placeholder": {
                 "en": "example@gmail.com",
-                "ar": "ادخلْ إيميلك"
+                "ar": "أدخلْ إيميلك"
             }
         },
         "password": {
@@ -21,7 +21,7 @@
             },
             "placeholder": {
                 "en": "Enter new password",
-                "ar": "ادخلْ كلمةَ مُرورٍ جديدةٍ"
+                "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
             }
         },
         "confirm-password": {
