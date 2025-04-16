@@ -33,7 +33,7 @@ export const SignupPage: FC = () => {
                 />
                 <Checkbox
                     required
-                    variant="default"
+                    variant="secondary"
                     name="terms-and-conditions"
                     label={
                         <RichText
@@ -51,7 +51,7 @@ export const SignupPage: FC = () => {
                         </RichText>
                     }
                 />
-                <Button>Sign up</Button>
+                <Button variant="primary">Sign up</Button>
                 <RichText
                     variant="p"
                     ExtractedTextRenders={(text) => (
