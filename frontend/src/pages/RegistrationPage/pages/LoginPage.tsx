@@ -12,14 +12,11 @@ export const LoginPage: FC = () => {
     const { direction } = useLocalization();
 
     return (
-        <form
-            className="flex w-full max-w-[80vw] flex-col gap-8 rounded-lg p-6"
-            action=""
-        >
+        <form className="flex h-full w-full flex-col gap-8" action="">
             <Typography variant="h1" className="text-xl font-bold">
                 Enter your information
             </Typography>
-            <main className="flex flex-col gap-6">
+            <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
                     type="email"

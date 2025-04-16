@@ -20,7 +20,7 @@ export const RegistrationPage: FC = () => {
                     "top-page absolute z-10"
                 )}
             />
-            <main className="flex items-center justify-center p-4">
+            <main className="flex w-full min-w-[25vw] max-w-[min(30rem,80vw)] items-center justify-center">
                 <Outlet />
             </main>
             <section className="from-primary-normal -my-page -mr-page relative h-screen place-self-stretch self-stretch bg-gradient-to-l to-transparent max-lg:hidden">
