@@ -1,95 +1,77 @@
-import React from "react";
-import { useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { createPortal } from "react-dom";
+import { twJoin, twMerge } from "tailwind-merge";
+import { Input, InputProps } from "../Input/Input";
+import React, { useEffect, useState } from "react";
+import { IconButton } from "../IconButton/IconButton";
 
-export type CustomCheckboxProps = {
-    value?: boolean;
-    onChange?: (checked: boolean) => void;
-    label: string;
-    linkText?: string;
-    className?: string;
-    link?: string;
-    isThick?: boolean;
+import check_icon from "@icons/check.svg";
+
+export type CustomCheckboxProps = Omit<InputProps, "type"> & {
     variant?: Variant;
-    checked: boolean;
 };
 
-const Checkbox: React.FC<CustomCheckboxProps> = ({
+export const Checkbox: React.FC<CustomCheckboxProps> = ({
+    id,
+    ref,
+    name,
+    checked,
     onChange,
-    label,
-    link,
     className,
-    linkText,
     variant = "default",
+    ...props
 }) => {
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(checked);
+    const [buttonParent, setButtonParent] = useState<HTMLDivElement>();
 
-    const handleToggle = () => {
-        const newCheckedState = !isChecked;
-        setIsChecked(newCheckedState);
-        if (onChange) {
-            onChange(newCheckedState);
-        }
-    };
+    useEffect(() => {
+        const buttonParent = document.querySelector(`#input-${name}`)
+            ?.parentElement as HTMLDivElement;
 
-    const variantClass = (() => {
-        let className: Array<string> = [];
-        switch (variant) {
-            case "default":
-                return (className = [
-                    "bg-foreground-dark",
-                    "text-foreground-normal",
-                    "border-foreground-normal border-2",
-                ]);
-            case "primary":
-                return (className = [
-                    "bg-primary-dark",
-                    "text-primary-normal",
-                    "border-primary-normal border-2",
-                ]);
-            case "secondary":
-                return (className = [
-                    "bg-secondary-dark",
-                    "text-secondary-normal",
-                    "border-secondary-normal border-2",
-                ]);
-            default:
-                return className;
+        if (buttonParent == null) {
+            return;
         }
-    })();
+
+        setButtonParent(buttonParent);
+    }, []);
 
     return (
-        <label className="flex h-10 cursor-pointer items-center">
-            <input type="checkbox" className="index hidden" />
-            <div
+        <>
+            <Input
+                id={id}
+                ref={ref}
                 className={twMerge(
-                    variantClass[0],
-                    `transition-h relative flex w-6 rounded-[0.5rem] duration-300`,
-                    isChecked ? "h-6" : "h-7"
+                    "[&>label]:translate-none flex flex-row-reverse place-items-center border-0 [&>input]:hidden [&>input]:w-auto [&>label]:pointer-events-auto [&>label]:static",
+                    className
                 )}
-                onClick={handleToggle}
-            >
-                <div
-                    className={twMerge(
-                        variantClass[0],
-                        variantClass[2],
-                        `absolute flex h-6 w-6 items-center justify-center rounded-[0.5rem] transition-colors duration-300`,
-                        className,
-                        isChecked
-                            ? `${variantClass[0]} border-transparent`
-                            : "bg-white"
-                    )}
-                >
-                    {isChecked && <span className="text-white">✓</span>}
-                </div>
-            </div>
-            <span className="ml-2 font-medium">
-                {label}
-                <a className={`ml-1 ${variantClass[1]} underline`} href={link}>
-                    {linkText}
-                </a>
-            </span>
-        </label>
+                name={name}
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => (
+                    onChange?.(e), setIsChecked(e.target.checked)
+                )}
+                {...props}
+            />
+            {buttonParent != null &&
+                createPortal(
+                    <IconButton
+                        className="[&>div]:rounded-xl"
+                        variant={variant}
+                        icon={{
+                            width: 16,
+                            height: 16,
+                            thickness: 2,
+                            source: check_icon,
+                            className: twJoin(
+                                "scale-140",
+                                isChecked ? "" : "[&>svg]:invisible"
+                            ),
+                        }}
+                        onClick={(_e) =>
+                            setIsChecked((isChecked) => !isChecked)
+                        }
+                    />,
+                    buttonParent
+                )}
+        </>
     );
 };
-export default Checkbox;
