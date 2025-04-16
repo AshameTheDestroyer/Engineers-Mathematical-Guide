@@ -1,5 +1,5 @@
-import React, { FC } from "react";
 import { Icon } from "../Icon/Icon";
+import { FC, Fragment } from "react";
 import { twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
@@ -71,7 +71,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         >
             <ol className="flex items-center space-x-1 overflow-x-auto py-2">
                 {shownPaths.map((path, i) => (
-                    <React.Fragment key={i}>
+                    <Fragment key={i}>
                         <li className="text-md flex items-center">
                             {path == null ? (
                                 <p>...</p>
@@ -95,7 +95,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                                 />
                             </li>
                         )}
-                    </React.Fragment>
+                    </Fragment>
                 ))}
             </ol>
         </nav>
