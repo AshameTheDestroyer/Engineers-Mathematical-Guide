@@ -1,8 +1,10 @@
 import { z } from "zod";
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import HTTPInstance from "@/services/HTTPInstance";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
+import { useMutation } from "@tanstack/react-query";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
@@ -49,10 +51,24 @@ export const SignupPage: FC = () => {
         formState: { errors },
     } = useSchematicForm(SignupSchema);
 
+    const { mutateAsync } = useMutation({
+        mutationKey: ["signup"],
+        mutationFn: (
+            data: Omit<SignupDTO, "terms-and-conditions" | "confirm-password">
+        ) => HTTPInstance.post<{ token: string }>("/auth/signup", data),
+    });
+
+    function SubmitData(data: SignupDTO) {
+        const { email, password } = data;
+        mutateAsync({ email, password }).then((result) =>
+            console.log(result.data.token)
+        );
+    }
+
     return (
         <form
             className="flex h-full w-full flex-col gap-8"
-            onSubmit={handleSubmit((data) => console.log(data))}
+            onSubmit={handleSubmit(SubmitData)}
         >
             <Locale variant="h1" className="text-xl font-bold">
                 {locales.title}
