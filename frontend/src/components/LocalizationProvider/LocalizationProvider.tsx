@@ -22,6 +22,11 @@ export type LocalizationStateProps = {
         locales: Record<string, Record<string, string>>,
         language: string
     ) => Array<Anchor>;
+    GetErrorLocale: (
+        errorKey: string | undefined,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) => string | undefined;
 };
 
 export const LocalizationContext = createContext<LocalizationStateProps>(null!);
@@ -37,6 +42,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         GetLocale,
         SetLanguage,
         SetDirection,
+        GetErrorLocale,
         GetRouteLocales,
         language: GetFromLocalStorage("language") ?? "en",
         direction: GetFromLocalStorage("direction") ?? "ltr",
@@ -81,6 +87,14 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
                     href: routeLocale.href,
                 }) as Anchor
         );
+    }
+
+    function GetErrorLocale(
+        errorKey: string | undefined,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) {
+        return errorKey && GetLocale(locales[errorKey], language);
     }
 
     return (
