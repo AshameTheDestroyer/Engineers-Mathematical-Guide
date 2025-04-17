@@ -25,6 +25,7 @@ export const SignupPage: FC = () => {
                     autoFocus
                     type="email"
                     name="email"
+                    autoComplete="off"
                     label={<Locale>{locales.inputs.email.label}</Locale>}
                     placeholder={GetLocale(
                         locales.inputs.email.placeholder,
@@ -34,6 +35,7 @@ export const SignupPage: FC = () => {
                 <PasswordInput
                     required
                     name="password"
+                    autoComplete="off"
                     label={<Locale>{locales.inputs.password.label}</Locale>}
                     placeholder={GetLocale(
                         locales.inputs.password.placeholder,
@@ -42,6 +44,7 @@ export const SignupPage: FC = () => {
                 />
                 <PasswordInput
                     required
+                    autoComplete="off"
                     name="confirm-password"
                     placeholder={GetLocale(
                         locales.inputs["confirm-password"].placeholder,
