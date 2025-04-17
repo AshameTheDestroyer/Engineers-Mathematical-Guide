@@ -59,9 +59,10 @@ export const SignupPage: FC = () => {
             </Locale>
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
+                    required
                     type="email"
-                    {...register("email")}
                     autoComplete="off"
+                    {...register("email")}
                     errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
                     placeholder={GetLocale(
@@ -70,8 +71,9 @@ export const SignupPage: FC = () => {
                     )}
                 />
                 <PasswordInput
-                    {...register("password")}
+                    required
                     autoComplete="off"
+                    {...register("password")}
                     errorMessage={errors["password"]?.message}
                     label={<Locale>{locales.inputs.password.label}</Locale>}
                     placeholder={GetLocale(
@@ -80,8 +82,9 @@ export const SignupPage: FC = () => {
                     )}
                 />
                 <PasswordInput
-                    {...register("confirm-password")}
+                    required
                     autoComplete="off"
+                    {...register("confirm-password")}
                     errorMessage={errors["confirm-password"]?.message}
                     placeholder={GetLocale(
                         locales.inputs["confirm-password"].placeholder,
@@ -94,6 +97,7 @@ export const SignupPage: FC = () => {
                     }
                 />
                 <Checkbox
+                    required
                     {...register("terms-and-conditions")}
                     errorMessage={errors["terms-and-conditions"]?.message}
                     label={

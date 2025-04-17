@@ -13,6 +13,7 @@ export type InputProps = {
     name: string;
     variant?: Variant;
     errorMessage?: string;
+    functionallyRequired?: boolean;
     label?: PropsWithChildren["children"];
 } & ChildlessComponentProps<HTMLDivElement> &
     Omit<InputHTMLAttributes<HTMLInputElement>, "children">;
@@ -27,6 +28,7 @@ export const Input: FC<InputProps> = ({
     placeholder,
     errorMessage,
     variant = "default",
+    functionallyRequired,
     ...props
 }) => {
     const inputID = `input-${name}`;
@@ -67,7 +69,7 @@ export const Input: FC<InputProps> = ({
             <input
                 id={inputID}
                 className="w-full text-ellipsis rounded-[inherit] border-2 px-6 py-2"
-                required={required}
+                required={functionallyRequired}
                 placeholder={placeholder ?? ""}
                 {...props}
             />
