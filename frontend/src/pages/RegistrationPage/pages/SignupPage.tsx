@@ -76,6 +76,7 @@ export const SignupPage: FC = () => {
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
+                    autoFocus
                     type="email"
                     autoComplete="off"
                     {...register("email")}
