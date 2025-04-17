@@ -1,12 +1,12 @@
 import { z } from "zod";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
+import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -45,34 +45,9 @@ export const SignupPage: FC = () => {
     const {
         reset,
         register,
-        setValue,
         handleSubmit,
         formState: { errors },
-    } = useForm<SignupDTO>({
-        resolver: (values) => {
-            const { data, error } = SignupSchema.safeParse(values);
-            console.log(error);
-            return {
-                values: data!,
-                errors: Object.entries(
-                    error?.formErrors.fieldErrors ?? {}
-                )?.reduce(
-                    (accumulator, [error, message]) => ({
-                        ...accumulator,
-                        [error]: {
-                            message: message[0],
-                        },
-                    }),
-                    {}
-                ),
-            };
-        },
-    });
-
-    const registeredEmail = register("email");
-    const registeredPassword = register("password");
-    const registeredConfirmPassword = register("confirm-password");
-    const registeredTermsAndConditions = register("terms-and-conditions");
+    } = useSchematicForm(SignupSchema);
 
     return (
         <form
@@ -85,11 +60,7 @@ export const SignupPage: FC = () => {
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     type="email"
-                    {...registeredEmail}
-                    onChange={(e) => (
-                        registeredEmail.onChange(e),
-                        setValue("email", e.target.value)
-                    )}
+                    {...register("email")}
                     autoComplete="off"
                     errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
@@ -99,11 +70,7 @@ export const SignupPage: FC = () => {
                     )}
                 />
                 <PasswordInput
-                    {...registeredPassword}
-                    onChange={(e) => (
-                        registeredPassword.onChange(e),
-                        setValue("password", e.target.value)
-                    )}
+                    {...register("password")}
                     autoComplete="off"
                     errorMessage={errors["password"]?.message}
                     label={<Locale>{locales.inputs.password.label}</Locale>}
@@ -113,11 +80,7 @@ export const SignupPage: FC = () => {
                     )}
                 />
                 <PasswordInput
-                    {...registeredConfirmPassword}
-                    onChange={(e) => (
-                        registeredConfirmPassword.onChange(e),
-                        setValue("confirm-password", e.target.value)
-                    )}
+                    {...register("confirm-password")}
                     autoComplete="off"
                     errorMessage={errors["confirm-password"]?.message}
                     placeholder={GetLocale(
@@ -131,11 +94,7 @@ export const SignupPage: FC = () => {
                     }
                 />
                 <Checkbox
-                    {...registeredTermsAndConditions}
-                    onChange={(e) => (
-                        registeredTermsAndConditions.onChange(e),
-                        setValue("terms-and-conditions", e.target.checked)
-                    )}
+                    {...register("terms-and-conditions")}
                     errorMessage={errors["terms-and-conditions"]?.message}
                     label={
                         <RichText
