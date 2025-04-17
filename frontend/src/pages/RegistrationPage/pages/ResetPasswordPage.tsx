@@ -20,6 +20,7 @@ export const ResetPasswordPage: FC = () => {
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
+                    autoFocus
                     type="email"
                     name="email"
                     label={<Locale>{locales.inputs.email.label}</Locale>}
