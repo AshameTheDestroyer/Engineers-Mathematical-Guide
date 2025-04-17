@@ -4,6 +4,7 @@ import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
     FC,
+    useState,
     PropsWithChildren,
     InputHTMLAttributes,
     LabelHTMLAttributes,
@@ -22,13 +23,17 @@ export const Input: FC<InputProps> = ({
     name,
     label,
     required,
+    onChange,
     className,
     placeholder,
+    value: _value,
     variant = "default",
     ...props
 }) => {
     const inputID = `input-${name}`;
     const { direction } = useLocalization();
+
+    const [value, setValue] = useState(_value ?? "");
 
     const variantClassNames: VariantClassNames = {
         default: {
@@ -65,6 +70,8 @@ export const Input: FC<InputProps> = ({
                 id={inputID}
                 className="w-full text-ellipsis rounded-[inherit] px-6 py-2"
                 placeholder={placeholder ?? ""}
+                value={value}
+                onChange={(e) => (onChange?.(e), setValue(e.target.value))}
                 {...props}
             />
             <Typography<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement>>

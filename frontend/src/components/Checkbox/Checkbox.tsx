@@ -15,6 +15,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
     id,
     ref,
     name,
+    value,
     checked,
     onClick,
     onChange,
@@ -23,11 +24,13 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
     variant = "default",
     ...props
 }) => {
-    const [isChecked, setIsChecked] = useState(checked || indeterminate);
     const [isIndeterminate, setIsIndeterminate] = useState(indeterminate);
+    const [isChecked, setIsChecked] = useState(
+        (checked || indeterminate) ?? false
+    );
 
-    const [buttonParent, setButtonParent] = useState<HTMLDivElement>();
     const buttonReference = useRef<HTMLButtonElement>(null);
+    const [buttonParent, setButtonParent] = useState<HTMLDivElement>();
 
     const variantClasses: Record<Variant, string> = {
         default: "var(--color-tertiary-light-active)",
