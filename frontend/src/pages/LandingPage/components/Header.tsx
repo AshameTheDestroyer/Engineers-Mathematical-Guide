@@ -16,7 +16,7 @@ import locales from "@localization/landing_page.json";
 import route_locales from "@localization/landing_page_routes.json";
 
 export const Header: FC = () => {
-    const { GetLocaleOfRoutes, language } = useLocalization();
+    const { GetRouteLocales, language } = useLocalization();
 
     return (
         <Header_
@@ -31,7 +31,7 @@ export const Header: FC = () => {
             <Logo />
             <NavigationBar
                 className="grow"
-                routes={GetLocaleOfRoutes(
+                routes={GetRouteLocales(
                     LANDING_PAGE_ROUTES,
                     route_locales,
                     language

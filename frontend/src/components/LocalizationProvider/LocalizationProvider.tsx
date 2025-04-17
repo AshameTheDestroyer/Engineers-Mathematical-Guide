@@ -17,7 +17,7 @@ export type LocalizationStateProps = {
     SetLanguage: (language: string) => void;
     SetDirection: (direction: "rtl" | "ltr") => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
-    GetLocaleOfRoutes: (
+    GetRouteLocales: (
         routes: Array<Anchor>,
         locales: Record<string, Record<string, string>>,
         language: string
@@ -37,7 +37,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         GetLocale,
         SetLanguage,
         SetDirection,
-        GetLocaleOfRoutes,
+        GetRouteLocales,
         language: GetFromLocalStorage("language") ?? "en",
         direction: GetFromLocalStorage("direction") ?? "ltr",
     });
@@ -64,7 +64,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         return locale;
     }
 
-    function GetLocaleOfRoutes(
+    function GetRouteLocales(
         routes: Array<Anchor>,
         locales: Record<string, Record<string, string>>,
         language: string
