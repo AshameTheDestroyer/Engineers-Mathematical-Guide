@@ -60,6 +60,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
         onClick?.(e as any);
         setIsIndeterminate(false);
         setIsChecked((isChecked) => !isChecked);
+        onChange?.({ target: { checked: !isChecked } } as any);
     }
 
     return (
