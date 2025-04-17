@@ -1,19 +1,39 @@
+import { z } from "zod";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
+import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/reset_password_page.json";
 
+export const ResetPasswordSchema = z.object({
+    email: z
+        .string({ required_error: "Email is required." })
+        .email("Email should be written as 'example@gmail.com'."),
+});
+
+export type ResetPasswordDTO = z.infer<typeof ResetPasswordSchema>;
+
 export const ResetPasswordPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
+    const {
+        reset,
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useSchematicForm(ResetPasswordSchema);
+
     return (
-        <form className="flex h-full w-full flex-col gap-8" action="">
+        <form
+            className="flex h-full w-full flex-col gap-8"
+            onSubmit={handleSubmit(console.log)}
+        >
             <Locale variant="h1" className="text-xl font-bold">
                 {locales.title}
             </Locale>
@@ -22,7 +42,8 @@ export const ResetPasswordPage: FC = () => {
                     required
                     autoFocus
                     type="email"
-                    name="email"
+                    {...register("email")}
+                    errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
                     placeholder={GetLocale(
                         locales.inputs.email.placeholder,
@@ -34,7 +55,7 @@ export const ResetPasswordPage: FC = () => {
                 className="[&>button]:grow"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
-                <Button type="reset">
+                <Button type="reset" onClick={(_e) => reset()}>
                     <Locale>{locales.buttons.clear}</Locale>
                 </Button>
                 <Button variant="primary" type="submit">
