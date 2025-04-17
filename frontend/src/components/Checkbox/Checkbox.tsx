@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import { twMerge } from "tailwind-merge";
 import { Input, InputProps } from "../Input/Input";
 import { IconButton } from "../IconButton/IconButton";
@@ -18,6 +17,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
     value,
     checked,
     onClick,
+    onFocus,
     onChange,
     className,
     indeterminate,
@@ -30,7 +30,6 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
     );
 
     const buttonReference = useRef<HTMLButtonElement>(null);
-    const [buttonParent, setButtonParent] = useState<HTMLDivElement>();
 
     const variantClasses: Record<Variant, string> = {
         default: "var(--color-tertiary-light-active)",
@@ -45,14 +44,13 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
           : undefined;
 
     useEffect(() => {
-        const buttonParent = document.querySelector(`#input-${name}`)
-            ?.parentElement as HTMLDivElement;
+        const inputElement = document.querySelector(`#input-${name}`);
 
-        if (buttonParent == null) {
+        if (inputElement == null || buttonReference.current == null) {
             return;
         }
 
-        setButtonParent(buttonParent);
+        inputElement.insertAdjacentElement("afterend", buttonReference.current);
     }, []);
 
     function ButtonOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -67,7 +65,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    "flex flex-row-reverse place-items-start border-0 [&>input]:hidden [&>input]:w-auto [&>label]:pointer-events-auto [&>label]:static [&>label]:grow [&>label]:translate-y-1.5 [&>label]:text-wrap",
+                    "flex place-items-start gap-4 border-0 [&>input]:absolute [&>input]:left-2.5 [&>input]:top-1/2 [&>input]:w-auto [&>input]:-translate-y-1/2 [&>input]:opacity-0 [&>label]:pointer-events-auto [&>label]:static [&>label]:grow [&>label]:translate-y-1.5 [&>label]:text-wrap [&>label]:p-0",
                     className
                 )}
                 name={name}
@@ -76,27 +74,26 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
                 onChange={(e) => (
                     onChange?.(e), setIsChecked(e.target.checked)
                 )}
+                onFocus={(e) => (
+                    onFocus?.(e), buttonReference.current?.focus()
+                )}
                 {...props}
             />
-            {buttonParent != null &&
-                createPortal(
-                    <IconButton
-                        ref={buttonReference}
-                        className="[&>div]:rounded-xl"
-                        variant={variant}
-                        icon={{
-                            width: 16,
-                            height: 16,
-                            thickness: 3,
-                            fill: checkColour,
-                            source: check_icon,
-                            stroke: checkColour,
-                            className: "scale-140",
-                        }}
-                        onClick={ButtonOnClick}
-                    />,
-                    buttonParent
-                )}
+            <IconButton
+                ref={buttonReference}
+                className="[&>div]:rounded-xl"
+                variant={variant}
+                icon={{
+                    width: 16,
+                    height: 16,
+                    thickness: 3,
+                    fill: checkColour,
+                    source: check_icon,
+                    stroke: checkColour,
+                    className: "scale-140",
+                }}
+                onClick={ButtonOnClick}
+            />
         </>
     );
 };
