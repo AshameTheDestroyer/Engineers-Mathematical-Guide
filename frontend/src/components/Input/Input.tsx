@@ -69,8 +69,9 @@ export const Input: FC<InputProps> = ({
             <input
                 id={inputID}
                 className="w-full text-ellipsis rounded-[inherit] px-6 py-2"
-                placeholder={placeholder ?? ""}
                 value={value}
+                required={required}
+                placeholder={placeholder ?? ""}
                 onChange={(e) => (onChange?.(e), setValue(e.target.value))}
                 {...props}
             />
