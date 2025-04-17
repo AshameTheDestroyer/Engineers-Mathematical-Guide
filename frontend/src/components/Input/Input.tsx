@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Typography } from "../Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
@@ -12,6 +12,7 @@ import {
 export type InputProps = {
     name: string;
     variant?: Variant;
+    errorMessage?: string;
     label?: PropsWithChildren["children"];
 } & ChildlessComponentProps<HTMLDivElement> &
     Omit<InputHTMLAttributes<HTMLInputElement>, "children">;
@@ -24,6 +25,7 @@ export const Input: FC<InputProps> = ({
     required,
     className,
     placeholder,
+    errorMessage,
     variant = "default",
     ...props
 }) => {
@@ -32,17 +34,17 @@ export const Input: FC<InputProps> = ({
 
     const variantClassNames: VariantClassNames = {
         default: {
-            idle: "border-tertiary-light-active [&>input]:placeholder-tertiary-light-active",
+            idle: "[&>input]:border-tertiary-light-active [&>input]:placeholder-tertiary-light-active",
             hover: "hover:border-tertiary-normal",
             active: "focus-within:border-tertiary-normal-active",
         },
         primary: {
-            idle: "border-primary-normal [&>input]:placeholder-primary-normal",
+            idle: "[&>input]:border-primary-normal [&>input]:placeholder-primary-normal",
             hover: "hover:border-primary-dark [&>input]:placeholder-primary-dark",
             active: "focus-within:border-primary-dark-active [&>input]:placeholder-primary-dark-active",
         },
         secondary: {
-            idle: "border-secondary-normal [&>input]:placeholder-secondary-normal",
+            idle: "[&>input]:border-secondary-normal [&>input]:placeholder-secondary-normal",
             hover: "hover:border-secondary-dark [&>input]:placeholder-secondary-dark",
             active: "focus-within:border-secondary-dark-active [&>input]:placeholder-secondary-dark-active",
         },
@@ -54,16 +56,17 @@ export const Input: FC<InputProps> = ({
             ref={ref}
             className={twMerge(
                 Object.values(variantClassNames[variant]),
-                "relative rounded-xl border-2 transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
+                "relative rounded-xl transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
                 direction == "ltr"
                     ? "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:right-auto"
                     : "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:left-auto",
+                errorMessage != null ? "mb-[calc(var(--spacing)*8)]" : "",
                 className
             )}
         >
             <input
                 id={inputID}
-                className="w-full text-ellipsis rounded-[inherit] px-6 py-2"
+                className="w-full text-ellipsis rounded-[inherit] border-2 px-6 py-2"
                 required={required}
                 placeholder={placeholder ?? ""}
                 {...props}
@@ -78,6 +81,18 @@ export const Input: FC<InputProps> = ({
                     <span className="text-vibrant-red font-bold">*</span>
                 )}
             </Typography>
+            {errorMessage != null && (
+                <Typography
+                    className={twJoin(
+                        direction == "ltr" ? "pl-6" : "pr-6",
+                        "text-vibrant-red absolute inset-x-0 top-[calc(100%+var(--spacing)*2)] overflow-hidden text-ellipsis text-nowrap px-4"
+                    )}
+                    variant="p"
+                    title={errorMessage}
+                >
+                    {errorMessage}
+                </Typography>
+            )}
         </div>
     );
 };
