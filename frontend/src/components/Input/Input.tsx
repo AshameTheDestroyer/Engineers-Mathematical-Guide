@@ -12,9 +12,9 @@ import {
 export type InputProps = {
     name: string;
     variant?: Variant;
+    errorMessage?: string;
     functionallyRequired?: boolean;
     label?: PropsWithChildren["children"];
-    errorMessage?: PropsWithChildren["children"];
 } & ChildlessComponentProps<HTMLDivElement> &
     Omit<InputHTMLAttributes<HTMLInputElement>, "children">;
 
@@ -91,6 +91,7 @@ export const Input: FC<InputProps> = ({
                         "text-vibrant-red absolute inset-x-0 top-[calc(100%+var(--spacing)*2)] overflow-hidden text-ellipsis text-nowrap px-4"
                     )}
                     variant="p"
+                    title={errorMessage}
                 >
                     {errorMessage}
                 </Typography>
