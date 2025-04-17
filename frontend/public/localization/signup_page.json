@@ -12,6 +12,16 @@
             "placeholder": {
                 "en": "example@gmail.com",
                 "ar": "أدخلْ بَريدكَ الإلكترونيّ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Email is required.",
+                    "ar": "البَريدُ الإلكترونيُّ إلزاميّ."
+                },
+                "pattern": {
+                    "en": "Email should be written as 'example@gmail.com'.",
+                    "ar": "يَجبُ على البَريدِ الإلكترونيّ أنْ يُكتَبَ كالتّالي 'example@gmail.com'."
+                }
             }
         },
         "password": {
@@ -22,6 +32,20 @@
             "placeholder": {
                 "en": "Enter new password",
                 "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Password is required.",
+                    "ar": "كَلمةُ المُرورِ إلزاميّة."
+                },
+                "minimum": {
+                    "en": "Password should consist of more than 4 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 4 حُروف."
+                },
+                "maximum": {
+                    "en": "Password should not exceed 20 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ ألّا تَتعدّى 20 حَرفاً."
+                }
             }
         },
         "confirm-password": {
@@ -32,11 +56,33 @@
             "placeholder": {
                 "en": "Re-enter previous password",
                 "ar": "أعدْ إدخالَ كلمةِ المُرورِ السّابقةِ"
+            },
+            "errors": {
+                "required": {
+                    "en": "You have to confirm previous password.",
+                    "ar": "عليكَ أنْ تُأكّدَ كِتابةَ كَلمةِ المُرورِ السّابقة."
+                },
+                "match": {
+                    "en": "Passwords must match.",
+                    "ar": "يَجبُ على كَلمتيِّ المُرورِ أنْ تَتطابقا."
+                }
             }
         },
         "terms-and-conditions": {
-            "en": "I agree with the application's **Terms & Conditions**.",
-            "ar": "أوافقُ على ما يُقدّمهُ التّطبيقُ مِن **مَعاييرٍ وضَوابطٍ**."
+            "label": {
+                "en": "I agree with the application's **Terms & Conditions**.",
+                "ar": "أوافقُ على ما يُقدّمهُ التّطبيقُ مِن **مَعاييرٍ وضَوابطٍ**."
+            },
+            "errors": {
+                "required": {
+                    "en": "Agreement is required.",
+                    "ar": "المُوافقةُ إلزاميّة."
+                },
+                "agreement": {
+                    "en": "You have to agree to our terms and conditions.",
+                    "ar": "عليكَ أنْ تُوافِقَ على مَعاييرِنا وضَوابِطنا."
+                }
+            }
         }
     },
     "buttons": {

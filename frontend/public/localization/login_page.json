@@ -12,6 +12,16 @@
             "placeholder": {
                 "en": "example@gmail.com",
                 "ar": "أدخلْ بَريدكَ الإلكترونيّ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Email is required.",
+                    "ar": "البَريدُ الإلكترونيُّ إلزاميّ."
+                },
+                "pattern": {
+                    "en": "Email should be written as 'example@gmail.com'.",
+                    "ar": "يَجبُ على البَريدِ الإلكترونيّ أنْ يُكتَبَ كالتّالي 'example@gmail.com'."
+                }
             }
         },
         "password": {
@@ -22,6 +32,20 @@
             "placeholder": {
                 "en": "Enter new password",
                 "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Password is required.",
+                    "ar": "كَلمةُ المُرورِ إلزاميّة."
+                },
+                "minimum": {
+                    "en": "Password should consist of more than 4 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 4 حُروف."
+                },
+                "maximum": {
+                    "en": "Password should not exceed 20 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ ألّا تَتعدّى 20 حَرفاً."
+                }
             }
         }
     },

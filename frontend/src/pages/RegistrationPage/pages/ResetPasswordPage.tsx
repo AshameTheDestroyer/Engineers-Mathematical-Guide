@@ -12,15 +12,14 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import locales from "@localization/reset_password_page.json";
 
 export const ResetPasswordSchema = z.object({
-    email: z
-        .string({ required_error: "Email is required." })
-        .email("Email should be written as 'example@gmail.com'."),
+    email: z.string({ required_error: "required" }).email("pattern"),
 });
 
 export type ResetPasswordDTO = z.infer<typeof ResetPasswordSchema>;
 
 export const ResetPasswordPage: FC = () => {
-    const { direction, GetLocale, language } = useLocalization();
+    const { direction, GetLocale, GetErrorLocale, language } =
+        useLocalization();
 
     const {
         reset,
@@ -43,8 +42,12 @@ export const ResetPasswordPage: FC = () => {
                     autoFocus
                     type="email"
                     {...register("email")}
-                    errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
+                    errorMessage={GetErrorLocale(
+                        errors.email?.message,
+                        locales.inputs.email.errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs.email.placeholder,
                         language

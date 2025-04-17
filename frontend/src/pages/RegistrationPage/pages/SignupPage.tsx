@@ -17,33 +17,29 @@ import locales from "@localization/signup_page.json";
 
 export const SignupSchema = z
     .object({
-        email: z
-            .string({ required_error: "Email is required." })
-            .email("Email should be written as 'example@gmail.com'."),
+        email: z.string({ required_error: "required" }).email("pattern"),
         password: z
-            .string({ required_error: "Password is required." })
-            .min(4, "Password should consist of more than 4 characters.")
-            .max(20, "Password should not exceed 20 characters."),
-        "confirm-password": z.string({
-            required_error: "You have to confirm previous password.",
-        }),
-        "terms-and-conditions": z.boolean({
-            required_error: "Agreement is required.",
-        }),
+            .string({ required_error: "required" })
+            .min(4, "minimum")
+            .max(20, "maximum"),
+        "confirm-password": z.string({ required_error: "required" }),
+        "terms-and-conditions": z.boolean({ required_error: "required" }),
     })
     .refine((data) => data.password == data["confirm-password"], {
-        message: "Passwords must match.",
+        message: "match",
         path: ["confirm-password"],
     })
     .refine((data) => data["terms-and-conditions"], {
-        message: "You have to agree to our terms and conditions.",
+        message: "agreement",
         path: ["terms-and-conditions"],
     });
 
 export type SignupDTO = z.infer<typeof SignupSchema>;
 
 export const SignupPage: FC = () => {
-    const { direction, GetLocale, language } = useLocalization();
+    const { direction, GetLocale, GetErrorLocale, language } =
+        useLocalization();
+
     const {
         reset,
         register,
@@ -80,8 +76,12 @@ export const SignupPage: FC = () => {
                     type="email"
                     autoComplete="off"
                     {...register("email")}
-                    errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
+                    errorMessage={GetErrorLocale(
+                        errors.email?.message,
+                        locales.inputs.email.errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs.email.placeholder,
                         language
@@ -91,8 +91,12 @@ export const SignupPage: FC = () => {
                     required
                     autoComplete="off"
                     {...register("password")}
-                    errorMessage={errors["password"]?.message}
                     label={<Locale>{locales.inputs.password.label}</Locale>}
+                    errorMessage={GetErrorLocale(
+                        errors.password?.message,
+                        locales.inputs.password.errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs.password.placeholder,
                         language
@@ -102,7 +106,11 @@ export const SignupPage: FC = () => {
                     required
                     autoComplete="off"
                     {...register("confirm-password")}
-                    errorMessage={errors["confirm-password"]?.message}
+                    errorMessage={GetErrorLocale(
+                        errors["confirm-password"]?.message,
+                        locales.inputs["confirm-password"].errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs["confirm-password"].placeholder,
                         language
@@ -116,7 +124,11 @@ export const SignupPage: FC = () => {
                 <Checkbox
                     required
                     {...register("terms-and-conditions")}
-                    errorMessage={errors["terms-and-conditions"]?.message}
+                    errorMessage={GetErrorLocale(
+                        errors["terms-and-conditions"]?.message,
+                        locales.inputs["terms-and-conditions"].errors,
+                        language
+                    )}
                     label={
                         <RichText
                             ExtractedTextRenders={(text) => (
@@ -129,7 +141,7 @@ export const SignupPage: FC = () => {
                             )}
                         >
                             {GetLocale(
-                                locales.inputs["terms-and-conditions"],
+                                locales.inputs["terms-and-conditions"].label,
                                 language
                             )}
                         </RichText>

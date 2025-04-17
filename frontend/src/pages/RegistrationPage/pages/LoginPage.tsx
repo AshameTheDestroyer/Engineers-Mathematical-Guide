@@ -13,19 +13,19 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import locales from "@localization/login_page.json";
 
 export const LoginSchema = z.object({
-    email: z
-        .string({ required_error: "Email is required." })
-        .email("Email should be written as 'example@gmail.com'."),
+    email: z.string({ required_error: "required" }).email("pattern"),
     password: z
-        .string({ required_error: "Password is required." })
-        .min(4, "Password should consist of more than 4 characters.")
-        .max(20, "Password should not exceed 20 characters."),
+        .string({ required_error: "required" })
+        .min(4, "minimum")
+        .max(20, "maximum"),
 });
 
 export type LoginDTO = z.infer<typeof LoginSchema>;
 
 export const LoginPage: FC = () => {
-    const { direction, GetLocale, language } = useLocalization();
+    const { direction, GetLocale, GetErrorLocale, language } =
+        useLocalization();
+
     const {
         reset,
         register,
@@ -47,8 +47,12 @@ export const LoginPage: FC = () => {
                     autoFocus
                     type="email"
                     {...register("email")}
-                    errorMessage={errors["email"]?.message}
                     label={<Locale>{locales.inputs.email.label}</Locale>}
+                    errorMessage={GetErrorLocale(
+                        errors.email?.message,
+                        locales.inputs.email.errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs.email.placeholder,
                         language
@@ -57,8 +61,12 @@ export const LoginPage: FC = () => {
                 <PasswordInput
                     required
                     {...register("password")}
-                    errorMessage={errors["password"]?.message}
                     label={<Locale>{locales.inputs.password.label}</Locale>}
+                    errorMessage={GetErrorLocale(
+                        errors.password?.message,
+                        locales.inputs.password.errors,
+                        language
+                    )}
                     placeholder={GetLocale(
                         locales.inputs.password.placeholder,
                         language
