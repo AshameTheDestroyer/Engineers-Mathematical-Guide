@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import HTTPInstance from "@/services/HTTPInstance";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { useMutation } from "@tanstack/react-query";
+import { HTTPInstance } from "@/services/HTTPInstance";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
