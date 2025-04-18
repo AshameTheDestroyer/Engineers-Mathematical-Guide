@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { useMutation } from "@tanstack/react-query";
+import { InferNested } from "@/types/Zod.InferNested";
 import { HTTPInstance } from "@/services/HTTPInstance";
 import { Input } from "../../../components/Input/Input";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
@@ -15,26 +16,57 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/signup_page.json";
 
-export const SignupSchema = z
-    .object({
-        email: z.string({ required_error: "required" }).email("pattern"),
-        password: z
+export const SignupStepSchemas = {
+    credentials: z
+        .object({
+            email: z.string({ required_error: "required" }).email("pattern"),
+            password: z
+                .string({ required_error: "required" })
+                .min(4, "minimum")
+                .max(20, "maximum"),
+            "confirm-password": z.string({ required_error: "required" }),
+            "terms-and-conditions": z.boolean({ required_error: "required" }),
+        })
+        .refine((data) => data.password == data["confirm-password"], {
+            message: "match",
+            path: ["confirm-password"],
+        })
+        .refine((data) => data["terms-and-conditions"], {
+            message: "agreement",
+            path: ["terms-and-conditions"],
+        }),
+    "personal-information": z.object({
+        username: z.string({ required_error: "required" }),
+        name: z
             .string({ required_error: "required" })
-            .min(4, "minimum")
-            .max(20, "maximum"),
-        "confirm-password": z.string({ required_error: "required" }),
-        "terms-and-conditions": z.boolean({ required_error: "required" }),
-    })
-    .refine((data) => data.password == data["confirm-password"], {
-        message: "match",
-        path: ["confirm-password"],
-    })
-    .refine((data) => data["terms-and-conditions"], {
-        message: "agreement",
-        path: ["terms-and-conditions"],
-    });
+            .min(2, "minimum")
+            .max(20, "maximum")
+            .regex(/^[a-zA-Z0-9]+$/, "pattern"),
+        surname: z
+            .string({ required_error: "required" })
+            .min(2, "minimum")
+            .max(20, "maximum")
+            .regex(/^[a-zA-Z0-9]+$/, "pattern")
+            .optional(),
+        gender: z.enum(["male", "female"], { required_error: "required" }),
+        country: z.string({ required_error: "required" }),
+        phoneNumber: z
+            .string({ required_error: "required" })
+            .regex(
+                /^\+?[1-9]\d{1,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/g,
+                "pattern"
+            )
+            .min(8, "minimum")
+            .max(16, "maximum"),
+    }),
+};
+
+export const SignupSchema = SignupStepSchemas.credentials.and(
+    SignupStepSchemas["personal-information"]
+);
 
 export type SignupDTO = z.infer<typeof SignupSchema>;
+export type SignupStepsDTO = InferNested<typeof SignupStepSchemas>;
 
 export const SignupPage: FC = () => {
     const { direction, GetLocale, GetErrorLocale, language } =
@@ -45,18 +77,17 @@ export const SignupPage: FC = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useSchematicForm(SignupSchema);
+    } = useSchematicForm(SignupStepSchemas.credentials);
 
     const { mutateAsync } = useMutation({
         mutationKey: ["signup"],
         mutationFn: (
-            data: Omit<SignupDTO, "terms-and-conditions" | "confirm-password">
+            data: Pick<SignupStepsDTO["credentials"], "email" | "password">
         ) => HTTPInstance.post<{ token: string }>("/auth/signup", data),
     });
 
-    function SubmitData(data: SignupDTO) {
-        const { email, password } = data;
-        mutateAsync({ email, password }).then((result) =>
+    function SubmitData(data: SignupStepsDTO["credentials"]) {
+        mutateAsync(Object.pick(data, "email", "password")).then((result) =>
             console.log(result.data.token)
         );
     }
