@@ -48,7 +48,7 @@ export const SignupStepSchemas = {
         "phone-number": z
             .string({ required_error: "required" })
             .regex(
-                /\+(\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}([\s.-]?\d{3})?[\s.-]?\d{3,4}/g,
+                /^\+*(\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}([\s.-]?\d{3})?[\s.-]?\d{3,4}$/,
                 "pattern"
             )
             .min(8, "minimum")
