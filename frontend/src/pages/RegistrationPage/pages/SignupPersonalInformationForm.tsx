@@ -143,7 +143,7 @@ export const SignupPersonalInformationForm: FC<
                 ExtractedTextRenders={(text) => (
                     <Link
                         className="text-primary-normal underline"
-                        to="/registration/login"
+                        to="/registration/signup?step=credentials"
                     >
                         {text}
                     </Link>
