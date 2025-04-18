@@ -1,20 +1,11 @@
 import { z } from "zod";
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { Locale } from "@/components/Locale/Locale";
-import { Button } from "@/components/Button/Button";
+import { FC, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { InferNested } from "@/types/Zod.InferNested";
 import { HTTPInstance } from "@/services/HTTPInstance";
-import { Input } from "../../../components/Input/Input";
-import { Checkbox } from "@/components/Checkbox/Checkbox";
-import { RichText } from "@/components/RichText/RichText";
-import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
-import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-
-import locales from "@localization/signup_page.json";
+import { SignupCredentialsForm } from "./SignupCredentialsForm";
+import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { SignupPersonalInformationForm } from "./SignupPersonalInformationForm";
 
 export const SignupStepSchemas = {
     credentials: z
@@ -36,28 +27,32 @@ export const SignupStepSchemas = {
             path: ["terms-and-conditions"],
         }),
     "personal-information": z.object({
-        username: z.string({ required_error: "required" }),
+        username: z
+            .string({ required_error: "required" })
+            .regex(/^[a-zA-Z0-9\_]+$/, "pattern")
+            .min(2, "minimum")
+            .max(20, "maximum"),
         name: z
             .string({ required_error: "required" })
-            .min(2, "minimum")
-            .max(20, "maximum")
-            .regex(/^[a-zA-Z0-9]+$/, "pattern"),
-        surname: z
-            .string({ required_error: "required" })
-            .min(2, "minimum")
-            .max(20, "maximum")
             .regex(/^[a-zA-Z0-9]+$/, "pattern")
+            .min(2, "minimum")
+            .max(20, "maximum"),
+        surname: z
+            .string()
+            .regex(/^[a-zA-Z0-9]+$/, "pattern")
+            .min(2, "minimum")
+            .max(20, "maximum")
             .optional(),
         gender: z.enum(["male", "female"], { required_error: "required" }),
-        country: z.string({ required_error: "required" }),
-        phoneNumber: z
+        country: z.string({ required_error: "required" }).nonempty("empty"),
+        "phone-number": z
             .string({ required_error: "required" })
             .regex(
-                /^\+?[1-9]\d{1,2}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/g,
+                /\+(\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}([\s.-]?\d{3})?[\s.-]?\d{3,4}/g,
                 "pattern"
             )
             .min(8, "minimum")
-            .max(16, "maximum"),
+            .max(18, "maximum"),
     }),
 };
 
@@ -68,144 +63,80 @@ export const SignupSchema = SignupStepSchemas.credentials.and(
 export type SignupDTO = z.infer<typeof SignupSchema>;
 export type SignupStepsDTO = InferNested<typeof SignupStepSchemas>;
 
-export const SignupPage: FC = () => {
-    const { direction, GetLocale, GetErrorLocale, language } =
-        useLocalization();
+export const SignupQueryParamSchema = z.object({
+    step: z.enum(["credentials", "personal-information"]),
+});
 
-    const {
-        reset,
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useSchematicForm(SignupStepSchemas.credentials);
+export type SignupQueryParamDTO = z.infer<typeof SignupQueryParamSchema>;
+
+export const SignupPage: FC = () => {
+    const { queryParams, setQueryParams } = useSchematicQueryParams(
+        SignupQueryParamSchema
+    );
+
+    const [data, setData] = useState<
+        WithPartial<SignupStepsDTO, keyof SignupStepsDTO>
+    >({});
 
     const { mutateAsync } = useMutation({
         mutationKey: ["signup"],
-        mutationFn: (
-            data: Pick<SignupStepsDTO["credentials"], "email" | "password">
-        ) => HTTPInstance.post<{ token: string }>("/auth/signup", data),
+        mutationFn: ({ "phone-number": phoneNumber, ...data }: SignupDTO) =>
+            HTTPInstance.post<{ token: string }>("/auth/signup", {
+                ...Object.omit(
+                    data,
+                    "confirm-password",
+                    "terms-and-conditions"
+                ),
+                phoneNumber,
+            }),
     });
 
-    function SubmitData(data: SignupStepsDTO["credentials"]) {
-        mutateAsync(Object.pick(data, "email", "password")).then((result) =>
-            console.log(result.data.token)
-        );
+    useEffect(() => {
+        const hasSkippedCredentialsStep =
+            data.credentials == null && queryParams?.step != "credentials";
+        if (queryParams == null || hasSkippedCredentialsStep) {
+            setQueryParams((_queryParams) => ({ step: "credentials" }));
+        }
+    }, [queryParams]);
+
+    useEffect(() => {
+        const { data: validatedData, success } = SignupSchema.safeParse({
+            ...data.credentials,
+            ...data["personal-information"],
+        });
+
+        if (!success) {
+            return;
+        }
+
+        mutateAsync(validatedData)
+            .then((response) => response.data)
+            .then(console.log)
+            .catch(console.error);
+    }, [data]);
+
+    function SubmitCredentials(credentials: SignupStepsDTO["credentials"]) {
+        setData((data) => ({ ...data, credentials }));
+        setQueryParams((_queryParams) => ({ step: "personal-information" }));
     }
 
-    return (
-        <form
-            className="flex h-full w-full flex-col gap-8"
-            onSubmit={handleSubmit(SubmitData)}
-        >
-            <Locale variant="h1" className="text-xl font-bold">
-                {locales.title}
-            </Locale>
-            <main className="flex grow flex-col place-content-center gap-6">
-                <Input
-                    required
-                    autoFocus
-                    type="email"
-                    autoComplete="off"
-                    {...register("email")}
-                    label={<Locale>{locales.inputs.email.label}</Locale>}
-                    errorMessage={GetErrorLocale(
-                        errors.email?.message,
-                        locales.inputs.email.errors,
-                        language
-                    )}
-                    placeholder={GetLocale(
-                        locales.inputs.email.placeholder,
-                        language
-                    )}
+    function SubmitPersonalInformation(
+        personalInformation: SignupStepsDTO["personal-information"]
+    ) {
+        setData((data) => ({
+            ...data,
+            "personal-information": personalInformation,
+        }));
+    }
+
+    switch (queryParams?.step) {
+        case "credentials":
+            return <SignupCredentialsForm SubmitData={SubmitCredentials} />;
+        case "personal-information":
+            return (
+                <SignupPersonalInformationForm
+                    SubmitData={SubmitPersonalInformation}
                 />
-                <PasswordInput
-                    required
-                    autoComplete="off"
-                    {...register("password")}
-                    label={<Locale>{locales.inputs.password.label}</Locale>}
-                    errorMessage={GetErrorLocale(
-                        errors.password?.message,
-                        locales.inputs.password.errors,
-                        language
-                    )}
-                    placeholder={GetLocale(
-                        locales.inputs.password.placeholder,
-                        language
-                    )}
-                />
-                <PasswordInput
-                    required
-                    autoComplete="off"
-                    {...register("confirm-password")}
-                    errorMessage={GetErrorLocale(
-                        errors["confirm-password"]?.message,
-                        locales.inputs["confirm-password"].errors,
-                        language
-                    )}
-                    placeholder={GetLocale(
-                        locales.inputs["confirm-password"].placeholder,
-                        language
-                    )}
-                    label={
-                        <Locale>
-                            {locales.inputs["confirm-password"].label}
-                        </Locale>
-                    }
-                />
-                <Checkbox
-                    required
-                    {...register("terms-and-conditions")}
-                    errorMessage={GetErrorLocale(
-                        errors["terms-and-conditions"]?.message,
-                        locales.inputs["terms-and-conditions"].errors,
-                        language
-                    )}
-                    label={
-                        <RichText
-                            ExtractedTextRenders={(text) => (
-                                <Link
-                                    className="text-secondary-normal underline"
-                                    to="/registration/terms-and-conditions"
-                                >
-                                    {text}
-                                </Link>
-                            )}
-                        >
-                            {GetLocale(
-                                locales.inputs["terms-and-conditions"].label,
-                                language
-                            )}
-                        </RichText>
-                    }
-                />
-            </main>
-            <ButtonBox
-                className="[&>button]:grow"
-                direction={direction == "ltr" ? "row" : "reverse-row"}
-            >
-                <Button
-                    type="reset"
-                    onClick={(_e) => reset({ "terms-and-conditions": false })}
-                >
-                    <Locale>{locales.buttons.clear}</Locale>
-                </Button>
-                <Button variant="primary" type="submit">
-                    <Locale>{locales.buttons.signup}</Locale>
-                </Button>
-            </ButtonBox>
-            <RichText
-                variant="p"
-                ExtractedTextRenders={(text) => (
-                    <Link
-                        className="text-primary-normal underline"
-                        to="/registration/login"
-                    >
-                        {text}
-                    </Link>
-                )}
-            >
-                {GetLocale(locales["last-option"], language)}
-            </RichText>
-        </form>
-    );
+            );
+    }
 };

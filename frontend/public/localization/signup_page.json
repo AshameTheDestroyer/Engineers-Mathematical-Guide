@@ -83,6 +83,156 @@
                     "ar": "عليكَ أنْ تُوافِقَ على مَعاييرِنا وضَوابِطنا."
                 }
             }
+        },
+        "username": {
+            "label": {
+                "en": "Username",
+                "ar": ""
+            },
+            "placeholder": {
+                "en": "my_name",
+                "ar": ""
+            },
+            "errors": {
+                "required": {
+                    "en": "Username is required.",
+                    "ar": ""
+                },
+                "pattern": {
+                    "en": "Username should consist of only characters, numbers, and underscores.",
+                    "ar": ""
+                },
+                "minimum": {
+                    "en": "Username should consist of more than 2 characters.",
+                    "ar": ""
+                },
+                "maximum": {
+                    "en": "Username should not exceed 20 characters.",
+                    "ar": ""
+                }
+            }
+        },
+        "name": {
+            "label": {
+                "en": "Name",
+                "ar": ""
+            },
+            "placeholder": {
+                "en": "Enter your first name",
+                "ar": ""
+            },
+            "errors": {
+                "required": {
+                    "en": "Name is required.",
+                    "ar": ""
+                },
+                "pattern": {
+                    "en": "Name should consist of only characters and numbers.",
+                    "ar": ""
+                },
+                "minimum": {
+                    "en": "Name should consist of more than 2 characters.",
+                    "ar": ""
+                },
+                "maximum": {
+                    "en": "Name should not exceed 20 characters.",
+                    "ar": ""
+                }
+            }
+        },
+        "surname": {
+            "label": {
+                "en": "Surname",
+                "ar": ""
+            },
+            "placeholder": {
+                "en": "Enter your last name",
+                "ar": ""
+            },
+            "errors": {
+                "pattern": {
+                    "en": "Surname should consist of only characters and numbers.",
+                    "ar": ""
+                },
+                "minimum": {
+                    "en": "Surname should consist of more than 2 characters.",
+                    "ar": ""
+                },
+                "maximum": {
+                    "en": "Surname should not exceed 20 characters.",
+                    "ar": ""
+                }
+            }
+        },
+        "gender": {
+            "label": {
+                "en": "Gender",
+                "ar": ""
+            },
+            "values": {
+                "male": {
+                    "en": "Male",
+                    "ar": ""
+                },
+                "female": {
+                    "en": "Female",
+                    "ar": ""
+                }
+            },
+            "errors": {
+                "required": {
+                    "en": "Gender is required.",
+                    "ar": ""
+                }
+            }
+        },
+        "country": {
+            "label": {
+                "en": "Country",
+                "ar": ""
+            },
+            "placeholder": {
+                "en": "Enter your country",
+                "ar": ""
+            },
+            "errors": {
+                "required": {
+                    "en": "Country is required.",
+                    "ar": ""
+                },
+                "empty": {
+                    "en": "Country should be provided.",
+                    "ar": ""
+                }
+            }
+        },
+        "phone-number": {
+            "label": {
+                "en": "Phone Number",
+                "ar": ""
+            },
+            "placeholder": {
+                "en": "+(999)-999-999-999",
+                "ar": ""
+            },
+            "errors": {
+                "required": {
+                    "en": "Phone number is required.",
+                    "ar": ""
+                },
+                "pattern": {
+                    "en": "You should enter a valid phone number.",
+                    "ar": ""
+                },
+                "minimum": {
+                    "en": "Phone number should consist of more than 8 characters.",
+                    "ar": ""
+                },
+                "maximum": {
+                    "en": "Phone number should not exceed 16 characters.",
+                    "ar": ""
+                }
+            }
         }
     },
     "buttons": {
@@ -96,7 +246,13 @@
         }
     },
     "last-option": {
-        "en": "Already a member? **Login**.",
-        "ar": "لديكَ حِسابٌ بِالفعل؟ **سجّلْ دخولَك**."
+        "credentials": {
+            "en": "Already a member? **Login**.",
+            "ar": "لديكَ حِسابٌ بِالفعل؟ **سجّلْ دخولَك**."
+        },
+        "personal-information": {
+            "en": "Changed your mind? **Go Back**.",
+            "ar": ""
+        }
     }
 }
