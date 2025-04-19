@@ -94,6 +94,7 @@ export const SignupPage: FC = () => {
     useEffect(() => {
         const hasSkippedCredentialsStep =
             data.credentials == null && queryParams?.step != "credentials";
+
         if (queryParams == null || hasSkippedCredentialsStep) {
             setQueryParams((_queryParams) => ({ step: "credentials" }));
         }
