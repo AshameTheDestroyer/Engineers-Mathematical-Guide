@@ -51,6 +51,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
         }
 
         inputElement.insertAdjacentElement("afterend", buttonReference.current);
+        buttonReference.current.classList.remove("hidden");
     }, []);
 
     function ButtonOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -85,7 +86,7 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
             />
             <IconButton
                 ref={buttonReference}
-                className="[&>div]:rounded-xl"
+                className="hidden [&>div]:rounded-xl"
                 variant={variant}
                 icon={{
                     width: 16,
