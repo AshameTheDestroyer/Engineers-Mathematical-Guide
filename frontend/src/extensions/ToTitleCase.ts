@@ -9,7 +9,7 @@ String.prototype.toTitleCase = function (): string {
     return currentValue
         .split(/[\ |\-\_]/)
         .map((word) =>
-            word.length == 1 ? word : `${word[0].toUpperCase()}${word.slice(1)}`
+            word.length <= 1 ? word : `${word[0].toUpperCase()}${word.slice(1)}`
         )
         .join(" ");
 };
