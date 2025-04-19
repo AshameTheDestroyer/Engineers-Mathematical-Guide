@@ -1,10 +1,10 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { CredentialsForm } from "./CredentialsForm";
+import { CredentialsForm } from "../components/CredentialsForm";
 import { InferNested } from "@/types/Zod.InferNested";
 import { HTTPInstance } from "@/services/HTTPInstance";
-import { PersonalInformationForm } from "./PersonalInformationForm";
+import { PersonalInformationForm } from "../components/PersonalInformationForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 
 export const SignupStepSchemas = {

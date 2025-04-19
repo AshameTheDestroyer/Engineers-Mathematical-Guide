@@ -6,7 +6,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { SignupStepSchemas, SignupStepsDTO } from "./SignupPage";
+import { SignupStepSchemas, SignupStepsDTO } from "../pages/SignupPage";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/signup_page.json";

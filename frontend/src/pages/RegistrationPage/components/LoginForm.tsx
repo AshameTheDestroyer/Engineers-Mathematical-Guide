@@ -1,26 +1,22 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "@/components/Form/Form";
+import { LoginDTO, LoginSchema } from "../pages/LoginPage";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
+import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import {
-    ForgotPasswordStepsDTO,
-    ForgotPasswordStepSchemas,
-} from "./ForgotPasswordPage";
 
-import locales from "@localization/forgot_password_page.json";
+import locales from "@localization/login_page.json";
 
-export type ResetPasswordFormProps = {
-    SubmitData: (data: ForgotPasswordStepsDTO["reset-password"]) => void;
+export type LoginFormProps = {
+    SubmitData: (data: LoginDTO) => void;
 };
 
-export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
-    SubmitData,
-}) => {
+export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
     const {
@@ -28,15 +24,30 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
         register,
         handleSubmit,
         formState: { errors },
-    } = useSchematicForm(ForgotPasswordStepSchemas["reset-password"]);
+    } = useSchematicForm(LoginSchema);
 
     return (
         <Form
             onSubmit={handleSubmit(SubmitData)}
             title={
                 <Locale variant="h1" className="text-xl font-bold">
-                    {locales.title["reset-password"]}
+                    {locales.title}
                 </Locale>
+            }
+            options={
+                <RichText
+                    variant="p"
+                    ExtractedTextRenders={(text) => (
+                        <Link
+                            className="text-secondary-normal underline"
+                            to="/registration/forgot-password"
+                        >
+                            {text}
+                        </Link>
+                    )}
+                >
+                    {GetLocale(locales["forgot-password"], language)}
+                </RichText>
             }
             buttons={
                 <>
@@ -44,7 +55,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
                     <Button variant="primary" type="submit">
-                        <Locale>{locales.buttons["reset-password"]}</Locale>
+                        <Locale>{locales.buttons.login}</Locale>
                     </Button>
                 </>
             }
@@ -54,23 +65,34 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/login"
+                            to="/registration/signup"
                         >
                             {text}
                         </Link>
                     )}
                 >
-                    {GetLocale(
-                        locales["last-option"]["reset-password"],
-                        language
-                    )}
+                    {GetLocale(locales["last-option"], language)}
                 </RichText>
             }
         >
-            <PasswordInput
+            <Input
                 required
                 autoFocus
-                autoComplete="off"
+                type="email"
+                {...register("email")}
+                label={<Locale>{locales.inputs.email.label}</Locale>}
+                errorMessage={GetErrorLocale(
+                    errors.email?.message,
+                    locales.inputs.email.errors,
+                    language
+                )}
+                placeholder={GetLocale(
+                    locales.inputs.email.placeholder,
+                    language
+                )}
+            />
+            <PasswordInput
+                required
                 {...register("password")}
                 label={<Locale>{locales.inputs.password.label}</Locale>}
                 errorMessage={GetErrorLocale(
@@ -82,23 +104,6 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                     locales.inputs.password.placeholder,
                     language
                 )}
-            />
-            <PasswordInput
-                required
-                autoComplete="off"
-                {...register("confirm-password")}
-                errorMessage={GetErrorLocale(
-                    errors["confirm-password"]?.message,
-                    locales.inputs["confirm-password"].errors,
-                    language
-                )}
-                placeholder={GetLocale(
-                    locales.inputs["confirm-password"].placeholder,
-                    language
-                )}
-                label={
-                    <Locale>{locales.inputs["confirm-password"].label}</Locale>
-                }
             />
         </Form>
     );

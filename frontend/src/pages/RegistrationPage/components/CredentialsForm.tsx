@@ -1,22 +1,23 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "@/components/Form/Form";
-import { LoginDTO, LoginSchema } from "./LoginPage";
+import { Input } from "@/components/Input/Input";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
-import { Input } from "../../../components/Input/Input";
+import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { SignupStepSchemas, SignupStepsDTO } from "../pages/SignupPage";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import locales from "@localization/login_page.json";
+import locales from "@localization/signup_page.json";
 
-export type LoginFormProps = {
-    SubmitData: (data: LoginDTO) => void;
+export type CredentialsFormProps = {
+    SubmitData: (data: SignupStepsDTO["credentials"]) => void;
 };
 
-export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
+export const CredentialsForm: FC<CredentialsFormProps> = ({ SubmitData }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
     const {
@@ -24,38 +25,28 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useSchematicForm(LoginSchema);
+    } = useSchematicForm(SignupStepSchemas.credentials);
 
     return (
         <Form
             onSubmit={handleSubmit(SubmitData)}
             title={
                 <Locale variant="h1" className="text-xl font-bold">
-                    {locales.title}
+                    {locales.title.credentials}
                 </Locale>
-            }
-            options={
-                <RichText
-                    variant="p"
-                    ExtractedTextRenders={(text) => (
-                        <Link
-                            className="text-secondary-normal underline"
-                            to="/registration/forgot-password"
-                        >
-                            {text}
-                        </Link>
-                    )}
-                >
-                    {GetLocale(locales["forgot-password"], language)}
-                </RichText>
             }
             buttons={
                 <>
-                    <Button type="reset" onClick={(_e) => reset()}>
+                    <Button
+                        type="reset"
+                        onClick={(_e) =>
+                            reset({ "terms-and-conditions": false })
+                        }
+                    >
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
                     <Button variant="primary" type="submit">
-                        <Locale>{locales.buttons.login}</Locale>
+                        <Locale>{locales.buttons.signup}</Locale>
                     </Button>
                 </>
             }
@@ -65,13 +56,13 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/signup"
+                            to="/registration/login"
                         >
                             {text}
                         </Link>
                     )}
                 >
-                    {GetLocale(locales["last-option"], language)}
+                    {GetLocale(locales["last-option"].credentials, language)}
                 </RichText>
             }
         >
@@ -79,6 +70,7 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                 required
                 autoFocus
                 type="email"
+                autoComplete="off"
                 {...register("email")}
                 label={<Locale>{locales.inputs.email.label}</Locale>}
                 errorMessage={GetErrorLocale(
@@ -93,6 +85,7 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
             />
             <PasswordInput
                 required
+                autoComplete="off"
                 {...register("password")}
                 label={<Locale>{locales.inputs.password.label}</Locale>}
                 errorMessage={GetErrorLocale(
@@ -104,6 +97,49 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                     locales.inputs.password.placeholder,
                     language
                 )}
+            />
+            <PasswordInput
+                required
+                autoComplete="off"
+                {...register("confirm-password")}
+                errorMessage={GetErrorLocale(
+                    errors["confirm-password"]?.message,
+                    locales.inputs["confirm-password"].errors,
+                    language
+                )}
+                placeholder={GetLocale(
+                    locales.inputs["confirm-password"].placeholder,
+                    language
+                )}
+                label={
+                    <Locale>{locales.inputs["confirm-password"].label}</Locale>
+                }
+            />
+            <Checkbox
+                required
+                {...register("terms-and-conditions")}
+                errorMessage={GetErrorLocale(
+                    errors["terms-and-conditions"]?.message,
+                    locales.inputs["terms-and-conditions"].errors,
+                    language
+                )}
+                label={
+                    <RichText
+                        ExtractedTextRenders={(text) => (
+                            <Link
+                                className="text-secondary-normal underline"
+                                to="/registration/terms-and-conditions"
+                            >
+                                {text}
+                            </Link>
+                        )}
+                    >
+                        {GetLocale(
+                            locales.inputs["terms-and-conditions"].label,
+                            language
+                        )}
+                    </RichText>
+                }
             />
         </Form>
     );

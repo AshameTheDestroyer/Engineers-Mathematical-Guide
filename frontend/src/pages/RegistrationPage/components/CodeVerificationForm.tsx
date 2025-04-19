@@ -10,7 +10,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import {
     ForgotPasswordStepsDTO,
     ForgotPasswordStepSchemas,
-} from "./ForgotPasswordPage";
+} from "../pages/ForgotPasswordPage";
 
 import locales from "@localization/forgot_password_page.json";
 

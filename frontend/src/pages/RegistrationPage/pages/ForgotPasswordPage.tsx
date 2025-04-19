@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
-import { CodeRequestForm } from "./CodeRequestForm";
+import { CodeRequestForm } from "../components/CodeRequestForm";
 import { InferNested } from "@/types/Zod.InferNested";
-import { ResetPasswordForm } from "./ResetPasswordForm";
-import { CodeVerificationForm } from "./CodeVerificationForm";
+import { ResetPasswordForm } from "../components/ResetPasswordForm";
+import { CodeVerificationForm } from "../components/CodeVerificationForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 
 export const ForgotPasswordStepSchemas = {

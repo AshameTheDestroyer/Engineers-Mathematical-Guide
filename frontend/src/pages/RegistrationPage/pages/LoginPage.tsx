@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { FC } from "react";
-import { LoginForm } from "./LoginForm";
+import { LoginForm } from "../components/LoginForm";
 
 export const LoginSchema = z.object({
     email: z.string({ required_error: "required" }).email("pattern"),
