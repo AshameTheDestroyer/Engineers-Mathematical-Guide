@@ -1,24 +1,17 @@
 import { z } from "zod";
-import { Link } from "react-router-dom";
 import { FC, useEffect, useState } from "react";
-import { Locale } from "@/components/Locale/Locale";
-import { Button } from "@/components/Button/Button";
 import { InferNested } from "@/types/Zod.InferNested";
-import { Input } from "../../../components/Input/Input";
-import { RichText } from "@/components/RichText/RichText";
-import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
-
-import locales from "@localization/forgot_password_page.json";
+import { ForgotPasswordCodeRequestForm } from "./ForgotPasswordCodeRequestForm";
+import { ForgotPasswordResetPasswordForm } from "./ForgotPasswordResetPasswordForm";
+import { ForgotPasswordCodeVerificationForm } from "./ForgotPasswordCodeVerificationForm";
 
 export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
         email: z.string({ required_error: "required" }).email("pattern"),
     }),
     "code-verification": z.object({
-        code: z.string({ required_error: "required" }),
+        code: z.string({ required_error: "required" }).length(6, "length"),
     }),
     "reset-password": z
         .object({
@@ -56,30 +49,30 @@ export const ForgotPasswordPage: FC = () => {
         WithPartial<ForgotPasswordStepsDTO, keyof ForgotPasswordStepsDTO>
     >({});
 
-    const { direction, GetLocale, GetErrorLocale, language } =
-        useLocalization();
-
-    const {
-        reset,
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useSchematicForm(ForgotPasswordSchema);
-
     useEffect(() => {
-        const hasSkippedCodeRequestStep =
-            data["code-request"] == null && queryParams?.step != "code-request";
-
-        const hasSkippedCodeVerificationStep =
-            data["code-verification"] == null &&
-            queryParams?.step != "code-verification";
-
-        if (
-            queryParams == null ||
-            hasSkippedCodeRequestStep ||
-            hasSkippedCodeVerificationStep
-        ) {
+        if (queryParams == null) {
             setQueryParams((_queryParams) => ({ step: "code-request" }));
+            return;
+        }
+
+        switch (queryParams.step) {
+            case "code-verification":
+                if (data["code-request"] == null) {
+                    setQueryParams((_queryParams) => ({
+                        step: "code-request",
+                    }));
+                }
+                break;
+            case "reset-password":
+                if (
+                    data["code-request"] == null ||
+                    data["code-verification"] == null
+                ) {
+                    setQueryParams((_queryParams) => ({
+                        step: "code-request",
+                    }));
+                }
+                break;
         }
     }, [queryParams]);
 
@@ -103,56 +96,22 @@ export const ForgotPasswordPage: FC = () => {
         setData((data) => ({ ...data, "reset-password": resetPassword }));
     }
 
-    return (
-        <form
-            className="my-16 flex h-full w-full flex-col gap-8"
-            onSubmit={handleSubmit(SubmitCodeRequest)}
-        >
-            <Locale variant="h1" className="text-xl font-bold">
-                {locales.title}
-            </Locale>
-            <main className="flex grow flex-col place-content-center gap-6">
-                <Input
-                    required
-                    autoFocus
-                    type="email"
-                    {...register("email")}
-                    label={<Locale>{locales.inputs.email.label}</Locale>}
-                    errorMessage={GetErrorLocale(
-                        errors.email?.message,
-                        locales.inputs.email.errors,
-                        language
-                    )}
-                    placeholder={GetLocale(
-                        locales.inputs.email.placeholder,
-                        language
-                    )}
+    switch (queryParams?.step) {
+        case "code-request":
+            return (
+                <ForgotPasswordCodeRequestForm SubmitData={SubmitCodeRequest} />
+            );
+        case "code-verification":
+            return (
+                <ForgotPasswordCodeVerificationForm
+                    SubmitData={SubmitCodeVerification}
                 />
-            </main>
-            <ButtonBox
-                className="[&>button]:flex-1"
-                direction={direction == "ltr" ? "row" : "reverse-row"}
-            >
-                <Button type="reset" onClick={(_e) => reset()}>
-                    <Locale>{locales.buttons.clear}</Locale>
-                </Button>
-                <Button variant="primary" type="submit">
-                    <Locale>{locales.buttons["send-code"]}</Locale>
-                </Button>
-            </ButtonBox>
-            <RichText
-                variant="p"
-                ExtractedTextRenders={(text) => (
-                    <Link
-                        className="text-primary-normal underline"
-                        to="/registration/login"
-                    >
-                        {text}
-                    </Link>
-                )}
-            >
-                {GetLocale(locales["last-option"], language)}
-            </RichText>
-        </form>
-    );
+            );
+        case "reset-password":
+            return (
+                <ForgotPasswordResetPasswordForm
+                    SubmitData={SubmitResetPassword}
+                />
+            );
+    }
 };
