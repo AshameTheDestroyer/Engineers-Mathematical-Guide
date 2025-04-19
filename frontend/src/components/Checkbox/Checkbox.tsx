@@ -2,7 +2,6 @@ import { twMerge } from "tailwind-merge";
 import { Input, InputProps } from "../Input/Input";
 import { IconButton } from "../IconButton/IconButton";
 import { FC, useEffect, useRef, useState } from "react";
-import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import check_icon from "@icons/check.svg";
 
@@ -25,8 +24,6 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
     variant = "default",
     ...props
 }) => {
-    const { direction } = useLocalization();
-
     const [isIndeterminate, setIsIndeterminate] = useState(indeterminate);
     const [isChecked, setIsChecked] = useState(
         (checked || indeterminate) ?? false
@@ -69,10 +66,10 @@ export const Checkbox: FC<CustomCheckboxProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    direction == "ltr"
-                        ? "[&>[data-error-message]]:left-8"
-                        : "[&>[data-error-message]]:right-8",
-                    "flex place-items-start gap-4 border-0 [&>input]:absolute [&>input]:left-2.5 [&>input]:top-1/2 [&>input]:w-auto [&>input]:-translate-y-1/2 [&>input]:opacity-0 [&>label]:pointer-events-auto [&>label]:static [&>label]:grow [&>label]:translate-y-1.5 [&>label]:text-wrap [&>label]:p-0",
+                    "grid grid-cols-[auto_1fr] place-items-baseline justify-items-start gap-[0_calc(var(--spacing)*4)] rounded-none border-0",
+                    "[&>input]:absolute [&>input]:left-2.5 [&>input]:top-1/2 [&>input]:w-auto [&>input]:-translate-y-1/2 [&>input]:opacity-0",
+                    "[&>label]:translate-0 [&>label>*]:overflow-auto [&>label]:pointer-events-auto [&>label]:static [&>label]:inset-auto [&>label]:h-auto [&>label]:text-clip [&>label]:text-wrap [&>label]:p-0",
+                    "[&_[data-error-message]]:col-start-2 [&_[data-error-message]]:w-full [&_[data-error-message]]:px-0",
                     className
                 )}
                 name={name}

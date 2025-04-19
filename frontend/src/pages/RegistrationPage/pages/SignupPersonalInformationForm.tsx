@@ -36,7 +36,7 @@ export const SignupPersonalInformationForm: FC<
             <Locale variant="h1" className="text-xl font-bold">
                 {locales.title}
             </Locale>
-            <main className="flex grow flex-col place-content-center gap-6">
+            <main className="grid grow grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] place-content-center gap-6">
                 <Input
                     required
                     autoFocus

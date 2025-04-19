@@ -58,11 +58,10 @@ export const Input: FC<InputProps> = ({
             ref={ref}
             className={twMerge(
                 Object.values(variantClassNames[variant]),
-                "relative rounded-xl transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
+                "relative flex flex-col gap-2 rounded-xl transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",
                 direction == "ltr"
                     ? "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:right-auto"
                     : "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:left-auto",
-                errorMessage != null ? "mb-[calc(var(--spacing)*8)]" : "",
                 className
             )}
         >
@@ -74,7 +73,7 @@ export const Input: FC<InputProps> = ({
                 {...props}
             />
             <Typography<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement>>
-                className="bg-background-light pointer-events-none absolute inset-x-4 top-1/2 max-w-[calc(100%-var(--spacing)*10)] -translate-y-1/2 overflow-clip text-ellipsis text-nowrap px-2 transition-all duration-200"
+                className="bg-background-light pointer-events-none absolute inset-x-4 top-6 h-7 max-w-[calc(100%-var(--spacing)*10)] -translate-y-1/2 overflow-clip text-ellipsis text-nowrap px-2 transition-all duration-200"
                 variant="label"
                 htmlFor={inputID}
             >
@@ -88,10 +87,9 @@ export const Input: FC<InputProps> = ({
                     data-error-message
                     className={twJoin(
                         direction == "ltr" ? "pl-6" : "pr-6",
-                        "text-vibrant-red absolute inset-x-0 top-[calc(100%+var(--spacing)*2)] overflow-hidden text-ellipsis text-nowrap px-4"
+                        "text-vibrant-red px-4"
                     )}
                     variant="p"
-                    title={errorMessage}
                 >
                     {errorMessage}
                 </Typography>

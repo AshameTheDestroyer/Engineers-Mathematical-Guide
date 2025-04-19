@@ -52,7 +52,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({
                     <button
                         className={twJoin(
                             direction == "ltr" ? "right-4" : "left-4",
-                            "absolute top-1/2 -translate-y-1/2 cursor-pointer"
+                            "top-5.5 absolute -translate-y-1/2 cursor-pointer"
                         )}
                         type="button"
                         onClick={(_e) =>
