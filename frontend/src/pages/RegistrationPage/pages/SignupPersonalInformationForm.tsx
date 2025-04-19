@@ -34,7 +34,7 @@ export const SignupPersonalInformationForm: FC<
             onSubmit={handleSubmit(SubmitData)}
         >
             <Locale variant="h1" className="text-xl font-bold">
-                {locales.title}
+                {locales.title["personal-information"]}
             </Locale>
             <main className="grid grow grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] place-content-center gap-x-4 gap-y-6">
                 <Input
@@ -135,7 +135,7 @@ export const SignupPersonalInformationForm: FC<
                     <Locale>{locales.buttons.clear}</Locale>
                 </Button>
                 <Button variant="primary" type="submit">
-                    <Locale>{locales.buttons.signup}</Locale>
+                    <Locale>{locales.buttons.finish}</Locale>
                 </Button>
             </ButtonBox>
             <RichText

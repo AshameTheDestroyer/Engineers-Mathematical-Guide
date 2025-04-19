@@ -1,7 +1,13 @@
 {
     "title": {
-        "en": "Create new account",
-        "ar": "أنشئْ حِساباً جَديداً"
+        "credentials": {
+            "en": "Create new account",
+            "ar": "أنشئْ حِساباً جَديداً"
+        },
+        "personal-information": {
+            "en": "Complete your information",
+            "ar": "أكملْ إدخالَ مَعلوماتِك"
+        }
     },
     "inputs": {
         "email": {
@@ -239,6 +245,10 @@
         "signup": {
             "en": "Sign up",
             "ar": "إنشاءُ حِساب"
+        },
+        "finish": {
+            "en": "Finish",
+            "ar": "إكمال"
         },
         "clear": {
             "en": "Clear",
