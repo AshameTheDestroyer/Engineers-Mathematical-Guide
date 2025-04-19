@@ -78,7 +78,7 @@ export const LoginPage: FC = () => {
                 ExtractedTextRenders={(text) => (
                     <Link
                         className="text-secondary-normal underline"
-                        to="/registration/reset-password"
+                        to="/registration/forgot-password"
                     >
                         {text}
                     </Link>

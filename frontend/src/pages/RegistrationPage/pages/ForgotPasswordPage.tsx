@@ -11,9 +11,9 @@ import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 
-import locales from "@localization/reset_password_page.json";
+import locales from "@localization/forgot_password_page.json";
 
-export const ResetPasswordStepSchemas = {
+export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
         email: z.string({ required_error: "required" }).email("pattern"),
     }),
@@ -34,26 +34,26 @@ export const ResetPasswordStepSchemas = {
         }),
 };
 
-export const ResetPasswordSchema = ResetPasswordStepSchemas["code-request"]
-    .and(ResetPasswordStepSchemas["code-verification"])
-    .and(ResetPasswordStepSchemas["reset-password"]);
+export const ForgotPasswordSchema = ForgotPasswordStepSchemas["code-request"]
+    .and(ForgotPasswordStepSchemas["code-verification"])
+    .and(ForgotPasswordStepSchemas["reset-password"]);
 
-export type ResetPasswordDTO = z.infer<typeof ResetPasswordSchema>;
-export type ResetPasswordStepsDTO = InferNested<
-    typeof ResetPasswordStepSchemas
+export type ForgotPasswordDTO = z.infer<typeof ForgotPasswordSchema>;
+export type ForgotPasswordStepsDTO = InferNested<
+    typeof ForgotPasswordStepSchemas
 >;
 
-export const ResetPasswordQueryParamSchema = z.object({
+export const ForgotPasswordQueryParamSchema = z.object({
     step: z.enum(["code-request", "code-verification", "reset-password"]),
 });
 
-export const ResetPasswordPage: FC = () => {
+export const ForgotPasswordPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
-        ResetPasswordQueryParamSchema
+        ForgotPasswordQueryParamSchema
     );
 
     const [data, setData] = useState<
-        WithPartial<ResetPasswordStepsDTO, keyof ResetPasswordStepsDTO>
+        WithPartial<ForgotPasswordStepsDTO, keyof ForgotPasswordStepsDTO>
     >({});
 
     const { direction, GetLocale, GetErrorLocale, language } =
@@ -64,7 +64,7 @@ export const ResetPasswordPage: FC = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useSchematicForm(ResetPasswordSchema);
+    } = useSchematicForm(ForgotPasswordSchema);
 
     useEffect(() => {
         const hasSkippedCodeRequestStep =
@@ -84,21 +84,21 @@ export const ResetPasswordPage: FC = () => {
     }, [queryParams]);
 
     function SubmitCodeRequest(
-        codeRequest: ResetPasswordStepsDTO["code-request"]
+        codeRequest: ForgotPasswordStepsDTO["code-request"]
     ) {
         setData((data) => ({ ...data, "code-request": codeRequest }));
         setQueryParams((_queryParams) => ({ step: "code-verification" }));
     }
 
     function SubmitCodeVerification(
-        codeVerification: ResetPasswordStepsDTO["code-verification"]
+        codeVerification: ForgotPasswordStepsDTO["code-verification"]
     ) {
         setData((data) => ({ ...data, "code-verification": codeVerification }));
         setQueryParams((_queryParams) => ({ step: "reset-password" }));
     }
 
     function SubmitResetPassword(
-        resetPassword: ResetPasswordStepsDTO["reset-password"]
+        resetPassword: ForgotPasswordStepsDTO["reset-password"]
     ) {
         setData((data) => ({ ...data, "reset-password": resetPassword }));
     }
