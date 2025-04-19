@@ -20,7 +20,7 @@ export const RegistrationPage: FC = () => {
                     "top-page absolute z-10"
                 )}
             />
-            <main className="flex w-full min-w-[25vw] max-w-[min(30rem,80vw)] items-center justify-center">
+            <main className="flex w-full min-w-[25vw] max-w-[min(30rem,80vw)] items-center justify-center [&>form]:my-16 [&>form]:h-full [&>form]:w-full">
                 <Outlet />
             </main>
             <section

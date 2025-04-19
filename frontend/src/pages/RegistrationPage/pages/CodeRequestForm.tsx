@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Form } from "@/components/Form/Form";
 import { Input } from "@/components/Input/Input";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     ForgotPasswordStepsDTO,
@@ -19,8 +19,7 @@ export type CodeRequestFormProps = {
 };
 
 export const CodeRequestForm: FC<CodeRequestFormProps> = ({ SubmitData }) => {
-    const { direction, GetLocale, GetErrorLocale, language } =
-        useLocalization();
+    const { GetLocale, GetErrorLocale, language } = useLocalization();
 
     const {
         reset,
@@ -30,55 +29,58 @@ export const CodeRequestForm: FC<CodeRequestFormProps> = ({ SubmitData }) => {
     } = useSchematicForm(ForgotPasswordStepSchemas["code-request"]);
 
     return (
-        <form
-            className="my-16 flex h-full w-full flex-col gap-8"
+        <Form
             onSubmit={handleSubmit(SubmitData)}
+            title={
+                <Locale variant="h1" className="text-xl font-bold">
+                    {locales.title["code-request"]}
+                </Locale>
+            }
+            buttons={
+                <>
+                    <Button type="reset" onClick={(_e) => reset()}>
+                        <Locale>{locales.buttons.clear}</Locale>
+                    </Button>
+                    <Button variant="primary" type="submit">
+                        <Locale>{locales.buttons["send-code"]}</Locale>
+                    </Button>
+                </>
+            }
+            lastOptions={
+                <RichText
+                    variant="p"
+                    ExtractedTextRenders={(text) => (
+                        <Link
+                            className="text-primary-normal underline"
+                            to="/registration/login"
+                        >
+                            {text}
+                        </Link>
+                    )}
+                >
+                    {GetLocale(
+                        locales["last-option"]["code-request"],
+                        language
+                    )}
+                </RichText>
+            }
         >
-            <Locale variant="h1" className="text-xl font-bold">
-                {locales.title["code-request"]}
-            </Locale>
-            <main className="flex grow flex-col place-content-center gap-6">
-                <Input
-                    required
-                    autoFocus
-                    type="email"
-                    {...register("email")}
-                    label={<Locale>{locales.inputs.email.label}</Locale>}
-                    errorMessage={GetErrorLocale(
-                        errors.email?.message,
-                        locales.inputs.email.errors,
-                        language
-                    )}
-                    placeholder={GetLocale(
-                        locales.inputs.email.placeholder,
-                        language
-                    )}
-                />
-            </main>
-            <ButtonBox
-                className="[&>button]:flex-1"
-                direction={direction == "ltr" ? "row" : "reverse-row"}
-            >
-                <Button type="reset" onClick={(_e) => reset()}>
-                    <Locale>{locales.buttons.clear}</Locale>
-                </Button>
-                <Button variant="primary" type="submit">
-                    <Locale>{locales.buttons["send-code"]}</Locale>
-                </Button>
-            </ButtonBox>
-            <RichText
-                variant="p"
-                ExtractedTextRenders={(text) => (
-                    <Link
-                        className="text-primary-normal underline"
-                        to="/registration/login"
-                    >
-                        {text}
-                    </Link>
+            <Input
+                required
+                autoFocus
+                type="email"
+                {...register("email")}
+                label={<Locale>{locales.inputs.email.label}</Locale>}
+                errorMessage={GetErrorLocale(
+                    errors.email?.message,
+                    locales.inputs.email.errors,
+                    language
                 )}
-            >
-                {GetLocale(locales["last-option"]["code-request"], language)}
-            </RichText>
-        </form>
+                placeholder={GetLocale(
+                    locales.inputs.email.placeholder,
+                    language
+                )}
+            />
+        </Form>
     );
 };
