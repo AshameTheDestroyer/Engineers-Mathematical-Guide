@@ -2,9 +2,9 @@ import { z } from "zod";
 import { FC, useEffect, useState } from "react";
 import { InferNested } from "@/types/Zod.InferNested";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
-import { ForgotPasswordCodeRequestForm } from "./ForgotPasswordCodeRequestForm";
-import { ForgotPasswordResetPasswordForm } from "./ForgotPasswordResetPasswordForm";
-import { ForgotPasswordCodeVerificationForm } from "./ForgotPasswordCodeVerificationForm";
+import { CodeRequestForm } from "./CodeRequestForm";
+import { ResetPasswordForm } from "./ResetPasswordForm";
+import { CodeVerificationForm } from "./CodeVerificationForm";
 
 export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
@@ -98,20 +98,10 @@ export const ForgotPasswordPage: FC = () => {
 
     switch (queryParams?.step) {
         case "code-request":
-            return (
-                <ForgotPasswordCodeRequestForm SubmitData={SubmitCodeRequest} />
-            );
+            return <CodeRequestForm SubmitData={SubmitCodeRequest} />;
         case "code-verification":
-            return (
-                <ForgotPasswordCodeVerificationForm
-                    SubmitData={SubmitCodeVerification}
-                />
-            );
+            return <CodeVerificationForm SubmitData={SubmitCodeVerification} />;
         case "reset-password":
-            return (
-                <ForgotPasswordResetPasswordForm
-                    SubmitData={SubmitResetPassword}
-                />
-            );
+            return <ResetPasswordForm SubmitData={SubmitResetPassword} />;
     }
 };

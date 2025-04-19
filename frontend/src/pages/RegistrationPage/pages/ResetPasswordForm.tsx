@@ -14,13 +14,13 @@ import {
 
 import locales from "@localization/forgot_password_page.json";
 
-export type ForgotPasswordResetPasswordFormProps = {
+export type ResetPasswordFormProps = {
     SubmitData: (data: ForgotPasswordStepsDTO["reset-password"]) => void;
 };
 
-export const ForgotPasswordResetPasswordForm: FC<
-    ForgotPasswordResetPasswordFormProps
-> = ({ SubmitData }) => {
+export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
+    SubmitData,
+}) => {
     const { direction, GetLocale, GetErrorLocale, language } =
         useLocalization();
 

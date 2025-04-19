@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
+import { CredentialsForm } from "./CredentialsForm";
 import { InferNested } from "@/types/Zod.InferNested";
 import { HTTPInstance } from "@/services/HTTPInstance";
-import { SignupCredentialsForm } from "./SignupCredentialsForm";
+import { PersonalInformationForm } from "./PersonalInformationForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
-import { SignupPersonalInformationForm } from "./SignupPersonalInformationForm";
 
 export const SignupStepSchemas = {
     credentials: z
@@ -132,10 +132,10 @@ export const SignupPage: FC = () => {
 
     switch (queryParams?.step) {
         case "credentials":
-            return <SignupCredentialsForm SubmitData={SubmitCredentials} />;
+            return <CredentialsForm SubmitData={SubmitCredentials} />;
         case "personal-information":
             return (
-                <SignupPersonalInformationForm
+                <PersonalInformationForm
                     SubmitData={SubmitPersonalInformation}
                 />
             );

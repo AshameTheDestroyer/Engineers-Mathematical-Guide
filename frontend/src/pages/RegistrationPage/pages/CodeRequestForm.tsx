@@ -14,13 +14,11 @@ import {
 
 import locales from "@localization/forgot_password_page.json";
 
-export type ForgotPasswordCodeVerificationFormProps = {
-    SubmitData: (data: ForgotPasswordStepsDTO["code-verification"]) => void;
+export type CodeRequestFormProps = {
+    SubmitData: (data: ForgotPasswordStepsDTO["code-request"]) => void;
 };
 
-export const ForgotPasswordCodeVerificationForm: FC<
-    ForgotPasswordCodeVerificationFormProps
-> = ({ SubmitData }) => {
+export const CodeRequestForm: FC<CodeRequestFormProps> = ({ SubmitData }) => {
     const { direction, GetLocale, GetErrorLocale, language } =
         useLocalization();
 
@@ -29,11 +27,7 @@ export const ForgotPasswordCodeVerificationForm: FC<
         register,
         handleSubmit,
         formState: { errors },
-    } = useSchematicForm(ForgotPasswordStepSchemas["code-verification"]);
-
-    function ResendCode() {
-        alert("Code Resent.");
-    }
+    } = useSchematicForm(ForgotPasswordStepSchemas["code-request"]);
 
     return (
         <form
@@ -41,21 +35,22 @@ export const ForgotPasswordCodeVerificationForm: FC<
             onSubmit={handleSubmit(SubmitData)}
         >
             <Locale variant="h1" className="text-xl font-bold">
-                {locales.title["code-verification"]}
+                {locales.title["code-request"]}
             </Locale>
             <main className="flex grow flex-col place-content-center gap-6">
                 <Input
                     required
                     autoFocus
-                    {...register("code")}
-                    label={<Locale>{locales.inputs.code.label}</Locale>}
+                    type="email"
+                    {...register("email")}
+                    label={<Locale>{locales.inputs.email.label}</Locale>}
                     errorMessage={GetErrorLocale(
-                        errors.code?.message,
-                        locales.inputs.code.errors,
+                        errors.email?.message,
+                        locales.inputs.email.errors,
                         language
                     )}
                     placeholder={GetLocale(
-                        locales.inputs.code.placeholder,
+                        locales.inputs.email.placeholder,
                         language
                     )}
                 />
@@ -68,40 +63,21 @@ export const ForgotPasswordCodeVerificationForm: FC<
                     <Locale>{locales.buttons.clear}</Locale>
                 </Button>
                 <Button variant="primary" type="submit">
-                    <Locale>{locales.buttons["verify-code"]}</Locale>
+                    <Locale>{locales.buttons["send-code"]}</Locale>
                 </Button>
             </ButtonBox>
             <RichText
                 variant="p"
                 ExtractedTextRenders={(text) => (
-                    <span
-                        className="text-secondary-normal cursor-pointer underline"
-                        onClick={ResendCode}
-                    >
-                        {text}
-                    </span>
-                )}
-            >
-                {GetLocale(
-                    locales["last-option"]["code-verification"]["resend-code"],
-                    language
-                )}
-            </RichText>
-            <RichText
-                variant="p"
-                ExtractedTextRenders={(text) => (
                     <Link
                         className="text-primary-normal underline"
-                        to="/registration/forgot-password?step=code-request"
+                        to="/registration/login"
                     >
                         {text}
                     </Link>
                 )}
             >
-                {GetLocale(
-                    locales["last-option"]["code-verification"]["go-back"],
-                    language
-                )}
+                {GetLocale(locales["last-option"]["code-request"], language)}
             </RichText>
         </form>
     );

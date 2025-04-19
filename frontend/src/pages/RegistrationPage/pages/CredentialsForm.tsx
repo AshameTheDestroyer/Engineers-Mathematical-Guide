@@ -13,13 +13,11 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/signup_page.json";
 
-export type SignupCredentialsFormProps = {
+export type CredentialsFormProps = {
     SubmitData: (data: SignupStepsDTO["credentials"]) => void;
 };
 
-export const SignupCredentialsForm: FC<SignupCredentialsFormProps> = ({
-    SubmitData,
-}) => {
+export const CredentialsForm: FC<CredentialsFormProps> = ({ SubmitData }) => {
     const { direction, GetLocale, GetErrorLocale, language } =
         useLocalization();
 
