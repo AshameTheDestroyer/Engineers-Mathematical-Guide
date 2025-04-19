@@ -1,11 +1,11 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { CredentialsForm } from "../components/CredentialsForm";
 import { InferNested } from "@/types/Zod.InferNested";
 import { HTTPInstance } from "@/services/HTTPInstance";
-import { PersonalInformationForm } from "../components/PersonalInformationForm";
+import { CredentialsForm } from "../components/CredentialsForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { PersonalInformationForm } from "../components/PersonalInformationForm";
 
 export const SignupStepSchemas = {
     credentials: z
@@ -56,7 +56,8 @@ export const SignupStepSchemas = {
     }),
 };
 
-export const SignupSchema = SignupStepSchemas.credentials.and(
+export const SignupSchema = z.intersection(
+    SignupStepSchemas.credentials,
     SignupStepSchemas["personal-information"]
 );
 

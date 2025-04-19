@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
-import { CodeRequestForm } from "../components/CodeRequestForm";
 import { InferNested } from "@/types/Zod.InferNested";
+import { CodeRequestForm } from "../components/CodeRequestForm";
 import { ResetPasswordForm } from "../components/ResetPasswordForm";
 import { CodeVerificationForm } from "../components/CodeVerificationForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
@@ -27,9 +27,13 @@ export const ForgotPasswordStepSchemas = {
         }),
 };
 
-export const ForgotPasswordSchema = ForgotPasswordStepSchemas["code-request"]
-    .and(ForgotPasswordStepSchemas["code-verification"])
-    .and(ForgotPasswordStepSchemas["reset-password"]);
+export const ForgotPasswordSchema = z.intersection(
+    z.intersection(
+        ForgotPasswordStepSchemas["code-request"],
+        ForgotPasswordStepSchemas["code-verification"]
+    ),
+    ForgotPasswordStepSchemas["reset-password"]
+);
 
 export type ForgotPasswordDTO = z.infer<typeof ForgotPasswordSchema>;
 export type ForgotPasswordStepsDTO = InferNested<
