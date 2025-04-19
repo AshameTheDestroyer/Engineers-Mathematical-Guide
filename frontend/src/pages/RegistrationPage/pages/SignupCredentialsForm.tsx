@@ -118,7 +118,7 @@ export const SignupCredentialsForm: FC<SignupCredentialsFormProps> = ({
                 />
             </main>
             <ButtonBox
-                className="[&>button]:grow"
+                className="[&>button]:flex-1"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
                 <Button

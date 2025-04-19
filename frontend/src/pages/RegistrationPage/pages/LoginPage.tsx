@@ -87,7 +87,7 @@ export const LoginPage: FC = () => {
                 {GetLocale(locales["forgot-password"], language)}
             </RichText>
             <ButtonBox
-                className="[&>button]:grow"
+                className="[&>button]:flex-1"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
                 <Button type="reset" onClick={(_e) => reset()}>

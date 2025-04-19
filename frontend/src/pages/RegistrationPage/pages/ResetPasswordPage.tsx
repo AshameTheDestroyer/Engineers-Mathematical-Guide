@@ -55,7 +55,7 @@ export const ResetPasswordPage: FC = () => {
                 />
             </main>
             <ButtonBox
-                className="[&>button]:grow"
+                className="[&>button]:flex-1"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
                 <Button type="reset" onClick={(_e) => reset()}>

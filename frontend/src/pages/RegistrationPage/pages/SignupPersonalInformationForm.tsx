@@ -36,7 +36,7 @@ export const SignupPersonalInformationForm: FC<
             <Locale variant="h1" className="text-xl font-bold">
                 {locales.title}
             </Locale>
-            <main className="grid grow grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] place-content-center gap-6">
+            <main className="grid grow grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] place-content-center gap-x-4 gap-y-6">
                 <Input
                     required
                     autoFocus
@@ -128,7 +128,7 @@ export const SignupPersonalInformationForm: FC<
                 />
             </main>
             <ButtonBox
-                className="[&>button]:grow"
+                className="[&>button]:flex-1"
                 direction={direction == "ltr" ? "row" : "reverse-row"}
             >
                 <Button type="reset" onClick={(_e) => reset()}>
