@@ -42,6 +42,7 @@ export const ForgotPasswordResetPasswordForm: FC<
             <main className="flex grow flex-col place-content-center gap-6">
                 <PasswordInput
                     required
+                    autoFocus
                     autoComplete="off"
                     {...register("password")}
                     label={<Locale>{locales.inputs.password.label}</Locale>}
