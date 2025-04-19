@@ -30,7 +30,7 @@ export const SignupPersonalInformationForm: FC<
 
     return (
         <form
-            className="flex h-full w-full flex-col gap-8"
+            className="my-16 flex h-full w-full flex-col gap-8"
             onSubmit={handleSubmit(SubmitData)}
         >
             <Locale variant="h1" className="text-xl font-bold">
