@@ -107,7 +107,7 @@ export const Select = <T extends EnumValues>({
             return;
         }
 
-        onChange?.({ target: { value } } as any);
+        onChange?.({ target: { value: mapOptions?.(value) ?? value } } as any);
     }, [value, dropDownReference.current]);
 
     const RenderOption: FC<{ option: typeof value }> = ({ option }) => {
