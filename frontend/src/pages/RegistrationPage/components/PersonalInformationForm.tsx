@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "@/components/Form/Form";
+import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
@@ -25,13 +25,25 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
     SubmitData,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
+    const [country, setCountry] = useState<Country>();
 
     const {
         reset,
         register,
+        setValue,
         handleSubmit,
         formState: { errors },
     } = useSchematicForm(SignupStepSchemas["personal-information"]);
+
+    useEffect(() => {
+        if (country == null) {
+            return;
+        }
+
+        console.log(country["dialling-code"]);
+
+        setValue("phone-number", country["dialling-code"]);
+    }, [country]);
 
     return (
         <Form
@@ -117,6 +129,7 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                 )}
             />
             <Input
+                className="[&>input]:[direction:ltr]"
                 required
                 autoComplete="off"
                 {...register("phone-number")}
@@ -149,6 +162,7 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                 required
                 autoComplete="off"
                 {...register("country")}
+                onCountryChange={setCountry}
                 label={<Locale>{locales.inputs.country.label}</Locale>}
                 errorMessage={GetErrorLocale(
                     errors.country?.message,
