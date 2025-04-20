@@ -12,6 +12,7 @@ import "./ToUTCDate.ts";
 import "./ToClassName.ts";
 import "./ToTitleCase.ts";
 import "./DateBetween.ts";
+import "./GetEnumValues.ts";
 import "./ChooseRandomly.ts";
 import "./DateConvertUnit.ts";
 import "./GetFocusableElements.ts";
