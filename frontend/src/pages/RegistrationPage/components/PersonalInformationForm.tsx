@@ -4,10 +4,15 @@ import { Form } from "@/components/Form/Form";
 import { Input } from "@/components/Input/Input";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
+import { Select } from "@/components/Select/Select";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { SignupStepSchemas, SignupStepsDTO } from "../pages/SignupPage";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import {
+    GenderEnum,
+    SignupStepsDTO,
+    SignupStepSchemas,
+} from "../pages/SignupPage";
 
 import locales from "@localization/signup_page.json";
 
@@ -113,9 +118,23 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
             <Input
                 required
                 autoComplete="off"
-                defaultValue={"male"}
+                {...register("phone-number")}
+                label={<Locale>{locales.inputs["phone-number"].label}</Locale>}
+                errorMessage={GetErrorLocale(
+                    errors["phone-number"]?.message,
+                    locales.inputs["phone-number"].errors,
+                    language
+                )}
+                placeholder={GetLocale(
+                    locales.inputs["phone-number"].placeholder,
+                    language
+                )}
+            />
+            <Select
+                required
                 {...register("gender")}
                 label={<Locale>{locales.inputs.gender.label}</Locale>}
+                options={Object.values(GenderEnum)}
                 errorMessage={GetErrorLocale(
                     errors.gender?.message,
                     locales.inputs.gender.errors,
@@ -134,21 +153,6 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                 )}
                 placeholder={GetLocale(
                     locales.inputs.country.placeholder,
-                    language
-                )}
-            />
-            <Input
-                required
-                autoComplete="off"
-                {...register("phone-number")}
-                label={<Locale>{locales.inputs["phone-number"].label}</Locale>}
-                errorMessage={GetErrorLocale(
-                    errors["phone-number"]?.message,
-                    locales.inputs["phone-number"].errors,
-                    language
-                )}
-                placeholder={GetLocale(
-                    locales.inputs["phone-number"].placeholder,
                     language
                 )}
             />

@@ -7,6 +7,11 @@ import { CredentialsForm } from "../components/CredentialsForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { PersonalInformationForm } from "../components/PersonalInformationForm";
 
+export enum GenderEnum {
+    male = "male",
+    female = "female",
+}
+
 export const SignupStepSchemas = {
     credentials: z
         .object({
@@ -43,7 +48,9 @@ export const SignupStepSchemas = {
             .min(2, "minimum")
             .max(20, "maximum")
             .optional(),
-        gender: z.enum(["male", "female"], { required_error: "required" }),
+        gender: z.nativeEnum(GenderEnum, {
+            errorMap: () => ({ message: "required" }),
+        }),
         country: z.string({ required_error: "required" }).nonempty("empty"),
         "phone-number": z
             .string({ required_error: "required" })
