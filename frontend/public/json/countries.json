@@ -723,24 +723,6 @@
         "isoCode": "140"
     },
     {
-        "name": "Central African Republic",
-        "code": "CF",
-        "capital": "Bangui",
-        "region": "AF",
-        "currency": {
-            "code": "XAF",
-            "name": "Central African CFA franc",
-            "symbol": "Fr"
-        },
-        "language": {
-            "code": "fr",
-            "name": "French"
-        },
-        "flag": "https://restcountries.eu/data/caf.svg",
-        "dialling_code": "+236",
-        "isoCode": "140"
-    },
-    {
         "name": "Chile",
         "code": "CL",
         "capital": "Santiago",
@@ -903,24 +885,6 @@
         "flag": "https://restcountries.eu/data/hrv.svg",
         "dialling_code": "+385",
         "isoCode": "191"
-    },
-    {
-        "name": "Cuba",
-        "code": "CU",
-        "capital": "Havana",
-        "region": "NA",
-        "currency": {
-            "code": "CUC",
-            "name": "Cuban convertible peso",
-            "symbol": "$"
-        },
-        "language": {
-            "code": "es",
-            "name": "Spanish"
-        },
-        "flag": "https://restcountries.eu/data/cub.svg",
-        "dialling_code": "+53",
-        "isoCode": "192"
     },
     {
         "name": "Cuba",
@@ -3394,24 +3358,6 @@
         "isoCode": "702"
     },
     {
-        "name": "Singapore",
-        "code": "SG",
-        "capital": "Singapore",
-        "region": "AS",
-        "currency": {
-            "code": "SGD",
-            "name": "Singapore dollar",
-            "symbol": "$"
-        },
-        "language": {
-            "code": "en",
-            "name": "English"
-        },
-        "flag": "https://restcountries.eu/data/sgp.svg",
-        "dialling_code": "+65",
-        "isoCode": "702"
-    },
-    {
         "name": "Slovakia",
         "code": "SK",
         "capital": "Bratislava",
@@ -4100,24 +4046,6 @@
         "flag": "https://restcountries.eu/data/vnm.svg",
         "dialling_code": "+84",
         "isoCode": "704"
-    },
-    {
-        "name": "Wallis and Futuna",
-        "code": "WF",
-        "capital": "Mata-Utu",
-        "region": "OC",
-        "currency": {
-            "code": "XPF",
-            "name": "CFP franc",
-            "symbol": "Fr"
-        },
-        "language": {
-            "code": "fr",
-            "name": "French"
-        },
-        "flag": "https://restcountries.eu/data/wlf.svg",
-        "dialling_code": "+681",
-        "isoCode": "876"
     },
     {
         "name": "Wallis and Futuna",
