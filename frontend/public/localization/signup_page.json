@@ -197,10 +197,6 @@
                 "en": "Country",
                 "ar": "الدَّولة"
             },
-            "placeholder": {
-                "en": "Enter your country",
-                "ar": "أدخلْ اسمَ دَولتِك"
-            },
             "errors": {
                 "required": {
                     "en": "Country is required.",
