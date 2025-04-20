@@ -303,7 +303,10 @@
     "swaziland": { "en": "Swaziland", "ar": "سوازيلاند" },
     "sweden": { "en": "Sweden", "ar": "السويد" },
     "switzerland": { "en": "Switzerland", "ar": "سويسرا" },
-    "syrian-arab-republic": { "en": "Syrian Arab Republic", "ar": "سوريا" },
+    "syrian-arab-republic": {
+        "en": "Syrian Arab Republic",
+        "ar": "الجمهورية العربية السورية"
+    },
     "taiwan": { "en": "Taiwan", "ar": "تايوان" },
     "tajikistan": { "en": "Tajikistan", "ar": "طاجيكستان" },
     "tanzania,-united-republic-of": {
