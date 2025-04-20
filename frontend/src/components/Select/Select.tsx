@@ -54,6 +54,7 @@ export const Select = <T extends EnumValues>({
     variant = "default",
     doesTextGrow = true,
     functionallyRequired,
+    doesHaveOverflowScroll,
     doesHaveMinimumWidth = true,
     doesCloseOnInteraction = true,
     position = "bottom-center",
@@ -132,7 +133,7 @@ export const Select = <T extends EnumValues>({
             >
                 {options.map((option, i) => (
                     <option key={i} value={option}>
-                        <RenderOption option={option} />
+                        {`${option}`}
                     </option>
                 ))}
             </select>
@@ -153,6 +154,7 @@ export const Select = <T extends EnumValues>({
                 text={<RenderOption option={value} />}
                 doesHaveMinimumWidth={doesHaveMinimumWidth}
                 doesCloseOnInteraction={doesCloseOnInteraction}
+                doesHaveOverflowScroll={doesHaveOverflowScroll}
             >
                 {options.map((option, i) => (
                     <Button
