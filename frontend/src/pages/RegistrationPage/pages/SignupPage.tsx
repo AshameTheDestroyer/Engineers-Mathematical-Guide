@@ -39,12 +39,12 @@ export const SignupStepSchemas = {
             .max(20, "maximum"),
         name: z
             .string({ required_error: "required" })
-            .regex(/^[a-zA-Z0-9]+$/, "pattern")
+            .regex(/^[a-zA-Zأ-ي0-9]+(\ [a-zA-Zأ-ي0-9]+)?$/, "pattern")
             .min(2, "minimum")
             .max(20, "maximum"),
         surname: z
             .string()
-            .regex(/^[a-zA-Z0-9]+$/, "pattern")
+            .regex(/^[a-zA-Zأ-ي0-9]+(\ [a-zA-Zأ-ي0-9]+)?$/, "pattern")
             .min(2, "minimum")
             .max(20, "maximum")
             .optional(),

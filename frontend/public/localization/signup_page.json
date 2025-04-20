@@ -105,11 +105,11 @@
                     "ar": "اسمُ المُستخدِم إلزاميّ"
                 },
                 "pattern": {
-                    "en": "Username should consist of only characters, numbers, and underscores '_'.",
-                    "ar": "يَجبُ على اسمِ المُستخدِمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ، أرقامٍ، والرَّمزِ '_'."
+                    "en": "Username should consist of only Latin characters, numbers, and underscores '_', and made of one word.",
+                    "ar": "يَجبُ على اسمِ المُستخدِمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ لاتينيّةٍ، أرقامٍ، والرَّمزِ '_'، ويَكونَ مِن كَلمةٍ واحدةٍ."
                 },
                 "minimum": {
-                    "en": "Username should consist of more than 2 characters.",
+                    "en": "Username should consist of more than 2 characters",
                     "ar": "يَجبُ على اسمِ المُستخدِمِ أنْ يَتألّفَ مِن أكثرِ مِن حَرفينِ 2."
                 },
                 "maximum": {
@@ -133,8 +133,8 @@
                     "ar": "الاسمُ إلزاميّ."
                 },
                 "pattern": {
-                    "en": "Name should consist of only characters and numbers.",
-                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ."
+                    "en": "Name should consist of only characters and numbers, and made of two words maximum.",
+                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ، ويَكونَ مِن كَلمتَينِ على الأكثر."
                 },
                 "minimum": {
                     "en": "Name should consist of more than 2 characters.",
@@ -157,8 +157,8 @@
             },
             "errors": {
                 "pattern": {
-                    "en": "Surname should consist of only characters and numbers.",
-                    "ar": "يَجبُ على الكُنيةِ أنْ تَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ."
+                    "en": "Surname should consist of only characters and numbers, and made of two words maximum.",
+                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ، ويَكونَ مِن كَلمتَينِ على الأكثر."
                 },
                 "minimum": {
                     "en": "Surname should consist of more than 2 characters.",
