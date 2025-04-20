@@ -133,8 +133,11 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
             <Select
                 required
                 {...register("gender")}
+                options={Object.getEnumValues(GenderEnum)}
                 label={<Locale>{locales.inputs.gender.label}</Locale>}
-                options={Object.values(GenderEnum)}
+                rendersOptions={(option) =>
+                    GetLocale(locales.inputs.gender.values[option], language)
+                }
                 errorMessage={GetErrorLocale(
                     errors.gender?.message,
                     locales.inputs.gender.errors,

@@ -18,14 +18,12 @@ import {
     ButtonHTMLAttributes,
 } from "react";
 
-export type SelectProps = {
+export type SelectProps<T extends EnumValues> = {
+    options: T;
     name: string;
-    value?: string;
-    options: Array<string>;
+    value?: T[number];
     placeholderOfNone?: string;
-    rendersOptions?: (
-        key: SelectHTMLAttributes<HTMLSelectElement>["value"]
-    ) => PropsWithChildren["children"];
+    rendersOptions?: (key: T[number]) => PropsWithChildren["children"];
 } & Omit<
     InputProps,
     "type" | "ref" | keyof InputHTMLAttributes<HTMLInputElement>
@@ -39,7 +37,7 @@ export type SelectProps = {
     > &
     Omit<SelectHTMLAttributes<HTMLSelectElement>, "value" | "children">;
 
-export const Select: FC<SelectProps> = ({
+export const Select = <T extends EnumValues>({
     id,
     ref,
     name,
@@ -60,7 +58,7 @@ export const Select: FC<SelectProps> = ({
     doesCloseOnInteraction = true,
     position = "bottom-center",
     ...props
-}) => {
+}: SelectProps<T>): ReturnType<FC<SelectProps<T>>> => {
     const inputID = `input-${name}`;
     const { direction } = useLocalization();
 
