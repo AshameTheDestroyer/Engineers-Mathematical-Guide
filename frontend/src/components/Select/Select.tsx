@@ -23,6 +23,7 @@ export type SelectProps<T extends EnumValues> = {
     name: string;
     value?: T[number];
     placeholderOfNone?: string;
+    mapOptions?: (value: T[number]) => string;
     rendersOptions?: (key: T[number]) => PropsWithChildren["children"];
 } & Omit<
     InputProps,
@@ -46,6 +47,7 @@ export const Select = <T extends EnumValues>({
     required,
     onChange,
     className,
+    mapOptions,
     errorMessage,
     value: _value,
     rendersOptions,
@@ -132,8 +134,8 @@ export const Select = <T extends EnumValues>({
                 {...props}
             >
                 {options.map((option, i) => (
-                    <option key={i} value={option}>
-                        {`${option}`}
+                    <option key={i} value={mapOptions?.(option) ?? `${option}`}>
+                        {mapOptions?.(option) ?? `${option}`}
                     </option>
                 ))}
             </select>
