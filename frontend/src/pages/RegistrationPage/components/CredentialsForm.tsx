@@ -7,8 +7,8 @@ import { Button } from "@/components/Button/Button";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
-import { SignupStepSchemas, SignupStepsDTO } from "../pages/SignupPage";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
+import { SignupStepSchemas, SignupStepsDTO } from "@/schemas/SignupSchema";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/signup_page.json";

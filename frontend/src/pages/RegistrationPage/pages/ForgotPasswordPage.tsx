@@ -1,46 +1,17 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
-import { InferNested } from "@/types/Zod.InferNested";
 import { CodeRequestForm } from "../components/CodeRequestForm";
 import { ResetPasswordForm } from "../components/ResetPasswordForm";
-import { CodeVerificationForm } from "../components/CodeVerificationForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { CodeVerificationForm } from "../components/CodeVerificationForm";
+import { useResetpasswordMutation } from "@/services/Registration/useForgotPasswordMutation";
+import { useForgotPasswordMutation } from "@/services/Registration/useResetPasswordMutation";
+import {
+    ForgotPasswordStepsDTO,
+    ForgotPasswordStepSchemas,
+} from "@/schemas/ForgotPasswordSchema";
 
-export const ForgotPasswordStepSchemas = {
-    "code-request": z.object({
-        email: z.string({ required_error: "required" }).email("pattern"),
-    }),
-    "code-verification": z.object({
-        code: z.string({ required_error: "required" }).length(6, "length"),
-    }),
-    "reset-password": z
-        .object({
-            password: z
-                .string({ required_error: "required" })
-                .min(4, "minimum")
-                .max(20, "maximum"),
-            "confirm-password": z.string({ required_error: "required" }),
-        })
-        .refine((data) => data.password == data["confirm-password"], {
-            message: "match",
-            path: ["confirm-password"],
-        }),
-};
-
-export const ForgotPasswordSchema = z.intersection(
-    z.intersection(
-        ForgotPasswordStepSchemas["code-request"],
-        ForgotPasswordStepSchemas["code-verification"]
-    ),
-    ForgotPasswordStepSchemas["reset-password"]
-);
-
-export type ForgotPasswordDTO = z.infer<typeof ForgotPasswordSchema>;
-export type ForgotPasswordStepsDTO = InferNested<
-    typeof ForgotPasswordStepSchemas
->;
-
-export const ForgotPasswordQueryParamSchema = z.object({
+const ForgotPasswordQueryParamSchema = z.object({
     step: z.enum(["code-request", "code-verification", "reset-password"]),
 });
 
@@ -52,6 +23,11 @@ export const ForgotPasswordPage: FC = () => {
     const [data, setData] = useState<
         WithPartial<ForgotPasswordStepsDTO, keyof ForgotPasswordStepsDTO>
     >({});
+
+    const { mutateAsync: mutateAsyncResetPassword } =
+        useResetpasswordMutation();
+    const { mutateAsync: mutateAsyncForgotPassword } =
+        useForgotPasswordMutation();
 
     useEffect(() => {
         if (queryParams == null) {
@@ -79,6 +55,36 @@ export const ForgotPasswordPage: FC = () => {
                 break;
         }
     }, [queryParams]);
+
+    useEffect(() => {
+        const { data: validatedData, success } = ForgotPasswordStepSchemas[
+            "code-request"
+        ].safeParse(data["code-request"]);
+
+        if (!success) {
+            return;
+        }
+
+        mutateAsyncForgotPassword(validatedData)
+            .then((response) => response.data)
+            .then(console.log)
+            .catch(console.error);
+    }, [data["code-request"]]);
+
+    useEffect(() => {
+        const { data: validatedData, success } = ForgotPasswordStepSchemas[
+            "reset-password"
+        ].safeParse(data["reset-password"]);
+
+        if (!success) {
+            return;
+        }
+
+        mutateAsyncResetPassword(validatedData)
+            .then((response) => response.data)
+            .then(console.log)
+            .catch(console.error);
+    }, [data["reset-password"]]);
 
     function SubmitCodeRequest(
         codeRequest: ForgotPasswordStepsDTO["code-request"]

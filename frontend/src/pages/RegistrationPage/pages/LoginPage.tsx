@@ -1,20 +1,22 @@
-import { z } from "zod";
 import { FC } from "react";
 import { LoginForm } from "../components/LoginForm";
-
-export const LoginSchema = z.object({
-    email: z.string({ required_error: "required" }).email("pattern"),
-    password: z
-        .string({ required_error: "required" })
-        .min(4, "minimum")
-        .max(20, "maximum"),
-});
-
-export type LoginDTO = z.infer<typeof LoginSchema>;
+import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
+import { useLoginMutation } from "@/services/Registration/useLoginMutation";
 
 export const LoginPage: FC = () => {
+    const { mutateAsync } = useLoginMutation();
+
     function SubmitData(data: LoginDTO) {
-        console.log(data);
+        const { data: validatedData, success } = LoginSchema.safeParse(data);
+
+        if (!success) {
+            return;
+        }
+
+        mutateAsync(validatedData)
+            .then((response) => response.data)
+            .then(console.log)
+            .catch(console.error);
     }
 
     return <LoginForm SubmitData={SubmitData} />;

@@ -1,81 +1,14 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { InferNested } from "@/types/Zod.InferNested";
-import { HTTPInstance } from "@/services/HTTPInstance";
 import { CredentialsForm } from "../components/CredentialsForm";
+import { SignupSchema, SignupStepsDTO } from "@/schemas/SignupSchema";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useSignupMutation } from "@/services/Registration/useSignupMutation";
 import { PersonalInformationForm } from "../components/PersonalInformationForm";
 
-export enum GenderEnum {
-    male = "male",
-    female = "female",
-}
-
-export const SignupStepSchemas = {
-    credentials: z
-        .object({
-            email: z.string({ required_error: "required" }).email("pattern"),
-            password: z
-                .string({ required_error: "required" })
-                .min(4, "minimum")
-                .max(20, "maximum"),
-            "confirm-password": z.string({ required_error: "required" }),
-            "terms-and-conditions": z.boolean({ required_error: "required" }),
-        })
-        .refine((data) => data.password == data["confirm-password"], {
-            message: "match",
-            path: ["confirm-password"],
-        })
-        .refine((data) => data["terms-and-conditions"], {
-            message: "agreement",
-            path: ["terms-and-conditions"],
-        }),
-    "personal-information": z.object({
-        username: z
-            .string({ required_error: "required" })
-            .regex(/^[a-zA-Z0-9\_]+$/, "pattern")
-            .min(2, "minimum")
-            .max(20, "maximum"),
-        name: z
-            .string({ required_error: "required" })
-            .regex(/^[a-zA-Zأ-ي0-9]+(\ [a-zA-Zأ-ي0-9]+)?$/, "pattern")
-            .min(2, "minimum")
-            .max(20, "maximum"),
-        surname: z
-            .string()
-            .regex(/^[a-zA-Zأ-ي0-9]+(\ [a-zA-Zأ-ي0-9]+)?$/, "pattern")
-            .min(2, "minimum")
-            .max(20, "maximum")
-            .optional(),
-        gender: z.nativeEnum(GenderEnum, {
-            errorMap: () => ({ message: "required" }),
-        }),
-        country: z.string({ required_error: "required" }).nonempty("empty"),
-        "phone-number": z
-            .string({ required_error: "required" })
-            .regex(
-                /^\+*(\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}([\s.-]?\d{3})?[\s.-]?\d{3,4}$/,
-                "pattern"
-            )
-            .min(8, "minimum")
-            .max(18, "maximum"),
-    }),
-};
-
-export const SignupSchema = z.intersection(
-    SignupStepSchemas.credentials,
-    SignupStepSchemas["personal-information"]
-);
-
-export type SignupDTO = z.infer<typeof SignupSchema>;
-export type SignupStepsDTO = InferNested<typeof SignupStepSchemas>;
-
-export const SignupQueryParamSchema = z.object({
+const SignupQueryParamSchema = z.object({
     step: z.enum(["credentials", "personal-information"]),
 });
-
-export type SignupQueryParamDTO = z.infer<typeof SignupQueryParamSchema>;
 
 export const SignupPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
@@ -86,18 +19,7 @@ export const SignupPage: FC = () => {
         WithPartial<SignupStepsDTO, keyof SignupStepsDTO>
     >({});
 
-    const { mutateAsync } = useMutation({
-        mutationKey: ["signup"],
-        mutationFn: ({ "phone-number": phoneNumber, ...data }: SignupDTO) =>
-            HTTPInstance.post<{ token: string }>("/auth/signup", {
-                ...Object.omit(
-                    data,
-                    "confirm-password",
-                    "terms-and-conditions"
-                ),
-                phoneNumber,
-            }),
-    });
+    const { mutateAsync } = useSignupMutation();
 
     useEffect(() => {
         const hasSkippedCredentialsStep =

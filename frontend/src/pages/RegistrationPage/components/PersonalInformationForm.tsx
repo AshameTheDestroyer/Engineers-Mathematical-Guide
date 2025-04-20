@@ -13,7 +13,7 @@ import {
     GenderEnum,
     SignupStepsDTO,
     SignupStepSchemas,
-} from "../pages/SignupPage";
+} from "@/schemas/SignupSchema";
 
 import locales from "@localization/signup_page.json";
 

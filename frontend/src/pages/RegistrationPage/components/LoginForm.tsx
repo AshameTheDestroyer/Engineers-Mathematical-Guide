@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "@/components/Form/Form";
-import { LoginDTO, LoginSchema } from "../pages/LoginPage";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 

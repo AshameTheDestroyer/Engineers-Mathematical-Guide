@@ -59,6 +59,12 @@
             "@types_/*": [
                 "src/types/*"
             ],
+            "@schemas/*": [
+                "src/schemas/*"
+            ],
+            "@services/*": [
+                "src/services/*"
+            ],
             "@localization/*": [
                 "public/localization/*"
             ],
