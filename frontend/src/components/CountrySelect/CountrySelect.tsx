@@ -7,7 +7,7 @@ import countries from "@json/countries.json";
 import countries_locales from "@localization/countries.json";
 
 export type CountrySelectProps = {
-    onCountryChange?: (country: (typeof countries)[number]) => void;
+    onCountryChange?: (country: Country) => void;
 } & Omit<SelectProps<EnumValues>, "rendersOptions" | "options">;
 
 export const CountrySelect: FC<CountrySelectProps> = ({
@@ -21,9 +21,9 @@ export const CountrySelect: FC<CountrySelectProps> = ({
 }) => {
     const options = countries.sort((a, b) => a.name.localeCompare(b.name));
 
-    const mapOptions = (country: (typeof countries)[number]) => country.name;
+    const mapOptions = (country: Country) => country.name;
 
-    const renderOptions = (country: (typeof countries)[number]) => (
+    const renderOptions = (country: Country) => (
         <>
             <Locale
                 variant="p"
@@ -68,7 +68,9 @@ export const CountrySelect: FC<CountrySelectProps> = ({
             onChange={(e) => (
                 onChange?.(e),
                 onCountryChange?.(
-                    countries.find((country) => country.name == e.target.value)!
+                    countries.find(
+                        (country) => country.name == e.target.value
+                    ) as Country
                 )
             )}
             {...props}
