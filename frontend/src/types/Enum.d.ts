@@ -5,4 +5,8 @@ type Enum = {
     readonly [nu: number]: string;
 };
 
-type ExtractEnumValues<T extends Enum> = EnumValues<T[keyof T]>;
+type ExtractEnumValues<T extends Enum> = EnumValues<
+    {
+        [Key in keyof T]: Key;
+    }[keyof T]
+>;
