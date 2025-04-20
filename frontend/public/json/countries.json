@@ -13,7 +13,7 @@
             "code": "ps",
             "name": "Pashto"
         },
-        "dialling_code": "+93",
+        "dialling-code": "+93",
         "isoCode": "004"
     },
     {
@@ -30,7 +30,7 @@
             "code": "sq",
             "name": "Albanian"
         },
-        "dialling_code": "+355",
+        "dialling-code": "+355",
         "isoCode": "008"
     },
     {
@@ -47,7 +47,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+213",
+        "dialling-code": "+213",
         "isoCode": "012"
     },
     {
@@ -64,7 +64,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "016"
     },
     {
@@ -81,7 +81,7 @@
             "code": "ca",
             "name": "Catalan"
         },
-        "dialling_code": "+376",
+        "dialling-code": "+376",
         "isoCode": "020"
     },
     {
@@ -98,7 +98,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+244",
+        "dialling-code": "+244",
         "isoCode": "024"
     },
     {
@@ -115,7 +115,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+43",
+        "dialling-code": "+43",
         "isoCode": "660"
     },
     {
@@ -132,7 +132,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "028"
     },
     {
@@ -149,7 +149,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+54",
+        "dialling-code": "+54",
         "isoCode": "032"
     },
     {
@@ -166,7 +166,7 @@
             "code": "hy",
             "name": "Armenian"
         },
-        "dialling_code": "+374",
+        "dialling-code": "+374",
         "isoCode": "051"
     },
     {
@@ -183,7 +183,7 @@
             "code": "nl",
             "name": "Dutch"
         },
-        "dialling_code": "+297",
+        "dialling-code": "+297",
         "isoCode": "533"
     },
     {
@@ -200,7 +200,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+61",
+        "dialling-code": "+61",
         "isoCode": "036"
     },
     {
@@ -217,7 +217,7 @@
             "code": "az",
             "name": "Azerbaijani"
         },
-        "dialling_code": "+994",
+        "dialling-code": "+994",
         "isoCode": "031"
     },
     {
@@ -234,7 +234,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "044"
     },
     {
@@ -251,7 +251,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+973",
+        "dialling-code": "+973",
         "isoCode": "048"
     },
     {
@@ -268,7 +268,7 @@
             "code": "bn",
             "name": "Bengali"
         },
-        "dialling_code": "+880",
+        "dialling-code": "+880",
         "isoCode": "050"
     },
     {
@@ -285,7 +285,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "052"
     },
     {
@@ -302,7 +302,7 @@
             "code": "be",
             "name": "Belarusian"
         },
-        "dialling_code": "+375",
+        "dialling-code": "+375",
         "isoCode": "112"
     },
     {
@@ -319,7 +319,7 @@
             "code": "nl",
             "name": "Dutch"
         },
-        "dialling_code": "+32",
+        "dialling-code": "+32",
         "isoCode": "056"
     },
     {
@@ -336,7 +336,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+501",
+        "dialling-code": "+501",
         "isoCode": "084"
     },
     {
@@ -353,7 +353,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+229",
+        "dialling-code": "+229",
         "isoCode": "204"
     },
     {
@@ -370,7 +370,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "060"
     },
     {
@@ -387,7 +387,7 @@
             "code": "dz",
             "name": "Dzongkha"
         },
-        "dialling_code": "+975",
+        "dialling-code": "+975",
         "isoCode": "064"
     },
     {
@@ -404,7 +404,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+591",
+        "dialling-code": "+591",
         "isoCode": "068"
     },
     {
@@ -421,7 +421,7 @@
             "code": "bs",
             "name": "Bosnian"
         },
-        "dialling_code": "+387",
+        "dialling-code": "+387",
         "isoCode": "070"
     },
     {
@@ -438,7 +438,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+267",
+        "dialling-code": "+267",
         "isoCode": "072"
     },
     {
@@ -455,7 +455,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+55",
+        "dialling-code": "+55",
         "isoCode": "076"
     },
     {
@@ -472,7 +472,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+246",
+        "dialling-code": "+246",
         "isoCode": "086"
     },
     {
@@ -489,7 +489,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "092"
     },
     {
@@ -506,7 +506,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "850"
     },
     {
@@ -523,7 +523,7 @@
             "code": "ms",
             "name": "Malay"
         },
-        "dialling_code": "+673",
+        "dialling-code": "+673",
         "isoCode": "096"
     },
     {
@@ -540,7 +540,7 @@
             "code": "bg",
             "name": "Bulgarian"
         },
-        "dialling_code": "+359",
+        "dialling-code": "+359",
         "isoCode": "100"
     },
     {
@@ -557,7 +557,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+226",
+        "dialling-code": "+226",
         "isoCode": "854"
     },
     {
@@ -574,7 +574,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+257",
+        "dialling-code": "+257",
         "isoCode": "108"
     },
     {
@@ -591,7 +591,7 @@
             "code": "km",
             "name": "Khmer"
         },
-        "dialling_code": "+855",
+        "dialling-code": "+855",
         "isoCode": "116"
     },
     {
@@ -608,7 +608,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+237",
+        "dialling-code": "+237",
         "isoCode": "120"
     },
     {
@@ -625,7 +625,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "124"
     },
     {
@@ -644,7 +644,7 @@
             "name": "Portuguese",
             "nativeName": "Português"
         },
-        "dialling_code": "+238",
+        "dialling-code": "+238",
         "isoCode": "132"
     },
     {
@@ -662,7 +662,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "136"
     },
     {
@@ -679,7 +679,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+236",
+        "dialling-code": "+236",
         "isoCode": "140"
     },
     {
@@ -698,7 +698,7 @@
             "name": "Spanish",
             "nativeName": "Español"
         },
-        "dialling_code": "+56",
+        "dialling-code": "+56",
         "isoCode": "152"
     },
     {
@@ -715,7 +715,7 @@
             "code": "zh",
             "name": "Chinese"
         },
-        "dialling_code": "+86",
+        "dialling-code": "+86",
         "isoCode": "156"
     },
     {
@@ -732,7 +732,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+57",
+        "dialling-code": "+57",
         "isoCode": "170"
     },
     {
@@ -749,7 +749,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+269",
+        "dialling-code": "+269",
         "isoCode": "174"
     },
     {
@@ -766,7 +766,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+242",
+        "dialling-code": "+242",
         "isoCode": "178"
     },
     {
@@ -783,7 +783,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+243",
+        "dialling-code": "+243",
         "isoCode": "180"
     },
     {
@@ -800,7 +800,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+682",
+        "dialling-code": "+682",
         "isoCode": "184"
     },
     {
@@ -817,7 +817,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+506",
+        "dialling-code": "+506",
         "isoCode": "188"
     },
     {
@@ -834,7 +834,7 @@
             "code": "hr",
             "name": "Croatian"
         },
-        "dialling_code": "+385",
+        "dialling-code": "+385",
         "isoCode": "191"
     },
     {
@@ -851,7 +851,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+53",
+        "dialling-code": "+53",
         "isoCode": "192"
     },
     {
@@ -868,7 +868,7 @@
             "code": "tr",
             "name": "Turkish"
         },
-        "dialling_code": "+357",
+        "dialling-code": "+357",
         "isoCode": "196"
     },
     {
@@ -885,7 +885,7 @@
             "code": "cs",
             "name": "Czech"
         },
-        "dialling_code": "+420",
+        "dialling-code": "+420",
         "isoCode": "203"
     },
     {
@@ -902,7 +902,7 @@
             "code": "da",
             "name": "Danish"
         },
-        "dialling_code": "+45",
+        "dialling-code": "+45",
         "isoCode": "208"
     },
     {
@@ -919,7 +919,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+253",
+        "dialling-code": "+253",
         "isoCode": "262"
     },
     {
@@ -936,7 +936,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "212"
     },
     {
@@ -953,7 +953,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "214"
     },
     {
@@ -970,7 +970,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+593",
+        "dialling-code": "+593",
         "isoCode": "218"
     },
     {
@@ -987,7 +987,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+20",
+        "dialling-code": "+20",
         "isoCode": "818"
     },
     {
@@ -1004,7 +1004,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+503",
+        "dialling-code": "+503",
         "isoCode": "222"
     },
     {
@@ -1023,7 +1023,7 @@
             "name": "Spanish",
             "nativeName": "Español"
         },
-        "dialling_code": "+240",
+        "dialling-code": "+240",
         "isoCode": "226"
     },
     {
@@ -1040,7 +1040,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+291",
+        "dialling-code": "+291",
         "isoCode": "232"
     },
     {
@@ -1057,7 +1057,7 @@
             "code": "et",
             "name": "Estonian"
         },
-        "dialling_code": "+372",
+        "dialling-code": "+372",
         "isoCode": "233"
     },
     {
@@ -1074,7 +1074,7 @@
             "code": "am",
             "name": "Amharic"
         },
-        "dialling_code": "+251",
+        "dialling-code": "+251",
         "isoCode": "231"
     },
     {
@@ -1091,7 +1091,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+500",
+        "dialling-code": "+500",
         "isoCode": "238"
     },
     {
@@ -1108,7 +1108,7 @@
             "code": "fo",
             "name": "Faroese"
         },
-        "dialling_code": "+298",
+        "dialling-code": "+298",
         "isoCode": "234"
     },
     {
@@ -1125,7 +1125,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+679",
+        "dialling-code": "+679",
         "isoCode": "242"
     },
     {
@@ -1144,7 +1144,7 @@
             "name": "Finnish",
             "nativeName": "suomi"
         },
-        "dialling_code": "+358",
+        "dialling-code": "+358",
         "isoCode": "246"
     },
     {
@@ -1162,7 +1162,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+33",
+        "dialling-code": "+33",
         "isoCode": "250"
     },
     {
@@ -1179,7 +1179,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+594",
+        "dialling-code": "+594",
         "isoCode": "254"
     },
     {
@@ -1196,7 +1196,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+689",
+        "dialling-code": "+689",
         "isoCode": "258"
     },
     {
@@ -1213,7 +1213,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+241",
+        "dialling-code": "+241",
         "isoCode": "266"
     },
     {
@@ -1230,7 +1230,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+220",
+        "dialling-code": "+220",
         "isoCode": "270"
     },
     {
@@ -1247,7 +1247,7 @@
             "code": "ka",
             "name": "Georgian"
         },
-        "dialling_code": "+995",
+        "dialling-code": "+995",
         "isoCode": "268"
     },
     {
@@ -1264,7 +1264,7 @@
             "code": "de",
             "name": "German"
         },
-        "dialling_code": "+49",
+        "dialling-code": "+49",
         "isoCode": "276"
     },
     {
@@ -1281,7 +1281,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+233",
+        "dialling-code": "+233",
         "isoCode": "288"
     },
     {
@@ -1298,7 +1298,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+350",
+        "dialling-code": "+350",
         "isoCode": "292"
     },
     {
@@ -1315,7 +1315,7 @@
             "code": "el",
             "name": "Greek (modern)"
         },
-        "dialling_code": "+30",
+        "dialling-code": "+30",
         "isoCode": "300"
     },
     {
@@ -1332,7 +1332,7 @@
             "code": "kl",
             "name": "Kalaallisut"
         },
-        "dialling_code": "+299",
+        "dialling-code": "+299",
         "isoCode": "304"
     },
     {
@@ -1349,7 +1349,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "308"
     },
     {
@@ -1366,7 +1366,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+590",
+        "dialling-code": "+590",
         "isoCode": "312"
     },
     {
@@ -1383,7 +1383,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "316"
     },
     {
@@ -1400,7 +1400,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+502",
+        "dialling-code": "+502",
         "isoCode": "320"
     },
     {
@@ -1417,7 +1417,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+224",
+        "dialling-code": "+224",
         "isoCode": "324"
     },
     {
@@ -1434,7 +1434,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+245",
+        "dialling-code": "+245",
         "isoCode": "624"
     },
     {
@@ -1451,7 +1451,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+592",
+        "dialling-code": "+592",
         "isoCode": "328"
     },
     {
@@ -1468,7 +1468,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+509",
+        "dialling-code": "+509",
         "isoCode": "332"
     },
     {
@@ -1485,7 +1485,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+39",
+        "dialling-code": "+39",
         "isoCode": "336"
     },
     {
@@ -1502,7 +1502,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+504",
+        "dialling-code": "+504",
         "isoCode": "340"
     },
     {
@@ -1519,7 +1519,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+852",
+        "dialling-code": "+852",
         "isoCode": "344"
     },
     {
@@ -1536,7 +1536,7 @@
             "code": "hu",
             "name": "Hungarian"
         },
-        "dialling_code": "+36",
+        "dialling-code": "+36",
         "isoCode": "348"
     },
     {
@@ -1553,7 +1553,7 @@
             "code": "is",
             "name": "Icelandic"
         },
-        "dialling_code": "+354",
+        "dialling-code": "+354",
         "isoCode": "352"
     },
     {
@@ -1570,7 +1570,7 @@
             "code": "hi",
             "name": "Hindi"
         },
-        "dialling_code": "+91",
+        "dialling-code": "+91",
         "isoCode": "356"
     },
     {
@@ -1587,7 +1587,7 @@
             "code": "id",
             "name": "Indonesian"
         },
-        "dialling_code": "+62",
+        "dialling-code": "+62",
         "isoCode": "360"
     },
     {
@@ -1604,7 +1604,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+225",
+        "dialling-code": "+225",
         "isoCode": "384"
     },
     {
@@ -1621,7 +1621,7 @@
             "code": "fa",
             "name": "Persian (Farsi)"
         },
-        "dialling_code": "+98",
+        "dialling-code": "+98",
         "isoCode": "364"
     },
     {
@@ -1638,7 +1638,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+964",
+        "dialling-code": "+964",
         "isoCode": "368"
     },
     {
@@ -1655,7 +1655,7 @@
             "code": "ga",
             "name": "Irish"
         },
-        "dialling_code": "+353",
+        "dialling-code": "+353",
         "isoCode": "372"
     },
     {
@@ -1672,7 +1672,7 @@
             "code": "it",
             "name": "Italian"
         },
-        "dialling_code": "+39",
+        "dialling-code": "+39",
         "isoCode": "380"
     },
     {
@@ -1689,7 +1689,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "388"
     },
     {
@@ -1706,7 +1706,7 @@
             "code": "ja",
             "name": "Japanese"
         },
-        "dialling_code": "+81",
+        "dialling-code": "+81",
         "isoCode": "392"
     },
     {
@@ -1723,7 +1723,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+962",
+        "dialling-code": "+962",
         "isoCode": "400"
     },
     {
@@ -1740,7 +1740,7 @@
             "code": "kk",
             "name": "Kazakh"
         },
-        "dialling_code": "+7",
+        "dialling-code": "+7",
         "isoCode": "398"
     },
     {
@@ -1757,7 +1757,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+254",
+        "dialling-code": "+254",
         "isoCode": "404"
     },
     {
@@ -1774,7 +1774,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+686",
+        "dialling-code": "+686",
         "isoCode": "296"
     },
     {
@@ -1791,7 +1791,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+965",
+        "dialling-code": "+965",
         "isoCode": "414"
     },
     {
@@ -1808,7 +1808,7 @@
             "code": "ky",
             "name": "Kyrgyz"
         },
-        "dialling_code": "+996",
+        "dialling-code": "+996",
         "isoCode": "417"
     },
     {
@@ -1825,7 +1825,7 @@
             "code": "lo",
             "name": "Lao"
         },
-        "dialling_code": "+856",
+        "dialling-code": "+856",
         "isoCode": "418"
     },
     {
@@ -1842,7 +1842,7 @@
             "code": "lv",
             "name": "Latvian"
         },
-        "dialling_code": "+371",
+        "dialling-code": "+371",
         "isoCode": "428"
     },
     {
@@ -1859,7 +1859,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+961",
+        "dialling-code": "+961",
         "isoCode": "422"
     },
     {
@@ -1876,7 +1876,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+266",
+        "dialling-code": "+266",
         "isoCode": "426"
     },
     {
@@ -1893,7 +1893,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+231",
+        "dialling-code": "+231",
         "isoCode": "430"
     },
     {
@@ -1910,7 +1910,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+218",
+        "dialling-code": "+218",
         "isoCode": "434"
     },
     {
@@ -1927,7 +1927,7 @@
             "code": "de",
             "name": "German"
         },
-        "dialling_code": "+423",
+        "dialling-code": "+423",
         "isoCode": "438"
     },
     {
@@ -1944,7 +1944,7 @@
             "code": "lt",
             "name": "Lithuanian"
         },
-        "dialling_code": "+370",
+        "dialling-code": "+370",
         "isoCode": "440"
     },
     {
@@ -1961,7 +1961,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+352",
+        "dialling-code": "+352",
         "isoCode": "442"
     },
     {
@@ -1978,7 +1978,7 @@
             "code": "zh",
             "name": "Chinese"
         },
-        "dialling_code": "+853",
+        "dialling-code": "+853",
         "isoCode": "446"
     },
     {
@@ -1995,7 +1995,7 @@
             "code": "mk",
             "name": "Macedonian"
         },
-        "dialling_code": "+389",
+        "dialling-code": "+389",
         "isoCode": "807"
     },
     {
@@ -2012,7 +2012,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+261",
+        "dialling-code": "+261",
         "isoCode": "450"
     },
     {
@@ -2029,7 +2029,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+265",
+        "dialling-code": "+265",
         "isoCode": "454"
     },
     {
@@ -2046,7 +2046,7 @@
             "code": null,
             "name": "Malaysian"
         },
-        "dialling_code": "+60",
+        "dialling-code": "+60",
         "isoCode": "458"
     },
     {
@@ -2063,7 +2063,7 @@
             "code": "dv",
             "name": "Divehi"
         },
-        "dialling_code": "+960",
+        "dialling-code": "+960",
         "isoCode": "462"
     },
     {
@@ -2080,7 +2080,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+223",
+        "dialling-code": "+223",
         "isoCode": "466"
     },
     {
@@ -2097,7 +2097,7 @@
             "code": "mt",
             "name": "Maltese"
         },
-        "dialling_code": "+356",
+        "dialling-code": "+356",
         "isoCode": "470"
     },
     {
@@ -2114,7 +2114,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+692",
+        "dialling-code": "+692",
         "isoCode": "584"
     },
     {
@@ -2131,7 +2131,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+596",
+        "dialling-code": "+596",
         "isoCode": "474"
     },
     {
@@ -2148,7 +2148,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+222",
+        "dialling-code": "+222",
         "isoCode": "478"
     },
     {
@@ -2165,7 +2165,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+230",
+        "dialling-code": "+230",
         "isoCode": "480"
     },
     {
@@ -2182,7 +2182,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+262",
+        "dialling-code": "+262",
         "isoCode": "175"
     },
     {
@@ -2199,7 +2199,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+52",
+        "dialling-code": "+52",
         "isoCode": "484"
     },
     {
@@ -2216,7 +2216,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+691",
+        "dialling-code": "+691",
         "isoCode": "583"
     },
     {
@@ -2233,7 +2233,7 @@
             "code": "ro",
             "name": "Romanian"
         },
-        "dialling_code": "+373",
+        "dialling-code": "+373",
         "isoCode": "498"
     },
     {
@@ -2250,7 +2250,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+377",
+        "dialling-code": "+377",
         "isoCode": "492"
     },
     {
@@ -2267,7 +2267,7 @@
             "code": "mn",
             "name": "Mongolian"
         },
-        "dialling_code": "+976",
+        "dialling-code": "+976",
         "isoCode": "496"
     },
     {
@@ -2284,7 +2284,7 @@
             "code": "sr",
             "name": "Serbian"
         },
-        "dialling_code": "+382",
+        "dialling-code": "+382",
         "isoCode": "499"
     },
     {
@@ -2301,7 +2301,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "500"
     },
     {
@@ -2318,7 +2318,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+212",
+        "dialling-code": "+212",
         "isoCode": "504"
     },
     {
@@ -2335,7 +2335,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+258",
+        "dialling-code": "+258",
         "isoCode": "508"
     },
     {
@@ -2352,7 +2352,7 @@
             "code": "my",
             "name": "Burmese"
         },
-        "dialling_code": "+95",
+        "dialling-code": "+95",
         "isoCode": "104"
     },
     {
@@ -2369,7 +2369,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+264",
+        "dialling-code": "+264",
         "isoCode": "516"
     },
     {
@@ -2386,7 +2386,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+674",
+        "dialling-code": "+674",
         "isoCode": "520"
     },
     {
@@ -2403,7 +2403,7 @@
             "code": "ne",
             "name": "Nepali"
         },
-        "dialling_code": "+977",
+        "dialling-code": "+977",
         "isoCode": "524"
     },
     {
@@ -2420,7 +2420,7 @@
             "code": "nl",
             "name": "Dutch"
         },
-        "dialling_code": "+31",
+        "dialling-code": "+31",
         "isoCode": "528"
     },
     {
@@ -2437,7 +2437,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+687",
+        "dialling-code": "+687",
         "isoCode": "540"
     },
     {
@@ -2454,7 +2454,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+64",
+        "dialling-code": "+64",
         "isoCode": "554"
     },
     {
@@ -2471,7 +2471,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+505",
+        "dialling-code": "+505",
         "isoCode": "558"
     },
     {
@@ -2488,7 +2488,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+227",
+        "dialling-code": "+227",
         "isoCode": "562"
     },
     {
@@ -2505,7 +2505,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+234",
+        "dialling-code": "+234",
         "isoCode": "566"
     },
     {
@@ -2522,7 +2522,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+683",
+        "dialling-code": "+683",
         "isoCode": "570"
     },
     {
@@ -2539,7 +2539,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+672",
+        "dialling-code": "+672",
         "isoCode": "574"
     },
     {
@@ -2556,7 +2556,7 @@
             "code": "ko",
             "name": "Korean"
         },
-        "dialling_code": "+850",
+        "dialling-code": "+850",
         "isoCode": "408"
     },
     {
@@ -2573,7 +2573,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "580"
     },
     {
@@ -2590,7 +2590,7 @@
             "code": "no",
             "name": "Norwegian"
         },
-        "dialling_code": "+47",
+        "dialling-code": "+47",
         "isoCode": "578"
     },
     {
@@ -2607,7 +2607,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+968",
+        "dialling-code": "+968",
         "isoCode": "512"
     },
     {
@@ -2624,7 +2624,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+92",
+        "dialling-code": "+92",
         "isoCode": "586"
     },
     {
@@ -2641,7 +2641,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+680",
+        "dialling-code": "+680",
         "isoCode": "585"
     },
     {
@@ -2658,7 +2658,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+970",
+        "dialling-code": "+970",
         "isoCode": "275"
     },
     {
@@ -2675,7 +2675,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+507",
+        "dialling-code": "+507",
         "isoCode": "591"
     },
     {
@@ -2692,7 +2692,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+675",
+        "dialling-code": "+675",
         "isoCode": "598"
     },
     {
@@ -2709,7 +2709,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+595",
+        "dialling-code": "+595",
         "isoCode": "600"
     },
     {
@@ -2726,7 +2726,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+51",
+        "dialling-code": "+51",
         "isoCode": "604"
     },
     {
@@ -2743,7 +2743,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+63",
+        "dialling-code": "+63",
         "isoCode": "608"
     },
     {
@@ -2760,7 +2760,7 @@
             "code": "pl",
             "name": "Polish"
         },
-        "dialling_code": "+48",
+        "dialling-code": "+48",
         "isoCode": "616"
     },
     {
@@ -2777,7 +2777,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+351",
+        "dialling-code": "+351",
         "isoCode": "620"
     },
     {
@@ -2794,7 +2794,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "630"
     },
     {
@@ -2811,7 +2811,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+974",
+        "dialling-code": "+974",
         "isoCode": "634"
     },
     {
@@ -2828,7 +2828,7 @@
             "code": "sq",
             "name": "Albanian"
         },
-        "dialling_code": "+381",
+        "dialling-code": "+381",
         "isoCode": "383"
     },
     {
@@ -2845,7 +2845,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+262",
+        "dialling-code": "+262",
         "isoCode": "638"
     },
     {
@@ -2862,7 +2862,7 @@
             "code": "ro",
             "name": "Romanian"
         },
-        "dialling_code": "+40",
+        "dialling-code": "+40",
         "isoCode": "642"
     },
     {
@@ -2879,7 +2879,7 @@
             "code": "ru",
             "name": "Russian"
         },
-        "dialling_code": "+7",
+        "dialling-code": "+7",
         "isoCode": "643"
     },
     {
@@ -2896,7 +2896,7 @@
             "code": "rw",
             "name": "Kinyarwanda"
         },
-        "dialling_code": "+250",
+        "dialling-code": "+250",
         "isoCode": "646"
     },
     {
@@ -2913,7 +2913,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+590",
+        "dialling-code": "+590",
         "isoCode": "652"
     },
     {
@@ -2930,7 +2930,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+290",
+        "dialling-code": "+290",
         "isoCode": "654"
     },
     {
@@ -2947,7 +2947,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "659"
     },
     {
@@ -2964,7 +2964,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "662"
     },
     {
@@ -2981,7 +2981,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+590",
+        "dialling-code": "+590",
         "isoCode": "663"
     },
     {
@@ -2998,7 +2998,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+508",
+        "dialling-code": "+508",
         "isoCode": "666"
     },
     {
@@ -3015,7 +3015,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "670"
     },
     {
@@ -3032,7 +3032,7 @@
             "code": "sm",
             "name": "Samoan"
         },
-        "dialling_code": "+685",
+        "dialling-code": "+685",
         "isoCode": "882"
     },
     {
@@ -3049,7 +3049,7 @@
             "code": "it",
             "name": "Italian"
         },
-        "dialling_code": "+378",
+        "dialling-code": "+378",
         "isoCode": "674"
     },
     {
@@ -3066,7 +3066,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+239",
+        "dialling-code": "+239",
         "isoCode": "678"
     },
     {
@@ -3083,7 +3083,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+966",
+        "dialling-code": "+966",
         "isoCode": "682"
     },
     {
@@ -3100,7 +3100,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+221",
+        "dialling-code": "+221",
         "isoCode": "686"
     },
     {
@@ -3117,7 +3117,7 @@
             "code": "sr",
             "name": "Serbian"
         },
-        "dialling_code": "+381",
+        "dialling-code": "+381",
         "isoCode": "688"
     },
     {
@@ -3134,7 +3134,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+248",
+        "dialling-code": "+248",
         "isoCode": "690"
     },
     {
@@ -3151,7 +3151,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+232",
+        "dialling-code": "+232",
         "isoCode": "694"
     },
     {
@@ -3168,7 +3168,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+65",
+        "dialling-code": "+65",
         "isoCode": "702"
     },
     {
@@ -3185,7 +3185,7 @@
             "code": "sk",
             "name": "Slovak"
         },
-        "dialling_code": "+421",
+        "dialling-code": "+421",
         "isoCode": "703"
     },
     {
@@ -3202,7 +3202,7 @@
             "code": "sl",
             "name": "Slovene"
         },
-        "dialling_code": "+386",
+        "dialling-code": "+386",
         "isoCode": "705"
     },
     {
@@ -3219,7 +3219,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+677",
+        "dialling-code": "+677",
         "isoCode": "090"
     },
     {
@@ -3236,7 +3236,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+252",
+        "dialling-code": "+252",
         "isoCode": "706"
     },
     {
@@ -3255,7 +3255,7 @@
             "name": "English",
             "nativeName": "English"
         },
-        "dialling_code": "+27",
+        "dialling-code": "+27",
         "isoCode": "710"
     },
     {
@@ -3272,7 +3272,7 @@
             "code": "ko",
             "name": "Korean"
         },
-        "dialling_code": "+82",
+        "dialling-code": "+82",
         "isoCode": "410"
     },
     {
@@ -3289,7 +3289,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+34",
+        "dialling-code": "+34",
         "isoCode": "724"
     },
     {
@@ -3308,7 +3308,7 @@
             "name": "Sinhalese",
             "nativeName": "සිංහල"
         },
-        "dialling_code": "+94",
+        "dialling-code": "+94",
         "isoCode": "144"
     },
     {
@@ -3325,7 +3325,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+249",
+        "dialling-code": "+249",
         "isoCode": "729"
     },
     {
@@ -3342,7 +3342,7 @@
             "code": "nl",
             "name": "Dutch"
         },
-        "dialling_code": "+597",
+        "dialling-code": "+597",
         "isoCode": "740"
     },
     {
@@ -3359,7 +3359,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+268",
+        "dialling-code": "+268",
         "isoCode": "748"
     },
     {
@@ -3376,7 +3376,7 @@
             "code": "sv",
             "name": "Swedish"
         },
-        "dialling_code": "+46",
+        "dialling-code": "+46",
         "isoCode": "752"
     },
     {
@@ -3393,7 +3393,7 @@
             "code": "de",
             "name": "German"
         },
-        "dialling_code": "+41",
+        "dialling-code": "+41",
         "isoCode": "756"
     },
     {
@@ -3410,7 +3410,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+963",
+        "dialling-code": "+963",
         "isoCode": "760"
     },
     {
@@ -3427,7 +3427,7 @@
             "code": "zh",
             "name": "Chinese"
         },
-        "dialling_code": "+886",
+        "dialling-code": "+886",
         "isoCode": "158"
     },
     {
@@ -3444,7 +3444,7 @@
             "code": "tg",
             "name": "Tajik"
         },
-        "dialling_code": "+992",
+        "dialling-code": "+992",
         "isoCode": "762"
     },
     {
@@ -3461,7 +3461,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+255",
+        "dialling-code": "+255",
         "isoCode": "834"
     },
     {
@@ -3478,7 +3478,7 @@
             "code": "th",
             "name": "Thai"
         },
-        "dialling_code": "+66",
+        "dialling-code": "+66",
         "isoCode": "764"
     },
     {
@@ -3495,7 +3495,7 @@
             "code": "pt",
             "name": "Portuguese"
         },
-        "dialling_code": "+670",
+        "dialling-code": "+670",
         "isoCode": "626"
     },
     {
@@ -3512,7 +3512,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+228",
+        "dialling-code": "+228",
         "isoCode": "768"
     },
     {
@@ -3529,7 +3529,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+690",
+        "dialling-code": "+690",
         "isoCode": "772"
     },
     {
@@ -3546,7 +3546,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+676",
+        "dialling-code": "+676",
         "isoCode": "776"
     },
     {
@@ -3563,7 +3563,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "780"
     },
     {
@@ -3580,7 +3580,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+216",
+        "dialling-code": "+216",
         "isoCode": "788"
     },
     {
@@ -3597,7 +3597,7 @@
             "code": "tr",
             "name": "Turkish"
         },
-        "dialling_code": "+90",
+        "dialling-code": "+90",
         "isoCode": "792"
     },
     {
@@ -3614,7 +3614,7 @@
             "code": "tk",
             "name": "Turkmen"
         },
-        "dialling_code": "+993",
+        "dialling-code": "+993",
         "isoCode": "795"
     },
     {
@@ -3631,7 +3631,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "796"
     },
     {
@@ -3648,7 +3648,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+688",
+        "dialling-code": "+688",
         "isoCode": "798"
     },
     {
@@ -3665,7 +3665,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+256",
+        "dialling-code": "+256",
         "isoCode": "800"
     },
     {
@@ -3682,7 +3682,7 @@
             "code": "uk",
             "name": "Ukrainian"
         },
-        "dialling_code": "+380",
+        "dialling-code": "+380",
         "isoCode": "804"
     },
     {
@@ -3699,7 +3699,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+971",
+        "dialling-code": "+971",
         "isoCode": "784"
     },
     {
@@ -3716,7 +3716,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+44",
+        "dialling-code": "+44",
         "isoCode": "826"
     },
     {
@@ -3735,7 +3735,7 @@
             "name": "English",
             "nativeName": "English"
         },
-        "dialling_code": "+1",
+        "dialling-code": "+1",
         "isoCode": "840"
     },
     {
@@ -3752,7 +3752,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+598",
+        "dialling-code": "+598",
         "isoCode": "858"
     },
     {
@@ -3769,7 +3769,7 @@
             "code": "uz",
             "name": "Uzbek"
         },
-        "dialling_code": "+998",
+        "dialling-code": "+998",
         "isoCode": "860"
     },
     {
@@ -3786,7 +3786,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+678",
+        "dialling-code": "+678",
         "isoCode": "548"
     },
     {
@@ -3803,7 +3803,7 @@
             "code": "es",
             "name": "Spanish"
         },
-        "dialling_code": "+58",
+        "dialling-code": "+58",
         "isoCode": "862"
     },
     {
@@ -3820,7 +3820,7 @@
             "code": "vi",
             "name": "Vietnamese"
         },
-        "dialling_code": "+84",
+        "dialling-code": "+84",
         "isoCode": "704"
     },
     {
@@ -3837,7 +3837,7 @@
             "code": "fr",
             "name": "French"
         },
-        "dialling_code": "+681",
+        "dialling-code": "+681",
         "isoCode": "876"
     },
     {
@@ -3854,7 +3854,7 @@
             "code": "ar",
             "name": "Arabic"
         },
-        "dialling_code": "+967",
+        "dialling-code": "+967",
         "isoCode": "887"
     },
     {
@@ -3871,7 +3871,7 @@
             "code": "en",
             "name": "English"
         },
-        "dialling_code": "+260",
+        "dialling-code": "+260",
         "isoCode": "894"
     },
     {
@@ -3890,7 +3890,7 @@
             "name": "English",
             "nativeName": "English"
         },
-        "dialling_code": "+263",
+        "dialling-code": "+263",
         "isoCode": "716"
     }
 ]
