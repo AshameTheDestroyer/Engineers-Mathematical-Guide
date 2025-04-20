@@ -7,6 +7,7 @@ import { Button } from "@/components/Button/Button";
 import { Select } from "@/components/Select/Select";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { CountrySelect } from "@/components/CountrySelect/CountrySelect";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     GenderEnum,
@@ -144,7 +145,7 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                     language
                 )}
             />
-            <Input
+            <CountrySelect
                 required
                 autoComplete="off"
                 {...register("country")}
@@ -152,10 +153,6 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                 errorMessage={GetErrorLocale(
                     errors.country?.message,
                     locales.inputs.country.errors,
-                    language
-                )}
-                placeholder={GetLocale(
-                    locales.inputs.country.placeholder,
                     language
                 )}
             />
