@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { ButtonBox } from "../ButtonBox/ButtonBox";
 import { ComponentProps } from "@/types/ComponentProps";
-import { FC, FormHTMLAttributes, PropsWithChildren } from "react";
+import { FC, FormHTMLAttributes, PropsWithChildren, useRef } from "react";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 export type FormProps = {
@@ -23,13 +23,16 @@ export const Form: FC<FormProps> = ({
     lastOptions,
     ...props
 }) => {
+    const resetKey = useRef(false);
     const { direction } = useLocalization();
 
     return (
         <form
             id={id}
             ref={ref}
+            key={`${resetKey.current}`}
             className={twMerge("flex flex-col gap-8", className)}
+            onReset={(_e) => (resetKey.current = !resetKey.current)}
             {...props}
         >
             <header>{title}</header>
