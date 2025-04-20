@@ -17,6 +17,7 @@ export type DropDownProps = {
     position: Position;
     doesHaveMinimumWidth?: boolean;
     doesCloseOnInteraction?: boolean;
+    doesHaveOverflowScroll?: boolean;
     text?: PropsWithChildren["children"];
     icon?: WithPartial<ButtonProps["icon"] & {}, "source" | "placement">;
 } & ComponentProps<HTMLDivElement> &
@@ -32,6 +33,7 @@ export const DropDown: FC<DropDownProps> = ({
     className,
     doesHaveMinimumWidth,
     doesCloseOnInteraction,
+    doesHaveOverflowScroll,
     ...props
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -49,8 +51,8 @@ export const DropDown: FC<DropDownProps> = ({
 
         const timeoutID = setTimeout(() => {
             containerReference.current?.style.setProperty(
-                "overflow",
-                "visible"
+                doesHaveOverflowScroll ? "overflow-y" : "overflow",
+                doesHaveOverflowScroll ? "scroll" : "visible"
             );
         }, 200);
 
