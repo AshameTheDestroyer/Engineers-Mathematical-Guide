@@ -9,7 +9,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
-import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
+import {
+    LocalizationProvider,
+    useLocalization,
+} from "./components/LocalizationProvider/LocalizationProvider";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -26,6 +29,8 @@ const RegistrationPage = LazyImport(
     "./pages/RegistrationPage/RegistrationPage"
 );
 
+import lazy_locales from "@localization/lazy.json";
+
 import "./extensions";
 import "./global.css";
 
@@ -39,17 +44,26 @@ export const useMain = () => useContext(MainContext);
 
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 
-const LazyPage: FC<{ children: ReactNode }> = ({ children }) => (
-    <Lazy errorFallback={<ErrorPage />} loadingFallback={<LoadingPage />}>
-        {children}
-    </Lazy>
-);
+const LazyPage: FC<{ children: ReactNode }> = ({ children }) => {
+    return (
+        <Lazy errorFallback={<ErrorPage />} loadingFallback={<LoadingPage />}>
+            {children}
+        </Lazy>
+    );
+};
 
-const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => (
-    <Lazy errorFallback={"Error!"} loadingFallback={"Loading..."}>
-        {children}
-    </Lazy>
-);
+const LazyComponent: FC<{ children: ReactNode }> = ({ children }) => {
+    const { GetLocale, language } = useLocalization();
+
+    return (
+        <Lazy
+            errorFallback={GetLocale(lazy_locales.error, language)}
+            loadingFallback={GetLocale(lazy_locales.loading, language)}
+        >
+            {children}
+        </Lazy>
+    );
+};
 
 const IndexRoutes: FC = () => {
     return (
