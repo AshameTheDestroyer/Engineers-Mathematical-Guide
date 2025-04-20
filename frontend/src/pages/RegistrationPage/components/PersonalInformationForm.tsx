@@ -40,8 +40,6 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
             return;
         }
 
-        console.log(country["dialling-code"]);
-
         setValue("phone-number", country["dialling-code"]);
     }, [country]);
 
