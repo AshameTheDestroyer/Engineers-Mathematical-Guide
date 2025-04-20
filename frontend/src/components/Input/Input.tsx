@@ -37,18 +37,18 @@ export const Input: FC<InputProps> = ({
     const variantClassNames: VariantClassNames = {
         default: {
             idle: "[&>input]:border-tertiary-light-active [&>input]:placeholder-tertiary-light-active",
-            hover: "hover:border-tertiary-normal",
-            active: "focus-within:border-tertiary-normal-active",
+            hover: "hover:[&>input]:border-tertiary-normal",
+            active: "focus-within:[&>input]:border-tertiary-normal-active",
         },
         primary: {
             idle: "[&>input]:border-primary-normal [&>input]:placeholder-primary-normal",
-            hover: "hover:border-primary-dark [&>input]:placeholder-primary-dark",
-            active: "focus-within:border-primary-dark-active [&>input]:placeholder-primary-dark-active",
+            hover: "hover:[&>input]:border-primary-dark hover:[&>input]:placeholder-primary-dark",
+            active: "focus-within:[&>input]:border-primary-dark-active focus-within:[&>input]:placeholder-primary-dark-active",
         },
         secondary: {
             idle: "[&>input]:border-secondary-normal [&>input]:placeholder-secondary-normal",
-            hover: "hover:border-secondary-dark [&>input]:placeholder-secondary-dark",
-            active: "focus-within:border-secondary-dark-active [&>input]:placeholder-secondary-dark-active",
+            hover: "hover:[&>input]:border-secondary-dark hover:[&>input]:placeholder-secondary-dark",
+            active: "focus-within:[&>input]:border-secondary-dark-active focus-within:[&>input]:placeholder-secondary-dark-active",
         },
     };
 
