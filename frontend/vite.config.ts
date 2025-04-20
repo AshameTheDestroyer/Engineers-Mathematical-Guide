@@ -19,6 +19,7 @@ export default defineConfig({
             "@pages": "/src/pages",
             "@types_": "/src/types",
             "@localization": "/public/localization",
+            "@json": "/public/json",
         },
     },
 });
