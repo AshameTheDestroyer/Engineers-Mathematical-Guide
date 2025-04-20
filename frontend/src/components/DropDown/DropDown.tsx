@@ -2,7 +2,14 @@ import { twJoin, twMerge } from "tailwind-merge";
 import { IconButton } from "../IconButton/IconButton";
 import { Button, ButtonProps } from "../Button/Button";
 import { ComponentProps } from "@/types/ComponentProps";
-import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
+import {
+    FC,
+    useRef,
+    useState,
+    useEffect,
+    PropsWithChildren,
+    useImperativeHandle,
+} from "react";
 
 import drop_down_icon from "@icons/triangle_arrow.svg";
 
@@ -31,6 +38,8 @@ export const DropDown: FC<DropDownProps> = ({
 
     const containerReference = useRef<HTMLDivElement>(null);
     const dropDownElementRef = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => dropDownElementRef.current!);
 
     useEffect(() => {
         if (!isOpen) {
