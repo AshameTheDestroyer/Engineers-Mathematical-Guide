@@ -94,6 +94,14 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         locales: Record<string, Record<string, string>>,
         language: string
     ) {
+        const errorLocale = locales[errorKey!];
+
+        if (errorKey != null && errorLocale == null) {
+            console.error("Error key not found.");
+            console.error(errorKey);
+            return "";
+        }
+
         return errorKey && GetLocale(locales[errorKey], language);
     }
 
