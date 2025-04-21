@@ -102,6 +102,9 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({ SubmitData }) => {
                 required
                 autoComplete="off"
                 {...register("confirm-password")}
+                label={
+                    <Locale>{locales.inputs["confirm-password"].label}</Locale>
+                }
                 errorMessage={GetErrorLocale(
                     errors["confirm-password"]?.message,
                     locales.inputs["confirm-password"].errors,
@@ -111,9 +114,6 @@ export const CredentialsForm: FC<CredentialsFormProps> = ({ SubmitData }) => {
                     locales.inputs["confirm-password"].placeholder,
                     language
                 )}
-                label={
-                    <Locale>{locales.inputs["confirm-password"].label}</Locale>
-                }
             />
             <Checkbox
                 required
