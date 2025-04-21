@@ -70,8 +70,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: direction == "ltr" ? "left" : "right",
                         source: sun_icon,
+                        placement: direction == "ltr" ? "left" : "right",
                     }}
                     variant={themeMode == "light" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("light")}
@@ -81,8 +81,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: direction == "ltr" ? "left" : "right",
                         source: moon_icon,
+                        placement: direction == "ltr" ? "left" : "right",
                     }}
                     variant={themeMode == "dark" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("dark")}
@@ -92,8 +92,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: direction == "ltr" ? "left" : "right",
                         source: monitor_icon,
+                        placement: direction == "ltr" ? "left" : "right",
                     }}
                     variant={themeMode == "system" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("system")}
@@ -116,8 +116,8 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                         key={i}
                         doesTextGrow
                         icon={{
-                            placement: direction == "ltr" ? "left" : "right",
                             source: PALETTE_ICONS[_themePalette],
+                            placement: direction == "ltr" ? "left" : "right",
                         }}
                         variant={
                             _themePalette == themePalette
@@ -149,9 +149,9 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: direction == "ltr" ? "left" : "right",
-                        source: arrow_icon,
                         className: "rotate-90",
+                        source: arrow_icon,
+                        placement: direction == "ltr" ? "left" : "right",
                     }}
                     variant={direction == "ltr" ? "primary" : "default"}
                     onClick={(_e) => SetDirection("ltr")}
@@ -163,9 +163,9 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                 <Button
                     doesTextGrow
                     icon={{
-                        placement: direction == "ltr" ? "left" : "right",
-                        source: arrow_icon,
                         className: "-rotate-90",
+                        source: arrow_icon,
+                        placement: direction == "ltr" ? "left" : "right",
                     }}
                     variant={direction == "rtl" ? "primary" : "default"}
                     onClick={(_e) => SetDirection("rtl")}
@@ -185,18 +185,27 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                     </Locale>
                 }
             >
-                <Button
-                    variant={language == "en" ? "primary" : "default"}
-                    onClick={(_e) => SetLanguage("en")}
-                >
-                    English
-                </Button>
-                <Button
-                    variant={language == "ar" ? "primary" : "default"}
-                    onClick={(_e) => SetLanguage("ar")}
-                >
-                    عَربيٌّ
-                </Button>
+                {[
+                    { code: "en", name: "English", "flag-code": "gb" },
+                    { code: "ar", name: "عَربيٌّ", "flag-code": "sy" },
+                ].map((language_) => (
+                    <Button
+                        doesTextGrow
+                        variant={
+                            language == language_.code ? "primary" : "default"
+                        }
+                        icon={{
+                            className: "drop-shadow-[3px_3px_1px_#0000004c]",
+                            width: 32,
+                            height: 32,
+                            source: `/flags/${language_["flag-code"]}.svg`,
+                            placement: direction == "ltr" ? "left" : "right",
+                        }}
+                        onClick={(_e) => SetLanguage(language_.code)}
+                    >
+                        {language_.name}
+                    </Button>
+                ))}
             </DropDown>
         </DropDownList>
     );
