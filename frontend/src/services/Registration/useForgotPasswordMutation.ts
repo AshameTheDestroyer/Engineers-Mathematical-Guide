@@ -4,7 +4,7 @@ import { ForgotPasswordStepsDTO } from "@/schemas/ForgotPasswordSchema";
 
 export const RESET_PASSWORD_KEY = "reset-password";
 
-export const useResetpasswordMutation = () =>
+export const useResetPasswordMutation = () =>
     useMutation({
         mutationKey: [RESET_PASSWORD_KEY],
         mutationFn: (data: ForgotPasswordStepsDTO["reset-password"]) =>

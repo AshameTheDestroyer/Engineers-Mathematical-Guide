@@ -4,7 +4,7 @@ import { CodeRequestForm } from "../components/CodeRequestForm";
 import { ResetPasswordForm } from "../components/ResetPasswordForm";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { CodeVerificationForm } from "../components/CodeVerificationForm";
-import { useResetpasswordMutation } from "@/services/Registration/useForgotPasswordMutation";
+import { useResetPasswordMutation } from "@/services/Registration/useForgotPasswordMutation";
 import { useForgotPasswordMutation } from "@/services/Registration/useResetPasswordMutation";
 import {
     ForgotPasswordStepsDTO,
@@ -25,7 +25,7 @@ export const ForgotPasswordPage: FC = () => {
     >({});
 
     const { mutateAsync: mutateAsyncResetPassword } =
-        useResetpasswordMutation();
+        useResetPasswordMutation();
     const { mutateAsync: mutateAsyncForgotPassword } =
         useForgotPasswordMutation();
 
