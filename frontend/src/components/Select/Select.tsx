@@ -23,8 +23,8 @@ export type SelectProps<T extends EnumValues> = {
     name: string;
     value?: T[number];
     placeholderOfNone?: string;
-    mapOptions?: (value: T[number]) => string;
-    rendersOptions?: (key: T[number]) => PropsWithChildren["children"];
+    MapOptions?: (value: T[number]) => string;
+    RendersOptions?: (key: T[number]) => PropsWithChildren["children"];
 } & Omit<
     InputProps,
     "type" | "ref" | keyof InputHTMLAttributes<HTMLInputElement>
@@ -47,10 +47,10 @@ export const Select = <T extends EnumValues>({
     required,
     onChange,
     className,
-    mapOptions,
+    MapOptions,
     errorMessage,
     value: _value,
-    rendersOptions,
+    RendersOptions,
     options: _options,
     placeholderOfNone,
     variant = "default",
@@ -107,12 +107,12 @@ export const Select = <T extends EnumValues>({
             return;
         }
 
-        onChange?.({ target: { value: mapOptions?.(value) ?? value } } as any);
+        onChange?.({ target: { value: MapOptions?.(value) ?? value } } as any);
     }, [value, dropDownReference.current]);
 
     const RenderOption: FC<{ option: typeof value }> = ({ option }) => {
         return option != ""
-            ? (rendersOptions?.(option) ?? option.toTitleCase())
+            ? (RendersOptions?.(option) ?? option.toTitleCase())
             : (placeholderOfNone ?? "None");
     };
 
@@ -134,8 +134,8 @@ export const Select = <T extends EnumValues>({
                 {...props}
             >
                 {options.map((option, i) => (
-                    <option key={i} value={mapOptions?.(option) ?? `${option}`}>
-                        {mapOptions?.(option) ?? `${option}`}
+                    <option key={i} value={MapOptions?.(option) ?? `${option}`}>
+                        {MapOptions?.(option) ?? `${option}`}
                     </option>
                 ))}
             </select>

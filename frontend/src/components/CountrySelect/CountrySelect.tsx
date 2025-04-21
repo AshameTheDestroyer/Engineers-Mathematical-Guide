@@ -58,11 +58,11 @@ export const CountrySelect: FC<CountrySelectProps> = ({
                 className
             )}
             doesHaveOverflowScroll={doesHaveOverflowScroll}
-            mapOptions={
-                mapOptions as unknown as SelectProps<EnumValues>["mapOptions"]
+            MapOptions={
+                mapOptions as unknown as SelectProps<EnumValues>["MapOptions"]
             }
-            rendersOptions={
-                renderOptions as unknown as SelectProps<EnumValues>["rendersOptions"]
+            RendersOptions={
+                renderOptions as unknown as SelectProps<EnumValues>["RendersOptions"]
             }
             options={options as unknown as EnumValues}
             onChange={(e) => (
