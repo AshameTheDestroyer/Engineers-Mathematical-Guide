@@ -17,6 +17,7 @@ import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
 
+import supported_languages from "@json/supported_languages.json";
 import locales from "@localization/configuration_drop_down_list.json";
 
 export type ConfigurationDropDownListProps = WithPartial<
@@ -185,10 +186,7 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                     </Locale>
                 }
             >
-                {[
-                    { code: "en", name: "English", "flag-code": "gb" },
-                    { code: "ar", name: "عَربيٌّ", "flag-code": "sy" },
-                ].map((language_) => (
+                {supported_languages.map((language_) => (
                     <Button
                         doesTextGrow
                         variant={
