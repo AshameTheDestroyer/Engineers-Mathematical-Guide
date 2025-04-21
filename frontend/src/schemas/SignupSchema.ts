@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { InferNested } from "@/types/Zod.InferNested";
+import { ZodInferNested } from "@/types/Zod.InferNested";
 
 export enum GenderEnum {
     male = "male",
@@ -63,4 +63,4 @@ export const SignupSchema = z.intersection(
 );
 
 export type SignupDTO = z.infer<typeof SignupSchema>;
-export type SignupStepsDTO = InferNested<typeof SignupStepSchemas>;
+export type SignupStepsDTO = ZodInferNested<typeof SignupStepSchemas>;

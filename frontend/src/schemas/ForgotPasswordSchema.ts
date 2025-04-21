@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { InferNested } from "@/types/Zod.InferNested";
+import { ZodInferNested } from "@/types/Zod.InferNested";
 
 export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
@@ -31,6 +31,6 @@ export const ForgotPasswordSchema = z.intersection(
 );
 
 export type ForgotPasswordDTO = z.infer<typeof ForgotPasswordSchema>;
-export type ForgotPasswordStepsDTO = InferNested<
+export type ForgotPasswordStepsDTO = ZodInferNested<
     typeof ForgotPasswordStepSchemas
 >;
