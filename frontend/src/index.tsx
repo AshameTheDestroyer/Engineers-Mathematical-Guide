@@ -6,6 +6,7 @@ import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { environmentVariables } from "./services/EnvironmentVariables";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { MathJaxContext as MathJaxProvider } from "better-react-mathjax";
 import { useState, createContext, FC, ReactNode, useContext } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
@@ -166,11 +167,13 @@ const Index: FC = () => {
                 <LocalizationProvider>
                     <ThemeModeProvider>
                         <ThemePaletteProvider>
-                            <HashRouter
-                                basename={window.location.pathname || ""}
-                            >
-                                <IndexRoutes />
-                            </HashRouter>
+                            <MathJaxProvider>
+                                <HashRouter
+                                    basename={window.location.pathname || ""}
+                                >
+                                    <IndexRoutes />
+                                </HashRouter>
+                            </MathJaxProvider>
                         </ThemePaletteProvider>
                     </ThemeModeProvider>
                 </LocalizationProvider>
