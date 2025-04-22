@@ -70,33 +70,33 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
             >
                 <Button
                     doesTextGrow
+                    variant={themeMode == "light" ? "primary" : "default"}
                     icon={{
                         source: sun_icon,
                         placement: direction == "ltr" ? "left" : "right",
                     }}
-                    variant={themeMode == "light" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("light")}
                 >
                     <Locale>{locales["theme-mode"].values.light}</Locale>
                 </Button>
                 <Button
                     doesTextGrow
+                    variant={themeMode == "dark" ? "primary" : "default"}
                     icon={{
                         source: moon_icon,
                         placement: direction == "ltr" ? "left" : "right",
                     }}
-                    variant={themeMode == "dark" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("dark")}
                 >
                     <Locale>{locales["theme-mode"].values.dark}</Locale>
                 </Button>
                 <Button
                     doesTextGrow
+                    variant={themeMode == "system" ? "primary" : "default"}
                     icon={{
                         source: monitor_icon,
                         placement: direction == "ltr" ? "left" : "right",
                     }}
-                    variant={themeMode == "system" ? "primary" : "default"}
                     onClick={(_e) => SetThemeMode("system")}
                 >
                     <Locale>{locales["theme-mode"].values.system}</Locale>
