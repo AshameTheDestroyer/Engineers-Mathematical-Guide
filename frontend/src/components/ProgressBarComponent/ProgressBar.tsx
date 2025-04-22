@@ -47,13 +47,16 @@ export const ProgressBar: FC<ProgressBarProps> = ({
         }
     }, [value, onProgress, onComplete]);
 
-    const variantClassNames = {
-        default:
-            "[&_[data-bar],&_[data-checkpoint]]:bg-tertiary-light [&_[data-bar],&_[data-checkpoint]]:border-tertiary-dark border-tertiary-dark bg-tertiary-normal-hover text-tertiary-normal [&_[data-reached=false]]:bg-tertiary-normal-hover [&_[data-reached=false]]:text-tertiary-dark",
-        primary:
-            "[&_[data-bar],&_[data-checkpoint]]:bg-primary-normal [&_[data-bar],&_[data-checkpoint]]:border-primary-darker border-primary-darker bg-primary-dark-hover text-primary-light [&_[data-reached=false]]:bg-primary-dark-hover [&_[data-reached=false]]:text-primary-dark-active",
-        secondary:
-            "[&_[data-bar],&_[data-checkpoint]]:bg-secondary-normal [&_[data-bar],&_[data-checkpoint]]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover text-primary-light [&_[data-reached=false]]:bg-secondary-dark-hover [&_[data-reached=false]]:text-secondary-dark-active",
+    const variantClassNames: VariantClassNames = {
+        default: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-tertiary-light [&_[data-bar],&_[data-checkpoint]]:border-tertiary-dark border-tertiary-dark bg-tertiary-normal-hover text-tertiary-normal [&_[data-reached=false]]:bg-tertiary-normal-hover [&_[data-reached=false]]:text-tertiary-dark",
+        },
+        primary: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-primary-normal [&_[data-bar],&_[data-checkpoint]]:border-primary-darker border-primary-darker bg-primary-dark-hover text-primary-light [&_[data-reached=false]]:bg-primary-dark-hover [&_[data-reached=false]]:text-primary-dark-active",
+        },
+        secondary: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-secondary-normal [&_[data-bar],&_[data-checkpoint]]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover text-primary-light [&_[data-reached=false]]:bg-secondary-dark-hover [&_[data-reached=false]]:text-secondary-dark-active",
+        },
     };
 
     return (
@@ -62,7 +65,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
             ref={ref}
             role="progressbar"
             className={twMerge(
-                variantClassNames[variant],
+                variantClassNames[variant]["idle"],
                 "relative flex h-5 w-full rounded-full border-2",
                 className
             )}
@@ -73,7 +76,7 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                     role="progressbar"
                     className={twJoin(
                         value == minimum ? "invisible" : "",
-                        "-m-[2px] box-content h-full rounded-full border-2 transition-all duration-300 ease-out"
+                        "-m-[2px] box-content h-full rounded-full border-2 transition-all duration-300"
                     )}
                     style={{ width: `${GetPercentage(value)}%` }}
                 />

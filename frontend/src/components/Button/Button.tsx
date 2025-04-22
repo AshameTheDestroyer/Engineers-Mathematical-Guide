@@ -1,8 +1,8 @@
-import { twJoin, twMerge } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { ButtonHTMLAttributes, FC } from "react";
 import { Icon, IconProps } from "@components/Icon/Icon";
-import { ComponentEventProps, ComponentProps } from "@types_/ComponentProps";
+import { ComponentProps } from "@types_/ComponentProps";
 
 export type ButtonProps = {
     link?: string;
@@ -13,10 +13,7 @@ export type ButtonProps = {
         placement: "left" | "right";
     };
 } & ComponentProps<HTMLButtonElement> &
-    ComponentEventProps<
-        HTMLButtonElement,
-        ButtonHTMLAttributes<HTMLButtonElement>
-    >;
+    ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<ButtonProps> = ({
     id,
@@ -36,7 +33,7 @@ export const Button: FC<ButtonProps> = ({
         default: {
             idle: "[&>[data-content]]:bg-tertiary-light [&>*]:border-tertiary-light-active [&>[data-thickness]]:bg-tertiary-light-active text-tertiary-normal",
             hover: "[&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-tertiary-light-hover [&:where(&:hover,&:focus-within)]:text-tertiary-normal-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-tertiary-light-active [&:where(&:hover,&:focus-within)]:[&>*]:border-tertiary-light-active",
-            active: "active:[&>[data-content]]:bg-tertiary-light-active active:text-tertiary-normal-active active:[&>[data-thickness]]:bg-tertiary-light-active active:[&>*]:border-tertiary-normal-hover",
+            active: "active:[&>[data-content]]:bg-tertiary-light-active active:text-tertiary-normal-active active:[&>[data-thickness]]:bg-tertiary-normal-active active:[&>*]:border-tertiary-normal-hover",
         },
         primary: {
             idle: "[&>[data-content]]:bg-primary-normal [&>*]:border-primary-dark text-primary-light font-bold [&>[data-thickness]]:bg-primary-dark",
@@ -61,6 +58,7 @@ export const Button: FC<ButtonProps> = ({
                     : "active:[&>[data-content]]:translate-y-1",
                 className
             )}
+            type="button"
             role={link != null ? "link" : "button"}
             onClick={(e) => (onClick?.(e), link != null && Navigator(link))}
             {...props}

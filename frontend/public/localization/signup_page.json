@@ -1,0 +1,264 @@
+{
+    "title": {
+        "credentials": {
+            "en": "Create new account",
+            "ar": "أنشئْ حِساباً جَديداً"
+        },
+        "personal-information": {
+            "en": "Complete your information",
+            "ar": "أكملْ إدخالَ مَعلوماتِك"
+        }
+    },
+    "inputs": {
+        "email": {
+            "label": {
+                "en": "Email",
+                "ar": "البَريدُ الإلكترونيّ"
+            },
+            "placeholder": {
+                "en": "Enter your email",
+                "ar": "أدخلْ بَريدكَ الإلكترونيّ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Email is required.",
+                    "ar": "البَريدُ الإلكترونيُّ إلزاميّ."
+                },
+                "pattern": {
+                    "en": "Email should be written as 'example@gmail.com'.",
+                    "ar": "يَجبُ على البَريدِ الإلكترونيّ أنْ يُكتَبَ كالتّالي 'example@gmail.com'."
+                }
+            }
+        },
+        "password": {
+            "label": {
+                "en": "Password",
+                "ar": "كلمةُ المُرور"
+            },
+            "placeholder": {
+                "en": "Enter new password",
+                "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Password is required.",
+                    "ar": "كَلمةُ المُرورِ إلزاميّة."
+                },
+                "minimum": {
+                    "en": "Password should consist of more than 4 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 4 حُروف."
+                },
+                "maximum": {
+                    "en": "Password should not exceed 20 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ ألّا تَتعدّى 20 حَرفاً."
+                }
+            }
+        },
+        "confirm-password": {
+            "label": {
+                "en": "Confirm Password",
+                "ar": "تأكيدُ كلمةِ المُرور"
+            },
+            "placeholder": {
+                "en": "Re-enter previous password",
+                "ar": "أعدْ إدخالَ كلمةِ المُرورِ السّابقةِ"
+            },
+            "errors": {
+                "required": {
+                    "en": "You have to confirm previous password.",
+                    "ar": "عليكَ أنْ تُأكّدَ كِتابةَ كَلمةِ المُرورِ السّابقة."
+                },
+                "match": {
+                    "en": "Passwords must match.",
+                    "ar": "يَجبُ على كَلمتيِّ المُرورِ أنْ تَتطابقا."
+                }
+            }
+        },
+        "terms-and-conditions": {
+            "label": {
+                "en": "I agree with the application's **Terms & Conditions**.",
+                "ar": "أوافقُ على ما يُقدّمهُ التّطبيقُ مِن **مَعاييرٍ وضَوابطٍ**."
+            },
+            "errors": {
+                "required": {
+                    "en": "Agreement is required.",
+                    "ar": "المُوافقةُ إلزاميّة."
+                },
+                "agreement": {
+                    "en": "You have to agree to our terms and conditions.",
+                    "ar": "عليكَ أنْ تُوافِقَ على مَعاييرِنا وضَوابِطنا."
+                }
+            }
+        },
+        "username": {
+            "label": {
+                "en": "Username",
+                "ar": "اسمُ المُستخدِم"
+            },
+            "placeholder": {
+                "en": "Enter your username",
+                "ar": "أدخلْ اسمَ المُستخدِمِ الخَاصِّ بِك"
+            },
+            "errors": {
+                "required": {
+                    "en": "Username is required.",
+                    "ar": "اسمُ المُستخدِم إلزاميّ"
+                },
+                "pattern": {
+                    "en": "Username should consist of only Latin characters, numbers, and underscores '_', and made of one word.",
+                    "ar": "يَجبُ على اسمِ المُستخدِمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ لاتينيّةٍ، أرقامٍ، والرَّمزِ '_'، ويَكونَ مِن كَلمةٍ واحدةٍ."
+                },
+                "minimum": {
+                    "en": "Username should consist of more than 2 characters",
+                    "ar": "يَجبُ على اسمِ المُستخدِمِ أنْ يَتألّفَ مِن أكثرِ مِن حَرفينِ 2."
+                },
+                "maximum": {
+                    "en": "Username should not exceed 20 characters.",
+                    "ar": "يَجبُ على اسمِ المُستخدِمِ ألّا يَتعدّى 20 حَرفاً."
+                }
+            }
+        },
+        "name": {
+            "label": {
+                "en": "Name",
+                "ar": "الاسم"
+            },
+            "placeholder": {
+                "en": "Enter your first name",
+                "ar": "أدخلْ اسمَك."
+            },
+            "errors": {
+                "required": {
+                    "en": "Name is required.",
+                    "ar": "الاسمُ إلزاميّ."
+                },
+                "pattern": {
+                    "en": "Name should consist of only characters and numbers, and made of two words maximum.",
+                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ، ويَكونَ مِن كَلمتَينِ على الأكثر."
+                },
+                "minimum": {
+                    "en": "Name should consist of more than 2 characters.",
+                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ مِن أكثرِ مِن حَرفينِ 2."
+                },
+                "maximum": {
+                    "en": "Name should not exceed 20 characters.",
+                    "ar": "يَجبُ على الاسمِ ألّا يَتعدّى 20 حَرفاً."
+                }
+            }
+        },
+        "surname": {
+            "label": {
+                "en": "Surname",
+                "ar": "الكُنية"
+            },
+            "placeholder": {
+                "en": "Enter your last name",
+                "ar": "أدخلْ كُنيَتَك"
+            },
+            "errors": {
+                "pattern": {
+                    "en": "Surname should consist of only characters and numbers, and made of two words maximum.",
+                    "ar": "يَجبُ على الاسمِ أنْ يَتألّفَ فَقطْ مِن حُروفٍ وأرقامٍ، ويَكونَ مِن كَلمتَينِ على الأكثر."
+                },
+                "minimum": {
+                    "en": "Surname should consist of more than 2 characters.",
+                    "ar": "يَجبُ على الكُنيةِ أنْ تَتألّفَ مِن أكثرِ مِن حَرفينِ 2."
+                },
+                "maximum": {
+                    "en": "Surname should not exceed 20 characters.",
+                    "ar": "يَجبُ على الكُنيةِ ألّا تَتعدّى 20 حَرفاً."
+                }
+            }
+        },
+        "gender": {
+            "label": {
+                "en": "Gender",
+                "ar": "الجِنس"
+            },
+            "values": {
+                "male": {
+                    "en": "Male",
+                    "ar": "ذَكَر"
+                },
+                "female": {
+                    "en": "Female",
+                    "ar": "أُنثى"
+                }
+            },
+            "errors": {
+                "required": {
+                    "en": "Gender is required.",
+                    "ar": "تَحديدُ جِنسِ المُستخدِم إلزاميّ."
+                }
+            }
+        },
+        "country": {
+            "label": {
+                "en": "Country",
+                "ar": "الدَّولة"
+            },
+            "errors": {
+                "required": {
+                    "en": "Country is required.",
+                    "ar": "تَحديدُ دَولةِ المُستخدِم إلزاميّ."
+                },
+                "empty": {
+                    "en": "Country should be provided.",
+                    "ar": "عليكَ أنْ تُدخِلَ اسمَ دَولتِك."
+                }
+            }
+        },
+        "phone-number": {
+            "label": {
+                "en": "Phone Number",
+                "ar": "رَقمُ الهاتِف"
+            },
+            "placeholder": {
+                "en": "+(999)-999-999-999",
+                "ar": "+(999)-999-999-999"
+            },
+            "errors": {
+                "required": {
+                    "en": "Phone number is required.",
+                    "ar": "رَقمُ الهاتِفِ إلزاميّ"
+                },
+                "pattern": {
+                    "en": "You should enter a valid phone number.",
+                    "ar": "عليكَ أنْ تُدخِلَ رَقمَ هاتِفٍ صَحيح."
+                },
+                "minimum": {
+                    "en": "Phone number should consist of more than 8 characters.",
+                    "ar": "يَجبُ على رَقمِ الهاتِفِ أنْ يَتألّفَ مِن أكثرِ مِن 8 حُروف."
+                },
+                "maximum": {
+                    "en": "Phone number should not exceed 18 characters.",
+                    "ar": "يَجبُ على رَقمِ الهاتِفِ ألّا يَتعدّى 18 حَرفاً."
+                }
+            }
+        }
+    },
+    "buttons": {
+        "signup": {
+            "en": "Sign up",
+            "ar": "إنشاءُ حِساب"
+        },
+        "finish": {
+            "en": "Finish",
+            "ar": "إكمال"
+        },
+        "clear": {
+            "en": "Clear",
+            "ar": "مسحُ المَكتوب"
+        }
+    },
+    "last-option": {
+        "credentials": {
+            "en": "Already a member? **Login**.",
+            "ar": "لديكَ حِسابٌ بِالفعل؟ **سجّلْ دخولَك**."
+        },
+        "personal-information": {
+            "en": "Changed your mind? **Go Back**.",
+            "ar": "غَيّرتَ رأيَك؟ **عُدْ لِلخَلف**."
+        }
+    }
+}

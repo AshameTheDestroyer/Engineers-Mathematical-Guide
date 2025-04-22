@@ -8,7 +8,7 @@ import moon_icon from "@icons/moon.svg";
 export const ProgressBarCollection: FC = () => {
     return (
         <Collection
-            className="[&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(40vw,1fr))]"
+            className="mb-8 [&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(40vw,1fr))]"
             title="Progress Bar Component"
         >
             <Collection

@@ -16,7 +16,7 @@ export const DropDownList: FC<DropDownListProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "[&>div>div_button>div]:rounded-none [:is(&,&_.drop-down)>div>div]:p-0 [:is(&,&_.drop-down)>div]:rounded-none [:is(&,&_.drop-down)>div]:border-0 [:is(&,&_.drop-down)>div]:bg-transparent [:is(&,&_.drop-down)>div]:shadow-none",
+                "[&>div>div_button>div]:rounded-lg [:is(&,&_.drop-down)>div>div]:p-0 [:is(&,&_.drop-down)>div]:rounded-none [:is(&,&_.drop-down)>div]:border-0 [:is(&,&_.drop-down)>div]:bg-transparent [:is(&,&_.drop-down)>div]:shadow-none",
                 className
             )}
             {...props}

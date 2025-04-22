@@ -2,7 +2,14 @@ import { twJoin, twMerge } from "tailwind-merge";
 import { IconButton } from "../IconButton/IconButton";
 import { Button, ButtonProps } from "../Button/Button";
 import { ComponentProps } from "@/types/ComponentProps";
-import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
+import {
+    FC,
+    useRef,
+    useState,
+    useEffect,
+    PropsWithChildren,
+    useImperativeHandle,
+} from "react";
 
 import drop_down_icon from "@icons/triangle_arrow.svg";
 
@@ -10,6 +17,7 @@ export type DropDownProps = {
     position: Position;
     doesHaveMinimumWidth?: boolean;
     doesCloseOnInteraction?: boolean;
+    doesHaveOverflowScroll?: boolean;
     text?: PropsWithChildren["children"];
     icon?: WithPartial<ButtonProps["icon"] & {}, "source" | "placement">;
 } & ComponentProps<HTMLDivElement> &
@@ -25,12 +33,15 @@ export const DropDown: FC<DropDownProps> = ({
     className,
     doesHaveMinimumWidth,
     doesCloseOnInteraction,
+    doesHaveOverflowScroll,
     ...props
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const containerReference = useRef<HTMLDivElement>(null);
     const dropDownElementRef = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => dropDownElementRef.current!);
 
     useEffect(() => {
         if (!isOpen) {
@@ -40,8 +51,8 @@ export const DropDown: FC<DropDownProps> = ({
 
         const timeoutID = setTimeout(() => {
             containerReference.current?.style.setProperty(
-                "overflow",
-                "visible"
+                doesHaveOverflowScroll ? "overflow-y" : "overflow",
+                doesHaveOverflowScroll ? "scroll" : "visible"
             );
         }, 200);
 

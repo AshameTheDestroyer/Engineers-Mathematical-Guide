@@ -17,11 +17,16 @@ export type LocalizationStateProps = {
     SetLanguage: (language: string) => void;
     SetDirection: (direction: "rtl" | "ltr") => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
-    GetLocaleOfRoutes: (
+    GetRouteLocales: (
         routes: Array<Anchor>,
         locales: Record<string, Record<string, string>>,
         language: string
     ) => Array<Anchor>;
+    GetErrorLocale: (
+        errorKey: string | undefined,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) => string | undefined;
 };
 
 export const LocalizationContext = createContext<LocalizationStateProps>(null!);
@@ -37,7 +42,8 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         GetLocale,
         SetLanguage,
         SetDirection,
-        GetLocaleOfRoutes,
+        GetErrorLocale,
+        GetRouteLocales,
         language: GetFromLocalStorage("language") ?? "en",
         direction: GetFromLocalStorage("direction") ?? "ltr",
     });
@@ -64,7 +70,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         return locale;
     }
 
-    function GetLocaleOfRoutes(
+    function GetRouteLocales(
         routes: Array<Anchor>,
         locales: Record<string, Record<string, string>>,
         language: string
@@ -81,6 +87,22 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
                     href: routeLocale.href,
                 }) as Anchor
         );
+    }
+
+    function GetErrorLocale(
+        errorKey: string | undefined,
+        locales: Record<string, Record<string, string>>,
+        language: string
+    ) {
+        const errorLocale = locales[errorKey!];
+
+        if (errorKey != null && errorLocale == null) {
+            console.error("Error key not found.");
+            console.error(errorKey);
+            return "";
+        }
+
+        return errorKey && GetLocale(locales[errorKey], language);
     }
 
     return (

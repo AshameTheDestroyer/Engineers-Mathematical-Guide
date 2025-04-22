@@ -1,18 +1,12 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
+import { Outlet } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
 
 export const TestPage: FC = () => {
-    const location = useLocation();
-    const Navigate = useNavigate();
-
-    useEffect(() => {
-        if (location.pathname == "/test") {
-            Navigate("/test/colours");
-        }
-    }, []);
+    useDefaultRoute("/test", "/colours");
 
     return (
         <Page>

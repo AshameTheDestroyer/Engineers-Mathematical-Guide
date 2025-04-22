@@ -18,7 +18,10 @@ export default defineConfig({
             "@hooks": "/src/hooks",
             "@pages": "/src/pages",
             "@types_": "/src/types",
+            "@schemas": "/src/schemas",
+            "@services": "/src/services",
             "@localization": "/public/localization",
+            "@json": "/public/json",
         },
     },
 });
