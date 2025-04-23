@@ -186,8 +186,9 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                     </Locale>
                 }
             >
-                {supported_languages.map((language_) => (
+                {supported_languages.map((language_, i) => (
                     <Button
+                        key={i}
                         doesTextGrow
                         variant={
                             language == language_.code ? "primary" : "default"
