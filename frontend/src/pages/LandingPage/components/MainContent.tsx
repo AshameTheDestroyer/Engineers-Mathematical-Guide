@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Button } from "@components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
+import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -12,7 +13,7 @@ import arrow_icon from "@icons/arrow.svg";
 import locales from "@localization/landing_page.json";
 
 export const MainContent: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, GetLocale, language } = useLocalization();
 
     return (
         <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
@@ -26,7 +27,16 @@ export const MainContent: FC = () => {
                 <Locale variant="h2" className="text-xl">
                     {locales.subtitle}
                 </Locale>
-                <Locale variant="p">{locales.body}</Locale>
+                <RichText
+                    variant="p"
+                    ExtractedTextRenders={(text) => (
+                        <span className="text-primary-normal font-bold">
+                            {text}
+                        </span>
+                    )}
+                >
+                    {GetLocale(locales.body, language)}
+                </RichText>
                 <ButtonBox
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
