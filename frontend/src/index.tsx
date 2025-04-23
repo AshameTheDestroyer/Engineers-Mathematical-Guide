@@ -1,19 +1,13 @@
+import { FC, ReactNode } from "react";
 import ReactDOM from "react-dom/client";
+import { Route, Routes } from "react-router-dom";
+import { RootProvider } from "./ContextProviders";
 import { ErrorPage } from "./pages/ErrorPage/ErrorPage";
 import { Lazy, LazyImport } from "./components/Lazy/Lazy";
-import { HashRouter, Route, Routes } from "react-router-dom";
 import { LoadingPage } from "./pages/LoadingPage/LoadingPage";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
 import { environmentVariables } from "./services/EnvironmentVariables";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { MathJaxContext as MathJaxProvider } from "better-react-mathjax";
-import { useState, createContext, FC, ReactNode, useContext } from "react";
-import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
-import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
-import {
-    useLocalization,
-    LocalizationProvider,
-} from "./components/LocalizationProvider/LocalizationProvider";
+import { useLocalization } from "./components/LocalizationProvider/LocalizationProvider";
 
 import lazy_locales from "@localization/lazy.json";
 
@@ -34,14 +28,6 @@ const ForgotPasswordPage = LazyImport(
 const RegistrationPage = LazyImport(
     "./pages/RegistrationPage/RegistrationPage"
 );
-
-const queryClient = new QueryClient();
-
-type MainStateProps = {};
-
-export const MainContext = createContext<MainStateProps>(null!);
-
-export const useMain = () => useContext(MainContext);
 
 const ROOT_DIV_ELEMENT: HTMLElement | null = document.querySelector("#root");
 
@@ -159,26 +145,10 @@ const IndexRoutes: FC = () => {
 };
 
 const Index: FC = () => {
-    const [state, _setState] = useState<MainStateProps>({});
-
     return (
-        <MainContext.Provider value={state}>
-            <QueryClientProvider client={queryClient}>
-                <LocalizationProvider>
-                    <ThemeModeProvider>
-                        <ThemePaletteProvider>
-                            <MathJaxProvider>
-                                <HashRouter
-                                    basename={window.location.pathname || ""}
-                                >
-                                    <IndexRoutes />
-                                </HashRouter>
-                            </MathJaxProvider>
-                        </ThemePaletteProvider>
-                    </ThemeModeProvider>
-                </LocalizationProvider>
-            </QueryClientProvider>
-        </MainContext.Provider>
+        <RootProvider>
+            <IndexRoutes />
+        </RootProvider>
     );
 };
 
