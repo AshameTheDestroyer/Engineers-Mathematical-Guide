@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ZodInferNested } from "@/types/Zod.InferNested";
+import { ZodIntersectMany } from "@/functions/Zod.IntersectMany";
 
 export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
@@ -22,11 +23,9 @@ export const ForgotPasswordStepSchemas = {
         }),
 };
 
-export const ForgotPasswordSchema = z.intersection(
-    z.intersection(
-        ForgotPasswordStepSchemas["code-request"],
-        ForgotPasswordStepSchemas["code-verification"]
-    ),
+export const ForgotPasswordSchema = ZodIntersectMany(
+    ForgotPasswordStepSchemas["code-request"],
+    ForgotPasswordStepSchemas["code-verification"],
     ForgotPasswordStepSchemas["reset-password"]
 );
 
