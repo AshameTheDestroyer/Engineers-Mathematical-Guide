@@ -1,5 +1,5 @@
 type Anchor = {
     text?: string;
     href: string;
-    routes?: Array<Anchor>;
+    routes?: Record<string, Anchor>;
 };

@@ -6,6 +6,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     ForgotPasswordStepsDTO,
@@ -78,7 +79,7 @@ export const CodeVerificationForm: FC<CodeVerificationFormProps> = ({
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/forgot-password?step=code-request"
+                            to={`${REGISTRATION_ROUTES.base.routes["forgot-password"].absolute}?step=code-request`}
                         >
                             {text}
                         </Link>

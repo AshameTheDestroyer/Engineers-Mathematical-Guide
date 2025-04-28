@@ -7,6 +7,7 @@ import { Input } from "../../../components/Input/Input";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -40,7 +41,11 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-secondary-normal underline"
-                            to="/registration/forgot-password"
+                            to={
+                                REGISTRATION_ROUTES.base.routes[
+                                    "forgot-password"
+                                ].absolute
+                            }
                         >
                             {text}
                         </Link>
@@ -65,7 +70,7 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/signup"
+                            to={REGISTRATION_ROUTES.base.routes.signup.absolute}
                         >
                             {text}
                         </Link>

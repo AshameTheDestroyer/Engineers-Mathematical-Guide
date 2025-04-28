@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Button } from "@components/Button/Button";
+import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
 

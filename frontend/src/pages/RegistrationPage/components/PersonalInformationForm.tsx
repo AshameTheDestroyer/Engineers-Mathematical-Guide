@@ -7,6 +7,7 @@ import { Button } from "@/components/Button/Button";
 import { Select } from "@/components/Select/Select";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { CountrySelect } from "@/components/CountrySelect/CountrySelect";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
@@ -68,7 +69,7 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/signup?step=credentials"
+                            to={`${REGISTRATION_ROUTES.base.routes.signup.absolute}?step=credentials`}
                         >
                             {text}
                         </Link>

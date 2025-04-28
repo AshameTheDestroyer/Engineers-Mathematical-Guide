@@ -5,6 +5,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
@@ -54,7 +55,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                     ExtractedTextRenders={(text) => (
                         <Link
                             className="text-primary-normal underline"
-                            to="/registration/login"
+                            to={REGISTRATION_ROUTES.base.routes.login.absolute}
                         >
                             {text}
                         </Link>

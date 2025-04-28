@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
-import { Button } from "@components/Button/Button";
+import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { LANDING_ROUTES } from "@/routes/landing.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
