@@ -2,9 +2,9 @@ import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
+import { LANDING_ROUTES } from "@/routes/landing.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
-import { LANDING_PAGE_ROUTES } from "@/routes/LandingPage.routes";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -32,7 +32,7 @@ export const Header: FC = () => {
             <NavigationBar
                 className="grow"
                 routes={GetRouteLocales(
-                    LANDING_PAGE_ROUTES,
+                    LANDING_ROUTES,
                     route_locales,
                     language
                 )}

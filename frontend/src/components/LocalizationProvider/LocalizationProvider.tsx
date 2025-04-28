@@ -18,7 +18,7 @@ export type LocalizationStateProps = {
     SetDirection: (direction: "rtl" | "ltr") => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
     GetRouteLocales: (
-        routes: Array<Anchor>,
+        routes: Record<string, Omit<Anchor, "routes">>,
         locales: Record<string, Record<string, string>>,
         language: string
     ) => Array<Anchor>;
@@ -71,13 +71,13 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
     }
 
     function GetRouteLocales(
-        routes: Array<Anchor>,
+        routes: Record<string, Omit<Anchor, "routes">>,
         locales: Record<string, Record<string, string>>,
         language: string
     ) {
-        const routeLocales = routes.map((route) => ({
-            locale: locales[route.text],
-            href: route.href,
+        const routeLocales = Object.entries(routes).map(([key, value]) => ({
+            locale: locales[key],
+            href: value.href,
         }));
 
         return routeLocales.map(

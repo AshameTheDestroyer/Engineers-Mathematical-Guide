@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Logo } from "@/components/Logo/Logo";
+import { TEST_ROUTES } from "@/routes/test.routes";
 import { Header as Header_ } from "@/components/Header/Header";
-import { LANDING_PAGE_ROUTES } from "@/routes/TestPage.routes";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -25,7 +25,7 @@ export const Header: FC = () => {
             <NavigationBar
                 className="grow"
                 routes={GetRouteLocales(
-                    LANDING_PAGE_ROUTES,
+                    TEST_ROUTES != null ? { ...TEST_ROUTES.base.routes } : {},
                     route_locales,
                     language
                 )}

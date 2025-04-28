@@ -1,4 +1,5 @@
 type Anchor = {
-    text: string;
+    text?: string;
     href: string;
+    routes?: Array<Anchor>;
 };
