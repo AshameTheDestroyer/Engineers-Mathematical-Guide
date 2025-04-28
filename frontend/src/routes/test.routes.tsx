@@ -3,6 +3,7 @@ import { LazyImport } from "@/components/Lazy/Lazy";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { environmentVariables } from "@/services/EnvironmentVariables";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
+import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
@@ -10,7 +11,7 @@ const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
-const TEST_ROUTES_ = {
+const TEST_ROUTES_ = RoutesWithAbsolutePaths({
     base: {
         href: "test",
         routes: {
@@ -20,7 +21,7 @@ const TEST_ROUTES_ = {
             palettes: { href: "palettes" },
         },
     },
-};
+});
 
 export const TEST_ROUTES =
     environmentVariables.ENVIRONMENT == "development"

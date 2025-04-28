@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
+import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
 const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
@@ -12,16 +13,17 @@ const ForgotPasswordPage = LazyImport(
     "./pages/RegistrationPage/pages/ForgotPasswordPage"
 );
 
-const REGISTRATION_ROUTES = {
+export const REGISTRATION_ROUTES = RoutesWithAbsolutePaths({
     base: {
         href: "registration",
         routes: {
             signup: { href: "signup" },
             login: { href: "login" },
             "forgot-password": { href: "forgot-password" },
+            "terms-and-conditions": { href: "terms-and-conditions" },
         },
     },
-};
+});
 
 export const RegistrationRoute = () => {
     return (
