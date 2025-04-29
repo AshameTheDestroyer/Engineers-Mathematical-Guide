@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ZodGetDefaults } from "@/functions/Zod.GetDefaults";
 
 export enum Direction {
     rtl = "rtl",
@@ -12,7 +13,7 @@ export enum ThemeMode {
 }
 
 export const LocalStorageSchema = z.object({
-    token: z.string().nullable(),
+    token: z.string().nullish(),
     language: z.string().length(2).default("en"),
     "theme-palette": z.string().default("caramel"),
     direction: z.nativeEnum(Direction).default(Direction.ltr),
@@ -32,12 +33,16 @@ export class LocalStorageManager {
     }
 
     constructor() {
+        const defaults = ZodGetDefaults(LocalStorageSchema);
         const items = Object.keys(LocalStorageSchema.keyof().Enum).reduce(
             (accumulator, key) => ({
                 ...accumulator,
-                [key]: JSON.parse(
-                    localStorage.getItem(`${LocalStorageManager.KEY}-${key}`)!
-                ),
+                [key]:
+                    JSON.parse(
+                        localStorage.getItem(
+                            `${LocalStorageManager.KEY}-${key}`
+                        )!
+                    ) ?? defaults[key as keyof LocalStorageDTO],
             }),
             {}
         );
