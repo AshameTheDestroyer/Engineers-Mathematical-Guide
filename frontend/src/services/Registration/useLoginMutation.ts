@@ -1,6 +1,6 @@
-import { HTTPInstance } from "../HTTPInstance";
 import { LoginDTO } from "@/schemas/LoginSchema";
 import { useMutation } from "@tanstack/react-query";
+import { HTTPManager } from "@/managers/HTTPManager";
 
 export const LOGIN_KEY = "login";
 
@@ -8,5 +8,5 @@ export const useLoginMutation = () =>
     useMutation({
         mutationKey: [LOGIN_KEY],
         mutationFn: (data: LoginDTO) =>
-            HTTPInstance.post<{ token: string }>("/auth/login", data),
+            HTTPManager.post<{ token: string }>("/auth/login", data),
     });

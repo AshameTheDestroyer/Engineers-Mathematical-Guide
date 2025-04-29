@@ -20,6 +20,7 @@ export default defineConfig({
             "@types_": "/src/types",
             "@schemas": "/src/schemas",
             "@services": "/src/services",
+            "@managers": "/src/managers",
             "@localization": "/public/localization",
             "@json": "/public/json",
         },

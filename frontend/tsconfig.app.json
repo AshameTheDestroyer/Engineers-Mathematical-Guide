@@ -65,6 +65,9 @@
             "@services/*": [
                 "src/services/*"
             ],
+            "@managers/*": [
+                "src/managers/*"
+            ],
             "@localization/*": [
                 "public/localization/*"
             ],

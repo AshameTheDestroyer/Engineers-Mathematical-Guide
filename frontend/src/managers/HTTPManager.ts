@@ -1,14 +1,14 @@
 import axios from "axios";
-import { environmentVariables } from "./EnvironmentVariables";
 import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
+import { environmentVariables } from "../services/EnvironmentVariables";
 
-export const HTTPInstance = axios.create({
+export const HTTPManager = axios.create({
     timeout: 5000,
     baseURL: environmentVariables.BACKEND_API_URL,
     headers: { "Content-Type": "application/json" },
 });
 
-HTTPInstance.interceptors.request.use(
+HTTPManager.interceptors.request.use(
     (config) => {
         const token = GetFromLocalStorage("token");
         if (token != null) {
@@ -21,7 +21,7 @@ HTTPInstance.interceptors.request.use(
     }
 );
 
-HTTPInstance.interceptors.response.use(
+HTTPManager.interceptors.response.use(
     (response) => {
         return response;
     },
