@@ -349,6 +349,10 @@ body.dark-themed {
         @apply bg-background-darker;
     }
 
+    :not(body)::-webkit-scrollbar-track {
+        @apply rounded-xl;
+    }
+
     ::-webkit-scrollbar-thumb {
         @apply bg-background-normal border-background-darker rounded-xl border-2;
     }
