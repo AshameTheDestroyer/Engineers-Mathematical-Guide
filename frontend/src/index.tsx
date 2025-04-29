@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { RootRoutes } from "./Routes";
+import { RootRoutes } from "./routes";
 import ReactDOM from "react-dom/client";
-import { RootProvider } from "./ContextProviders";
+import { RootProvider } from "./contexts";
 
 import "./extensions";
 import "./global.css";
