@@ -12,6 +12,9 @@ const RegistrationPage = LazyImport(
 const ForgotPasswordPage = LazyImport(
     "./pages/RegistrationPage/pages/ForgotPasswordPage"
 );
+const TermsAndConditionsPage = LazyImport(
+    "./pages/RegistrationPage/pages/TermsAndConditionsPage"
+);
 
 export const REGISTRATION_ROUTES = RoutesWithAbsolutePaths({
     base: {
@@ -56,6 +59,16 @@ export const RegistrationRoute = () => {
                 element={
                     <LazyComponent>
                         <ForgotPasswordPage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={
+                    REGISTRATION_ROUTES.base.routes["terms-and-conditions"].href
+                }
+                element={
+                    <LazyComponent>
+                        <TermsAndConditionsPage />
                     </LazyComponent>
                 }
             />
