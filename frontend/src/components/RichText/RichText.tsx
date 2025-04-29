@@ -1,7 +1,7 @@
 import { FC, Fragment, PropsWithChildren } from "react";
 import { Typography, TypographyProps } from "../Typography/Typography";
 
-export type TextActionProps = {
+export type RichTextProps = {
     children?: string;
     extractor?: string;
     ExtractedTextRenders: (
@@ -10,7 +10,7 @@ export type TextActionProps = {
     ) => PropsWithChildren["children"];
 } & Either<{ variant?: undefined }, Omit<TypographyProps, "children">>;
 
-export const RichText: FC<TextActionProps> = ({
+export const RichText: FC<RichTextProps> = ({
     id,
     ref,
     variant,
