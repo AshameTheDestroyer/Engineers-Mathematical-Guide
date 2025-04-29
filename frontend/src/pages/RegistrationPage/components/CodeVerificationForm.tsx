@@ -7,6 +7,7 @@ import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { useToast } from "@/components/ToastProvider/ToastProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     ForgotPasswordStepsDTO,
@@ -23,6 +24,7 @@ export const CodeVerificationForm: FC<CodeVerificationFormProps> = ({
     SubmitData,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
+    const { Alert } = useToast();
 
     const {
         reset,
@@ -32,7 +34,7 @@ export const CodeVerificationForm: FC<CodeVerificationFormProps> = ({
     } = useSchematicForm(ForgotPasswordStepSchemas["code-verification"]);
 
     function ResendCode() {
-        alert("Code Resent.");
+        Alert("Code Resent.", { type: "info" });
     }
 
     return (

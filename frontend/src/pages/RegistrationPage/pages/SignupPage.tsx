@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FC, useEffect, useState } from "react";
 import { LANDING_ROUTES } from "@/routes/landing.routes";
 import { CredentialsForm } from "../components/CredentialsForm";
 import { LocalStorageManager } from "@/managers/LocalStorageManager";

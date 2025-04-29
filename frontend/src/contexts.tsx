@@ -2,6 +2,7 @@ import { HashRouter } from "react-router-dom";
 import { ComposeProviders } from "./functions/ComposeProviders";
 import { MathJaxContext as MathJaxProvider } from "better-react-mathjax";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastProvider } from "./components/ToastProvider/ToastProvider";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
@@ -45,6 +46,9 @@ export const ContextProviders = [
     ),
     ({ children }: PropsWithChildren) => (
         <MathJaxProvider>{children}</MathJaxProvider>
+    ),
+    ({ children }: PropsWithChildren) => (
+        <ToastProvider>{children}</ToastProvider>
     ),
 ];
 
