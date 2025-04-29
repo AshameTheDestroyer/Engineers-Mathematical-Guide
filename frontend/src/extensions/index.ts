@@ -17,3 +17,4 @@ import "./ChooseRandomly.ts";
 import "./DateConvertUnit.ts";
 import "./GetFocusableElements.ts";
 import "./DateConversionFactors.ts";
+import "./ArabicCompareWithoutArticle.ts";
