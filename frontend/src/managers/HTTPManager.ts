@@ -1,6 +1,6 @@
 import axios from "axios";
+import { LocalStorageManager } from "./LocalStorageManager";
 import { EnvironmentVariables } from "./EnvironmentVariables";
-import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
 
 export const HTTPManager = axios.create({
     timeout: 5000,
@@ -10,7 +10,7 @@ export const HTTPManager = axios.create({
 
 HTTPManager.interceptors.request.use(
     (config) => {
-        const token = GetFromLocalStorage("token");
+        const token = LocalStorageManager.Instance.items.token;
         if (token != null) {
             config.headers.Authorization = `Bearer ${token}`;
         }

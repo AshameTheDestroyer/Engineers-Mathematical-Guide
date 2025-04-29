@@ -1,3 +1,4 @@
+import { LocalStorageManager, ThemeMode } from "@/managers/LocalStorageManager";
 import {
     FC,
     useState,
@@ -6,10 +7,6 @@ import {
     createContext,
     PropsWithChildren,
 } from "react";
-import {
-    SetInLocalStorage,
-    GetFromLocalStorage,
-} from "@/functions/HandleLocalStorage";
 
 type ThemeModeStateProps = {
     themeMode: ThemeMode;
@@ -26,7 +23,7 @@ export type ThemeModeProviderProps = PropsWithChildren;
 
 export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
     const [state, setState] = useState<ThemeModeStateProps>(() => {
-        const themeMode = GetFromLocalStorage("theme-mode") as ThemeMode;
+        const themeMode = LocalStorageManager.Instance.items["theme-mode"];
 
         return {
             themeMode,
@@ -37,7 +34,7 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
     });
 
     useEffect(() => {
-        SetInLocalStorage("theme-mode", state.themeMode);
+        LocalStorageManager.Instance.SetItem("theme-mode", state.themeMode);
         document.body.classList[
             GetIsDarkThemed(state.themeMode) ? "add" : "remove"
         ]("dark-themed");
@@ -53,7 +50,10 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
 
     function ToggleThemeMode() {
         setState((state) => {
-            const themeMode = state.themeMode == "dark" ? "light" : "dark";
+            const themeMode =
+                state.themeMode == ThemeMode.dark
+                    ? ThemeMode.light
+                    : ThemeMode.dark;
 
             return {
                 ...state,

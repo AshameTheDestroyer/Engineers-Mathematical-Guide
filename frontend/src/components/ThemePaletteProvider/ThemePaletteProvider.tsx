@@ -1,8 +1,5 @@
+import { LocalStorageManager } from "@/managers/LocalStorageManager";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
-import {
-    SetInLocalStorage,
-    GetFromLocalStorage,
-} from "@/functions/HandleLocalStorage";
 import {
     FC,
     useState,
@@ -44,7 +41,7 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     const [state, setState] = useState<ThemePaletteStateProps>({
         SetThemePalette,
         themePalettes: GetThemePalettes(),
-        themePalette: GetFromLocalStorage("theme-palette") ?? "caramel",
+        themePalette: LocalStorageManager.Instance.items["theme-palette"],
     });
 
     useEffect(() => {
@@ -52,7 +49,7 @@ export const ThemePaletteProvider: FC<ThemePaletteProviderProps> = ({
     }, [isDarkThemed, state.themePalette]);
 
     function SetThemePalette(themePalette: string) {
-        SetInLocalStorage("theme-palette", themePalette);
+        LocalStorageManager.Instance.SetItem("theme-palette", themePalette);
         setState((state) => ({ ...state, themePalette }));
     }
 
