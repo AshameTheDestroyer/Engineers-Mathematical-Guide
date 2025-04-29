@@ -11,27 +11,33 @@ import locales from "@localization/terms_and_conditions.json";
 export const TermsAndConditionsPage: FC = () => {
     const { GetLocale, language } = useLocalization();
 
+    const references = GetLocale(
+        locales.references as unknown as Record<string, string>,
+        language
+    ) as unknown as Array<string>;
+
     return (
         <main className="-mx-6 my-10 flex flex-col gap-8">
-            <main className="flex max-h-[70vh] flex-col gap-8 overflow-y-scroll px-8 py-4">
+            <main className="flex max-h-[70vh] flex-col gap-8 overflow-y-scroll scroll-smooth px-8 py-4 [&>section:last-child>p]:text-right">
                 <Locale
                     variant="h1"
-                    className="bg-background-light sticky -top-4 -mx-8 px-8 py-4 text-xl font-bold"
+                    className="bg-background-light sticky -top-4 z-[1] -mx-8 px-8 py-4 text-2xl font-bold"
                 >
                     {locales.title}
                 </Locale>
-                {Object.keys(Object.omit(locales, "title", "last-option")).map(
-                    (key, i) => (
-                        <TermsSection
-                            key={i}
-                            locales={
-                                locales[
-                                    key as keyof typeof locales
-                                ] as TermsSectionProps["locales"]
-                            }
-                        />
-                    )
-                )}
+                {Object.keys(
+                    Object.omit(locales, "title", "references", "last-option")
+                ).map((key, i) => (
+                    <TermsSection
+                        key={i}
+                        references={references}
+                        locales={
+                            locales[
+                                key as keyof typeof locales
+                            ] as TermsSectionProps["locales"]
+                        }
+                    />
+                ))}
             </main>
             <section className="flex flex-col gap-4 px-8">
                 <RichText
