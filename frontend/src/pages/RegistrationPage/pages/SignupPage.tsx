@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { LANDING_ROUTES } from "@/routes/landing.routes";
 import { CredentialsForm } from "../components/CredentialsForm";
+import { LocalStorageManager } from "@/managers/LocalStorageManager";
 import { SignupSchema, SignupStepsDTO } from "@/schemas/SignupSchema";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { useSignupMutation } from "@/services/Registration/useSignupMutation";
@@ -18,6 +21,8 @@ export const SignupPage: FC = () => {
     const [data, setData] = useState<
         WithPartial<SignupStepsDTO, keyof SignupStepsDTO>
     >({});
+
+    const Navigate = useNavigate();
 
     const { mutateAsync } = useSignupMutation();
 
@@ -41,8 +46,11 @@ export const SignupPage: FC = () => {
         }
 
         mutateAsync(validatedData)
-            .then((response) => response.data)
-            .then(console.log)
+            .then((response) => response.data.accessToken)
+            .then((token) =>
+                LocalStorageManager.Instance.SetItem("token", token)
+            )
+            .then(() => Navigate(LANDING_ROUTES.home.absolute))
             .catch(console.error);
     }, [data]);
 
