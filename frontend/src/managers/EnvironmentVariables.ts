@@ -1,18 +1,21 @@
 import { z } from "zod";
 
-const EnvironmentVariablesSchema = z.object({
+export const EnvironmentVariablesSchema = z.object({
     BACKEND_API_URL: z.string().url(),
     ENVIRONMENT: z.enum(["development", "production"]),
 });
 
+export type EnvironmentVariablesDTO = z.infer<
+    typeof EnvironmentVariablesSchema
+>;
+
 const rawEnvironmentVariables = import.meta.env;
-const trimmedEnvironmentVariables = Object.fromEntries(
+const environmentVariables = Object.fromEntries(
     Object.entries(rawEnvironmentVariables).map(([key, value]) => [
         key.replace("VITE_", ""),
         value,
     ])
 );
 
-export const environmentVariables = EnvironmentVariablesSchema.parse(
-    trimmedEnvironmentVariables
-);
+export const EnvironmentVariables =
+    EnvironmentVariablesSchema.parse(environmentVariables);

@@ -1,10 +1,10 @@
 import axios from "axios";
+import { EnvironmentVariables } from "./EnvironmentVariables";
 import { GetFromLocalStorage } from "@/functions/HandleLocalStorage";
-import { environmentVariables } from "../services/EnvironmentVariables";
 
 export const HTTPManager = axios.create({
     timeout: 5000,
-    baseURL: environmentVariables.BACKEND_API_URL,
+    baseURL: EnvironmentVariables.BACKEND_API_URL,
     headers: { "Content-Type": "application/json" },
 });
 

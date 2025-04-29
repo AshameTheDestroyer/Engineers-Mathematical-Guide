@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
-import { environmentVariables } from "@/services/EnvironmentVariables";
+import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
@@ -15,7 +15,7 @@ const LANDING_ROUTES_ = RoutesWithAbsolutePaths({
 });
 
 export const LANDING_ROUTES =
-    environmentVariables.ENVIRONMENT != "development"
+    EnvironmentVariables.ENVIRONMENT != "development"
         ? LANDING_ROUTES_
         : { ...LANDING_ROUTES_, test: { text: "TEST", href: "/test" } };
 

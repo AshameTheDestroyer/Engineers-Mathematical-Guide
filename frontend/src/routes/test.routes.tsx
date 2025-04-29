@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
-import { environmentVariables } from "@/services/EnvironmentVariables";
+import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
@@ -24,7 +24,7 @@ const TEST_ROUTES_ = RoutesWithAbsolutePaths({
 });
 
 export const TEST_ROUTES =
-    environmentVariables.ENVIRONMENT == "development"
+    EnvironmentVariables.ENVIRONMENT == "development"
         ? TEST_ROUTES_
         : undefined;
 
