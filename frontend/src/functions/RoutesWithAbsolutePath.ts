@@ -15,7 +15,7 @@ export function RoutesWithAbsolutePaths<T extends Record<string, Anchor>>(
     parentsPath: string = ""
 ): { [K in keyof T]: RouteWithAbsolutePath<T[K]> } {
     return Object.entries(routes).reduce((accumulator, [key, value]) => {
-        const absolute = `${parentsPath}/${value.href}`;
+        const absolute = `${parentsPath}/${value.href}`.replace(/\/$/, "");
 
         return value.routes == null
             ? { ...accumulator, [key]: { ...value, absolute } }
