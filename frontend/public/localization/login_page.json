@@ -39,8 +39,8 @@
                     "ar": "كَلمةُ المُرورِ إلزاميّة."
                 },
                 "minimum": {
-                    "en": "Password should consist of more than 4 characters.",
-                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 4 حُروف."
+                    "en": "Password should consist of more than 8 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 8 حُروف."
                 },
                 "maximum": {
                     "en": "Password should not exceed 20 characters.",

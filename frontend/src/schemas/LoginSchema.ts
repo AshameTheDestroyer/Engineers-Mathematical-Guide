@@ -4,7 +4,7 @@ export const LoginSchema = z.object({
     email: z.string({ required_error: "required" }).email("pattern"),
     password: z
         .string({ required_error: "required" })
-        .min(4, "minimum")
+        .min(8, "minimum")
         .max(20, "maximum"),
 });
 

@@ -12,7 +12,7 @@ export const SignupStepSchemas = {
             email: z.string({ required_error: "required" }).email("pattern"),
             password: z
                 .string({ required_error: "required" })
-                .min(4, "minimum")
+                .min(8, "minimum")
                 .max(20, "maximum"),
             "confirm-password": z.string({ required_error: "required" }),
             "terms-and-conditions": z.boolean({ required_error: "required" }),
