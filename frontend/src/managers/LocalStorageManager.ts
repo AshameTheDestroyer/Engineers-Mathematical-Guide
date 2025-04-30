@@ -35,15 +35,17 @@ export class LocalStorageManager {
     constructor() {
         const defaults = ZodGetDefaults(LocalStorageSchema);
         const items = Object.keys(LocalStorageSchema.keyof().Enum).reduce(
-            (accumulator, key) => ({
-                ...accumulator,
-                [key]:
-                    JSON.parse(
-                        localStorage.getItem(
-                            `${LocalStorageManager.KEY}-${key}`
-                        )!
-                    ) ?? defaults[key as keyof LocalStorageDTO],
-            }),
+            (accumulator, key) => {
+                const value =
+                    localStorage.getItem(
+                        `${LocalStorageManager.KEY}-${key}`
+                    )! ?? defaults[key as keyof LocalStorageDTO];
+
+                return {
+                    ...accumulator,
+                    [key]: value != null ? JSON.parse(value) : undefined,
+                };
+            },
             {}
         );
 
@@ -59,6 +61,12 @@ export class LocalStorageManager {
         value: LocalStorageDTO[T]
     ): void {
         this.#items[key] = value;
+
+        if (value == undefined) {
+            localStorage.removeItem(`${LocalStorageManager.KEY}-${key}`);
+            return;
+        }
+
         localStorage.setItem(
             `${LocalStorageManager.KEY}-${key}`,
             JSON.stringify(value)
