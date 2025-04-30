@@ -8,5 +8,5 @@ export const useLoginMutation = () =>
     useMutation({
         mutationKey: [LOGIN_KEY],
         mutationFn: (data: LoginDTO) =>
-            HTTPManager.post<{ token: string }>("/auth/login", data),
+            HTTPManager.post<{ accessToken: string }>("/auth/login", data),
     });
