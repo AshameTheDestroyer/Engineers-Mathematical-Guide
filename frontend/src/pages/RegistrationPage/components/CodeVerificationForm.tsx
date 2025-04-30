@@ -34,7 +34,9 @@ export const CodeVerificationForm: FC<CodeVerificationFormProps> = ({
     } = useSchematicForm(ForgotPasswordStepSchemas["code-verification"]);
 
     function ResendCode() {
-        Alert("Code Resent.", { type: "info" });
+        Alert(GetLocale(locales.toasts["code-resent"], language), {
+            type: "info",
+        });
     }
 
     return (
