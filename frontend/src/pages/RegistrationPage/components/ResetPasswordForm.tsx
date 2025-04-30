@@ -6,6 +6,7 @@ import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { StateButton } from "@/components/StateButton/StateButton";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
@@ -16,11 +17,13 @@ import {
 import locales from "@localization/forgot_password_page.json";
 
 export type ResetPasswordFormProps = {
+    fetchingState: FetchingState;
     SubmitData: (data: ForgotPasswordStepsDTO["reset-password"]) => void;
 };
 
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     SubmitData,
+    fetchingState,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
@@ -44,9 +47,13 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                     <Button type="reset" onClick={(_e) => reset()}>
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
-                    <Button variant="primary" type="submit">
+                    <StateButton
+                        type="submit"
+                        variant="primary"
+                        {...fetchingState}
+                    >
                         <Locale>{locales.buttons["reset-password"]}</Locale>
-                    </Button>
+                    </StateButton>
                 </>
             }
             lastOptions={

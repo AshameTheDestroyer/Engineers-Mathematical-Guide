@@ -7,6 +7,7 @@ import { Button } from "@/components/Button/Button";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { StateButton } from "@/components/StateButton/StateButton";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     ForgotPasswordStepsDTO,
@@ -16,10 +17,14 @@ import {
 import locales from "@localization/forgot_password_page.json";
 
 export type CodeRequestFormProps = {
+    fetchingState: FetchingState;
     SubmitData: (data: ForgotPasswordStepsDTO["code-request"]) => void;
 };
 
-export const CodeRequestForm: FC<CodeRequestFormProps> = ({ SubmitData }) => {
+export const CodeRequestForm: FC<CodeRequestFormProps> = ({
+    SubmitData,
+    fetchingState,
+}) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
     const {
@@ -42,9 +47,13 @@ export const CodeRequestForm: FC<CodeRequestFormProps> = ({ SubmitData }) => {
                     <Button type="reset" onClick={(_e) => reset()}>
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
-                    <Button variant="primary" type="submit">
+                    <StateButton
+                        type="submit"
+                        variant="primary"
+                        {...fetchingState}
+                    >
                         <Locale>{locales.buttons["send-code"]}</Locale>
-                    </Button>
+                    </StateButton>
                 </>
             }
             lastOptions={

@@ -8,16 +8,21 @@ import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
 import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { StateButton } from "@/components/StateButton/StateButton";
 import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/login_page.json";
 
 export type LoginFormProps = {
+    fetchingState: FetchingState;
     SubmitData: (data: LoginDTO) => void;
 };
 
-export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
+export const LoginForm: FC<LoginFormProps> = ({
+    SubmitData,
+    fetchingState,
+}) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
     const {
@@ -59,9 +64,13 @@ export const LoginForm: FC<LoginFormProps> = ({ SubmitData }) => {
                     <Button type="reset" onClick={(_e) => reset()}>
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
-                    <Button variant="primary" type="submit">
+                    <StateButton
+                        type="submit"
+                        variant="primary"
+                        {...fetchingState}
+                    >
                         <Locale>{locales.buttons.login}</Locale>
-                    </Button>
+                    </StateButton>
                 </>
             }
             lastOptions={

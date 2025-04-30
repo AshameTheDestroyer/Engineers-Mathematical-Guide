@@ -4,7 +4,13 @@ import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
 import { useLoginMutation } from "@/services/Registration/useLoginMutation";
 
 export const LoginPage: FC = () => {
-    const { mutateAsync } = useLoginMutation();
+    const {
+        reset,
+        isError,
+        isSuccess,
+        mutateAsync,
+        isPending: isLoading,
+    } = useLoginMutation();
 
     function SubmitData(data: LoginDTO) {
         const { data: validatedData, success } = LoginSchema.safeParse(data);
@@ -19,5 +25,10 @@ export const LoginPage: FC = () => {
             .catch(console.error);
     }
 
-    return <LoginForm SubmitData={SubmitData} />;
+    return (
+        <LoginForm
+            SubmitData={SubmitData}
+            fetchingState={{ reset, isLoading, isError, isSuccess }}
+        />
+    );
 };

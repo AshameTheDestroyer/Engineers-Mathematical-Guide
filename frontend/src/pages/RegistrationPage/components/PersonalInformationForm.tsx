@@ -7,6 +7,7 @@ import { Button } from "@/components/Button/Button";
 import { Select } from "@/components/Select/Select";
 import { RichText } from "@/components/RichText/RichText";
 import { useSchematicForm } from "@/hooks/useSchematicForm";
+import { StateButton } from "@/components/StateButton/StateButton";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { CountrySelect } from "@/components/CountrySelect/CountrySelect";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -19,11 +20,13 @@ import {
 import locales from "@localization/signup_page.json";
 
 export type PersonalInformationFormProps = {
+    fetchingState: FetchingState;
     SubmitData: (data: SignupStepsDTO["personal-information"]) => void;
 };
 
 export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
     SubmitData,
+    fetchingState,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
     const [country, setCountry] = useState<Country>();
@@ -58,9 +61,13 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                     <Button type="reset" onClick={(_e) => reset()}>
                         <Locale>{locales.buttons.clear}</Locale>
                     </Button>
-                    <Button variant="primary" type="submit">
+                    <StateButton
+                        type="submit"
+                        variant="primary"
+                        {...fetchingState}
+                    >
                         <Locale>{locales.buttons.finish}</Locale>
-                    </Button>
+                    </StateButton>
                 </>
             }
             lastOptions={

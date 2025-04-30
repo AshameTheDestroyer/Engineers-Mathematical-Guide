@@ -24,7 +24,13 @@ export const SignupPage: FC = () => {
 
     const Navigate = useNavigate();
 
-    const { mutateAsync } = useSignupMutation();
+    const {
+        reset,
+        isError,
+        isSuccess,
+        mutateAsync,
+        isPending: isLoading,
+    } = useSignupMutation();
 
     useEffect(() => {
         const hasSkippedCredentialsStep =
@@ -75,6 +81,7 @@ export const SignupPage: FC = () => {
             return (
                 <PersonalInformationForm
                     SubmitData={SubmitPersonalInformation}
+                    fetchingState={{ reset, isLoading, isError, isSuccess }}
                 />
             );
     }

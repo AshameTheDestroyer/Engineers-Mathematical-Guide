@@ -24,10 +24,8 @@ export const ForgotPasswordPage: FC = () => {
         WithPartial<ForgotPasswordStepsDTO, keyof ForgotPasswordStepsDTO>
     >({});
 
-    const { mutateAsync: mutateAsyncResetPassword } =
-        useResetPasswordMutation();
-    const { mutateAsync: mutateAsyncForgotPassword } =
-        useForgotPasswordMutation();
+    const resetPasswordMutation = useResetPasswordMutation();
+    const forgotPasswordMutation = useForgotPasswordMutation();
 
     useEffect(() => {
         if (queryParams == null) {
@@ -65,7 +63,8 @@ export const ForgotPasswordPage: FC = () => {
             return;
         }
 
-        mutateAsyncForgotPassword(validatedData)
+        forgotPasswordMutation
+            .mutateAsync(validatedData)
             .then((response) => response.data)
             .then(console.log)
             .catch(console.error);
@@ -80,7 +79,8 @@ export const ForgotPasswordPage: FC = () => {
             return;
         }
 
-        mutateAsyncResetPassword(validatedData)
+        resetPasswordMutation
+            .mutateAsync(validatedData)
             .then((response) => response.data)
             .then(console.log)
             .catch(console.error);
@@ -108,10 +108,26 @@ export const ForgotPasswordPage: FC = () => {
 
     switch (queryParams?.step) {
         case "code-request":
-            return <CodeRequestForm SubmitData={SubmitCodeRequest} />;
+            return (
+                <CodeRequestForm
+                    SubmitData={SubmitCodeRequest}
+                    fetchingState={{
+                        isLoading: forgotPasswordMutation.isPending,
+                        ...forgotPasswordMutation,
+                    }}
+                />
+            );
         case "code-verification":
             return <CodeVerificationForm SubmitData={SubmitCodeVerification} />;
         case "reset-password":
-            return <ResetPasswordForm SubmitData={SubmitResetPassword} />;
+            return (
+                <ResetPasswordForm
+                    SubmitData={SubmitResetPassword}
+                    fetchingState={{
+                        isLoading: resetPasswordMutation.isPending,
+                        ...resetPasswordMutation,
+                    }}
+                />
+            );
     }
 };
