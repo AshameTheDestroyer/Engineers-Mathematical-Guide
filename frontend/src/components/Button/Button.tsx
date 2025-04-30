@@ -55,7 +55,7 @@ export const Button: FC<ButtonProps> = ({
                 "relative isolate",
                 Object.values(variantClassNames[variant]),
                 disabled
-                    ? "grayscale-25 saturate-75 pointer-events-none cursor-auto"
+                    ? "grayscale-25 saturate-75 contrast-85 pointer-events-none cursor-auto"
                     : "cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
