@@ -3,7 +3,7 @@ import { Input, InputProps } from "../Input/Input";
 import { IconButton } from "../IconButton/IconButton";
 import { FC, useEffect, useRef, useState } from "react";
 
-import check_icon from "@icons/check.svg";
+import check_icon from "@icons/check_filled.svg";
 
 export type CustomCheckboxProps = Omit<InputProps, "type" | "placeholder"> & {
     variant?: Variant;
