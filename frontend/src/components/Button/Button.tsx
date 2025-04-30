@@ -22,6 +22,7 @@ export const Button: FC<ButtonProps> = ({
     isThick,
     onClick,
     children,
+    disabled,
     className,
     doesTextGrow,
     variant = "default",
@@ -51,14 +52,18 @@ export const Button: FC<ButtonProps> = ({
         <button
             id={id}
             className={twMerge(
+                "relative isolate",
                 Object.values(variantClassNames[variant]),
-                "relative isolate cursor-pointer",
+                disabled
+                    ? "grayscale-25 saturate-75 pointer-events-none cursor-auto"
+                    : "cursor-pointer",
                 isThick
                     ? "active:[&>[data-content]]:translate-y-2"
                     : "active:[&>[data-content]]:translate-y-1",
                 className
             )}
             type="button"
+            disabled={disabled}
             role={link != null ? "link" : "button"}
             onClick={(e) => (onClick?.(e), link != null && Navigator(link))}
             {...props}
