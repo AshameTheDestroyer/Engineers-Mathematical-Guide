@@ -1,12 +1,15 @@
-import { FC } from "react";
 import { Icon } from "../Icon/Icon";
+import { FC, useEffect } from "react";
 import { Button, ButtonProps } from "../Button/Button";
 import { DoubleCogIcon } from "../DoubleCogIcon/DoubleCogIcon";
 
 import check_icon from "@icons/check.svg";
 import network_error_icon from "@icons/network_error.svg";
 
+export const ERROR_THRESHOLD = 1000;
+
 export type StateButtonProps = ButtonProps & {
+    reset: () => void;
     isError?: boolean;
     isLoading?: boolean;
     isSuccess?: boolean;
@@ -15,6 +18,7 @@ export type StateButtonProps = ButtonProps & {
 export const StateButton: FC<StateButtonProps> = ({
     id,
     ref,
+    reset,
     isError,
     children,
     isLoading,
@@ -24,6 +28,14 @@ export const StateButton: FC<StateButtonProps> = ({
     ...props
 }) => {
     const disabled = [_disabled, isLoading, isError, isSuccess].some(Boolean);
+
+    useEffect(() => {
+        if (!isError) {
+            return;
+        }
+
+        setTimeout(reset, ERROR_THRESHOLD);
+    }, [isError]);
 
     return (
         <Button
