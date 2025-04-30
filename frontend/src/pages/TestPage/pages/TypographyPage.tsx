@@ -23,7 +23,7 @@ export const TypographyPage: FC = () => {
     ];
 
     return (
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(max(30rem,40vw),1fr))] gap-8">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(max(30rem,40vw),1fr))] gap-8 [direction:ltr]">
             <TypographyCollection
                 classNames={textSizes}
                 title="English"
