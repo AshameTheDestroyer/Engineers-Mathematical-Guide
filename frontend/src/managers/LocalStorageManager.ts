@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { ZodGetDefaults } from "@/functions/Zod.GetDefaults";
 
+import "@extensions";
+
 export enum WritingDirectionEnum {
     rtl = "rtl",
     ltr = "ltr",
