@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { useThemeMode } from "@/hooks/useThemeMode";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton";
 
 import light_theme_icon from "@icons/sun.svg";
