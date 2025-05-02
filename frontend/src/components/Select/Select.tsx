@@ -112,7 +112,7 @@ export const Select = <T extends EnumValues>({
 
     const RenderOption: FC<{ option: typeof value }> = ({ option }) => {
         return option != ""
-            ? (RendersOptions?.(option) ?? option.toTitleCase())
+            ? (RendersOptions?.(option) ?? `${option}`.toTitleCase())
             : (placeholderOfNone ?? "None");
     };
 

@@ -57,6 +57,7 @@ export const CountrySelect: FC<CountrySelectProps> = ({
                 "[&>div>button>div>div>p]:text-ellipsis [&>div>button>div>div>p]:whitespace-nowrap [&>div>button>div>div]:flex [&>div>button>div>div]:gap-4 [&>div>button>div>div]:overflow-hidden [&>div>div>div]:max-h-[40vh] [&>div>div_button>div>*]:flex [&>div>div_button>div>*]:w-full [&>div>div_button>div>*]:gap-4 [&>div>div_button>div>*]:px-2",
                 className
             )}
+            options={options as unknown as EnumValues}
             doesHaveOverflowScroll={doesHaveOverflowScroll}
             MapOptions={
                 mapOptions as unknown as SelectProps<EnumValues>["MapOptions"]
@@ -64,7 +65,6 @@ export const CountrySelect: FC<CountrySelectProps> = ({
             RendersOptions={
                 renderOptions as unknown as SelectProps<EnumValues>["RendersOptions"]
             }
-            options={options as unknown as EnumValues}
             onChange={(e) => (
                 onChange?.(e),
                 onCountryChange?.(
