@@ -149,7 +149,7 @@ export const Select = <T extends EnumValues>({
                     direction == "ltr"
                         ? "[&>button>[data-content]]:pl-6 [&>button>[data-content]]:pr-3.5"
                         : "[&>button>[data-content]]:pl-3.5 [&>button>[data-content]]:pr-6",
-                    "h-[calc(var(--spacing)*10)] [&>button>[data-thickness]]:border-t-0 [&>button>div]:bg-[transparent!important] [&>button>div]:transition-[color,background-color,border] [&>button>div]:duration-200 [&>button]:text-[var(--color-foreground-darker)!important]"
+                    "mb-1 h-[calc(var(--spacing)*10)] [&>button>[data-thickness]]:border-t-0 [&>button>div]:bg-[transparent!important] [&>button>div]:transition-[color,background-color,border,translate] [&>button>div]:duration-200 [&>button]:text-[var(--color-foreground-darker)!important]"
                 )}
                 position={position}
                 doesTextGrow={doesTextGrow}
