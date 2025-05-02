@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Collection } from "./Collection";
-import { ProgressBar } from "@/components/ProgressBarComponent/ProgressBar";
+import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
 
 import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
