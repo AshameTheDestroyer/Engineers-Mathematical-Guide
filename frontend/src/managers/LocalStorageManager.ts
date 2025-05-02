@@ -9,8 +9,8 @@ export enum WritingDirectionEnum {
 export type WritingDirection = ExtractEnumValue<WritingDirectionEnum>;
 
 export enum ThemeModeEnum {
-    light = "light",
     dark = "dark",
+    light = "light",
     system = "system",
 }
 
