@@ -1,9 +1,10 @@
 import { FC } from "react";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Button } from "@/components/Button/Button";
 import { ColourCollection } from "./ColourCollection";
 import { Collection, CollectionProps } from "./Collection";
 import { useThemePalette } from "@/components/ThemePaletteProvider/ThemePaletteProvider";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export type PaletteCollectionProps = Omit<CollectionProps, "children"> & {
     classNames: {
@@ -20,6 +21,7 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
     typography,
     classNames,
 }) => {
+    const { direction } = useLocalization();
     const { SetThemePalette } = useThemePalette();
 
     return (
@@ -34,7 +36,10 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
             typography={typography}
         >
             <Button
-                className="absolute right-0 top-0 translate-y-[var(--line-height)]"
+                className={twJoin(
+                    direction == "ltr" ? "right-0" : "left-0",
+                    "absolute top-0 translate-y-[var(--line-height)]"
+                )}
                 onClick={(_e) => SetThemePalette(title.toLowerCase())}
             >
                 Apply
