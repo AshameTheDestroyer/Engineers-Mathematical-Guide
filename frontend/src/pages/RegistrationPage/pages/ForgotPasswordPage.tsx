@@ -111,10 +111,7 @@ export const ForgotPasswordPage: FC = () => {
             return (
                 <CodeRequestForm
                     SubmitData={SubmitCodeRequest}
-                    fetchingState={{
-                        isLoading: forgotPasswordMutation.isPending,
-                        ...forgotPasswordMutation,
-                    }}
+                    fetchingState={{ ...forgotPasswordMutation }}
                 />
             );
         case "code-verification":
@@ -123,10 +120,7 @@ export const ForgotPasswordPage: FC = () => {
             return (
                 <ResetPasswordForm
                     SubmitData={SubmitResetPassword}
-                    fetchingState={{
-                        isLoading: resetPasswordMutation.isPending,
-                        ...resetPasswordMutation,
-                    }}
+                    fetchingState={{ ...resetPasswordMutation }}
                 />
             );
     }

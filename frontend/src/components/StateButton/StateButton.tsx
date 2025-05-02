@@ -8,12 +8,7 @@ import network_error_icon from "@icons/network_error.svg";
 
 export const ERROR_THRESHOLD = 1000;
 
-export type StateButtonProps = ButtonProps & {
-    reset: () => void;
-    isError?: boolean;
-    isLoading?: boolean;
-    isSuccess?: boolean;
-};
+export type StateButtonProps = ButtonProps & FetchingState;
 
 export const StateButton: FC<StateButtonProps> = ({
     id,
@@ -21,13 +16,13 @@ export const StateButton: FC<StateButtonProps> = ({
     reset,
     isError,
     children,
-    isLoading,
+    isPending,
     isSuccess,
     className,
     disabled: _disabled,
     ...props
 }) => {
-    const disabled = [_disabled, isLoading, isError, isSuccess].some(Boolean);
+    const disabled = [_disabled, isPending, isError, isSuccess].some(Boolean);
 
     useEffect(() => {
         if (!isError) {
@@ -47,7 +42,7 @@ export const StateButton: FC<StateButtonProps> = ({
         >
             {isError ? (
                 <Icon source={network_error_icon} width={24} height={24} />
-            ) : isLoading ? (
+            ) : isPending ? (
                 <DoubleCogIcon
                     size={24}
                     className="scale-85 [&>*]:[animation-duration:3s]"

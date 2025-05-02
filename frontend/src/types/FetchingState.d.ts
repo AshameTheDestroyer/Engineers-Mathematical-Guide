@@ -1,6 +1,6 @@
 type FetchingState = {
     reset: () => void;
     isError?: boolean;
-    isLoading?: boolean;
+    isPending?: boolean;
     isSuccess?: boolean;
 };
