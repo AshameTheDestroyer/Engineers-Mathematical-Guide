@@ -7,7 +7,7 @@ import { PasswordInput } from "@/components/PasswordInput/PasswordInput";
 
 export const InputCollection: FC = () => {
     return (
-        <Collection title="Input Component">
+        <Collection title="Input Components">
             <Collection
                 className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
                 title="Normal"
