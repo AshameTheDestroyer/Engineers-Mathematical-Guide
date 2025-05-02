@@ -8,7 +8,7 @@ import network_error_icon from "@icons/network_error.svg";
 
 export const ERROR_THRESHOLD = 1000;
 
-export type StateButtonProps = ButtonProps & FetchingState;
+export type StateButtonProps = ButtonProps & MutationProps;
 
 export const StateButton: FC<StateButtonProps> = ({
     id,

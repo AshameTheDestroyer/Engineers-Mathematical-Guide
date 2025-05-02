@@ -1,4 +1,4 @@
-type FetchingState = {
+type MutationProps = {
     reset: () => void;
     isError?: boolean;
     isPending?: boolean;

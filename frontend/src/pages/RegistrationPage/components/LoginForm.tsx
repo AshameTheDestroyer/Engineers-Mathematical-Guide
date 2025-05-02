@@ -15,13 +15,13 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import locales from "@localization/login_page.json";
 
 export type LoginFormProps = {
-    fetchingState: FetchingState;
+    mutationProps: MutationProps;
     SubmitData: (data: LoginDTO) => void;
 };
 
 export const LoginForm: FC<LoginFormProps> = ({
     SubmitData,
-    fetchingState,
+    mutationProps,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
@@ -67,7 +67,7 @@ export const LoginForm: FC<LoginFormProps> = ({
                     <StateButton
                         type="submit"
                         variant="primary"
-                        {...fetchingState}
+                        {...mutationProps}
                     >
                         <Locale>{locales.buttons.login}</Locale>
                     </StateButton>

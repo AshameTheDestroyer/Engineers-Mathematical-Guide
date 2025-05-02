@@ -20,13 +20,13 @@ import {
 import locales from "@localization/signup_page.json";
 
 export type PersonalInformationFormProps = {
-    fetchingState: FetchingState;
+    mutationProps: MutationProps;
     SubmitData: (data: SignupStepsDTO["personal-information"]) => void;
 };
 
 export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
     SubmitData,
-    fetchingState,
+    mutationProps,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
     const [country, setCountry] = useState<Country>();
@@ -64,7 +64,7 @@ export const PersonalInformationForm: FC<PersonalInformationFormProps> = ({
                     <StateButton
                         type="submit"
                         variant="primary"
-                        {...fetchingState}
+                        {...mutationProps}
                     >
                         <Locale>{locales.buttons.finish}</Locale>
                     </StateButton>

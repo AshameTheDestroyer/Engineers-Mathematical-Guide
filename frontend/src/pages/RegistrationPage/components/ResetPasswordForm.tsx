@@ -17,13 +17,13 @@ import {
 import locales from "@localization/forgot_password_page.json";
 
 export type ResetPasswordFormProps = {
-    fetchingState: FetchingState;
+    mutationProps: MutationProps;
     SubmitData: (data: ForgotPasswordStepsDTO["reset-password"]) => void;
 };
 
 export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
     SubmitData,
-    fetchingState,
+    mutationProps,
 }) => {
     const { GetLocale, GetErrorLocale, language } = useLocalization();
 
@@ -50,7 +50,7 @@ export const ResetPasswordForm: FC<ResetPasswordFormProps> = ({
                     <StateButton
                         type="submit"
                         variant="primary"
-                        {...fetchingState}
+                        {...mutationProps}
                     >
                         <Locale>{locales.buttons["reset-password"]}</Locale>
                     </StateButton>
