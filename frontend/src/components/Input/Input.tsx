@@ -31,7 +31,7 @@ export const Input: FC<InputProps> = ({
     functionallyRequired,
     ...props
 }) => {
-    const inputID = `input-${name}`;
+    const inputID = `input-${id ?? name}`;
     const { direction } = useLocalization();
 
     const variantClassNames: VariantClassNames = {
@@ -54,8 +54,8 @@ export const Input: FC<InputProps> = ({
 
     return (
         <div
-            id={id}
             ref={ref}
+            id={id ?? name}
             className={twMerge(
                 Object.values(variantClassNames[variant]),
                 "relative flex flex-col gap-2 rounded-xl transition duration-200 [&>input:is(:focus-within,:not(:placeholder-shown))+label]:top-0",

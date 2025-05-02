@@ -62,7 +62,7 @@ export const Select = <T extends EnumValues>({
     position = "bottom-center",
     ...props
 }: SelectProps<T>): ReturnType<FC<SelectProps<T>>> => {
-    const inputID = `input-${name}`;
+    const inputID = `input-${id ?? name}`;
     const { direction } = useLocalization();
 
     const dropDownReference = useRef<HTMLDivElement>(null);
@@ -118,8 +118,8 @@ export const Select = <T extends EnumValues>({
 
     return (
         <div
-            id={id}
             ref={ref}
+            id={id ?? name}
             className={twMerge("relative flex flex-col gap-3", className)}
         >
             <select
