@@ -1,7 +1,21 @@
 import { useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-export const useMockMutation = (requestTime = 2000, resetTime = 2000) => {
+export type useMockMutationProps = {
+    resetTime?: number;
+    requestTime?: number;
+    onError?: () => void;
+    onSuccess?: () => void;
+};
+
+export const useMockMutation = (props?: useMockMutationProps) => {
+    const {
+        onError,
+        onSuccess,
+        resetTime = 2000,
+        requestTime = 2000,
+    } = props ?? {};
+
     const mutation = useMutation({
         mutationKey: [],
         mutationFn: () =>
@@ -11,8 +25,22 @@ export const useMockMutation = (requestTime = 2000, resetTime = 2000) => {
     });
 
     useEffect(() => {
+        if (!mutation.isSuccess) {
+            return;
+        }
+
+        onSuccess?.();
         setTimeout(mutation.reset, resetTime);
-    }, [mutation.isSuccess, mutation.isError]);
+    }, [mutation.isSuccess]);
+
+    useEffect(() => {
+        if (!mutation.isError) {
+            return;
+        }
+
+        onError?.();
+        setTimeout(mutation.reset, resetTime);
+    }, [mutation.isError]);
 
     return mutation;
 };
