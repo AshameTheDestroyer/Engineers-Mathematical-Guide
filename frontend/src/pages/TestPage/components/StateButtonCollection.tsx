@@ -1,13 +1,18 @@
 import { FC } from "react";
 import { Collection } from "./Collection";
+import { useMockMutation } from "@/hooks/useMockMutation";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { StateButton } from "@/components/StateButton/StateButton";
-import { useMockMutation } from "@/hooks/useMockMutation";
+import { useToast } from "@/components/ToastProvider/ToastProvider";
 
 export const StateButtonCollection: FC = () => {
-    const mutationDefault = useMockMutation();
-    const mutationPrimary = useMockMutation();
-    const mutationSecondary = useMockMutation();
+    const { Alert } = useToast();
+    const onError = () => Alert("Error", { type: "error" });
+    const onSuccess = () => Alert("Success", { type: "success" });
+
+    const mutationDefault = useMockMutation({ onError, onSuccess });
+    const mutationPrimary = useMockMutation({ onError, onSuccess });
+    const mutationSecondary = useMockMutation({ onError, onSuccess });
 
     return (
         <Collection title="State Button Component">
