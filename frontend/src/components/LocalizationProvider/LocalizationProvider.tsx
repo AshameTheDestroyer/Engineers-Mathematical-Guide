@@ -1,4 +1,7 @@
-import { Direction, LocalStorageManager } from "@/managers/LocalStorageManager";
+import {
+    WritingDirection,
+    LocalStorageManager,
+} from "@/managers/LocalStorageManager";
 import {
     FC,
     useState,
@@ -10,9 +13,9 @@ import {
 
 export type LocalizationStateProps = {
     language: string;
-    direction: Direction;
+    direction: WritingDirection;
     SetLanguage: (language: string) => void;
-    SetDirection: (direction: Direction) => void;
+    SetDirection: (direction: WritingDirection) => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
     GetRouteLocales: (
         routes: Record<string, Omit<Anchor, "routes">>,
@@ -54,7 +57,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         setState((state) => ({ ...state, language }));
     }
 
-    function SetDirection(direction: Direction) {
+    function SetDirection(direction: WritingDirection) {
         LocalStorageManager.Instance.SetItem("direction", direction);
         setState((state) => ({ ...state, direction }));
     }

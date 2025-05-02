@@ -1,12 +1,12 @@
 import { z } from "zod";
 import { ZodGetDefaults } from "@/functions/Zod.GetDefaults";
 
-export enum DirectionEnum {
+export enum WritingDirectionEnum {
     rtl = "rtl",
     ltr = "ltr",
 }
 
-export type Direction = ExtractEnumValue<DirectionEnum>;
+export type WritingDirection = ExtractEnumValue<WritingDirectionEnum>;
 
 export enum ThemeModeEnum {
     light = "light",
@@ -20,7 +20,9 @@ export const LocalStorageSchema = z.object({
     token: z.string().nullish(),
     language: z.string().length(2).default("en"),
     "theme-palette": z.string().default("caramel"),
-    direction: z.enum(Object.getEnumValues(DirectionEnum)).default("ltr"),
+    direction: z
+        .enum(Object.getEnumValues(WritingDirectionEnum))
+        .default("ltr"),
     "theme-mode": z.enum(Object.getEnumValues(ThemeModeEnum)).default("system"),
 });
 
