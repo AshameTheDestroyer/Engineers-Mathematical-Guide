@@ -1,8 +1,9 @@
 import { Icon } from "../Icon/Icon";
 import { FC, Fragment } from "react";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import arrow_icon from "@icons/direction_arrow.svg";
 
@@ -18,6 +19,8 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
 }) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
+
+    const { direction } = useLocalization();
 
     if (length != null && length < 2) {
         throw Error("Length cannot be less than 2.");
@@ -88,7 +91,12 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                         {i < shownPaths.length - 1 && (
                             <li>
                                 <Icon
-                                    className="mx-2 rotate-90"
+                                    className={twJoin(
+                                        "mx-2",
+                                        direction == "ltr"
+                                            ? "rotate-90"
+                                            : "rotate-270"
+                                    )}
                                     width={24}
                                     height={24}
                                     source={arrow_icon}
