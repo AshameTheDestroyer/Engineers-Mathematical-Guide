@@ -1,6 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { FC, useEffect, useRef } from "react";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import arrow_icon from "@icons/arrow.svg";
 
@@ -15,6 +16,7 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
     threshold = 100,
     ...props
 }) => {
+    const { direction } = useLocalization();
     const buttonReference = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
@@ -46,7 +48,8 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
             id={id}
             ref={buttonReference}
             className={twMerge(
-                "bottom-page right-page fixed z-50 opacity-75",
+                "bottom-page fixed z-50 opacity-75",
+                direction == "ltr" ? "right-page" : "left-page",
                 className
             )}
             icon={{
