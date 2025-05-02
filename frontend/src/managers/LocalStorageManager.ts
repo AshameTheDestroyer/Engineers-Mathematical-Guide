@@ -16,8 +16,8 @@ export const LocalStorageSchema = z.object({
     token: z.string().nullish(),
     language: z.string().length(2).default("en"),
     "theme-palette": z.string().default("caramel"),
-    direction: z.nativeEnum(Direction).default(Direction.ltr),
-    "theme-mode": z.nativeEnum(ThemeMode).default(ThemeMode.system),
+    direction: z.enum(Object.getEnumValues(Direction)).default("ltr"),
+    "theme-mode": z.enum(Object.getEnumValues(ThemeMode)).default("system"),
 });
 
 export type LocalStorageDTO = z.infer<typeof LocalStorageSchema>;

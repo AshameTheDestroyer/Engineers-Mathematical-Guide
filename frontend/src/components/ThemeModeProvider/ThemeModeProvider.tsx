@@ -9,10 +9,10 @@ import {
 } from "react";
 
 type ThemeModeStateProps = {
-    themeMode: ThemeMode;
     isDarkThemed: boolean;
     ToggleThemeMode: () => void;
-    SetThemeMode: (themeMode: ThemeMode) => void;
+    themeMode: ExtractEnumValue<ThemeMode>;
+    SetThemeMode: (themeMode: ExtractEnumValue<ThemeMode>) => void;
 };
 
 export const ThemeModeContext = createContext<ThemeModeStateProps>(null!);
@@ -40,7 +40,7 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
         ]("dark-themed");
     }, [state.themeMode]);
 
-    function SetThemeMode(themeMode: ThemeMode) {
+    function SetThemeMode(themeMode: ExtractEnumValue<ThemeMode>) {
         setState((state) => ({
             ...state,
             themeMode,
@@ -63,7 +63,7 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
         });
     }
 
-    function GetIsDarkThemed(themeMode: ThemeMode): boolean {
+    function GetIsDarkThemed(themeMode: ExtractEnumValue<ThemeMode>): boolean {
         return (
             themeMode == "dark" ||
             (themeMode == "system" && GetIsSystemDarkThemed())
