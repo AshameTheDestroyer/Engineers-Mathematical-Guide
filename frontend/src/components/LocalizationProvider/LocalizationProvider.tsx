@@ -10,9 +10,9 @@ import {
 
 export type LocalizationStateProps = {
     language: string;
-    direction: ExtractEnumValue<Direction>;
+    direction: Direction;
     SetLanguage: (language: string) => void;
-    SetDirection: (direction: ExtractEnumValue<Direction>) => void;
+    SetDirection: (direction: Direction) => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
     GetRouteLocales: (
         routes: Record<string, Omit<Anchor, "routes">>,
@@ -54,7 +54,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         setState((state) => ({ ...state, language }));
     }
 
-    function SetDirection(direction: ExtractEnumValue<Direction>) {
+    function SetDirection(direction: Direction) {
         LocalStorageManager.Instance.SetItem("direction", direction);
         setState((state) => ({ ...state, direction }));
     }

@@ -6,6 +6,8 @@ export enum GenderEnum {
     female = "female",
 }
 
+export type Gender = ExtractEnumValue<GenderEnum>;
+
 export const SignupStepSchemas = {
     credentials: z
         .object({

@@ -1,23 +1,27 @@
 import { z } from "zod";
 import { ZodGetDefaults } from "@/functions/Zod.GetDefaults";
 
-export enum Direction {
+export enum DirectionEnum {
     rtl = "rtl",
     ltr = "ltr",
 }
 
-export enum ThemeMode {
+export type Direction = ExtractEnumValue<DirectionEnum>;
+
+export enum ThemeModeEnum {
     light = "light",
     dark = "dark",
     system = "system",
 }
 
+export type ThemeMode = ExtractEnumValue<ThemeModeEnum>;
+
 export const LocalStorageSchema = z.object({
     token: z.string().nullish(),
     language: z.string().length(2).default("en"),
     "theme-palette": z.string().default("caramel"),
-    direction: z.enum(Object.getEnumValues(Direction)).default("ltr"),
-    "theme-mode": z.enum(Object.getEnumValues(ThemeMode)).default("system"),
+    direction: z.enum(Object.getEnumValues(DirectionEnum)).default("ltr"),
+    "theme-mode": z.enum(Object.getEnumValues(ThemeModeEnum)).default("system"),
 });
 
 export type LocalStorageDTO = z.infer<typeof LocalStorageSchema>;

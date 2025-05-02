@@ -1,4 +1,4 @@
-import { LocalStorageManager, ThemeMode } from "@/managers/LocalStorageManager";
+import { ThemeMode, LocalStorageManager } from "@/managers/LocalStorageManager";
 import {
     FC,
     useState,
@@ -9,10 +9,10 @@ import {
 } from "react";
 
 type ThemeModeStateProps = {
+    themeMode: ThemeMode;
     isDarkThemed: boolean;
     ToggleThemeMode: () => void;
-    themeMode: ExtractEnumValue<ThemeMode>;
-    SetThemeMode: (themeMode: ExtractEnumValue<ThemeMode>) => void;
+    SetThemeMode: (themeMode: ThemeMode) => void;
 };
 
 export const ThemeModeContext = createContext<ThemeModeStateProps>(null!);
@@ -40,7 +40,7 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
         ]("dark-themed");
     }, [state.themeMode]);
 
-    function SetThemeMode(themeMode: ExtractEnumValue<ThemeMode>) {
+    function SetThemeMode(themeMode: ThemeMode) {
         setState((state) => ({
             ...state,
             themeMode,
@@ -50,10 +50,8 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
 
     function ToggleThemeMode() {
         setState((state) => {
-            const themeMode =
-                state.themeMode == ThemeMode.dark
-                    ? ThemeMode.light
-                    : ThemeMode.dark;
+            const themeMode: ThemeMode =
+                state.themeMode == "dark" ? "light" : "dark";
 
             return {
                 ...state,
@@ -63,7 +61,7 @@ export const ThemeModeProvider: FC<ThemeModeProviderProps> = ({ children }) => {
         });
     }
 
-    function GetIsDarkThemed(themeMode: ExtractEnumValue<ThemeMode>): boolean {
+    function GetIsDarkThemed(themeMode: ThemeMode): boolean {
         return (
             themeMode == "dark" ||
             (themeMode == "system" && GetIsSystemDarkThemed())
