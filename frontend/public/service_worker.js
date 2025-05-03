@@ -21,7 +21,9 @@ this.addEventListener("install", (e) =>
                     console.log("Cache Opened"), cache.addAll(URLsToCache)
                 )
             )
-            .catch((err) => console.error("Failed to cache resources:", err))
+            .catch((error) =>
+                console.error("Failed to cache resources:", error)
+            )
     )
 );
 
@@ -40,6 +42,9 @@ this.addEventListener("fetch", (e) =>
                               : caches.match(offlinePageURL)
                       )
             )
+            .catch((error) =>
+                console.error("Failed to fetch resources:", error)
+            )
     )
 );
 
@@ -56,6 +61,9 @@ this.addEventListener("activate", (e) =>
                             caches.delete(cacheKey))
                     )
                 )
+            )
+            .catch((error) =>
+                console.error("Failed to clean up resources:", error)
             )
     )
 );
