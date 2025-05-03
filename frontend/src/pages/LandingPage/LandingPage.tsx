@@ -5,7 +5,7 @@ import { MainContent } from "./components/MainContent";
 
 export const LandingPage: FC = () => {
     return (
-        <Page>
+        <Page className="overflow-x-clip">
             <Header />
             <MainContent />
         </Page>

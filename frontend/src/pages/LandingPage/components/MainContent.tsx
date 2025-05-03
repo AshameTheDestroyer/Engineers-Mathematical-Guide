@@ -16,10 +16,10 @@ export const MainContent: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
-        <div className="centralize bg-gray flex h-32 grow flex-row justify-between gap-5">
-            <section className="w-150 flex flex-col gap-5">
+        <div className="centralize flex grow flex-row flex-wrap-reverse justify-between gap-5">
+            <section className="w-150 pb-page flex flex-col gap-5">
                 <Locale
-                    className="text-primary-normal text-3xl font-bold"
+                    className="text-primary-normal text-3xl font-bold max-sm:text-2xl"
                     variant="h1"
                 >
                     {locales.title}
@@ -38,13 +38,13 @@ export const MainContent: FC = () => {
                     {GetLocale(locales.body, language)}
                 </RichText>
                 <ButtonBox
+                    className="[&>button]:grow"
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
-                    <Button className="grow-[0.6]" link="/learn-more">
+                    <Button link="/learn-more">
                         <Locale>{locales.buttons.learn}</Locale>
                     </Button>
                     <Button
-                        className="grow"
                         link="/app"
                         variant="primary"
                         icon={{
@@ -58,7 +58,7 @@ export const MainContent: FC = () => {
                 </ButtonBox>
             </section>
             <img
-                className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)]"
+                className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)] max-md:w-60"
                 loading="lazy"
                 src={pi_image}
                 alt="pi image"
