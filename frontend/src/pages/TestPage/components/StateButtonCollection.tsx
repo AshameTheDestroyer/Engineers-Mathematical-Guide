@@ -24,8 +24,8 @@ export const StateButtonCollection: FC = () => {
                     {...Object.pick(
                         mutationDefault,
                         "reset",
-                        "isPending",
                         "isError",
+                        "isPending",
                         "isSuccess"
                     )}
                 >
@@ -38,8 +38,8 @@ export const StateButtonCollection: FC = () => {
                     {...Object.pick(
                         mutationPrimary,
                         "reset",
-                        "isPending",
                         "isError",
+                        "isPending",
                         "isSuccess"
                     )}
                 >
@@ -52,8 +52,8 @@ export const StateButtonCollection: FC = () => {
                     {...Object.pick(
                         mutationSecondary,
                         "reset",
-                        "isPending",
                         "isError",
+                        "isPending",
                         "isSuccess"
                     )}
                 >

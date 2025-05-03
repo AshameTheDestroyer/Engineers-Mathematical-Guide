@@ -114,8 +114,8 @@ export const ForgotPasswordPage: FC = () => {
                     mutationProps={Object.pick(
                         forgotPasswordMutation,
                         "reset",
-                        "isPending",
                         "isError",
+                        "isPending",
                         "isSuccess"
                     )}
                 />
@@ -129,8 +129,8 @@ export const ForgotPasswordPage: FC = () => {
                     mutationProps={Object.pick(
                         resetPasswordMutation,
                         "reset",
-                        "isPending",
                         "isError",
+                        "isPending",
                         "isSuccess"
                     )}
                 />
