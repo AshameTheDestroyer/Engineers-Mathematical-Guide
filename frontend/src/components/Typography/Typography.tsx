@@ -1,3 +1,4 @@
+import { twJoin } from "tailwind-merge";
 import { FC, HTMLAttributes } from "react";
 import { ComponentProps } from "@/types/ComponentProps";
 
@@ -26,7 +27,7 @@ export const Typography = <
         <Element
             id={id}
             ref={ref as any}
-            className={className}
+            className={twJoin("typography", className)}
             {...(props as any)}
         >
             {children}
