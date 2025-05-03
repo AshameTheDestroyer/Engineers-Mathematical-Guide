@@ -5,12 +5,12 @@ import { FC, useEffect, useRef, useState } from "react";
 
 import check_icon from "@icons/check_filled.svg";
 
-export type CustomCheckboxProps = Omit<InputProps, "type" | "placeholder"> & {
+export type CheckboxProps = Omit<InputProps, "type" | "placeholder"> & {
     variant?: Variant;
     indeterminate?: boolean;
 };
 
-export const Checkbox: FC<CustomCheckboxProps> = ({
+export const Checkbox: FC<CheckboxProps> = ({
     id,
     ref,
     name,
