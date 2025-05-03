@@ -14,16 +14,15 @@
         <style>
             @font-face {
                 font-family: "offline font";
-                src: url("offline_font.ttf");
+                src: url("public/offline_font.ttf");
             }
             body {
-                min-height: 100vh;
-                min-height: 100dvh;
                 margin: 0;
                 padding: 0;
                 display: flex;
+                min-height: 100vh;
+                min-height: 100dvh;
                 font-family: "offline font";
-                overflow: hidden;
             }
             #root {
                 gap: 1.25rem;
@@ -32,19 +31,23 @@
                 color: white;
                 padding: 2.5rem;
                 overflow: hidden;
+                font-weight: bold;
+                position: relative;
                 isolation: isolate;
                 place-items: center;
                 place-content: center;
                 flex-direction: column;
                 background-color: #00af64;
+                text-shadow: 0px 0px 3px black;
             }
             h1,
             p {
                 margin: 0;
             }
             .cog {
-                animation: spin 60s linear infinite;
                 transition: all 200ms;
+                animation: spin 60s linear infinite;
+                filter: drop-shadow(0px 0px 2px black);
             }
 
             @keyframes spin {
@@ -155,7 +158,7 @@
                     z-index: -1;
                     right: -2.5rem;
                     position: absolute;
-                    transform: translate(25%, 66.666%);
+                    transform: translate(25%, 33.333%);
                 "
             >
                 <svg
