@@ -6,9 +6,10 @@ import { DoubleCogIcon } from "../DoubleCogIcon/DoubleCogIcon";
 import check_icon from "@icons/check.svg";
 import network_error_icon from "@icons/network_error.svg";
 
-export const ERROR_THRESHOLD = 1000;
-
-export type StateButtonProps = ButtonProps & MutationProps;
+export type StateButtonProps = {
+    errorThreshold?: number;
+} & ButtonProps &
+    MutationProps;
 
 export const StateButton: FC<StateButtonProps> = ({
     id,
@@ -20,6 +21,7 @@ export const StateButton: FC<StateButtonProps> = ({
     isSuccess,
     className,
     disabled: _disabled,
+    errorThreshold = 1000,
     ...props
 }) => {
     const disabled = [_disabled, isPending, isError, isSuccess].some(Boolean);
@@ -29,7 +31,7 @@ export const StateButton: FC<StateButtonProps> = ({
             return;
         }
 
-        setTimeout(reset, ERROR_THRESHOLD);
+        setTimeout(reset, errorThreshold);
     }, [isError]);
 
     return (
