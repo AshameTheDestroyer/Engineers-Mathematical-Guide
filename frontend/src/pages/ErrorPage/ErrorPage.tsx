@@ -10,7 +10,9 @@ export const ErrorPage: FC = () => {
             <Locale variant="h1" className="text-3xl font-bold">
                 {locales.title}
             </Locale>
-            <Locale variant="p">{locales.subtitle}</Locale>
+            <Locale variant="p" className="font-bold">
+                {locales.subtitle}
+            </Locale>
         </FallbackPage>
     );
 };

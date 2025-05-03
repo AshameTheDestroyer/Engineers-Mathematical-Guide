@@ -10,7 +10,9 @@ export const LoadingPage: FC = () => {
             <Locale variant="h1" className="text-3xl font-bold">
                 {locals.title}
             </Locale>
-            <Locale variant="p">{locals.subtitle}</Locale>
+            <Locale variant="p" className="font-bold">
+                {locals.subtitle}
+            </Locale>
         </FallbackPage>
     );
 };

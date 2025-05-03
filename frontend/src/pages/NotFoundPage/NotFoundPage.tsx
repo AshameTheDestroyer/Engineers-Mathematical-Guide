@@ -13,9 +13,11 @@ export const NotFoundPage: FC = () => {
             <Locale variant="h1" className="text-3xl font-bold">
                 {locales.title}
             </Locale>
-            <Locale variant="p">{locales.body}</Locale>
+            <Locale variant="p" className="font-bold">
+                {locales.body}
+            </Locale>
             <Button
-                className="[&>div]:px-8"
+                className="max-w-max place-self-center [&>div]:px-4"
                 link="/"
                 icon={{
                     source: home_icon,
