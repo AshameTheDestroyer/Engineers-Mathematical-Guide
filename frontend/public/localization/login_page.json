@@ -1,0 +1,70 @@
+{
+    "title": {
+        "en": "Enter your information",
+        "ar": "أدخلْ مَعلوماتِك"
+    },
+    "inputs": {
+        "email": {
+            "label": {
+                "en": "Email",
+                "ar": "البَريدُ الإلكترونيّ"
+            },
+            "placeholder": {
+                "en": "example@gmail.com",
+                "ar": "أدخلْ بَريدكَ الإلكترونيّ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Email is required.",
+                    "ar": "البَريدُ الإلكترونيُّ إلزاميّ."
+                },
+                "pattern": {
+                    "en": "Email should be written as 'example@gmail.com'.",
+                    "ar": "يَجبُ على البَريدِ الإلكترونيّ أنْ يُكتَبَ كالتّالي 'example@gmail.com'."
+                }
+            }
+        },
+        "password": {
+            "label": {
+                "en": "Password",
+                "ar": "كلمةُ المُرور"
+            },
+            "placeholder": {
+                "en": "Enter new password",
+                "ar": "أدخلْ كلمةَ مُرورٍ جديدةٍ"
+            },
+            "errors": {
+                "required": {
+                    "en": "Password is required.",
+                    "ar": "كَلمةُ المُرورِ إلزاميّة."
+                },
+                "minimum": {
+                    "en": "Password should consist of more than 8 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ أنْ تَتألّفَ مِن أكثرِ مِن 8 حُروف."
+                },
+                "maximum": {
+                    "en": "Password should not exceed 20 characters.",
+                    "ar": "يَجبُ على كَلمةِ المُرورِ ألّا تَتعدّى 20 حَرفاً."
+                }
+            }
+        }
+    },
+    "forgot-password": {
+        "en": "Forgot your password? **Reset Password**.",
+        "ar": "نَسيتَ كَلمةَ مُرورك؟ **أعدْ ضَبطَ كَلمةِ المُرور**."
+    },
+    "buttons": {
+        "login": {
+            "en": "Login",
+            "ar": "تَسجيلُ الدّخول"
+        },
+        "clear": {
+            "en": "Clear",
+            "ar": "مسحُ المَكتوب"
+        }
+    },
+    "last-option": {
+        "en": "Don't have an account? **Sign up**.",
+        "ar": "لَيسَ لَديكَ حِساب؟ **أنشئْ حِساباً**."
+    }
+}

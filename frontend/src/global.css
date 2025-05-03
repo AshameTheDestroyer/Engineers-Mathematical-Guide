@@ -1,8 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+    font-family: "offline font";
+    src: url("offline_font.ttf");
+}
+
 @import "tailwindcss";
+
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Exo 2", "El Messiri", "offline font", sans-serif;
+
+    @apply text-foreground-darker bg-background-light overflow-x-hidden transition duration-200;
+}
 
 @theme {
     --text-xs: 0.5rem;
     --text-sm: 0.75rem;
+    --text-md: 1rem;
     --text-lg: 1.375rem;
     --text-xl: 1.875rem;
     --text-2xl: 2.625rem;
@@ -13,6 +32,8 @@
     --text-7xl: 6rem;
     --text-8xl: 7rem;
     --text-9xl: 8rem;
+
+    --spacing-page: 2.5rem;
 
     --color-primary-light: #e6f7f0;
     --color-primary-light-hover: #d9f3e8;
@@ -36,27 +57,38 @@
     --color-secondary-dark-active: #734300;
     --color-secondary-darker: #593400;
 
-    --color-foreground-light: #5ba0fb;
-    --color-foreground-light-hover: #31609e;
-    --color-foreground-light-active: #20416d;
-    --color-foreground-normal: #10233d;
-    --color-foreground-normal-hover: #0e2037;
-    --color-foreground-normal-active: #0d1c31;
-    --color-foreground-dark: #0c1a2e;
-    --color-foreground-dark-hover: #0b1525;
-    --color-foreground-dark-active: #07101b;
-    --color-foreground-darker: #060c15;
+    --color-tertiary-light: #eff6ff;
+    --color-tertiary-light-hover: #e6f1fe;
+    --color-tertiary-light-active: #cce2fe;
+    --color-tertiary-normal: #5ba0fb;
+    --color-tertiary-normal-hover: #5290e2;
+    --color-tertiary-normal-active: #4980c9;
+    --color-tertiary-dark: #4478bc;
+    --color-tertiary-dark-hover: #376097;
+    --color-tertiary-dark-active: #294871;
+    --color-tertiary-darker: #203858;
 
-    --color-background-white: #ffffff;
-    --color-background-white-hover: #fcfdfd;
-    --color-background-white-active: #f5f7f9;
-    --color-background-light: #fcfdfd;
-    --color-background-light-hover: #f5f7f9;
-    --color-background-light-active: #f0f3f6;
-    --color-background-normal: #f9fafb;
-    --color-background-normal-hover: #f2f4f7;
-    --color-background-normal-active: #ebeef2;
-    --color-background-dark: #f6f8f9;
+    --color-background-light: #fffefb;
+    --color-background-light-hover: #f0efea;
+    --color-background-light-active: #dad9d3;
+    --color-background-normal: #fcf7f1;
+    --color-background-normal-hover: #ece4dc;
+    --color-background-normal-active: #d5ccc3;
+    --color-background-dark: #f7e7da;
+    --color-background-dark-hover: #e4cebc;
+    --color-background-dark-active: #ccb4a1;
+    --color-background-darker: #b09582;
+
+    --color-foreground-light: #000000;
+    --color-foreground-light-hover: #000102;
+    --color-foreground-light-active: #010203;
+    --color-foreground-normal: #020407;
+    --color-foreground-normal-hover: #05070a;
+    --color-foreground-normal-active: #0a0d13;
+    --color-foreground-dark: #0d1117;
+    --color-foreground-dark-hover: #0d1118;
+    --color-foreground-dark-active: #11161d;
+    --color-foreground-darker: #151b23;
 
     --color-gray-light: #fafcff;
     --color-gray-light-hover: #f7faff;
@@ -68,4 +100,288 @@
     --color-gray-dark-hover: #7a8699;
     --color-gray-dark-active: #5c6573;
     --color-gray-darker: #474e59;
+
+    --color-vibrant-red: #ff595e;
+    --color-vibrant-red-light: #ff99c8;
+    --color-vibrant-yellow: #ffca3a;
+    --color-vibrant-yellow-light: #fcf6bd;
+    --color-vibrant-green: #8ac926;
+    --color-vibrant-green-light: #d0f4de;
+    --color-vibrant-blue: #1982c4;
+    --color-vibrant-blue-light: #a9def9;
+    --color-vibrant-purple: #6a4c93;
+    --color-vibrant-purple-light: #e4c1f9;
+
+    /* palettes */
+
+    --color-azure-background-light: #e6f0f8;
+    --color-azure-background-light-hover: #d6e0e8;
+    --color-azure-background-light-active: #c4ced9;
+    --color-azure-background-normal: #c8d8e8;
+    --color-azure-background-normal-hover: #b8c8d8;
+    --color-azure-background-normal-active: #a4b4c8;
+    --color-azure-background-dark: #8498b8;
+    --color-azure-background-dark-hover: #6880a0;
+    --color-azure-background-dark-active: #52688b;
+    --color-azure-background-darker: #384c73;
+
+    --color-azure-foreground-light: #000000;
+    --color-azure-foreground-light-hover: #000102;
+    --color-azure-foreground-light-active: #000107;
+    --color-azure-foreground-normal: #00020a;
+    --color-azure-foreground-normal-hover: #000410;
+    --color-azure-foreground-normal-active: #00071a;
+    --color-azure-foreground-dark: #000a24;
+    --color-azure-foreground-dark-hover: #000d28;
+    --color-azure-foreground-dark-active: #00102a;
+    --color-azure-foreground-darker: #00132d;
+
+    --color-caramel-background-light: #fffefb;
+    --color-caramel-background-light-hover: #f0efea;
+    --color-caramel-background-light-active: #dad9d3;
+    --color-caramel-background-normal: #fcf7f1;
+    --color-caramel-background-normal-hover: #ece4dc;
+    --color-caramel-background-normal-active: #d5ccc3;
+    --color-caramel-background-dark: #f7e7da;
+    --color-caramel-background-dark-hover: #e4cebc;
+    --color-caramel-background-dark-active: #ccb4a1;
+    --color-caramel-background-darker: #b09582;
+
+    --color-caramel-foreground-light: #000000;
+    --color-caramel-foreground-light-hover: #000102;
+    --color-caramel-foreground-light-active: #010203;
+    --color-caramel-foreground-normal: #020407;
+    --color-caramel-foreground-normal-hover: #05070a;
+    --color-caramel-foreground-normal-active: #0a0d13;
+    --color-caramel-foreground-dark: #0d1117;
+    --color-caramel-foreground-dark-hover: #0d1118;
+    --color-caramel-foreground-dark-active: #11161d;
+    --color-caramel-foreground-darker: #151b23;
+
+    --color-crimson-background-light: #f8e6e6;
+    --color-crimson-background-light-hover: #e8d6d6;
+    --color-crimson-background-light-active: #d9c4c4;
+    --color-crimson-background-normal: #e8c8c8;
+    --color-crimson-background-normal-hover: #d8b8b8;
+    --color-crimson-background-normal-active: #c8a4a4;
+    --color-crimson-background-dark: #b88484;
+    --color-crimson-background-dark-hover: #a06868;
+    --color-crimson-background-dark-active: #8b5252;
+    --color-crimson-background-darker: #733838;
+
+    --color-crimson-foreground-light: #000000;
+    --color-crimson-foreground-light-hover: #010000;
+    --color-crimson-foreground-light-active: #040000;
+    --color-crimson-foreground-normal: #070000;
+    --color-crimson-foreground-normal-hover: #0a0000;
+    --color-crimson-foreground-normal-active: #0f0000;
+    --color-crimson-foreground-dark: #120000;
+    --color-crimson-foreground-dark-hover: #150000;
+    --color-crimson-foreground-dark-active: #1a0000;
+    --color-crimson-foreground-darker: #200000;
+
+    --color-dusk-background-light: #ede6f5;
+    --color-dusk-background-light-hover: #ddd6e8;
+    --color-dusk-background-light-active: #cbc4d9;
+    --color-dusk-background-normal: #d1c8e8;
+    --color-dusk-background-normal-hover: #c0b8d8;
+    --color-dusk-background-normal-active: #aca4c8;
+    --color-dusk-background-dark: #8c84b8;
+    --color-dusk-background-dark-hover: #7468a0;
+    --color-dusk-background-dark-active: #5c528b;
+    --color-dusk-background-darker: #443873;
+
+    --color-dusk-foreground-light: #000000;
+    --color-dusk-foreground-light-hover: #010004;
+    --color-dusk-foreground-light-active: #030008;
+    --color-dusk-foreground-normal: #05000f;
+    --color-dusk-foreground-normal-hover: #070018;
+    --color-dusk-foreground-normal-active: #0a0024;
+    --color-dusk-foreground-dark: #100024;
+    --color-dusk-foreground-dark-hover: #130026;
+    --color-dusk-foreground-dark-active: #150030;
+    --color-dusk-foreground-darker: #170030;
+
+    --color-honey-background-light: #fff9e6;
+    --color-honey-background-light-hover: #f5edd6;
+    --color-honey-background-light-active: #e8dfc4;
+    --color-honey-background-normal: #f5e6c8;
+    --color-honey-background-normal-hover: #e8d8b8;
+    --color-honey-background-normal-active: #d9c8a4;
+    --color-honey-background-dark: #d9b884;
+    --color-honey-background-dark-hover: #c8a468;
+    --color-honey-background-dark-active: #b59252;
+    --color-honey-background-darker: #9a7a38;
+
+    --color-honey-foreground-light: #000000;
+    --color-honey-foreground-light-hover: #010100;
+    --color-honey-foreground-light-active: #010400;
+    --color-honey-foreground-normal: #030800;
+    --color-honey-foreground-normal-hover: #060a00;
+    --color-honey-foreground-normal-active: #090d00;
+    --color-honey-foreground-dark: #0d1000;
+    --color-honey-foreground-dark-hover: #0f1200;
+    --color-honey-foreground-dark-active: #1a1500;
+    --color-honey-foreground-darker: #1f1800;
+
+    --color-lagoon-background-light: #e6f5f5;
+    --color-lagoon-background-light-hover: #d6e8e8;
+    --color-lagoon-background-light-active: #c4d9d9;
+    --color-lagoon-background-normal: #c8e8e8;
+    --color-lagoon-background-normal-hover: #b8d8d8;
+    --color-lagoon-background-normal-active: #a4c8c8;
+    --color-lagoon-background-dark: #84b8b8;
+    --color-lagoon-background-dark-hover: #68a0a0;
+    --color-lagoon-background-dark-active: #528b8b;
+    --color-lagoon-background-darker: #387373;
+
+    --color-lagoon-foreground-light: #000000;
+    --color-lagoon-foreground-light-hover: #000101;
+    --color-lagoon-foreground-light-active: #000404;
+    --color-lagoon-foreground-normal: #000707;
+    --color-lagoon-foreground-normal-hover: #000a0a;
+    --color-lagoon-foreground-normal-active: #000f0f;
+    --color-lagoon-foreground-dark: #001010;
+    --color-lagoon-foreground-dark-hover: #001515;
+    --color-lagoon-foreground-dark-active: #001a1a;
+    --color-lagoon-foreground-darker: #002020;
+
+    --color-moss-background-light: #e6f5e6;
+    --color-moss-background-light-hover: #d6e8d6;
+    --color-moss-background-light-active: #c4d9c4;
+    --color-moss-background-normal: #c8e8c8;
+    --color-moss-background-normal-hover: #b8d8b8;
+    --color-moss-background-normal-active: #a4c8a4;
+    --color-moss-background-dark: #84b884;
+    --color-moss-background-dark-hover: #68a068;
+    --color-moss-background-dark-active: #528b52;
+    --color-moss-background-darker: #387338;
+
+    --color-moss-foreground-light: #000000;
+    --color-moss-foreground-light-hover: #000100;
+    --color-moss-foreground-light-active: #000400;
+    --color-moss-foreground-normal: #000700;
+    --color-moss-foreground-normal-hover: #000a00;
+    --color-moss-foreground-normal-active: #000f00;
+    --color-moss-foreground-dark: #001200;
+    --color-moss-foreground-dark-hover: #001500;
+    --color-moss-foreground-dark-active: #001a00;
+    --color-moss-foreground-darker: #002000;
+
+    --color-pearl-background-light: #f8f8f8;
+    --color-pearl-background-light-hover: #e8e8e8;
+    --color-pearl-background-light-active: #d9d9d9;
+    --color-pearl-background-normal: #e8e8e8;
+    --color-pearl-background-normal-hover: #d8d8d8;
+    --color-pearl-background-normal-active: #c8c8c8;
+    --color-pearl-background-dark: #b8b8b8;
+    --color-pearl-background-dark-hover: #a0a0a0;
+    --color-pearl-background-dark-active: #8b8b8b;
+    --color-pearl-background-darker: #737373;
+
+    --color-pearl-foreground-light: #000000;
+    --color-pearl-foreground-light-hover: #030303;
+    --color-pearl-foreground-light-active: #060606;
+    --color-pearl-foreground-normal: #090909;
+    --color-pearl-foreground-normal-hover: #0b0b0b;
+    --color-pearl-foreground-normal-active: #0d0d0d;
+    --color-pearl-foreground-dark: #111111;
+    --color-pearl-foreground-dark-hover: #141414;
+    --color-pearl-foreground-dark-active: #181818;
+    --color-pearl-foreground-darker: #1e1e1e;
+
+    --color-sakura-background-light: #fffafc;
+    --color-sakura-background-light-hover: #f0eaec;
+    --color-sakura-background-light-active: #dad3d5;
+    --color-sakura-background-normal: #fcf2f9;
+    --color-sakura-background-normal-hover: #ebdbe6;
+    --color-sakura-background-normal-active: #d5c3cf;
+    --color-sakura-background-dark: #f7d9ee;
+    --color-sakura-background-dark-hover: #e5bdda;
+    --color-sakura-background-dark-active: #cda2c1;
+    --color-sakura-background-darker: #b082a5;
+
+    --color-sakura-foreground-light: #000000;
+    --color-sakura-foreground-light-hover: #030102;
+    --color-sakura-foreground-light-active: #040103;
+    --color-sakura-foreground-normal: #080205;
+    --color-sakura-foreground-normal-hover: #0a0507;
+    --color-sakura-foreground-normal-active: #140b0e;
+    --color-sakura-foreground-dark: #170d12;
+    --color-sakura-foreground-dark-hover: #170c11;
+    --color-sakura-foreground-dark-active: #1d1117;
+    --color-sakura-foreground-darker: #23151c;
+}
+
+body.dark-themed {
+    --color-tertiary-light: #5ba0fb;
+    --color-tertiary-light-hover: #31609e;
+    --color-tertiary-light-active: #20416d;
+    --color-tertiary-normal: #10233d;
+    --color-tertiary-normal-hover: #0e2037;
+    --color-tertiary-normal-active: #0d1c31;
+    --color-tertiary-dark: #0c1a2e;
+    --color-tertiary-dark-hover: #0b1525;
+    --color-tertiary-dark-active: #07101b;
+    --color-tertiary-darker: #060c15;
+}
+
+body.dark-themed {
+    --color-background-light: #151b23;
+    --color-background-light-hover: #11161d;
+    --color-background-light-active: #0d1118;
+    --color-background-normal: #0d1117;
+    --color-background-normal-hover: #0a0d13;
+    --color-background-normal-active: #05070a;
+    --color-background-dark: #020407;
+    --color-background-dark-hover: #010203;
+    --color-background-dark-active: #000102;
+    --color-background-darker: #000000;
+
+    --color-foreground-light: #ccb4a1;
+    --color-foreground-light-hover: #e4cebc;
+    --color-foreground-light-active: #f7e7da;
+    --color-foreground-normal: #d5ccc3;
+    --color-foreground-normal-hover: #ece4dc;
+    --color-foreground-normal-active: #fcf7f1;
+    --color-foreground-dark: #dad9d3;
+    --color-foreground-dark-hover: #f0efea;
+    --color-foreground-dark-active: #fffefb;
+    --color-foreground-darker: #ffffff;
+}
+
+@layer utilities {
+    .centralize {
+        display: flex;
+        place-items: center;
+        place-content: center;
+    }
+
+    .icon {
+        width: 32px;
+        height: 32px;
+        aspect-ratio: 1;
+    }
+}
+
+@layer base {
+    ::-webkit-scrollbar {
+        @apply w-3;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-background-darker;
+    }
+
+    :not(body)::-webkit-scrollbar-track {
+        @apply rounded-xl;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-background-normal border-background-darker rounded-xl border-2;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        @apply bg-background-normal-hover;
+    }
 }

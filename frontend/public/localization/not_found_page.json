@@ -1,0 +1,14 @@
+{
+    "title": {
+        "en": "Page Not Found",
+        "ar": "الصّفحةُ غَيرُ مُتوفّرة"
+    },
+    "body": {
+        "en": "Please check your route carefully, because the URL you provided does not exist.",
+        "ar": "يُرجى التّحقّقُ مِن مَسار الصّفحةِ، لِأنَّ الرّابطَ المُعطى غَيرُ مُتوفّر."
+    },
+    "button": {
+        "en": "Return Home",
+        "ar": "العَودةُ لِلصّفحةِ الرّئيسيّة"
+    }
+}

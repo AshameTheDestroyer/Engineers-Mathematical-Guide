@@ -1,0 +1,49 @@
+{
+    "short_name": "Mathware",
+    "name": "Mathware - Engineers' Mathematical Guide",
+    "start_url": ".",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#00af64",
+    "background_color": "#fffefb",
+    "icons": [
+        {
+            "src": "logo/1600x1600.png",
+            "type": "image/png",
+            "sizes": "1600x1600",
+            "purpose": "any"
+        },
+        {
+            "src": "logo/800x800.png",
+            "type": "image/png",
+            "sizes": "800x800",
+            "purpose": "any"
+        },
+        {
+            "src": "logo/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "any"
+        },
+        {
+            "src": "logo/256x256.png",
+            "type": "image/png",
+            "sizes": "256x256",
+            "purpose": "any"
+        },
+        {
+            "src": "logo/144x144.png",
+            "type": "image/png",
+            "sizes": "144x144",
+            "purpose": "any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot.png",
+            "type": "image/png",
+            "sizes": "1280x720",
+            "purpose": "any"
+        }
+    ]
+}

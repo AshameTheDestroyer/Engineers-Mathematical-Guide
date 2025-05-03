@@ -1,0 +1,32 @@
+{
+    "title": {
+        "en": "Engineers' Mathematical Guide",
+        "ar": "دَليلُ المُهَنْدِسينَ في الرِّياضِيّات"
+    },
+    "subtitle": {
+        "en": "Learn By Doing!",
+        "ar": "تَعَلَّمْ عَنْ طَريقِ الفِعْل!"
+    },
+    "body": {
+        "en": "Are you an engineering student or professional looking to sharpen your math skills? Meet **Mathware** , the revolutionary app designed specifically to help engineers master the mathematical foundations they need to excel in their careers.",
+        "ar": "هَل أنتَ طالبُ هَندسةٍ أو مُهندِسٌ مُحترفٌ وتَسعى لِتطويرِ مَهاراتِكَ في الرّياضيّات؟ تَعرَّفْ على **Mathware**، التّطبيقُ المُبتَكَرُ الّذي صُمِّمَ خِصِّيصاً لِمُساعدةِ المُهندِسينَ على إتقانِ الأُسُسِ الرّياضيّةِ الّتي يَحتاجونَها لِلتّفوُّقِ في حَياتِهم المِهنيّة."
+    },
+    "buttons": {
+        "login": {
+            "en": "Login",
+            "ar": "تسجيل الدّخول"
+        },
+        "signup": {
+            "en": "Sign up",
+            "ar": "إنشاء حساب"
+        },
+        "start": {
+            "en": "Start Your Journey Now",
+            "ar": "إبدأ رحلتك الآن"
+        },
+        "learn": {
+            "en": "Learn More",
+            "ar": "إقرأ المزيد"
+        }
+    }
+}
