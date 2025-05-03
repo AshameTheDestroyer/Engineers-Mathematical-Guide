@@ -7,9 +7,16 @@ import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import arrow_icon from "@icons/direction_arrow.svg";
 
-export type BreadcrumbsProps = ChildlessComponentProps<HTMLElement>;
+export type BreadcrumbsProps = ChildlessComponentProps<HTMLDivElement> & {
+    length?: number;
+};
 
-export const Breadcrumbs = ({ id, ref, className }: BreadcrumbsProps) => {
+export const Breadcrumbs: FC<BreadcrumbsProps> = ({
+    id,
+    ref,
+    length,
+    className,
+}) => {
     const location = useLocation();
     const paths = location.pathname == "/" ? [] : location.pathname.split("/");
 
