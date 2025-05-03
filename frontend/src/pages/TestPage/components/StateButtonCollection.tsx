@@ -20,24 +20,42 @@ export const StateButtonCollection: FC = () => {
                 <StateButton
                     className="min-w-40"
                     variant="default"
-                    {...mutationDefault}
                     onClick={(_e) => mutationDefault.mutateAsync()}
+                    {...Object.pick(
+                        mutationDefault,
+                        "reset",
+                        "isPending",
+                        "isError",
+                        "isSuccess"
+                    )}
                 >
                     Default
                 </StateButton>
                 <StateButton
                     className="min-w-40"
                     variant="primary"
-                    {...mutationPrimary}
                     onClick={(_e) => mutationPrimary.mutateAsync()}
+                    {...Object.pick(
+                        mutationPrimary,
+                        "reset",
+                        "isPending",
+                        "isError",
+                        "isSuccess"
+                    )}
                 >
                     Primary
                 </StateButton>
                 <StateButton
                     className="min-w-40"
                     variant="secondary"
-                    {...mutationSecondary}
                     onClick={(_e) => mutationSecondary.mutateAsync()}
+                    {...Object.pick(
+                        mutationSecondary,
+                        "reset",
+                        "isPending",
+                        "isError",
+                        "isSuccess"
+                    )}
                 >
                     Secondary
                 </StateButton>

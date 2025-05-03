@@ -111,7 +111,13 @@ export const ForgotPasswordPage: FC = () => {
             return (
                 <CodeRequestForm
                     SubmitData={SubmitCodeRequest}
-                    mutationProps={forgotPasswordMutation}
+                    mutationProps={Object.pick(
+                        forgotPasswordMutation,
+                        "reset",
+                        "isPending",
+                        "isError",
+                        "isSuccess"
+                    )}
                 />
             );
         case "code-verification":
@@ -120,7 +126,13 @@ export const ForgotPasswordPage: FC = () => {
             return (
                 <ResetPasswordForm
                     SubmitData={SubmitResetPassword}
-                    mutationProps={resetPasswordMutation}
+                    mutationProps={Object.pick(
+                        resetPasswordMutation,
+                        "reset",
+                        "isPending",
+                        "isError",
+                        "isSuccess"
+                    )}
                 />
             );
     }
