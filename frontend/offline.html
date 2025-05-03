@@ -64,8 +64,8 @@
     <body>
         <main id="root">
             <div style="display: flex; gap: 1.25rem; flex-direction: column">
-                <h1 style="font-size: 3.625rem">You're Offline</h1>
-                <p>There's currently no internet connection.</p>
+                <h1 id="title" style="font-size: 3.625rem"></h1>
+                <p id="subtitle"></p>
             </div>
 
             <div
@@ -180,5 +180,33 @@
                 </svg>
             </div>
         </main>
+
+        <script>
+            const locales = {
+                title: {
+                    en: "You're Offline.",
+                    ar: "فُقِدَ الإتِّصال.",
+                },
+                subtitle: {
+                    en: "There's currently no internet connection.",
+                    ar: "لا يوجَدُ إتّصالٌ بِالإنترنتِّ حاليّاً.",
+                },
+            };
+
+            const language = JSON.parse(
+                localStorage.getItem("MATHWARE-EMG-language") ?? '"en"'
+            );
+
+            Object.entries(locales).map(
+                ([key, value]) =>
+                    (document.getElementById(key).textContent = value[language])
+            );
+
+            const direction = JSON.parse(
+                localStorage.getItem("MATHWARE-EMG-direction") ?? '"ltr"'
+            );
+
+            document.body.style.setProperty("direction", direction);
+        </script>
     </body>
 </html>
