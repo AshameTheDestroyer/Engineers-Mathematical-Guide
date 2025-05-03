@@ -14,7 +14,7 @@
         <style>
             @font-face {
                 font-family: "offline font";
-                src: url("public/offline_font.ttf");
+                src: url("offline_font.ttf");
             }
             body {
                 margin: 0;
@@ -63,8 +63,10 @@
 
     <body>
         <main id="root">
-            <h1 style="font-size: 3.625rem">You're Offline</h1>
-            <p>There's currently no internet connection.</p>
+            <div style="display: flex; gap: 1.25rem; flex-direction: column">
+                <h1 style="font-size: 3.625rem">You're Offline</h1>
+                <p>There's currently no internet connection.</p>
+            </div>
 
             <div
                 style="
