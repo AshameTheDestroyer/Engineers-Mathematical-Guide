@@ -31,7 +31,7 @@ export const LoginPage: FC = () => {
     return (
         <LoginForm
             SubmitData={SubmitData}
-            fetchingState={{ reset, isPending, isError, isSuccess }}
+            mutationProps={{ reset, isPending, isError, isSuccess }}
         />
     );
 };

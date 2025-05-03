@@ -76,7 +76,7 @@ export const SignupPage: FC = () => {
             return (
                 <PersonalInformationForm
                     SubmitData={SubmitPersonalInformation}
-                    fetchingState={{ reset, isPending, isError, isSuccess }}
+                    mutationProps={{ reset, isPending, isError, isSuccess }}
                 />
             );
     }
