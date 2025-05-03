@@ -13,8 +13,12 @@
 
         <style>
             @font-face {
-                font-family: "offline font";
-                src: url("offline_font.ttf");
+                font-family: "offline-font-en";
+                src: url("offline_font_en.ttf");
+            }
+            @font-face {
+                font-family: "offline-font-ar";
+                src: url("offline_font_ar.ttf");
             }
             body {
                 margin: 0;
@@ -22,7 +26,7 @@
                 display: flex;
                 min-height: 100vh;
                 min-height: 100dvh;
-                font-family: "offline font";
+                font-family: "offline-font-en", "offline-font-ar";
             }
             #root {
                 gap: 1.25rem;

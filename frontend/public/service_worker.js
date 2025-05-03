@@ -1,9 +1,16 @@
 const indexPageURL = "/index.html";
 const offlinePageURL = "/offline.html";
-const offlineFontURL = "/offline_font.ttf";
+const offlineFontEnURL = "/offline_font_en.ttf";
+const offlineFontArURL = "/offline_font_ar.ttf";
 
-const CACHE_KEY = "mathware-engineers-mathematical-guide";
-const URLsToCache = [indexPageURL, offlinePageURL, offlineFontURL];
+const CACHE_KEY = "MATHWARE-EMG";
+
+const URLsToCache = [
+    indexPageURL,
+    offlinePageURL,
+    offlineFontEnURL,
+    offlineFontArURL,
+];
 
 this.addEventListener("install", (e) =>
     e.waitUntil(
@@ -27,7 +34,9 @@ this.addEventListener("fetch", (e) =>
                     ? cachedResponse
                     : fetch(e.request).catch(() =>
                           e.request.destination == "font"
-                              ? caches.match(offlineFontURL)
+                              ? e.request.url.includes("ar")
+                                  ? caches.match(offlineFontArURL)
+                                  : caches.match(offlineFontEnURL)
                               : caches.match(offlinePageURL)
                       )
             )
