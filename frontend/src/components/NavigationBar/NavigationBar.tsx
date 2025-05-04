@@ -15,7 +15,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({
 }) => {
     return (
         <nav id={id} ref={ref} className={twMerge("flex", className)}>
-            <ul className="flex grow flex-row flex-wrap place-content-around gap-6">
+            <ul className="flex flex-col flex-wrap place-content-around gap-6">
                 {routes.map((link, i) => (
                     <li key={i}>
                         <Link to={link.href}>{link.text}</Link>
