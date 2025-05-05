@@ -51,7 +51,7 @@ export const SignupPage: FC = () => {
             .then((token) =>
                 LocalStorageManager.Instance.SetItem("token", token)
             )
-            .then(() => Navigate(LANDING_ROUTES.home.absolute))
+            .then(() => Navigate(LANDING_ROUTES.base.routes.home.absolute))
             .catch(console.error);
     }, [data]);
 
