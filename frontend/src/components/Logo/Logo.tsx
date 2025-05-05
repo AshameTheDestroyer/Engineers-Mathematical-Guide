@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
-import { LANDING_ROUTES } from "@/routes/landing.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 import logo from "@images/logo_(horizontal).png";
@@ -14,7 +14,7 @@ export const Logo: FC<LogoProps> = ({ id, ref, className }) => {
             id={id}
             ref={ref}
             className={twMerge("block h-16", className)}
-            to={LANDING_ROUTES.base.routes.home.absolute}
+            to={WEBSITE_ROUTES.base.routes.home.absolute}
         >
             <img className="h-full" src={logo} alt="logo" />
         </Link>

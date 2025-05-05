@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { FC, useEffect, useState } from "react";
-import { LANDING_ROUTES } from "@/routes/landing.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { CredentialsForm } from "../components/CredentialsForm";
 import { LocalStorageManager } from "@/managers/LocalStorageManager";
 import { SignupSchema, SignupStepsDTO } from "@/schemas/SignupSchema";
@@ -51,7 +51,7 @@ export const SignupPage: FC = () => {
             .then((token) =>
                 LocalStorageManager.Instance.SetItem("token", token)
             )
-            .then(() => Navigate(LANDING_ROUTES.base.routes.home.absolute))
+            .then(() => Navigate(WEBSITE_ROUTES.base.routes.home.absolute))
             .catch(console.error);
     }, [data]);
 
