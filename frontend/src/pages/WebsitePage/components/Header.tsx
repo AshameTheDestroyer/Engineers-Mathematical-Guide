@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
-import { LANDING_ROUTES } from "@/routes/landing.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -12,8 +12,8 @@ import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownLis
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
 
-import locales from "@localization/landing_page.json";
-import route_locales from "@localization/landing_page_routes.json";
+import locales from "@localization/website_page.json";
+import route_locales from "@localization/website_page_routes.json";
 
 export const Header: FC = () => {
     const { GetRouteLocales, language } = useLocalization();
@@ -51,7 +51,7 @@ export const Header: FC = () => {
                 </Button>
                 <NavigationMenuButton
                     routes={GetRouteLocales(
-                        LANDING_ROUTES,
+                        WEBSITE_ROUTES.base.routes,
                         route_locales,
                         language
                     )}

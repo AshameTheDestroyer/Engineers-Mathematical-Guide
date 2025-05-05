@@ -4,9 +4,9 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
-const LandingPage = LazyImport("./pages/LandingPage/LandingPage");
+const WebsitePage = LazyImport("./pages/WebsitePage/WebsitePage");
 
-const LANDING_ROUTES_ = RoutesWithAbsolutePaths({
+const WEBSITE_ROUTES_ = RoutesWithAbsolutePaths({
     base: {
         href: "website",
         routes: {
@@ -19,28 +19,28 @@ const LANDING_ROUTES_ = RoutesWithAbsolutePaths({
     },
 });
 
-export const LANDING_ROUTES =
+export const WEBSITE_ROUTES =
     EnvironmentVariables.ENVIRONMENT != "development"
-        ? LANDING_ROUTES_
+        ? WEBSITE_ROUTES_
         : {
-              ...LANDING_ROUTES_,
+              ...WEBSITE_ROUTES_,
               base: {
-                  ...LANDING_ROUTES_.base,
+                  ...WEBSITE_ROUTES_.base,
                   routes: {
-                      ...LANDING_ROUTES_.base.routes,
+                      ...WEBSITE_ROUTES_.base.routes,
                       test: { text: "TEST", href: "/test" },
                   },
               },
           };
 
-export const LandingRoute = () => {
+export const WebsiteRoute = () => {
     return (
-        <Route path={LANDING_ROUTES.base.href} element={<Outlet />}>
+        <Route path={WEBSITE_ROUTES.base.href} element={<Outlet />}>
             <Route
-                path={LANDING_ROUTES.base.routes.home.href}
+                path={WEBSITE_ROUTES.base.routes.home.href}
                 element={
                     <LazyPage>
-                        <LandingPage />
+                        <WebsitePage />
                     </LazyPage>
                 }
             />

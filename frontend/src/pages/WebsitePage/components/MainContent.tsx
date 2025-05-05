@@ -10,7 +10,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
 
-import locales from "@localization/landing_page.json";
+import locales from "@localization/website_page.json";
 
 export const MainContent: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
