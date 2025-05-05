@@ -5,7 +5,6 @@ import { Locale } from "@/components/Locale/Locale";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
-import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -30,7 +29,6 @@ export const Header: FC = () => {
             }}
         >
             <Logo />
-
             <ButtonBox>
                 <Button
                     link="/registration/signup"
