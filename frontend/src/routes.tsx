@@ -5,6 +5,7 @@ import { ComposeRoutes } from "./functions/ComposeRoutes";
 import { ApplicationRoute } from "./routes/application.routes";
 import { RegistrationRoute } from "./routes/registration.routes";
 import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage";
+import { ApplicationRoute } from "./routes/application.routes";
 
 export const Routes = [
     TestRoute,
