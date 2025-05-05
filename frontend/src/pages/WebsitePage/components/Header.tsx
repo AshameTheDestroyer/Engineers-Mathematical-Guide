@@ -51,7 +51,7 @@ export const Header: FC = () => {
                 </Button>
                 <NavigationMenuButton
                     routes={GetRouteLocales(
-                        LANDING_ROUTES,
+                        WEBSITE_ROUTES.base.routes,
                         route_locales,
                         language
                     )}
