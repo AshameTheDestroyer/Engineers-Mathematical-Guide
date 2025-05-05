@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "../components/LoginForm";
-import { LANDING_ROUTES } from "@/routes/landing.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { LoginDTO, LoginSchema } from "@/schemas/LoginSchema";
 import { LocalStorageManager } from "@/managers/LocalStorageManager";
 import { useLoginMutation } from "@/services/Registration/useLoginMutation";
@@ -24,7 +24,7 @@ export const LoginPage: FC = () => {
             .then((token) =>
                 LocalStorageManager.Instance.SetItem("token", token)
             )
-            .then(() => Navigate(LANDING_ROUTES.base.routes.home.absolute))
+            .then(() => Navigate(WEBSITE_ROUTES.base.routes.home.absolute))
             .catch(console.error);
     }
 

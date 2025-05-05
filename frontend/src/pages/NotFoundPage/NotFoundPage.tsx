@@ -6,7 +6,7 @@ import { FallbackPage } from "../FallbackPage/FallbackPage";
 import home_icon from "@icons/home.svg";
 
 import locales from "@localization/not_found_page.json";
-import { LANDING_ROUTES } from "@/routes/landing.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 
 export const NotFoundPage: FC = () => {
     return (
@@ -19,7 +19,7 @@ export const NotFoundPage: FC = () => {
             </Locale>
             <Button
                 className="max-w-max place-self-center [&>div]:px-4"
-                link={LANDING_ROUTES.base.absolute}
+                link={WEBSITE_ROUTES.base.absolute}
                 icon={{
                     source: home_icon,
                     placement: "left",
