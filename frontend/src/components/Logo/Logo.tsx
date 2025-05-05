@@ -14,7 +14,7 @@ export const Logo: FC<LogoProps> = ({ id, ref, className }) => {
             id={id}
             ref={ref}
             className={twMerge("block h-16", className)}
-            to={LANDING_ROUTES.home.absolute}
+            to={LANDING_ROUTES.base.routes.home.absolute}
         >
             <img className="h-full" src={logo} alt="logo" />
         </Link>
