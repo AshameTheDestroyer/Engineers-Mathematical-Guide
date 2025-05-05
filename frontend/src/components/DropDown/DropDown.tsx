@@ -6,7 +6,7 @@ import {
     FC,
     useRef,
     useState,
-    useEffect,
+    useLayoutEffect,
     PropsWithChildren,
     useImperativeHandle,
 } from "react";
@@ -43,7 +43,7 @@ export const DropDown: FC<DropDownProps> = ({
 
     useImperativeHandle(ref, () => dropDownElementRef.current!);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (!isOpen) {
             containerReference.current?.style.setProperty("overflow", "hidden");
             return;
