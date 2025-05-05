@@ -32,7 +32,7 @@ export const Header: FC = () => {
             <NavigationBar
                 className="grow"
                 routes={GetRouteLocales(
-                    LANDING_ROUTES,
+                    LANDING_ROUTES.base.routes,
                     route_locales,
                     language
                 )}
