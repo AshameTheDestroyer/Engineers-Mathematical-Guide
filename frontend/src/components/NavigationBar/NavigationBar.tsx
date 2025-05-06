@@ -5,6 +5,7 @@ import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type NavigationBarProps = ChildlessComponentProps<HTMLDivElement> & {
     routes: Array<Anchor>;
+    direction: "column" | "row";
 };
 
 export const NavigationBar: FC<NavigationBarProps> = ({
@@ -12,10 +13,17 @@ export const NavigationBar: FC<NavigationBarProps> = ({
     ref,
     routes,
     className,
+    direction,
 }) => {
     return (
         <nav id={id} ref={ref} className={twMerge("flex", className)}>
-            <ul className="flex flex-col flex-wrap place-content-around gap-6">
+            <ul
+                className={twMerge(
+                    "flex flex-wrap place-content-around gap-6",
+                    direction == "column" ? "flex-col" : "",
+                    className
+                )}
+            >
                 {routes.map((link, i) => (
                     <li key={i}>
                         <Link to={link.href}>{link.text}</Link>
