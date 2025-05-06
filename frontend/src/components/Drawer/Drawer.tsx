@@ -42,32 +42,39 @@ export const Drawer: FC<DrawerProps> = ({
     };
 
     return createPortal(
-        <div
-            id={id}
-            ref={ref}
-            className={twMerge(
-                "bg-background-normal fixed inset-0 z-50 p-4 transition-all duration-300",
-                positionClassNames[direction],
-                translateClassNames[direction],
-                className
+        <>
+            {isOpen ? (
+                <div className="absolute bottom-0 left-0 right-0 top-0 bg-black opacity-30"></div>
+            ) : (
+                ""
             )}
-        >
-            <IconButton
-                className={twJoin(
-                    "absolute z-[1]",
-                    buttonPositionClassNames[direction]
+            <div
+                id={id}
+                ref={ref}
+                className={twMerge(
+                    "bg-background-normal fixed inset-0 z-50 p-4 pt-20 transition-all duration-300",
+                    positionClassNames[direction],
+                    translateClassNames[direction],
+                    className
                 )}
-                icon={{
-                    width: 20,
-                    height: 20,
-                    thickness: 2,
-                    source: cross_icon,
-                    stroke: "currentColor",
-                }}
-                onClick={(_e) => setIsOpen(false)}
-            />
-            {children}
-        </div>,
+            >
+                <IconButton
+                    className={twJoin(
+                        "absolute z-[1]",
+                        buttonPositionClassNames[direction]
+                    )}
+                    icon={{
+                        width: 20,
+                        height: 20,
+                        thickness: 2,
+                        source: cross_icon,
+                        stroke: "currentColor",
+                    }}
+                    onClick={(_e) => setIsOpen(false)}
+                />
+                {children}
+            </div>
+        </>,
         document.body
     );
 };

@@ -36,6 +36,7 @@ export const Header: FC = () => {
                     route_locales,
                     language
                 )}
+                direction="row"
             />
             <ButtonBox>
                 <Button

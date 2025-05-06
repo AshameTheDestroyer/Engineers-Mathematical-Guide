@@ -7,6 +7,7 @@ import {
 import { Drawer } from "../Drawer";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes">;
@@ -14,12 +15,13 @@ export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
 export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     id,
     ref,
-    className,
-    onClick,
     routes,
+    onClick,
+    className,
     variant = "default",
     ...props
 }) => {
+    const { direction } = useLocalization();
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -30,10 +32,14 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                 className={className}
                 variant={variant}
                 icon={{ source: menu_icon }}
-                onClick={(e) => (onClick?.(e), setIsOpen((isOpen) => !isOpen))}
+                onClick={(e) => (onClick?.(e), setIsOpen(true))}
                 {...props}
             />
-            <Drawer isOpen={isOpen} setIsOpen={setIsOpen} direction="left">
+            <Drawer
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                direction={direction == "rtl" ? "left" : "right"}
+            >
                 <NavigationBar direction="column" routes={routes} />
             </Drawer>
         </>
