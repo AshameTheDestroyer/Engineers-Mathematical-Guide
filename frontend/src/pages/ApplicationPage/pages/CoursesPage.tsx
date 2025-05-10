@@ -18,8 +18,8 @@ export const CoursesPage: FC = () => {
     const data = data_.map((datum) => CourseSchema.parse(datum));
 
     const { data: images } = useExtendedQuery({
-        queryKey: ["courses-images"],
         usesSuspense: true,
+        queryKey: ["courses-images"],
         queryFn: () =>
             Promise.all(
                 data.map(
