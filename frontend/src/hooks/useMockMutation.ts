@@ -1,23 +1,31 @@
 import { useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { MutationKey, useMutation } from "@tanstack/react-query";
 
-export type UseMockMutationProps = {
+export type UseMockMutationProps<
+    TMutationKey extends MutationKey = readonly unknown[],
+> = {
     resetTime?: number;
     requestTime?: number;
     onError?: () => void;
     onSuccess?: () => void;
+    mutationKey: TMutationKey;
 };
 
-export const useMockMutation = (props?: UseMockMutationProps) => {
+export const useMockMutation = <
+    TMutationKey extends MutationKey = readonly unknown[],
+>(
+    props?: UseMockMutationProps
+) => {
     const {
         onError,
         onSuccess,
         resetTime = 2000,
         requestTime = 2000,
+        mutationKey = [] as unknown as TMutationKey,
     } = props ?? {};
 
     const mutation = useMutation({
-        mutationKey: [],
+        mutationKey,
         mutationFn: () =>
             new Promise((resolve, reject) =>
                 setTimeout(Math.random() > 0.5 ? resolve : reject, requestTime)
