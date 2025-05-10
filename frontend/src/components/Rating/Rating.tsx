@@ -1,6 +1,6 @@
 import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { Icon, IconProps } from "../Icon/Icon";
-import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 import star_icon from "@icons/star.svg";
@@ -32,11 +32,11 @@ export const Rating: FC<RatingProps> = ({
             {new Array(maximumValue).fill(null).map((_, i) => (
                 <Icon
                     key={i}
-                    className={twJoin(
-                        "text-vibrant-yellow drop-shadow-[3px_3px_1px_#0000007c] [&>svg]:scale-125"
+                    {...iconProps}
+                    className={twMerge(
+                        "text-vibrant-yellow [&>svg]:scale-125",
+                        iconProps?.className
                     )}
-                    stroke="black"
-                    thickness={0.5}
                     source={
                         i + 1 == Math.ceil(value) && i + 1 != value
                             ? star_half_icon
@@ -44,7 +44,6 @@ export const Rating: FC<RatingProps> = ({
                               ? star_icon
                               : star_outlined_icon
                     }
-                    {...iconProps}
                 />
             ))}
         </div>

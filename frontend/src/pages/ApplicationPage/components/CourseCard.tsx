@@ -62,7 +62,14 @@ export const CourseCard: FC<CourseCardProps> = ({
                         </Typography>
                         <Rating
                             value={course.rating}
-                            iconProps={{ width: 20, height: 20 }}
+                            iconProps={{
+                                className:
+                                    "drop-shadow-[3px_3px_1px_#0000007c]",
+                                width: 20,
+                                height: 20,
+                                thickness: 0.5,
+                                stroke: "black",
+                            }}
                         />
                         <Typography
                             className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap"
