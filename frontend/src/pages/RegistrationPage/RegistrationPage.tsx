@@ -4,11 +4,15 @@ import { Page } from "@/components/Page/Page";
 import { Logo } from "@/components/Logo/Logo";
 import { twJoin, twMerge } from "tailwind-merge";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export const RegistrationPage: FC = () => {
-    useDefaultRoute("/registration", "/signup");
+    useDefaultRoute(
+        REGISTRATION_ROUTES.base.href,
+        REGISTRATION_ROUTES.base.routes.signup.href
+    );
 
     const { direction } = useLocalization();
 
