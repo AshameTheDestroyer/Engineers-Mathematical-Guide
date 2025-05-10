@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 
-export type useMockMutationProps = {
+export type UseMockMutationProps = {
     resetTime?: number;
     requestTime?: number;
     onError?: () => void;
     onSuccess?: () => void;
 };
 
-export const useMockMutation = (props?: useMockMutationProps) => {
+export const useMockMutation = (props?: UseMockMutationProps) => {
     const {
         onError,
         onSuccess,
