@@ -2,10 +2,10 @@ import { FC } from "react";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { CourseCard } from "../components/CourseCard";
 import { CourseSchema } from "@/schemas/CourseSchema";
+import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 import { Typography } from "@/components/Typography/Typography";
 
 import dummy_data from "./dummy_data.json";
-import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 
 export const CoursesPage: FC = () => {
     const { data: data_ } = useMockQuery({
