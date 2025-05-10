@@ -5,15 +5,34 @@ import { CourseSchema } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 
 import dummy_data from "./dummy_data.json";
+import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 
 export const CoursesPage: FC = () => {
     const { data: data_ } = useMockQuery({
-        usesSuspense: true,
-        dummyData: dummy_data,
         requestTime: 0,
+        usesSuspense: true,
+        queryKey: ["courses"],
+        dummyData: dummy_data,
     });
 
     const data = data_.map((datum) => CourseSchema.parse(datum));
+
+    const { data: images } = useExtendedQuery({
+        queryKey: ["courses-images"],
+        usesSuspense: true,
+        queryFn: () =>
+            Promise.all(
+                data.map(
+                    async (datum) =>
+                        [
+                            datum.id,
+                            datum.image != null
+                                ? (await fetch(datum.image)).url
+                                : undefined,
+                        ] as const
+                )
+            ).then((entries) => Object.fromEntries(entries)),
+    });
 
     return (
         <main className="flex flex-col gap-8">
@@ -27,7 +46,7 @@ export const CoursesPage: FC = () => {
                     <CourseCard
                         key={datum.id}
                         className="aspect-square"
-                        course={datum}
+                        course={{ ...datum, image: images[datum.id] }}
                     />
                 ))}
             </main>
