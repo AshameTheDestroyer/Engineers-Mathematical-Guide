@@ -2,11 +2,13 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { Icon } from "@/components/Icon/Icon";
+import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { Rating } from "@/components/Rating/Rating";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
 import user_icon from "@icons/user.svg";
 
@@ -21,6 +23,7 @@ export const CourseCard: FC<CourseCardProps> = ({
     className,
 }) => {
     const shadow = useShadow();
+    const Navigate = useNavigate();
 
     return (
         <article
@@ -33,6 +36,14 @@ export const CourseCard: FC<CourseCardProps> = ({
             aria-label={course.title}
             role="region"
             style={{ boxShadow: shadow }}
+            onClick={(_e) =>
+                Navigate(
+                    APPLICATION_ROUTES.base.routes.courseID.absolute.replace(
+                        ":courseID",
+                        course.id
+                    )
+                )
+            }
         >
             <Typography className="" variant="p">
                 {course.description}
