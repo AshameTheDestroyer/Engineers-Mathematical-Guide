@@ -20,7 +20,7 @@
         "title": "Linear Algebra",
         "description": "Introduction to vectors, matrices, systems of linear equations, eigenvalues, and eigenvectors.",
         "enrollment-count": 280,
-        "rating": 4.1,
+        "rating": 3.4,
         "rating-count": 89
     },
     {
@@ -28,7 +28,7 @@
         "title": "Differential Equations",
         "description": "Study of ordinary differential equations including first-order equations and linear higher-order equations.",
         "enrollment-count": 190,
-        "rating": 4.0,
+        "rating": 3.2,
         "rating-count": 78
     },
     {
@@ -36,7 +36,7 @@
         "title": "Probability Theory",
         "description": "Foundational theory of probability, random variables, distributions, expectation, and variance.",
         "enrollment-count": 250,
-        "rating": 4.4,
+        "rating": 2.1,
         "rating-count": 105
     },
     {
@@ -44,7 +44,7 @@
         "title": "Abstract Algebra",
         "description": "Exploration of algebraic structures such as groups, rings, and fields.",
         "enrollment-count": 160,
-        "rating": 4.0,
+        "rating": 2.6,
         "rating-count": 67
     },
     {
@@ -52,7 +52,7 @@
         "title": "Multivariable Calculus",
         "description": "Extension of calculus to functions of multiple variables, including partial derivatives and multiple integrals.",
         "enrollment-count": 205,
-        "rating": 4.2,
+        "rating": 1.9,
         "rating-count": 83
     },
     {
@@ -60,7 +60,7 @@
         "title": "Real Analysis",
         "description": "Rigorous study of real numbers, sequences, series, continuity, and differentiation.",
         "enrollment-count": 130,
-        "rating": 4.1,
+        "rating": 1.1,
         "rating-count": 56
     },
     {
@@ -68,7 +68,7 @@
         "title": "Complex Analysis",
         "description": "Analysis of complex-valued functions, including analytic functions, residues, and contour integration.",
         "enrollment-count": 110,
-        "rating": 4.3,
+        "rating": 0.1,
         "rating-count": 48
     },
     {
@@ -76,7 +76,7 @@
         "title": "Numerical Methods",
         "description": "Computational techniques for solving mathematical problems using approximation algorithms.",
         "enrollment-count": 180,
-        "rating": 4.2,
+        "rating": 0.7,
         "rating-count": 72
     },
     {
