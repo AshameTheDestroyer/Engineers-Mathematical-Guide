@@ -44,6 +44,7 @@ export const Rating: FC<RatingProps> = ({
                               ? star_icon
                               : star_outlined_icon
                     }
+                    {...iconProps}
                 />
             ))}
         </div>
