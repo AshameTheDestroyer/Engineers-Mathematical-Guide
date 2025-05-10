@@ -28,7 +28,7 @@ export const Button: FC<ButtonProps> = ({
     variant = "default",
     ...props
 }) => {
-    const Navigator = useNavigate();
+    const Navigate = useNavigate();
 
     const variantClassNames: VariantClassNames = {
         default: {
@@ -65,7 +65,7 @@ export const Button: FC<ButtonProps> = ({
             type="button"
             disabled={disabled}
             role={link != null ? "link" : "button"}
-            onClick={(e) => (onClick?.(e), link != null && Navigator(link))}
+            onClick={(e) => (onClick?.(e), link != null && Navigate(link))}
             {...props}
         >
             <div
