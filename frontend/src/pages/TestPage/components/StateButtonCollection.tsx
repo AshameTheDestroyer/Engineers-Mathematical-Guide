@@ -10,9 +10,21 @@ export const StateButtonCollection: FC = () => {
     const onError = () => Alert("Error", { type: "error" });
     const onSuccess = () => Alert("Success", { type: "success" });
 
-    const mutationDefault = useMockMutation({ onError, onSuccess });
-    const mutationPrimary = useMockMutation({ onError, onSuccess });
-    const mutationSecondary = useMockMutation({ onError, onSuccess });
+    const mutationDefault = useMockMutation({
+        mutationKey: ["state-button-default"],
+        onError,
+        onSuccess,
+    });
+    const mutationPrimary = useMockMutation({
+        mutationKey: ["state-button-primary"],
+        onError,
+        onSuccess,
+    });
+    const mutationSecondary = useMockMutation({
+        mutationKey: ["state-button-secondary"],
+        onError,
+        onSuccess,
+    });
 
     return (
         <Collection title="State Button Component">
