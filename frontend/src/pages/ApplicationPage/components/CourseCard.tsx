@@ -60,7 +60,7 @@ export const CourseCard: FC<CourseCardProps> = ({
                     </div>
                     <div className="flex place-items-center gap-2">
                         <Typography
-                            className="text-vibrant-yellow font-bold"
+                            className="text-vibrant-yellow min-w-[3ch] text-center font-bold"
                             variant="p"
                         >
                             {course.rating}
