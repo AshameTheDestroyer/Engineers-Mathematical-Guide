@@ -40,7 +40,12 @@ export const CourseCard: FC<CourseCardProps> = ({
             <figure className="absolute inset-0 z-[-1]">
                 <footer className="absolute inset-8 top-auto z-[1] flex flex-col gap-2 overflow-hidden">
                     <div className="flex place-items-center gap-2">
-                        <Icon source={user_icon} width={20} height={20} />
+                        <Icon
+                            className="drop-shadow-[3px_3px_1px_#0000007c]"
+                            width={20}
+                            height={20}
+                            source={user_icon}
+                        />
                         <Typography
                             className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap"
                             variant="p"
