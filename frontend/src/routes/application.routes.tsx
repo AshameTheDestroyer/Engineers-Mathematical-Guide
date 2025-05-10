@@ -4,6 +4,7 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
+const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
 const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
 
@@ -12,6 +13,7 @@ export const APPLICATION_ROUTES = RoutesWithAbsolutePaths({
         href: "/",
         routes: {
             courses: { href: "courses" },
+            courseID: { href: ":courseID" },
         },
     },
 });
@@ -33,7 +35,15 @@ export const ApplicationRoute = () => {
                         <CoursesPage />
                     </LazyComponent>
                 }
-            ></Route>
+            />
+            <Route
+                path={APPLICATION_ROUTES.base.routes.courseID.href}
+                element={
+                    <LazyComponent>
+                        <CoursePage />
+                    </LazyComponent>
+                }
+            />
         </Route>
     );
 };
