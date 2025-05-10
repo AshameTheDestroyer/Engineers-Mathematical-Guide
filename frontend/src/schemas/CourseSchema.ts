@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const CourseSchema = z.object({
-    image: z.string().nullish(),
+    image: z.string().optional(),
     id: z.string({ required_error: "required" }),
     title: z.string({ required_error: "required" }),
     description: z.string({ required_error: "required" }),
