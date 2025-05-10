@@ -4,16 +4,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const useDefaultRoute = (currentRoute: string, defaultRoute: string) => {
     const location = useLocation();
     const Navigate = useNavigate();
-    const path =
-        "/" +
-        location.pathname
-            .split("/")
-            .filter((path) => path != "")
-            .join("/");
+    const path = location.pathname
+        .split("/")
+        .filter((path) => path != "")
+        .join("/");
 
     useEffect(() => {
-        if (path == currentRoute) {
-            Navigate(`${currentRoute}${defaultRoute}`);
+        const currentRoute_ = currentRoute.replace(/^\//, "");
+        const defaultRoute_ = defaultRoute.replace(/^\//, "");
+        const navigatedRoute = `/${currentRoute_}/${defaultRoute_}`;
+
+        if (path == currentRoute_) {
+            Navigate(navigatedRoute.replace(/^\/\//, "/"));
         }
-    }, [location.pathname]);
+    }, [path, currentRoute, defaultRoute]);
 };
