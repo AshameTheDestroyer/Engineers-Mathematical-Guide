@@ -3,160 +3,160 @@
         "id": "calculus-i",
         "title": "Calculus I",
         "description": "An introduction to limits, derivatives, and integrals with applications.",
-        "enrollment-count": 320,
+        "enrollment-count": 76245,
         "rating": 4.3,
-        "rating-count": 112
+        "rating-count": 89231
     },
     {
         "id": "calculus-ii",
         "title": "Calculus II",
         "description": "A continuation of Calculus I, focusing on advanced integration techniques, sequences, series, and differential equations.",
-        "enrollment-count": 215,
+        "enrollment-count": 41239,
         "rating": 4.2,
-        "rating-count": 97
+        "rating-count": 67452
     },
     {
         "id": "linear-algebra",
         "title": "Linear Algebra",
         "description": "Introduction to vectors, matrices, systems of linear equations, eigenvalues, and eigenvectors.",
-        "enrollment-count": 280,
+        "enrollment-count": 68321,
         "rating": 3.4,
-        "rating-count": 89
+        "rating-count": 54301
     },
     {
         "id": "differential-equations",
         "title": "Differential Equations",
         "description": "Study of ordinary differential equations including first-order equations and linear higher-order equations.",
-        "enrollment-count": 190,
+        "enrollment-count": 38472,
         "rating": 3.2,
-        "rating-count": 78
+        "rating-count": 49876
     },
     {
         "id": "probability-theory",
         "title": "Probability Theory",
         "description": "Foundational theory of probability, random variables, distributions, expectation, and variance.",
-        "enrollment-count": 250,
+        "enrollment-count": 52389,
         "rating": 2.1,
-        "rating-count": 105
+        "rating-count": 61234
     },
     {
         "id": "abstract-algebra",
         "title": "Abstract Algebra",
         "description": "Exploration of algebraic structures such as groups, rings, and fields.",
-        "enrollment-count": 160,
+        "enrollment-count": 26789,
         "rating": 2.6,
-        "rating-count": 67
+        "rating-count": 34567
     },
     {
         "id": "multivariable-calculus",
         "title": "Multivariable Calculus",
         "description": "Extension of calculus to functions of multiple variables, including partial derivatives and multiple integrals.",
-        "enrollment-count": 205,
+        "enrollment-count": 40123,
         "rating": 1.9,
-        "rating-count": 83
+        "rating-count": 45678
     },
     {
         "id": "real-analysis",
         "title": "Real Analysis",
         "description": "Rigorous study of real numbers, sequences, series, continuity, and differentiation.",
-        "enrollment-count": 130,
+        "enrollment-count": 19876,
         "rating": 1.1,
-        "rating-count": 56
+        "rating-count": 23456
     },
     {
         "id": "complex-analysis",
         "title": "Complex Analysis",
         "description": "Analysis of complex-valued functions, including analytic functions, residues, and contour integration.",
-        "enrollment-count": 110,
+        "enrollment-count": 14321,
         "rating": 0.1,
-        "rating-count": 48
+        "rating-count": 12098
     },
     {
         "id": "numerical-methods",
         "title": "Numerical Methods",
         "description": "Computational techniques for solving mathematical problems using approximation algorithms.",
-        "enrollment-count": 180,
+        "enrollment-count": 35678,
         "rating": 0.7,
-        "rating-count": 72
+        "rating-count": 18976
     },
     {
         "id": "discrete-mathematics",
         "title": "Discrete Mathematics",
         "description": "Fundamentals of logic, set theory, combinatorics, graph theory, and algorithms.",
-        "enrollment-count": 310,
+        "enrollment-count": 73210,
         "rating": 4.5,
-        "rating-count": 120
+        "rating-count": 98765
     },
     {
         "id": "mathematical-statistics",
         "title": "Mathematical Statistics",
         "description": "Theoretical foundation of statistical inference, hypothesis testing, and estimation.",
-        "enrollment-count": 170,
+        "enrollment-count": 34567,
         "rating": 4.3,
-        "rating-count": 69
+        "rating-count": 56789
     },
     {
         "id": "topology",
         "title": "Topology",
         "description": "Study of topological spaces, continuity, compactness, connectedness, and metric spaces.",
-        "enrollment-count": 95,
+        "enrollment-count": 18976,
         "rating": 4.0,
-        "rating-count": 40
+        "rating-count": 23456
     },
     {
         "id": "partial-differential-equations",
         "title": "Partial Differential Equations",
         "description": "Analysis and solution methods for PDEs, including wave, heat, and Laplace equations.",
-        "enrollment-count": 145,
+        "enrollment-count": 28901,
         "rating": 4.1,
-        "rating-count": 58
+        "rating-count": 45678
     },
     {
         "id": "optimization-theory",
         "title": "Optimization Theory",
         "description": "Introduction to linear programming, convex optimization, and gradient-based methods.",
-        "enrollment-count": 165,
+        "enrollment-count": 33456,
         "rating": 4.2,
-        "rating-count": 64
+        "rating-count": 54321
     },
     {
         "id": "fourier-analysis",
         "title": "Fourier Analysis",
         "description": "Study of Fourier series, transforms, and their applications in signal processing and physics.",
-        "enrollment-count": 125,
+        "enrollment-count": 22345,
         "rating": 4.1,
-        "rating-count": 53
+        "rating-count": 34567
     },
     {
         "id": "graph-theory",
         "title": "Graph Theory",
         "description": "Study of graphs, networks, paths, trees, matchings, and coloring problems.",
-        "enrollment-count": 195,
+        "enrollment-count": 48901,
         "rating": 4.4,
-        "rating-count": 85
+        "rating-count": 76543
     },
     {
         "id": "game-theory",
         "title": "Game Theory",
         "description": "Strategic decision-making in competitive environments, covering zero-sum games and Nash equilibria.",
-        "enrollment-count": 150,
+        "enrollment-count": 27890,
         "rating": 4.3,
-        "rating-count": 77
+        "rating-count": 65432
     },
     {
         "id": "category-theory",
         "title": "Category Theory",
         "description": "Introduction to categories, functors, natural transformations, and universal constructions.",
-        "enrollment-count": 85,
+        "enrollment-count": 12345,
         "rating": 4.0,
-        "rating-count": 35
+        "rating-count": 23456
     },
     {
         "id": "set-theory",
         "title": "Set Theory",
         "description": "Foundations of mathematics through sets, relations, functions, cardinality, and ZFC axioms.",
-        "enrollment-count": 105,
+        "enrollment-count": 21234,
         "rating": 4.1,
-        "rating-count": 44
+        "rating-count": 34567
     }
 ]
