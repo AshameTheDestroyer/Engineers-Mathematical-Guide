@@ -13,6 +13,7 @@ export const CoursesPage: FC = () => {
         usesSuspense: true,
         queryKey: ["courses"],
         dummyData: dummy_data,
+        requestTime: 0,
     });
 
     const data = data_.map((datum) => CourseSchema.parse(datum));
