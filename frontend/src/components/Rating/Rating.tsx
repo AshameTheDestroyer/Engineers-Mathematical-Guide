@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Icon } from "../Icon/Icon";
+import { Icon, IconProps } from "../Icon/Icon";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
@@ -10,12 +10,14 @@ import star_outlined_icon from "@icons/star_outlined.svg";
 export type RatingProps = ChildlessComponentProps<HTMLDivElement> & {
     value: number;
     maximumValue?: number;
+    iconProps?: Omit<IconProps, "source">;
 };
 
 export const Rating: FC<RatingProps> = ({
     id,
     ref,
     className,
+    iconProps,
     value: _value,
     maximumValue = 5,
 }) => {
@@ -42,6 +44,7 @@ export const Rating: FC<RatingProps> = ({
                               ? star_icon
                               : star_outlined_icon
                     }
+                    {...iconProps}
                 />
             ))}
         </div>
