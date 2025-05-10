@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { useQuery } from "@tanstack/react-query";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
@@ -67,7 +68,7 @@ export const Icon: FC<IconProps> = ({
     return (
         <div
             id={id}
-            className={className}
+            className={twMerge("icon", className)}
             dangerouslySetInnerHTML={{
                 __html: isLoading ? "..." : isError ? "ERR" : (data ?? ""),
             }}
