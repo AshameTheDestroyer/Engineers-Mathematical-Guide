@@ -1,17 +1,17 @@
+import { Icon } from "../Icon/Icon";
+import { twJoin, twMerge } from "tailwind-merge";
 import { QueryStatus } from "@tanstack/react-query";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useState, useRef, useEffect, FC, ImgHTMLAttributes } from "react";
-import { twJoin, twMerge } from "tailwind-merge";
 
-export const FALLBACK_SOURCE = "";
+import network_error_icon from "@icons/network_error.svg";
 
 export type ImageProps = ChildlessComponentProps<HTMLDivElement> & {
-    source: string;
     sizes?: string;
+    source?: string;
     alternative: string;
     doesFadeIn?: boolean;
     placeholder?: string;
-    fallbackSource?: string;
     sourceSet?: Record<string, string>;
 } & Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt" | "srcSet">;
 
@@ -25,7 +25,6 @@ export const Image: FC<ImageProps> = ({
     alternative,
     doesFadeIn = true,
     placeholder = "$skeleton",
-    fallbackSource = FALLBACK_SOURCE,
     ...props
 }) => {
     const imageReference = useRef<HTMLImageElement>(null);
@@ -43,10 +42,7 @@ export const Image: FC<ImageProps> = ({
 
         if ("loading" in HTMLImageElement) {
             imageElement.addEventListener("load", () => setStatus("success"));
-            imageElement.addEventListener("error", () => {
-                setStatus("error");
-                imageElement.src = fallbackSource;
-            });
+            imageElement.addEventListener("error", () => setStatus("error"));
         } else {
             const observer = new IntersectionObserver(
                 (entries) => {
@@ -68,7 +64,7 @@ export const Image: FC<ImageProps> = ({
             imageElement.removeEventListener?.("load", () => {});
             imageElement.removeEventListener?.("error", () => {});
         };
-    }, [source, fallbackSource]);
+    }, [source]);
 
     useEffect(() => {
         if (status == "success") {
@@ -100,17 +96,25 @@ export const Image: FC<ImageProps> = ({
                 />
             )}
 
+            {(status == "error" || source == null) && (
+                <Icon
+                    source={network_error_icon}
+                    className="-translate-1/2 absolute left-1/2 top-1/2 h-1/3 w-1/3 [&>svg]:h-full [&>svg]:w-full"
+                />
+            )}
+
             <img
                 ref={imageReference}
                 className={twJoin(
+                    status == "error" || source == null ? "sr-only" : "",
                     doesFadeIn && status == "success"
                         ? "fade-in opacity-0 transition-opacity duration-300 ease-in"
                         : ""
                 )}
+                src={source}
                 loading="lazy"
                 decoding="async"
                 alt={alternative}
-                src={status == "error" ? fallbackSource : source}
                 srcSet={
                     isVisible || "loading" in HTMLImageElement
                         ? Object.entries(sourceSet ?? {})
@@ -125,13 +129,7 @@ export const Image: FC<ImageProps> = ({
                 }
                 {...props}
                 onLoad={(e) => (props.onLoad?.(e), setStatus("success"))}
-                onError={(e) => {
-                    props.onError?.(e);
-                    setStatus("error");
-                    if (fallbackSource) {
-                        e.currentTarget.src = fallbackSource;
-                    }
-                }}
+                onError={(e) => (props.onError?.(e), setStatus("error"))}
             />
 
             {alternative != null && !isPlaceholderShown && (
