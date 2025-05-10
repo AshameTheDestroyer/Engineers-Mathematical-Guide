@@ -6,6 +6,7 @@ import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 import { Typography } from "@/components/Typography/Typography";
 
 import dummy_data from "./dummy_data.json";
+import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 
 export const CoursesPage: FC = () => {
     const { data: data_ } = useMockQuery({
@@ -14,6 +15,9 @@ export const CoursesPage: FC = () => {
         queryKey: ["courses"],
         dummyData: dummy_data,
         requestTime: 0,
+        usesSuspense: true,
+        queryKey: ["courses"],
+        dummyData: dummy_data,
     });
 
     const data = data_.map((datum) => CourseSchema.parse(datum));
