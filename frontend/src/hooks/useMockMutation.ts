@@ -14,15 +14,15 @@ export type UseMockMutationProps<
 export const useMockMutation = <
     TMutationKey extends MutationKey = readonly unknown[],
 >(
-    props?: UseMockMutationProps
+    props: UseMockMutationProps<TMutationKey>
 ) => {
     const {
         onError,
         onSuccess,
+        mutationKey,
         resetTime = 2000,
         requestTime = 2000,
-        mutationKey = [] as unknown as TMutationKey,
-    } = props ?? {};
+    } = props;
 
     const mutation = useMutation({
         mutationKey,
