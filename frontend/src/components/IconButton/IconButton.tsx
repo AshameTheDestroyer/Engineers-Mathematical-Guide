@@ -14,16 +14,23 @@ export const IconButton: FC<IconButtonProps> = ({
     id,
     icon,
     className,
+    thickness = "normal",
     ...props
 }) => {
     return (
         <Button
             id={id}
             className={twMerge(
+                thickness == "thin" ? "[&>div[data-content]]:p-1" : "",
                 "aspect-square [&>div[data-thickness]]:h-full [&>div]:rounded-full",
                 className
             )}
-            icon={{ ...icon, placement: "left" }}
+            thickness={thickness}
+            icon={{
+                ...(thickness == "thin" ? { width: 20, height: 20 } : {}),
+                ...icon,
+                placement: "left",
+            }}
             {...props}
         />
     );

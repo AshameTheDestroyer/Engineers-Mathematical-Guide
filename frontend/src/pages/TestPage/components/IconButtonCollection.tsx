@@ -8,6 +8,7 @@ import {
 
 import cog_icon from "@icons/cog.svg";
 import user_icon from "@icons/user.svg";
+import star_icon from "@icons/star.svg";
 import home_icon from "@icons/home.svg";
 
 export const IconButtonCollection: FC = () => {
@@ -16,10 +17,12 @@ export const IconButtonCollection: FC = () => {
     };
 
     const userIcon: IconButtonProps["icon"] = {
-        width: 32,
-        height: 32,
         source: user_icon,
-        className: "-m-2",
+        className: "scale-150",
+    };
+
+    const starIcon: IconButtonProps["icon"] = {
+        source: star_icon,
     };
 
     const homeIcon: IconButtonProps["icon"] = {
@@ -39,13 +42,47 @@ export const IconButtonCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
-                title="Thick"
+                title="Thickness"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
-                    <IconButton variant="default" isThick icon={userIcon} />
-                    <IconButton variant="primary" isThick icon={userIcon} />
-                    <IconButton variant="secondary" isThick icon={userIcon} />
+                    <IconButton
+                        icon={userIcon}
+                        variant="default"
+                        thickness="thick"
+                    />
+                    <IconButton
+                        icon={userIcon}
+                        variant="primary"
+                        thickness="thick"
+                    />
+                    <IconButton
+                        icon={userIcon}
+                        variant="secondary"
+                        thickness="thick"
+                    />
+                </ButtonBox>
+            </Collection>
+            <Collection
+                title="Thinness"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <IconButton
+                        icon={starIcon}
+                        variant="default"
+                        thickness="thin"
+                    />
+                    <IconButton
+                        icon={starIcon}
+                        variant="primary"
+                        thickness="thin"
+                    />
+                    <IconButton
+                        icon={starIcon}
+                        variant="secondary"
+                        thickness="thin"
+                    />
                 </ButtonBox>
             </Collection>
             <Collection
