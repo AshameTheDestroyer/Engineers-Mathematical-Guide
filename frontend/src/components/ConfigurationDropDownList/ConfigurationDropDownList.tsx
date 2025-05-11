@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Locale } from "../Locale/Locale";
-import { Button } from "@/components/Button/Button";
+import { Button, ButtonProps } from "@/components/Button/Button";
 import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
@@ -21,9 +21,11 @@ import supported_languages from "@json/supported_languages.json";
 import locales from "@localization/configuration_drop_down_list.json";
 
 export type ConfigurationDropDownListProps = WithPartial<
-    Omit<DropDownListProps, "children">,
+    Omit<DropDownListProps, "children" | "icon">,
     "position"
->;
+> & {
+    icon: Omit<ButtonProps["icon"] & {}, "source" | "placement">;
+};
 
 export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
     id,
@@ -55,7 +57,7 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
             ref={ref}
             className={className}
             position={position}
-            icon={icon ?? { source: cog_icon }}
+            icon={{ source: cog_icon, ...icon }}
             {...props}
         >
             <DropDown
