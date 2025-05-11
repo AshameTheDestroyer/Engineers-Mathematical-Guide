@@ -6,8 +6,8 @@ import { ComponentProps } from "@types_/ComponentProps";
 
 export type ButtonProps = {
     link?: string;
-    isThick?: boolean;
     variant?: Variant;
+    thickness?: Thickness;
     doesTextGrow?: boolean;
     icon?: IconProps & {
         placement: "left" | "right";
@@ -19,13 +19,13 @@ export const Button: FC<ButtonProps> = ({
     id,
     link,
     icon,
-    isThick,
     onClick,
     children,
     disabled,
     className,
     doesTextGrow,
     variant = "default",
+    thickness = "normal",
     ...props
 }) => {
     const Navigate = useNavigate();
@@ -57,9 +57,11 @@ export const Button: FC<ButtonProps> = ({
                 disabled
                     ? "grayscale-25 saturate-75 contrast-85 pointer-events-none cursor-auto"
                     : "cursor-pointer",
-                isThick
-                    ? "active:[&>[data-content]]:translate-y-2"
-                    : "active:[&>[data-content]]:translate-y-1",
+                thickness == "thick"
+                    ? "active:[&>[data-content]]:translate-y-1.5"
+                    : thickness == "thin"
+                      ? "active:[&>[data-content]]:translate-y-0.5"
+                      : "active:[&>[data-content]]:translate-y-1",
                 className
             )}
             type="button"
@@ -71,7 +73,11 @@ export const Button: FC<ButtonProps> = ({
             <div
                 data-content
                 className={twMerge(
-                    isThick ? "px-4 py-2" : "px-2 py-1",
+                    thickness == "thick"
+                        ? "px-4 py-2"
+                        : thickness == "thin"
+                          ? "px-1 py-0.5"
+                          : "px-2 py-1",
                     "flex h-full w-full place-content-center place-items-center gap-2 rounded-xl border-2 transition duration-200"
                 )}
             >
@@ -101,9 +107,13 @@ export const Button: FC<ButtonProps> = ({
             </div>
             <div
                 data-thickness
-                className={twMerge(
-                    isThick ? "-bottom-2 h-8" : "-bottom-1 h-6",
-                    "absolute inset-x-0 top-auto z-[-1] rounded-b-xl border-2 transition duration-200"
+                className={twJoin(
+                    "absolute inset-x-0 top-auto z-[-1] rounded-b-xl border-2 transition duration-200",
+                    thickness == "thick"
+                        ? "-bottom-1.5 h-8"
+                        : thickness == "thin"
+                          ? "-bottom-0.5 h-4"
+                          : "-bottom-1 h-6"
                 )}
             />
         </button>

@@ -108,12 +108,12 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:flex-col [&>div]:gap-4"
-                title="Thick"
+                title="Thickness"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
                     <DropDown
-                        isThick
+                        thickness="thick"
                         text="Default"
                         variant="default"
                         position="bottom-end"
@@ -122,7 +122,7 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        isThick
+                        thickness="thick"
                         text="Primary"
                         variant="primary"
                         position="bottom-end"
@@ -131,7 +131,7 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        isThick
+                        thickness="thick"
                         text="Secondary"
                         variant="secondary"
                         position="bottom-end"
@@ -142,7 +142,7 @@ export const DropDownCollection: FC = () => {
                 </ButtonBox>
                 <ButtonBox>
                     <DropDown
-                        isThick
+                        thickness="thick"
                         text="Default"
                         variant="default"
                         position="bottom-end"
@@ -151,7 +151,7 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        isThick
+                        thickness="thick"
                         text="Primary"
                         variant="primary"
                         position="bottom-end"
@@ -160,7 +160,71 @@ export const DropDownCollection: FC = () => {
                         <DropDownChildren />
                     </DropDown>
                     <DropDown
-                        isThick
+                        thickness="thick"
+                        text="Secondary"
+                        variant="secondary"
+                        position="bottom-end"
+                        icon={{ ...thickArrowIcon, placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+            </Collection>
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
+                title="Thinness"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <DropDown
+                        thickness="thin"
+                        text="Default"
+                        variant="default"
+                        position="bottom-end"
+                        icon={thickArrowIcon}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        thickness="thin"
+                        text="Primary"
+                        variant="primary"
+                        position="bottom-end"
+                        icon={thickArrowIcon}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        thickness="thin"
+                        text="Secondary"
+                        variant="secondary"
+                        position="bottom-end"
+                        icon={thickArrowIcon}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+                <ButtonBox>
+                    <DropDown
+                        thickness="thin"
+                        text="Default"
+                        variant="default"
+                        position="bottom-end"
+                        icon={{ ...thickArrowIcon, placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        thickness="thin"
+                        text="Primary"
+                        variant="primary"
+                        position="bottom-end"
+                        icon={{ ...thickArrowIcon, placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        thickness="thin"
                         text="Secondary"
                         variant="secondary"
                         position="bottom-end"
