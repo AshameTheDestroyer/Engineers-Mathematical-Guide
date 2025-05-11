@@ -13,7 +13,7 @@ export const APPLICATION_ROUTES = RoutesWithAbsolutePaths({
         href: "/",
         routes: {
             courses: { href: "courses" },
-            courseID: { href: ":courseID" },
+            courseID: { href: "courses/:courseID" },
         },
     },
 });
