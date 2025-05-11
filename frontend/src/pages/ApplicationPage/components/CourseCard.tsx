@@ -108,8 +108,7 @@ export const CourseCard: FC<CourseCardProps> = ({
                 <Image
                     className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
                     source={course.image}
-                    placeholder="Loading..."
-                    alternative="A calculator"
+                    alternative={`Image of ${course.title} Course.`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
