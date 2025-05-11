@@ -15,10 +15,7 @@ export const Header: FC = () => {
             }}
         >
             <Breadcrumbs />
-            <ConfigurationDropDownList
-                className="p-0 [&>*>*]:p-1"
-                icon={{ width: 20, height: 20 }}
-            />
+            <ConfigurationDropDownList thickness="thin" variant="primary" />
         </Header_>
     );
 };
