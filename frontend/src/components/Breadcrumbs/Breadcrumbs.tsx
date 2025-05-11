@@ -9,12 +9,14 @@ import arrow_icon from "@icons/direction_arrow.svg";
 
 export type BreadcrumbsProps = ChildlessComponentProps<HTMLDivElement> & {
     length?: number;
+    Renders?: (path: string | undefined) => string | undefined;
 };
 
 export const Breadcrumbs: FC<BreadcrumbsProps> = ({
     id,
     ref,
     length,
+    Renders,
     className,
 }) => {
     const location = useLocation();
@@ -52,7 +54,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         return length != null && paths.length > length ? true : path != null;
     }
 
-    function GetFullPath(i: number, path: string) {
+    function GetPathLink(path: string, i: number) {
         if (i == 0) {
             return "/";
         }
@@ -61,6 +63,18 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
             .filter((path) => path != null)
             .slice(0, paths.indexOf(path) + 1)
             .join("/");
+    }
+
+    function GetPathText(path: string, i: number) {
+        if (path == null) {
+            return "...";
+        }
+
+        if (i == 0) {
+            return "/";
+        }
+
+        return Renders?.(path) ?? path?.toTitleCase();
     }
 
     return (
@@ -79,12 +93,8 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                             {path == null ? (
                                 <p>...</p>
                             ) : (
-                                <Link to={GetFullPath(i, path)}>
-                                    {path == null
-                                        ? "..."
-                                        : i == 0
-                                          ? "/"
-                                          : path?.toTitleCase()}
+                                <Link to={GetPathLink(path, i)}>
+                                    {GetPathText(path, i)}
                                 </Link>
                             )}
                         </li>

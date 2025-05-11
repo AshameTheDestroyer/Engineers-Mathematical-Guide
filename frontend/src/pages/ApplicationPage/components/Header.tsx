@@ -14,7 +14,13 @@ export const Header: FC = () => {
                 );
             }}
         >
-            <Breadcrumbs />
+            <Breadcrumbs
+                Renders={(path) =>
+                    path
+                        ?.replace(/\i{1,3}$/, (item) => item.toUpperCase())
+                        .toTitleCase()
+                }
+            />
             <ConfigurationDropDownList thickness="thin" variant="primary" />
         </Header_>
     );
