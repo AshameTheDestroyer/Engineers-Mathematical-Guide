@@ -20,16 +20,16 @@ export const useMockQuery = <
     TUsesSuspense extends boolean = false,
     TQueryKey extends QueryKey = readonly unknown[],
 >(
-    props?: useMockQueryProps<T, TUsesSuspense, TQueryKey>
+    props: useMockQueryProps<T, TUsesSuspense, TQueryKey>
 ) => {
     const {
         onError,
+        queryKey,
         onSuccess,
         dummyData,
         usesSuspense,
         requestTime = 2000,
-        queryKey = [] as unknown as TQueryKey,
-    } = props ?? {};
+    } = props;
 
     const query = useExtendedQuery<TUsesSuspense, unknown, Error, T, TQueryKey>(
         {
