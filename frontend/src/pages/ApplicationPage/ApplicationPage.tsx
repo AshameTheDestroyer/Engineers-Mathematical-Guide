@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
@@ -17,6 +18,7 @@ export const ApplicationPage: FC = () => {
 
     return (
         <Page>
+            <Breadcrumbs />
             <ConfigurationDropDownList
                 className={twJoin(
                     direction == "ltr" ? "right-page" : "left-page",
