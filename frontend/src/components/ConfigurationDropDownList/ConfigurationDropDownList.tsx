@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Locale } from "../Locale/Locale";
-import { Button, ButtonProps } from "@/components/Button/Button";
 import { PALETTE_ICONS } from "@/constants/PaletteIcons";
+import { Button, ButtonProps } from "@/components/Button/Button";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
 import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
