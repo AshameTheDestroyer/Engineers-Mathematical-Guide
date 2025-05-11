@@ -1,12 +1,9 @@
 import { FC } from "react";
-import { twJoin } from "tailwind-merge";
 import { Outlet } from "react-router-dom";
+import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
-import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export const ApplicationPage: FC = () => {
     useDefaultRoute(
@@ -14,17 +11,9 @@ export const ApplicationPage: FC = () => {
         APPLICATION_ROUTES.base.routes.courses.href
     );
 
-    const { direction } = useLocalization();
-
     return (
         <Page>
-            <Breadcrumbs />
-            <ConfigurationDropDownList
-                className={twJoin(
-                    direction == "ltr" ? "right-page" : "left-page",
-                    "top-page absolute z-10"
-                )}
-            />
+            <Header />
             <Outlet />
         </Page>
     );
