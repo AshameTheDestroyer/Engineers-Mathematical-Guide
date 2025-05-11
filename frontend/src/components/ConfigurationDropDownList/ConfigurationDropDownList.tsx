@@ -24,7 +24,7 @@ export type ConfigurationDropDownListProps = WithPartial<
     Omit<DropDownListProps, "children" | "icon">,
     "position"
 > & {
-    icon: Omit<ButtonProps["icon"] & {}, "source" | "placement">;
+    icon?: Omit<ButtonProps["icon"] & {}, "source" | "placement">;
 };
 
 export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
