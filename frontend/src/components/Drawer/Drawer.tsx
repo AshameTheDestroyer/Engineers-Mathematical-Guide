@@ -1,9 +1,10 @@
+import { createPortal } from "react-dom";
 import { twJoin, twMerge } from "tailwind-merge";
-import { ComponentProps } from "@types_/ComponentProps";
 import { Dispatch, FC, SetStateAction } from "react";
 import { IconButton } from "../IconButton/IconButton";
+import { ComponentProps } from "@types_/ComponentProps";
+
 import cross_icon from "@/assets/icons/cross.svg";
-import { createPortal } from "react-dom";
 
 export type DrawerProps = {
     isOpen: boolean;
@@ -45,7 +46,7 @@ export const Drawer: FC<DrawerProps> = ({
         <>
             {isOpen && (
                 <div
-                    className="absolute bottom-0 left-0 right-0 top-0 bg-black opacity-30"
+                    className="fixed inset-0 bg-black/30"
                     onClick={(_e) => setIsOpen(false)}
                 />
             )}
