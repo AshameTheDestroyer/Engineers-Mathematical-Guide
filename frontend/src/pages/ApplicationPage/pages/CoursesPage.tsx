@@ -15,8 +15,10 @@ export const CoursesPage: FC = () => {
         dummyData: dummy_data,
         requestTime: 0,
         usesSuspense: true,
+        schema: CourseSchema,
         queryKey: ["courses"],
-        dummyData: dummy_data,
+        queryFn: () => dummy_data,
+        parseFn: (data, schema) => data?.map((datum) => schema.parse(datum)),
     });
 
     const { data: images } = useExtendedQuery({
