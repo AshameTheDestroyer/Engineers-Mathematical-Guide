@@ -6,6 +6,7 @@ import { DropDownCollection } from "../components/DropDownCollection";
 import { IconButtonCollection } from "../components/IconButtonCollection";
 import { ProgressBarCollection } from "../components/ProgressBarCollection";
 import { StateButtonCollection } from "../components/StateButtonCollection";
+import { DrawerCollection } from "../components/DrawerCollection";
 
 export const ComponentsPage: FC = () => {
     return (
@@ -17,6 +18,7 @@ export const ComponentsPage: FC = () => {
             <DropDownCollection />
             <ProgressBarCollection />
             <InputCollection />
+            <DrawerCollection />
         </div>
     );
 };
