@@ -7,6 +7,7 @@ import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { NavigationBar } from "@components/NavigationBar/NavigationBar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 import login_icon from "@icons/login.svg";
@@ -29,14 +30,7 @@ export const Header: FC = () => {
             }}
         >
             <Logo />
-            <NavigationBar
-                className="grow"
-                routes={GetRouteLocales(
-                    LANDING_ROUTES,
-                    route_locales,
-                    language
-                )}
-            />
+
             <ButtonBox>
                 <Button
                     link="/registration/signup"
@@ -57,6 +51,13 @@ export const Header: FC = () => {
                 >
                     <Locale>{locales.buttons.login}</Locale>
                 </Button>
+                <NavigationMenuButton
+                    routes={GetRouteLocales(
+                        LANDING_ROUTES,
+                        route_locales,
+                        language
+                    )}
+                />
                 <ConfigurationDropDownList variant="secondary" />
             </ButtonBox>
         </Header_>
