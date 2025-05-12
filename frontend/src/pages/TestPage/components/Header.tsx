@@ -22,9 +22,10 @@ export const Header: FC = () => {
                 );
             }}
         >
-            <Logo />
+            <Logo className="h-10" />
             <ButtonBox>
                 <NavigationMenuButton
+                    thickness="thin"
                     routes={GetRouteLocales(
                         TEST_ROUTES != null
                             ? { ...TEST_ROUTES.base.routes }
@@ -33,7 +34,7 @@ export const Header: FC = () => {
                         language
                     )}
                 />
-                <ConfigurationDropDownList variant="primary" />
+                <ConfigurationDropDownList thickness="thin" variant="primary" />
             </ButtonBox>
         </Header_>
     );
