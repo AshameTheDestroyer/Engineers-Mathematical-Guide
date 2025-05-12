@@ -36,6 +36,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                 {...props}
             />
             <Drawer
+                className="px-16"
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 direction={direction == "rtl" ? "left" : "right"}
