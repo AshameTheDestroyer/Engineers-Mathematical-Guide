@@ -34,7 +34,9 @@ export const CoursePage: FC = () => {
                     variant="h1"
                     className="inset-page absolute top-auto z-[1] text-2xl font-bold [text-shadow:2px_2px_5px_black!important]"
                 >
-                    {course.title}
+                    {course.title
+                        ?.replace(/\i{1,3}$/, (item) => item.toUpperCase())
+                        .toTitleCase()}
                 </Typography>
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
