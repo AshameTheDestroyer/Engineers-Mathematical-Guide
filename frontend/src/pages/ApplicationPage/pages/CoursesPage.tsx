@@ -5,7 +5,7 @@ import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 
-import dummy_data from "./dummy_data.json";
+import courses_dummy_data from "./courses.dummy.json";
 
 export const CoursesPage: FC = () => {
     const { data } = useSchematicQuery({
