@@ -1,35 +1,35 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
-import { useMockQuery } from "@/hooks/useMockQuery";
+import { CourseSchema } from "@/schemas/CourseSchema";
+import { CourseSummary } from "../components/CourseSummary";
+import { useSchematicQuery } from "@/hooks/useSchematicQuery";
+import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
 import dummy_data from "./dummy_data.json";
-import { CourseSummary } from "../components/CourseSummary";
 
 export const CoursePage: FC = () => {
     const { courseID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
 
-    const { data } = useMockQuery({
-        requestTime: 0,
+    const { data: course } = useSchematicQuery({
         usesSuspense: true,
         queryKey: ["course"],
-        dummyData: dummy_data,
+        schema: CourseSchema,
+        queryFn: () => dummy_data,
+        parseFn: (data, schema) => {
+            const course = data?.find((datum) => datum.id == courseID);
+            if (course == null) {
+                throw new Error("Course Not Found");
+            }
+            return schema.parse(course);
+        },
     });
 
-    const course = useMemo(
-        () => data.find((datum) => datum.id == courseID),
-        [data]
-    );
-
-    if (course == null) {
-        throw new Error("Course not found.");
-    }
-
     return (
-        <main>
-            <figure className="border-background-dark absolute inset-0 bottom-auto border-b-2 text-white">
+        <main className="flex flex-col gap-8">
+            <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <CourseSummary course={course} />
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
@@ -38,6 +38,7 @@ export const CoursePage: FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
+            <Typography variant="p">{course.description}</Typography>
         </main>
     );
 };

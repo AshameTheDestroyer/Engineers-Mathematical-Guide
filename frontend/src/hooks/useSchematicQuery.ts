@@ -18,7 +18,11 @@ export type UseSchematicQueryResult<
         TParseFnData extends undefined
             ? TSchema
             : Exclude<TParseFnData, undefined>,
-        TParseFnData extends undefined ? never : TSchema
+        TParseFnData extends undefined
+            ? never
+            : TSchema extends TParseFnData
+              ? never
+              : TSchema
     >,
     TError
 >;
