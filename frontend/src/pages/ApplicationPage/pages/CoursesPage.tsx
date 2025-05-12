@@ -1,20 +1,19 @@
 import { FC } from "react";
-import { useMockQuery } from "@/hooks/useMockQuery";
 import { CourseCard } from "../components/CourseCard";
 import { CourseSchema } from "@/schemas/CourseSchema";
 import { useExtendedQuery } from "@/hooks/useExtendedQuery";
+import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 
 import dummy_data from "./dummy_data.json";
 export const CoursesPage: FC = () => {
-    const { data: data_ } = useMockQuery({
-        requestTime: 0,
+    const { data } = useSchematicQuery({
         usesSuspense: true,
+        schema: CourseSchema,
         queryKey: ["courses"],
-        dummyData: dummy_data,
+        queryFn: () => dummy_data,
+        parseFn: (data, schema) => data?.map((datum) => schema.parse(datum)),
     });
-
-    const data = data_.map((datum) => CourseSchema.parse(datum));
 
     const { data: images } = useExtendedQuery({
         usesSuspense: true,
