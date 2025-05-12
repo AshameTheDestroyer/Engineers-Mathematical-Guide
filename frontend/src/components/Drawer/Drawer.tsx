@@ -43,10 +43,11 @@ export const Drawer: FC<DrawerProps> = ({
 
     return createPortal(
         <>
-            {isOpen ? (
-                <div className="absolute bottom-0 left-0 right-0 top-0 bg-black opacity-30"></div>
-            ) : (
-                ""
+            {isOpen && (
+                <div
+                    className="absolute bottom-0 left-0 right-0 top-0 bg-black opacity-30"
+                    onClick={(_e) => setIsOpen(false)}
+                />
             )}
             <div
                 id={id}
