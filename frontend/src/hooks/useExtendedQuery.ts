@@ -9,6 +9,14 @@ import {
     UseSuspenseQueryResult,
 } from "@tanstack/react-query";
 
+export type UseExtendedQueryResult<
+    TUsesSuspense extends boolean = false,
+    TData = unknown,
+    TError = Error,
+> = TUsesSuspense extends true
+    ? UseSuspenseQueryResult<TData, TError>
+    : UseQueryResult<TData, TError>;
+
 export type UseExtendedQueryOptions<
     TUsesSuspense extends boolean = false,
     TQueryFnData = unknown,
@@ -36,9 +44,7 @@ export const useExtendedQuery = <
         TQueryKey
     >,
     queryClient?: QueryClient
-): TUsesSuspense extends true
-    ? UseSuspenseQueryResult<TData, TError>
-    : UseQueryResult<TData, TError> => {
+): UseExtendedQueryResult<TUsesSuspense, TData, TError> => {
     const { staleTime = 3000 * 60 * 10, ...options_ } = options;
 
     const query = options.usesSuspense
