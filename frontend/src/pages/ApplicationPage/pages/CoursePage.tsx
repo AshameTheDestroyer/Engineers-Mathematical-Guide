@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
-import { CourseSchema } from "@/schemas/CourseSchema";
 import { CourseSummary } from "../components/CourseSummary";
+import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
-import dummy_data from "./dummy_data.json";
+import detailed_courses_dummy_data from "./detailed_courses.dummy.json";
 
 export const CoursePage: FC = () => {
     const { courseID } =
@@ -16,8 +16,8 @@ export const CoursePage: FC = () => {
     const { data: course } = useSchematicQuery({
         usesSuspense: true,
         queryKey: ["course"],
-        schema: CourseSchema,
-        queryFn: () => dummy_data,
+        schema: DetailedCourseSchema,
+        queryFn: () => detailed_courses_dummy_data,
         parseFn: (data, schema) => {
             const course = data?.find((datum) => datum.id == courseID);
             if (course == null) {
@@ -39,6 +39,9 @@ export const CoursePage: FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
             <Typography variant="p">{course.description}</Typography>
+            <Typography variant="p">
+                {course["detailed-description"]}
+            </Typography>
         </main>
     );
 };
