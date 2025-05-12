@@ -28,8 +28,8 @@ export const Header: FC = () => {
                 );
             }}
         >
-            <Logo />
-            <ButtonBox>
+            <Logo className="h-10" />
+            <ButtonBox className="place-items-center">
                 <Button
                     link="/registration/signup"
                     icon={{
@@ -50,13 +50,17 @@ export const Header: FC = () => {
                     <Locale>{locales.buttons.login}</Locale>
                 </Button>
                 <NavigationMenuButton
+                    thickness="thin"
                     routes={GetRouteLocales(
                         WEBSITE_ROUTES.base.routes,
                         route_locales,
                         language
                     )}
                 />
-                <ConfigurationDropDownList variant="secondary" />
+                <ConfigurationDropDownList
+                    thickness="thin"
+                    variant="secondary"
+                />
             </ButtonBox>
         </Header_>
     );

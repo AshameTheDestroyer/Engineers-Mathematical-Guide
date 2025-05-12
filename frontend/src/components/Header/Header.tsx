@@ -58,7 +58,7 @@ export const Header: FC<HeaderProps> = ({
             ref={headerReference}
             className={twMerge(
                 isSticky ? "sticky top-0" : "",
-                "-m-page mb-page px-page z-10 flex flex-wrap place-items-center justify-between gap-8 py-[calc(var(--spacing-page)/2)]",
+                "-m-page mb-page z-10 flex flex-wrap place-items-center justify-between gap-8 px-4 py-2",
                 className
             )}
         >
