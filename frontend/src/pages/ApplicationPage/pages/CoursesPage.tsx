@@ -36,8 +36,20 @@ export const CoursesPage: FC = () => {
             ).then((entries) => Object.fromEntries(entries)),
     });
 
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
         <main className="flex flex-col gap-8">
+            <Modal
+                className="bg-amber-950 text-white"
+                hasCloseButton
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                text="Page Not Found"
+            >
+                <p>tHIS IS A MODAL</p>
+            </Modal>
+
             <header>
                 <Typography variant="h1" className="text-2xl font-bold">
                     Courses
