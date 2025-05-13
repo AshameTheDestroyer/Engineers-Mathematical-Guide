@@ -1,11 +1,10 @@
 import { twMerge } from "tailwind-merge";
-import { ComponentProps } from "@types_/ComponentProps";
+import { createPortal } from "react-dom";
 import { Dispatch, FC, SetStateAction } from "react";
 import { IconButton } from "../IconButton/IconButton";
-// import { IconButton } from "../IconButton/IconButton";
+import { ComponentProps } from "@types_/ComponentProps";
+
 import cross_icon from "@/assets/icons/cross.svg";
-import { createPortal } from "react-dom";
-// import { createPortal } from "react-dom";
 
 export type ModalProps = {
     isOpen: boolean;
@@ -18,9 +17,9 @@ export const Modal: FC<ModalProps> = ({
     ref,
     isOpen,
     children,
-    hasCloseButton,
-    setIsOpen,
     className,
+    setIsOpen,
+    hasCloseButton,
 }) => {
     if (!isOpen) {
         return <></>;

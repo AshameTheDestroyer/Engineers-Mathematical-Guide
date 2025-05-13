@@ -1,4 +1,3 @@
-// useNetworkStatus.ts
 import { useState, useEffect } from "react";
 
 const useNetworkStatus = () => {
