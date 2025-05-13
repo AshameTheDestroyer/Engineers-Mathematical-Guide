@@ -24,6 +24,7 @@ export const DrawerCollection: FC = () => {
                 icon={{ source: arrow_icon, className: props.className }}
             />
             <Drawer
+                hasCloseButton
                 isOpen={props.isOpen}
                 direction={props.direction}
                 setIsOpen={props.setIsOpen}
