@@ -4,6 +4,7 @@ import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 
 export const ApplicationPage: FC = () => {
     useDefaultRoute(
@@ -15,6 +16,7 @@ export const ApplicationPage: FC = () => {
         <Page>
             <Header />
             <Outlet />
+            <OfflineModal />
         </Page>
     );
 };
