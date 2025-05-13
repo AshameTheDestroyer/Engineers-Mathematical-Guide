@@ -1,15 +1,21 @@
 import { FC } from "react";
+import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
+import { Button } from "@/components/Button/Button";
 import { CourseSummary } from "../components/CourseSummary";
 import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import enrollment_icon from "@icons/enrollment.svg";
 import detailed_courses_dummy_data from "./detailed_courses.dummy.json";
 
 export const CoursePage: FC = () => {
+    const { direction } = useLocalization();
+
     const { courseID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
 
@@ -31,6 +37,20 @@ export const CoursePage: FC = () => {
         <main className="flex flex-col gap-8">
             <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <CourseSummary course={course} />
+                <Button
+                    className={twJoin(
+                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
+                        "absolute bottom-0 z-[1] translate-y-1/2"
+                    )}
+                    thickness="thick"
+                    variant="primary"
+                    icon={{
+                        placement: "left",
+                        source: enrollment_icon,
+                    }}
+                >
+                    Enroll Now
+                </Button>
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     source={course.image}
@@ -44,7 +64,7 @@ export const CoursePage: FC = () => {
                         <Typography className="text-lg font-bold" variant="h2">
                             Introduction
                         </Typography>
-            <Typography variant="p">
+                        <Typography variant="p">
                             {course.description}
                         </Typography>
                     </div>
@@ -53,8 +73,8 @@ export const CoursePage: FC = () => {
                             Description
                         </Typography>
                         <Typography className="text-justify" variant="p">
-                {course["detailed-description"]}
-            </Typography>
+                            {course["detailed-description"]}
+                        </Typography>
                     </div>
                 </section>
                 <section />
