@@ -35,7 +35,7 @@ export const Modal: FC<ModalProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    "-translate-1/2 fixed left-1/2 top-1/2 z-50 flex min-h-12 min-w-12 justify-items-center rounded-2xl p-8 transition-all duration-300",
+                    "-translate-1/2 fixed left-1/2 top-1/2 z-50 flex min-h-12 min-w-12 flex-col rounded-2xl p-8",
                     children != null && hasCloseButton ? "py-16" : "",
                     className
                 )}
