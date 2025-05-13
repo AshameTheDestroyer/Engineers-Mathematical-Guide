@@ -19,6 +19,7 @@ type TypographyElement =
     | "cite"
     | "label"
     | "legend"
+    | "strong"
     | "caption"
     | "figcaption"
     | "blockquote";
