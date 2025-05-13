@@ -38,10 +38,27 @@ export const CoursePage: FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
-            <Typography variant="p">{course.description}</Typography>
+            <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
+                <section className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-4">
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Introduction
+                        </Typography>
             <Typography variant="p">
+                            {course.description}
+                        </Typography>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Description
+                        </Typography>
+                        <Typography className="text-justify" variant="p">
                 {course["detailed-description"]}
             </Typography>
+                    </div>
+                </section>
+                <section />
+            </main>
         </main>
     );
 };
