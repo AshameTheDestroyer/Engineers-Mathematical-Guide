@@ -1,8 +1,9 @@
-import { twMerge } from "tailwind-merge";
 import { createPortal } from "react-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Dispatch, FC, SetStateAction } from "react";
 import { IconButton } from "../IconButton/IconButton";
 import { ComponentProps } from "@types_/ComponentProps";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import cross_icon from "@/assets/icons/cross.svg";
 
@@ -21,6 +22,8 @@ export const Modal: FC<ModalProps> = ({
     setIsOpen,
     hasCloseButton,
 }) => {
+    const { direction } = useLocalization();
+
     if (!isOpen) {
         return <></>;
     }
@@ -42,7 +45,10 @@ export const Modal: FC<ModalProps> = ({
             >
                 {hasCloseButton && (
                     <IconButton
-                        className="absolute right-4 top-4 z-[1] text-[var(--color-vibrant-red)!important]"
+                        className={twJoin(
+                            "absolute top-4 z-[1] text-[var(--color-vibrant-red)!important]",
+                            direction == "rtl" ? "left-4" : "right-4"
+                        )}
                         thickness="thin"
                         icon={{
                             width: 20,

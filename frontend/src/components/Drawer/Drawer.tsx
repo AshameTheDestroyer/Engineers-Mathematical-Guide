@@ -7,10 +7,8 @@ import { ComponentProps } from "@types_/ComponentProps";
 import cross_icon from "@/assets/icons/cross.svg";
 
 export type DrawerProps = {
-    isOpen: boolean;
-    setIsOpen: Dispatch<SetStateAction<boolean>>;
     direction: Direction;
-} & ComponentProps<HTMLDivElement>;
+} & ModalProps;
 
 export const Drawer: FC<DrawerProps> = ({
     id,
@@ -18,6 +16,7 @@ export const Drawer: FC<DrawerProps> = ({
     isOpen,
     children,
     direction,
+    hasCloseButton,
     setIsOpen,
     className,
 }) => {
@@ -50,33 +49,11 @@ export const Drawer: FC<DrawerProps> = ({
                     onClick={(_e) => setIsOpen(false)}
                 />
             )}
-            <div
-                id={id}
-                ref={ref}
-                className={twMerge(
-                    "bg-background-normal fixed inset-0 z-50 p-4 pt-20 transition-all duration-300",
-                    positionClassNames[direction],
-                    translateClassNames[direction],
-                    className
-                )}
-            >
-                <IconButton
-                    className={twJoin(
-                        "absolute z-[1]",
-                        buttonPositionClassNames[direction]
-                    )}
-                    icon={{
-                        width: 20,
-                        height: 20,
-                        thickness: 2,
-                        source: cross_icon,
-                        stroke: "currentColor",
-                    }}
-                    onClick={(_e) => setIsOpen(false)}
-                />
-                {children}
-            </div>
-        </>,
-        document.body
+            hasCloseButton={hasCloseButton}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+        >
+            {children}
+        </Modal>
     );
 };
