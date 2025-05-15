@@ -25,6 +25,30 @@ export const ColoursPage: FC = () => {
                 ]}
             />
             <ColourCollection
+                title="Bronze Colours"
+                classNames={[
+                    "bg-material-bronze-light",
+                    "bg-material-bronze-normal",
+                    "bg-material-bronze-dark",
+                ]}
+            />
+            <ColourCollection
+                title="Silver Colours"
+                classNames={[
+                    "bg-material-silver-light",
+                    "bg-material-silver-normal",
+                    "bg-material-silver-dark",
+                ]}
+            />
+            <ColourCollection
+                title="Gold Colours"
+                classNames={[
+                    "bg-material-gold-light",
+                    "bg-material-gold-normal",
+                    "bg-material-gold-dark",
+                ]}
+            />
+            <ColourCollection
                 title="Primary Colours"
                 classNames={[
                     "bg-primary-light",
