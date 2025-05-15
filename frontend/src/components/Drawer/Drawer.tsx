@@ -17,10 +17,10 @@ export const Drawer: FC<DrawerProps> = ({
     ...props
 }) => {
     const positionClassNames: Record<Direction, string> = {
-        top: "bottom-auto",
-        left: "right-auto",
-        right: "left-auto",
-        bottom: "top-auto",
+        top: "bottom-auto px-12",
+        left: "right-auto py-12",
+        right: "left-auto py-12",
+        bottom: "top-auto px-12",
     };
 
     const directionCoordinates: Record<
