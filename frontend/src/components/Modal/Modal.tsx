@@ -2,18 +2,30 @@ import { createPortal } from "react-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 import { IconButton } from "../IconButton/IconButton";
 import { ComponentProps } from "@types_/ComponentProps";
-import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
+import {
+    FC,
+    Dispatch,
+    useState,
+    useEffect,
+    CSSProperties,
+    SetStateAction,
+    HTMLAttributes,
+} from "react";
+
+import cross_icon from "@/assets/icons/cross.svg";
 
 import "./modal.css";
-import cross_icon from "@/assets/icons/cross.svg";
 
 export type ModalProps = {
     isOpen: boolean;
     hasCloseButton?: boolean;
+    animationDuration?: number;
+    isBackdropDisabled?: boolean;
     isAnimationDisabled?: boolean;
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-} & ComponentProps<HTMLDivElement>;
+} & ComponentProps<HTMLDivElement> &
+    HTMLAttributes<HTMLDivElement>;
 
 export const Modal: FC<ModalProps> = ({
     id,
@@ -22,24 +34,34 @@ export const Modal: FC<ModalProps> = ({
     children,
     className,
     setIsOpen,
+    style: _style,
     hasCloseButton,
-    isAnimationDisabled = false,
+    isBackdropDisabled,
+    isAnimationDisabled,
+    animationDuration = 400,
+    ...props
 }) => {
     const { direction } = useLocalization();
     const [isRendered, setIsRendered] = useState(isOpen);
 
-    useEffect(() => {
-        if (!isOpen) {
-            const timeoutID = setTimeout(() => {
-                setIsRendered(false);
-            }, 400);
+    const style = {
+        "--animation-duration": `${animationDuration}ms`,
+        ..._style,
+    } as CSSProperties;
 
-            return () => {
-                clearTimeout(timeoutID);
-            };
+    useEffect(() => {
+        if (isAnimationDisabled || isOpen) {
+            setIsRendered(isOpen);
+            return;
         }
 
-        setIsRendered(true);
+        const timeoutID = setTimeout(() => {
+            setIsRendered(false);
+        }, animationDuration);
+
+        return () => {
+            clearTimeout(timeoutID);
+        };
     }, [isOpen]);
 
     if (!isRendered) {
@@ -48,10 +70,17 @@ export const Modal: FC<ModalProps> = ({
 
     return createPortal(
         <>
-            <div
-                className="fixed inset-0 bg-black/30"
-                onClick={(_e) => setIsOpen(false)}
-            />
+            {!isBackdropDisabled && (
+                <div
+                    className={twMerge(
+                        "modal-backdrop fixed inset-0 bg-black/30",
+                        !isAnimationDisabled && "animated",
+                        isOpen && "open"
+                    )}
+                    style={style}
+                    onClick={(_e) => setIsOpen(false)}
+                />
+            )}
             <div
                 id={id}
                 ref={ref}
@@ -61,6 +90,8 @@ export const Modal: FC<ModalProps> = ({
                     isOpen && "open",
                     className
                 )}
+                style={style}
+                {...props}
             >
                 {hasCloseButton && (
                     <IconButton
