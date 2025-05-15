@@ -1,11 +1,7 @@
 import { FC, useMemo } from "react";
-import { Icon } from "@/components/Icon/Icon";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-
-import user_icon from "@icons/user.svg";
 
 import students_dummy_data from "../students.dummy.json";
 import { RankingBadge } from "./RankingBadge";
@@ -18,8 +14,6 @@ export type Top10StudentsDisplayProps = Pick<
 export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     "top-10-students": top10Students,
 }) => {
-    const { direction } = useLocalization();
-
     const { data } = useMockQuery({
         usesSuspense: true,
         queryKey: ["students"],
