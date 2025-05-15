@@ -107,16 +107,21 @@ body {
     --color-gray-dark-active: #5c6573;
     --color-gray-darker: #474e59;
 
-    --color-vibrant-red: #ff595e;
     --color-vibrant-red-light: #ff99c8;
-    --color-vibrant-yellow: #ffca3a;
+    --color-vibrant-red-normal: #ff595e;
+    --color-vibrant-red-dark: #b20027;
     --color-vibrant-yellow-light: #fcf6bd;
-    --color-vibrant-green: #8ac926;
+    --color-vibrant-yellow-normal: #ffca3a;
+    --color-vibrant-yellow-dark: #cb9d00;
     --color-vibrant-green-light: #d0f4de;
-    --color-vibrant-blue: #1982c4;
+    --color-vibrant-green-normal: #8ac926;
+    --color-vibrant-green-dark: #60a000;
     --color-vibrant-blue-light: #a9def9;
-    --color-vibrant-purple: #6a4c93;
+    --color-vibrant-blue-normal: #1982c4;
+    --color-vibrant-blue-dark: #004f8c;
     --color-vibrant-purple-light: #e4c1f9;
+    --color-vibrant-purple-normal: #6a4c93;
+    --color-vibrant-purple-dark: #301858;
 
     /* palettes */
 
