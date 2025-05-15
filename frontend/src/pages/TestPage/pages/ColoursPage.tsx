@@ -5,16 +5,6 @@ export const ColoursPage: FC = () => {
     return (
         <div className="flex flex-col gap-8">
             <ColourCollection
-                title="Vibrant Colours"
-                classNames={[
-                    "bg-vibrant-red",
-                    "bg-vibrant-yellow",
-                    "bg-vibrant-green",
-                    "bg-vibrant-blue",
-                    "bg-vibrant-purple",
-                ]}
-            />
-            <ColourCollection
                 title="Vibrant Light Colours"
                 classNames={[
                     "bg-vibrant-red-light",
@@ -22,6 +12,26 @@ export const ColoursPage: FC = () => {
                     "bg-vibrant-green-light",
                     "bg-vibrant-blue-light",
                     "bg-vibrant-purple-light",
+                ]}
+            />
+            <ColourCollection
+                title="Vibrant Normal Colours"
+                classNames={[
+                    "bg-vibrant-red-normal",
+                    "bg-vibrant-yellow-normal",
+                    "bg-vibrant-green-normal",
+                    "bg-vibrant-blue-normal",
+                    "bg-vibrant-purple-normal",
+                ]}
+            />{" "}
+            <ColourCollection
+                title="Vibrant Dark Colours"
+                classNames={[
+                    "bg-vibrant-red-dark",
+                    "bg-vibrant-yellow-dark",
+                    "bg-vibrant-green-dark",
+                    "bg-vibrant-blue-dark",
+                    "bg-vibrant-purple-dark",
                 ]}
             />
             <ColourCollection

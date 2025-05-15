@@ -107,16 +107,21 @@ body {
     --color-gray-dark-active: #5c6573;
     --color-gray-darker: #474e59;
 
-    --color-vibrant-red: #ff595e;
     --color-vibrant-red-light: #ff99c8;
-    --color-vibrant-yellow: #ffca3a;
+    --color-vibrant-red-normal: #ff595e;
+    --color-vibrant-red-dark: #b20027;
     --color-vibrant-yellow-light: #fcf6bd;
-    --color-vibrant-green: #8ac926;
+    --color-vibrant-yellow-normal: #ffca3a;
+    --color-vibrant-yellow-dark: #cb9d00;
     --color-vibrant-green-light: #d0f4de;
-    --color-vibrant-blue: #1982c4;
+    --color-vibrant-green-normal: #8ac926;
+    --color-vibrant-green-dark: #60a000;
     --color-vibrant-blue-light: #a9def9;
-    --color-vibrant-purple: #6a4c93;
+    --color-vibrant-blue-normal: #1982c4;
+    --color-vibrant-blue-dark: #004f8c;
     --color-vibrant-purple-light: #e4c1f9;
+    --color-vibrant-purple-normal: #6a4c93;
+    --color-vibrant-purple-dark: #301858;
 
     --color-material-bronze-light: #fca956;
     --color-material-bronze-normal: #ce8946;
@@ -155,7 +160,7 @@ body {
     --color-caramel-background-light: #fffefb;
     --color-caramel-background-light-hover: #f0efea;
     --color-caramel-background-light-active: #dad9d3;
-    --color-caramel-background-normal: #fcf7f1;
+    --color-caramel-background-normal: #f4eade;
     --color-caramel-background-normal-hover: #ece4dc;
     --color-caramel-background-normal-active: #d5ccc3;
     --color-caramel-background-dark: #f7e7da;
@@ -309,7 +314,7 @@ body {
     --color-sakura-background-light: #fffafc;
     --color-sakura-background-light-hover: #f0eaec;
     --color-sakura-background-light-active: #dad3d5;
-    --color-sakura-background-normal: #fcf2f9;
+    --color-sakura-background-normal: #f8e0f1;
     --color-sakura-background-normal-hover: #ebdbe6;
     --color-sakura-background-normal-active: #d5c3cf;
     --color-sakura-background-dark: #f7d9ee;

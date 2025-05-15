@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
 
 import home_icon from "@icons/home.svg";
 
 import locales from "@localization/not_found_page.json";
-import { WEBSITE_ROUTES } from "@/routes/website.routes";
 
 export const NotFoundPage: FC = () => {
     return (
