@@ -1,0 +1,36 @@
+.modal.animated {
+    opacity: 0;
+    transform: scale(0);
+    animation-name: modal-entrance;
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.4, 1.4, 0.320, 1);
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.modal.animated:not(.open) {
+    animation-name: modal-exit;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes modal-entrance {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes modal-exit {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
