@@ -1,184 +1,182 @@
-{
-    "students": [
-        {
-            "email": "ahmed.ali@example.com",
-            "username": "shadowhunter99",
-            "name": "Ahmed",
-            "gender": "male",
-            "country": "Egypt",
-            "phoneNumber": "+201234567890",
-            "surname": "Ali"
-        },
-        {
-            "email": "fatima.hassan@example.com",
-            "username": "starlightdreams",
-            "name": "Fatima",
-            "gender": "female",
-            "country": "Saudi Arabia",
-            "phoneNumber": "+966501234567",
-            "surname": "Hassan"
-        },
-        {
-            "email": "youssef.mohamed@example.com",
-            "username": "codemaster_y",
-            "name": "Youssef",
-            "gender": "male",
-            "country": "Sudan",
-            "phoneNumber": "+249912345678",
-            "surname": "Mohamed"
-        },
-        {
-            "email": "layan.jaber@example.com",
-            "username": "layanj_001",
-            "name": "Layan",
-            "gender": "female",
-            "country": "Jordan",
-            "phoneNumber": "+962798765432",
-            "surname": "Jaber"
-        },
-        {
-            "email": "khalid.nasser@example.com",
-            "username": "khalidas",
-            "name": "Khalid",
-            "gender": "male",
-            "country": "United Arab Emirates",
-            "phoneNumber": "+971501234567",
-            "surname": "Nasser"
-        },
-        {
-            "email": "noor.salem@example.com",
-            "username": "noorsalem202",
-            "name": "Noor",
-            "gender": "female",
-            "country": "Qatar",
-            "phoneNumber": "+97433123456",
-            "surname": "Salem"
-        },
-        {
-            "email": "mohammad.kadour@example.com",
-            "username": "moethedev",
-            "name": "Mohammad",
-            "gender": "male",
-            "country": "Lebanon",
-            "phoneNumber": "+96170123456",
-            "surname": "Kadour"
-        },
-        {
-            "email": "asmaa.tariq@example.com",
-            "username": "asmat_98",
-            "name": "Asmaa",
-            "gender": "female",
-            "country": "Morocco",
-            "phoneNumber": "+212612345678",
-            "surname": "Tariq"
-        },
-        {
-            "email": "ibrahim.farouk@example.com",
-            "username": "ibradev007",
-            "name": "Ibrahim",
-            "gender": "male",
-            "country": "Algeria",
-            "phoneNumber": "+213551234567",
-            "surname": "Farouk"
-        },
-        {
-            "email": "hala.abdullah@example.com",
-            "username": "halacodes",
-            "name": "Hala",
-            "gender": "female",
-            "country": "Bahrain",
-            "phoneNumber": "+97339123456",
-            "surname": "Abdullah"
-        },
-        {
-            "email": "tarek.zaher@example.com",
-            "username": "tarekzdev",
-            "name": "Tarek",
-            "gender": "male",
-            "country": "Iraq",
-            "phoneNumber": "+9647501234567",
-            "surname": "Zaher"
-        },
-        {
-            "email": "nada.amin@example.com",
-            "username": "nadaamin123",
-            "name": "Nada",
-            "gender": "female",
-            "country": "Oman",
-            "phoneNumber": "+96891234567",
-            "surname": "Amin"
-        },
-        {
-            "email": "zaid.rashid@example.com",
-            "username": "zaidrash",
-            "name": "Zaid",
-            "gender": "male",
-            "country": "Palestine",
-            "phoneNumber": "+972501234567",
-            "surname": "Rashid"
-        },
-        {
-            "email": "dalal.hussein@example.com",
-            "username": "dalalhuss",
-            "name": "Dalal",
-            "gender": "female",
-            "country": "Kuwait",
-            "phoneNumber": "+96560012345",
-            "surname": "Hussein"
-        },
-        {
-            "email": "anas.walid@example.com",
-            "username": "anaswdev",
-            "name": "Anas",
-            "gender": "male",
-            "country": "Yemen",
-            "phoneNumber": "+967712345678",
-            "surname": "Walid"
-        },
-        {
-            "email": "reem.ghani@example.com",
-            "username": "reemghani",
-            "name": "Reem",
-            "gender": "female",
-            "country": "Syria",
-            "phoneNumber": "+963912345678",
-            "surname": "Ghani"
-        },
-        {
-            "email": "sami.dabbous@example.com",
-            "username": "samidab1",
-            "name": "Sami",
-            "gender": "male",
-            "country": "Tunisia",
-            "phoneNumber": "+21621234567",
-            "surname": "Dabbous"
-        },
-        {
-            "email": "layla.makki@example.com",
-            "username": "laylamakki",
-            "name": "Layla",
-            "gender": "female",
-            "country": "Libya",
-            "phoneNumber": "+218912345678",
-            "surname": "Makki"
-        },
-        {
-            "email": "omar.bakri@example.com",
-            "username": "omarbakridev",
-            "name": "Omar",
-            "gender": "male",
-            "country": "Somalia",
-            "phoneNumber": "+252901234567",
-            "surname": "Bakri"
-        },
-        {
-            "email": "aya.adel@example.com",
-            "username": "ayaadeldev",
-            "name": "Aya",
-            "gender": "female",
-            "country": "Djibouti",
-            "phoneNumber": "+25377123456",
-            "surname": "Adel"
-        }
-    ]
-}
+[
+    {
+        "email": "ahmed.ali@example.com",
+        "username": "shadowhunter99",
+        "name": "Ahmed",
+        "gender": "male",
+        "country": "Egypt",
+        "phoneNumber": "+201234567890",
+        "surname": "Ali"
+    },
+    {
+        "email": "fatima.hassan@example.com",
+        "username": "starlightdreams",
+        "name": "Fatima",
+        "gender": "female",
+        "country": "Saudi Arabia",
+        "phoneNumber": "+966501234567",
+        "surname": "Hassan"
+    },
+    {
+        "email": "youssef.mohamed@example.com",
+        "username": "codemaster_y",
+        "name": "Youssef",
+        "gender": "male",
+        "country": "Sudan",
+        "phoneNumber": "+249912345678",
+        "surname": "Mohamed"
+    },
+    {
+        "email": "layan.jaber@example.com",
+        "username": "layanj_001",
+        "name": "Layan",
+        "gender": "female",
+        "country": "Jordan",
+        "phoneNumber": "+962798765432",
+        "surname": "Jaber"
+    },
+    {
+        "email": "khalid.nasser@example.com",
+        "username": "khalidas",
+        "name": "Khalid",
+        "gender": "male",
+        "country": "United Arab Emirates",
+        "phoneNumber": "+971501234567",
+        "surname": "Nasser"
+    },
+    {
+        "email": "noor.salem@example.com",
+        "username": "noorsalem202",
+        "name": "Noor",
+        "gender": "female",
+        "country": "Qatar",
+        "phoneNumber": "+97433123456",
+        "surname": "Salem"
+    },
+    {
+        "email": "mohammad.kadour@example.com",
+        "username": "moethedev",
+        "name": "Mohammad",
+        "gender": "male",
+        "country": "Lebanon",
+        "phoneNumber": "+96170123456",
+        "surname": "Kadour"
+    },
+    {
+        "email": "asmaa.tariq@example.com",
+        "username": "asmat_98",
+        "name": "Asmaa",
+        "gender": "female",
+        "country": "Morocco",
+        "phoneNumber": "+212612345678",
+        "surname": "Tariq"
+    },
+    {
+        "email": "ibrahim.farouk@example.com",
+        "username": "ibradev007",
+        "name": "Ibrahim",
+        "gender": "male",
+        "country": "Algeria",
+        "phoneNumber": "+213551234567",
+        "surname": "Farouk"
+    },
+    {
+        "email": "hala.abdullah@example.com",
+        "username": "halacodes",
+        "name": "Hala",
+        "gender": "female",
+        "country": "Bahrain",
+        "phoneNumber": "+97339123456",
+        "surname": "Abdullah"
+    },
+    {
+        "email": "tarek.zaher@example.com",
+        "username": "tarekzdev",
+        "name": "Tarek",
+        "gender": "male",
+        "country": "Iraq",
+        "phoneNumber": "+9647501234567",
+        "surname": "Zaher"
+    },
+    {
+        "email": "nada.amin@example.com",
+        "username": "nadaamin123",
+        "name": "Nada",
+        "gender": "female",
+        "country": "Oman",
+        "phoneNumber": "+96891234567",
+        "surname": "Amin"
+    },
+    {
+        "email": "zaid.rashid@example.com",
+        "username": "zaidrash",
+        "name": "Zaid",
+        "gender": "male",
+        "country": "Palestine",
+        "phoneNumber": "+972501234567",
+        "surname": "Rashid"
+    },
+    {
+        "email": "dalal.hussein@example.com",
+        "username": "dalalhuss",
+        "name": "Dalal",
+        "gender": "female",
+        "country": "Kuwait",
+        "phoneNumber": "+96560012345",
+        "surname": "Hussein"
+    },
+    {
+        "email": "anas.walid@example.com",
+        "username": "anaswdev",
+        "name": "Anas",
+        "gender": "male",
+        "country": "Yemen",
+        "phoneNumber": "+967712345678",
+        "surname": "Walid"
+    },
+    {
+        "email": "reem.ghani@example.com",
+        "username": "reemghani",
+        "name": "Reem",
+        "gender": "female",
+        "country": "Syria",
+        "phoneNumber": "+963912345678",
+        "surname": "Ghani"
+    },
+    {
+        "email": "sami.dabbous@example.com",
+        "username": "samidab1",
+        "name": "Sami",
+        "gender": "male",
+        "country": "Tunisia",
+        "phoneNumber": "+21621234567",
+        "surname": "Dabbous"
+    },
+    {
+        "email": "layla.makki@example.com",
+        "username": "laylamakki",
+        "name": "Layla",
+        "gender": "female",
+        "country": "Libya",
+        "phoneNumber": "+218912345678",
+        "surname": "Makki"
+    },
+    {
+        "email": "omar.bakri@example.com",
+        "username": "omarbakridev",
+        "name": "Omar",
+        "gender": "male",
+        "country": "Somalia",
+        "phoneNumber": "+252901234567",
+        "surname": "Bakri"
+    },
+    {
+        "email": "aya.adel@example.com",
+        "username": "ayaadeldev",
+        "name": "Aya",
+        "gender": "female",
+        "country": "Djibouti",
+        "phoneNumber": "+25377123456",
+        "surname": "Adel"
+    }
+]
