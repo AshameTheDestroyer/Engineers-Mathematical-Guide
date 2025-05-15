@@ -8,6 +8,7 @@ import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import enrollment_icon from "@icons/enrollment.svg";
@@ -58,8 +59,9 @@ export const CoursePage: FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
-            <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
-                <section className="flex flex-col gap-8">
+
+            <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1 [&>section]:flex [&>section]:flex-col [&>section]:gap-8">
+                <section>
                     <div className="flex flex-col gap-4">
                         <Typography className="text-lg font-bold" variant="h2">
                             Introduction
@@ -77,7 +79,9 @@ export const CoursePage: FC = () => {
                         </Typography>
                     </div>
                 </section>
-                <section />
+                <Top10StudentsDisplay
+                    top-10-students={course["top-10-students"]}
+                />
             </main>
         </main>
     );
