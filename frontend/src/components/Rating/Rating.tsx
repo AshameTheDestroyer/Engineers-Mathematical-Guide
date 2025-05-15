@@ -2,6 +2,7 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Icon, IconProps } from "../Icon/Icon";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import star_icon from "@icons/star.svg";
 import star_half_icon from "@icons/star_half.svg";
@@ -21,6 +22,8 @@ export const Rating: FC<RatingProps> = ({
     value: _value,
     maximumValue = 5,
 }) => {
+    const { direction } = useLocalization();
+
     if (_value < 0 || _value > maximumValue) {
         throw new Error(`Value should be between 0 and ${maximumValue}.`);
     }
@@ -35,6 +38,11 @@ export const Rating: FC<RatingProps> = ({
                     {...iconProps}
                     className={twMerge(
                         "text-vibrant-yellow-normal [&>svg]:scale-125",
+                        direction == "rtl" &&
+                            i + 1 == Math.ceil(value) &&
+                            i + 1 != value
+                            ? "rotate-y-180"
+                            : "",
                         iconProps?.className
                     )}
                     source={
