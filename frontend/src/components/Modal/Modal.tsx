@@ -1,15 +1,17 @@
 import { createPortal } from "react-dom";
 import { twJoin, twMerge } from "tailwind-merge";
-import { Dispatch, FC, SetStateAction } from "react";
 import { IconButton } from "../IconButton/IconButton";
 import { ComponentProps } from "@types_/ComponentProps";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
+import "./modal.css";
 import cross_icon from "@/assets/icons/cross.svg";
 
 export type ModalProps = {
     isOpen: boolean;
     hasCloseButton?: boolean;
+    isAnimationDisabled?: boolean;
     setIsOpen: Dispatch<SetStateAction<boolean>>;
 } & ComponentProps<HTMLDivElement>;
 
@@ -21,10 +23,26 @@ export const Modal: FC<ModalProps> = ({
     className,
     setIsOpen,
     hasCloseButton,
+    isAnimationDisabled = false,
 }) => {
     const { direction } = useLocalization();
+    const [isRendered, setIsRendered] = useState(isOpen);
 
-    if (!isOpen) {
+    useEffect(() => {
+        if (!isOpen) {
+            const timeoutID = setTimeout(() => {
+                setIsRendered(false);
+            }, 400);
+
+            return () => {
+                clearTimeout(timeoutID);
+            };
+        }
+
+        setIsRendered(true);
+    }, [isOpen]);
+
+    if (!isRendered) {
         return <></>;
     }
 
@@ -38,8 +56,9 @@ export const Modal: FC<ModalProps> = ({
                 id={id}
                 ref={ref}
                 className={twMerge(
-                    "-translate-1/2 fixed left-1/2 top-1/2 z-50 flex min-h-12 min-w-12 flex-col rounded-2xl p-8",
-                    children != null && hasCloseButton ? "py-16" : "",
+                    "modal -translate-1/2 fixed left-1/2 top-1/2 z-50 flex min-h-12 min-w-12 flex-col rounded-2xl p-8",
+                    !isAnimationDisabled && "animated",
+                    isOpen && "open",
                     className
                 )}
             >

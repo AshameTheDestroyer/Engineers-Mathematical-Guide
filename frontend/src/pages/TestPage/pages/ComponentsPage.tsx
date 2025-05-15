@@ -1,12 +1,13 @@
 import { FC } from "react";
 import { InputCollection } from "../components/InputCollection";
+import { ModalCollection } from "../components/ModalCollection";
 import { ButtonCollection } from "../components/ButtonCollection";
+import { DrawerCollection } from "../components/DrawerCollection";
 import { RoutingCollection } from "../components/RoutingCollection";
 import { DropDownCollection } from "../components/DropDownCollection";
 import { IconButtonCollection } from "../components/IconButtonCollection";
 import { ProgressBarCollection } from "../components/ProgressBarCollection";
 import { StateButtonCollection } from "../components/StateButtonCollection";
-import { DrawerCollection } from "../components/DrawerCollection";
 
 export const ComponentsPage: FC = () => {
     return (
@@ -18,6 +19,7 @@ export const ComponentsPage: FC = () => {
             <DropDownCollection />
             <ProgressBarCollection />
             <InputCollection />
+            <ModalCollection />
             <DrawerCollection />
         </div>
     );
