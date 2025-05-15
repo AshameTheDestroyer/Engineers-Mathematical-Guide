@@ -65,7 +65,8 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                 "bg-background-normal active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover relative flex grow cursor-pointer place-content-evenly gap-4 rounded-full p-2 transition duration-200",
                 "[&_.icon]:text-background-normal [&:active_.icon]:text-background-normal-active [&:where(:hover,:focus-within)_.icon]:text-background-normal-hover",
                 classNames.button[rank - 1],
-                classNames.bullet[rank - 1]
+                classNames.bullet[rank - 1],
+                isDarkColour ? "text-white" : "text-black"
             )}
         >
             <div
@@ -120,7 +121,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-start"
                     variant="p"
                 >
-                    @{student.username}
+                    @{student.username} {colourHex}
                 </Typography>
             </div>
             <Typography
