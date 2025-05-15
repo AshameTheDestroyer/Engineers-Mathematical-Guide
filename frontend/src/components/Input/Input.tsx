@@ -79,7 +79,7 @@ export const Input: FC<InputProps> = ({
             >
                 {label ?? name.toTitleCase()}
                 {required && (
-                    <span className="text-vibrant-red font-bold">*</span>
+                    <span className="text-vibrant-red-normal font-bold">*</span>
                 )}
             </Typography>
             {errorMessage != null && (
@@ -87,7 +87,7 @@ export const Input: FC<InputProps> = ({
                     data-error-message
                     className={twJoin(
                         direction == "ltr" ? "pl-6" : "pr-6",
-                        "text-vibrant-red px-4"
+                        "text-vibrant-red-normal px-4"
                     )}
                     variant="p"
                 >

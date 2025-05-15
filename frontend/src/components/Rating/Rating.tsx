@@ -34,7 +34,7 @@ export const Rating: FC<RatingProps> = ({
                     key={i}
                     {...iconProps}
                     className={twMerge(
-                        "text-vibrant-yellow [&>svg]:scale-125",
+                        "text-vibrant-yellow-normal [&>svg]:scale-125",
                         iconProps?.className
                     )}
                     source={
