@@ -9,6 +9,7 @@ import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
+import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import enrollment_icon from "@icons/enrollment.svg";
@@ -79,9 +80,11 @@ export const CoursePage: FC = () => {
                         </Typography>
                     </div>
                 </section>
-                <Top10StudentsDisplay
-                    top-10-students={course["top-10-students"]}
-                />
+                <LazyComponent>
+                    <Top10StudentsDisplay
+                        top-10-students={course["top-10-students"]}
+                    />
+                </LazyComponent>
             </main>
         </main>
     );
