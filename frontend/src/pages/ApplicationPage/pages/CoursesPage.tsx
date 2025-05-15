@@ -36,8 +36,6 @@ export const CoursesPage: FC = () => {
             ).then((entries) => Object.fromEntries(entries)),
     });
 
-    const [isOpen, setIsOpen] = useState(true);
-
     return (
         <main className="flex flex-col gap-8">
             <header>
