@@ -6,6 +6,8 @@ import { ComponentProps } from "@types_/ComponentProps";
 
 import cross_icon from "@/assets/icons/cross.svg";
 
+export type Direction = "top" | "bottom" | "left" | "right";
+
 export type DrawerProps = {
     direction: Direction;
 } & ModalProps;
@@ -52,6 +54,7 @@ export const Drawer: FC<DrawerProps> = ({
             hasCloseButton={hasCloseButton}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            isAnimationDisabled={true}
         >
             {children}
         </Modal>
