@@ -3,10 +3,12 @@ import { Icon } from "@/components/Icon/Icon";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import user_icon from "@icons/user.svg";
 
 import students_dummy_data from "../students.dummy.json";
+import { twJoin } from "tailwind-merge";
 
 export type Top10StudentsDisplayProps = Pick<
     DetailedCourseDTO,
@@ -16,6 +18,8 @@ export type Top10StudentsDisplayProps = Pick<
 export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     "top-10-students": top10Students,
 }) => {
+    const { direction } = useLocalization();
+
     const { data } = useMockQuery({
         usesSuspense: true,
         queryKey: ["students"],
@@ -65,7 +69,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
                             </div>
                             <div className="flex flex-col overflow-hidden">
                                 <Typography
-                                    className="overflow-hidden text-ellipsis whitespace-nowrap text-lg font-bold"
+                                    className="overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold"
                                     variant="strong"
                                 >
                                     {`${student.name} ${student.surname}`}
@@ -78,7 +82,12 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
                                 </Typography>
                             </div>
                             <Typography
-                                className="ml-auto mr-2 flex aspect-square place-content-center place-items-center text-lg font-bold"
+                                className={twJoin(
+                                    direction == "ltr"
+                                        ? "ml-auto mr-2"
+                                        : "ml-2 mr-auto",
+                                    "flex aspect-square place-content-center place-items-center text-lg font-bold"
+                                )}
                                 variant="em"
                             >
                                 {Math.round(student.grade)}%
