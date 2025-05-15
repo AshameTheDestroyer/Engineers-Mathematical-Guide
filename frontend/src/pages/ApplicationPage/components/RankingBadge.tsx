@@ -1,6 +1,7 @@
 import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
+import { useColour } from "@/hooks/useColour";
 import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -47,6 +48,12 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
         ],
     };
 
+    const { isDarkColour, colourHex } = useColour({
+        updateDelay: 250,
+        reference: buttonRef,
+        className: classNames.button[rank - 1],
+    });
+
     return (
         <button
             ref={buttonRef}
@@ -55,14 +62,15 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                 "bg-background-normal-hover active:bg-background-dark [&:where(:hover,:focus-within)]:bg-background-normal-active relative flex grow cursor-pointer place-content-evenly gap-4 rounded-full p-2 transition duration-200",
                 "[&_.icon]:text-background-normal-hover [&:active_.icon]:text-background-dark [&:where(:hover,:focus-within)_.icon]:text-background-normal-active",
                 classNames.button[rank - 1],
-                classNames.bullet[rank - 1]
+                classNames.bullet[rank - 1],
+                isDarkColour ? "text-white" : "text-black"
             )}
         >
             <div
                 className={twJoin(
+                    classNames.bullet[rank - 1],
                     direction == "ltr" ? "-left-22" : "",
-                    "max-sm:text-md absolute top-1/2 flex aspect-square h-[80%] -translate-y-1/2 translate-x-[10%] place-content-center place-items-center text-lg max-sm:-ml-8 max-sm:-mr-2",
-                    classNames.bullet[rank - 1]
+                    "max-sm:text-md absolute top-1/2 flex aspect-square h-[80%] -translate-y-1/2 translate-x-[10%] place-content-center place-items-center text-lg max-sm:-ml-8 max-sm:-mr-2"
                 )}
             >
                 {rank <= 3 ? (
@@ -73,7 +81,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     />
                 ) : (
                     <Typography
-                        className="font-semibold not-italic"
+                        className="text-foreground-darker font-semibold not-italic"
                         variant="i"
                     >
                         #{rank}
@@ -108,7 +116,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-start"
                     variant="p"
                 >
-                    @{student.username}
+                    @{student.username} {colourHex}
                 </Typography>
             </div>
             <Typography
