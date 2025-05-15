@@ -2,7 +2,7 @@
     "students": [
         {
             "email": "ahmed.ali@example.com",
-            "username": "ShadowHunter99",
+            "username": "shadowhunter99",
             "name": "Ahmed",
             "gender": "male",
             "country": "Egypt",
@@ -11,7 +11,7 @@
         },
         {
             "email": "fatima.hassan@example.com",
-            "username": "StarlightDreams",
+            "username": "starlightdreams",
             "name": "Fatima",
             "gender": "female",
             "country": "Saudi Arabia",
@@ -20,7 +20,7 @@
         },
         {
             "email": "youssef.mohamed@example.com",
-            "username": "CodeMaster_Y",
+            "username": "codemaster_y",
             "name": "Youssef",
             "gender": "male",
             "country": "Sudan",
@@ -29,7 +29,7 @@
         },
         {
             "email": "layan.jaber@example.com",
-            "username": "LayanJ_001",
+            "username": "layanj_001",
             "name": "Layan",
             "gender": "female",
             "country": "Jordan",
@@ -38,7 +38,7 @@
         },
         {
             "email": "khalid.nasser@example.com",
-            "username": "KhalidNas",
+            "username": "khalidas",
             "name": "Khalid",
             "gender": "male",
             "country": "United Arab Emirates",
@@ -47,7 +47,7 @@
         },
         {
             "email": "noor.salem@example.com",
-            "username": "NoorSalem202",
+            "username": "noorsalem202",
             "name": "Noor",
             "gender": "female",
             "country": "Qatar",
@@ -56,7 +56,7 @@
         },
         {
             "email": "mohammad.kadour@example.com",
-            "username": "MoeTheDev",
+            "username": "moethedev",
             "name": "Mohammad",
             "gender": "male",
             "country": "Lebanon",
@@ -65,7 +65,7 @@
         },
         {
             "email": "asmaa.tariq@example.com",
-            "username": "AsmaaT_98",
+            "username": "asmat_98",
             "name": "Asmaa",
             "gender": "female",
             "country": "Morocco",
@@ -74,7 +74,7 @@
         },
         {
             "email": "ibrahim.farouk@example.com",
-            "username": "IbraDev007",
+            "username": "ibradev007",
             "name": "Ibrahim",
             "gender": "male",
             "country": "Algeria",
@@ -83,7 +83,7 @@
         },
         {
             "email": "hala.abdullah@example.com",
-            "username": "HalaCodes",
+            "username": "halacodes",
             "name": "Hala",
             "gender": "female",
             "country": "Bahrain",
@@ -92,7 +92,7 @@
         },
         {
             "email": "tarek.zaher@example.com",
-            "username": "TarekZDev",
+            "username": "tarekzdev",
             "name": "Tarek",
             "gender": "male",
             "country": "Iraq",
@@ -101,7 +101,7 @@
         },
         {
             "email": "nada.amin@example.com",
-            "username": "NadaAmin123",
+            "username": "nadaamin123",
             "name": "Nada",
             "gender": "female",
             "country": "Oman",
@@ -110,7 +110,7 @@
         },
         {
             "email": "zaid.rashid@example.com",
-            "username": "ZaidRash",
+            "username": "zaidrash",
             "name": "Zaid",
             "gender": "male",
             "country": "Palestine",
@@ -119,7 +119,7 @@
         },
         {
             "email": "dalal.hussein@example.com",
-            "username": "DalalHuss",
+            "username": "dalalhuss",
             "name": "Dalal",
             "gender": "female",
             "country": "Kuwait",
@@ -128,7 +128,7 @@
         },
         {
             "email": "anas.walid@example.com",
-            "username": "AnasWDev",
+            "username": "anaswdev",
             "name": "Anas",
             "gender": "male",
             "country": "Yemen",
@@ -137,7 +137,7 @@
         },
         {
             "email": "reem.ghani@example.com",
-            "username": "ReemGhani",
+            "username": "reemghani",
             "name": "Reem",
             "gender": "female",
             "country": "Syria",
@@ -146,7 +146,7 @@
         },
         {
             "email": "sami.dabbous@example.com",
-            "username": "SamiDab1",
+            "username": "samidab1",
             "name": "Sami",
             "gender": "male",
             "country": "Tunisia",
@@ -155,7 +155,7 @@
         },
         {
             "email": "layla.makki@example.com",
-            "username": "LaylaMakki",
+            "username": "laylamakki",
             "name": "Layla",
             "gender": "female",
             "country": "Libya",
@@ -164,7 +164,7 @@
         },
         {
             "email": "omar.bakri@example.com",
-            "username": "OmarBakriDev",
+            "username": "omarbakridev",
             "name": "Omar",
             "gender": "male",
             "country": "Somalia",
@@ -173,7 +173,7 @@
         },
         {
             "email": "aya.adel@example.com",
-            "username": "AyaAdelDev",
+            "username": "ayaadeldev",
             "name": "Aya",
             "gender": "female",
             "country": "Djibouti",
