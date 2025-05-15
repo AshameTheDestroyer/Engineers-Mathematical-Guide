@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { CourseCard } from "../components/CourseCard";
 import { CourseSchema } from "@/schemas/CourseSchema";
@@ -6,8 +6,6 @@ import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 import { Typography } from "@/components/Typography/Typography";
 
 import dummy_data from "./dummy_data.json";
-import { Modal } from "@/components/Modal/Modal";
-
 export const CoursesPage: FC = () => {
     const { data: data_ } = useMockQuery({
         requestTime: 0,
@@ -34,8 +32,6 @@ export const CoursesPage: FC = () => {
                 )
             ).then((entries) => Object.fromEntries(entries)),
     });
-
-    const [isOpen, setIsOpen] = useState(true);
 
     return (
         <main className="flex flex-col gap-8">
