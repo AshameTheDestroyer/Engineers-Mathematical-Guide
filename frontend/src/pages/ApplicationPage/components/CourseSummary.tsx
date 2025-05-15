@@ -33,7 +33,7 @@ export const CourseSummary: FC<CourseSummaryProps> = ({ course }) => {
             </div>
             <div className="flex place-items-center gap-2">
                 <Typography
-                    className="text-vibrant-yellow min-w-[3ch] text-center font-bold"
+                    className="text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
                     variant="p"
                 >
                     {course.rating}
