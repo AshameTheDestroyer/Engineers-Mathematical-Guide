@@ -34,7 +34,7 @@ export const DetailedCourseSchema = z.intersection(
         "top-10-students": z
             .array(
                 z.object({
-                    id: z.string({ required_error: "required" }),
+                    username: z.string({ required_error: "required" }),
                     grade: z
                         .number({ required_error: "required" })
                         .min(0, "minimum")
