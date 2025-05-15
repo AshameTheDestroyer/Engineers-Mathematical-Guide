@@ -15,6 +15,26 @@ export const ColoursPage: FC = () => {
                 ]}
             />
             <ColourCollection
+                title="Vibrant Normal Colours"
+                classNames={[
+                    "bg-vibrant-red-normal",
+                    "bg-vibrant-yellow-normal",
+                    "bg-vibrant-green-normal",
+                    "bg-vibrant-blue-normal",
+                    "bg-vibrant-purple-normal",
+                ]}
+            />
+            <ColourCollection
+                title="Vibrant Dark Colours"
+                classNames={[
+                    "bg-vibrant-red-dark",
+                    "bg-vibrant-yellow-dark",
+                    "bg-vibrant-green-dark",
+                    "bg-vibrant-blue-dark",
+                    "bg-vibrant-purple-dark",
+                ]}
+            />
+            <ColourCollection
                 title="Bronze Colours"
                 classNames={[
                     "bg-material-bronze-light",
