@@ -2,6 +2,8 @@ import { twMerge } from "tailwind-merge";
 import { FC } from "react";
 import { Modal, ModalProps } from "../Modal/Modal";
 
+export type Direction = "top" | "bottom" | "left" | "right";
+
 export type DrawerProps = {
     direction: Direction;
 } & ModalProps;
@@ -30,6 +32,9 @@ export const Drawer: FC<DrawerProps> = ({
         left: isOpen ? "translate-x-0" : "-translate-x-full",
     };
 
+    const transitionClassNames =
+        "transition-transform duration-300 ease-in-out";
+
     return (
         <Modal
             id={id}
@@ -38,11 +43,13 @@ export const Drawer: FC<DrawerProps> = ({
                 "bg-background-light translate-0 inset-0 rounded-none",
                 positionClassNames[direction],
                 translateClassNames[direction],
+                transitionClassNames,
                 className
             )}
             hasCloseButton={hasCloseButton}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            isAnimationDisabled={true}
         >
             {children}
         </Modal>
