@@ -1,7 +1,10 @@
 import { FC, useMemo } from "react";
+import { Icon } from "@/components/Icon/Icon";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
+
+import user_icon from "@icons/user.svg";
 
 import students_dummy_data from "../students.dummy.json";
 import { RankingBadge } from "./RankingBadge";
