@@ -133,6 +133,16 @@ body {
     --color-material-gold-normal: #efbf04;
     --color-material-gold-dark: #bf9903;
 
+    --color-material-bronze-light: #fca956;
+    --color-material-bronze-normal: #ce8946;
+    --color-material-bronze-dark: #82572c;
+    --color-material-silver-light: #adcced;
+    --color-material-silver-normal: #81a0c0;
+    --color-material-silver-dark: #577694;
+    --color-material-gold-light: #fbd028;
+    --color-material-gold-normal: #efbf04;
+    --color-material-gold-dark: #bf9903;
+
     /* palettes */
 
     --color-azure-background-light: #e6f0f8;
