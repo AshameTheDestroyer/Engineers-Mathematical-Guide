@@ -189,7 +189,7 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:flex-col [&>div]:gap-4"
-                title="Thickness"
+                title="Thick"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
@@ -253,7 +253,7 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:flex-col [&>div]:gap-4"
-                title="Thinness"
+                title="Thin"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
