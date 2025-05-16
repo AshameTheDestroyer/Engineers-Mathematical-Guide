@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
+import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 
 export const CoursesPage: FC = () => {
     return (
@@ -12,7 +13,9 @@ export const CoursesPage: FC = () => {
                 </Typography>
             </header>
             <main>
-                <CoursesDisplay />
+                <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
+                    <CoursesDisplay />
+                </LazyComponent>
             </main>
         </Flexbox>
     );
