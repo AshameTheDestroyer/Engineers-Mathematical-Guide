@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
@@ -79,6 +79,39 @@ export const CoursePage: FC = () => {
                         <Typography className="text-justify" variant="p">
                             {course["detailed-description"]}
                         </Typography>
+                    </Flexbox>
+                    <Flexbox direction="column" gap="4">
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Modules
+                        </Typography>
+                        <Flexbox
+                            className="bg-background-normal border-background-darker rounded-lg border-2 p-4"
+                            variant="ol"
+                            direction="column"
+                            gap="2"
+                        >
+                            {course.modules.map((module, i, array) => (
+                                <Fragment key={i}>
+                                    {i > 0 && (
+                                        <hr className="border-background-darker border" />
+                                    )}
+                                    <Flexbox variant="li">
+                                        <button
+                                            className={twJoin(
+                                                "active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover grow cursor-pointer p-4 text-start text-lg transition duration-200",
+                                                i == 0
+                                                    ? "rounded-t-lg"
+                                                    : i == array.length - 1
+                                                      ? "rounded-b-lg"
+                                                      : ""
+                                            )}
+                                        >
+                                            {module}
+                                        </button>
+                                    </Flexbox>
+                                </Fragment>
+                            ))}
+                        </Flexbox>
                     </Flexbox>
                 </Flexbox>
                 <LazyComponent
