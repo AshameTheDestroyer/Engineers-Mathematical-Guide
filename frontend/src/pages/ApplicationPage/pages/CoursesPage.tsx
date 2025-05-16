@@ -1,39 +1,9 @@
 import { FC } from "react";
-import { CourseCard } from "../components/CourseCard";
-import { CourseSchema } from "@/schemas/CourseSchema";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { useExtendedQuery } from "@/hooks/useExtendedQuery";
-import { useSchematicQuery } from "@/hooks/useSchematicQuery";
+import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
 
-import courses_dummy_data from "./courses.dummy.json";
-
 export const CoursesPage: FC = () => {
-    const { data } = useSchematicQuery({
-        usesSuspense: true,
-        schema: CourseSchema,
-        queryKey: ["courses"],
-        queryFn: () => courses_dummy_data,
-        parseFn: (data, schema) => data?.map((datum) => schema.parse(datum)),
-    });
-
-    const { data: images } = useExtendedQuery({
-        usesSuspense: true,
-        queryKey: ["courses-images"],
-        queryFn: () =>
-            Promise.all(
-                data.map(
-                    async (datum) =>
-                        [
-                            datum.id,
-                            datum.image != null
-                                ? (await fetch(datum.image)).url
-                                : undefined,
-                        ] as const
-                )
-            ).then((entries) => Object.fromEntries(entries)),
-    });
-
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <header>
@@ -41,14 +11,8 @@ export const CoursesPage: FC = () => {
                     Courses
                 </Typography>
             </header>
-            <main className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8">
-                {data.map((datum) => (
-                    <CourseCard
-                        key={datum.id}
-                        className="aspect-square"
-                        course={{ ...datum, image: images[datum.id] }}
-                    />
-                ))}
+            <main>
+                <CoursesDisplay />
             </main>
         </Flexbox>
     );
