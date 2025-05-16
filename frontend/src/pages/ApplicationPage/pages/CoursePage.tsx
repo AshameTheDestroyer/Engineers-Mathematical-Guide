@@ -80,7 +80,16 @@ export const CoursePage: FC = () => {
                         </Typography>
                     </div>
                 </section>
-                <LazyComponent>
+                <LazyComponent
+                    skeleton={
+                        <Top10StudentsDisplay
+                            isSkeleton
+                            top-10-students={new Array(10)
+                                .fill(null)
+                                .map(() => ({ username: "", grade: 0 }))}
+                        />
+                    }
+                >
                     <Top10StudentsDisplay
                         top-10-students={course["top-10-students"]}
                     />

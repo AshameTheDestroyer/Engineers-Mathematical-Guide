@@ -1,32 +1,37 @@
 import { FC, useMemo } from "react";
+import { RankingBadge } from "./RankingBadge";
 import { useMockQuery } from "@/hooks/useMockQuery";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 
 import students_dummy_data from "../students.dummy.json";
-import { RankingBadge } from "./RankingBadge";
 
-export type Top10StudentsDisplayProps = Pick<
+export type Top10StudentsDisplayProps = { isSkeleton?: boolean } & Pick<
     DetailedCourseDTO,
     "top-10-students"
 >;
 
 export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
+    isSkeleton,
     "top-10-students": top10Students,
 }) => {
     const { data } = useMockQuery({
-        usesSuspense: true,
         queryKey: ["students"],
-        dummyData: students_dummy_data,
+        usesSuspense: !isSkeleton,
+        dummyData: isSkeleton ? [] : students_dummy_data,
     });
 
     const students = useMemo(
         () =>
             top10Students.map((student) => ({
                 ...student,
-                ...data.find((datum) => datum.username == student.username)!,
+                ...(isSkeleton
+                    ? { name: "" }
+                    : data?.find(
+                          (datum) => datum.username == student.username
+                      )!),
             })),
-        [data, top10Students]
+        [data, top10Students, isSkeleton]
     );
 
     return (
@@ -37,7 +42,11 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
             <ol className="flex flex-col gap-4">
                 {students.map((student, i) => (
                     <li key={i} className="flex">
-                        <RankingBadge rank={i + 1} student={student} />
+                        <RankingBadge
+                            rank={i + 1}
+                            student={student}
+                            isSkeleton={isSkeleton}
+                        />
                     </li>
                 ))}
             </ol>
