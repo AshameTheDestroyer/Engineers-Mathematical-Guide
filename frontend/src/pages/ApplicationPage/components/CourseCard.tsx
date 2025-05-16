@@ -11,6 +11,7 @@ import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
 export type CourseCardProps = ChildlessComponentProps<HTMLElement> & {
     course: CourseDTO;
+    isSkeleton?: boolean;
 };
 
 export const CourseCard: FC<CourseCardProps> = ({
@@ -18,6 +19,7 @@ export const CourseCard: FC<CourseCardProps> = ({
     ref,
     course,
     className,
+    isSkeleton,
 }) => {
     const shadow = useShadow();
     const Navigate = useNavigate();
@@ -27,6 +29,7 @@ export const CourseCard: FC<CourseCardProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
+                isSkeleton && "animate-pulse",
                 "bg-background-normal group relative isolate cursor-pointer overflow-hidden rounded-2xl p-8 text-white transition duration-200 hover:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
@@ -34,6 +37,7 @@ export const CourseCard: FC<CourseCardProps> = ({
             role="region"
             style={{ boxShadow: shadow }}
             onClick={(_e) =>
+                !isSkeleton &&
                 Navigate(
                     APPLICATION_ROUTES.base.routes.courseID.absolute.replace(
                         ":courseID",
@@ -44,7 +48,7 @@ export const CourseCard: FC<CourseCardProps> = ({
         >
             <Typography variant="p">{course.description}</Typography>
             <figure className="absolute inset-0 z-[-1]">
-                <CourseSummary course={course} />
+                {!isSkeleton && <CourseSummary course={course} />}
                 {course.image != null && (
                     <Image
                         className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
