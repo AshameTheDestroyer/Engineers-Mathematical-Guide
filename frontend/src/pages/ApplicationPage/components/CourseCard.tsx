@@ -45,11 +45,13 @@ export const CourseCard: FC<CourseCardProps> = ({
             <Typography variant="p">{course.description}</Typography>
             <figure className="absolute inset-0 z-[-1]">
                 <CourseSummary course={course} />
-                <Image
-                    className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
-                    source={course.image}
-                    alternative={`Image of ${course.title} Course.`}
-                />
+                {course.image != null && (
+                    <Image
+                        className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
+                        source={course.image}
+                        alternative={`Image of ${course.title} Course.`}
+                    />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
         </article>
