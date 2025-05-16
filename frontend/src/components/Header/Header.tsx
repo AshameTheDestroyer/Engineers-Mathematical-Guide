@@ -1,8 +1,8 @@
 import { twMerge } from "tailwind-merge";
 import { ComponentProps } from "@types_/ComponentProps";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useImperativeHandle, useRef, useState } from "react";
 
-export type HeaderProps = ComponentProps & {
+export type HeaderProps = ComponentProps<HTMLDivElement> & {
     isSticky?: boolean;
     onScroll?: (
         direction: "up" | "down",
@@ -12,6 +12,7 @@ export type HeaderProps = ComponentProps & {
 
 export const Header: FC<HeaderProps> = ({
     id,
+    ref,
     children,
     isSticky,
     onScroll,
@@ -19,6 +20,8 @@ export const Header: FC<HeaderProps> = ({
 }) => {
     const headerReference = useRef<HTMLDivElement>(null);
     const [direction, setDirection] = useState<"up" | "down">("up");
+
+    useImperativeHandle(ref, () => headerReference.current!);
 
     useEffect(() => {
         if (onScroll == null) {
