@@ -39,7 +39,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 className
             )}
             isSticky
-            onScroll={(direction, header) => {
+            onHeaderScroll={(direction, header) => {
                 header.classList[direction == "up" ? "remove" : "add"](
                     "not-hover:not-focus-within:opacity-50"
                 );
