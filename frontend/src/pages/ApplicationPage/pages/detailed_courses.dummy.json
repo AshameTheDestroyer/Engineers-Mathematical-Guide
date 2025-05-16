@@ -7,7 +7,7 @@
         "rating": 4.3,
         "rating-count": 89231,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Limits",
             "Derivatives",
             "Integrals",
@@ -44,7 +44,7 @@
         "rating": 4.2,
         "rating-count": 67452,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Advanced Integration",
             "Sequences",
             "Series",
@@ -79,7 +79,7 @@
         "rating": 3.4,
         "rating-count": 54301,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Vectors",
             "Matrices",
             "Determinants",
@@ -115,7 +115,7 @@
         "rating": 3.2,
         "rating-count": 49876,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "First Order ODEs",
             "Second Order ODEs",
             "Systems of ODEs",
@@ -147,7 +147,7 @@
         "rating": 2.1,
         "rating-count": 61234,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Basic Probability",
             "Random Variables",
             "Discrete Distributions",
@@ -179,7 +179,7 @@
         "rating": 2.6,
         "rating-count": 34567,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": ["Groups", "Rings", "Fields", "Homomorphisms"],
+        "modules": ["Groups", "Rings", "Fields", "Homomorphisms"],
         "prerequisites": ["linear-algebra"],
         "postrequisites": ["category-theory"],
         "exam-xp": 140,
@@ -206,7 +206,7 @@
         "rating": 1.9,
         "rating-count": 45678,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Partial Derivatives",
             "Multiple Integrals",
             "Vector Fields",
@@ -241,7 +241,7 @@
         "rating": 1.1,
         "rating-count": 23456,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Real Numbers",
             "Sequences",
             "Continuity",
@@ -274,7 +274,7 @@
         "rating": 0.1,
         "rating-count": 12098,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Complex Numbers",
             "Analytic Functions",
             "Contour Integration",
@@ -306,7 +306,7 @@
         "rating": 0.7,
         "rating-count": 18976,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Root Finding",
             "Interpolation",
             "Numerical Integration",
@@ -338,7 +338,7 @@
         "rating": 4.5,
         "rating-count": 98765,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Logic",
             "Set Theory",
             "Combinatorics",
@@ -371,7 +371,7 @@
         "rating": 4.3,
         "rating-count": 56789,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Estimation",
             "Hypothesis Testing",
             "Regression",
@@ -403,7 +403,7 @@
         "rating": 4.0,
         "rating-count": 23456,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Topological Spaces",
             "Continuity",
             "Compactness",
@@ -435,7 +435,7 @@
         "rating": 4.1,
         "rating-count": 45678,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Wave Equation",
             "Heat Equation",
             "Laplace Equation",
@@ -467,7 +467,7 @@
         "rating": 4.2,
         "rating-count": 54321,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Linear Programming",
             "Convex Optimization",
             "Gradient Descent",
@@ -499,7 +499,7 @@
         "rating": 4.1,
         "rating-count": 34567,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Fourier Series",
             "Fourier Transform",
             "Applications",
@@ -531,7 +531,7 @@
         "rating": 4.4,
         "rating-count": 76543,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Graph Basics",
             "Trees",
             "Network Flows",
@@ -563,7 +563,7 @@
         "rating": 4.3,
         "rating-count": 65432,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Zero-Sum Games",
             "Nash Equilibrium",
             "Repeated Games",
@@ -595,7 +595,7 @@
         "rating": 4.0,
         "rating-count": 23456,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Categories",
             "Functors",
             "Natural Transformations",
@@ -627,7 +627,7 @@
         "rating": 4.1,
         "rating-count": 34567,
         "image": "src/assets/images/calculator.jpg",
-        "chapters": [
+        "modules": [
             "Sets",
             "Relations",
             "Functions",
