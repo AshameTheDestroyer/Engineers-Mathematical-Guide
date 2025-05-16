@@ -4,15 +4,22 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import lazy_locales from "@localization/lazy.json";
 
-export type LazyComponentProps = PropsWithChildren;
+export type LazyComponentProps = PropsWithChildren<{
+    skeleton?: PropsWithChildren["children"];
+}>;
 
-export const LazyComponent: FC<LazyComponentProps> = ({ children }) => {
+export const LazyComponent: FC<LazyComponentProps> = ({
+    children,
+    skeleton,
+}) => {
     const { GetLocale, language } = useLocalization();
 
     return (
         <Lazy
             errorFallback={GetLocale(lazy_locales.error, language)}
-            loadingFallback={GetLocale(lazy_locales.loading, language)}
+            loadingFallback={
+                skeleton ?? GetLocale(lazy_locales.loading, language)
+            }
         >
             {children}
         </Lazy>
