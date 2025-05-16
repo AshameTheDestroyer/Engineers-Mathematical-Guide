@@ -1,9 +1,13 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
+import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
+import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+
+import route_locales from "@localization/application_page_routes.json";
 
 export const ApplicationPage: FC = () => {
     useDefaultRoute(
@@ -13,8 +17,14 @@ export const ApplicationPage: FC = () => {
 
     return (
         <Page>
-            <Header />
+            <ApplicationBar
+                routeLocales={route_locales}
+                routes={Object.omit(APPLICATION_ROUTES.base.routes, "courseID")}
+            />
             <Outlet />
+            {EnvironmentVariables.ENVIRONMENT == "production" && (
+                <OfflineModal />
+            )}
         </Page>
     );
 };

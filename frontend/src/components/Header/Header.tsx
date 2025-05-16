@@ -1,27 +1,38 @@
 import { twMerge } from "tailwind-merge";
 import { ComponentProps } from "@types_/ComponentProps";
-import { FC, useEffect, useRef, useState } from "react";
+import {
+    FC,
+    useRef,
+    useState,
+    useEffect,
+    HTMLAttributes,
+    useImperativeHandle,
+} from "react";
 
-export type HeaderProps = ComponentProps & {
+export type HeaderProps = ComponentProps<HTMLDivElement> & {
     isSticky?: boolean;
-    onScroll?: (
+    onHeaderScroll?: (
         direction: "up" | "down",
         headerElement: HTMLDivElement
     ) => void;
-};
+} & HTMLAttributes<HTMLDivElement>;
 
 export const Header: FC<HeaderProps> = ({
     id,
+    ref,
     children,
     isSticky,
-    onScroll,
     className,
+    onHeaderScroll,
+    ...props
 }) => {
     const headerReference = useRef<HTMLDivElement>(null);
     const [direction, setDirection] = useState<"up" | "down">("up");
 
+    useImperativeHandle(ref, () => headerReference.current!);
+
     useEffect(() => {
-        if (onScroll == null) {
+        if (onHeaderScroll == null) {
             return;
         }
 
@@ -30,14 +41,14 @@ export const Header: FC<HeaderProps> = ({
         return () => {
             window.removeEventListener("scroll", ScrollCallback);
         };
-    }, [onScroll]);
+    }, [onHeaderScroll]);
 
     useEffect(() => {
         if (headerReference.current == null) {
             return;
         }
 
-        onScroll?.(direction, headerReference.current);
+        onHeaderScroll?.(direction, headerReference.current);
     }, [direction]);
 
     function ScrollCallback() {
@@ -58,9 +69,10 @@ export const Header: FC<HeaderProps> = ({
             ref={headerReference}
             className={twMerge(
                 isSticky ? "sticky top-0" : "",
-                "-m-page mb-page z-10 flex flex-wrap place-items-center justify-between gap-8 px-4 py-2",
+                "-m-page mb-page z-10 flex flex-wrap place-items-center justify-between gap-4 px-4 py-2",
                 className
             )}
+            {...props}
         >
             {children}
         </header>

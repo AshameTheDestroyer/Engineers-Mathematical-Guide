@@ -37,7 +37,19 @@ export const ButtonCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
-                title="Thickness"
+                title="Vibrant"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <Button variant="information">Information</Button>
+                    <Button variant="warning">Warning</Button>
+                    <Button variant="success">Success</Button>
+                    <Button variant="error">Error</Button>
+                    <Button variant="epic">Epic</Button>
+                </ButtonBox>
+            </Collection>
+            <Collection
+                title="Thick"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>
@@ -53,7 +65,7 @@ export const ButtonCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
-                title="Thinness"
+                title="Thin"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <ButtonBox>

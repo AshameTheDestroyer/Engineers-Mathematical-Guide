@@ -1,82 +1,59 @@
-import { createPortal } from "react-dom";
-import { twJoin, twMerge } from "tailwind-merge";
-import { Dispatch, FC, SetStateAction } from "react";
-import { IconButton } from "../IconButton/IconButton";
-import { ComponentProps } from "@types_/ComponentProps";
+import { twMerge } from "tailwind-merge";
+import { CSSProperties, FC } from "react";
+import { Modal, ModalProps } from "../Modal/Modal";
 
-import cross_icon from "@/assets/icons/cross.svg";
+import "./drawer.css";
 
 export type DrawerProps = {
-    isOpen: boolean;
-    setIsOpen: Dispatch<SetStateAction<boolean>>;
     direction: Direction;
-} & ComponentProps<HTMLDivElement>;
+} & ModalProps;
 
 export const Drawer: FC<DrawerProps> = ({
     id,
     ref,
-    isOpen,
     children,
-    direction,
-    setIsOpen,
     className,
+    direction,
+    ...props
 }) => {
     const positionClassNames: Record<Direction, string> = {
-        top: "bottom-auto",
-        bottom: "top-auto",
-        right: "left-auto",
-        left: "right-auto",
+        top: "bottom-auto px-12",
+        left: "right-auto py-12",
+        right: "left-auto py-12",
+        bottom: "top-auto px-12",
     };
 
-    const translateClassNames: Record<Direction, string> = {
-        top: isOpen ? "translate-y-0" : "-translate-y-full",
-        bottom: isOpen ? "translate-y-0" : "translate-y-full",
-        right: isOpen ? "translate-x-0" : "translate-x-full",
-        left: isOpen ? "translate-x-0" : "-translate-x-full",
+    const directionCoordinates: Record<
+        Direction,
+        { from: Coordinates; to: Coordinates }
+    > = {
+        top: { from: { x: 0, y: -100 }, to: { x: 0, y: 0 } },
+        left: { from: { x: -100, y: 0 }, to: { x: 0, y: 0 } },
+        right: { from: { x: 100, y: 0 }, to: { x: 0, y: 0 } },
+        bottom: { from: { x: 0, y: 100 }, to: { x: 0, y: 0 } },
     };
 
-    const buttonPositionClassNames: Record<Direction, string> = {
-        top: "right-4 top-4",
-        bottom: "right-4 bottom-4",
-        right: "right-4 top-4",
-        left: "left-4 top-4",
-    };
-
-    return createPortal(
-        <>
-            {isOpen && (
-                <div
-                    className="fixed inset-0 bg-black/30"
-                    onClick={(_e) => setIsOpen(false)}
-                />
+    return (
+        <Modal
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "drawer bg-background-light translate-0 inset-0 rounded-none",
+                positionClassNames[direction],
+                className
             )}
-            <div
-                id={id}
-                ref={ref}
-                className={twMerge(
-                    "bg-background-normal fixed inset-0 z-50 p-4 pt-20 transition-all duration-300",
-                    positionClassNames[direction],
-                    translateClassNames[direction],
-                    className
-                )}
-            >
-                <IconButton
-                    className={twJoin(
-                        "absolute z-[1]",
-                        buttonPositionClassNames[direction]
-                    )}
-                    icon={{
-                        width: 20,
-                        height: 20,
-                        thickness: 2,
-                        source: cross_icon,
-                        stroke: "currentColor",
-                    }}
-                    onClick={(_e) => setIsOpen(false)}
-                />
-                {children}
-            </div>
-        </>,
-        document.body
+            animationDuration={200}
+            style={
+                {
+                    "--from-x": directionCoordinates[direction].from.x + "%",
+                    "--from-y": directionCoordinates[direction].from.y + "%",
+                    "--to-x": directionCoordinates[direction].to.x + "%",
+                    "--to-y": directionCoordinates[direction].to.y + "%",
+                } as CSSProperties
+            }
+            {...props}
+        >
+            {children}
+        </Modal>
     );
 };

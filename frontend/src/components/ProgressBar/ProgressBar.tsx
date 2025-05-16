@@ -57,6 +57,21 @@ export const ProgressBar: FC<ProgressBarProps> = ({
         secondary: {
             idle: "[&_[data-bar],&_[data-checkpoint]]:bg-secondary-normal [&_[data-bar],&_[data-checkpoint]]:border-secondary-darker border-secondary-darker bg-secondary-dark-hover text-primary-light [&_[data-reached=false]]:bg-secondary-dark-hover [&_[data-reached=false]]:text-secondary-dark-active",
         },
+        information: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-vibrant-blue-normal [&_[data-bar],&_[data-checkpoint]]:border-vibrant-blue-light border-vibrant-blue-light bg-vibrant-blue-dark text-white [&_[data-reached=false]]:bg-vibrant-blue-dark [&_[data-reached=false]]:text-white/50",
+        },
+        warning: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-vibrant-yellow-normal [&_[data-bar],&_[data-checkpoint]]:border-vibrant-yellow-light border-vibrant-yellow-light bg-vibrant-yellow-dark text-white [&_[data-reached=false]]:bg-vibrant-yellow-dark [&_[data-reached=false]]:text-white/50",
+        },
+        success: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-vibrant-green-normal [&_[data-bar],&_[data-checkpoint]]:border-vibrant-green-light border-vibrant-green-light bg-vibrant-green-dark text-white [&_[data-reached=false]]:bg-vibrant-green-dark [&_[data-reached=false]]:text-white/50",
+        },
+        error: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-vibrant-red-normal [&_[data-bar],&_[data-checkpoint]]:border-vibrant-red-light border-vibrant-red-light bg-vibrant-red-dark text-white [&_[data-reached=false]]:bg-vibrant-red-dark [&_[data-reached=false]]:text-white/50",
+        },
+        epic: {
+            idle: "[&_[data-bar],&_[data-checkpoint]]:bg-vibrant-purple-normal [&_[data-bar],&_[data-checkpoint]]:border-vibrant-purple-light border-vibrant-purple-light bg-vibrant-purple-dark text-white [&_[data-reached=false]]:bg-vibrant-purple-dark [&_[data-reached=false]]:text-white/50",
+        },
     };
 
     return (

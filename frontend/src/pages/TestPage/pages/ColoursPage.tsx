@@ -23,7 +23,7 @@ export const ColoursPage: FC = () => {
                     "bg-vibrant-blue-normal",
                     "bg-vibrant-purple-normal",
                 ]}
-            />{" "}
+            />
             <ColourCollection
                 title="Vibrant Dark Colours"
                 classNames={[
