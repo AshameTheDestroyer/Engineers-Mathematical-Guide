@@ -46,13 +46,38 @@ export const Button: FC<ButtonProps> = ({
             hover: "[&:where(&:hover,&:focus-within)]:[&>[data-content]]:bg-secondary-normal-hover [&:where(&:hover,&:focus-within)]:text-secondary-light-hover [&:where(&:hover,&:focus-within)]:[&>[data-thickness]]:bg-secondary-dark-hover [&:where(&:hover,&:focus-within)]:[&>*]:border-secondary-dark-hover",
             active: "active:[&>[data-content]]:bg-secondary-normal-active active:text-secondary-light-active active:[&>[data-thickness]]:bg-secondary-dark-active active:[&>*]:border-secondary-dark-active",
         },
+        information: {
+            idle: "[&>[data-content]]:bg-vibrant-blue-normal [&>*]:border-vibrant-blue-dark  text-white [&>[data-thickness]]:bg-vibrant-blue-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:saturate-150",
+            active: "active:contrast-150",
+        },
+        warning: {
+            idle: "[&>[data-content]]:bg-vibrant-yellow-normal [&>*]:border-vibrant-yellow-dark  text-white [&>[data-thickness]]:bg-vibrant-yellow-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:saturate-175 [&:where(&:hover,&:focus-within)]:contrast-75",
+            active: "active:contrast-125",
+        },
+        success: {
+            idle: "[&>[data-content]]:bg-vibrant-green-normal [&>*]:border-vibrant-green-dark  text-white [&>[data-thickness]]:bg-vibrant-green-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:saturate-150",
+            active: "active:contrast-150",
+        },
+        error: {
+            idle: "[&>[data-content]]:bg-vibrant-red-normal [&>*]:border-vibrant-red-dark  text-white [&>[data-thickness]]:bg-vibrant-red-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:saturate-150",
+            active: "active:contrast-150",
+        },
+        epic: {
+            idle: "[&>[data-content]]:bg-vibrant-purple-normal [&>*]:border-vibrant-purple-dark  text-white [&>[data-thickness]]:bg-vibrant-purple-dark",
+            hover: "[&:where(&:hover,&:focus-within)]:saturate-175 [&:where(&:hover,&:focus-within)]:contrast-75",
+            active: "active:contrast-125",
+        },
     };
 
     return (
         <button
             id={id}
             className={twMerge(
-                "relative isolate",
+                "relative isolate transition-all duration-200",
                 Object.values(variantClassNames[variant]),
                 disabled
                     ? "grayscale-25 saturate-75 contrast-85 pointer-events-none cursor-auto"
