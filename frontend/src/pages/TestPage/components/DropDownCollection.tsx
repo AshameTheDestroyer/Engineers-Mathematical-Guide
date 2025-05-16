@@ -108,6 +108,87 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:flex-col [&>div]:gap-4"
+                title="Vibrant"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <DropDown
+                        text="Information"
+                        variant="information"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Warning"
+                        variant="warning"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Success"
+                        variant="success"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Error"
+                        variant="error"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown text="Epic" variant="epic" position="bottom-end">
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+                <ButtonBox>
+                    <DropDown
+                        text="Information"
+                        variant="information"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Warning"
+                        variant="warning"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Success"
+                        variant="success"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Error"
+                        variant="error"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        text="Epic"
+                        variant="epic"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+            </Collection>
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
                 title="Thickness"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
