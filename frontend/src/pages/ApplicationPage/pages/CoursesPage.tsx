@@ -1,12 +1,7 @@
 import { FC } from "react";
-import { CourseCard } from "../components/CourseCard";
-import { CourseSchema } from "@/schemas/CourseSchema";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { useExtendedQuery } from "@/hooks/useExtendedQuery";
-import { useSchematicQuery } from "@/hooks/useSchematicQuery";
+import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
-
-import courses_dummy_data from "./courses.dummy.json";
 
 export const CoursesPage: FC = () => {
     const { data } = useSchematicQuery({
@@ -46,14 +41,8 @@ export const CoursesPage: FC = () => {
                     Courses
                 </Typography>
             </header>
-            <main className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8">
-                {data.map((datum) => (
-                    <CourseCard
-                        key={datum.id}
-                        className="aspect-square"
-                        course={{ ...datum, image: images[datum.id] }}
-                    />
-                ))}
+            <main>
+                <CoursesDisplay />
             </main>
         </Flexbox>
     );
