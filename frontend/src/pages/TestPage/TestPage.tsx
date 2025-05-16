@@ -1,10 +1,12 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "./components/Header";
 import { Page } from "@/components/Page/Page";
 import { TEST_ROUTES } from "@/routes/test.routes";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
+import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+
+import route_locales from "@localization/test_page_routes.json";
 
 export const TestPage: FC = () => {
     if (TEST_ROUTES == null) {
@@ -18,7 +20,10 @@ export const TestPage: FC = () => {
 
     return (
         <Page>
-            <Header />
+            <ApplicationBar
+                routes={TEST_ROUTES.base.routes}
+                routeLocales={route_locales}
+            />
             <Outlet />
             <JumpToTopButton />
         </Page>
