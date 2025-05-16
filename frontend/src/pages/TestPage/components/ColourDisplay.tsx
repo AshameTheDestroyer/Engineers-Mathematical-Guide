@@ -1,21 +1,27 @@
-import { FC, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { useColour } from "@/hooks/useColour";
+import { FC, useImperativeHandle, useRef } from "react";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useToast } from "@/components/ToastProvider/ToastProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-export type ColourDisplayProps = ChildlessComponentProps;
+export type ColourDisplayProps = ChildlessComponentProps<HTMLButtonElement>;
 
-export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
+export const ColourDisplay: FC<ColourDisplayProps> = ({
+    id,
+    ref,
+    className,
+}) => {
     const { Alert } = useToast();
     const { language } = useLocalization();
-    const divReference = useRef<HTMLButtonElement>(null);
+    const buttonReference = useRef<HTMLButtonElement>(null);
+
+    useImperativeHandle(ref, () => buttonReference.current!);
 
     const { colourRGB, colourHex, colourName, isDarkColour } = useColour({
         className,
-        reference: divReference,
+        reference: buttonReference,
     });
 
     const shadow = useShadow(
@@ -38,7 +44,7 @@ export const ColourDisplay: FC<ColourDisplayProps> = ({ id, className }) => {
     return (
         <button
             id={id}
-            ref={divReference}
+            ref={buttonReference}
             className={twMerge(
                 isDarkColour ? "text-white" : "text-black",
                 "not-active:[:is(:hover,:focus-within)]:scale-110 shadow-glow flex cursor-pointer flex-col gap-2 rounded-2xl px-6 py-4 text-center font-bold shadow-red-500 transition-[scale] duration-200",

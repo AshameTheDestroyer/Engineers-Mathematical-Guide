@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import { Flexbox } from "../Flexbox/Flexbox";
 import { FC, PropsWithChildren } from "react";
 import { Logo } from "@/components/Logo/Logo";
 import { Header } from "@components/Header/Header";
@@ -46,7 +47,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
             }}
         >
             {!withoutLogo && !withoutBreadcrumbs && (
-                <div className="flex flex-wrap gap-4">
+                <Flexbox wrap="wrap" gap="4">
                     {!withoutLogo && <Logo className="h-10 min-w-max" />}
                     {!withoutBreadcrumbs && (
                         <Breadcrumbs
@@ -60,7 +61,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                             }
                         />
                     )}
-                </div>
+                </Flexbox>
             )}
             {children}
             <ButtonBox className="min-h-10 min-w-20 flex-wrap-reverse place-items-center [&>*]:grow">

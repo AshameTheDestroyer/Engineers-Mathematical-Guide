@@ -9,6 +9,7 @@ import user_icon from "@icons/user.svg";
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
 import medal_second_place_icon from "@icons/medal_second_place.svg";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 const MEDAL_ICONS = [
     medal_first_place_icon,
@@ -73,14 +74,16 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
             )}
             tabIndex={isSkeleton ? -1 : 0}
         >
-            <div
+            <Flexbox
                 className={twJoin(
                     !isSkeleton && classNames.bullet[rank - 1],
                     direction == "ltr"
                         ? "-left-22 translate-x-[10%] max-sm:-left-10 max-sm:-ml-8"
                         : "-right-22 -translate-x-[10%] max-sm:-right-10 max-sm:-mr-8",
-                    "max-sm:text-md absolute top-1/2 flex aspect-square h-[80%] -translate-y-1/2 place-content-center place-items-center text-lg"
+                    "max-sm:text-md absolute top-1/2 aspect-square h-[80%] -translate-y-1/2 text-lg"
                 )}
+                placeItems="center"
+                placeContent="center"
             >
                 {rank <= 3 && !isSkeleton ? (
                     <Icon
@@ -96,7 +99,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                         #{rank}
                     </Typography>
                 )}
-            </div>
+            </Flexbox>
             <div
                 className={twJoin(
                     isSkeleton && "animate-pulse",
@@ -119,11 +122,9 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                     // )
                 }
             </div>
-            <div
-                className={twJoin(
-                    isSkeleton && "opacity-0",
-                    "flex flex-col overflow-hidden"
-                )}
+            <Flexbox
+                className={twJoin(isSkeleton && "opacity-0", "overflow-hidden")}
+                direction="column"
             >
                 <Typography
                     className="max-sm:text-md overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold"
@@ -139,7 +140,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                 >
                     @{student.username}
                 </Typography>
-            </div>
+            </Flexbox>
             <Typography
                 className={twJoin(
                     isSkeleton && "opacity-0",

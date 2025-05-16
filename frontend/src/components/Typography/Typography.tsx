@@ -26,7 +26,7 @@ export const Typography = <
     return (
         <Element
             id={id}
-            ref={ref as any}
+            ref={ref}
             className={twJoin("typography", className)}
             {...(props as any)}
         >

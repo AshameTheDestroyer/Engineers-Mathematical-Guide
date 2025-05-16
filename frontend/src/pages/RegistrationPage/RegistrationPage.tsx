@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { Logo } from "@/components/Logo/Logo";
 import { twJoin, twMerge } from "tailwind-merge";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -24,9 +25,14 @@ export const RegistrationPage: FC = () => {
                     "top-page absolute z-10"
                 )}
             />
-            <main className="flex w-full min-w-[25vw] max-w-[min(30rem,80vw)] items-center justify-center [&>form]:my-16 [&>form]:h-full [&>form]:w-full">
+            <Flexbox
+                className="w-full min-w-[25vw] max-w-[min(30rem,80vw)] [&>form]:my-16 [&>form]:h-full [&>form]:w-full"
+                variant="main"
+                placeItems="center"
+                justifyContent="center"
+            >
                 <Outlet />
-            </main>
+            </Flexbox>
             <section
                 className={twMerge(
                     direction == "ltr"

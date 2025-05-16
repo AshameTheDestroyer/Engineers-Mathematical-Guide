@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ColourCollection } from "../components/ColourCollection";
 
 export const ColoursPage: FC = () => {
     return (
-        <div className="flex flex-col gap-8">
+        <Flexbox direction="column" gap="8">
             <ColourCollection
                 title="Vibrant Light Colours"
                 classNames={[
@@ -148,6 +149,6 @@ export const ColoursPage: FC = () => {
                     "bg-gray-darker",
                 ]}
             />
-        </div>
+        </Flexbox>
     );
 };
