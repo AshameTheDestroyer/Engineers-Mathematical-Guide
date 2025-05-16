@@ -35,6 +35,11 @@ export const Checkbox: FC<CheckboxProps> = ({
         default: "var(--color-tertiary-light-active)",
         primary: "var(--color-primary-dark)",
         secondary: "var(--color-secondary-dark)",
+        information: "var(--color-vibrant-blue-dark)",
+        warning: "var(--color-vibrant-yellow-dark)",
+        success: "var(--color-vibrant-green-dark)",
+        error: "var(--color-vibrant-red-dark)",
+        epic: "var(--color-vibrant-purple-dark)",
     };
 
     const checkColour = !isChecked

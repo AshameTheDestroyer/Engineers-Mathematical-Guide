@@ -50,6 +50,31 @@ export const Input: FC<InputProps> = ({
             hover: "hover:[&>input]:border-secondary-dark hover:[&>input]:placeholder-secondary-dark",
             active: "focus-within:[&>input]:border-secondary-dark-active focus-within:[&>input]:placeholder-secondary-dark-active",
         },
+        information: {
+            idle: "[&>input]:border-vibrant-blue-normal [&>input]:placeholder-vibrant-blue-normal",
+            hover: "hover:[&>input]:border-vibrant-blue-dark hover:[&>input]:placeholder-vibrant-blue-dark",
+            active: "focus-within:saturate-150",
+        },
+        warning: {
+            idle: "[&>input]:border-vibrant-yellow-normal [&>input]:placeholder-vibrant-yellow-normal",
+            hover: "hover:[&>input]:border-vibrant-yellow-dark hover:[&>input]:placeholder-vibrant-yellow-dark",
+            active: "focus-within:saturate-150",
+        },
+        success: {
+            idle: "[&>input]:border-vibrant-green-normal [&>input]:placeholder-vibrant-green-normal",
+            hover: "hover:[&>input]:border-vibrant-green-dark hover:[&>input]:placeholder-vibrant-green-dark",
+            active: "focus-within:saturate-150",
+        },
+        error: {
+            idle: "[&>input]:border-vibrant-red-normal [&>input]:placeholder-vibrant-red-normal",
+            hover: "hover:[&>input]:border-vibrant-red-dark hover:[&>input]:placeholder-vibrant-red-dark",
+            active: "focus-within:saturate-150",
+        },
+        epic: {
+            idle: "[&>input]:border-vibrant-purple-normal [&>input]:placeholder-vibrant-purple-normal",
+            hover: "hover:[&>input]:border-vibrant-purple-dark hover:[&>input]:placeholder-vibrant-purple-dark",
+            active: "focus-within:saturate-150",
+        },
     };
 
     return (
