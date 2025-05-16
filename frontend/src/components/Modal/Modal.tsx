@@ -96,9 +96,10 @@ export const Modal: FC<ModalProps> = ({
                 {hasCloseButton && (
                     <IconButton
                         className={twJoin(
-                            "absolute top-4 z-[1] text-[var(--color-vibrant-red)!important]",
+                            "absolute top-4 z-[1]",
                             direction == "rtl" ? "left-4" : "right-4"
                         )}
+                        variant="error"
                         thickness="thin"
                         icon={{
                             width: 20,
