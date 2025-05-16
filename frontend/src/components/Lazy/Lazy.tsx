@@ -17,7 +17,7 @@ export function LazyImport(modulePath: string) {
 
 export type LazyProps = PropsWithChildren<{
     loadingFallback?: SuspenseProps["fallback"];
-    errorFallback?: ErrorBoundaryProps["fallback"];
+    errorFallback?: ErrorBoundaryProps["fallbackRender"];
 }>;
 
 export const Lazy: FC<LazyProps> = ({
@@ -26,7 +26,7 @@ export const Lazy: FC<LazyProps> = ({
     loadingFallback,
 }) => {
     return (
-        <ErrorBoundary fallback={errorFallback}>
+        <ErrorBoundary fallbackRender={errorFallback ?? (({ error }) => error)}>
             <Suspense fallback={loadingFallback}>{children}</Suspense>
         </ErrorBoundary>
     );

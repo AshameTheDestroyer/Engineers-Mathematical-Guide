@@ -6,5 +6,9 @@
     "error": {
         "en": "Error!",
         "ar": "حَدثَ خَطأ!"
+    },
+    "button": {
+        "en": "Reset Error",
+        "ar": "إعادةُ ضَبطِ الخَطأ"
     }
 }

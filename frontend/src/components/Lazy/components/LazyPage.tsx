@@ -7,7 +7,10 @@ export type LazyPageProps = PropsWithChildren;
 
 export const LazyPage: FC<LazyPageProps> = ({ children }) => {
     return (
-        <Lazy errorFallback={<ErrorPage />} loadingFallback={<LoadingPage />}>
+        <Lazy
+            errorFallback={(props) => <ErrorPage {...props} />}
+            loadingFallback={<LoadingPage />}
+        >
             {children}
         </Lazy>
     );
