@@ -35,7 +35,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-background-dark transition duration-200",
+                "bg-background-dark flex-nowrap place-items-start transition duration-200",
                 className
             )}
             isSticky
@@ -45,28 +45,38 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 );
             }}
         >
-            {!withoutLogo && <Logo className="h-10" />}
-            {!withoutBreadcrumbs && (
-                <Breadcrumbs
-                    className="grow"
-                    Renders={(path) =>
-                        path
-                            ?.replace(/\i{1,3}$/, (item) => item.toUpperCase())
-                            .toTitleCase()
-                    }
-                />
+            {!withoutLogo && !withoutBreadcrumbs && (
+                <div className="flex flex-wrap gap-4">
+                    {!withoutLogo && <Logo className="h-10 min-w-max" />}
+                    {!withoutBreadcrumbs && (
+                        <Breadcrumbs
+                            className="overflow-hidden [&>*]:flex-wrap"
+                            Renders={(path) =>
+                                path
+                                    ?.replace(/\i{1,3}$/, (item) =>
+                                        item.toUpperCase()
+                                    )
+                                    .toTitleCase()
+                            }
+                        />
+                    )}
+                </div>
             )}
             {children}
-            <ButtonBox>
-                {buttons}
-                <ConfigurationDropDownList
-                    thickness="thin"
-                    variant="secondary"
-                />
-                <NavigationMenuButton
-                    thickness="thin"
-                    routes={GetRouteLocales(routes, routeLocales, language)}
-                />
+            <ButtonBox className="min-h-10 min-w-20 place-items-center [&>*]:grow">
+                {buttons != null && (
+                    <ButtonBox className="[&>*]:grow">{buttons}</ButtonBox>
+                )}
+                <ButtonBox className="place-content-end">
+                    <ConfigurationDropDownList
+                        thickness="thin"
+                        variant="secondary"
+                    />
+                    <NavigationMenuButton
+                        thickness="thin"
+                        routes={GetRouteLocales(routes, routeLocales, language)}
+                    />
+                </ButtonBox>
             </ButtonBox>
         </Header>
     );

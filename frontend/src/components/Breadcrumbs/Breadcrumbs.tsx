@@ -1,6 +1,6 @@
 import { Icon } from "../Icon/Icon";
 import { FC, Fragment } from "react";
-import { twJoin, twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
@@ -86,7 +86,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                 className
             )}
         >
-            <ol className="flex items-center space-x-1 overflow-x-auto py-2">
+            <ol className="flex items-center gap-x-2 gap-y-1 overflow-x-auto py-2">
                 {shownPaths.map((path, i) => (
                     <Fragment key={i}>
                         <li className="text-md flex items-center">
@@ -101,12 +101,11 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
                         {i < paths.length - 1 && (
                             <li>
                                 <Icon
-                                    className={twJoin(
-                                        "mx-2",
+                                    className={
                                         direction == "ltr"
                                             ? "rotate-90"
                                             : "rotate-270"
-                                    )}
+                                    }
                                     width={24}
                                     height={24}
                                     source={arrow_icon}
