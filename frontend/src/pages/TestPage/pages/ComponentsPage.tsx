@@ -1,8 +1,7 @@
 import { FC } from "react";
 import { InputCollection } from "../components/InputCollection";
-import { ModalCollection } from "../components/ModalCollection";
+import { PopupCollection } from "../components/PopupCollection";
 import { ButtonCollection } from "../components/ButtonCollection";
-import { DrawerCollection } from "../components/DrawerCollection";
 import { RoutingCollection } from "../components/RoutingCollection";
 import { DropDownCollection } from "../components/DropDownCollection";
 import { IconButtonCollection } from "../components/IconButtonCollection";
@@ -19,8 +18,7 @@ export const ComponentsPage: FC = () => {
             <DropDownCollection />
             <ProgressBarCollection />
             <InputCollection />
-            <ModalCollection />
-            <DrawerCollection />
+            <PopupCollection />
         </div>
     );
 };
