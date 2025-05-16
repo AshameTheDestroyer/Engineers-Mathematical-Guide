@@ -391,7 +391,7 @@ body.dark-themed {
 
 @layer base {
     ::-webkit-scrollbar {
-        @apply w-3;
+        @apply h-3 w-3;
     }
 
     ::-webkit-scrollbar-track {
