@@ -49,7 +49,7 @@ export const useExtendedQuery = <
 
     const query = options.usesSuspense
         ? useSuspenseQuery({ staleTime, ...options_ } as any, queryClient)
-        : useQuery({ staleTime, ...options }, queryClient);
+        : useQuery({ staleTime, ...options_ }, queryClient);
 
     return query as any;
 };
