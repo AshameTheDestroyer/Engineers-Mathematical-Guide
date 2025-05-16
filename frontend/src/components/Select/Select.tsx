@@ -88,6 +88,31 @@ export const Select = <T extends EnumValues>({
             hover: "hover:[&>button>div]:border-secondary-dark",
             active: "active:[&>button>div]:border-secondary-dark-active",
         },
+        information: {
+            idle: "[&>button>div]:border-vibrant-blue-normal",
+            hover: "hover:[&>button>div]:border-vibrant-blue-dark",
+            active: "active:[&>button>div]:saturate-150",
+        },
+        warning: {
+            idle: "[&>button>div]:border-vibrant-yellow-normal",
+            hover: "hover:[&>button>div]:border-vibrant-yellow-dark",
+            active: "active:[&>button>div]:saturate-150",
+        },
+        success: {
+            idle: "[&>button>div]:border-vibrant-green-normal",
+            hover: "hover:[&>button>div]:border-vibrant-green-dark",
+            active: "active:[&>button>div]:saturate-150",
+        },
+        error: {
+            idle: "[&>button>div]:border-vibrant-red-normal",
+            hover: "hover:[&>button>div]:border-vibrant-red-dark",
+            active: "active:[&>button>div]:saturate-150",
+        },
+        epic: {
+            idle: "[&>button>div]:border-vibrant-purple-normal",
+            hover: "hover:[&>button>div]:border-vibrant-purple-dark",
+            active: "active:[&>button>div]:saturate-150",
+        },
     };
 
     useEffect(() => {

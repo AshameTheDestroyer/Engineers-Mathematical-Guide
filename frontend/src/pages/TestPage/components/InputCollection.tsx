@@ -31,6 +31,36 @@ export const InputCollection: FC = () => {
                     name="email-secondary"
                     placeholder="example@gmail.com"
                 />
+                <Input
+                    type="email"
+                    variant="information"
+                    name="email-information"
+                    placeholder="example@gmail.com"
+                />
+                <Input
+                    type="email"
+                    variant="warning"
+                    name="email-warning"
+                    placeholder="example@gmail.com"
+                />
+                <Input
+                    type="email"
+                    variant="success"
+                    name="email-success"
+                    placeholder="example@gmail.com"
+                />
+                <Input
+                    type="email"
+                    variant="error"
+                    name="email-error"
+                    placeholder="example@gmail.com"
+                />
+                <Input
+                    type="email"
+                    variant="epic"
+                    name="email-epic"
+                    placeholder="example@gmail.com"
+                />
             </Collection>
             <Collection
                 className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
@@ -51,6 +81,31 @@ export const InputCollection: FC = () => {
                     variant="secondary"
                     placeholder="password"
                     name="password-secondary"
+                />
+                <PasswordInput
+                    variant="information"
+                    placeholder="password"
+                    name="password-information"
+                />
+                <PasswordInput
+                    variant="warning"
+                    placeholder="password"
+                    name="password-warning"
+                />
+                <PasswordInput
+                    variant="success"
+                    placeholder="password"
+                    name="password-success"
+                />
+                <PasswordInput
+                    variant="error"
+                    placeholder="password"
+                    name="password-error"
+                />
+                <PasswordInput
+                    variant="epic"
+                    placeholder="password"
+                    name="password-epic"
                 />
             </Collection>
             <Collection
@@ -73,6 +128,31 @@ export const InputCollection: FC = () => {
                     name="select-secondary"
                     options={["option-1", "option-2", "option-3"]}
                 />
+                <Select
+                    variant="information"
+                    name="select-information"
+                    options={["option-1", "option-2", "option-3"]}
+                />
+                <Select
+                    variant="warning"
+                    name="select-warning"
+                    options={["option-1", "option-2", "option-3"]}
+                />
+                <Select
+                    variant="success"
+                    name="select-success"
+                    options={["option-1", "option-2", "option-3"]}
+                />
+                <Select
+                    variant="error"
+                    name="select-error"
+                    options={["option-1", "option-2", "option-3"]}
+                />
+                <Select
+                    variant="epic"
+                    name="select-epic"
+                    options={["option-1", "option-2", "option-3"]}
+                />
             </Collection>
             <Collection
                 className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
@@ -82,6 +162,11 @@ export const InputCollection: FC = () => {
                 <Checkbox variant="default" name="checkbox-default" />
                 <Checkbox variant="primary" name="checkbox-primary" />
                 <Checkbox variant="secondary" name="checkbox-secondary" />
+                <Checkbox variant="information" name="checkbox-information" />
+                <Checkbox variant="warning" name="checkbox-warning" />
+                <Checkbox variant="success" name="checkbox-success" />
+                <Checkbox variant="error" name="checkbox-error" />
+                <Checkbox variant="epic" name="checkbox-epic" />
             </Collection>
         </Collection>
     );
