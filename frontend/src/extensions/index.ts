@@ -11,6 +11,7 @@ import "./GroupBy.ts";
 import "./ToUTCDate.ts";
 import "./ToClassName.ts";
 import "./ToTitleCase.ts";
+import "./PromiseWait.ts";
 import "./DateBetween.ts";
 import "./GetEnumValues.ts";
 import "./ChooseRandomly.ts";
