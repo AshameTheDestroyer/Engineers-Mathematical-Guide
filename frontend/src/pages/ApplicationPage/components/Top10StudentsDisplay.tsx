@@ -27,7 +27,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
                 ...student,
                 ...(isSkeleton
                     ? { name: "" }
-                    : data?.find(
+                    : data!.find(
                           (datum) => datum.username == student.username
                       )!),
             })),

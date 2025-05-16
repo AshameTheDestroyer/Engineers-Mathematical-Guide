@@ -8,7 +8,7 @@ export type FallbackPageProps = PropsWithChildren;
 export const FallbackPage: FC<FallbackPageProps> = ({ children }) => {
     return (
         <Page className="from-primary-normal bg-linear-to-b to-primary-dark flex place-content-center place-items-center overflow-hidden text-white">
-            <div className="bg-gray isolate flex flex-col justify-between gap-5 [&>.typography]:[text-shadow:0px_0px_5px_black]">
+            <div className="bg-gray isolate flex flex-col justify-between gap-5 [&>:is(.typography,details)]:[filter:drop-shadow(0px_0px_5px_black)]">
                 {children}
                 <DoubleCogIcon
                     className="-left-page -bottom-1/10 absolute z-[-1] text-white [filter:drop-shadow(0px_0px_2px_black)]"

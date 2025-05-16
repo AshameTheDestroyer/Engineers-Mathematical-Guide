@@ -4,7 +4,15 @@
         "ar": "حَدثَ خَطأ!"
     },
     "subtitle": {
-        "en": "Something went wrong, please refresh the page.",
-        "ar": "حَدث خَطأ ما، يُرجى إعادةُ تَحميلِ الصّفحة."
+        "en": "An unexpected error occurred, please try resetting to resolve the issue.",
+        "ar": "حَدثَ خَطأٌ غَيرُ مُتوَقّعٍ، يُرجى مُحاولةُ إعادة الضَّبطِ لِحَلِّ المُشكلة."
+    },
+    "details": {
+        "en": "Details",
+        "ar": "التَّفاصيل"
+    },
+    "button": {
+        "en": "Reset Error",
+        "ar": "إعادةُ ضَبطِ الخَطأ"
     }
 }
