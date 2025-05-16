@@ -20,12 +20,10 @@ export const PopupCollection: FC = () => {
         bottom: "rotate-180",
     };
 
-    const directions = [
-        "top",
-        "right",
-        "bottom",
-        "left",
-    ] as UnionToTuple<Direction>;
+    const directions = ["top", "right", "bottom", "left"] as Tuple<
+        Direction,
+        4
+    >;
 
     return (
         <Collection title="Popup Components">
