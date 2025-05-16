@@ -63,7 +63,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 </div>
             )}
             {children}
-            <ButtonBox className="min-h-10 min-w-20 place-items-center [&>*]:grow">
+            <ButtonBox className="min-h-10 min-w-20 flex-wrap-reverse place-items-center [&>*]:grow">
                 {buttons != null && (
                     <ButtonBox className="[&>*]:grow">{buttons}</ButtonBox>
                 )}
