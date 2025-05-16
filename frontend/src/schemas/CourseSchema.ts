@@ -15,6 +15,9 @@ export const CourseSchema = z.object({
     "enrollment-count": z
         .number({ required_error: "required" })
         .nonnegative("nonnegative"),
+    tags: z.array(z.string({ required_error: "required" }), {
+        required_error: "required",
+    }),
 });
 
 export const DetailedCourseSchema = z.intersection(

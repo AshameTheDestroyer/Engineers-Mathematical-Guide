@@ -6,7 +6,16 @@
         "enrollment-count": 76245,
         "rating": 4.3,
         "rating-count": 89231,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "limits",
+            "derivatives",
+            "continuity",
+            "integration",
+            "fundamental theorem of calculus",
+            "applications of derivatives",
+            "basic functions"
+        ]
     },
     {
         "id": "calculus-ii",
@@ -15,7 +24,16 @@
         "enrollment-count": 41239,
         "rating": 4.2,
         "rating-count": 67452,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "integration techniques",
+            "sequences",
+            "series",
+            "parametric equations",
+            "polar coordinates",
+            "improper integrals",
+            "applications of integration"
+        ]
     },
     {
         "id": "linear-algebra",
@@ -24,7 +42,17 @@
         "enrollment-count": 68321,
         "rating": 3.4,
         "rating-count": 54301,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "matrices",
+            "vector spaces",
+            "linear transformations",
+            "determinants",
+            "eigenvalues",
+            "eigenvectors",
+            "systems of linear equations",
+            "inner product spaces"
+        ]
     },
     {
         "id": "differential-equations",
@@ -33,7 +61,17 @@
         "enrollment-count": 38472,
         "rating": 3.2,
         "rating-count": 49876,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "ode",
+            "pde",
+            "initial value problems",
+            "separable equations",
+            "linear differential equations",
+            "laplace transforms",
+            "systems of equations",
+            "numerical solutions"
+        ]
     },
     {
         "id": "probability-theory",
@@ -42,7 +80,17 @@
         "enrollment-count": 52389,
         "rating": 2.1,
         "rating-count": 61234,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "random variables",
+            "probability distributions",
+            "conditional probability",
+            "independence",
+            "expectation",
+            "variance",
+            "law of large numbers",
+            "central limit theorem"
+        ]
     },
     {
         "id": "abstract-algebra",
@@ -51,7 +99,17 @@
         "enrollment-count": 26789,
         "rating": 2.6,
         "rating-count": 34567,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "groups",
+            "rings",
+            "fields",
+            "homomorphisms",
+            "isomorphism theorems",
+            "galois theory",
+            "group actions",
+            "modules"
+        ]
     },
     {
         "id": "multivariable-calculus",
@@ -60,7 +118,19 @@
         "enrollment-count": 40123,
         "rating": 1.9,
         "rating-count": 45678,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "partial derivatives",
+            "multiple integrals",
+            "vector calculus",
+            "gradient",
+            "divergence",
+            "curl",
+            "line integrals",
+            "surface integrals",
+            "greens theorem",
+            "stokes theorem"
+        ]
     },
     {
         "id": "real-analysis",
@@ -69,7 +139,18 @@
         "enrollment-count": 19876,
         "rating": 1.1,
         "rating-count": 23456,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "metric spaces",
+            "sequences and series",
+            "continuity",
+            "differentiation",
+            "riemann integration",
+            "lebesgue integration",
+            "measure theory",
+            "compactness",
+            "convergence"
+        ]
     },
     {
         "id": "complex-analysis",
@@ -78,7 +159,16 @@
         "enrollment-count": 14321,
         "rating": 0.1,
         "rating-count": 12098,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "complex functions",
+            "analytic functions",
+            "cauchy integral theorem",
+            "residue theorem",
+            "laurent series",
+            "conformal mappings",
+            "harmonic functions"
+        ]
     },
     {
         "id": "numerical-methods",
@@ -87,7 +177,17 @@
         "enrollment-count": 35678,
         "rating": 0.7,
         "rating-count": 18976,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "root finding",
+            "interpolation",
+            "numerical integration",
+            "finite differences",
+            "error analysis",
+            "linear system solvers",
+            "approximation theory",
+            "monte carlo methods"
+        ]
     },
     {
         "id": "discrete-mathematics",
@@ -96,7 +196,17 @@
         "enrollment-count": 73210,
         "rating": 4.5,
         "rating-count": 98765,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "logic",
+            "set theory",
+            "combinatorics",
+            "graph theory",
+            "boolean algebra",
+            "modular arithmetic",
+            "proof techniques",
+            "recurrence relations"
+        ]
     },
     {
         "id": "mathematical-statistics",
@@ -105,16 +215,36 @@
         "enrollment-count": 34567,
         "rating": 4.3,
         "rating-count": 56789,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "estimation theory",
+            "hypothesis testing",
+            "confidence intervals",
+            "regression analysis",
+            "maximum likelihood",
+            "bayesian inference",
+            "statistical distributions"
+        ]
     },
     {
         "id": "topology",
         "title": "Topology",
         "description": "Study of topological spaces, continuity, compactness, connectedness, and metric spaces.",
         "enrollment-count": 18976,
-        "rating": 4.0,
+        "rating": 4,
         "rating-count": 23456,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "topological spaces",
+            "open and closed sets",
+            "continuity",
+            "connectedness",
+            "compactness",
+            "homeomorphisms",
+            "metric topology",
+            "homotopy",
+            "manifolds"
+        ]
     },
     {
         "id": "partial-differential-equations",
@@ -123,7 +253,17 @@
         "enrollment-count": 28901,
         "rating": 4.1,
         "rating-count": 45678,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "heat equation",
+            "wave equation",
+            "laplace equation",
+            "fourier series",
+            "boundary value problems",
+            "method of characteristics",
+            "separation of variables",
+            "green functions"
+        ]
     },
     {
         "id": "optimization-theory",
@@ -132,7 +272,17 @@
         "enrollment-count": 33456,
         "rating": 4.2,
         "rating-count": 54321,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "linear programming",
+            "nonlinear optimization",
+            "convex optimization",
+            "lagrange multipliers",
+            "gradient descent",
+            "duality",
+            "integer programming",
+            "constrained optimization"
+        ]
     },
     {
         "id": "fourier-analysis",
@@ -141,7 +291,16 @@
         "enrollment-count": 22345,
         "rating": 4.1,
         "rating-count": 34567,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "fourier series",
+            "fourier transform",
+            "discrete fourier transform",
+            "fast fourier transform",
+            "signal processing",
+            "frequency domain",
+            "convolution"
+        ]
     },
     {
         "id": "graph-theory",
@@ -150,7 +309,18 @@
         "enrollment-count": 48901,
         "rating": 4.4,
         "rating-count": 76543,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "graphs",
+            "trees",
+            "connectivity",
+            "planarity",
+            "coloring",
+            "network flows",
+            "shortest paths",
+            "eulerian paths",
+            "hamiltonian cycles"
+        ]
     },
     {
         "id": "game-theory",
@@ -159,16 +329,36 @@
         "enrollment-count": 27890,
         "rating": 4.3,
         "rating-count": 65432,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "nash equilibrium",
+            "zero sum games",
+            "strategic games",
+            "cooperative games",
+            "auction theory",
+            "evolutionary game theory",
+            "mechanism design",
+            "decision theory"
+        ]
     },
     {
         "id": "category-theory",
         "title": "Category Theory",
         "description": "Introduction to categories, functors, natural transformations, and universal constructions.",
         "enrollment-count": 12345,
-        "rating": 4.0,
+        "rating": 4,
         "rating-count": 23456,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "categories",
+            "functors",
+            "natural transformations",
+            "adjoint functors",
+            "universal properties",
+            "monads",
+            "limits colimits",
+            "topos theory"
+        ]
     },
     {
         "id": "set-theory",
@@ -177,6 +367,17 @@
         "enrollment-count": 21234,
         "rating": 4.1,
         "rating-count": 34567,
-        "image": "src/assets/images/calculator.jpg"
+        "image": "src/assets/images/calculator.jpg",
+        "tags": [
+            "naive set theory",
+            "axiomatic set theory",
+            "cardinality",
+            "ordinals",
+            "cardinals",
+            "zermelo fraenkel axioms",
+            "choice axiom",
+            "independence proofs",
+            "infinity"
+        ]
     }
 ]
