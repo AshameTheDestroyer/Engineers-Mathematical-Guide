@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
@@ -17,8 +18,18 @@ export const MainContent: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
-        <div className="centralize flex grow flex-row flex-wrap-reverse justify-between gap-5">
-            <section className="w-150 pb-page flex flex-col gap-5">
+        <Flexbox
+            className="centralize grow"
+            gap="5"
+            variant="main"
+            wrap="wrap-reverse"
+        >
+            <Flexbox
+                className="w-150 pb-page"
+                gap="5"
+                variant="section"
+                direction="column"
+            >
                 <Locale
                     className="text-primary-normal text-3xl font-bold max-sm:text-2xl"
                     variant="h1"
@@ -58,7 +69,7 @@ export const MainContent: FC = () => {
                         <Locale>{locales.buttons.start}</Locale>
                     </Button>
                 </ButtonBox>
-            </section>
+            </Flexbox>
             <img
                 className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)] max-md:w-60"
                 loading="lazy"
@@ -73,6 +84,6 @@ export const MainContent: FC = () => {
                 className="text-background-dark -right-page absolute top-0 z-[-1] translate-x-1/4 translate-y-2/3 [animation-direction:reverse]"
                 size={250}
             />
-        </div>
+        </Flexbox>
     );
 };

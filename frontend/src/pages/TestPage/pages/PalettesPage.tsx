@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { PaletteCollection } from "../components/PaletteCollection";
 
 export const PalettesPage: FC = () => {
     return (
-        <div className="flex flex-col gap-8">
+        <Flexbox direction="column" gap="8">
             <PaletteCollection
                 title="Azure"
                 classNames={{
@@ -497,6 +498,6 @@ export const PalettesPage: FC = () => {
                     ],
                 }}
             />
-        </div>
+        </Flexbox>
     );
 };

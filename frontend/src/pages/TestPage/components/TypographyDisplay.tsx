@@ -1,18 +1,20 @@
 import { FC, useMemo } from "react";
-import { twJoin, twMerge } from "tailwind-merge";
+import { twMerge } from "tailwind-merge";
+import { useShadow } from "@/hooks/useShadow";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
-export type TypographyDisplayProps = ChildlessComponentProps & {
+export type TypographyDisplayProps = ChildlessComponentProps<HTMLDivElement> & {
     text: string;
 };
 
 export const TypographyDisplay: FC<TypographyDisplayProps> = ({
     id,
+    ref,
     text,
     className,
 }) => {
-    const { isDarkThemed } = useThemeMode();
+    const shadow = useShadow();
 
     const sizeName = useMemo(
         () =>
@@ -25,18 +27,24 @@ export const TypographyDisplay: FC<TypographyDisplayProps> = ({
     );
 
     return (
-        <div id={id} className={twMerge("flex gap-4", className)}>
+        <Flexbox
+            id={id}
+            ref={ref}
+            className={twMerge("max-w-full", className)}
+            gap="4"
+            wrap="nowrap"
+        >
             <span
-                className={twJoin(
-                    !isDarkThemed && "shadow-lg shadow-[#0000004c]",
-                    "bg-tertiary-normal min-w-20 place-self-center rounded-2xl py-2 text-center text-lg uppercase"
-                )}
+                className="bg-tertiary-normal min-w-20 place-self-center rounded-2xl py-2 text-center text-lg uppercase"
+                style={{
+                    boxShadow: shadow,
+                }}
             >
                 {sizeName}
             </span>
             <p className="place-content-center overflow-hidden text-ellipsis whitespace-nowrap [line-height:1.3]">
                 {text}
             </p>
-        </div>
+        </Flexbox>
     );
 };

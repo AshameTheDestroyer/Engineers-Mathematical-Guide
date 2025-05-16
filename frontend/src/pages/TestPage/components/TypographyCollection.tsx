@@ -22,7 +22,7 @@ export const TypographyCollection: FC<TypographyCollectionProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "[&>div]:flex-col [&>div]:flex-nowrap",
+                "max-w-[calc(100vw-var(--spacing-page)*2)] [&>div]:flex-col [&>div]:flex-nowrap",
                 className
             )}
             title={title}

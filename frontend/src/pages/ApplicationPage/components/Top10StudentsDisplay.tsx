@@ -1,6 +1,7 @@
 import { FC, useMemo } from "react";
 import { RankingBadge } from "./RankingBadge";
 import { useMockQuery } from "@/hooks/useMockQuery";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 
@@ -35,21 +36,21 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     );
 
     return (
-        <section>
+        <Flexbox variant="section" direction="column" gap="8">
             <Typography className="text-lg font-bold" variant="h2">
                 Top 10 Students
             </Typography>
-            <ol className="flex flex-col gap-4">
+            <Flexbox variant="ol" direction="column" gap="4">
                 {students.map((student, i) => (
-                    <li key={i} className="flex">
+                    <Flexbox variant="li" key={i}>
                         <RankingBadge
                             rank={i + 1}
                             student={student}
                             isSkeleton={isSkeleton}
                         />
-                    </li>
+                    </Flexbox>
                 ))}
-            </ol>
-        </section>
+            </Flexbox>
+        </Flexbox>
     );
 };

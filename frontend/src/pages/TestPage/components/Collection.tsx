@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ComponentProps } from "@/types/ComponentProps";
 import {
     Typography,
@@ -20,10 +21,12 @@ export const Collection: FC<CollectionProps> = ({
     typography,
 }) => {
     return (
-        <div
+        <Flexbox
             id={id}
             ref={ref}
-            className={twMerge("flex flex-col gap-4", className)}
+            className={className}
+            gap="8"
+            direction="column"
         >
             <Typography
                 variant="h1"
@@ -32,7 +35,9 @@ export const Collection: FC<CollectionProps> = ({
             >
                 {title}
             </Typography>
-            <div className="flex flex-wrap gap-8">{children}</div>
-        </div>
+            <Flexbox wrap="wrap" gap="8">
+                {children}
+            </Flexbox>
+        </Flexbox>
     );
 };

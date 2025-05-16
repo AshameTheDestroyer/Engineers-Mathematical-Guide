@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { CourseCard } from "../components/CourseCard";
 import { CourseSchema } from "@/schemas/CourseSchema";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { useExtendedQuery } from "@/hooks/useExtendedQuery";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
 import { Typography } from "@/components/Typography/Typography";
@@ -39,7 +40,7 @@ export const CoursesPage: FC = () => {
     });
 
     return (
-        <main className="flex flex-col gap-8">
+        <Flexbox variant="main" direction="column" gap="8">
             <header>
                 <Typography variant="h1" className="text-2xl font-bold">
                     Courses
@@ -54,6 +55,6 @@ export const CoursesPage: FC = () => {
                     />
                 ))}
             </main>
-        </main>
+        </Flexbox>
     );
 };

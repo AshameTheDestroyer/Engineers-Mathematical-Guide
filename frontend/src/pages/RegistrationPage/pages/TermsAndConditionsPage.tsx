@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { twJoin } from "tailwind-merge";
 import { Locale } from "@/components/Locale/Locale";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { RichText } from "@/components/RichText/RichText";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { TermsSection, TermsSectionProps } from "../components/TermsSection";
@@ -18,14 +19,22 @@ export const TermsAndConditionsPage: FC = () => {
     ) as unknown as Array<string>;
 
     return (
-        <main className="-mx-6 my-10 flex flex-col gap-8">
-            <main
+        <Flexbox
+            className="-mx-6 my-10"
+            gap="8"
+            variant="main"
+            direction="column"
+        >
+            <Flexbox
                 className={twJoin(
                     direction == "ltr"
                         ? "[&>section:last-child>p]:text-left"
                         : "[&>section:last-child>p]:text-right",
-                    "flex max-h-[70vh] flex-col gap-8 overflow-y-scroll scroll-smooth px-8 py-4"
+                    "max-h-[70vh] overflow-y-scroll scroll-smooth px-8 py-4"
                 )}
+                gap="8"
+                variant="main"
+                direction="column"
             >
                 <Locale
                     variant="h1"
@@ -46,8 +55,13 @@ export const TermsAndConditionsPage: FC = () => {
                         }
                     />
                 ))}
-            </main>
-            <section className="flex flex-col gap-4 px-8">
+            </Flexbox>
+            <Flexbox
+                className="px-8"
+                gap="4"
+                variant="section"
+                direction="column"
+            >
                 <RichText
                     variant="p"
                     ExtractedTextRenders={(text) => (
@@ -61,7 +75,7 @@ export const TermsAndConditionsPage: FC = () => {
                 >
                     {GetLocale(locales["last-option"], language)}
                 </RichText>
-            </section>
-        </main>
+            </Flexbox>
+        </Flexbox>
     );
 };

@@ -3,6 +3,7 @@ import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
 import { Button } from "@/components/Button/Button";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CourseSummary } from "../components/CourseSummary";
 import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
@@ -36,7 +37,7 @@ export const CoursePage: FC = () => {
     });
 
     return (
-        <main className="flex flex-col gap-8">
+        <Flexbox variant="main" direction="column" gap="8">
             <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <CourseSummary course={course} />
                 <Button
@@ -61,25 +62,25 @@ export const CoursePage: FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
 
-            <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1 [&>section]:flex [&>section]:flex-col [&>section]:gap-8">
-                <section>
-                    <div className="flex flex-col gap-4">
+            <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
+                <Flexbox variant="section" direction="column" gap="8">
+                    <Flexbox direction="column" gap="4">
                         <Typography className="text-lg font-bold" variant="h2">
                             Introduction
                         </Typography>
                         <Typography variant="p">
                             {course.description}
                         </Typography>
-                    </div>
-                    <div className="flex flex-col gap-4">
+                    </Flexbox>
+                    <Flexbox direction="column" gap="4">
                         <Typography className="text-lg font-bold" variant="h2">
                             Description
                         </Typography>
                         <Typography className="text-justify" variant="p">
                             {course["detailed-description"]}
                         </Typography>
-                    </div>
-                </section>
+                    </Flexbox>
+                </Flexbox>
                 <LazyComponent
                     skeleton={
                         <Top10StudentsDisplay
@@ -95,6 +96,6 @@ export const CoursePage: FC = () => {
                     />
                 </LazyComponent>
             </main>
-        </main>
+        </Flexbox>
     );
 };

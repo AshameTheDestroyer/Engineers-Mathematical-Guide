@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { InputCollection } from "../components/InputCollection";
 import { PopupCollection } from "../components/PopupCollection";
 import { ButtonCollection } from "../components/ButtonCollection";
@@ -10,7 +11,7 @@ import { StateButtonCollection } from "../components/StateButtonCollection";
 
 export const ComponentsPage: FC = () => {
     return (
-        <div className="flex flex-col gap-8">
+        <Flexbox direction="column" gap="8">
             <RoutingCollection />
             <ButtonCollection />
             <StateButtonCollection />
@@ -19,6 +20,6 @@ export const ComponentsPage: FC = () => {
             <ProgressBarCollection />
             <InputCollection />
             <PopupCollection />
-        </div>
+        </Flexbox>
     );
 };

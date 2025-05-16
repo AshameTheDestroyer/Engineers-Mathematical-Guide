@@ -5,6 +5,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { RichText, RichTextProps } from "@/components/RichText/RichText";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type TermsSectionProps = {
     references?: Array<string>;
@@ -73,10 +74,13 @@ export const TermsSection: FC<TermsSectionProps> = ({
     }
 
     return (
-        <section
+        <Flexbox
             id={id}
             ref={ref}
-            className={twMerge("flex flex-col gap-4 text-justify", className)}
+            className={twMerge("text-justify", className)}
+            gap="4"
+            variant="section"
+            direction="column"
         >
             <Locale variant="h2" className="text-lg font-bold">
                 {locales.title}
@@ -84,6 +88,6 @@ export const TermsSection: FC<TermsSectionProps> = ({
             <RichText variant="p" ExtractedTextRenders={ExtractedTextRenders}>
                 {GetLocale(locales.body, language)}
             </RichText>
-        </section>
+        </Flexbox>
     );
 };
