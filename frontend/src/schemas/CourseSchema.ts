@@ -20,7 +20,7 @@ export const CourseSchema = z.object({
 export const DetailedCourseSchema = z.intersection(
     CourseSchema,
     z.object({
-        chapters: z.array(z.string(), { required_error: "required" }),
+        modules: z.array(z.string(), { required_error: "required" }),
         "detailed-description": z.string({ required_error: "required" }),
         prerequisites: z.array(z.string(), { required_error: "required" }),
         postrequisites: z.array(z.string(), { required_error: "required" }),
