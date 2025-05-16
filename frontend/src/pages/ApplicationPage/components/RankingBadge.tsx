@@ -18,20 +18,21 @@ const MEDAL_ICONS = [
 
 export type RankingBadgeProps = {
     rank: number;
+    isSkeleton?: boolean;
     // TODO: Create Student Schema.
     student: {
-        email: string;
-        username: string;
         name: string;
-        gender: string;
-        country: string;
-        phoneNumber: string;
-        surname: string;
         grade: number;
+        username: string;
+        surname?: string;
     };
 };
 
-export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
+export const RankingBadge: FC<RankingBadgeProps> = ({
+    rank,
+    student,
+    isSkeleton,
+}) => {
     const { direction } = useLocalization();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -62,22 +63,26 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     ? "ml-22 max-sm:ml-10"
                     : "mr-22 max-sm:mr-10",
                 isDarkColour ? "text-white" : "text-black",
-                "bg-background-normal active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover relative flex grow cursor-pointer place-content-evenly gap-4 rounded-full p-2 transition duration-200",
-                "[&_.icon]:text-background-normal [&:active_.icon]:text-background-normal-active [&:where(:hover,:focus-within)_.icon]:text-background-normal-hover",
-                classNames.button[rank - 1],
-                classNames.bullet[rank - 1]
+                "bg-background-normal relative flex grow place-content-evenly gap-4 rounded-full p-2 transition duration-200",
+                "[&_.icon]:text-background-normal",
+                isSkeleton
+                    ? "animate-pulse"
+                    : "active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover [&:active_.icon]:text-background-normal-active [&:where(:hover,:focus-within)_.icon]:text-background-normal-hover cursor-pointer",
+                !isSkeleton && classNames.button[rank - 1],
+                !isSkeleton && classNames.bullet[rank - 1]
             )}
+            tabIndex={isSkeleton ? -1 : 0}
         >
             <div
                 className={twJoin(
-                    classNames.bullet[rank - 1],
+                    !isSkeleton && classNames.bullet[rank - 1],
                     direction == "ltr"
                         ? "-left-22 translate-x-[10%] max-sm:-left-10 max-sm:-ml-8"
                         : "-right-22 -translate-x-[10%] max-sm:-right-10 max-sm:-mr-8",
                     "max-sm:text-md absolute top-1/2 flex aspect-square h-[80%] -translate-y-1/2 place-content-center place-items-center text-lg"
                 )}
             >
-                {rank <= 3 ? (
+                {rank <= 3 && !isSkeleton ? (
                     <Icon
                         className="border-3 h-full w-full overflow-hidden rounded-full transition duration-200 max-sm:scale-75 [&>svg]:h-full [&>svg]:w-full [&>svg]:-translate-y-1"
                         thickness={1.5}
@@ -92,7 +97,12 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     </Typography>
                 )}
             </div>
-            <div className="bg-background-light -m-0.5 aspect-square rounded-[inherit] p-2 transition duration-200">
+            <div
+                className={twJoin(
+                    isSkeleton && "animate-pulse",
+                    "bg-background-light -m-0.5 aspect-square rounded-[inherit] p-2 transition duration-200"
+                )}
+            >
                 {
                     // TODO: Add avatars.
                     // student.avatar != null ? (
@@ -109,12 +119,19 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
                     // )
                 }
             </div>
-            <div className="flex flex-col overflow-hidden">
+            <div
+                className={twJoin(
+                    isSkeleton && "opacity-0",
+                    "flex flex-col overflow-hidden"
+                )}
+            >
                 <Typography
                     className="max-sm:text-md overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold"
                     variant="strong"
                 >
-                    {`${student.name} ${student.surname}`}
+                    {isSkeleton
+                        ? "skeleton"
+                        : `${student.name} ${student.surname ?? ""}`}
                 </Typography>
                 <Typography
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-start"
@@ -125,6 +142,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({ rank, student }) => {
             </div>
             <Typography
                 className={twJoin(
+                    isSkeleton && "opacity-0",
                     direction == "ltr"
                         ? "ml-auto mr-2 max-sm:mr-1"
                         : "ml-2 mr-auto max-sm:ml-1",
