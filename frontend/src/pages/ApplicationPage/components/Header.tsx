@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Logo } from "@/components/Logo/Logo";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Header as Header_ } from "@components/Header/Header";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
@@ -22,7 +23,9 @@ export const Header: FC = () => {
                 );
             }}
         >
+            <Logo className="h-10" />
             <Breadcrumbs
+                className="grow"
                 Renders={(path) =>
                     path
                         ?.replace(/\i{1,3}$/, (item) => item.toUpperCase())
