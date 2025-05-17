@@ -3,17 +3,17 @@ import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
-import { CourseDTO } from "@/schemas/CourseSchema";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
+import { FilterBySearchQuery } from "../functions/FilterBySearchQuery";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 
 import courses_dummy_data from "../pages/courses.dummy.json";
 
 export const CoursesQueryParamsSchema = z.object({
-    query: z.string().optional(),
+    query: z.string().optional().default(""),
 });
 
 export const CoursesPage: FC = () => {
@@ -47,25 +47,6 @@ export const CoursesPage: FC = () => {
             ).then((entries) => Object.fromEntries(entries)),
     });
 
-    function FilterBySearchQuery(course: CourseDTO) {
-        const searchQuery = debouncedSearchQuery?.trimAll();
-        if (searchQuery == null || searchQuery == "") {
-            return true;
-        }
-
-        const terms = searchQuery.toLowerCase().split(" ");
-        return terms.some(
-            (term) =>
-                course.title.toLowerCase().includes(term) ||
-                course.tags.some((tag) =>
-                    tag
-                        .toLocaleLowerCase()
-                        .split(" ")
-                        .some((word) => word.includes(term))
-                )
-        );
-    }
-
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <Flexbox
@@ -87,7 +68,12 @@ export const CoursesPage: FC = () => {
                 <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
                     <CoursesDisplay
                         queryFn={() =>
-                            courses_dummy_data.filter(FilterBySearchQuery)
+                            courses_dummy_data.filter((course) =>
+                                FilterBySearchQuery(
+                                    course,
+                                    debouncedSearchQuery
+                                )
+                            )
                         }
                     />
                 </LazyComponent>
