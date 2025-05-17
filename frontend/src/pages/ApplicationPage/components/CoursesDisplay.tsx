@@ -11,6 +11,7 @@ import {
 export type CoursesDisplayProps = Either<
     {
         isSkeleton: true;
+        cardLimit?: number;
     },
     {
         isSkeleton?: boolean;
@@ -23,6 +24,7 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
     queryFn,
     queryKey,
     isSkeleton,
+    cardLimit = 20,
     emptyQueryDisplay,
 }) => {
     const { data: courses } = useSchematicQuery({
@@ -52,7 +54,9 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
             ).then((entries) => Object.fromEntries(entries)),
     });
 
-    const coursesArray = isSkeleton ? new Array(20).fill(null) : courses!;
+    const coursesArray = isSkeleton
+        ? new Array(cardLimit).fill(null)
+        : courses!;
 
     if (coursesArray.length == 0) {
         return emptyQueryDisplay;

@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
-import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { RichText } from "@/components/RichText/RichText";
@@ -21,6 +21,8 @@ import courses_dummy_data from "../pages/courses.dummy.json";
 import detailed_courses_dummy_data from "./detailed_courses.dummy.json";
 
 export const SIMILAR_COURSES_LIMIT = 5;
+export const PREREQUISITE_COURSES_LIMIT = 5;
+export const POSTREQUISITE_COURSES_LIMIT = 5;
 
 export const CoursePage: FC = () => {
     const { direction } = useLocalization();
@@ -158,24 +160,147 @@ export const CoursePage: FC = () => {
                 </LazyComponent>
 
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
+                    <Flexbox
+                        className="lg:col-span-2"
+                        direction="column"
+                        gap="4"
+                    >
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Prerequisites
+                        </Typography>
+                        <LazyComponent
+                            skeleton={
+                                <CoursesDisplay
+                                    isSkeleton
+                                    cardLimit={PREREQUISITE_COURSES_LIMIT}
+                                />
+                            }
+                        >
+                            <CoursesDisplay
+                                queryKey={["prerequisites-courses", course]}
+                                queryFn={() =>
+                                    Promise.wait(
+                                        courses_dummy_data.filter((course_) =>
+                                            course.prerequisites.includes(
+                                                course_.id
+                                            )
+                                        ),
+                                        2000
+                                    )
+                                }
+                                emptyQueryDisplay={
+                                    <Flexbox
+                                        gap="4"
+                                        className="grow"
+                                        direction="column"
+                                    >
+                                        <Typography
+                                            className="text-xl font-bold"
+                                            variant="h2"
+                                        >
+                                            There Are None
+                                        </Typography>
+                                        <RichText
+                                            variant="p"
+                                            ExtractedTextRenders={(text) => (
+                                                <span className="text-primary-normal font-bold">
+                                                    {text}
+                                                </span>
+                                            )}
+                                        >
+                                            {`The course **${course.title}** has no prerequisite courses from what we offer.`}
+                                        </RichText>
+                                    </Flexbox>
+                                }
+                            />
+                        </LazyComponent>
+                    </Flexbox>
+                    <Flexbox
+                        className="lg:col-span-2"
+                        direction="column"
+                        gap="4"
+                    >
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Postrequisites
+                        </Typography>
+                        <LazyComponent
+                            skeleton={
+                                <CoursesDisplay
+                                    isSkeleton
+                                    cardLimit={POSTREQUISITE_COURSES_LIMIT}
+                                />
+                            }
+                        >
+                            <CoursesDisplay
+                                queryKey={["postrequisites-courses", course]}
+                                queryFn={() =>
+                                    Promise.wait(
+                                        courses_dummy_data.filter(
+                                            (course_) =>
+                                                course.postrequisites.find(
+                                                    (postrequisite) =>
+                                                        postrequisite ==
+                                                        course_.id
+                                                ) != null
+                                        ),
+                                        2000
+                                    )
+                                }
+                                emptyQueryDisplay={
+                                    <Flexbox
+                                        gap="4"
+                                        className="grow"
+                                        direction="column"
+                                    >
+                                        <Typography
+                                            className="text-xl font-bold"
+                                            variant="h2"
+                                        >
+                                            There Are None
+                                        </Typography>
+                                        <RichText
+                                            variant="p"
+                                            ExtractedTextRenders={(text) => (
+                                                <span className="text-primary-normal font-bold">
+                                                    {text}
+                                                </span>
+                                            )}
+                                        >
+                                            {`The course **${course.title}** has no postrequisite courses from what we offer.`}
+                                        </RichText>
+                                    </Flexbox>
+                                }
+                            />
+                        </LazyComponent>
+                    </Flexbox>
                     <Typography className="text-lg font-bold" variant="h2">
                         Similar Courses
                     </Typography>
-                    <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
+                    <LazyComponent
+                        skeleton={
+                            <CoursesDisplay
+                                isSkeleton
+                                cardLimit={SIMILAR_COURSES_LIMIT}
+                            />
+                        }
+                    >
                         <CoursesDisplay
                             queryKey={["similar-courses", course]}
                             queryFn={() =>
-                                courses_dummy_data
-                                    .filter(
-                                        (course_) =>
-                                            course_.id != course.id &&
-                                            FilterBySearchQuery(
-                                                course_,
-                                                course.tags.join(" ")
-                                            )
-                                    )
-                                    .shuffle()
-                                    .slice(0, SIMILAR_COURSES_LIMIT)
+                                Promise.wait(
+                                    courses_dummy_data
+                                        .filter(
+                                            (course_) =>
+                                                course_.id != course.id &&
+                                                FilterBySearchQuery(
+                                                    course_,
+                                                    course.tags.join(" ")
+                                                )
+                                        )
+                                        .shuffle()
+                                        .slice(0, SIMILAR_COURSES_LIMIT),
+                                    2000
+                                )
                             }
                             emptyQueryDisplay={
                                 <Flexbox
