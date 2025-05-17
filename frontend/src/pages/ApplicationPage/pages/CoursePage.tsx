@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { RichText } from "@/components/RichText/RichText";
 import { CourseSummary } from "../components/CourseSummary";
 import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
@@ -170,6 +171,30 @@ export const CoursePage: FC = () => {
                                     )
                                     .shuffle()
                                     .slice(0, SIMILAR_COURSES_LIMIT)
+                            }
+                            emptyQueryDisplay={
+                                <Flexbox
+                                    gap="4"
+                                    className="grow"
+                                    direction="column"
+                                >
+                                    <Typography
+                                        className="text-xl font-bold"
+                                        variant="h2"
+                                    >
+                                        There Are None
+                                    </Typography>
+                                    <RichText
+                                        variant="p"
+                                        ExtractedTextRenders={(text) => (
+                                            <span className="text-primary-normal font-bold">
+                                                {text}
+                                            </span>
+                                        )}
+                                    >
+                                        {`The course **${course.title}** has no similar courses from what we offer.`}
+                                    </RichText>
+                                </Flexbox>
                             }
                         />
                     </LazyComponent>
