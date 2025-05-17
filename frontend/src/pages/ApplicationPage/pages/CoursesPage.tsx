@@ -36,23 +36,28 @@ export const CoursesPage: FC = () => {
     }, [debouncedSearchQuery]);
 
     return (
-        <Flexbox variant="main" direction="column" gap="8">
+        <Flexbox className="grow" variant="main" direction="column" gap="8">
             <Flexbox
+                rowGap="4"
+                columnGap="8"
                 variant="header"
                 placeItems="center"
                 placeContent="space-between"
+                className="max-sm:flex-wrap"
             >
                 <Typography variant="h1" className="text-2xl font-bold">
                     Courses
                 </Typography>
                 <Input
-                    type="search"
+                    className="max-sm:grow"
                     name="query"
+                    type="search"
+                    label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </Flexbox>
-            <main>
+            <Flexbox className="grow" variant="main">
                 <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
                     <CoursesDisplay
                         queryFn={() =>
@@ -65,7 +70,7 @@ export const CoursesPage: FC = () => {
                         }
                     />
                 </LazyComponent>
-            </main>
+            </Flexbox>
         </Flexbox>
     );
 };
