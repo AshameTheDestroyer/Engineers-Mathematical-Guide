@@ -166,7 +166,7 @@ export const CoursePage: FC = () => {
                         gap="4"
                     >
                         <Typography className="text-lg font-bold" variant="h2">
-                            Prerequisites
+                            Courses You Need to Finish First
                         </Typography>
                         <LazyComponent
                             skeleton={
@@ -221,7 +221,7 @@ export const CoursePage: FC = () => {
                         gap="4"
                     >
                         <Typography className="text-lg font-bold" variant="h2">
-                            Postrequisites
+                            Courses You Unlock When You Finish
                         </Typography>
                         <LazyComponent
                             skeleton={
