@@ -1,17 +1,12 @@
-import { FC } from "react";
 import { CourseCard } from "./CourseCard";
-import { Icon } from "@/components/Icon/Icon";
+import { FC, PropsWithChildren } from "react";
 import { QueryFunction } from "@tanstack/react-query";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { useExtendedQuery } from "@/hooks/useExtendedQuery";
-import { Typography } from "@/components/Typography/Typography";
 import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
 import {
     useSchematicQuery,
     UseSchematicQueryOptions,
 } from "@/hooks/useSchematicQuery";
-
-import search_off_icon from "@icons/search_off.svg";
 
 export type CoursesDisplayProps = Either<
     {
@@ -20,6 +15,7 @@ export type CoursesDisplayProps = Either<
     {
         isSkeleton?: boolean;
         queryFn: QueryFunction<Array<CourseDTO>>;
+        emptyQueryDisplay?: PropsWithChildren["children"];
     } & Partial<Pick<UseSchematicQueryOptions<CourseDTO>, "queryKey">>
 >;
 
@@ -27,6 +23,7 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
     queryFn,
     queryKey,
     isSkeleton,
+    emptyQueryDisplay,
 }) => {
     const { data: courses } = useSchematicQuery({
         queryFn,
@@ -58,23 +55,7 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
     const coursesArray = isSkeleton ? new Array(20).fill(null) : courses!;
 
     if (coursesArray.length == 0) {
-        return (
-            <Flexbox
-                gap="4"
-                className="grow"
-                direction="column"
-                placeItems="center"
-                placeContent="center"
-            >
-                <Icon source={search_off_icon} width={128} height={128} />
-                <Typography className="text-xl font-bold" variant="h2">
-                    No Course Found
-                </Typography>
-                <Typography variant="p">
-                    Try searching for another thing.
-                </Typography>
-            </Flexbox>
-        );
+        return emptyQueryDisplay;
     }
 
     return (
