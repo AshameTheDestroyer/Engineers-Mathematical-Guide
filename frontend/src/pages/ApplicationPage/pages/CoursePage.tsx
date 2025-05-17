@@ -125,13 +125,18 @@ export const CoursePage: FC = () => {
                         </Typography>
                         <Flexbox gap="3" wrap="wrap">
                             {course.tags.map((tag, i) => (
-                                <Typography
+                                <Link
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
-                                    variant="p"
+                                    to={
+                                        APPLICATION_ROUTES.base.routes.courses
+                                            .absolute +
+                                        "?" +
+                                        new URLSearchParams({ query: tag })
+                                    }
                                 >
                                     {tag}
-                                </Typography>
+                                </Link>
                             ))}
                         </Flexbox>
                     </Flexbox>
