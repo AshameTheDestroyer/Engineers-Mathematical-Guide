@@ -59,7 +59,7 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
     }
 
     return (
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8">
+        <div className="grid grow grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8">
             {coursesArray.map((course, i) => (
                 <CourseCard
                     key={isSkeleton ? i : course.id}
