@@ -7,14 +7,19 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CourseSummary } from "../components/CourseSummary";
 import { DetailedCourseSchema } from "@/schemas/CourseSchema";
 import { useSchematicQuery } from "@/hooks/useSchematicQuery";
+import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { FilterBySearchQuery } from "../functions/FilterBySearchQuery";
 import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import enrollment_icon from "@icons/enrollment.svg";
+import courses_dummy_data from "../pages/courses.dummy.json";
 import detailed_courses_dummy_data from "./detailed_courses.dummy.json";
+
+export const SIMILAR_COURSES_LIMIT = 5;
 
 export const CoursePage: FC = () => {
     const { direction } = useLocalization();
@@ -113,7 +118,7 @@ export const CoursePage: FC = () => {
                             ))}
                         </Flexbox>
                     </Flexbox>
-<Flexbox direction="column" gap="4">
+                    <Flexbox direction="column" gap="4">
                         <Typography className="text-lg font-bold" variant="h2">
                             Tags
                         </Typography>
@@ -145,6 +150,30 @@ export const CoursePage: FC = () => {
                         top-10-students={course["top-10-students"]}
                     />
                 </LazyComponent>
+
+                <Flexbox className="lg:col-span-2" direction="column" gap="4">
+                    <Typography className="text-lg font-bold" variant="h2">
+                        Similar Courses
+                    </Typography>
+                    <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
+                        <CoursesDisplay
+                            queryKey={["similar-courses", course]}
+                            queryFn={() =>
+                                courses_dummy_data
+                                    .filter(
+                                        (course_) =>
+                                            course_.id != course.id &&
+                                            FilterBySearchQuery(
+                                                course_,
+                                                course.tags.join(" ")
+                                            )
+                                    )
+                                    .shuffle()
+                                    .slice(0, SIMILAR_COURSES_LIMIT)
+                            }
+                        />
+                    </LazyComponent>
+                </Flexbox>
             </main>
         </Flexbox>
     );
