@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { Modal, ModalProps } from "../Modal/Modal";
-import useNetworkStatus from "@/hooks/useNetworkStatus";
-import { Typography } from "../Typography/Typography";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../Button/Button";
+import { Modal, ModalProps } from "../Modal/Modal";
+import { Typography } from "../Typography/Typography";
+import { useNetworkStatus } from "@/hooks/useNetworkStatus";
 
 export type OfflineModalProps = Omit<
     ModalProps,
