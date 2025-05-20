@@ -1,3 +1,4 @@
 {
-    "courses": { "en": "Courses", "ar": "المُقرَّرات" }
+    "courses": { "en": "Courses", "ar": "المُقرَّرات" },
+    "learning-tracks": {"en": "Learning Tracks", "ar": "المَساراتُ الدِّراسيّة"}
 }
