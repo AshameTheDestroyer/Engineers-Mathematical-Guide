@@ -29,7 +29,7 @@ export const PaletteCollection: FC<PaletteCollectionProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "relative [&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(max(30rem,40vw),1fr))]",
+                "relative [&>div]:grid [&>div]:grid-cols-[repeat(auto-fill,minmax(max(12rem,40vw),1fr))]",
                 className
             )}
             title={title}
