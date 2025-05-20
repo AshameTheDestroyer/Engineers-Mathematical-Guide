@@ -62,6 +62,12 @@ export const ApplicationRoute = () => {
                 element={
                     <LazyComponent>
                         <LearningTracksPage />
+                        <Title>
+                            {GetLocale(
+                                route_locales["learning-tracks"],
+                                language
+                            )}
+                        </Title>
                     </LazyComponent>
                 }
             />
