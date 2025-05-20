@@ -1,7 +1,7 @@
-import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { Input } from "@/components/Input/Input";
-import { Typography } from "@/components/Typography/Typography";
 import { FC } from "react";
+import { Input } from "@/components/Input/Input";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { Typography } from "@/components/Typography/Typography";
 import { LearningTracksDisplay } from "../components/LearningTracksDisplay";
 
 export const LearningTracksPage: FC = () => {
