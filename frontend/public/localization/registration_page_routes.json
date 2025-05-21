@@ -1,0 +1,12 @@
+{
+    "login": { "en": "Login", "ar": "تَسجيلُ الدّخول" },
+    "signup": { "en": "Sign up", "ar": "إنشاءُ حِساب" },
+    "forgot-password": {
+        "en": "Forgot Password",
+        "ar": "نَسيتُ كَلمةَ المُرور"
+    },
+    "terms-and-conditions": {
+        "en": "Terms and Conditions",
+        "ar": "المَعاييرُ والضّوابِط"
+    }
+}
