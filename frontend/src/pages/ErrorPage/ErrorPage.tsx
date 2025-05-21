@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ErrorBoundaryProps } from "react-error-boundary";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
 import { Typography } from "@/components/Typography/Typography";
@@ -24,11 +23,9 @@ export const ErrorPage: FC<ErrorPageProps> = ({
             <Locale variant="p" className="font-bold">
                 {locales.subtitle}
             </Locale>
-            <Flexbox className="max-w-[40rem]" direction="column" gap="2">
-                <Typography variant="p" className="font-bold">
-                    {`${error}`}
-                </Typography>
-            </Flexbox>
+            <Typography variant="p" className="max-w-[40rem] font-bold">
+                {`${error}`}
+            </Typography>
             <Button
                 className="max-w-max place-self-center [&>div]:px-4"
                 onClick={resetErrorBoundary}
