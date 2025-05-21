@@ -1,6 +1,7 @@
 import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
+import { Title } from "@/components/Title/Title";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
@@ -46,6 +47,7 @@ export const CoursePage: FC = () => {
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
+            <Title>{course.title}</Title>
             <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <CourseSummary course={course} />
                 <Button
