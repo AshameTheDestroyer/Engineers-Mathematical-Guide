@@ -83,8 +83,8 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         return routeLocales.map(
             (routeLocale) =>
                 ({
-                    text: GetLocale(routeLocale.locale, language),
                     href: routeLocale.href,
+                    title: GetLocale(routeLocale.locale, language),
                 }) as Anchor
         );
     }
