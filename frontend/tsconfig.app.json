@@ -74,6 +74,9 @@
             "@json/*": [
                 "public/json/*"
             ],
+            "@data/*": [
+                "public/data/*"
+            ],
         }
     },
     "include": [
