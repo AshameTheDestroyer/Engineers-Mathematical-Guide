@@ -27,7 +27,7 @@ export type UseExtendedQueryOptions<
     ? UseSuspenseQueryOptions<TQueryFnData, TError, TData, TQueryKey>
     : UseQueryOptions<TQueryFnData, TError, TData, TQueryKey>) & {
     usesSuspense?: TUsesSuspense;
-};
+} & { enabled?: boolean };
 
 export const useExtendedQuery = <
     TUsesSuspense extends boolean = false,
