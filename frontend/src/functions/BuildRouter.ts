@@ -7,15 +7,12 @@ export function BuildRouter<T extends Record<string, Anchor>>(
             .replace(/^\/\//, "/")
             .replace(/.\/$/, (item) => item.slice(0, -1));
 
-        const title = value.title ?? value.href.toTitleCase();
-
         return value.routes == null
-            ? { ...accumulator, [key]: { ...value, title, absolute } }
+            ? { ...accumulator, [key]: { ...value, absolute } }
             : {
                   ...accumulator,
                   [key]: {
                       ...value,
-                      title,
                       absolute,
                       routes: BuildRouter(value.routes, absolute),
                   },
