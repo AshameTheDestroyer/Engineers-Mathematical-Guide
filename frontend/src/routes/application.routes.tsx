@@ -1,10 +1,10 @@
 import { Route } from "react-router-dom";
+import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import { Title } from "@/components/Title/Title";
 
 const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
