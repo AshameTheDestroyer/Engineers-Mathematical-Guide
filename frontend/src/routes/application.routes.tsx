@@ -1,14 +1,16 @@
 import { Route } from "react-router-dom";
+import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
-import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
-import { LearningTracksPage } from "@/pages/ApplicationPage/pages/LearningTracksPage";
 
 const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
 const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
+const LearningTracksPage = LazyImport(
+    "./pages/ApplicationPage/pages/LearningTracksPage"
+);
 
 export const APPLICATION_ROUTES = BuildRouter({
     base: {
@@ -36,6 +38,9 @@ export const ApplicationRoute = () => {
                 element={
                     <LazyComponent>
                         <CoursesPage />
+                        <Title>
+                            {APPLICATION_ROUTES.base.routes.courses.title}
+                        </Title>
                     </LazyComponent>
                 }
             />
