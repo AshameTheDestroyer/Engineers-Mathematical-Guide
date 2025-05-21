@@ -23,6 +23,7 @@ export default defineConfig({
             "@managers": "/src/managers",
             "@localization": "/public/localization",
             "@json": "/public/json",
+            "@data": "/public/data",
         },
     },
 });
