@@ -28,9 +28,6 @@ export const ErrorPage: FC<ErrorPageProps> = ({
                 <Typography variant="p" className="font-bold">
                     {`${error}`}
                 </Typography>
-                <summary className="font-bold">
-                    <Locale>{locales.details}</Locale>
-                </summary>
             </Flexbox>
             <Button
                 className="max-w-max place-self-center [&>div]:px-4"

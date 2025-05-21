@@ -10,7 +10,7 @@ export const FallbackPage: FC<FallbackPageProps> = ({ children }) => {
     return (
         <Page className="from-primary-normal bg-linear-to-b to-primary-dark place-content-center place-items-center overflow-hidden text-white">
             <Flexbox
-                className="bg-gray isolate [&>:is(.typography,details)]:[filter:drop-shadow(0px_0px_5px_black)]"
+                className="bg-gray isolate [&_.typography]:[filter:drop-shadow(0px_0px_5px_black)]"
                 gap="5"
                 direction="column"
                 justifyContent="space-between"
