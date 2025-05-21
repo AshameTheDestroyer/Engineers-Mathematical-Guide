@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { useMain } from "@/contexts";
+import { FC, useEffect } from "react";
 
 export type TitleProps = {
     exact?: boolean;
@@ -6,7 +7,7 @@ export type TitleProps = {
 };
 
 export const Title: FC<TitleProps> = ({ exact, children }) => {
-    const [rootTitle, _setRootTitle] = useState(document.title);
+    const { rootTitle } = useMain();
 
     useEffect(() => {
         document.title = exact ? children : `${rootTitle} - ${children}`;

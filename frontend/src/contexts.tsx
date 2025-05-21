@@ -10,7 +10,9 @@ import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePal
 
 export const queryClient = new QueryClient();
 
-export type MainStateProps = {};
+export type MainStateProps = {
+    rootTitle: string;
+};
 
 export const MainContext = createContext<MainStateProps>(null!);
 
@@ -18,7 +20,10 @@ export const useMain = () => useContext(MainContext);
 
 export const ContextProviders = [
     ({ children }: PropsWithChildren) => {
-        const [state, _setState] = useState<MainStateProps>({});
+        const [state, _setState] = useState<MainStateProps>({
+            rootTitle: document.title,
+        });
+
         return (
             <MainContext.Provider value={state}>
                 {children}
