@@ -1,9 +1,9 @@
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
+import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
-import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
@@ -11,7 +11,7 @@ const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
-const TEST_ROUTES_ = RoutesWithAbsolutePaths({
+const TEST_ROUTES_ = BuildRouter({
     base: {
         href: "test",
         routes: {

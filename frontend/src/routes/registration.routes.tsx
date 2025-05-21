@@ -1,8 +1,8 @@
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
+import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
-import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
 const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
@@ -16,7 +16,7 @@ const TermsAndConditionsPage = LazyImport(
     "./pages/RegistrationPage/pages/TermsAndConditionsPage"
 );
 
-export const REGISTRATION_ROUTES = RoutesWithAbsolutePaths({
+export const REGISTRATION_ROUTES = BuildRouter({
     base: {
         href: "registration",
         routes: {

@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
+import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
@@ -9,7 +10,7 @@ const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
 const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
 
-export const APPLICATION_ROUTES = RoutesWithAbsolutePaths({
+export const APPLICATION_ROUTES = BuildRouter({
     base: {
         href: "/",
         routes: {

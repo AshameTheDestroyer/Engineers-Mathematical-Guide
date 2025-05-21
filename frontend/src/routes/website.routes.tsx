@@ -1,12 +1,12 @@
 import { Outlet, Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
+import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
-import { RoutesWithAbsolutePaths } from "@/functions/RoutesWithAbsolutePath";
 
 const WebsitePage = LazyImport("./pages/WebsitePage/WebsitePage");
 
-const WEBSITE_ROUTES_ = RoutesWithAbsolutePaths({
+const WEBSITE_ROUTES_ = BuildRouter({
     base: {
         href: "website",
         routes: {
