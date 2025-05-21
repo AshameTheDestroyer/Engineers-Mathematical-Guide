@@ -1,5 +1,5 @@
 import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
-import { FilterBySearchQuery } from "@/pages/ApplicationPage/functions/FilterBySearchQuery";
+import { CreateFilterFunction } from "@/functions/CreateFilterFunction";
 import {
     useSchematicQuery,
     UseSchematicQueryOptions,
@@ -17,8 +17,13 @@ export const useGetCourses = <TUsesSuspense extends boolean = false>(
     useSchematicQuery({
         schema: CourseSchema,
         queryFn: () =>
-            courses_dummy_data.filter((course) =>
-                FilterBySearchQuery(course, searchQuery)
+            courses_dummy_data.filter(
+                CreateFilterFunction<CourseDTO>(searchQuery, {
+                    title: (course, term) =>
+                        course.title.toLowerCase().includes(term),
+                    tags: (course, term) =>
+                        course.tags.some((tag) => tag.includes(term)),
+                })
             ),
         parseFn: (data, schema) => data?.map((datum) => schema.parse(datum)),
         ...options,
