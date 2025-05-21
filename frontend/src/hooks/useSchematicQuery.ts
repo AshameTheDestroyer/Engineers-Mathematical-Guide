@@ -1,11 +1,11 @@
+import { ZodSchema } from "zod";
+import { FieldValues } from "react-hook-form";
+import { QueryClient, QueryKey } from "@tanstack/react-query";
 import {
     useExtendedQuery,
     UseExtendedQueryResult,
     UseExtendedQueryOptions,
 } from "./useExtendedQuery";
-import { ZodSchema } from "zod";
-import { FieldValues } from "react-hook-form";
-import { QueryClient, QueryKey } from "@tanstack/react-query";
 
 export type UseSchematicQueryResult<
     TSchema extends FieldValues,
@@ -28,9 +28,9 @@ export type UseSchematicQueryResult<
 >;
 
 export type UseSchematicQueryOptions<
-    TSchema extends FieldValues,
-    TParseFnData = undefined,
     TUsesSuspense extends boolean = false,
+    TSchema extends FieldValues = Record<string, any>,
+    TParseFnData = undefined,
     TQueryFnData = unknown,
     TError = Error,
     TData = TQueryFnData,
@@ -50,18 +50,18 @@ export type UseSchematicQueryOptions<
 };
 
 export const useSchematicQuery = <
-    TSchema extends FieldValues,
-    TParseFnData = undefined,
     TUsesSuspense extends boolean = false,
+    TSchema extends FieldValues = Record<string, any>,
+    TParseFnData = undefined,
     TQueryFnData = unknown,
     TError = Error,
     TData = TQueryFnData,
     TQueryKey extends QueryKey = readonly unknown[],
 >(
     options: UseSchematicQueryOptions<
+        TUsesSuspense,
         TSchema,
         TParseFnData,
-        TUsesSuspense,
         TQueryFnData,
         TError,
         TData,
