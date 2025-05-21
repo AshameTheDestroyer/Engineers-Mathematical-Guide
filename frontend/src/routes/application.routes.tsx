@@ -1,9 +1,10 @@
 import { Route } from "react-router-dom";
-import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { Title } from "@/components/Title/Title";
 
 const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
@@ -11,6 +12,8 @@ const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
 const LearningTracksPage = LazyImport(
     "./pages/ApplicationPage/pages/LearningTracksPage"
 );
+
+import route_locales from "@localization/application_page_routes.json";
 
 export const APPLICATION_ROUTES = BuildRouter({
     base: {
@@ -24,6 +27,8 @@ export const APPLICATION_ROUTES = BuildRouter({
 });
 
 export const ApplicationRoute = () => {
+    const { language, GetLocale } = useLocalization();
+
     return (
         <Route
             path={APPLICATION_ROUTES.base.href}
@@ -39,7 +44,7 @@ export const ApplicationRoute = () => {
                     <LazyComponent>
                         <CoursesPage />
                         <Title>
-                            {APPLICATION_ROUTES.base.routes.courses.title}
+                            {GetLocale(route_locales.courses, language)}
                         </Title>
                     </LazyComponent>
                 }

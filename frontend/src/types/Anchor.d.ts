@@ -5,7 +5,6 @@ type Anchor = {
 };
 
 type AnchorWithAbsolutePath<T extends Anchor> = Omit<T, "routes"> & {
-    title: string;
     absolute: string;
 } & (T["routes"] extends {}
         ? {
