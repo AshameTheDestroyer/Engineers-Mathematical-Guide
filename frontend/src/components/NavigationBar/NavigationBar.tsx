@@ -26,7 +26,7 @@ export const NavigationBar: FC<NavigationBarProps> = ({
             >
                 {routes.map((link, i) => (
                     <li key={i}>
-                        <Link to={link.href}>{link.text}</Link>
+                        <Link to={link.href}>{link.title}</Link>
                     </li>
                 ))}
             </ul>
