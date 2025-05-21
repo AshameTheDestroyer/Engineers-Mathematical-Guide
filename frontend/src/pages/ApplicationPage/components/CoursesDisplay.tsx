@@ -1,12 +1,8 @@
 import { CourseCard } from "./CourseCard";
 import { FC, PropsWithChildren } from "react";
-import { QueryFunction } from "@tanstack/react-query";
 import { useExtendedQuery } from "@/hooks/useExtendedQuery";
-import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
-import {
-    useSchematicQuery,
-    UseSchematicQueryOptions,
-} from "@/hooks/useSchematicQuery";
+import { useGetCourses } from "@/services/Courses/useGetCourses";
+import { UseSchematicQueryOptions } from "@/hooks/useSchematicQuery";
 
 export type CoursesDisplayProps = Either<
     {
@@ -14,27 +10,23 @@ export type CoursesDisplayProps = Either<
         cardLimit?: number;
     },
     {
+        searchQuery: string;
         isSkeleton?: boolean;
-        queryFn: QueryFunction<Array<CourseDTO>>;
         emptyQueryDisplay?: PropsWithChildren["children"];
-    } & Partial<Pick<UseSchematicQueryOptions<CourseDTO>, "queryKey">>
+    } & Partial<Pick<UseSchematicQueryOptions, "queryKey">>
 >;
 
 export const CoursesDisplay: FC<CoursesDisplayProps> = ({
-    queryFn,
     queryKey,
     isSkeleton,
+    searchQuery,
     cardLimit = 20,
     emptyQueryDisplay,
 }) => {
-    const { data: courses } = useSchematicQuery({
-        queryFn,
+    const { data: courses } = useGetCourses(searchQuery, {
         enabled: !isSkeleton,
-        schema: CourseSchema,
+        queryKey: queryKey ?? [],
         usesSuspense: !isSkeleton,
-        queryKey: ["courses", ...(queryKey ?? [""])],
-        parseFn: (data, schema) =>
-            isSkeleton ? [] : data?.map((datum) => schema.parse(datum)),
     });
 
     const { data: images } = useExtendedQuery({

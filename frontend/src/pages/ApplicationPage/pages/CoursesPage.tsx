@@ -9,12 +9,10 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { RichText } from "@/components/RichText/RichText";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
-import { FilterBySearchQuery } from "../functions/FilterBySearchQuery";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 
 import search_off_icon from "@icons/search_off.svg";
-import courses_dummy_data from "../pages/courses.dummy.json";
 
 export const CoursesQueryParamsSchema = z.object({
     query: z.string().optional().default(""),
@@ -64,14 +62,7 @@ export const CoursesPage: FC = () => {
             <Flexbox className="grow" variant="main">
                 <LazyComponent skeleton={<CoursesDisplay isSkeleton />}>
                     <CoursesDisplay
-                        queryFn={() =>
-                            courses_dummy_data.filter((course) =>
-                                FilterBySearchQuery(
-                                    course,
-                                    debouncedSearchQuery
-                                )
-                            )
-                        }
+                        searchQuery={debouncedSearchQuery}
                         emptyQueryDisplay={
                             <Flexbox
                                 gap="4"
