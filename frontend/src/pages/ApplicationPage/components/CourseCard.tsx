@@ -9,10 +9,17 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
-export type CourseCardProps = ChildlessComponentProps<HTMLElement> & {
-    course: CourseDTO;
-    isSkeleton?: boolean;
-};
+export type CourseCardProps = ChildlessComponentProps<HTMLElement> &
+    Either<
+        {
+            isSkeleton?: false;
+            course: Partial<CourseDTO>;
+        },
+        {
+            isSkeleton: true;
+            course: CourseDTO;
+        }
+    >;
 
 export const CourseCard: FC<CourseCardProps> = ({
     id,
@@ -41,14 +48,14 @@ export const CourseCard: FC<CourseCardProps> = ({
                 Navigate(
                     APPLICATION_ROUTES.base.routes.courseID.absolute.replace(
                         ":courseID",
-                        course.id
+                        course.id!
                     )
                 )
             }
         >
             <Typography variant="p">{course.description}</Typography>
             <figure className="absolute inset-0 z-[-1]">
-                {!isSkeleton && <CourseSummary course={course} />}
+                {!isSkeleton && <CourseSummary course={course as CourseDTO} />}
                 {course.image != null && (
                     <Image
                         className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
