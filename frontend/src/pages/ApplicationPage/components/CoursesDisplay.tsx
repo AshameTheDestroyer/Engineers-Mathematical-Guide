@@ -1,67 +1,43 @@
+import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { CourseCard } from "./CourseCard";
-import { FC, PropsWithChildren } from "react";
-import { useExtendedQuery } from "@/hooks/useExtendedQuery";
-import { useGetCourses } from "@/services/Courses/useGetCourses";
-import { UseSchematicQueryOptions } from "@/hooks/useSchematicQuery";
+import { CourseDTO } from "@/schemas/CourseSchema";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-export type CoursesDisplayProps = Either<
-    {
-        isSkeleton: true;
-        cardLimit?: number;
-    },
-    {
-        searchQuery: string;
-        isSkeleton?: boolean;
-        emptyQueryDisplay?: PropsWithChildren["children"];
-    } & Partial<Pick<UseSchematicQueryOptions, "queryKey">>
->;
+export type CoursesDisplayProps = ChildlessComponentProps<HTMLDivElement> &
+    Either<
+        {
+            isSkeleton?: false;
+            courses: Array<Partial<CourseDTO>>;
+        },
+        {
+            isSkeleton: true;
+            courses: Array<CourseDTO>;
+        }
+    >;
 
 export const CoursesDisplay: FC<CoursesDisplayProps> = ({
-    queryKey,
+    id,
+    ref,
+    courses,
+    className,
     isSkeleton,
-    searchQuery,
-    cardLimit = 20,
-    emptyQueryDisplay,
 }) => {
-    const { data: courses } = useGetCourses(searchQuery, {
-        enabled: !isSkeleton,
-        queryKey: queryKey ?? [],
-        usesSuspense: !isSkeleton,
-    });
-
-    const { data: images } = useExtendedQuery({
-        enabled: !isSkeleton,
-        queryKey: ["courses-images", courses, ...(queryKey ?? [""])],
-        queryFn: () =>
-            Promise.all(
-                courses!.map(
-                    async (course) =>
-                        [
-                            course.id,
-                            course.image != null
-                                ? (await fetch(course.image)).url
-                                : undefined,
-                        ] as const
-                )
-            ).then((entries) => Object.fromEntries(entries)),
-    });
-
-    const coursesArray = isSkeleton
-        ? new Array(cardLimit).fill(null)
-        : courses!;
-
-    if (coursesArray.length == 0) {
-        return emptyQueryDisplay;
-    }
-
     return (
-        <div className="grid grow grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8">
-            {coursesArray.map((course, i) => (
+        <div
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "grid grow grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-8",
+                className
+            )}
+        >
+            {courses.map((course) => (
                 <CourseCard
-                    key={isSkeleton ? i : course.id}
-                    isSkeleton={isSkeleton}
+                    key={course.id}
                     className="aspect-square"
-                    course={{ ...course, image: images?.[course.id] }}
+                    isSkeleton={isSkeleton}
+                    course={course as CourseDTO}
                 />
             ))}
         </div>
