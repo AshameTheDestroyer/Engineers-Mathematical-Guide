@@ -15,6 +15,7 @@ import "./PromiseWait.ts";
 import "./DateBetween.ts";
 import "./GetEnumValues.ts";
 import "./ChooseRandomly.ts";
+import "./IntersectionBy.ts";
 import "./DateConvertUnit.ts";
 import "./GetFocusableElements.ts";
 import "./DateConversionFactors.ts";
