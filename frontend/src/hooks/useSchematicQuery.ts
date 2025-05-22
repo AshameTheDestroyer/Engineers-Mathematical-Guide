@@ -30,8 +30,8 @@ export type UseSchematicQueryResult<
 export type UseSchematicQueryOptions<
     TUsesSuspense extends boolean = false,
     TSchema extends FieldValues = Record<string, any>,
-    TParseFnData = undefined,
-    TQueryFnData = unknown,
+    TParseFnData = TSchema,
+    TQueryFnData = TParseFnData,
     TError = Error,
     TData = TQueryFnData,
     TQueryKey extends QueryKey = readonly unknown[],
@@ -49,11 +49,34 @@ export type UseSchematicQueryOptions<
     ) => TParseFnData;
 };
 
+export type InheritableQueryOptions<
+    TUsesSuspense extends boolean = false,
+    TSchema extends FieldValues = Record<string, any>,
+    TParseFnData = TSchema,
+    TQueryFnData = TParseFnData,
+    TError = Error,
+    TData = TQueryFnData,
+    TQueryKey extends QueryKey = readonly unknown[],
+> = Omit<
+    UseSchematicQueryOptions<
+        TUsesSuspense,
+        TSchema,
+        TParseFnData,
+        TQueryFnData,
+        TError,
+        TData,
+        TQueryKey
+    >,
+    "schema" | "queryFn" | "parseFn" | "queryKey"
+> & {
+    queryKey?: QueryKey;
+};
+
 export const useSchematicQuery = <
     TUsesSuspense extends boolean = false,
     TSchema extends FieldValues = Record<string, any>,
-    TParseFnData = undefined,
-    TQueryFnData = unknown,
+    TParseFnData = TSchema,
+    TQueryFnData = TParseFnData,
     TError = Error,
     TData = TQueryFnData,
     TQueryKey extends QueryKey = readonly unknown[],
