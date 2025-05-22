@@ -2,19 +2,20 @@ import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
 import { CreateFilterFunction } from "@/functions/CreateFilterFunction";
 import {
     useSchematicQuery,
-    UseSchematicQueryOptions,
+    InheritableQueryOptions,
 } from "@/hooks/useSchematicQuery";
 
 import courses_dummy_data from "@data/courses.dummy.json";
 
 export const useGetCourses = <TUsesSuspense extends boolean = false>(
     searchQuery: string | undefined,
-    options: Omit<
-        UseSchematicQueryOptions<TUsesSuspense, any, any, Array<CourseDTO>>,
-        "schema" | "queryFn" | "parseFn"
+    options?: InheritableQueryOptions<
+        TUsesSuspense,
+        CourseDTO,
+        Array<CourseDTO>
     >
 ) =>
-    useSchematicQuery({
+    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>({
         schema: CourseSchema,
         queryFn: () =>
             courses_dummy_data.filter(
@@ -25,7 +26,8 @@ export const useGetCourses = <TUsesSuspense extends boolean = false>(
                         course.tags.some((tag) => tag.includes(term)),
                 })
             ),
-        parseFn: (data, schema) => data?.map((datum) => schema.parse(datum)),
+        parseFn: (data, schema) =>
+            data?.map((datum) => schema.parse(datum)) ?? [],
         ...options,
-        queryKey: ["courses", ...options.queryKey],
+        queryKey: ["courses", ...(options?.queryKey ?? [])],
     });
