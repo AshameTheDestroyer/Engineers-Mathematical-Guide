@@ -15,7 +15,7 @@ export const useGetSimilarCourses = <TUsesSuspense extends boolean = false>(
 ) => {
     const { data: courses, ...result } = useGetCourses(course.tags.join(" "), {
         ...(options ?? ({} as typeof options & {})),
-        queryKey: ["similar-courses", ...(options?.queryKey ?? [])],
+        queryKey: ["similar-courses", course.id, ...(options?.queryKey ?? [])],
     });
 
     return { data: courses?.slice(0, limit), ...result };
