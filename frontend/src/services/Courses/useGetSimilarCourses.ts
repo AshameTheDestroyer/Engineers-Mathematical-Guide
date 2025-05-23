@@ -18,5 +18,10 @@ export const useGetSimilarCourses = <TUsesSuspense extends boolean = false>(
         queryKey: ["similar-courses", course.id, ...(options?.queryKey ?? [])],
     });
 
-    return { data: courses?.slice(0, limit), ...result };
+    return {
+        data: courses
+            ?.filter((course_) => course_.id != course.id)
+            ?.slice(0, limit),
+        ...result,
+    };
 };
