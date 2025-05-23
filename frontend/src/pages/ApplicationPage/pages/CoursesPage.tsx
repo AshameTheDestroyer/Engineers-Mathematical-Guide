@@ -7,8 +7,8 @@ import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
-import { useGetCourses } from "@/services/Courses/useGetCourses";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { COURSES_KEY, useGetCourses } from "@/services/Courses/useGetCourses";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 export const CoursesQueryParamsSchema = z.object({
@@ -39,7 +39,7 @@ export const CoursesPage: FC = () => {
         }));
 
         queryClient.invalidateQueries({
-            queryKey: ["courses"],
+            queryKey: [COURSES_KEY],
         });
     }, [debouncedSearchQuery]);
 
