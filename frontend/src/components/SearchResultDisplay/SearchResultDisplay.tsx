@@ -1,7 +1,6 @@
-import { Icon } from "@/components/Icon/Icon";
-import { Button } from "@/components/Button/Button";
-import { Dispatch, FC, SetStateAction } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { Icon, IconProps } from "@/components/Icon/Icon";
 import { RichText } from "@/components/RichText/RichText";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
@@ -11,17 +10,15 @@ import network_error_icon from "@icons/network_error.svg";
 
 export type SearchResultDisplayProps = {
     title: string;
-    searchQuery: string;
-    resetButtonText: string;
-    paragraph: string | ((searchQuery: string) => string);
+    paragraph: string;
+    buttons?: PropsWithChildren["children"];
 } & Either<
     {
-        state: "not-found";
-        setSearchQuery: Dispatch<SetStateAction<string>>;
+        iconType?: "error" | "search-off" | "none";
     },
     {
-        state: "error";
-        Refetch: () => void;
+        iconType: "custom";
+        iconProps: IconProps;
     }
 > &
     ChildlessComponentProps<HTMLDivElement>;
@@ -29,14 +26,12 @@ export type SearchResultDisplayProps = {
 export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
     id,
     ref,
-    state,
     title,
-    Refetch,
+    buttons,
+    iconProps,
     className,
     paragraph,
-    searchQuery,
-    setSearchQuery,
-    resetButtonText,
+    iconType = "none",
 }) => {
     return (
         <Flexbox
@@ -48,13 +43,20 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
             placeItems="center"
             placeContent="center"
         >
-            <Icon
-                width={128}
-                height={128}
-                source={
-                    state == "not-found" ? search_off_icon : network_error_icon
-                }
-            />
+            {iconType != "none" && (
+                <Icon
+                    width={128}
+                    height={128}
+                    {...(iconType == "custom" ? iconProps : {})}
+                    source={
+                        iconType == "search-off"
+                            ? search_off_icon
+                            : iconType == "error"
+                              ? network_error_icon
+                              : iconProps!.source
+                    }
+                />
+            )}
             <Typography className="text-xl font-bold" variant="h2">
                 {title}
             </Typography>
@@ -67,17 +69,10 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
                     </span>
                 )}
             >
-                {paragraph instanceof Function
-                    ? paragraph(searchQuery)
-                    : paragraph}
+                {paragraph}
             </RichText>
-            <Button
-                onClick={(_e) =>
-                    state == "not-found" ? setSearchQuery("") : Refetch()
-                }
-            >
-                {resetButtonText}
-            </Button>
+
+            {buttons}
         </Flexbox>
     );
 };
