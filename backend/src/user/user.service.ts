@@ -11,7 +11,7 @@ import { ObjectId, Repository } from 'typeorm';
 import * as bcryptjs from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
 import { CreateUserDTO } from './dto/createUser.dto';
-import { UNIQUE_EXCEPTION_CODE } from 'src/utils/dbErrorCode';
+import { UNIQUE_EXCEPTION_CODE } from "../utils/dbErrorCode";
 
 @Injectable()
 export class UserService {
@@ -57,7 +57,7 @@ export class UserService {
     try {
       const salt = await bcryptjs.genSalt(10);
       console.log(salt);
-      
+
       const hashedPassword = await bcryptjs.hash(createUserDTO.password, salt);
       createUserDTO.password = hashedPassword;
       createUserDTO.salt = salt;
