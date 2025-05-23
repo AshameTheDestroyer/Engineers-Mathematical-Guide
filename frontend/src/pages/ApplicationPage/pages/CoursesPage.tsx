@@ -3,6 +3,7 @@ import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
+import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
@@ -69,22 +70,26 @@ export const CoursesPage: FC = () => {
                     <CoursesDisplay isSkeleton courses={skeletonCourses} />
                 ) : isError ? (
                     <SearchResultDisplay
-                        state="error"
+                        className="grow"
                         title="Error!"
-                        Refetch={refetch}
-                        resetButtonText="Refetch Courses"
-                        searchQuery={debouncedSearchQuery}
+                        iconType="error"
                         paragraph="An error occurred while fetching courses, try refetching."
+                        buttons={
+                            <Button onClick={(_e) => refetch()}>
+                                Refetch Courses
+                            </Button>
+                        }
                     />
                 ) : courses.length == 0 ? (
                     <SearchResultDisplay
-                        state="not-found"
+                        className="grow"
+                        iconType="search-off"
                         title="No Courses Found"
-                        resetButtonText="Clear Search"
-                        setSearchQuery={setSearchQuery}
-                        searchQuery={debouncedSearchQuery}
-                        paragraph={(searchQuery) =>
-                            `The term **${searchQuery}** was not found, try searching for another thing.`
+                        paragraph={`The term **${debouncedSearchQuery}** was not found, try searching for another thing.`}
+                        buttons={
+                            <Button onClick={(_e) => setSearchQuery("")}>
+                                Clear Search
+                            </Button>
                         }
                     />
                 ) : (
