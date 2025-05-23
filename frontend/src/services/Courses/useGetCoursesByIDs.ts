@@ -6,6 +6,8 @@ import {
 
 import courses_dummy_data from "@data/courses.dummy.json";
 
+export const COURSES_BY_IDS_KEY = "courses-by-ids";
+
 export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
     ids: Array<string>,
     options?: InheritableQueryOptions<
@@ -25,5 +27,5 @@ export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
         parseFn: (data, schema) =>
             data?.map((datum) => schema.parse(datum)) ?? [],
         ...options,
-        queryKey: ["courses-by-ids", ...(options?.queryKey ?? [])],
+        queryKey: [COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
     });
