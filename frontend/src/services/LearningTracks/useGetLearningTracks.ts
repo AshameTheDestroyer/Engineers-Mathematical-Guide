@@ -2,7 +2,7 @@ import { CreateFilterFunction } from "@/functions/CreateFilterFunction";
 import {
     LearningTrackDTO,
     LearningTrackSchema,
-} from "@/schemas/LearningTracksSchema";
+} from "@/schemas/LearningTrackSchema";
 import {
     useSchematicQuery,
     InheritableQueryOptions,
