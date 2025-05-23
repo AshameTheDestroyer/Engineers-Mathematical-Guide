@@ -1,0 +1,1 @@
+export const UNIQUE_EXCEPTION_CODE = "23505";

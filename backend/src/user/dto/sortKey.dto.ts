@@ -2,8 +2,8 @@ import { IsString } from "class-validator";
 
 export class SortKeyDTO {
     @IsString()
-    key: "place" | "username" | "id" ;
+    key: "place" | "username" | "id";
 
     @IsString()
-    order:"ASC" | "DESC"
+    order: "ASC" | "DESC";
 }
