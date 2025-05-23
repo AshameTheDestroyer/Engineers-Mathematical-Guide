@@ -5,21 +5,19 @@ import { Title } from "@/components/Title/Title";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { RichText } from "@/components/RichText/RichText";
 import { CourseSummary } from "../components/CourseSummary";
-import { DetailedCourseSchema } from "@/schemas/CourseSchema";
-import { useSchematicQuery } from "@/hooks/useSchematicQuery";
-import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
-import { FilterBySearchQuery } from "../functions/FilterBySearchQuery";
+import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
 import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
+import { RelatedCoursesDisplay } from "../components/RelatedCoursesDisplay";
+import { useGetSimilarCourses } from "@/services/Courses/useGetSimilarCourses";
+import { useGetPrerequisiteCourses } from "@/services/Courses/useGetPrerequisiteCourses";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisiteCourses";
 
 import enrollment_icon from "@icons/enrollment.svg";
-import courses_dummy_data from "../pages/courses.dummy.json";
-import detailed_courses_dummy_data from "./detailed_courses.dummy.json";
 
 export const SIMILAR_COURSES_LIMIT = 5;
 export const PREREQUISITE_COURSES_LIMIT = 5;
@@ -31,19 +29,13 @@ export const CoursePage: FC = () => {
     const { courseID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
 
-    const { data: course } = useSchematicQuery({
-        usesSuspense: true,
-        queryKey: ["course"],
-        schema: DetailedCourseSchema,
-        queryFn: () => detailed_courses_dummy_data,
-        parseFn: (data, schema) => {
-            const course = data?.find((datum) => datum.id == courseID);
-            if (course == null) {
-                throw new Error("Course Not Found");
-            }
-            return schema.parse(course);
-        },
-    });
+    const { data: course } = useGetCourseByID(courseID, { usesSuspense: true });
+
+    const similarCoursesQuery = useGetSimilarCourses(course);
+    const prerequisiteCoursesQuery = useGetPrerequisiteCourses(course);
+    const postrequisiteCoursesQuery = useGetPostrequisiteCourses(course);
+
+    const skeletonCourses = new Array(5).fill(null);
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
@@ -164,172 +156,70 @@ export const CoursePage: FC = () => {
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
                     <Flexbox
                         className="lg:col-span-2"
-                        direction="column"
                         gap="4"
+                        direction="column"
                     >
                         <Typography className="text-lg font-bold" variant="h2">
                             Courses You Need to Finish First
                         </Typography>
-                        <LazyComponent
-                            skeleton={
-                                <CoursesDisplay
-                                    isSkeleton
-                                    cardLimit={PREREQUISITE_COURSES_LIMIT}
-                                />
-                            }
-                        >
-                            <CoursesDisplay
-                                queryKey={["prerequisites-courses", course]}
-                                queryFn={() =>
-                                    Promise.wait(
-                                        courses_dummy_data.filter((course_) =>
-                                            course.prerequisites.includes(
-                                                course_.id
-                                            )
-                                        ),
-                                        2000
-                                    )
-                                }
-                                emptyQueryDisplay={
-                                    <Flexbox
-                                        gap="4"
-                                        className="grow"
-                                        direction="column"
-                                    >
-                                        <Typography
-                                            className="text-xl font-bold"
-                                            variant="h2"
-                                        >
-                                            There Are None
-                                        </Typography>
-                                        <RichText
-                                            variant="p"
-                                            ExtractedTextRenders={(text) => (
-                                                <span className="text-primary-normal font-bold">
-                                                    {text}
-                                                </span>
-                                            )}
-                                        >
-                                            {`The course **${course.title}** has no prerequisite courses from what we offer.`}
-                                        </RichText>
-                                    </Flexbox>
-                                }
-                            />
-                        </LazyComponent>
+                        <RelatedCoursesDisplay
+                            {...prerequisiteCoursesQuery}
+                            skeletonCourses={skeletonCourses}
+                            errorDisplay={{
+                                title: "Error!",
+                                paragraph:
+                                    "An unexpected error occurred, try refetching.",
+                            }}
+                            searchOffDisplay={{
+                                title: "There Are None",
+                                paragraph: `The course **${course.title}** has no prerequisite courses from what we offer.`,
+                            }}
+                        />
                     </Flexbox>
                     <Flexbox
                         className="lg:col-span-2"
-                        direction="column"
                         gap="4"
+                        direction="column"
                     >
                         <Typography className="text-lg font-bold" variant="h2">
                             Courses You Unlock When You Finish
                         </Typography>
-                        <LazyComponent
-                            skeleton={
-                                <CoursesDisplay
-                                    isSkeleton
-                                    cardLimit={POSTREQUISITE_COURSES_LIMIT}
-                                />
-                            }
-                        >
-                            <CoursesDisplay
-                                queryKey={["postrequisites-courses", course]}
-                                queryFn={() =>
-                                    Promise.wait(
-                                        courses_dummy_data.filter(
-                                            (course_) =>
-                                                course.postrequisites.find(
-                                                    (postrequisite) =>
-                                                        postrequisite ==
-                                                        course_.id
-                                                ) != null
-                                        ),
-                                        2000
-                                    )
-                                }
-                                emptyQueryDisplay={
-                                    <Flexbox
-                                        gap="4"
-                                        className="grow"
-                                        direction="column"
-                                    >
-                                        <Typography
-                                            className="text-xl font-bold"
-                                            variant="h2"
-                                        >
-                                            There Are None
-                                        </Typography>
-                                        <RichText
-                                            variant="p"
-                                            ExtractedTextRenders={(text) => (
-                                                <span className="text-primary-normal font-bold">
-                                                    {text}
-                                                </span>
-                                            )}
-                                        >
-                                            {`The course **${course.title}** has no postrequisite courses from what we offer.`}
-                                        </RichText>
-                                    </Flexbox>
-                                }
-                            />
-                        </LazyComponent>
-                    </Flexbox>
-                    <Typography className="text-lg font-bold" variant="h2">
-                        Similar Courses
-                    </Typography>
-                    <LazyComponent
-                        skeleton={
-                            <CoursesDisplay
-                                isSkeleton
-                                cardLimit={SIMILAR_COURSES_LIMIT}
-                            />
-                        }
-                    >
-                        <CoursesDisplay
-                            queryKey={["similar-courses", course]}
-                            queryFn={() =>
-                                Promise.wait(
-                                    courses_dummy_data
-                                        .filter(
-                                            (course_) =>
-                                                course_.id != course.id &&
-                                                FilterBySearchQuery(
-                                                    course_,
-                                                    course.tags.join(" ")
-                                                )
-                                        )
-                                        .shuffle()
-                                        .slice(0, SIMILAR_COURSES_LIMIT),
-                                    2000
-                                )
-                            }
-                            emptyQueryDisplay={
-                                <Flexbox
-                                    gap="4"
-                                    className="grow"
-                                    direction="column"
-                                >
-                                    <Typography
-                                        className="text-xl font-bold"
-                                        variant="h2"
-                                    >
-                                        There Are None
-                                    </Typography>
-                                    <RichText
-                                        variant="p"
-                                        ExtractedTextRenders={(text) => (
-                                            <span className="text-primary-normal font-bold">
-                                                {text}
-                                            </span>
-                                        )}
-                                    >
-                                        {`The course **${course.title}** has no similar courses from what we offer.`}
-                                    </RichText>
-                                </Flexbox>
-                            }
+                        <RelatedCoursesDisplay
+                            {...postrequisiteCoursesQuery}
+                            skeletonCourses={skeletonCourses}
+                            errorDisplay={{
+                                title: "Error!",
+                                paragraph:
+                                    "An unexpected error occurred, try refetching.",
+                            }}
+                            searchOffDisplay={{
+                                title: "There Are None",
+                                paragraph: `The course **${course.title}** has no postrequisite courses from what we offer.`,
+                            }}
                         />
-                    </LazyComponent>
+                    </Flexbox>
+                    <Flexbox
+                        className="lg:col-span-2"
+                        gap="4"
+                        direction="column"
+                    >
+                        <Typography className="text-lg font-bold" variant="h2">
+                            Similar Courses
+                        </Typography>
+                        <RelatedCoursesDisplay
+                            {...similarCoursesQuery}
+                            skeletonCourses={skeletonCourses}
+                            errorDisplay={{
+                                title: "Error!",
+                                paragraph:
+                                    "An unexpected error occurred, try refetching.",
+                            }}
+                            searchOffDisplay={{
+                                title: "There Are None",
+                                paragraph: `The course **${course.title}** has no similar courses from what we offer.`,
+                            }}
+                        />
+                    </Flexbox>
                 </Flexbox>
             </main>
         </Flexbox>
