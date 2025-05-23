@@ -8,11 +8,11 @@ export type CoursesDisplayProps = ChildlessComponentProps<HTMLDivElement> &
     Either<
         {
             isSkeleton?: false;
-            courses: Array<Partial<CourseDTO>>;
+            courses: Array<CourseDTO>;
         },
         {
             isSkeleton: true;
-            courses: Array<CourseDTO>;
+            courses: Array<Partial<CourseDTO>>;
         }
     >;
 
@@ -32,9 +32,9 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
                 className
             )}
         >
-            {courses.map((course) => (
+            {courses.map((course, i) => (
                 <CourseCard
-                    key={course.id}
+                    key={isSkeleton ? i : course.id}
                     className="aspect-square"
                     isSkeleton={isSkeleton}
                     course={course as CourseDTO}

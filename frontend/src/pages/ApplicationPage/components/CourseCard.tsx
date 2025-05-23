@@ -13,11 +13,11 @@ export type CourseCardProps = ChildlessComponentProps<HTMLElement> &
     Either<
         {
             isSkeleton?: false;
-            course: Partial<CourseDTO>;
+            course: CourseDTO;
         },
         {
             isSkeleton: true;
-            course: CourseDTO;
+            course: Partial<CourseDTO>;
         }
     >;
 
@@ -40,9 +40,9 @@ export const CourseCard: FC<CourseCardProps> = ({
                 "bg-background-normal group relative isolate cursor-pointer overflow-hidden rounded-2xl p-8 text-white transition duration-200 hover:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
-            aria-label={course.title}
             role="region"
             style={{ boxShadow: shadow }}
+            aria-label={isSkeleton ? undefined : course.title}
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
@@ -53,10 +53,12 @@ export const CourseCard: FC<CourseCardProps> = ({
                 )
             }
         >
-            <Typography variant="p">{course.description}</Typography>
+            {!isSkeleton && (
+                <Typography variant="p">{course.description}</Typography>
+            )}
             <figure className="absolute inset-0 z-[-1]">
                 {!isSkeleton && <CourseSummary course={course as CourseDTO} />}
-                {course.image != null && (
+                {!isSkeleton && course.image != null && (
                     <Image
                         className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
                         source={course.image}
