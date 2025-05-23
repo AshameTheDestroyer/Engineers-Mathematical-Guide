@@ -5,7 +5,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 
-import students_dummy_data from "../students.dummy.json";
+import students_dummy_data from "@data/students.dummy.json";
 
 export type Top10StudentsDisplayProps = { isSkeleton?: boolean } & Pick<
     DetailedCourseDTO,
