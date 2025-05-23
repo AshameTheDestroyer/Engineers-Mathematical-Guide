@@ -9,7 +9,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
-export type CourseCardProps = ChildlessComponentProps<HTMLElement> &
+export type CourseCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
         {
             isSkeleton?: false;
@@ -32,16 +32,17 @@ export const CourseCard: FC<CourseCardProps> = ({
     const Navigate = useNavigate();
 
     return (
-        <article
+        <button
             id={id}
             ref={ref}
             className={twMerge(
                 isSkeleton && "animate-pulse",
-                "bg-background-normal group relative isolate cursor-pointer overflow-hidden rounded-2xl p-8 text-white transition duration-200 hover:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
+                "bg-background-normal group relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(hover,:focus-within)]:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
             role="region"
             style={{ boxShadow: shadow }}
+            tabIndex={isSkeleton ? -1 : 0}
             aria-label={isSkeleton ? undefined : course.title}
             onClick={(_e) =>
                 !isSkeleton &&
@@ -67,6 +68,6 @@ export const CourseCard: FC<CourseCardProps> = ({
                 )}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
-        </article>
+        </button>
     );
 };
