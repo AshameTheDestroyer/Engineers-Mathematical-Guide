@@ -11,10 +11,12 @@ export const CourseSchema = z.object({
         .max(5, "maximum"),
     "rating-count": z
         .number({ required_error: "required" })
-        .nonnegative("nonnegative"),
+        .nonnegative("nonnegative")
+        .int("integer"),
     "enrollment-count": z
         .number({ required_error: "required" })
-        .nonnegative("nonnegative"),
+        .nonnegative("nonnegative")
+        .int("integer"),
     tags: z.array(z.string({ required_error: "required" }), {
         required_error: "required",
     }),

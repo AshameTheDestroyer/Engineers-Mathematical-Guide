@@ -7,17 +7,20 @@ export const LearningTrackSchema = z.object({
     description: z.string({ required_error: "required" }),
     rating: z
         .number({ required_error: "required" })
-        .min(0, { message: "minimum" })
-        .max(5, { message: "maximum" }),
+        .min(0, "minimum")
+        .max(5, "maximum"),
     "rating-count": z
         .number({ required_error: "required" })
-        .nonnegative("nonnegative"),
+        .nonnegative("nonnegative")
+        .int("integer"),
     "courses-count": z
         .number({ required_error: "required" })
-        .nonnegative("nonnegative"),
+        .nonnegative("nonnegative")
+        .int("integer"),
     "specialized-count": z
         .number({ required_error: "required" })
-        .nonnegative("nonnegative"),
+        .nonnegative("nonnegative")
+        .int("integer"),
     tags: z.array(z.string({ required_error: "required" }), {
         required_error: "required",
     }),
