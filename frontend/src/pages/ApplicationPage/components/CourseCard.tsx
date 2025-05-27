@@ -2,7 +2,7 @@ import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
-import { CourseSummary } from "./CourseSummary";
+import { CardSummary } from "./CardSummary";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
@@ -58,7 +58,15 @@ export const CourseCard: FC<CourseCardProps> = ({
                 <Typography variant="p">{course.description}</Typography>
             )}
             <figure className="absolute inset-0 z-[-1]">
-                {!isSkeleton && <CourseSummary course={course as CourseDTO} />}
+                {!isSkeleton && (
+                    <CardSummary
+                        title={course.title}
+                        rating={course.rating}
+                        registerParagraph="Enrolled Student"
+                        ratingCount={course["rating-count"]}
+                        registerCount={course["enrollment-count"]}
+                    />
+                )}
                 {!isSkeleton && course.image != null && (
                     <Image
                         className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"

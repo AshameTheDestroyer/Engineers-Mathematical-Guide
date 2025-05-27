@@ -1,20 +1,39 @@
 import { FC } from "react";
 import { Icon } from "@/components/Icon/Icon";
-import { CourseDTO } from "@/schemas/CourseSchema";
 import { Rating } from "@/components/Rating/Rating";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 
 import user_icon from "@icons/user.svg";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { twMerge } from "tailwind-merge";
 
-export type CourseSummaryProps = {
-    course: CourseDTO;
-};
+export type CardSummaryProps = {
+    title: string;
+    rating: number;
+    ratingCount: number;
+    registerCount: number;
+    registerParagraph: string;
+} & ChildlessComponentProps<HTMLDivElement>;
 
-export const CourseSummary: FC<CourseSummaryProps> = ({ course }) => {
+export const CardSummary: FC<CardSummaryProps> = ({
+    id,
+    ref,
+    title,
+    rating,
+    className,
+    ratingCount,
+    registerCount,
+    registerParagraph,
+}) => {
     return (
         <Flexbox
-            className="absolute inset-8 top-auto z-[1] overflow-hidden"
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "absolute inset-8 top-auto z-[1] overflow-hidden",
+                className
+            )}
             gap="2"
             direction="column"
         >
@@ -33,7 +52,8 @@ export const CourseSummary: FC<CourseSummaryProps> = ({ course }) => {
                         notation: "compact",
                         compactDisplay: "short",
                         maximumFractionDigits: 1,
-                    }).format(course["enrollment-count"]) + " Enrolled Student"}
+                    }).format(registerCount)}{" "}
+                    {registerParagraph}
                 </Typography>
             </Flexbox>
             <Flexbox placeItems="center" gap="2">
@@ -41,10 +61,10 @@ export const CourseSummary: FC<CourseSummaryProps> = ({ course }) => {
                     className="text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
                     variant="p"
                 >
-                    {course.rating}
+                    {rating}
                 </Typography>
                 <Rating
-                    value={course.rating}
+                    value={rating}
                     iconProps={{
                         className: "drop-shadow-[3px_3px_1px_#0000007c]",
                         width: 20,
@@ -61,14 +81,14 @@ export const CourseSummary: FC<CourseSummaryProps> = ({ course }) => {
                         notation: "compact",
                         compactDisplay: "short",
                         maximumFractionDigits: 1,
-                    }).format(course["rating-count"]) + " Reviews"}
+                    }).format(ratingCount) + " Reviews"}
                 </Typography>
             </Flexbox>
             <Typography
                 className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xl font-bold [text-shadow:2px_2px_5px_black!important]"
                 variant="figcaption"
             >
-                {course.title}
+                {title}
             </Typography>
         </Flexbox>
     );
