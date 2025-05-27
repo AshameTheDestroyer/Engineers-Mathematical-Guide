@@ -1,29 +1,44 @@
+import { FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { LearningTrackCard } from "./LearningTrackCard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { Typography } from "@/components/Typography/Typography";
-import { Button } from "@/components/Button/Button";
 
-export const LearningTracksDisplay = () => {
+export type LearningTracksDisplayProps =
+    ChildlessComponentProps<HTMLDivElement> &
+        Either<
+            {
+                isSkeleton?: false;
+                learningTracks: Array<LearningTrackDTO>;
+            },
+            {
+                isSkeleton: true;
+                learningTracks: Array<Partial<LearningTrackDTO>>;
+            }
+        >;
+
+export const LearningTracksDisplay: FC<LearningTracksDisplayProps> = ({
+    id,
+    ref,
+    className,
+    isSkeleton,
+    learningTracks,
+}) => {
     return (
-        <Flexbox className="w-full bg-amber-400 p-4" direction="row">
-            <div className="w-100 h-30 bg-amber-950"></div>
-            <Flexbox>
-                <div>
-                    <Typography variant="p">description</Typography>
-                    <Typography variant="p">contains n courses</Typography>
-                </div>
-                <div>
-                    <div>
-                        <p>34 students</p>
-                        <div className="h-1 w-1 bg-amber-300"></div>
-                        <div className="h-1 w-1 bg-amber-300"></div>
-                        <div className="h-1 w-1 bg-amber-300"></div>
-                        <div className="h-1 w-1 bg-amber-300"></div>
-                        <div className="h-1 w-1 bg-amber-300"></div>
-                    </div>
-                    <p>Course Name</p>
-                    <Button>Specialize</Button>
-                </div>
-            </Flexbox>
+        <Flexbox
+            id={id}
+            ref={ref}
+            className={twMerge("flex flex-col gap-5", className)}
+        >
+            {learningTracks.map((learningTrack, i) => (
+                <LearningTrackCard
+                    key={isSkeleton ? i : learningTrack.id}
+                    className="aspect-square"
+                    isSkeleton={isSkeleton}
+                    learningTrack={learningTrack as LearningTrackDTO}
+                />
+            ))}
         </Flexbox>
     );
 };

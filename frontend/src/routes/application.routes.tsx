@@ -14,6 +14,7 @@ const LearningTracksPage = LazyImport(
 );
 
 import route_locales from "@localization/application_page_routes.json";
+import { LearningTrackPage } from "@/pages/ApplicationPage/pages/LearningTrackPage";
 
 export const APPLICATION_ROUTES = BuildRouter({
     base: {
@@ -22,6 +23,7 @@ export const APPLICATION_ROUTES = BuildRouter({
             courses: { href: "courses" },
             courseID: { href: "courses/:courseID" },
             "learning-tracks": { href: "learning-tracks" },
+            "learning-tracks-id": { href: "learning-tracks/:learningTrackId" },
         },
     },
 });
@@ -62,6 +64,20 @@ export const ApplicationRoute = () => {
                 element={
                     <LazyComponent>
                         <LearningTracksPage />
+                        <Title>
+                            {GetLocale(
+                                route_locales["learning-tracks"],
+                                language
+                            )}
+                        </Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={APPLICATION_ROUTES.base.routes["learning-tracks-id"].href}
+                element={
+                    <LazyComponent>
+                        <LearningTrackPage />
                         <Title>
                             {GetLocale(
                                 route_locales["learning-tracks"],
