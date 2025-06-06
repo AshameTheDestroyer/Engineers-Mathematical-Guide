@@ -19,7 +19,11 @@ export const ApplicationPage: FC = () => {
         <Page>
             <ApplicationBar
                 routeLocales={route_locales}
-                routes={Object.omit(APPLICATION_ROUTES.base.routes, "courseID")}
+                routes={Object.omit(
+                    APPLICATION_ROUTES.base.routes,
+                    "courseID",
+                    "learningTrackID"
+                )}
             />
             <Outlet />
             {EnvironmentVariables.ENVIRONMENT == "production" && (

@@ -23,7 +23,7 @@ export const APPLICATION_ROUTES = BuildRouter({
             courses: { href: "courses" },
             courseID: { href: "courses/:courseID" },
             "learning-tracks": { href: "learning-tracks" },
-            "learning-tracks-id": { href: "learning-tracks/:learningTrackId" },
+            learningTrackID: { href: "learning-tracks/:learningTrackID" },
         },
     },
 });
@@ -74,7 +74,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes["learning-tracks-id"].href}
+                path={APPLICATION_ROUTES.base.routes.learningTrackID.href}
                 element={
                     <LazyComponent>
                         <LearningTrackPage />

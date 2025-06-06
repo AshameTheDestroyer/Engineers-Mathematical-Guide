@@ -16,10 +16,10 @@ import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearnin
 export const LearningTrackPage: FC = () => {
     const { direction } = useLocalization();
 
-    const { courseID } =
+    const { learningTrackID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
 
-    const { data: learningTrack } = useGetLearningTrackByID(courseID, {
+    const { data: learningTrack } = useGetLearningTrackByID(learningTrackID, {
         usesSuspense: true,
     });
 
@@ -116,8 +116,9 @@ export const LearningTrackPage: FC = () => {
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
                                     to={
-                                        APPLICATION_ROUTES.base.routes.courses
-                                            .absolute +
+                                        APPLICATION_ROUTES.base.routes[
+                                            "learning-tracks"
+                                        ].absolute +
                                         "?" +
                                         new URLSearchParams({ query: tag })
                                     }

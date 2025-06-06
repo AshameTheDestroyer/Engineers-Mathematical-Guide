@@ -9,7 +9,7 @@ import {
 
 import detailed_learningTracks_dummy_data from "@data/detailed_learning_tracks.dummy.json";
 
-export const LEARNING_TRACK_KEY = "learning-track";
+export const LEARNING_TRACK_KEY = "learning-tracks";
 
 export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
     id: string | undefined,

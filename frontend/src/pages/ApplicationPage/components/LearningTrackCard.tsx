@@ -34,6 +34,15 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
     const shadow = useShadow();
     const Navigate = useNavigate();
 
+    const handleSpecialize = () => {
+        Navigate(
+            APPLICATION_ROUTES.base.routes.learningTrackID.absolute.replace(
+                ":learningTrackID",
+                learningTrack.id!
+            )
+        );
+    };
+
     return (
         <Flexbox
             id={id}
@@ -90,15 +99,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                             />
                             <Button
                                 variant="primary"
-                                // onClick={
-                                //     !isSkeleton &&
-                                //     Navigate(
-                                //         APPLICATION_ROUTES.base.routes.courseID.absolute.replace(
-                                //             ":courseID",
-                                //             course.id!
-                                //         )
-                                //     )
-                                // }
+                                onClick={handleSpecialize}
                             >
                                 Specialize
                             </Button>
