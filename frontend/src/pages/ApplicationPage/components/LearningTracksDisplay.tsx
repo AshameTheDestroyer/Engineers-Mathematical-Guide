@@ -14,7 +14,7 @@ export type LearningTracksDisplayProps =
             },
             {
                 isSkeleton: true;
-                learningTracks: Array<Partial<LearningTrackDTO>>;
+                learningTracks: Array<Partial<LearningTrackDTO> | undefined>;
             }
         >;
 
@@ -33,7 +33,7 @@ export const LearningTracksDisplay: FC<LearningTracksDisplayProps> = ({
         >
             {learningTracks.map((learningTrack, i) => (
                 <LearningTrackCard
-                    key={isSkeleton ? i : learningTrack.id}
+                    key={isSkeleton ? i : learningTrack!.id}
                     className="aspect-square"
                     isSkeleton={isSkeleton}
                     learningTrack={learningTrack as LearningTrackDTO}

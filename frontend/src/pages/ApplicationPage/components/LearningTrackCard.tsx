@@ -20,7 +20,7 @@ export type LearningTrackCardProps =
             },
             {
                 isSkeleton: true;
-                learningTrack: Partial<LearningTrackDTO>;
+                learningTrack?: Partial<LearningTrackDTO>;
             }
         >;
 
@@ -40,18 +40,18 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
             ref={ref}
             className={twMerge(
                 isSkeleton && "animate-pulse",
-                "h-65 relative flex overflow-hidden rounded-lg bg-gray-800 align-middle shadow-md",
+                "h-65 bg-background-normal relative flex overflow-hidden rounded-lg align-middle shadow-md",
                 className
             )}
             style={{ boxShadow: shadow }}
         >
             <Flexbox className="flex items-start text-white">
                 <div className="relative mr-4 h-full w-1/2 overflow-hidden">
-                    {!isSkeleton && (
+                    {!isSkeleton && learningTrack.image != null && (
                         <Image
+                            className="h-full w-full object-cover"
                             source={learningTrack.image}
                             alternative={`Image of ${learningTrack.title} Course`}
-                            className="h-full w-full object-cover"
                         />
                     )}
                 </div>

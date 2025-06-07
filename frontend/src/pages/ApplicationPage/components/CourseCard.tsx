@@ -17,7 +17,7 @@ export type CourseCardProps = ChildlessComponentProps<HTMLButtonElement> &
         },
         {
             isSkeleton: true;
-            course: Partial<CourseDTO>;
+            course?: Partial<CourseDTO>;
         }
     >;
 
@@ -37,7 +37,7 @@ export const CourseCard: FC<CourseCardProps> = ({
             ref={ref}
             className={twMerge(
                 isSkeleton && "animate-pulse",
-                "bg-background-normal group relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(hover,:focus-within)]:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
+                "bg-background-normal relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(hover,:focus-within)]:scale-105 [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
             role="region"
