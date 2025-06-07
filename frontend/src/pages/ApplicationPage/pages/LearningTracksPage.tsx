@@ -1,16 +1,15 @@
+import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { Typography } from "@/components/Typography/Typography";
-import { LearningTracksDisplay } from "../components/LearningTracksDisplay";
-import { useGetCourses } from "@/services/Courses/useGetCourses";
-import { queryClient } from "@/contexts";
 import { useDebounce } from "@/hooks/useDebounce";
-import { CoursesQueryParamsSchema } from "./CoursesPage";
-import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { Button } from "@/components/Button/Button";
-import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { CoursesQueryParamsSchema } from "./CoursesPage";
+import { Typography } from "@/components/Typography/Typography";
+import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { LearningTracksDisplay } from "../components/LearningTracksDisplay";
 import { useGetLearningTracks } from "@/services/LearningTracks/useGetLearningTracks";
+import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 export const LearningTracksPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
@@ -50,10 +49,9 @@ export const LearningTracksPage: FC = () => {
                 placeContent="space-between"
                 className="max-sm:flex-wrap"
             >
-                <Typography
-                    variant="h1"
-                    className="text-xl font-bold"
-                ></Typography>
+                <Typography variant="h1" className="text-xl font-bold">
+                    Learning Tracks
+                </Typography>
                 <Input
                     className="max-sm:grow"
                     name="query"

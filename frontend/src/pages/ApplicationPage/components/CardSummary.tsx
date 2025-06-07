@@ -1,12 +1,12 @@
 import { FC } from "react";
+import { twMerge } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { Rating } from "@/components/Rating/Rating";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 
 import user_icon from "@icons/user.svg";
-import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { twMerge } from "tailwind-merge";
 
 export type CardSummaryProps = {
     title: string;

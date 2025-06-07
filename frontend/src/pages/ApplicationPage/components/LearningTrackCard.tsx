@@ -1,14 +1,14 @@
+import React from "react";
+import { twMerge } from "tailwind-merge";
+import { CardSummary } from "./CardSummary";
+import { useShadow } from "@/hooks/useShadow";
+import { useNavigate } from "react-router-dom";
+import { Image } from "@/components/Image/Image";
+import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
-import React from "react";
-import { Image } from "@/components/Image/Image";
-import { twMerge } from "tailwind-merge";
-import { useShadow } from "@/hooks/useShadow";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
-import { Button } from "@/components/Button/Button";
-import { CardSummary } from "./CardSummary";
-import { useNavigate } from "react-router-dom";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 
 export type LearningTrackCardProps =

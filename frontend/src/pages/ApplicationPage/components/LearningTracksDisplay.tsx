@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { LearningTrackCard } from "./LearningTrackCard";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { LearningTrackCard } from "./LearningTrackCard";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type LearningTracksDisplayProps =
     ChildlessComponentProps<HTMLDivElement> &
