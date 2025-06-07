@@ -1,19 +1,23 @@
+import { z } from "zod";
 import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { CoursesQueryParamsSchema } from "./CoursesPage";
 import { Typography } from "@/components/Typography/Typography";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { LearningTracksDisplay } from "../components/LearningTracksDisplay";
 import { useGetLearningTracks } from "@/services/LearningTracks/useGetLearningTracks";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
+export const LearningTracksQueryParamsSchema = z.object({
+    query: z.string().optional().default(""),
+});
+
 export const LearningTracksPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
-        CoursesQueryParamsSchema
+        LearningTracksQueryParamsSchema
     );
 
     const [searchQuery, setSearchQuery] = useState(queryParams?.query ?? "");
