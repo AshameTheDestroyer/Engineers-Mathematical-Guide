@@ -30,7 +30,7 @@ export const CoursesPage: FC = () => {
         data: courses,
     } = useGetCourses(debouncedSearchQuery);
 
-    const skeletonCourses = new Array(20).fill(null);
+    const skeletonArray = new Array(20).fill(null);
 
     useEffect(() => {
         setQueryParams((queryParams) => ({
@@ -67,7 +67,7 @@ export const CoursesPage: FC = () => {
             </Flexbox>
             <Flexbox className="grow" variant="main">
                 {isLoading || courses == null ? (
-                    <CoursesDisplay isSkeleton courses={skeletonCourses} />
+                    <CoursesDisplay isSkeleton courses={skeletonArray} />
                 ) : isError ? (
                     <SearchResultDisplay
                         className="grow"
