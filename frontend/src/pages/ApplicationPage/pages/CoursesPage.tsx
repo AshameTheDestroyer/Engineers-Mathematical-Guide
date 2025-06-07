@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -37,10 +36,6 @@ export const CoursesPage: FC = () => {
             ...queryParams,
             query: debouncedSearchQuery.trimAll(),
         }));
-
-        queryClient.invalidateQueries({
-            queryKey: ["courses"],
-        });
     }, [debouncedSearchQuery]);
 
     return (

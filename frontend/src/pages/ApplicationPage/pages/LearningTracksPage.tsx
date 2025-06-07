@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -37,14 +36,10 @@ export const LearningTracksPage: FC = () => {
             ...queryParams,
             query: debouncedSearchQuery.trimAll(),
         }));
-
-        queryClient.invalidateQueries({
-            queryKey: ["courses"],
-        });
     }, [debouncedSearchQuery]);
 
     return (
-        <div>
+        <Flexbox className="grow" variant="main" direction="column" gap="8">
             <Flexbox
                 rowGap="4"
                 columnGap="8"
@@ -61,6 +56,8 @@ export const LearningTracksPage: FC = () => {
                     name="query"
                     type="search"
                     label="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </Flexbox>
             <Flexbox className="flex flex-col pt-10">
@@ -97,6 +94,6 @@ export const LearningTracksPage: FC = () => {
                     <LearningTracksDisplay learningTracks={learningTracks} />
                 )}
             </Flexbox>
-        </div>
+        </Flexbox>
     );
 };

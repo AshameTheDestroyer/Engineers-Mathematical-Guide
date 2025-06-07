@@ -37,6 +37,10 @@ export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
             parseFn: (data, schema) =>
                 data?.map((datum) => schema.parse(datum)) ?? [],
             ...options,
-            queryKey: [GET_LEARNING_TRACKS_KEY, ...(options?.queryKey ?? [])],
+            queryKey: [
+                GET_LEARNING_TRACKS_KEY,
+                searchQuery,
+                ...(options?.queryKey ?? []),
+            ],
         }
     );
