@@ -5,6 +5,7 @@ import { Rating } from "@/components/Rating/Rating";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { GenerateTextShadow } from "@/functions/GenerateTextShadow";
 
 import user_icon from "@icons/user.svg";
 
@@ -38,12 +39,7 @@ export const CardSummary: FC<CardSummaryProps> = ({
             direction="column"
         >
             <Flexbox placeItems="center" gap="2">
-                <Icon
-                    className="drop-shadow-[3px_3px_1px_#0000007c]"
-                    width={20}
-                    height={20}
-                    source={user_icon}
-                />
+                <Icon width={20} height={20} source={user_icon} />
                 <Typography
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap"
                     variant="p"
@@ -60,16 +56,15 @@ export const CardSummary: FC<CardSummaryProps> = ({
                 <Typography
                     className="text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
                     variant="p"
+                    style={{ textShadow: GenerateTextShadow() }}
                 >
                     {rating}
                 </Typography>
                 <Rating
                     value={rating}
                     iconProps={{
-                        className: "drop-shadow-[3px_3px_1px_#0000007c]",
                         width: 20,
                         height: 20,
-                        thickness: 0.5,
                         stroke: "black",
                     }}
                 />
@@ -85,7 +80,7 @@ export const CardSummary: FC<CardSummaryProps> = ({
                 </Typography>
             </Flexbox>
             <Typography
-                className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xl font-bold [text-shadow:2px_2px_5px_black!important]"
+                className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xl font-bold"
                 variant="figcaption"
             >
                 {title}
