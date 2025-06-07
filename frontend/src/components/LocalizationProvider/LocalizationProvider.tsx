@@ -75,10 +75,18 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         locales: Record<string, Record<string, string>>,
         language: string
     ) {
-        const routeLocales = Object.entries(routes).map(([key, value]) => ({
-            locale: locales[key],
-            href: value.href,
-        }));
+        const routeLocales = Object.entries(routes).map(([key, value]) => {
+            if (key in locales) {
+                return {
+                    href: value.href,
+                    locale: locales[key],
+                };
+            }
+
+            throw new Error(
+                `The "${key}" was not found in the provided locales.`
+            );
+        });
 
         return routeLocales.map(
             (routeLocale) =>
