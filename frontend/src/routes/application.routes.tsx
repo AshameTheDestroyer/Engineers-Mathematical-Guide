@@ -23,9 +23,12 @@ export const APPLICATION_ROUTES = BuildRouter({
         href: "/",
         routes: {
             courses: { href: "courses" },
-            courseID: { href: "courses/:courseID" },
+            courseID: { href: "courses/:courseID", isVariable: true },
             "learning-tracks": { href: "learning-tracks" },
-            learningTrackID: { href: "learning-tracks/:learningTrackID" },
+            learningTrackID: {
+                href: "learning-tracks/:learningTrackID",
+                isVariable: true,
+            },
         },
     },
 });

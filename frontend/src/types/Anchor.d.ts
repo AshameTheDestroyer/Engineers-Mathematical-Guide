@@ -1,10 +1,14 @@
 type Anchor = {
     href: string;
     title?: string;
+    isVariable?: boolean;
     routes?: Record<string, Anchor>;
 };
 
-type AnchorWithAbsolutePath<T extends Anchor> = Omit<T, "routes"> & {
+type AnchorWithAbsolutePath<T extends Anchor> = Omit<
+    T,
+    "routes" | "isVariable"
+> & {
     absolute: string;
 } & (T["routes"] extends {}
         ? {
@@ -14,6 +18,9 @@ type AnchorWithAbsolutePath<T extends Anchor> = Omit<T, "routes"> & {
                   >;
               };
           }
+        : {}) &
+    (T["isVariable"] extends true
+        ? { MapVariable: (value: string, relative = false) => string }
         : {});
 
 type AbsoluteAnchor<T extends Record<string, Anchor>> = {
