@@ -1,8 +1,8 @@
 import { z } from "zod";
 
 export const LearningTrackSchema = z.object({
-    id: z.string({ required_error: "required" }),
     image: z.string().optional(),
+    id: z.string({ required_error: "required" }),
     title: z.string({ required_error: "required" }),
     description: z.string({ required_error: "required" }),
     rating: z
