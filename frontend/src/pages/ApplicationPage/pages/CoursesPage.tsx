@@ -70,7 +70,7 @@ export const CoursesPage: FC = () => {
             </Flexbox>
             <Flexbox className="grow" variant="main">
                 {isLoading || courses == null ? (
-                    <CoursesDisplay isSkeleton courses={skeletonCourses} />
+                    <CoursesDisplay isSkeleton courses={skeletonArray} />
                 ) : isError ? (
                     <SearchResultDisplay
                         className="grow"

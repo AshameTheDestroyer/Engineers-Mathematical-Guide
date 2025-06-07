@@ -30,7 +30,7 @@ export const LearningTracksPage: FC = () => {
         data: learningTracks,
     } = useGetLearningTracks(debouncedSearchQuery);
 
-    const skeletonLearningTracks = new Array(20).fill(null);
+    const skeletonArray = new Array(20).fill(null);
 
     useEffect(() => {
         setQueryParams((queryParams) => ({
@@ -67,7 +67,7 @@ export const LearningTracksPage: FC = () => {
                 {isLoading || learningTracks == null ? (
                     <LearningTracksDisplay
                         isSkeleton
-                        learningTracks={skeletonLearningTracks}
+                        learningTracks={skeletonArray}
                     />
                 ) : isError ? (
                     <SearchResultDisplay
