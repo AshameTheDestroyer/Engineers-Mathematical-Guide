@@ -1,7 +1,7 @@
 export function BuildRouter<T extends Record<string, Anchor>>(
     routes: T,
     parentsPath: string = ""
-): AbsoluteAnchor<T> {
+): NestableBuiltAnchor<T> {
     return Object.entries(routes).reduce((accumulator, [key, value]) => {
         const href = value.href;
         const absolute = `${parentsPath}/${href}`
@@ -31,5 +31,5 @@ export function BuildRouter<T extends Record<string, Anchor>>(
                       routes: BuildRouter(value_.routes, absolute),
                   },
               };
-    }, {}) as AbsoluteAnchor<T>;
+    }, {}) as NestableBuiltAnchor<T>;
 }
