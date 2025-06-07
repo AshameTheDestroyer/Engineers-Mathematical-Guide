@@ -31,5 +31,5 @@ export const useGetCourses = <TUsesSuspense extends boolean = false>(
         parseFn: (data, schema) =>
             data?.map((datum) => schema.parse(datum)) ?? [],
         ...options,
-        queryKey: [GET_COURSES_KEY, ...(options?.queryKey ?? [])],
+        queryKey: [GET_COURSES_KEY, searchQuery, ...(options?.queryKey ?? [])],
     });
