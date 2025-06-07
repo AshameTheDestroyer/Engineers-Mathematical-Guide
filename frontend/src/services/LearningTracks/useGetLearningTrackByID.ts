@@ -9,7 +9,7 @@ import {
 
 import detailed_learningTracks_dummy_data from "@data/detailed_learning_tracks.dummy.json";
 
-export const LEARNING_TRACK_KEY = "learning-tracks";
+export const GET_LEARNING_TRACK_BY_ID_KEY = "get-learning-track-by-id";
 
 export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
     id: string | undefined,
@@ -31,5 +31,9 @@ export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
             ),
         parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
         ...options,
-        queryKey: [LEARNING_TRACK_KEY, id, ...(options?.queryKey ?? [])],
+        queryKey: [
+            GET_LEARNING_TRACK_BY_ID_KEY,
+            id,
+            ...(options?.queryKey ?? []),
+        ],
     });
