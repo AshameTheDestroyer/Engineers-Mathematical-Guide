@@ -6,7 +6,7 @@ import {
 
 import courses_dummy_data from "@data/courses.dummy.json";
 
-export const COURSES_BY_IDS_KEY = "courses-by-ids";
+export const GET_COURSES_BY_IDS_KEY = "get-courses-by-ids";
 
 export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
     ids: Array<string>,
@@ -27,5 +27,5 @@ export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
         parseFn: (data, schema) =>
             data?.map((datum) => schema.parse(datum)) ?? [],
         ...options,
-        queryKey: [COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
+        queryKey: [GET_COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
     });

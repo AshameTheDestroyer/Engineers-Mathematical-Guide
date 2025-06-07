@@ -7,7 +7,7 @@ import {
 
 import courses_dummy_data from "@data/courses.dummy.json";
 
-export const COURSES_KEY = "courses";
+export const GET_COURSES_KEY = "get-courses";
 
 export const useGetCourses = <TUsesSuspense extends boolean = false>(
     searchQuery: string | undefined,
@@ -31,5 +31,5 @@ export const useGetCourses = <TUsesSuspense extends boolean = false>(
         parseFn: (data, schema) =>
             data?.map((datum) => schema.parse(datum)) ?? [],
         ...options,
-        queryKey: [COURSES_KEY, ...(options?.queryKey ?? [])],
+        queryKey: [GET_COURSES_KEY, ...(options?.queryKey ?? [])],
     });

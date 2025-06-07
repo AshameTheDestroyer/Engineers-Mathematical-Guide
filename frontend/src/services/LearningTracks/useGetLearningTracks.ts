@@ -10,7 +10,7 @@ import {
 
 import learningTracks_dummy_data from "@data/learning_tracks.dummy.json";
 
-export const LEARNING_TRACKS_KEY = "learning-tracks";
+export const GET_LEARNING_TRACKS_KEY = "get-learning-tracks";
 
 export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
     searchQuery: string | undefined,
@@ -37,6 +37,6 @@ export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
             parseFn: (data, schema) =>
                 data?.map((datum) => schema.parse(datum)) ?? [],
             ...options,
-            queryKey: [LEARNING_TRACKS_KEY, ...(options?.queryKey ?? [])],
+            queryKey: [GET_LEARNING_TRACKS_KEY, ...(options?.queryKey ?? [])],
         }
     );
