@@ -47,9 +47,8 @@ export const CourseCard: FC<CourseCardProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    APPLICATION_ROUTES.base.routes.courseID.absolute.replace(
-                        ":courseID",
-                        course.id!
+                    APPLICATION_ROUTES.base.routes.courseID.MapVariable(
+                        course.id
                     )
                 )
             }
