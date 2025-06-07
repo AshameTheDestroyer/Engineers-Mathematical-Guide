@@ -9,12 +9,14 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
 const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
 const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
+const LearningTrackPage = LazyImport(
+    "./pages/ApplicationPage/pages/LearningTrackPage"
+);
 const LearningTracksPage = LazyImport(
     "./pages/ApplicationPage/pages/LearningTracksPage"
 );
 
 import route_locales from "@localization/application_page_routes.json";
-import { LearningTrackPage } from "@/pages/ApplicationPage/pages/LearningTrackPage";
 
 export const APPLICATION_ROUTES = BuildRouter({
     base: {
