@@ -1,6 +1,5 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { LearningTrackCard } from "./LearningTrackCard";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
@@ -26,10 +25,13 @@ export const LearningTracksDisplay: FC<LearningTracksDisplayProps> = ({
     learningTracks,
 }) => {
     return (
-        <Flexbox
+        <div
             id={id}
             ref={ref}
-            className={twMerge("flex flex-col gap-5", className)}
+            className={twMerge(
+                "flex flex-col gap-8 max-lg:grid max-lg:grid-cols-[repeat(auto-fill,minmax(18rem,1fr))]",
+                className
+            )}
         >
             {learningTracks.map((learningTrack, i) => (
                 <LearningTrackCard
@@ -39,6 +41,6 @@ export const LearningTracksDisplay: FC<LearningTracksDisplayProps> = ({
                     learningTrack={learningTrack as LearningTrackDTO}
                 />
             ))}
-        </Flexbox>
+        </div>
     );
 };
