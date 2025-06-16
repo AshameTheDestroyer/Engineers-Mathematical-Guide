@@ -5,6 +5,7 @@ export const LearningTrackSchema = z.object({
     id: z.string({ required_error: "required" }),
     title: z.string({ required_error: "required" }),
     description: z.string({ required_error: "required" }),
+    "detailed-description": z.string({ required_error: "required" }),
     rating: z
         .number({ required_error: "required" })
         .min(0, "minimum")
@@ -29,9 +30,6 @@ export const LearningTrackSchema = z.object({
 export const DetailedLearningTrackSchema = z.intersection(
     LearningTrackSchema,
     z.object({
-        "detailed-description": z.string({
-            required_error: "required",
-        }),
         courses: z.array(z.string({ required_error: "required" }), {
             required_error: "required",
         }),
