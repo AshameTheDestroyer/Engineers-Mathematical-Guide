@@ -54,7 +54,7 @@ export const CardSummary: FC<CardSummaryProps> = ({
             </Flexbox>
             <Flexbox placeItems="center" gap="2">
                 <Typography
-                    className="text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
+                    className="rating text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
                     variant="p"
                     style={{ textShadow: GenerateTextShadow() }}
                 >
