@@ -1,33 +1,37 @@
 import { FC } from "react";
-import { CoursesDisplay } from "./CoursesDisplay";
-import { CourseDTO } from "@/schemas/CourseSchema";
 import { Button } from "@/components/Button/Button";
+import { LearningTracksDisplay } from "./LearningTracksDisplay";
+import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
 import {
     SearchResultDisplay,
     SearchResultDisplayProps,
 } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
-export type RelatedCoursesDisplayProps = QueryProps<
-    Array<CourseDTO> | undefined
+export type RelatedLearningTracksDisplayProps = QueryProps<
+    Array<LearningTrackDTO> | undefined
 > & {
-    skeletonArray: Array<Partial<CourseDTO>>;
+    skeletonArray: Array<Partial<LearningTrackDTO>>;
 } & Record<
         "errorDisplay" | "searchOffDisplay",
         Pick<SearchResultDisplayProps, "title" | "paragraph">
     >;
 
-export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
+export const RelatedLearningTracksDisplay: FC<
+    RelatedLearningTracksDisplayProps
+> = ({
     isError,
     isLoading,
     isSuccess,
     errorDisplay,
-    skeletonArray,
     searchOffDisplay,
     refetch: Refetch,
-    data: relatedCourses,
+    skeletonArray,
+    data: relatedLearningTracks,
 }) => {
-    if (isLoading || relatedCourses == null) {
-        return <CoursesDisplay isSkeleton courses={skeletonArray} />;
+    if (isLoading || relatedLearningTracks == null) {
+        return (
+            <LearningTracksDisplay isSkeleton learningTracks={skeletonArray} />
+        );
     }
 
     if (isError) {
@@ -37,13 +41,15 @@ export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
                 {...errorDisplay}
                 iconType="error"
                 buttons={
-                    <Button onClick={(_e) => Refetch()}>Refetch Courses</Button>
+                    <Button onClick={(_e) => Refetch()}>
+                        Refetch Learning Tracks
+                    </Button>
                 }
             />
         );
     }
 
-    if (isSuccess && relatedCourses.length == 0) {
+    if (isSuccess && relatedLearningTracks.length == 0) {
         return (
             <SearchResultDisplay
                 className="place-items-start! [&>h2.typography]:text-lg [&>h2.typography]:font-normal"
@@ -53,5 +59,5 @@ export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
         );
     }
 
-    return <CoursesDisplay courses={relatedCourses} />;
+    return <LearningTracksDisplay learningTracks={relatedLearningTracks} />;
 };

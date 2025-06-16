@@ -101,7 +101,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                         className="static max-lg:grow lg:place-items-end max-lg:[&>.typography:last-child]:flex max-lg:[&>.typography:last-child]:flex-col max-lg:[&>.typography:last-child]:place-content-end max-lg:[&>.typography]:grow max-lg:[&_.typography:last-child]:whitespace-normal lg:[&_.typography:last-child]:text-right"
                         title={learningTrack.title}
                         rating={learningTrack.rating}
-                        registerParagraph="Specialized Student"
+                        registerParagraph="Specialized Students"
                         ratingCount={learningTrack["rating-count"]}
                         registerCount={learningTrack["specialized-count"]}
                     />
@@ -115,7 +115,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                             )
                         }
                     >
-                        Specialize
+                        Discover Specialization
                     </Button>
                 </Flexbox>
             )}
