@@ -35,23 +35,24 @@ export const CoursePage: FC = () => {
     const prerequisiteCoursesQuery = useGetPrerequisiteCourses(course);
     const postrequisiteCoursesQuery = useGetPostrequisiteCourses(course);
 
-    const skeletonCourses = new Array(5).fill(null);
+    const skeletonArray = new Array(5).fill(null);
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <Title>{course.title}</Title>
             <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <CardSummary
+                    className="[&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]"
                     title={course.title}
                     rating={course.rating}
-                    registerParagraph="Enrolled Student"
                     ratingCount={course["rating-count"]}
+                    registerParagraph="Enrolled Students"
                     registerCount={course["enrollment-count"]}
                 />
                 <Button
                     className={twJoin(
-                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
-                        "absolute bottom-0 z-[1] translate-y-1/2"
+                        "absolute bottom-0 z-[1] translate-y-1/2",
+                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]"
                     )}
                     thickness="thick"
                     variant="primary"
@@ -170,7 +171,7 @@ export const CoursePage: FC = () => {
                         </Typography>
                         <RelatedCoursesDisplay
                             {...prerequisiteCoursesQuery}
-                            skeletonCourses={skeletonCourses}
+                            skeletonArray={skeletonArray}
                             errorDisplay={{
                                 title: "Error!",
                                 paragraph:
@@ -192,7 +193,7 @@ export const CoursePage: FC = () => {
                         </Typography>
                         <RelatedCoursesDisplay
                             {...postrequisiteCoursesQuery}
-                            skeletonCourses={skeletonCourses}
+                            skeletonArray={skeletonArray}
                             errorDisplay={{
                                 title: "Error!",
                                 paragraph:
@@ -214,7 +215,7 @@ export const CoursePage: FC = () => {
                         </Typography>
                         <RelatedCoursesDisplay
                             {...similarCoursesQuery}
-                            skeletonCourses={skeletonCourses}
+                            skeletonArray={skeletonArray}
                             errorDisplay={{
                                 title: "Error!",
                                 paragraph:

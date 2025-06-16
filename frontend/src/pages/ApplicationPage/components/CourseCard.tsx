@@ -61,8 +61,8 @@ export const CourseCard: FC<CourseCardProps> = ({
                     <CardSummary
                         title={course.title}
                         rating={course.rating}
-                        registerParagraph="Enrolled Student"
                         ratingCount={course["rating-count"]}
+                        registerParagraph="Enrolled Students"
                         registerCount={course["enrollment-count"]}
                     />
                 )}
