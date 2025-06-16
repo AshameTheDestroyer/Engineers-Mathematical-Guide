@@ -1,11 +1,12 @@
-import { FC, Fragment } from "react";
+import { FC } from "react";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { BorderedList } from "../components/BorderedList";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -16,7 +17,6 @@ import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSim
 import specialize_icon from "@icons/star.svg";
 
 export const LearningTrackPage: FC = () => {
-    const Navigate = useNavigate();
     const { direction } = useLocalization();
 
     const { learningTrackID } =
@@ -87,42 +87,14 @@ export const LearningTrackPage: FC = () => {
                         <Typography className="text-lg font-bold" variant="h2">
                             Courses
                         </Typography>
-                        <Flexbox
-                            className="bg-background-normal border-background-darker rounded-lg border-2 p-4"
-                            variant="ol"
-                            direction="column"
-                            gap="2"
-                        >
-                            {learningTrack.courses.map((course, i, array) => (
-                                <Fragment key={i}>
-                                    {i > 0 && (
-                                        <hr className="border-background-darker border" />
-                                    )}
-                                    <Flexbox variant="li">
-                                        <button
-                                            className={twJoin(
-                                                "active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover w-full grow cursor-pointer p-4 text-start text-lg transition duration-200",
-                                                i == 0
-                                                    ? "rounded-t-lg"
-                                                    : i == array.length - 1
-                                                      ? "rounded-b-lg"
-                                                      : ""
-                                            )}
-                                            role="link"
-                                            onClick={(_e) =>
-                                                Navigate(
-                                                    APPLICATION_ROUTES.base.routes.courseID.MapVariable(
-                                                        course
-                                                    )
-                                                )
-                                            }
-                                        >
-                                            {course}
-                                        </button>
-                                    </Flexbox>
-                                </Fragment>
-                            ))}
-                        </Flexbox>
+                        <BorderedList
+                            list={learningTrack.courses.map((courseID) => ({
+                                title: courseID.toTitleCase(),
+                                path: APPLICATION_ROUTES.base.routes.courseID.MapVariable(
+                                    courseID
+                                ),
+                            }))}
+                        />
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
                         <Typography className="text-lg font-bold" variant="h2">
