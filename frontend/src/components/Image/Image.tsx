@@ -12,6 +12,7 @@ export type ImageProps = ChildlessComponentProps<HTMLDivElement> & {
     alternative: string;
     doesFadeIn?: boolean;
     placeholder?: string;
+    hideNotFoundIcon?: boolean;
     sourceSet?: Record<string, string>;
 } & Omit<ImgHTMLAttributes<HTMLImageElement>, "src" | "alt" | "srcSet">;
 
@@ -23,6 +24,7 @@ export const Image: FC<ImageProps> = ({
     sourceSet,
     className,
     alternative,
+    hideNotFoundIcon,
     doesFadeIn = true,
     placeholder = "$skeleton",
     ...props
@@ -96,7 +98,7 @@ export const Image: FC<ImageProps> = ({
                 />
             )}
 
-            {(status == "error" || source == null) && (
+            {(status == "error" || source == null) && !hideNotFoundIcon && (
                 <Icon
                     source={network_error_icon}
                     className="-translate-1/2 absolute left-1/2 top-1/2 h-1/3 w-1/3 [&>svg]:h-full [&>svg]:w-full"
