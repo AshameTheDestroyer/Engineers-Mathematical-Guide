@@ -1,8 +1,35 @@
 .math-parallax-scene {
-    -webkit-mask: radial-gradient(black, transparent 70%);
-    mask: radial-gradient(black, transparent 70%);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    mask: var(--gradient);
+    backdrop-filter: blur(10px);
+    -webkit-mask: var(--gradient);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.math-parallax-scene.radial-blur {
+    --gradient: radial-gradient(
+        black,
+        transparent calc(100% - var(--blur-percentage, 30%))
+    );
+}
+
+.math-parallax-scene.horizontal-blur {
+    --gradient: linear-gradient(
+        90deg,
+        transparent,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
+
+.math-parallax-scene.vertical-blur {
+    --gradient: linear-gradient(
+        0deg,
+        transparent,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
 }
 
 .math-parallax-scene > div {

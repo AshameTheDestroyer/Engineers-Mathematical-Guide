@@ -45,7 +45,7 @@ export const RegistrationPage: FC = () => {
                     "max-lg:absolute max-lg:inset-0 max-lg:top-3/4 max-lg:m-0 max-lg:h-auto max-lg:bg-gradient-to-t"
                 )}
             >
-                <MathParallaxScene />
+                <MathParallaxScene blurType="horizontal" />
                 <Logo
                     className={twJoin(
                         direction == "ltr" ? "right-page" : "left-page",
