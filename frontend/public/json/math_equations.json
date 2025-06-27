@@ -1,0 +1,52 @@
+[
+    {
+        "id": "pythagorean-theorem",
+        "name": "Pythagorean Theorem",
+        "equation": "a^2 + b^2 = c^2"
+    },
+    {
+        "id": "eulers-identity",
+        "name": "Euler's Identity",
+        "equation": "e^{i\\pi} + 1 = 0"
+    },
+    {
+        "id": "newtons-second-law-of-motion",
+        "name": "Newton's Second Law of Motion",
+        "equation": "F = ma"
+    },
+    {
+        "id": "einsteins-mass-energy-equivalence",
+        "name": "Einstein's Mass-Energy Equivalence",
+        "equation": "E = mc^2"
+    },
+    {
+        "id": "schrodingers-equation",
+        "name": "Schrödinger's Equation",
+        "equation": "i\\hbar \\frac{\\partial}{\\partial t} \\Psi(\\mathbf{r}, t) = \\hat{H} \\Psi(\\mathbf{r}, t)"
+    },
+    {
+        "id": "the-fundamental-theorem-of-calculus",
+        "name": "The Fundamental Theorem of Calculus",
+        "equation": "\\int_a^b f(x) \\, dx = F(b) - F(a)"
+    },
+    {
+        "id": "the-quadratic-formula",
+        "name": "The Quadratic Formula",
+        "equation": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}"
+    },
+    {
+        "id": "maxwells-equations-in-differential-form",
+        "name": "Maxwell's Equations (in Differential Form)",
+        "equation": "\\nabla \\cdot \\mathbf{E} = \\frac{\\rho}{\\epsilon_0}, \\quad \\nabla \\cdot \\mathbf{B} = 0, \\quad \\nabla \\times \\mathbf{E} = -\\frac{\\partial \\mathbf{B}}{\\partial t}, \\quad \\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}"
+    },
+    {
+        "id": "the-normal-distribution-gaussian-function",
+        "name": "The Normal Distribution (Gaussian Function)",
+        "equation": "f(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}"
+    },
+    {
+        "id": "the-wave-equation",
+        "name": "The Wave Equation",
+        "equation": "\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\nabla^2 u"
+    }
+]
