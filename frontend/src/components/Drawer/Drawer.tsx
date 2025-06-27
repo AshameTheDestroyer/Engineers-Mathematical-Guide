@@ -1,10 +1,6 @@
-import { createPortal } from "react-dom";
-import { twJoin, twMerge } from "tailwind-merge";
-import { Dispatch, FC, SetStateAction } from "react";
-import { IconButton } from "../IconButton/IconButton";
-import { ComponentProps } from "@types_/ComponentProps";
-
-import cross_icon from "@/assets/icons/cross.svg";
+import { twMerge } from "tailwind-merge";
+import { CSSProperties, FC } from "react";
+import { Modal, ModalProps } from "../Modal/Modal";
 
 import "./drawer.css";
 
@@ -37,20 +33,14 @@ export const Drawer: FC<DrawerProps> = ({
         bottom: { from: { x: 0, y: 100 }, to: { x: 0, y: 0 } },
     };
 
-    const buttonPositionClassNames: Record<Direction, string> = {
-        top: "right-4 top-4",
-        bottom: "right-4 bottom-4",
-        right: "right-4 top-4",
-        left: "left-4 top-4",
-    };
-
-    return createPortal(
-        <>
-            {isOpen && (
-                <div
-                    className="fixed inset-0 bg-black/30"
-                    onClick={(_e) => setIsOpen(false)}
-                />
+    return (
+        <Modal
+            id={id}
+            ref={ref}
+            className={twMerge(
+                "drawer bg-background-light translate-0 inset-0 rounded-none",
+                positionClassNames[direction],
+                className
             )}
             animationDuration={200}
             style={

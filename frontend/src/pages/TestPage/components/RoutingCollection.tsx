@@ -25,6 +25,7 @@ export const RoutingCollection: FC = () => {
                 typography={{ variant: "h2", className: "text-lg" }}
             >
                 <NavigationBar
+                    direction="row"
                     routes={GetRouteLocales(
                         TEST_ROUTES != null
                             ? { ...TEST_ROUTES.base.routes }
