@@ -1,0 +1,51 @@
+.math-parallax-scene {
+    -webkit-mask: radial-gradient(black, transparent 70%);
+    mask: radial-gradient(black, transparent 70%);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.math-parallax-scene > div {
+    animation-delay: 0;
+    animation-duration: 25s;
+    animation-fill-mode: normal;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+}
+
+@keyframes math-equation-movement1 {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-100%, -100%);
+    }
+}
+
+@keyframes math-equation-movement2 {
+    from {
+        transform: translate(100%, 0%);
+    }
+    to {
+        transform: translate(0%, -100%);
+    }
+}
+
+@keyframes math-equation-movement3 {
+    from {
+        transform: translate(100%, 100%);
+    }
+    to {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes math-equation-movement4 {
+    from {
+        transform: translate(0, 100%);
+    }
+    to {
+        transform: translate(-100%, 0%);
+    }
+}
