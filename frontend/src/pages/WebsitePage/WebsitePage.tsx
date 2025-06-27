@@ -4,6 +4,8 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { MainContent } from "./components/MainContent";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
+import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 
 import login_icon from "@icons/login.svg";
@@ -11,9 +13,10 @@ import signup_icon from "@icons/user.svg";
 
 import locales from "@localization/website_page.json";
 import route_locales from "@localization/website_page_routes.json";
-import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 
 export const WebsitePage: FC = () => {
+    useScrollRestoration();
+
     return (
         <Page className="overflow-x-clip">
             <ApplicationBar

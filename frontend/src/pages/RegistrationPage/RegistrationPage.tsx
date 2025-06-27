@@ -6,10 +6,12 @@ import { twJoin, twMerge } from "tailwind-merge";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export const RegistrationPage: FC = () => {
+    useScrollRestoration();
     useDefaultRoute(
         REGISTRATION_ROUTES.base.href,
         REGISTRATION_ROUTES.base.routes.signup.href
