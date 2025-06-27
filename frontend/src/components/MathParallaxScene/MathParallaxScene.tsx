@@ -18,6 +18,7 @@ import math_equations from "@json/math_equations.json";
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     blurPercentage?: `${number}%`;
     blurType?: "radial" | "horizontal" | "vertical";
+    direction?: { x?: "left" | "right"; y?: "top" | "bottom" };
 };
 
 export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
@@ -26,6 +27,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     className,
     blurPercentage,
     blurType = "radial",
+    direction = { x: "left", y: "top" },
 }) => {
     const sectionRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => sectionRef.current!);
@@ -34,6 +36,12 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     const [mathEquationStyles, setMathEquationStyles] = useState(
         [] as Array<CSSProperties>
     );
+
+    const style = {
+        "--blur-percentage": blurPercentage,
+        "--y": direction.y == "top" ? 1 : direction.y == "bottom" ? -1 : 0,
+        "--x": direction.x == "left" ? 1 : direction.x == "right" ? -1 : 0,
+    } as CSSProperties;
 
     useEffect(() => {
         setMathEquationStyles(
@@ -71,8 +79,8 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     return (
         <section
             id={id}
+            style={style}
             ref={sectionRef}
-            style={{ "--blur-percentage": blurPercentage } as CSSProperties}
             className={twMerge(
                 "math-parallax-scene relative h-full w-full overflow-hidden",
                 `${blurType}-blur`,

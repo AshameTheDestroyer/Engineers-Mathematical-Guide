@@ -46,22 +46,22 @@
         transform: translate(0, 0);
     }
     to {
-        transform: translate(-100%, -100%);
+        transform: translate(calc(-100% * var(--x)), calc(-100% * var(--y)));
     }
 }
 
 @keyframes math-equation-movement2 {
     from {
-        transform: translate(100%, 0%);
+        transform: translate(calc(100% * var(--x)), 0%);
     }
     to {
-        transform: translate(0%, -100%);
+        transform: translate(0%, calc(-100% * var(--y)));
     }
 }
 
 @keyframes math-equation-movement3 {
     from {
-        transform: translate(100%, 100%);
+        transform: translate(calc(100% * var(--x)), calc(100% * var(--y)));
     }
     to {
         transform: translate(0%, 0%);
@@ -70,9 +70,9 @@
 
 @keyframes math-equation-movement4 {
     from {
-        transform: translate(0, 100%);
+        transform: translate(0, calc(100% * var(--y)));
     }
     to {
-        transform: translate(-100%, 0%);
+        transform: translate(calc(-100% * var(--x)), 0%);
     }
 }
