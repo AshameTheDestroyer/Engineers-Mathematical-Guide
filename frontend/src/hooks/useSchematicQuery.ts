@@ -95,7 +95,10 @@ export const useSchematicQuery = <
     const { data: _data, ...query } = useExtendedQuery(options, queryClient);
 
     const data =
-        options.parseFn?.(_data, options.schema) ?? options.schema.parse(_data);
+        !options.usesSuspense && query.isLoading && _data == null
+            ? _data
+            : (options.parseFn?.(_data, options.schema) ??
+              options.schema.parse(_data));
 
     return { data, ...query } as any;
 };
