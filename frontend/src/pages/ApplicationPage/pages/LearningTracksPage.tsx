@@ -19,7 +19,7 @@ export const LearningTracksPage: FC = () => {
         LearningTracksQueryParamsSchema
     );
 
-    const [searchQuery, setSearchQuery] = useState(queryParams?.query ?? "");
+    const [searchQuery, setSearchQuery] = useState(queryParams.query);
     const debouncedSearchQuery = useDebounce(searchQuery);
 
     const {
@@ -71,10 +71,10 @@ export const LearningTracksPage: FC = () => {
                         className="grow"
                         title="Error!"
                         iconType="error"
-                        paragraph="An error occurred while fetching courses, try refetching."
+                        paragraph="An error occurred while fetching learning tracks, try refetching."
                         buttons={
                             <Button onClick={(_e) => refetch()}>
-                                Refetch Courses
+                                Refetch Learning Tracks
                             </Button>
                         }
                     />
