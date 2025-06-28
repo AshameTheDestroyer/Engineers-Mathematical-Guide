@@ -18,6 +18,7 @@ import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     blurPercentage?: `${number}%`;
+    duration?: `${number}${"s" | "ms"}`;
     blurType?: "radial" | "horizontal" | "vertical";
     direction?: { x?: "left" | "right"; y?: "top" | "bottom" };
 };
@@ -27,6 +28,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     ref,
     className,
     blurPercentage,
+    duration = "25s",
     blurType = "radial",
     direction = { x: "left", y: "top" },
 }) => {
@@ -41,6 +43,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     const { isDarkThemed } = useThemeMode();
 
     const style = {
+        "--duration": duration,
         "--blur-percentage": blurPercentage,
         "--y": direction.y == "top" ? 1 : direction.y == "bottom" ? -1 : 0,
         "--x": direction.x == "left" ? 1 : direction.x == "right" ? -1 : 0,
