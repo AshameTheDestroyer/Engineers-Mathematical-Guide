@@ -7,6 +7,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -19,6 +20,7 @@ export const RegistrationPage: FC = () => {
     );
 
     const { direction } = useLocalization();
+    const { isScreenSize } = useScreenSize();
 
     return (
         <Page className="gap-page grid grid-cols-2 place-content-center place-items-center max-lg:flex">
@@ -47,7 +49,9 @@ export const RegistrationPage: FC = () => {
             >
                 <MathParallaxScene
                     blurType="horizontal"
-                    direction={{ y: "top" }}
+                    direction={
+                        isScreenSize["max-lg"] ? { x: "left" } : { y: "top" }
+                    }
                 />
                 <Logo
                     className={twJoin(
