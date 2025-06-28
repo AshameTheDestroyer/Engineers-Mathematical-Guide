@@ -14,7 +14,7 @@ export type UseSchematicQueryParamsResult<
           success: boolean;
       }) & {
     setQueryParams: <U extends z.infer<z.ZodObject<T>>>(
-        predicate: (data?: U) => U
+        predicate: (data: TSafe extends false ? U : U | undefined) => U
     ) => void;
 };
 
@@ -29,6 +29,8 @@ export const useSchematicQueryParams = <
 ): UseSchematicQueryParamsResult<T, TSafe> => {
     const location = useLocation();
     const Navigate = useNavigate();
+
+    const defaults = ZodGetDefaults(schema);
     const [searchParams, _setSearchParams] = useSearchParams();
 
     const {
@@ -39,7 +41,7 @@ export const useSchematicQueryParams = <
         const queryParams = Object.keys(schema._def.shape()).reduce(
             (accumulator, key) => ({
                 ...accumulator,
-                [key]: searchParams.get(key),
+                [key]: searchParams.get(key) ?? defaults[key],
             }),
             {}
         );
@@ -50,10 +52,9 @@ export const useSchematicQueryParams = <
 
         const data = schema.parse(queryParams);
         return { data, error: undefined, success: true };
-    }, [options]);
+    }, [searchParams, schema, options]);
 
     useEffect(() => {
-        const defaults = ZodGetDefaults(schema);
         setQueryParams((queryParams) => ({
             ...defaults,
             ...(queryParams ?? {}),
@@ -61,15 +62,12 @@ export const useSchematicQueryParams = <
     }, []);
 
     function setQueryParams<U extends z.infer<z.ZodObject<T>>>(
-        predicate: (data?: U) => U
+        predicate: (data: TSafe extends false ? U : U | undefined) => U
     ) {
-        const data = predicate(queryParams as U | undefined);
-        Navigate(
-            location.pathname +
-                "?" +
-                new URLSearchParams(data as unknown as Record<string, string>),
-            { replace: true }
-        );
+        const data = predicate(queryParams as any);
+        Navigate(location.pathname + "?" + new URLSearchParams(data), {
+            replace: true,
+        });
     }
 
     return { queryParams, error, success, setQueryParams } as any;
