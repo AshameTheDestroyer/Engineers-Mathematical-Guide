@@ -1,3 +1,4 @@
+import { useThrottle } from "@/hooks/useThrottle";
 import {
     FC,
     useState,
@@ -31,18 +32,19 @@ export const ScreenSizeProvider: FC<ScreenSizeProviderProps> = ({
         };
     });
 
+    const throttledScreenSize = useThrottle(window.innerWidth, 100);
+
     useEffect(() => {
         function OnScreenResize() {
-            const screenSize = window.innerWidth;
             const isScreenSize = LogicizeScreenSize(
-                screenSize,
+                throttledScreenSize,
                 state.breakpoints
             );
 
             setState((prevState) => ({
                 ...prevState,
-                screenSize,
                 isScreenSize,
+                screenSize: throttledScreenSize,
             }));
         }
 
@@ -53,7 +55,7 @@ export const ScreenSizeProvider: FC<ScreenSizeProviderProps> = ({
         return () => {
             window.removeEventListener("resize", OnScreenResize);
         };
-    }, [state.breakpoints]);
+    }, [state.breakpoints, throttledScreenSize]);
 
     function GetBreakpoints() {
         const root = document.querySelector(":root") as HTMLElement;

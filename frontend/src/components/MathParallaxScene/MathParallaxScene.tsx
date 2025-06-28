@@ -45,11 +45,16 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
 
     useEffect(() => {
         setMathEquationStyles(
-            math_equations.map((_) => ({
-                scale: Math.random() * 0.25 + 1,
-                top: ~~(Math.random() * height * 2),
-                left: ~~(Math.random() * width * 2),
-            }))
+            math_equations.map((_) =>
+                width == 0 && height == 0
+                    ? { opacity: 0 }
+                    : {
+                          opacity: 1,
+                          scale: Math.random() * 0.25 + 1,
+                          top: ~~(Math.random() * height * 2),
+                          left: ~~(Math.random() * width * 2),
+                      }
+            )
         );
     }, [width, height]);
 
@@ -68,7 +73,10 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
                     key={mathEquation.id}
                     variant="p"
                     className="absolute"
-                    style={mathEquationStyles[i]}
+                    style={{
+                        opacity: 0,
+                        ...mathEquationStyles[i],
+                    }}
                 >
                     {mathEquation.equation}
                 </MathExpression>
