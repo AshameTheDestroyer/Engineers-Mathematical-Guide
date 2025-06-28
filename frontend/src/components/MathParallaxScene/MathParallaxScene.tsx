@@ -2,6 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathExpression } from "../MathExpression/MathExpression";
 import { useElementInformation } from "@/hooks/useElementInformation";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import {
     FC,
     useRef,
@@ -14,9 +15,9 @@ import {
 import "./math_parallax_scene.css";
 
 import math_equations from "@json/math_equations.json";
-import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
+    sparseness?: number;
     blurPercentage?: `${number}%`;
     duration?: `${number}${"s" | "ms"}`;
     blurType?: "radial" | "horizontal" | "vertical";
@@ -28,6 +29,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     ref,
     className,
     blurPercentage,
+    sparseness = 1.5,
     duration = "25s",
     blurType = "radial",
     direction = { x: "left", y: "top" },
@@ -57,8 +59,8 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
                     : {
                           opacity: 1,
                           scale: Math.random() * 0.25 + 1,
-                          top: ~~(Math.random() * height * 2),
-                          left: ~~(Math.random() * width * 2),
+                          top: ~~(Math.random() * height * sparseness),
+                          left: ~~(Math.random() * width * sparseness),
                       }
             )
         );
