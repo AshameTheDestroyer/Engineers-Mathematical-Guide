@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastProvider } from "./components/ToastProvider/ToastProvider";
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
+import { ScreenSizeProvider } from "./components/ScreenSizeProvider/ScreenSizeProvider";
 import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
 
@@ -48,6 +49,9 @@ export const ContextProviders = [
     ),
     ({ children }: PropsWithChildren) => (
         <ThemePaletteProvider>{children}</ThemePaletteProvider>
+    ),
+    ({ children }: PropsWithChildren) => (
+        <ScreenSizeProvider>{children}</ScreenSizeProvider>
     ),
     ({ children }: PropsWithChildren) => (
         <MathJaxProvider>{children}</MathJaxProvider>
