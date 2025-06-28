@@ -9,8 +9,15 @@ import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { useSignupMutation } from "@/services/Registration/useSignupMutation";
 import { PersonalInformationForm } from "../components/PersonalInformationForm";
 
-const SignupQueryParamSchema = z.object({
-    step: z.enum(["credentials", "personal-information"]),
+export enum SignupStepEnum {
+    credentials = "credentials",
+    personalInformation = "personal-information",
+}
+
+export type SignupStep = ExtractEnumValue<SignupStepEnum>;
+
+export const SignupQueryParamSchema = z.object({
+    step: z.nativeEnum(SignupStepEnum),
 });
 
 export const SignupPage: FC = () => {
@@ -29,10 +36,13 @@ export const SignupPage: FC = () => {
 
     useEffect(() => {
         const hasSkippedCredentialsStep =
-            data.credentials == null && queryParams?.step != "credentials";
+            data.credentials == null &&
+            queryParams?.step != SignupStepEnum.credentials;
 
         if (queryParams == null || hasSkippedCredentialsStep) {
-            setQueryParams((_queryParams) => ({ step: "credentials" }));
+            setQueryParams((_queryParams) => ({
+                step: SignupStepEnum.credentials,
+            }));
         }
     }, [queryParams]);
 
@@ -57,7 +67,9 @@ export const SignupPage: FC = () => {
 
     function SubmitCredentials(credentials: SignupStepsDTO["credentials"]) {
         setData((data) => ({ ...data, credentials }));
-        setQueryParams((_queryParams) => ({ step: "personal-information" }));
+        setQueryParams((_queryParams) => ({
+            step: SignupStepEnum.personalInformation,
+        }));
     }
 
     function SubmitPersonalInformation(

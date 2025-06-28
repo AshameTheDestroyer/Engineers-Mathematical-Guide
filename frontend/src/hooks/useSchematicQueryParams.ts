@@ -1,5 +1,7 @@
 import { z } from "zod";
+import { useEffect } from "react";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { ZodGetDefaults } from "@/functions/Zod.GetDefaults";
 
 export const useSchematicQueryParams = <T extends z.ZodRawShape>(
     schema: z.ZodObject<T>
@@ -20,6 +22,14 @@ export const useSchematicQueryParams = <T extends z.ZodRawShape>(
             {}
         )
     );
+
+    useEffect(() => {
+        const defaults = ZodGetDefaults(schema);
+        setQueryParams((queryParams) => ({
+            ...defaults,
+            ...(queryParams ?? {}),
+        }));
+    }, []);
 
     function setQueryParams<U extends z.infer<z.ZodObject<T>>>(
         predicate: (data?: U) => U
