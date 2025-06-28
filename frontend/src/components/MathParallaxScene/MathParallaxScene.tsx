@@ -1,9 +1,9 @@
 import { twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { MathExpression } from "../MathExpression/MathExpression";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useGetMathEquations } from "@/services/MathEquations/useGetMathEquations";
+import { InteractiveMathExpression } from "../InteractiveMathExpression/InteractiveMathExpression";
 import {
     FC,
     useRef,
@@ -80,17 +80,14 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
             className={twMerge("absolute inset-0", className)}
         >
             {mathEquations.map((mathEquation, i) => (
-                <MathExpression
+                <InteractiveMathExpression
                     key={mathEquation.id}
-                    variant="p"
                     className="absolute"
-                    style={{
-                        opacity: 0,
-                        ...mathEquationStyles[i],
-                    }}
+                    style={{ opacity: 0, ...mathEquationStyles[i] }}
+                    information={mathEquation}
                 >
                     {mathEquation.equation}
-                </MathExpression>
+                </InteractiveMathExpression>
             ))}
         </div>
     );
