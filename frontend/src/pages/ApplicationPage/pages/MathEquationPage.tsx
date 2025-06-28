@@ -14,6 +14,7 @@ import { useGetMathEquationByID } from "@/services/MathEquations/useGetMathEquat
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
 import medal_second_place_icon from "@icons/medal_second_place.svg";
+import { Title } from "@/components/Title/Title";
 
 const MEDAL_ICONS = {
     basic: medal_third_place_icon,
@@ -49,6 +50,7 @@ export const MathEquationPage: FC = () => {
             variant="main"
             placeContent="start"
         >
+            <Title>{mathEquation.title}</Title>
             <Flexbox
                 className="lg:flex-1"
                 gap="6"
