@@ -19,8 +19,8 @@ export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     sparseness?: number;
     blurPercentage?: `${number}%`;
     duration?: `${number}${"s" | "ms"}`;
-    blurType?: "radial" | "horizontal" | "vertical";
     direction?: { x?: "left" | "right"; y?: "top" | "bottom" };
+    blurType?: "radial" | "horizontal" | "vertical" | "rectangular";
 };
 
 export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
@@ -30,7 +30,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     blurPercentage,
     sparseness = 1.5,
     duration = "25s",
-    blurType = "radial",
+    blurType = "rectangular",
     direction = { x: "left", y: "top" },
 }) => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -82,7 +82,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
             {mathEquations.map((mathEquation, i) => (
                 <InteractiveMathExpression
                     key={mathEquation.id}
-                    className="absolute"
+                    className="z-1 absolute"
                     style={{ opacity: 0, ...mathEquationStyles[i] }}
                     information={mathEquation}
                 >
@@ -104,14 +104,16 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
                 className
             )}
         >
-            {new Array(4).fill(null).map((_, i) => (
-                <EquationContainer
-                    key={i}
-                    style={{
-                        animationName: `math-equation-movement${i + 1}`,
-                    }}
-                />
-            ))}
+            <div className="absolute inset-0">
+                {new Array(4).fill(null).map((_, i) => (
+                    <EquationContainer
+                        key={i}
+                        style={{
+                            animationName: `math-equation-movement${i + 1}`,
+                        }}
+                    />
+                ))}
+            </div>
         </section>
     );
 };

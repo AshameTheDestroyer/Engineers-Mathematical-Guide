@@ -1,4 +1,5 @@
-.math-parallax-scene {
+.math-parallax-scene,
+.math-parallax-scene.rectangular-blur > div {
     mask: var(--gradient);
     backdrop-filter: blur(10px);
     -webkit-mask: var(--gradient);
@@ -12,7 +13,8 @@
     );
 }
 
-.math-parallax-scene.horizontal-blur {
+.math-parallax-scene.horizontal-blur,
+.math-parallax-scene.rectangular-blur > div {
     --gradient: linear-gradient(
         90deg,
         transparent,
@@ -22,7 +24,8 @@
     );
 }
 
-.math-parallax-scene.vertical-blur {
+.math-parallax-scene.vertical-blur,
+.math-parallax-scene.rectangular-blur {
     --gradient: linear-gradient(
         0deg,
         transparent,
@@ -32,7 +35,7 @@
     );
 }
 
-.math-parallax-scene > div {
+.math-parallax-scene > div > div {
     animation-delay: 0;
     animation-fill-mode: normal;
     animation-direction: normal;

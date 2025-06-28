@@ -54,10 +54,7 @@ export const WebsitePage: FC = () => {
                 }
             />
             <MainContent />
-            <MathParallaxScene
-                className="-z-2 fixed inset-0"
-                blurType="horizontal"
-            />
+            <MathParallaxScene className="-z-2 fixed inset-0" />
         </Page>
     );
 };
