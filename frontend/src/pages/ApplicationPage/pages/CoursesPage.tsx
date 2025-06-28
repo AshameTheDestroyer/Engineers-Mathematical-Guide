@@ -8,11 +8,11 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { Typography } from "@/components/Typography/Typography";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
-import {
-    GET_COURSES_KEY,
-    useGetCourses,
-} from "@/services/Courses/useGetCourses";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
+import {
+    useGetCourses,
+    GET_COURSES_KEY,
+} from "@/services/Courses/useGetCourses";
 
 export const CoursesQueryParamsSchema = z.object({
     query: z.string().optional().default(""),
