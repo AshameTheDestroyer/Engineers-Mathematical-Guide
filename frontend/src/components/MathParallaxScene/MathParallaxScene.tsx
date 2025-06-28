@@ -3,6 +3,7 @@ import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathExpression } from "../MathExpression/MathExpression";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
+import { useGetMathEquations } from "@/services/MathEquations/useGetMathEquations";
 import {
     FC,
     useRef,
@@ -13,8 +14,6 @@ import {
 } from "react";
 
 import "./math_parallax_scene.css";
-
-import math_equations from "@json/math_equations.json";
 
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     sparseness?: number;
@@ -37,12 +36,16 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     const sectionRef = useRef<HTMLDivElement>(null);
     useImperativeHandle(ref, () => sectionRef.current!);
 
+    const { isDarkThemed } = useThemeMode();
+
     const { width, height } = useElementInformation(sectionRef);
     const [mathEquationStyles, setMathEquationStyles] = useState(
         [] as Array<CSSProperties>
     );
 
-    const { isDarkThemed } = useThemeMode();
+    const { data: mathEquations } = useGetMathEquations(undefined, {
+        usesSuspense: true,
+    });
 
     const style = {
         "--duration": duration,
@@ -53,7 +56,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
 
     useEffect(() => {
         setMathEquationStyles(
-            math_equations.map((_) =>
+            mathEquations.map((_) =>
                 width == 0 && height == 0
                     ? { opacity: 0 }
                     : {
@@ -76,7 +79,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
             style={style}
             className={twMerge("absolute inset-0", className)}
         >
-            {math_equations.map((mathEquation, i) => (
+            {mathEquations.map((mathEquation, i) => (
                 <MathExpression
                     key={mathEquation.id}
                     variant="p"
