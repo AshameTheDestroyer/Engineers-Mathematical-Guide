@@ -14,6 +14,7 @@ import {
 import "./math_parallax_scene.css";
 
 import math_equations from "@json/math_equations.json";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     blurPercentage?: `${number}%`;
@@ -36,6 +37,8 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     const [mathEquationStyles, setMathEquationStyles] = useState(
         [] as Array<CSSProperties>
     );
+
+    const { isDarkThemed } = useThemeMode();
 
     const style = {
         "--blur-percentage": blurPercentage,
@@ -91,6 +94,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
             ref={sectionRef}
             className={twMerge(
                 "math-parallax-scene relative h-full w-full overflow-hidden",
+                !isDarkThemed && "text-background-darker",
                 `${blurType}-blur`,
                 className
             )}
