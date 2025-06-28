@@ -108,6 +108,67 @@ export const DropDownCollection: FC = () => {
             </Collection>
             <Collection
                 className="[&>div]:flex-col [&>div]:gap-4"
+                title="Disabled"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <DropDown
+                        disabled
+                        text="Default"
+                        variant="default"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        disabled
+                        text="Primary"
+                        variant="primary"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        disabled
+                        text="Secondary"
+                        variant="secondary"
+                        position="bottom-end"
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+                <ButtonBox>
+                    <DropDown
+                        disabled
+                        text="Default"
+                        variant="default"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        disabled
+                        text="Primary"
+                        variant="primary"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                    <DropDown
+                        disabled
+                        text="Secondary"
+                        variant="secondary"
+                        position="bottom-end"
+                        icon={{ placement: "left" }}
+                    >
+                        <DropDownChildren />
+                    </DropDown>
+                </ButtonBox>
+            </Collection>
+            <Collection
+                className="[&>div]:flex-col [&>div]:gap-4"
                 title="Vibrant"
                 typography={{ variant: "h2", className: "text-lg" }}
             >

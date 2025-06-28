@@ -93,6 +93,7 @@ export const Checkbox: FC<CheckboxProps> = ({
                 ref={buttonReference}
                 className="hidden [&>div]:rounded-xl"
                 variant={variant}
+                disabled={props.disabled}
                 icon={{
                     width: 16,
                     height: 16,

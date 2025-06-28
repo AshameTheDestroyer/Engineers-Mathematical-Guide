@@ -15,10 +15,15 @@ import error_icon from "@icons/error.svg";
 import success_icon from "@icons/success.svg";
 import warning_icon from "@icons/warning.svg";
 import information_icon from "@icons/information.svg";
+import network_error_icon from "@icons/network_error.svg";
 
 export const IconButtonCollection: FC = () => {
     const cogIcon: IconButtonProps["icon"] = {
         source: cog_icon,
+    };
+
+    const networkErrorIcon: IconButtonProps["icon"] = {
+        source: network_error_icon,
     };
 
     const userIcon: IconButtonProps["icon"] = {
@@ -44,6 +49,28 @@ export const IconButtonCollection: FC = () => {
                     <IconButton variant="default" icon={cogIcon} />
                     <IconButton variant="primary" icon={cogIcon} />
                     <IconButton variant="secondary" icon={cogIcon} />
+                </ButtonBox>
+            </Collection>
+            <Collection
+                title="Disabled"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <IconButton
+                        disabled
+                        variant="default"
+                        icon={networkErrorIcon}
+                    />
+                    <IconButton
+                        disabled
+                        variant="primary"
+                        icon={networkErrorIcon}
+                    />
+                    <IconButton
+                        disabled
+                        variant="secondary"
+                        icon={networkErrorIcon}
+                    />
                 </ButtonBox>
             </Collection>
             <Collection

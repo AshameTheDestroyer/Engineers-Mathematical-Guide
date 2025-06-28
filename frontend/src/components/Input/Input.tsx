@@ -87,6 +87,7 @@ export const Input: FC<InputProps> = ({
                 direction == "ltr"
                     ? "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:right-auto"
                     : "[&>input:is(:focus-within,:not(:placeholder-shown))+label]:left-auto",
+                props.disabled && "grayscale-50 opacity-75",
                 className
             )}
         >
