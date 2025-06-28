@@ -15,6 +15,12 @@ const LearningTrackPage = LazyImport(
 const LearningTracksPage = LazyImport(
     "./pages/ApplicationPage/pages/LearningTracksPage"
 );
+const MathEquationPage = LazyImport(
+    "./pages/ApplicationPage/pages/MathEquationPage"
+);
+const MathEquationsPage = LazyImport(
+    "./pages/ApplicationPage/pages/MathEquationsPage"
+);
 
 import route_locales from "@localization/application_page_routes.json";
 
@@ -24,6 +30,7 @@ export const APPLICATION_ROUTES = BuildRouter({
         routes: {
             courses: { href: "courses" },
             "learning-tracks": { href: "learning-tracks" },
+            "math-equations": { href: "math-equations" },
             courseID: {
                 isVariable: true,
                 href: "courses/:courseID",
@@ -31,6 +38,10 @@ export const APPLICATION_ROUTES = BuildRouter({
             learningTrackID: {
                 isVariable: true,
                 href: "learning-tracks/:learningTrackID",
+            },
+            mathEquationID: {
+                isVariable: true,
+                href: "math-equations/:mathEquationID",
             },
         },
     },
@@ -86,12 +97,28 @@ export const ApplicationRoute = () => {
                 element={
                     <LazyComponent>
                         <LearningTrackPage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={APPLICATION_ROUTES.base.routes["math-equations"].href}
+                element={
+                    <LazyComponent>
+                        <MathEquationsPage />
                         <Title>
                             {GetLocale(
-                                route_locales["learning-tracks"],
+                                route_locales["math-equations"],
                                 language
                             )}
                         </Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={APPLICATION_ROUTES.base.routes.mathEquationID.href}
+                element={
+                    <LazyComponent>
+                        <MathEquationPage />
                     </LazyComponent>
                 }
             />
