@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { twJoin } from "tailwind-merge";
+import { Link } from "react-router-dom";
 import { Icon } from "@/components/Icon/Icon";
-import { useNavigate } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathEquationLevel } from "@/schemas/MathEquationSchema";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
@@ -17,13 +17,11 @@ const MEDAL_ICONS = {
     intermediate: medal_second_place_icon,
 } satisfies Record<MathEquationLevel, string>;
 
-export type LevelTagProps = ChildlessComponentProps<HTMLButtonElement> & {
+export type LevelTagProps = ChildlessComponentProps<HTMLAnchorElement> & {
     level: MathEquationLevel;
 };
 
 export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
-    const Navigate = useNavigate();
-
     const variantClassName = {
         basic: "hover:bg-material-bronze-normal bg-material-bronze-light active:bg-material-bronze-dark",
         intermediate:
@@ -33,7 +31,7 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
     } satisfies Record<MathEquationLevel, string>;
 
     return (
-        <button
+        <Link
             id={id}
             ref={ref}
             className={twJoin(
@@ -41,15 +39,13 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
                 variantClassName[level],
                 className
             )}
-            onClick={(_e) =>
-                Navigate(
-                    APPLICATION_ROUTES.base.routes["math-equations"].absolute +
-                        "?" +
-                        new URLSearchParams({
-                            query: level,
-                            mode: MathEquationsModeEnum.cards,
-                        })
-                )
+            to={
+                APPLICATION_ROUTES.base.routes["math-equations"].absolute +
+                "?" +
+                new URLSearchParams({
+                    query: level,
+                    mode: MathEquationsModeEnum.cards,
+                })
             }
         >
             <p>{level.toTitleCase()}</p>
@@ -58,6 +54,6 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
                 thickness={2}
                 source={MEDAL_ICONS[level]}
             />
-        </button>
+        </Link>
     );
 };
