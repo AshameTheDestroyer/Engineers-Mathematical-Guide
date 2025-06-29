@@ -6,9 +6,10 @@ import {
 import {
     MathEquationDTO,
     MathEquationSchema,
+    DetailedMathEquationDTO,
 } from "@/schemas/MathEquationSchema";
 
-import math_equations_dummy_data from "@data/math_equations.dummy.json";
+import detailed_math_equations_dummy_data from "@data/detailed_math_equations.dummy.json";
 
 export const GET_MATH_EQUATIONS_KEY = "get-math-equations";
 
@@ -23,8 +24,10 @@ export const useGetMathEquations = <TUsesSuspense extends boolean = false>(
     useSchematicQuery<TUsesSuspense, MathEquationDTO, Array<MathEquationDTO>>({
         schema: MathEquationSchema,
         queryFn: () =>
-            (math_equations_dummy_data as Array<MathEquationDTO>).filter(
-                CreateFilterFunction<MathEquationDTO>(searchQuery, {
+            (
+                detailed_math_equations_dummy_data as Array<DetailedMathEquationDTO>
+            ).filter(
+                CreateFilterFunction<DetailedMathEquationDTO>(searchQuery, {
                     title: (mathEquation, term) =>
                         mathEquation.title.toLowerCase().includes(term),
                     "related-courses": (mathEquation, term) =>

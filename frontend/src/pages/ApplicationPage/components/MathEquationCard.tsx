@@ -3,12 +3,12 @@ import { LevelTag } from "./LevelTag";
 import { twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { MathEquationDTO } from "@/schemas/MathEquationSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type MathEquationCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<

@@ -4,7 +4,8 @@
         "title": "Pythagorean Theorem",
         "equation": "a^2 + b^2 = c^2",
         "description": "Describes the relationship between the sides of a right triangle.",
-
+        "discoverer": "Pythagoras",
+        "related-courses": ["calculus-i", "multivariable-calculus"],
         "level": "basic"
     },
     {
@@ -12,6 +13,8 @@
         "title": "Euler's Identity",
         "equation": "e^{i\\pi} + 1 = 0",
         "description": "Connects five fundamental mathematical constants: e, i, π, 1, and 0.",
+        "discoverer": "Leonhard Euler",
+        "related-courses": ["complex-analysis", "calculus-ii"],
         "level": "intermediate"
     },
     {
@@ -19,6 +22,8 @@
         "title": "The Fundamental Theorem of Calculus",
         "equation": "\\int_a^b f(x) \\, dx = F(b) - F(a)",
         "description": "Links differentiation and integration, two core operations in calculus.",
+        "discoverer": "Isaac Newton and Gottfried Wilhelm Leibniz",
+        "related-courses": ["calculus-i", "calculus-ii"],
         "level": "intermediate"
     },
     {
@@ -26,6 +31,8 @@
         "title": "The Quadratic Formula",
         "equation": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
         "description": "Provides the solutions to any quadratic equation.",
+        "discoverer": "Ancient Babylonians (formalized by Indian mathematicians)",
+        "related-courses": ["calculus-i", "linear-algebra"],
         "level": "basic"
     },
     {
@@ -33,6 +40,11 @@
         "title": "Maxwell's Equations (in Differential Form)",
         "equation": "\\nabla \\cdot \\mathbf{E} = \\frac{\\rho}{\\epsilon_0}, \\quad \\nabla \\cdot \\mathbf{B} = 0, \\quad \\nabla \\times \\mathbf{E} = -\\frac{\\partial \\mathbf{B}}{\\partial t}, \\quad \\nabla \\times \\mathbf{B} = \\mu_0 \\mathbf{J} + \\mu_0 \\epsilon_0 \\frac{\\partial \\mathbf{E}}{\\partial t}",
         "description": "Describes how electric and magnetic fields interact.",
+        "discoverer": "James Clerk Maxwell",
+        "related-courses": [
+            "partial-differential-equations",
+            "multivariable-calculus"
+        ],
         "level": "advanced"
     },
     {
@@ -40,6 +52,8 @@
         "title": "The Normal Distribution (Gaussian Function)",
         "equation": "f(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}",
         "description": "Represents the probability density function of the normal distribution.",
+        "discoverer": "Carl Friedrich Gauss",
+        "related-courses": ["probability-theory", "mathematical-statistics"],
         "level": "intermediate"
     },
     {
@@ -47,6 +61,11 @@
         "title": "The Wave Equation",
         "equation": "\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\nabla^2 u",
         "description": "Describes how waves propagate through space and time.",
+        "discoverer": "Jean le Rond d'Alembert",
+        "related-courses": [
+            "partial-differential-equations",
+            "fourier-analysis"
+        ],
         "level": "advanced"
     },
     {
@@ -54,6 +73,8 @@
         "title": "Bayes' Theorem",
         "equation": "P(A|B) = \\frac{P(B|A) P(A)}{P(B)}",
         "description": "A formula for calculating conditional probabilities.",
+        "discoverer": "Thomas Bayes",
+        "related-courses": ["probability-theory", "mathematical-statistics"],
         "level": "intermediate"
     },
     {
@@ -61,6 +82,11 @@
         "title": "Fourier Transform",
         "equation": "F(\\omega) = \\int_{-\\infty}^{\\infty} f(t) e^{-i\\omega t} dt",
         "description": "Transforms a function of time into a function of frequency.",
+        "discoverer": "Joseph Fourier",
+        "related-courses": [
+            "fourier-analysis",
+            "partial-differential-equations"
+        ],
         "level": "advanced"
     },
     {
@@ -68,6 +94,8 @@
         "title": "Eigenvalue Equation",
         "equation": "A \\mathbf{v} = \\lambda \\mathbf{v}",
         "description": "Defines eigenvalues and eigenvectors of a matrix.",
+        "discoverer": "Leonhard Euler and Joseph-Louis Lagrange",
+        "related-courses": ["linear-algebra", "differential-equations"],
         "level": "intermediate"
     }
 ]
