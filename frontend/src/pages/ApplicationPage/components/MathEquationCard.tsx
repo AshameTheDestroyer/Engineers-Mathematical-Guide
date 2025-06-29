@@ -8,6 +8,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type MathEquationCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
@@ -64,13 +65,25 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
                 </MathExpression>
             )}
             {!isSkeleton && (
-                <Typography variant="h4" className="text-lg font-bold">
-                    {mathEquation.title}
-                </Typography>
+                <Flexbox direction="column" gap="2">
+                    <Typography
+                        variant="h4"
+                        className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-lg font-bold"
+                    >
+                        {mathEquation.title}
+                    </Typography>
+                    <Typography
+                        className="overflow-hidden max-lg:max-h-12"
+                        variant="p"
+                    >
+                        {mathEquation.description}
+                    </Typography>
+                </Flexbox>
             )}
+
             {!isSkeleton && (
                 <LevelTag
-                    className="absolute! pointer-events-none right-4 top-4"
+                    className="absolute! text-md pr-12! pointer-events-none right-4 top-4 [&>.icon]:border-2"
                     level={mathEquation.level}
                 />
             )}
