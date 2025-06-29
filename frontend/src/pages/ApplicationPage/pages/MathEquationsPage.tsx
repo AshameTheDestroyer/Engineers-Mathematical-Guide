@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { twJoin } from "tailwind-merge";
 import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
@@ -80,11 +79,12 @@ export const MathEquationsPage: FC = () => {
                 placeContent="space-between"
                 className="max-sm:flex-wrap"
             >
-                <Typography variant="h1" className="text-2xl font-bold">
-                    Math Equations
-                </Typography>
                 <Flexbox gap="4">
+                    <Typography variant="h1" className="text-2xl font-bold">
+                        Math Equations
+                    </Typography>
                     <IconButton
+                        className="my-auto"
                         icon={{
                             source:
                                 queryParams.mode ==
@@ -108,6 +108,9 @@ export const MathEquationsPage: FC = () => {
                             }))
                         }
                     />
+                </Flexbox>
+
+                {queryParams.mode == MathEquationsModeEnum.cards && (
                     <Input
                         className="max-sm:grow"
                         name="query"
@@ -115,11 +118,8 @@ export const MathEquationsPage: FC = () => {
                         label="Search"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        disabled={
-                            queryParams.mode == MathEquationsModeEnum.parallax
-                        }
                     />
-                </Flexbox>
+                )}
             </Flexbox>
 
             {queryParams.mode == MathEquationsModeEnum.cards ? (
@@ -158,13 +158,7 @@ export const MathEquationsPage: FC = () => {
                     )}
                 </Flexbox>
             ) : (
-                <MathParallaxScene
-                    className={twJoin(
-                        "flex-grow duration-300",
-                        queryParams.mode != MathEquationsModeEnum.parallax &&
-                            "pointer-events-none opacity-0"
-                    )}
-                />
+                <MathParallaxScene className="grow max-lg:h-[calc(100vh-var(--spacing-page)*4)]" />
             )}
         </Flexbox>
     );

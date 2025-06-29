@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathEquationLevel } from "@/schemas/MathEquationSchema";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { MathEquationsModeEnum } from "../pages/MathEquationsPage";
 
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
@@ -44,7 +45,10 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
                 Navigate(
                     APPLICATION_ROUTES.base.routes["math-equations"].absolute +
                         "?" +
-                        new URLSearchParams({ query: level })
+                        new URLSearchParams({
+                            query: level,
+                            mode: MathEquationsModeEnum.cards,
+                        })
                 )
             }
         >
