@@ -20,7 +20,9 @@ export enum ForgotPasswordStepEnum {
 export type ForgotPasswordStep = ExtractEnumValue<ForgotPasswordStepEnum>;
 
 const ForgotPasswordQueryParamSchema = z.object({
-    step: z.nativeEnum(ForgotPasswordStepEnum),
+    step: z
+        .nativeEnum(ForgotPasswordStepEnum)
+        .default(ForgotPasswordStepEnum.codeRequest),
 });
 
 export const ForgotPasswordPage: FC = () => {
