@@ -3,16 +3,19 @@ import { queryClient } from "@/contexts";
 import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
+import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
-import { Typography } from "@/components/Typography/Typography";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import {
     useGetCourses,
     GET_COURSES_KEY,
 } from "@/services/Courses/useGetCourses";
+
+import locales from "@localization/courses_page.json";
 
 export const CoursesQueryParamsSchema = z.object({
     query: z.string().optional().default(""),
@@ -22,6 +25,8 @@ export const CoursesPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
         CoursesQueryParamsSchema
     );
+
+    const { language, GetLocale } = useLocalization();
 
     const [searchQuery, setSearchQuery] = useState(queryParams.query);
     const debouncedSearchQuery = useDebounce(searchQuery);
@@ -56,16 +61,16 @@ export const CoursesPage: FC = () => {
                 placeContent="space-between"
                 className="max-sm:flex-wrap"
             >
-                <Typography variant="h1" className="text-2xl font-bold">
-                    Courses
-                </Typography>
+                <Locale variant="h1" className="text-2xl font-bold">
+                    {locales.title}
+                </Locale>
                 <Input
                     className="max-sm:grow"
                     name="query"
                     type="search"
-                    label="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+                    label={<Locale>{locales.inputs.search.label}</Locale>}
                 />
             </Flexbox>
             <Flexbox className="grow" variant="main">
@@ -74,12 +79,15 @@ export const CoursesPage: FC = () => {
                 ) : isError ? (
                     <SearchResultDisplay
                         className="grow"
-                        title="Error!"
                         iconType="error"
-                        paragraph="An error occurred while fetching courses, try refetching."
+                        title={GetLocale(locales.display.error.title, language)}
+                        paragraph={GetLocale(
+                            locales.display.error.paragraph,
+                            language
+                        )}
                         buttons={
                             <Button onClick={(_e) => refetch()}>
-                                Refetch Courses
+                                <Locale>{locales.display.error.button}</Locale>
                             </Button>
                         }
                     />
@@ -87,11 +95,17 @@ export const CoursesPage: FC = () => {
                     <SearchResultDisplay
                         className="grow"
                         iconType="search-off"
-                        title="No Courses Found"
-                        paragraph={`The term **${debouncedSearchQuery}** was not found, try searching for another thing.`}
+                        title={GetLocale(locales.display.empty.title, language)}
+                        paragraph={GetLocale(
+                            locales.display.empty.paragraph,
+                            language
+                        ).replace(
+                            /\*\*([^\*]+)\*\*/,
+                            `**"${debouncedSearchQuery}"**`
+                        )}
                         buttons={
                             <Button onClick={(_e) => setSearchQuery("")}>
-                                Clear Search
+                                <Locale>{locales.display.empty.button}</Locale>
                             </Button>
                         }
                     />
