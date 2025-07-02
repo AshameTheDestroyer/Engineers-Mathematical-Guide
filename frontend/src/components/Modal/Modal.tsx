@@ -1,8 +1,8 @@
+import { twMerge } from "tailwind-merge";
 import { createPortal } from "react-dom";
-import { twJoin, twMerge } from "tailwind-merge";
-import { IconButton } from "../IconButton/IconButton";
 import { ComponentProps } from "@types_/ComponentProps";
 import { MODAL_CONTAINER_ELEMENT, ROOT_ELEMENT } from "@/index";
+import { IconButton, IconButtonProps } from "../IconButton/IconButton";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
     FC,
@@ -22,12 +22,20 @@ import "./modal.css";
 
 export type ModalProps = {
     isOpen: boolean;
-    hasCloseButton?: boolean;
     animationDuration?: number;
     isBackdropDisabled?: boolean;
     isAnimationDisabled?: boolean;
     setIsOpen: Dispatch<SetStateAction<boolean>>;
-} & ComponentProps<HTMLDivElement> &
+} & Either<
+    {
+        hasCloseButton?: false;
+    },
+    {
+        hasCloseButton: true;
+        closeButtonProps?: Partial<IconButtonProps>;
+    }
+> &
+    ComponentProps<HTMLDivElement> &
     HTMLAttributes<HTMLDivElement>;
 
 export const Modal: FC<ModalProps> = ({
@@ -39,6 +47,7 @@ export const Modal: FC<ModalProps> = ({
     setIsOpen,
     style: _style,
     hasCloseButton,
+    closeButtonProps,
     isBackdropDisabled,
     isAnimationDisabled,
     animationDuration = 400,
@@ -160,20 +169,25 @@ export const Modal: FC<ModalProps> = ({
             >
                 {hasCloseButton && (
                     <IconButton
-                        className={twJoin(
-                            "absolute top-4 z-[1]",
-                            direction == "rtl" ? "left-4" : "right-4"
-                        )}
                         variant="error"
                         thickness="thin"
+                        {...closeButtonProps}
+                        className={twMerge(
+                            "absolute top-4 z-[1]",
+                            direction == "rtl" ? "left-4" : "right-4",
+                            closeButtonProps?.className
+                        )}
                         icon={{
                             width: 20,
                             height: 20,
                             thickness: 2,
                             source: cross_icon,
                             stroke: "currentColor",
+                            ...closeButtonProps?.icon,
                         }}
-                        onClick={(_e) => setIsOpen(false)}
+                        onClick={(e) => (
+                            closeButtonProps?.onClick?.(e), setIsOpen(false)
+                        )}
                     />
                 )}
                 {children}
