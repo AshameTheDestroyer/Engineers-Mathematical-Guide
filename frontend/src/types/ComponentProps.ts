@@ -1,12 +1,12 @@
 import React, { PropsWithChildren, Ref } from "react";
 
-export type ChildlessComponentProps<TRef> = {
+export type ChildlessComponentProps<TRef = undefined> = {
     id?: string;
     className?: string;
     ref?: TRef extends undefined ? undefined : Ref<TRef>;
 };
 
-export type ComponentProps<TRef> = PropsWithChildren<
+export type ComponentProps<TRef = undefined> = PropsWithChildren<
     ChildlessComponentProps<TRef>
 >;
 
