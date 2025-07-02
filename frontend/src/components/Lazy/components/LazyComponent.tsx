@@ -22,7 +22,7 @@ export const LazyComponent: FC<LazyComponentProps> = ({
     return (
         <Lazy
             errorFallback={({ error, resetErrorBoundary }) => (
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-6">
                     <Locale className="font-bold" variant="h4">
                         {locales.error}
                     </Locale>
