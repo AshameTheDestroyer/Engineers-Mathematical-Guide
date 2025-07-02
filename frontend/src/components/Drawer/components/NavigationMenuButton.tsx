@@ -1,13 +1,14 @@
+import { Drawer } from "../Drawer";
 import { FC, useState } from "react";
-import menu_icon from "@icons/menu.svg";
+import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
+import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     IconButton,
     IconButtonProps,
 } from "@/components/IconButton/IconButton";
-import { Drawer } from "../Drawer";
-import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
-import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import menu_icon from "@icons/menu.svg";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes">;
