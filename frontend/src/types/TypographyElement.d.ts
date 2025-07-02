@@ -15,6 +15,7 @@ type TypographyElement =
     | "sup"
     | "sub"
     | "pre"
+    | "code"
     | "abbr"
     | "cite"
     | "label"
