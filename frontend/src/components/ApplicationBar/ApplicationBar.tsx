@@ -46,23 +46,21 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 );
             }}
         >
-            {!withoutLogo && !withoutBreadcrumbs && (
-                <Flexbox wrap="wrap" gap="4">
-                    {!withoutLogo && <Logo className="h-10 min-w-max" />}
-                    {!withoutBreadcrumbs && (
-                        <Breadcrumbs
-                            className="overflow-hidden [&>*]:flex-wrap"
-                            Renders={(path) =>
-                                path
-                                    ?.replace(/\i{1,3}$/, (item) =>
-                                        item.toUpperCase()
-                                    )
-                                    .toTitleCase()
-                            }
-                        />
-                    )}
-                </Flexbox>
-            )}
+            <Flexbox wrap="wrap" gap="4">
+                {!withoutLogo && <Logo className="h-10 min-w-max" />}
+                {!withoutBreadcrumbs && (
+                    <Breadcrumbs
+                        className="overflow-hidden [&>*]:flex-wrap"
+                        Renders={(path) =>
+                            path
+                                ?.replace(/\i{1,3}$/, (item) =>
+                                    item.toUpperCase()
+                                )
+                                .toTitleCase()
+                        }
+                    />
+                )}
+            </Flexbox>
             {children}
             <ButtonBox className="min-h-10 min-w-20 flex-wrap-reverse place-items-center [&>*]:grow">
                 {buttons != null && (
