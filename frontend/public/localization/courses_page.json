@@ -40,5 +40,15 @@
                 "ar": "مَسحُ الاستِعلام"
             }
         }
+    },
+    "card": {
+        "enrollment": {
+            "en": "Enrolled Students",
+            "ar": "الطَّلبةُ المُسَجِّلون"
+        },
+        "reviews": {
+            "en": "Reviews",
+            "ar": "مُراجعة"
+        }
     }
 }

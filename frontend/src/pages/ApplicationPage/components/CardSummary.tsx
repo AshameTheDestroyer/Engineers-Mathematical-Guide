@@ -6,6 +6,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { GenerateTextShadow } from "@/functions/GenerateTextShadow";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import user_icon from "@icons/user.svg";
 
@@ -14,6 +15,7 @@ export type CardSummaryProps = {
     rating: number;
     ratingCount: number;
     registerCount: number;
+    reviewsParagraph: string;
     registerParagraph: string;
 } & ChildlessComponentProps<HTMLDivElement>;
 
@@ -25,8 +27,11 @@ export const CardSummary: FC<CardSummaryProps> = ({
     className,
     ratingCount,
     registerCount,
+    reviewsParagraph,
     registerParagraph,
 }) => {
+    const { language } = useLocalization();
+
     return (
         <Flexbox
             id={id}
@@ -44,7 +49,7 @@ export const CardSummary: FC<CardSummaryProps> = ({
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap"
                     variant="p"
                 >
-                    {Intl.NumberFormat("en-US", {
+                    {Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
                         notation: "compact",
                         compactDisplay: "short",
                         maximumFractionDigits: 1,
@@ -72,11 +77,12 @@ export const CardSummary: FC<CardSummaryProps> = ({
                     className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap"
                     variant="p"
                 >
-                    {Intl.NumberFormat("en-US", {
+                    {Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
                         notation: "compact",
                         compactDisplay: "short",
                         maximumFractionDigits: 1,
-                    }).format(ratingCount) + " Reviews"}
+                    }).format(ratingCount)}{" "}
+                    {reviewsParagraph}
                 </Typography>
             </Flexbox>
             <Typography

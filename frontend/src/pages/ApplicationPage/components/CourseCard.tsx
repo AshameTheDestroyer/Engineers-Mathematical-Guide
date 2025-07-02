@@ -1,13 +1,16 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { CardSummary } from "./CardSummary";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
-import { CardSummary } from "./CardSummary";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import locales from "@localization/courses_page.json";
 
 export type CourseCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
@@ -30,6 +33,8 @@ export const CourseCard: FC<CourseCardProps> = ({
 }) => {
     const shadow = useShadow();
     const Navigate = useNavigate();
+
+    const { GetLocale, language } = useLocalization();
 
     return (
         <button
@@ -62,8 +67,15 @@ export const CourseCard: FC<CourseCardProps> = ({
                         title={course.title}
                         rating={course.rating}
                         ratingCount={course["rating-count"]}
-                        registerParagraph="Enrolled Students"
                         registerCount={course["enrollment-count"]}
+                        registerParagraph={GetLocale(
+                            locales.card.enrollment,
+                            language
+                        )}
+                        reviewsParagraph={GetLocale(
+                            locales.card.reviews,
+                            language
+                        )}
                     />
                 )}
                 {!isSkeleton && course.image != null && (
