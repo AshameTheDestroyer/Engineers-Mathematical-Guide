@@ -51,7 +51,9 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 {!withoutBreadcrumbs && (
                     <Breadcrumbs
                         className="overflow-hidden [&>*]:flex-wrap"
-                        Renders={(path) => path?.toTitleCase("ii", "iii", "ai")}
+                        Renders={(path) =>
+                            path?.toTitleCase("i", "ii", "iii", "ai")
+                        }
                     />
                 )}
             </Flexbox>
