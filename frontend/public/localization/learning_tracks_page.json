@@ -1,0 +1,44 @@
+{
+    "title": {
+        "en": "Learning Tracks",
+        "ar": "المَساراتُ الدِّراسيّة"
+    },
+    "inputs": {
+        "search": {
+            "label": {
+                "en": "Search",
+                "ar": "ابحَثْ"
+            }
+        }
+    },
+    "display": {
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching learning tracks, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المَساراتُ الدِّراسيّة، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Reset Error",
+                "ar": "إعادةُ جَلبِ المَساراتُ الدِّراسيّة"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Learning Tracks Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مَسارٍ دِراسيّ"
+            },
+            "paragraph": {
+                "en": "The term **term** was not found, try searching for another thing.",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مَسارٍ دِراسيٍّ يَتعلَّقُ بِالاستِعلامِ **الاستعلام** المُدخَلِ، يُرجى البَحثُ عَنْ شَيءٍ آخَر."
+            },
+            "button": {
+                "en": "Clear Search",
+                "ar": "مَسحُ الاستِعلام"
+            }
+        }
+    }
+}
