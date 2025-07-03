@@ -40,5 +40,25 @@
                 "ar": "مَسحُ الاستِعلام"
             }
         }
+    },
+    "card": {
+        "specialization": {
+            "en": "Specialized Students",
+            "ar": "طالِبٍ مُخْتَصّ"
+        },
+        "reviews": {
+            "en": "Reviews",
+            "ar": "مُراجعة"
+        },
+        "buttons": {
+            "discover": {
+                "en": "Discover Specialization",
+                "ar": "استَكشِفْ الاخْتِصاص"
+            }
+        },
+        "courses": {
+            "en": "Courses",
+            "ar": "مُقرَّرات"
+        }
     }
 }
