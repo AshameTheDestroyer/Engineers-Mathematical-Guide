@@ -132,7 +132,11 @@ export const CoursePage: FC = () => {
                         <Locale className="text-lg font-bold" variant="h2">
                             {locales.profile.introduction}
                         </Locale>
-                        <Typography variant="p">
+                        <Typography
+                            className={direction == "rtl" ? "text-end" : ""}
+                            variant="p"
+                            dir="ltr"
+                        >
                             {course.description}
                         </Typography>
                     </Flexbox>
@@ -140,7 +144,11 @@ export const CoursePage: FC = () => {
                         <Locale className="text-lg font-bold" variant="h2">
                             {locales.profile.description}
                         </Locale>
-                        <Typography className="text-justify" variant="p">
+                        <Typography
+                            className="text-justify"
+                            dir="ltr"
+                            variant="p"
+                        >
                             {course["detailed-description"]}
                         </Typography>
                     </Flexbox>

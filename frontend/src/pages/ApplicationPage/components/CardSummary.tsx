@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Rating } from "@/components/Rating/Rating";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
@@ -30,7 +30,7 @@ export const CardSummary: FC<CardSummaryProps> = ({
     reviewsParagraph,
     registerParagraph,
 }) => {
-    const { language } = useLocalization();
+    const { language, direction } = useLocalization();
 
     return (
         <Flexbox
@@ -86,7 +86,11 @@ export const CardSummary: FC<CardSummaryProps> = ({
                 </Typography>
             </Flexbox>
             <Typography
-                className="w-full overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xl font-bold"
+                className={twJoin(
+                    direction == "rtl" && "text-end",
+                    "w-full overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-xl font-bold"
+                )}
+                dir="ltr"
                 variant="figcaption"
             >
                 {title}

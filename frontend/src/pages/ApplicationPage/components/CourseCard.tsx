@@ -59,7 +59,9 @@ export const CourseCard: FC<CourseCardProps> = ({
             }
         >
             {!isSkeleton && (
-                <Typography variant="p">{course.description}</Typography>
+                <Typography variant="p" dir="ltr">
+                    {course.description}
+                </Typography>
             )}
             <figure className="absolute inset-0 z-[-1]">
                 {!isSkeleton && (
