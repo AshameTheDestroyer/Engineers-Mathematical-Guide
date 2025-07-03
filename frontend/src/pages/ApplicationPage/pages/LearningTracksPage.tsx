@@ -81,7 +81,7 @@ export const LearningTracksPage: FC = () => {
                 ) : learningTracks.length == 0 ? (
                     <SearchResultDisplay
                         className="grow"
-                        iconType="search-off"
+                        iconType="empty"
                         title="No Courses Found"
                         paragraph={`The term **${debouncedSearchQuery}** was not found, try searching for another thing.`}
                         buttons={

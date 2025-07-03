@@ -94,7 +94,7 @@ export const CoursesPage: FC = () => {
                 ) : courses.length == 0 ? (
                     <SearchResultDisplay
                         className="grow"
-                        iconType="search-off"
+                        iconType="empty"
                         title={GetLocale(locales.display.empty.title, language)}
                         paragraph={GetLocale(
                             locales.display.empty.paragraph,

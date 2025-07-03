@@ -11,18 +11,19 @@ export type RelatedCoursesDisplayProps = QueryProps<
     Array<CourseDTO> | undefined
 > & {
     skeletonArray: Array<Partial<CourseDTO>>;
-} & Record<
-        "errorDisplay" | "searchOffDisplay",
-        Pick<SearchResultDisplayProps, "title" | "paragraph">
-    >;
+    emptyDisplay: Pick<SearchResultDisplayProps, "title" | "paragraph">;
+    errorDisplay: Pick<SearchResultDisplayProps, "title" | "paragraph"> & {
+        button: string;
+    };
+};
 
 export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
     isError,
     isLoading,
     isSuccess,
     errorDisplay,
+    emptyDisplay,
     skeletonArray,
-    searchOffDisplay,
     refetch: Refetch,
     data: relatedCourses,
 }) => {
@@ -37,7 +38,9 @@ export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
                 {...errorDisplay}
                 iconType="error"
                 buttons={
-                    <Button onClick={(_e) => Refetch()}>Refetch Courses</Button>
+                    <Button onClick={(_e) => Refetch()}>
+                        {errorDisplay.button}
+                    </Button>
                 }
             />
         );
@@ -48,7 +51,7 @@ export const RelatedCoursesDisplay: FC<RelatedCoursesDisplayProps> = ({
             <SearchResultDisplay
                 className="place-items-start! [&>h2.typography]:text-lg [&>h2.typography]:font-normal"
                 iconType="none"
-                {...searchOffDisplay}
+                {...emptyDisplay}
             />
         );
     }

@@ -73,7 +73,7 @@ export const MathEquationPage: FC = () => {
                             paragraph:
                                 "An unexpected error occurred, try refetching.",
                         }}
-                        searchOffDisplay={{
+                        emptyDisplay={{
                             title: "There Are None",
                             paragraph: `The math equation **${mathEquation.title}** has no related courses from what we offer.`,
                         }}
