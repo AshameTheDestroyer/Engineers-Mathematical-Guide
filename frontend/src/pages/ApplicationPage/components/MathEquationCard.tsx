@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { LevelTag } from "./LevelTag";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
@@ -9,6 +9,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export type MathEquationCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
@@ -25,12 +26,14 @@ export type MathEquationCardProps = ChildlessComponentProps<HTMLButtonElement> &
 export const MathEquationCard: FC<MathEquationCardProps> = ({
     id,
     ref,
-    mathEquation,
     className,
     isSkeleton,
+    mathEquation,
 }) => {
     const shadow = useShadow();
     const Navigate = useNavigate();
+
+    const { direction } = useLocalization();
 
     return (
         <button
@@ -67,13 +70,18 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
             {!isSkeleton && (
                 <Flexbox direction="column" gap="2">
                     <Typography
+                        className={twJoin(
+                            direction == "rtl" && "text-end",
+                            "overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-lg font-bold"
+                        )}
+                        dir="ltr"
                         variant="h4"
-                        className="overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-lg font-bold"
                     >
                         {mathEquation.title}
                     </Typography>
                     <Typography
                         className="overflow-hidden max-lg:max-h-12"
+                        dir="ltr"
                         variant="p"
                     >
                         {mathEquation.description}
@@ -83,7 +91,10 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
 
             {!isSkeleton && (
                 <LevelTag
-                    className="absolute! text-md pr-12! pointer-events-none right-4 top-4 [&>.icon]:border-2"
+                    className={twJoin(
+                        direction == "ltr" ? "pr-12! right-4" : "pl-12! left-4",
+                        "absolute! text-md pointer-events-none top-4 [&>.icon]:border-2"
+                    )}
                     level={mathEquation.level}
                 />
             )}

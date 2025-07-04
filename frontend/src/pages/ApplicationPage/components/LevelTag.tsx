@@ -2,14 +2,18 @@ import { FC } from "react";
 import { twJoin } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { Icon } from "@/components/Icon/Icon";
+import { Locale } from "@/components/Locale/Locale";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathEquationLevel } from "@/schemas/MathEquationSchema";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { MathEquationsModeEnum } from "../pages/MathEquationsPage";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
 import medal_second_place_icon from "@icons/medal_second_place.svg";
+
+import locales from "@localization/math_equations_page.json";
 
 const MEDAL_ICONS = {
     basic: medal_third_place_icon,
@@ -22,6 +26,8 @@ export type LevelTagProps = ChildlessComponentProps<HTMLAnchorElement> & {
 };
 
 export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
+    const { direction } = useLocalization();
+
     const variantClassName = {
         basic: "hover:bg-material-bronze-normal bg-material-bronze-light active:bg-material-bronze-dark",
         intermediate:
@@ -35,7 +41,8 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
             id={id}
             ref={ref}
             className={twJoin(
-                "relative flex cursor-pointer gap-2 rounded-full py-2 pl-4 pr-14 text-lg font-bold text-black duration-200",
+                direction == "ltr" ? "pl-4 pr-14" : "pl-14 pr-4",
+                "relative flex cursor-pointer gap-2 rounded-full py-2 text-lg font-bold text-black duration-200",
                 variantClassName[level],
                 className
             )}
@@ -48,9 +55,14 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
                 })
             }
         >
-            <p>{level.toTitleCase()}</p>
+            <Locale variant="p">{locales.card["level-tag"][level]}</Locale>
             <Icon
-                className="border-3 absolute bottom-2 right-4 top-2 aspect-square translate-x-1 overflow-hidden rounded-full [&>svg]:h-full [&>svg]:w-full [&>svg]:translate-y-[-2px]"
+                className={twJoin(
+                    direction == "ltr"
+                        ? "right-4 translate-x-1"
+                        : "left-4 -translate-x-1",
+                    "border-3 absolute bottom-2 top-2 aspect-square overflow-hidden rounded-full [&>svg]:h-full [&>svg]:w-full [&>svg]:translate-y-[-2px]"
+                )}
                 thickness={2}
                 source={MEDAL_ICONS[level]}
             />

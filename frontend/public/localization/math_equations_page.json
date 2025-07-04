@@ -40,5 +40,21 @@
                 "ar": "مَسحُ الاستِعلام"
             }
         }
+    },
+    "card": {
+        "level-tag": {
+            "basic": {
+                "en": "Basic",
+                "ar": "أساسيّ"
+            },
+            "intermediate": {
+                "en": "Intermediate",
+                "ar": "مُتَوسِّط"
+            },
+            "advanced": {
+                "en": "Advanced",
+                "ar": "مُتَقدِّم"
+            }
+        }
     }
 }
