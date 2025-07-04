@@ -4,12 +4,13 @@ import { FC, useEffect, useState } from "react";
 import { Input } from "@/components/Input/Input";
 import { useDebounce } from "@/hooks/useDebounce";
 import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { IconButton } from "@/components/IconButton/IconButton";
-import { Typography } from "@/components/Typography/Typography";
 import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { MathEquationsDisplay } from "../components/MathEquationsDisplay";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import {
     useGetMathEquations,
@@ -18,6 +19,8 @@ import {
 
 import function_icon from "@icons/function.svg";
 import card_view_icon from "@icons/card_view.svg";
+
+import locales from "@localization/math_equations_page.json";
 
 export enum MathEquationsModeEnum {
     cards = "cards",
@@ -38,6 +41,8 @@ export const MathEquationsPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
         MathEquationsQueryParamsSchema
     );
+
+    const { language, GetLocale } = useLocalization();
 
     const [searchQuery, setSearchQuery] = useState(queryParams.query);
     const debouncedSearchQuery = useDebounce(searchQuery);
@@ -80,9 +85,9 @@ export const MathEquationsPage: FC = () => {
                 className="max-sm:flex-wrap"
             >
                 <Flexbox gap="4">
-                    <Typography variant="h1" className="text-2xl font-bold">
-                        Math Equations
-                    </Typography>
+                    <Locale variant="h1" className="text-2xl font-bold">
+                        {locales.title}
+                    </Locale>
                     <IconButton
                         className="my-auto"
                         icon={{
@@ -115,9 +120,9 @@ export const MathEquationsPage: FC = () => {
                         className="max-sm:grow"
                         name="query"
                         type="search"
-                        label="Search"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
+                        label={<Locale>{locales.inputs.search.label}</Locale>}
                     />
                 )}
             </Flexbox>
@@ -132,12 +137,20 @@ export const MathEquationsPage: FC = () => {
                     ) : isError ? (
                         <SearchResultDisplay
                             className="grow"
-                            title="Error!"
                             iconType="error"
-                            paragraph="An error occurred while fetching math equations, try refetching."
+                            title={GetLocale(
+                                locales.display.error.title,
+                                language
+                            )}
+                            paragraph={GetLocale(
+                                locales.display.error.paragraph,
+                                language
+                            )}
                             buttons={
                                 <Button onClick={(_e) => refetch()}>
-                                    Refetch Math Equations
+                                    <Locale>
+                                        {locales.display.error.button}
+                                    </Locale>
                                 </Button>
                             }
                         />
@@ -145,11 +158,22 @@ export const MathEquationsPage: FC = () => {
                         <SearchResultDisplay
                             className="grow"
                             iconType="empty"
-                            title="No Courses Found"
-                            paragraph={`The term **${debouncedSearchQuery}** was not found, try searching for another thing.`}
+                            title={GetLocale(
+                                locales.display.empty.title,
+                                language
+                            )}
+                            paragraph={GetLocale(
+                                locales.display.empty.paragraph,
+                                language
+                            ).replace(
+                                /\*\*([^\*]+)\*\*/,
+                                `**"${debouncedSearchQuery}"**`
+                            )}
                             buttons={
                                 <Button onClick={(_e) => setSearchQuery("")}>
-                                    Clear Search
+                                    <Locale>
+                                        {locales.display.empty.button}
+                                    </Locale>
                                 </Button>
                             }
                         />
