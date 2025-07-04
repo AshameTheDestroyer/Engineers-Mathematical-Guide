@@ -21,6 +21,7 @@ export const ApplicationPage: FC = () => {
         <Page>
             <ApplicationBar
                 routeLocales={route_locales}
+                baseRoute={APPLICATION_ROUTES.base.absolute}
                 routes={Object.omit(
                     APPLICATION_ROUTES.base.routes,
                     "courseID",

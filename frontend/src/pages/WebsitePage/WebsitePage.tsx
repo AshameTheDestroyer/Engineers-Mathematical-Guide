@@ -23,6 +23,7 @@ export const WebsitePage: FC = () => {
             <ApplicationBar
                 routeLocales={route_locales}
                 routes={WEBSITE_ROUTES.base.routes}
+                baseRoute={WEBSITE_ROUTES.base.absolute}
                 buttons={
                     <>
                         <Button

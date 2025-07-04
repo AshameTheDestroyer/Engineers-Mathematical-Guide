@@ -1,32 +1,59 @@
-import { FC } from "react";
-import { Link } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
+import { FC, PropsWithChildren } from "react";
+import { twJoin, twMerge } from "tailwind-merge";
+import { Link, useLocation } from "react-router-dom";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type NavigationBarProps = ChildlessComponentProps<HTMLDivElement> & {
+    base: string;
     routes: Array<Anchor>;
     direction: "column" | "row";
+    Renders?: (
+        route: Anchor & { selected: boolean },
+        i: number,
+        array: Array<Anchor & { selected: boolean }>
+    ) => PropsWithChildren["children"];
 };
 
 export const NavigationBar: FC<NavigationBarProps> = ({
     id,
     ref,
+    base,
     routes,
+    Renders,
     className,
     direction,
 }) => {
+    const { pathname } = useLocation();
+
+    if (base == null) {
+        return <></>;
+    }
+
+    const RenderedRouters = routes
+        .map((route) => ({
+            ...route,
+            selected: pathname.startsWith(
+                (base + (base.endsWith("/") ? "" : "/") + route.href).replace(
+                    /\/$/,
+                    ""
+                )
+            ),
+        }))
+        .map(Renders ?? (() => undefined));
+
     return (
         <nav id={id} ref={ref} className={twMerge("flex", className)}>
             <ul
-                className={twMerge(
-                    "flex flex-wrap place-content-around gap-6",
-                    direction == "column" ? "flex-col" : "",
-                    className
+                className={twJoin(
+                    direction == "column" && "flex-col",
+                    "flex flex-wrap place-content-around gap-6"
                 )}
             >
-                {routes.map((link, i) => (
+                {routes.map((route, i) => (
                     <li key={i}>
-                        <Link to={link.href}>{link.title}</Link>
+                        {RenderedRouters[i] ?? (
+                            <Link to={route.href}>{route.title}</Link>
+                        )}
                     </li>
                 ))}
             </ul>

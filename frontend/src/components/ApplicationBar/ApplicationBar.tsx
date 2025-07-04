@@ -13,6 +13,7 @@ import { NavigationMenuButton } from "@/components/Drawer/components/NavigationM
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 export type ApplicationBarProps = ComponentProps<HTMLDivElement> & {
+    baseRoute: string;
     withoutLogo?: boolean;
     withoutBreadcrumbs?: boolean;
     routes: Record<string, Anchor>;
@@ -26,6 +27,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     routes,
     buttons,
     children,
+    baseRoute,
     className,
     withoutLogo,
     routeLocales,
@@ -72,6 +74,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                     />
                     <NavigationMenuButton
                         thickness="thin"
+                        base={baseRoute}
                         routes={GetRouteLocales(routes, routeLocales, language)}
                     />
                 </ButtonBox>

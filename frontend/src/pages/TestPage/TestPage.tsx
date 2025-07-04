@@ -21,10 +21,13 @@ export const TestPage: FC = () => {
 
     return (
         <Page>
-            <ApplicationBar
-                routes={TEST_ROUTES.base.routes}
-                routeLocales={route_locales}
-            />
+            {TEST_ROUTES.base.absolute != null && (
+                <ApplicationBar
+                    routeLocales={route_locales}
+                    routes={TEST_ROUTES.base.routes}
+                    baseRoute={TEST_ROUTES.base.absolute}
+                />
+            )}
             <Outlet />
         </Page>
     );
