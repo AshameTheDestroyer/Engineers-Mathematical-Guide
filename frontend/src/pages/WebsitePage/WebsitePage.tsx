@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Page } from "@components/Page/Page";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
-import { MainContent } from "./components/MainContent";
+import { WebsiteMainContent } from "./components/WebsiteMainContent";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
@@ -54,7 +54,7 @@ export const WebsitePage: FC = () => {
                     </>
                 }
             />
-            <MainContent />
+            <WebsiteMainContent />
             <MathParallaxScene className="-z-2 fixed inset-0" />
         </Page>
     );

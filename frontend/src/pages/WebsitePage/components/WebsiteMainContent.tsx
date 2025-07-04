@@ -14,7 +14,7 @@ import arrow_icon from "@icons/arrow.svg";
 
 import locales from "@localization/website_page.json";
 
-export const MainContent: FC = () => {
+export const WebsiteMainContent: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
