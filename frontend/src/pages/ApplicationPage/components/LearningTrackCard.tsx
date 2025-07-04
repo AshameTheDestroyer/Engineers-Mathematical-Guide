@@ -1,5 +1,5 @@
 import React from "react";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { CardSummary } from "./CardSummary";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,10 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import locales from "@localization/learning_tracks_page.json";
+import { Locale } from "@/components/Locale/Locale";
 
 export type LearningTrackCardProps =
     ChildlessComponentProps<HTMLButtonElement> &
@@ -33,6 +37,8 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
 }) => {
     const shadow = useShadow();
     const Navigate = useNavigate();
+
+    const { GetLocale, language, direction } = useLocalization();
 
     return (
         <Flexbox
@@ -73,18 +79,27 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                         )}
                         variant="p"
                     >
-                        <span className="bg-secondary-light-active text-secondary-normal border-secondary-normal -m-4 mr-0 flex aspect-square h-[calc(var(--spacing)*12)] place-content-center place-items-center rounded-full border-4">
+                        <span
+                            className={twJoin(
+                                direction == "ltr" ? "-ml-4" : "-mr-4",
+                                "bg-secondary-light-active text-secondary-normal border-secondary-normal -my-4 flex aspect-square h-[calc(var(--spacing)*12)] place-content-center place-items-center rounded-full border-4"
+                            )}
+                        >
                             {learningTrack?.["courses-count"]}
                         </span>{" "}
-                        Courses
+                        <Locale>{locales.card.courses}</Locale>
                     </Typography>
                     {!isSkeleton && (
-                        <Typography className="lg:hidden" variant="p">
+                        <Typography className="lg:hidden" variant="p" dir="ltr">
                             {learningTrack.description}
                         </Typography>
                     )}
                     {!isSkeleton && (
-                        <Typography className="max-lg:hidden" variant="p">
+                        <Typography
+                            className="text-justify max-lg:hidden"
+                            dir="ltr"
+                            variant="p"
+                        >
                             {learningTrack["detailed-description"]}
                         </Typography>
                     )}
@@ -98,12 +113,24 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                     direction="column"
                 >
                     <CardSummary
-                        className="static max-lg:grow lg:place-items-end max-lg:[&>.typography:last-child]:flex max-lg:[&>.typography:last-child]:flex-col max-lg:[&>.typography:last-child]:place-content-end max-lg:[&>.typography]:grow max-lg:[&_.typography:last-child]:whitespace-normal lg:[&_.typography:last-child]:text-right"
+                        className={twJoin(
+                            direction == "ltr"
+                                ? "lg:place-items-end"
+                                : "lg:place-items-start",
+                            "static max-lg:grow max-lg:[&>.typography:last-child]:flex max-lg:[&>.typography:last-child]:flex-col max-lg:[&>.typography:last-child]:place-content-end max-lg:[&>.typography]:grow max-lg:[&_.typography:last-child]:whitespace-normal lg:[&_.typography:last-child]:text-right"
+                        )}
                         title={learningTrack.title}
                         rating={learningTrack.rating}
-                        registerParagraph="Specialized Students"
                         ratingCount={learningTrack["rating-count"]}
                         registerCount={learningTrack["specialized-count"]}
+                        registerParagraph={GetLocale(
+                            locales.card.specialization,
+                            language
+                        )}
+                        reviewsParagraph={GetLocale(
+                            locales.card.reviews,
+                            language
+                        )}
                     />
                     <Button
                         variant="primary"
@@ -115,7 +142,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                             )
                         }
                     >
-                        Discover Specialization
+                        <Locale>{locales.card.buttons.discover}</Locale>
                     </Button>
                 </Flexbox>
             )}

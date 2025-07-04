@@ -2,6 +2,7 @@ import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { useColour } from "@/hooks/useColour";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -9,7 +10,6 @@ import user_icon from "@icons/user.svg";
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
 import medal_second_place_icon from "@icons/medal_second_place.svg";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 const MEDAL_ICONS = [
     medal_first_place_icon,

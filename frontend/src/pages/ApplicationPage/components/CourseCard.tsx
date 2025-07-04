@@ -1,13 +1,16 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { CardSummary } from "./CardSummary";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
-import { CardSummary } from "./CardSummary";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import locales from "@localization/courses_page.json";
 
 export type CourseCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
@@ -31,13 +34,15 @@ export const CourseCard: FC<CourseCardProps> = ({
     const shadow = useShadow();
     const Navigate = useNavigate();
 
+    const { GetLocale, language } = useLocalization();
+
     return (
         <button
             id={id}
             ref={ref}
             className={twMerge(
                 isSkeleton && "animate-pulse",
-                "bg-background-normal relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(hover,:focus-within)]:scale-105 [&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
+                "bg-background-normal relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105 [&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
             role="region"
@@ -54,7 +59,9 @@ export const CourseCard: FC<CourseCardProps> = ({
             }
         >
             {!isSkeleton && (
-                <Typography variant="p">{course.description}</Typography>
+                <Typography variant="p" dir="ltr">
+                    {course.description}
+                </Typography>
             )}
             <figure className="absolute inset-0 z-[-1]">
                 {!isSkeleton && (
@@ -62,8 +69,15 @@ export const CourseCard: FC<CourseCardProps> = ({
                         title={course.title}
                         rating={course.rating}
                         ratingCount={course["rating-count"]}
-                        registerParagraph="Enrolled Students"
                         registerCount={course["enrollment-count"]}
+                        registerParagraph={GetLocale(
+                            locales.card.enrollment,
+                            language
+                        )}
+                        reviewsParagraph={GetLocale(
+                            locales.card.reviews,
+                            language
+                        )}
                     />
                 )}
                 {!isSkeleton && course.image != null && (

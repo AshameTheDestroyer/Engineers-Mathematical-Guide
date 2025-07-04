@@ -6,6 +6,8 @@ import { Header } from "@components/Header/Header";
 import { ComponentProps } from "@/types/ComponentProps";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
+import { JumpToTopButton } from "../JumpToTopButton/JumpToTopButton";
+import { useScreenSize } from "../ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -29,6 +31,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     routeLocales,
     withoutBreadcrumbs,
 }) => {
+    const { isScreenSize } = useScreenSize();
     const { GetRouteLocales, language } = useLocalization();
 
     return (
@@ -46,23 +49,17 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 );
             }}
         >
-            {!withoutLogo && !withoutBreadcrumbs && (
-                <Flexbox wrap="wrap" gap="4">
-                    {!withoutLogo && <Logo className="h-10 min-w-max" />}
-                    {!withoutBreadcrumbs && (
-                        <Breadcrumbs
-                            className="overflow-hidden [&>*]:flex-wrap"
-                            Renders={(path) =>
-                                path
-                                    ?.replace(/\i{1,3}$/, (item) =>
-                                        item.toUpperCase()
-                                    )
-                                    .toTitleCase()
-                            }
-                        />
-                    )}
-                </Flexbox>
-            )}
+            <Flexbox wrap="wrap" gap="4">
+                {!withoutLogo && <Logo className="h-10 min-w-max" />}
+                {!withoutBreadcrumbs && (
+                    <Breadcrumbs
+                        className="overflow-hidden [&>*]:flex-wrap"
+                        Renders={(path) =>
+                            path?.toTitleCase("i", "ii", "iii", "ai")
+                        }
+                    />
+                )}
+            </Flexbox>
             {children}
             <ButtonBox className="min-h-10 min-w-20 flex-wrap-reverse place-items-center [&>*]:grow">
                 {buttons != null && (
@@ -79,6 +76,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                     />
                 </ButtonBox>
             </ButtonBox>
+            {isScreenSize["max-lg"] && <JumpToTopButton />}
         </Header>
     );
 };

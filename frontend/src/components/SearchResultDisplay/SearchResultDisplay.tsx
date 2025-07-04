@@ -5,7 +5,7 @@ import { RichText } from "@/components/RichText/RichText";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-import search_off_icon from "@icons/search_off.svg";
+import empty_icon from "@icons/empty.svg";
 import network_error_icon from "@icons/network_error.svg";
 
 export type SearchResultDisplayProps = {
@@ -14,7 +14,7 @@ export type SearchResultDisplayProps = {
     buttons?: PropsWithChildren["children"];
 } & Either<
     {
-        iconType?: "error" | "search-off" | "none";
+        iconType?: "error" | "empty" | "none";
     },
     {
         iconType: "custom";
@@ -49,8 +49,8 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
                     height={128}
                     {...(iconType == "custom" ? iconProps : {})}
                     source={
-                        iconType == "search-off"
-                            ? search_off_icon
+                        iconType == "empty"
+                            ? empty_icon
                             : iconType == "error"
                               ? network_error_icon
                               : iconProps!.source

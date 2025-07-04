@@ -4,6 +4,7 @@ import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
@@ -20,12 +21,14 @@ import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisi
 
 import enrollment_icon from "@icons/enrollment.svg";
 
+import locales from "@localization/courses_page.json";
+
 export const SIMILAR_COURSES_LIMIT = 5;
 export const PREREQUISITE_COURSES_LIMIT = 5;
 export const POSTREQUISITE_COURSES_LIMIT = 5;
 
 export const CoursePage: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, GetLocale, language } = useLocalization();
 
     const { courseID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
@@ -38,6 +41,53 @@ export const CoursePage: FC = () => {
 
     const skeletonArray = new Array(5).fill(null);
 
+    const relatedCourses = [
+        {
+            query: similarCoursesQuery,
+            locales: locales.profile["related-courses"].similar,
+        },
+        {
+            query: prerequisiteCoursesQuery,
+            locales: locales.profile["related-courses"].prerequisites,
+        },
+        {
+            query: postrequisiteCoursesQuery,
+            locales: locales.profile["related-courses"].postrequisites,
+        },
+    ];
+
+    const RenderRelatedCourses = (
+        coursesData: (typeof relatedCourses)[number]
+    ) => {
+        const errorLocales = locales.profile["related-courses-error"];
+        return (
+            <Flexbox className="lg:col-span-2" gap="4" direction="column">
+                <Locale className="text-lg font-bold" variant="h2">
+                    {coursesData.locales.title}
+                </Locale>
+                <RelatedCoursesDisplay
+                    {...coursesData.query}
+                    skeletonArray={skeletonArray}
+                    errorDisplay={{
+                        title: GetLocale(errorLocales.title, language),
+                        button: GetLocale(errorLocales.button, language),
+                        paragraph: GetLocale(errorLocales.paragraph, language),
+                    }}
+                    emptyDisplay={{
+                        title: GetLocale(
+                            coursesData.locales.empty.title,
+                            language
+                        ),
+                        paragraph: GetLocale(
+                            coursesData.locales.empty.paragraph,
+                            language
+                        ).replace(/\*\*([^\*]+)\*\*/, `**"${course.title}"**`),
+                    }}
+                />
+            </Flexbox>
+        );
+    };
+
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <Title>{course.title}</Title>
@@ -47,8 +97,12 @@ export const CoursePage: FC = () => {
                     title={course.title}
                     rating={course.rating}
                     ratingCount={course["rating-count"]}
-                    registerParagraph="Enrolled Students"
                     registerCount={course["enrollment-count"]}
+                    registerParagraph={GetLocale(
+                        locales.card.enrollment,
+                        language
+                    )}
+                    reviewsParagraph={GetLocale(locales.card.reviews, language)}
                 />
                 <Button
                     className={twJoin(
@@ -62,7 +116,7 @@ export const CoursePage: FC = () => {
                         source: enrollment_icon,
                     }}
                 >
-                    Enroll Now
+                    <Locale>{locales.profile.buttons["enroll-now"]}</Locale>
                 </Button>
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
@@ -75,25 +129,33 @@ export const CoursePage: FC = () => {
             <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
                 <Flexbox variant="section" direction="column" gap="8">
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Introduction
-                        </Typography>
-                        <Typography variant="p">
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.introduction}
+                        </Locale>
+                        <Typography
+                            className={direction == "rtl" ? "text-end" : ""}
+                            variant="p"
+                            dir="ltr"
+                        >
                             {course.description}
                         </Typography>
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Description
-                        </Typography>
-                        <Typography className="text-justify" variant="p">
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.description}
+                        </Locale>
+                        <Typography
+                            className="text-justify"
+                            dir="ltr"
+                            variant="p"
+                        >
                             {course["detailed-description"]}
                         </Typography>
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Modules
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.modules}
+                        </Locale>
                         <BorderedList
                             list={course.modules.map((modules) => ({
                                 title: modules,
@@ -106,9 +168,9 @@ export const CoursePage: FC = () => {
                         />
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Tags
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.tags}
+                        </Locale>
                         <Flexbox gap="3" wrap="wrap">
                             {course.tags.map((tag, i) => (
                                 <Link
@@ -132,6 +194,10 @@ export const CoursePage: FC = () => {
                     skeleton={
                         <Top10StudentsDisplay
                             isSkeleton
+                            title={GetLocale(
+                                locales.profile["top-10-students"],
+                                language
+                            )}
                             top-10-students={new Array(10)
                                 .fill(null)
                                 .map(() => ({ username: "", grade: 0 }))}
@@ -140,76 +206,17 @@ export const CoursePage: FC = () => {
                 >
                     <Top10StudentsDisplay
                         top-10-students={course["top-10-students"]}
+                        title={GetLocale(
+                            locales.profile["top-10-students"],
+                            language
+                        )}
                     />
                 </LazyComponent>
 
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
-                    <Flexbox
-                        className="lg:col-span-2"
-                        gap="4"
-                        direction="column"
-                    >
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Courses You Need to Finish First
-                        </Typography>
-                        <RelatedCoursesDisplay
-                            {...prerequisiteCoursesQuery}
-                            skeletonArray={skeletonArray}
-                            errorDisplay={{
-                                title: "Error!",
-                                paragraph:
-                                    "An unexpected error occurred, try refetching.",
-                            }}
-                            searchOffDisplay={{
-                                title: "There Are None",
-                                paragraph: `The course **${course.title}** has no prerequisite courses from what we offer.`,
-                            }}
-                        />
-                    </Flexbox>
-                    <Flexbox
-                        className="lg:col-span-2"
-                        gap="4"
-                        direction="column"
-                    >
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Courses You Unlock When You Finish
-                        </Typography>
-                        <RelatedCoursesDisplay
-                            {...postrequisiteCoursesQuery}
-                            skeletonArray={skeletonArray}
-                            errorDisplay={{
-                                title: "Error!",
-                                paragraph:
-                                    "An unexpected error occurred, try refetching.",
-                            }}
-                            searchOffDisplay={{
-                                title: "There Are None",
-                                paragraph: `The course **${course.title}** has no postrequisite courses from what we offer.`,
-                            }}
-                        />
-                    </Flexbox>
-                    <Flexbox
-                        className="lg:col-span-2"
-                        gap="4"
-                        direction="column"
-                    >
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Similar Courses
-                        </Typography>
-                        <RelatedCoursesDisplay
-                            {...similarCoursesQuery}
-                            skeletonArray={skeletonArray}
-                            errorDisplay={{
-                                title: "Error!",
-                                paragraph:
-                                    "An unexpected error occurred, try refetching.",
-                            }}
-                            searchOffDisplay={{
-                                title: "There Are None",
-                                paragraph: `The course **${course.title}** has no similar courses from what we offer.`,
-                            }}
-                        />
-                    </Flexbox>
+                    {relatedCourses.map((coursesData, i) => (
+                        <RenderRelatedCourses key={i} {...coursesData} />
+                    ))}
                 </Flexbox>
             </main>
         </Flexbox>

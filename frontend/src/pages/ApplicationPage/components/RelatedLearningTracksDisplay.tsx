@@ -11,10 +11,11 @@ export type RelatedLearningTracksDisplayProps = QueryProps<
     Array<LearningTrackDTO> | undefined
 > & {
     skeletonArray: Array<Partial<LearningTrackDTO>>;
-} & Record<
-        "errorDisplay" | "searchOffDisplay",
-        Pick<SearchResultDisplayProps, "title" | "paragraph">
-    >;
+    emptyDisplay: Pick<SearchResultDisplayProps, "title" | "paragraph">;
+    errorDisplay: Pick<SearchResultDisplayProps, "title" | "paragraph"> & {
+        button: string;
+    };
+};
 
 export const RelatedLearningTracksDisplay: FC<
     RelatedLearningTracksDisplayProps
@@ -23,7 +24,7 @@ export const RelatedLearningTracksDisplay: FC<
     isLoading,
     isSuccess,
     errorDisplay,
-    searchOffDisplay,
+    emptyDisplay,
     refetch: Refetch,
     skeletonArray,
     data: relatedLearningTracks,
@@ -42,7 +43,7 @@ export const RelatedLearningTracksDisplay: FC<
                 iconType="error"
                 buttons={
                     <Button onClick={(_e) => Refetch()}>
-                        Refetch Learning Tracks
+                        {errorDisplay.button}
                     </Button>
                 }
             />
@@ -54,7 +55,7 @@ export const RelatedLearningTracksDisplay: FC<
             <SearchResultDisplay
                 className="place-items-start! [&>h2.typography]:text-lg [&>h2.typography]:font-normal"
                 iconType="none"
-                {...searchOffDisplay}
+                {...emptyDisplay}
             />
         );
     }

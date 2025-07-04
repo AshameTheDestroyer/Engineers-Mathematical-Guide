@@ -7,12 +7,13 @@ import { Typography } from "@/components/Typography/Typography";
 
 import students_dummy_data from "@data/students.dummy.json";
 
-export type Top10StudentsDisplayProps = { isSkeleton?: boolean } & Pick<
-    DetailedCourseDTO,
-    "top-10-students"
->;
+export type Top10StudentsDisplayProps = {
+    isSkeleton?: boolean;
+    title: string;
+} & Pick<DetailedCourseDTO, "top-10-students">;
 
 export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
+    title,
     isSkeleton,
     "top-10-students": top10Students,
 }) => {
@@ -38,7 +39,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     return (
         <Flexbox variant="section" direction="column" gap="8">
             <Typography className="text-lg font-bold" variant="h2">
-                Top 10 Students
+                {title}
             </Typography>
             <Flexbox variant="ol" direction="column" gap="4">
                 {students.map((student, i) => (

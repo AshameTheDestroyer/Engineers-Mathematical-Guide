@@ -2,7 +2,8 @@ import { Lazy } from "../Lazy";
 import { FC, PropsWithChildren } from "react";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
-import { Typography } from "@/components/Typography/Typography";
+import { CodeBlock } from "@/components/CodeBlock/CodeBlock";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/lazy.json";
@@ -15,16 +16,23 @@ export const LazyComponent: FC<LazyComponentProps> = ({
     children,
     skeleton,
 }) => {
+    const { isDarkThemed } = useThemeMode();
     const { GetLocale, language } = useLocalization();
 
     return (
         <Lazy
             errorFallback={({ error, resetErrorBoundary }) => (
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-6">
                     <Locale className="font-bold" variant="h4">
                         {locales.error}
                     </Locale>
-                    <Typography variant="p">{`${error}`}</Typography>
+                    <CodeBlock
+                        className="max-w-[calc(100vw-var(--spacing-page)*2)]"
+                        language="json"
+                        theme={isDarkThemed ? "duotoneSea" : "materialLight"}
+                    >
+                        {`${error}`}
+                    </CodeBlock>
                     <Button
                         className="max-w-max place-self-center [&>div]:px-4"
                         onClick={resetErrorBoundary}

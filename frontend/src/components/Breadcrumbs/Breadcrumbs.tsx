@@ -71,7 +71,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
         }
 
         if (i == 0) {
-            return "/";
+            return direction == "ltr" ? "/" : "\\";
         }
 
         return Renders?.(path) ?? path?.toTitleCase();

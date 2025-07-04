@@ -37,6 +37,22 @@ export const ButtonCollection: FC = () => {
                 </ButtonBox>
             </Collection>
             <Collection
+                title="Disabled"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <ButtonBox>
+                    <Button variant="default" disabled>
+                        Default
+                    </Button>
+                    <Button variant="primary" disabled>
+                        Primary
+                    </Button>
+                    <Button variant="secondary" disabled>
+                        Secondary
+                    </Button>
+                </ButtonBox>
+            </Collection>
+            <Collection
                 title="Vibrant"
                 typography={{ variant: "h2", className: "text-lg" }}
             >

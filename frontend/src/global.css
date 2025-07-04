@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
 
@@ -10,8 +11,6 @@
     font-family: "offline-font-ar";
     src: url("offline_font_ar.ttf");
 }
-
-@import "tailwindcss";
 
 :root {
     scroll-behavior: smooth;
@@ -38,6 +37,12 @@ body {
     --text-7xl: 6rem;
     --text-8xl: 7rem;
     --text-9xl: 8rem;
+
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 64rem;
+    --breakpoint-xl: 80rem;
+    --breakpoint-2xl: 96rem;
 
     --spacing-page: 2.5rem;
 
@@ -355,9 +360,7 @@ body.dark-themed {
     --color-tertiary-dark-hover: #0b1525;
     --color-tertiary-dark-active: #07101b;
     --color-tertiary-darker: #060c15;
-}
 
-body.dark-themed {
     --color-background-light: #151b23;
     --color-background-light-hover: #11161d;
     --color-background-light-active: #0d1118;

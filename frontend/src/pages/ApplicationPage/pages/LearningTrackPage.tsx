@@ -4,6 +4,7 @@ import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
 import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
@@ -16,8 +17,10 @@ import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSim
 
 import specialize_icon from "@icons/star.svg";
 
+import locales from "@localization/learning_tracks_page.json";
+
 export const LearningTrackPage: FC = () => {
-    const { direction } = useLocalization();
+    const { direction, language, GetLocale } = useLocalization();
 
     const { learningTrackID } =
         useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
@@ -39,9 +42,13 @@ export const LearningTrackPage: FC = () => {
                     className="[&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]"
                     title={learningTrack.title}
                     rating={learningTrack.rating}
-                    registerParagraph="Specialized Students"
                     ratingCount={learningTrack["rating-count"]}
                     registerCount={learningTrack["specialized-count"]}
+                    reviewsParagraph={GetLocale(locales.card.reviews, language)}
+                    registerParagraph={GetLocale(
+                        locales.card.specialization,
+                        language
+                    )}
                 />
                 <Button
                     className={twJoin(
@@ -55,7 +62,7 @@ export const LearningTrackPage: FC = () => {
                         source: specialize_icon,
                     }}
                 >
-                    Specialize Now
+                    <Locale>{locales.profile.buttons["specialize-now"]}</Locale>
                 </Button>
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
@@ -68,25 +75,25 @@ export const LearningTrackPage: FC = () => {
             <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
                 <Flexbox variant="section" direction="column" gap="8">
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Introduction
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.introduction}
+                        </Locale>
                         <Typography variant="p">
                             {learningTrack.description}
                         </Typography>
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Description
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.description}
+                        </Locale>
                         <Typography className="text-justify" variant="p">
                             {learningTrack["detailed-description"]}
                         </Typography>
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Courses
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.courses}
+                        </Locale>
                         <BorderedList
                             list={learningTrack.courses.map((courseID) => ({
                                 title: courseID.toTitleCase(),
@@ -97,9 +104,9 @@ export const LearningTrackPage: FC = () => {
                         />
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
-                        <Typography className="text-lg font-bold" variant="h2">
-                            Tags
-                        </Typography>
+                        <Locale className="text-lg font-bold" variant="h2">
+                            {locales.profile.tags}
+                        </Locale>
                         <Flexbox gap="3" wrap="wrap">
                             {learningTrack.tags.map((tag, i) => (
                                 <Link
@@ -121,20 +128,43 @@ export const LearningTrackPage: FC = () => {
                 </Flexbox>
 
                 <Flexbox className="lg:col-span-2" gap="4" direction="column">
-                    <Typography className="text-lg font-bold" variant="h2">
-                        Similar Learning Tracks
-                    </Typography>
+                    <Locale className="text-lg font-bold" variant="h2">
+                        {locales.profile["similar-learning-tracks"].title}
+                    </Locale>
                     <RelatedLearningTracksDisplay
                         {...similarLearningTracksQuery}
                         skeletonArray={skeletonArray}
                         errorDisplay={{
-                            title: "Error!",
-                            paragraph:
-                                "An unexpected error occurred, try refetching.",
+                            title: GetLocale(
+                                locales.profile["similar-learning-tracks"].error
+                                    .title,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["similar-learning-tracks"].error
+                                    .paragraph,
+                                language
+                            ),
+                            button: GetLocale(
+                                locales.profile["similar-learning-tracks"].error
+                                    .button,
+                                language
+                            ),
                         }}
-                        searchOffDisplay={{
-                            title: "There Are None",
-                            paragraph: `The course **${learningTrack.title}** has no similar courses from what we offer.`,
+                        emptyDisplay={{
+                            title: GetLocale(
+                                locales.profile["similar-learning-tracks"].empty
+                                    .title,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["similar-learning-tracks"].empty
+                                    .paragraph,
+                                language
+                            ).replace(
+                                /\*\*([^\*]+)\*\*/,
+                                `**"${learningTrack.title}"**`
+                            ),
                         }}
                     />
                 </Flexbox>

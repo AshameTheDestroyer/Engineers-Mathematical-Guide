@@ -64,6 +64,60 @@ export const InputCollection: FC = () => {
             </Collection>
             <Collection
                 className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
+                title="Disabled"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <Input
+                    disabled
+                    type="text"
+                    variant="default"
+                    name="disabled-default"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="primary"
+                    name="disabled-primary"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="secondary"
+                    name="disabled-secondary"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="information"
+                    name="disabled-information"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="warning"
+                    name="disabled-warning"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="success"
+                    name="disabled-success"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="error"
+                    name="disabled-error"
+                />
+                <Input
+                    disabled
+                    type="text"
+                    variant="epic"
+                    name="disabled-epic"
+                />
+            </Collection>
+            <Collection
+                className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
                 title="Password"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
@@ -156,6 +210,60 @@ export const InputCollection: FC = () => {
             </Collection>
             <Collection
                 className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
+                title="Disabled Select"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <Select
+                    disabled
+                    options={[]}
+                    variant="default"
+                    name="disabled-select-default"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="primary"
+                    name="disabled-select-primary"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="secondary"
+                    name="disabled-select-secondary"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="information"
+                    name="disabled-select-information"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="warning"
+                    name="disabled-select-warning"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="success"
+                    name="disabled-select-success"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="error"
+                    name="disabled-select-error"
+                />
+                <Select
+                    disabled
+                    options={[]}
+                    variant="epic"
+                    name="disabled-select-epic"
+                />
+            </Collection>
+            <Collection
+                className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
                 title="Checkbox"
                 typography={{ variant: "h2", className: "text-lg" }}
             >
@@ -167,6 +275,52 @@ export const InputCollection: FC = () => {
                 <Checkbox variant="success" name="checkbox-success" />
                 <Checkbox variant="error" name="checkbox-error" />
                 <Checkbox variant="epic" name="checkbox-epic" />
+            </Collection>
+            <Collection
+                className="flex-1 [&>div>div]:min-w-60 [&>div>div]:flex-1 [&>div]:flex-1 [&>div]:gap-4"
+                title="Disabled Checkbox"
+                typography={{ variant: "h2", className: "text-lg" }}
+            >
+                <Checkbox
+                    disabled
+                    variant="default"
+                    name="disabled-checkbox-default"
+                />
+                <Checkbox
+                    disabled
+                    variant="primary"
+                    name="disabled-checkbox-primary"
+                />
+                <Checkbox
+                    disabled
+                    variant="secondary"
+                    name="disabled-checkbox-secondary"
+                />
+                <Checkbox
+                    disabled
+                    variant="information"
+                    name="disabled-checkbox-information"
+                />
+                <Checkbox
+                    disabled
+                    variant="warning"
+                    name="disabled-checkbox-warning"
+                />
+                <Checkbox
+                    disabled
+                    variant="success"
+                    name="disabled-checkbox-success"
+                />
+                <Checkbox
+                    disabled
+                    variant="error"
+                    name="disabled-checkbox-error"
+                />
+                <Checkbox
+                    disabled
+                    variant="epic"
+                    name="disabled-checkbox-epic"
+                />
             </Collection>
         </Collection>
     );

@@ -11,8 +11,18 @@ import {
     ForgotPasswordStepSchemas,
 } from "@/schemas/ForgotPasswordSchema";
 
+export enum ForgotPasswordStepEnum {
+    codeRequest = "code-request",
+    resetPassword = "reset-password",
+    codeVerification = "code-verification",
+}
+
+export type ForgotPasswordStep = ExtractEnumValue<ForgotPasswordStepEnum>;
+
 const ForgotPasswordQueryParamSchema = z.object({
-    step: z.enum(["code-request", "code-verification", "reset-password"]),
+    step: z
+        .nativeEnum(ForgotPasswordStepEnum)
+        .default(ForgotPasswordStepEnum.codeRequest),
 });
 
 export const ForgotPasswordPage: FC = () => {
@@ -29,25 +39,27 @@ export const ForgotPasswordPage: FC = () => {
 
     useEffect(() => {
         if (queryParams == null) {
-            setQueryParams((_queryParams) => ({ step: "code-request" }));
+            setQueryParams((_queryParams) => ({
+                step: ForgotPasswordStepEnum.codeRequest,
+            }));
             return;
         }
 
         switch (queryParams.step) {
-            case "code-verification":
+            case ForgotPasswordStepEnum.codeVerification:
                 if (data["code-request"] == null) {
                     setQueryParams((_queryParams) => ({
-                        step: "code-request",
+                        step: ForgotPasswordStepEnum.codeRequest,
                     }));
                 }
                 break;
-            case "reset-password":
+            case ForgotPasswordStepEnum.resetPassword:
                 if (
                     data["code-request"] == null ||
                     data["code-verification"] == null
                 ) {
                     setQueryParams((_queryParams) => ({
-                        step: "code-request",
+                        step: ForgotPasswordStepEnum.codeRequest,
                     }));
                 }
                 break;
@@ -90,14 +102,18 @@ export const ForgotPasswordPage: FC = () => {
         codeRequest: ForgotPasswordStepsDTO["code-request"]
     ) {
         setData((data) => ({ ...data, "code-request": codeRequest }));
-        setQueryParams((_queryParams) => ({ step: "code-verification" }));
+        setQueryParams((_queryParams) => ({
+            step: ForgotPasswordStepEnum.codeVerification,
+        }));
     }
 
     function SubmitCodeVerification(
         codeVerification: ForgotPasswordStepsDTO["code-verification"]
     ) {
         setData((data) => ({ ...data, "code-verification": codeVerification }));
-        setQueryParams((_queryParams) => ({ step: "reset-password" }));
+        setQueryParams((_queryParams) => ({
+            step: ForgotPasswordStepEnum.resetPassword,
+        }));
     }
 
     function SubmitResetPassword(
@@ -107,7 +123,7 @@ export const ForgotPasswordPage: FC = () => {
     }
 
     switch (queryParams?.step) {
-        case "code-request":
+        case ForgotPasswordStepEnum.codeRequest:
             return (
                 <CodeRequestForm
                     SubmitData={SubmitCodeRequest}
@@ -120,9 +136,9 @@ export const ForgotPasswordPage: FC = () => {
                     )}
                 />
             );
-        case "code-verification":
+        case ForgotPasswordStepEnum.codeVerification:
             return <CodeVerificationForm SubmitData={SubmitCodeVerification} />;
-        case "reset-password":
+        case ForgotPasswordStepEnum.resetPassword:
             return (
                 <ResetPasswordForm
                     SubmitData={SubmitResetPassword}

@@ -1,13 +1,15 @@
+import { Drawer } from "../Drawer";
 import { FC, useState } from "react";
-import menu_icon from "@icons/menu.svg";
+import { twJoin } from "tailwind-merge";
+import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
+import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     IconButton,
     IconButtonProps,
 } from "@/components/IconButton/IconButton";
-import { Drawer } from "../Drawer";
-import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
-import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import menu_icon from "@icons/menu.svg";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes">;
@@ -36,10 +38,15 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                 {...props}
             />
             <Drawer
-                className="px-16"
+                className={twJoin(
+                    direction == "ltr" ? "pl-24 pr-8" : "pl-8 pr-24",
+                    "pt-20"
+                )}
                 hasCloseButton
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
+                closeButtonProps={{ isSquare: true }}
+                dir={direction == "rtl" ? "ltr" : "rtl"}
                 direction={direction == "rtl" ? "left" : "right"}
             >
                 <NavigationBar direction="column" routes={routes} />

@@ -8,11 +8,13 @@ export type IconButtonProps = Omit<
     "children" | "icon" | "doesTextGrow"
 > & {
     icon: IconProps;
+    isSquare?: boolean;
 };
 
 export const IconButton: FC<IconButtonProps> = ({
     id,
     icon,
+    isSquare,
     className,
     thickness = "normal",
     ...props
@@ -21,8 +23,10 @@ export const IconButton: FC<IconButtonProps> = ({
         <Button
             id={id}
             className={twMerge(
-                thickness == "thin" ? "[&>div[data-content]]:p-1" : "",
-                "aspect-square [&>div[data-thickness]]:h-full [&>div]:rounded-full",
+                "aspect-square",
+                thickness == "thin" && "[&>div[data-content]]:p-1",
+                !isSquare &&
+                    "[&>div[data-thickness]]:h-full [&>div]:rounded-full",
                 className
             )}
             thickness={thickness}

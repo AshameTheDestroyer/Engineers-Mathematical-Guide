@@ -24,7 +24,8 @@ export const ApplicationPage: FC = () => {
                 routes={Object.omit(
                     APPLICATION_ROUTES.base.routes,
                     "courseID",
-                    "learningTrackID"
+                    "learningTrackID",
+                    "mathEquationID"
                 )}
             />
             <Outlet />

@@ -57,12 +57,11 @@ export const TermsSection: FC<TermsSectionProps> = ({
                 <Link
                     className="text-secondary-normal"
                     to={`#${references?.[index] ?? trimmedText}`}
-                    onClick={(_e) => {
-                        const reference = document.getElementById(
-                            references?.[index] ?? trimmedText
-                        );
-                        reference?.focus();
-                    }}
+                    onClick={(_e) =>
+                        document
+                            .getElementById(references?.[index] ?? trimmedText)
+                            ?.focus()
+                    }
                 >
                     <span>{text.replace("@", "")}</span>
                     <sup>{index + 1}</sup>
