@@ -1,0 +1,16 @@
+{
+    "title": {
+        "en": "You're Offline",
+        "ar": "انقَطعَ اتِّصالُك"
+    },
+    "paragraph": {
+        "en": "You seem to have an unstable internet connection.",
+        "ar": "يَبدو أنَّهُ لَيسَ لَديكَ اتِّصالٌ مُستَقِرٌّ بِالانترنت."
+    },
+    "buttons": {
+        "refresh": {
+            "en": "Refresh",
+            "ar": "أَعِدْ التَّحميل"
+        }
+    }
+}

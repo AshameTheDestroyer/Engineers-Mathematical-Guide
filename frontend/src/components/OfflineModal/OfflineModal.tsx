@@ -1,13 +1,15 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../Button/Button";
+import { Locale } from "../Locale/Locale";
 import { Modal, ModalProps } from "../Modal/Modal";
-import { Typography } from "../Typography/Typography";
 import { useNetworkStatus } from "@/hooks/useNetworkStatus";
+
+import locales from "@localization/offline_modal.json";
 
 export type OfflineModalProps = Omit<
     ModalProps,
-    "children" | "hasCloseButton" | "isOpen" | "setIsOpen"
+    "children" | "hasCloseButton" | "isOpen" | "setIsOpen" | "closeButtonProps"
 >;
 
 export const OfflineModal: FC<OfflineModalProps> = ({
@@ -27,14 +29,12 @@ export const OfflineModal: FC<OfflineModalProps> = ({
             setIsOpen={() => {}}
             {...props}
         >
-            <Typography className="text-lg font-bold" variant="h1">
-                You're Offline
-            </Typography>
-            <Typography variant="p">
-                You seem to have an unstable internet connection.
-            </Typography>
+            <Locale className="text-lg font-bold" variant="h1">
+                {locales.title}
+            </Locale>
+            <Locale variant="p">{locales.paragraph}</Locale>
             <Button className="w-full" onClick={Refresh}>
-                Refresh
+                <Locale>{locales.buttons.refresh}</Locale>
             </Button>
         </Modal>
     );
