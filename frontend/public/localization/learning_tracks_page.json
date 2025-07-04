@@ -60,5 +60,59 @@
             "en": "Courses",
             "ar": "مُقرَّرات"
         }
+    },
+    "profile": {
+        "introduction": {
+            "en": "Introduction",
+            "ar": "مُقَدِّمة"
+        },
+        "description": {
+            "en": "Description",
+            "ar": "الوَصف"
+        },
+        "courses": {
+            "en": "Courses",
+            "ar": "المُقرَّرات"
+        },
+        "tags": {
+            "en": "Tags",
+            "ar": "الوُسوم"
+        },
+        "similar-learning-tracks": {
+            "title": {
+                "en": "Similar Learning Tracks",
+                "ar": "مَساراتٌ دِراسيّةٌ مُشابِهةٌ"
+            },
+            "error": {
+                "title": {
+                    "en": "Error!",
+                    "ar": "حَدثَ خَطأ!"
+                },
+                "paragraph": {
+                    "en": "An error occurred while fetching learning tracks, try refetching.",
+                    "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المَساراتِ الدِّراسيّة، يُرجى المُحاولةُ مِنْ جَديد."
+                },
+                "button": {
+                    "en": "Reset Error",
+                    "ar": "إعادةُ جَلبِ المَساراتِ الدِّراسيّة"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The learning track **track** has no similar learning tracks from what we offer.",
+                    "ar": "لا يُوجَدُ أي مَسارٍ دِراسيٍّ يُشابِهُ المَسارَ الدِّراسيَّ **المسار** مِمّا نُقَدِّم مِنْ مَساراتٍ دِراسيّة."
+                }
+            }
+        },
+        "buttons": {
+            "specialize-now": {
+                "en": "Specialize Now",
+                "ar": "اختَصَّ الآن"
+            }
+        }
     }
 }
