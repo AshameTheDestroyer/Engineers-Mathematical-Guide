@@ -6,6 +6,8 @@ import { Header } from "@components/Header/Header";
 import { ComponentProps } from "@/types/ComponentProps";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
+import { JumpToTopButton } from "../JumpToTopButton/JumpToTopButton";
+import { useScreenSize } from "../ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -29,6 +31,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     routeLocales,
     withoutBreadcrumbs,
 }) => {
+    const { isScreenSize } = useScreenSize();
     const { GetRouteLocales, language } = useLocalization();
 
     return (
@@ -73,6 +76,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                     />
                 </ButtonBox>
             </ButtonBox>
+            {isScreenSize["max-lg"] && <JumpToTopButton />}
         </Header>
     );
 };

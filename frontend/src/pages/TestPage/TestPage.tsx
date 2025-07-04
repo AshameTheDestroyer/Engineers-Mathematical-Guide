@@ -5,7 +5,6 @@ import { TEST_ROUTES } from "@/routes/test.routes";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
-import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
 
 import route_locales from "@localization/test_page_routes.json";
 
@@ -27,7 +26,6 @@ export const TestPage: FC = () => {
                 routeLocales={route_locales}
             />
             <Outlet />
-            <JumpToTopButton />
         </Page>
     );
 };
