@@ -56,5 +56,45 @@
                 "ar": "مُتَقدِّم"
             }
         }
+    },
+    "profile": {
+        "description": {
+            "en": "Description",
+            "ar": "الوَصف"
+        },
+        "discovered-by": {
+            "en": "Discovered By",
+            "ar": "اكتُشِفَتْ مِنْ قِبَل"
+        },
+        "related-courses": {
+            "title": {
+                "en": "Related Courses",
+                "ar": "مُقرَّراتٌ ذو عَلاقة"
+            },
+            "error": {
+                "title": {
+                    "en": "Error!",
+                    "ar": "حَدثَ خَطأ!"
+                },
+                "paragraph": {
+                    "en": "An error occurred while fetching courses, try refetching.",
+                    "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُقرَّراتِ، يُرجى المُحاولةُ مِنْ جَديد."
+                },
+                "button": {
+                    "en": "Refetch Courses",
+                    "ar": "إعادةُ جَلبِ المُقرَّرات"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The math equation **equation** has no related courses from what we offer.",
+                    "ar": "لا يُوجَدُ أي مُقرَّرٍ ذي عَلاقةٍ بِالمُعادلةِ الرِّياضيّةِ **المعادلة** مِمّا نُقَدِّم مِنْ مُقرَّرات."
+                }
+            }
+        }
     }
 }
