@@ -57,7 +57,7 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
                     }
                 />
             )}
-            <Typography className="text-xl font-bold" variant="h2">
+            <Typography className="text-center text-xl font-bold" variant="h2">
                 {title}
             </Typography>
             <RichText
