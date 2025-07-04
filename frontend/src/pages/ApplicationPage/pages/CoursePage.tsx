@@ -56,7 +56,7 @@ export const CoursePage: FC = () => {
         },
     ];
 
-    const RenderRelatedCourses = (
+    const RenderedRelatedCourses = (
         coursesData: (typeof relatedCourses)[number]
     ) => {
         const errorLocales = locales.profile["related-courses-error"];
@@ -215,7 +215,12 @@ export const CoursePage: FC = () => {
 
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
                     {relatedCourses.map((coursesData, i) => (
-                        <RenderRelatedCourses key={i} {...coursesData} />
+                        <>
+                            {i > 0 && (
+                                <hr className="border-background-normal border-3 my-2 rounded-full" />
+                            )}
+                            <RenderedRelatedCourses key={i} {...coursesData} />
+                        </>
                     ))}
                 </Flexbox>
             </main>

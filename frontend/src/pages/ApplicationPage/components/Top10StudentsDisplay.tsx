@@ -8,8 +8,8 @@ import { Typography } from "@/components/Typography/Typography";
 import students_dummy_data from "@data/students.dummy.json";
 
 export type Top10StudentsDisplayProps = {
-    isSkeleton?: boolean;
     title: string;
+    isSkeleton?: boolean;
 } & Pick<DetailedCourseDTO, "top-10-students">;
 
 export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
@@ -18,6 +18,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     "top-10-students": top10Students,
 }) => {
     const { data } = useMockQuery({
+        requestTime: 500,
         queryKey: ["students"],
         usesSuspense: !isSkeleton,
         dummyData: isSkeleton ? [] : students_dummy_data,
