@@ -1,4 +1,5 @@
 import { Outlet, Route } from "react-router-dom";
+import { WEBSITE_ROUTES } from "./website.routes";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
@@ -9,7 +10,9 @@ export const PROFILE_ROUTES = BuildRouter({
     base: {
         href: "profile",
         routes: {
+            home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
             profile: { href: "" },
+            application: { href: "/" },
         },
     },
 });

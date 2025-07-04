@@ -1,3 +1,5 @@
 {
-    "profile": { "en": "Profile", "ar": "المِلَفُّ الشَّخصيّ" }
+    "home": { "en": "Home", "ar": "الصَّفحةُ الرَّئيسيّة" },
+    "profile": { "en": "Profile", "ar": "المِلَفُّ الشَّخصيّ" },
+    "application": { "en": "Application", "ar": "التَّطبيق" }
 }
