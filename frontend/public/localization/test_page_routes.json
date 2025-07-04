@@ -1,7 +1,7 @@
 {
-    "home": { "en": "Home", "ar": "الصّفحة الرّئيسيّة" },
-    "colours": { "en": "Colours", "ar": "الألوان" },
-    "typography": { "en": "Typography", "ar": "النّصوص" },
-    "components": { "en": "Components", "ar": "المُكوّنات" },
-    "palettes": { "en": "Palettes", "ar": "لُوَح الآلوان" }
+    "home": { "en": "Home", "ar": "الصَّفحةُ الرَّئيسيّة" },
+    "colours": { "en": "Colours", "ar": "الأَلْوان" },
+    "typography": { "en": "Typography", "ar": "النُّصوص" },
+    "components": { "en": "Components", "ar": "المُكوِّنات" },
+    "palettes": { "en": "Palettes", "ar": "لِوَحُ الأَلْوان" }
 }

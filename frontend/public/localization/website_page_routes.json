@@ -1,9 +1,9 @@
 {
-    "home": { "en": "Home", "ar": "الصّفحة الرّئيسيّة" },
+    "home": { "en": "Home", "ar": "الصَّفحةُ الرَّئيسيّة" },
     "about": { "en": "About", "ar": "حَوْل" },
     "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
     "references": { "en": "References", "ar": "المَراجِع" },
     "help": { "en": "Help", "ar": "مُساعَدة" },
     "application": { "en": "Application", "ar": "التَّطبيق" },
-    "test": { "en": "TEST", "ar": "للاختِبار" }
+    "test": { "en": "TEST", "ar": "لِلاخْتِبار" }
 }
