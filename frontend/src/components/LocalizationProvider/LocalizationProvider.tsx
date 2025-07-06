@@ -1,6 +1,8 @@
 import {
     WritingDirection,
     LocalStorageManager,
+    WritingDirectionMode,
+    WritingDirectionModeEnum,
 } from "@/managers/LocalStorageManager";
 import {
     FC,
@@ -11,11 +13,14 @@ import {
     PropsWithChildren,
 } from "react";
 
+import supported_languages from "@json/supported_languages.json";
+
 export type LocalizationStateProps = {
     language: string;
     direction: WritingDirection;
+    "direction-mode": WritingDirectionMode;
     SetLanguage: (language: string) => void;
-    SetDirection: (direction: WritingDirection) => void;
+    SetDirectionMode: (direction: WritingDirectionMode) => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
     GetRouteLocales: (
         routes: Record<string, Omit<Anchor, "routes">>,
@@ -41,11 +46,15 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
     const [state, setState] = useState<LocalizationStateProps>({
         GetLocale,
         SetLanguage,
-        SetDirection,
         GetErrorLocale,
         GetRouteLocales,
+        SetDirectionMode,
         language: LocalStorageManager.Instance.items.language,
-        direction: LocalStorageManager.Instance.items.direction,
+        "direction-mode": LocalStorageManager.Instance.items["direction-mode"],
+        direction: GetDirection(
+            LocalStorageManager.Instance.items["direction-mode"],
+            LocalStorageManager.Instance.items.language
+        ),
     });
 
     useEffect(() => {
@@ -54,12 +63,20 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
 
     function SetLanguage(language: string) {
         LocalStorageManager.Instance.SetItem("language", language);
-        setState((state) => ({ ...state, language }));
+        setState((state) => ({
+            ...state,
+            language,
+            direction: GetDirection(state["direction-mode"], state.language),
+        }));
     }
 
-    function SetDirection(direction: WritingDirection) {
-        LocalStorageManager.Instance.SetItem("direction", direction);
-        setState((state) => ({ ...state, direction }));
+    function SetDirectionMode(directionMode: WritingDirectionMode) {
+        LocalStorageManager.Instance.SetItem("direction-mode", directionMode);
+        setState((state) => ({
+            ...state,
+            "direction-mode": directionMode,
+            direction: GetDirection(directionMode, state.language),
+        }));
     }
 
     function GetLocale(locales: Record<string, string>, language: string) {
@@ -111,6 +128,20 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         }
 
         return errorKey && GetLocale(locales[errorKey], language);
+    }
+
+    function GetDirection(
+        directionMode: WritingDirectionMode,
+        language: string
+    ): WritingDirection {
+        if (directionMode == WritingDirectionModeEnum.auto) {
+            const language_ = supported_languages.find(
+                (language_) => language_.code == language
+            );
+            return language_?.direction as WritingDirection;
+        }
+
+        return directionMode;
     }
 
     return (

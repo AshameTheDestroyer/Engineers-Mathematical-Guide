@@ -76,6 +76,10 @@
             "right-to-left": {
                 "en": "Right to Left",
                 "ar": "مِن اليّمين لليّسار"
+            },
+            "automatic": {
+                "en": "Automatic",
+                "ar": "تِلقائيٌّ"
             }
         }
     },
