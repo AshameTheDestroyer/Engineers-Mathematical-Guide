@@ -1,5 +1,6 @@
 import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
+import { ProfileAvatar } from "./ProfileAvatar";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
 import { useClipboard } from "@/hooks/useClipboard";
@@ -13,13 +14,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import configure_icon from "@icons/cog.svg";
 
-import minecraft_wallpaper from "@images/minecraft_wallpaper.jpg";
-import hashem_wannous_avatar from "@images/hashem_wannous_avatar.png";
-
-const user = {
-    name: "Hashem Wannous",
-    username: "ashamethedestroyer",
-};
+import profile_dummy_data from "@data/profile.dummy.json";
 
 export const ProfileMainContent: FC = () => {
     const { direction } = useLocalization();
@@ -31,7 +26,7 @@ export const ProfileMainContent: FC = () => {
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
-            <Title>{user.name}</Title>
+            <Title>{profile_dummy_data.name}</Title>
             <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
                 <Flexbox
                     ref={profilePictureRef}
@@ -42,14 +37,7 @@ export const ProfileMainContent: FC = () => {
                             : "max-md:left-1/2 md:right-[6vw]"
                     )}
                 >
-                    <Flexbox className="bg-primary-normal border-primary-dark border-3 h-full w-full overflow-hidden rounded-full p-2">
-                        <Image
-                            className="bg-background-normal border-3 rounded-full border-[inherit]"
-                            source={hashem_wannous_avatar}
-                            alternative={`Image of ${user.name}'s Profile.`}
-                        />
-                    </Flexbox>
-
+                    <ProfileAvatar />
                     <IconButton
                         className={twJoin(
                             "bottom-1/9 max-sm:[&>div:first-child]:p-2! absolute md:hidden",
@@ -72,8 +60,8 @@ export const ProfileMainContent: FC = () => {
                 </Button>
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                    source={minecraft_wallpaper}
-                    alternative={`Image of ${user.name}'s Background.`}
+                    source={profile_dummy_data.banner}
+                    alternative={`Image of ${profile_dummy_data.name}'s Background.`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
@@ -104,7 +92,7 @@ export const ProfileMainContent: FC = () => {
                     dir="ltr"
                     variant="h1"
                 >
-                    {user.name}
+                    {profile_dummy_data.name}
                 </Typography>
                 <Typography
                     className={twJoin(
@@ -113,9 +101,11 @@ export const ProfileMainContent: FC = () => {
                     )}
                     dir="ltr"
                     variant="h2"
-                    onClick={(_e) => CopyToClipboard(`@${user.username}`)}
+                    onClick={(_e) =>
+                        CopyToClipboard(`@${profile_dummy_data.username}`)
+                    }
                 >
-                    @{user.username}
+                    @{profile_dummy_data.username}
                 </Typography>
             </Flexbox>
         </Flexbox>
