@@ -58,25 +58,24 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
     });
 
     useEffect(() => {
+        setState((state) => ({
+            ...state,
+            direction: GetDirection(state["direction-mode"], state.language),
+        }));
+    }, [state["direction-mode"], state.language]);
+
+    useEffect(() => {
         document.body.style.direction = state.direction;
     }, [state.direction]);
 
     function SetLanguage(language: string) {
         LocalStorageManager.Instance.SetItem("language", language);
-        setState((state) => ({
-            ...state,
-            language,
-            direction: GetDirection(state["direction-mode"], state.language),
-        }));
+        setState((state) => ({ ...state, language }));
     }
 
     function SetDirectionMode(directionMode: WritingDirectionMode) {
         LocalStorageManager.Instance.SetItem("direction-mode", directionMode);
-        setState((state) => ({
-            ...state,
-            "direction-mode": directionMode,
-            direction: GetDirection(directionMode, state.language),
-        }));
+        setState((state) => ({ ...state, "direction-mode": directionMode }));
     }
 
     function GetLocale(locales: Record<string, string>, language: string) {
