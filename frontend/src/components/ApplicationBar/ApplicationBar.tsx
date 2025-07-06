@@ -34,7 +34,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     withoutBreadcrumbs,
 }) => {
     const { isScreenSize } = useScreenSize();
-    const { GetRouteLocales, language } = useLocalization();
+    const { GetRouteLocales, language, direction } = useLocalization();
 
     return (
         <Header
@@ -69,6 +69,11 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 )}
                 <ButtonBox className="place-content-end">
                     <ConfigurationDropDownList
+                        className={
+                            direction == "ltr"
+                                ? "max-lg:[&>div>div]:translate-x-12"
+                                : "max-lg:[&>div>div]:-translate-x-12"
+                        }
                         thickness="thin"
                         variant="secondary"
                     />
