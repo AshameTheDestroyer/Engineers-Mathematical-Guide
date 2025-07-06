@@ -37,7 +37,7 @@ export const ProfileMainContent: FC = () => {
                             : "max-md:left-1/2 md:right-[6vw]"
                     )}
                 >
-                    <ProfileAvatar />
+                    <ProfileAvatar className="h-full w-full" />
                     <IconButton
                         className={twJoin(
                             "bottom-1/9 max-sm:[&>div:first-child]:p-2! absolute md:hidden",

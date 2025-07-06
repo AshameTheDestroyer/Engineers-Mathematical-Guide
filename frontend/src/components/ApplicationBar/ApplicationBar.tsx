@@ -67,7 +67,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 {buttons != null && (
                     <ButtonBox className="[&>*]:grow">{buttons}</ButtonBox>
                 )}
-                <ButtonBox className="place-content-end">
+                <ButtonBox className="place-content-end place-items-center">
                     <ConfigurationDropDownList
                         className={
                             direction == "ltr"
