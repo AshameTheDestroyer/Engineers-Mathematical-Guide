@@ -20,6 +20,7 @@ import menu_icon from "@icons/menu.svg";
 import arrow_icon from "@icons/direction_arrow.svg";
 
 import profile_dummy_data from "@data/profile.dummy.json";
+import { Logo } from "@/components/Logo/Logo";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes" | "base">;
@@ -51,7 +52,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
             <Drawer
                 className={twJoin(
                     direction == "ltr" ? "pl-10 pr-4" : "pl-4 pr-10",
-                    "pt-12"
+                    "pb-4 pt-12"
                 )}
                 hasCloseButton
                 isOpen={isOpen}
@@ -145,6 +146,8 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                         </Link>
                     )}
                 />
+
+                <Logo className="mx-auto mt-auto" />
             </Drawer>
         </>
     );
