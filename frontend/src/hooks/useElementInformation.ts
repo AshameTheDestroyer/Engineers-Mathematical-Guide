@@ -1,4 +1,4 @@
-import { useState, useEffect, RefObject } from "react";
+import { useState, RefObject, useLayoutEffect } from "react";
 
 export function useElementInformation<T extends HTMLElement>(
     ref: RefObject<T | null>
@@ -11,7 +11,7 @@ export function useElementInformation<T extends HTMLElement>(
         return { ...rect, toJSON: () => JSON.stringify(rect) };
     });
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         function UpdateClientInfo() {
             if (ref.current == null) {
                 return;
