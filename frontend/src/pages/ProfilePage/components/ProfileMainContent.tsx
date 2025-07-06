@@ -2,6 +2,7 @@ import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
+import { useClipboard } from "@/hooks/useClipboard";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
@@ -23,6 +24,7 @@ const user = {
 export const ProfileMainContent: FC = () => {
     const { direction } = useLocalization();
     const { isScreenSize } = useScreenSize();
+    const { CopyToClipboard } = useClipboard();
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
@@ -107,10 +109,11 @@ export const ProfileMainContent: FC = () => {
                 <Typography
                     className={twJoin(
                         direction == "rtl" ? "text-end" : "",
-                        "text-primary-normal overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
+                        "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
                     )}
                     dir="ltr"
                     variant="h2"
+                    onClick={(_e) => CopyToClipboard(`@${user.username}`)}
                 >
                     @{user.username}
                 </Typography>
