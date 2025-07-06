@@ -10,7 +10,15 @@ export type BlurredContainerProps<
 > = {
     variant?: ElementType;
     blurPercentage?: `${number}%`;
-    blurType?: "radial" | "horizontal" | "vertical" | "rectangular";
+    blurType?:
+        | "top"
+        | "left"
+        | "right"
+        | "bottom"
+        | "radial"
+        | "vertical"
+        | "horizontal"
+        | "rectangular";
 } & ComponentProps<HTMLDivElement> &
     U;
 
@@ -31,7 +39,7 @@ export const BlurredContainer: FC<BlurredContainerProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "blurred-container",
+                "blurred-container relative h-full w-full overflow-hidden",
                 `${blurType}-blur`,
                 className
             )}

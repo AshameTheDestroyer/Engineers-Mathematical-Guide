@@ -34,3 +34,39 @@
         transparent
     );
 }
+
+.blurred-container.top-blur {
+    --gradient: linear-gradient(
+        0deg,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
+
+.blurred-container.bottom-blur {
+    --gradient: linear-gradient(
+        180deg,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
+
+.blurred-container.right-blur {
+    --gradient: linear-gradient(
+        90deg,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
+
+.blurred-container.left-blur {
+    --gradient: linear-gradient(
+        270deg,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
