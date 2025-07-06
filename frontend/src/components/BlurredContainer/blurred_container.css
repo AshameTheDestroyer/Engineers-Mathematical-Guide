@@ -1,0 +1,36 @@
+.blurred-container,
+.blurred-container.rectangular-blur > div {
+    mask: var(--gradient);
+    backdrop-filter: blur(10px);
+    -webkit-mask: var(--gradient);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.blurred-container.radial-blur {
+    --gradient: radial-gradient(
+        black,
+        transparent calc(100% - var(--blur-percentage, 30%))
+    );
+}
+
+.blurred-container.horizontal-blur,
+.blurred-container.rectangular-blur > div {
+    --gradient: linear-gradient(
+        90deg,
+        transparent,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}
+
+.blurred-container.vertical-blur,
+.blurred-container.rectangular-blur {
+    --gradient: linear-gradient(
+        0deg,
+        transparent,
+        black var(--blur-percentage, 10%)
+            calc(100% - var(--blur-percentage, 10%)),
+        transparent
+    );
+}

@@ -5,6 +5,10 @@ import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useGetMathEquations } from "@/services/MathEquations/useGetMathEquations";
 import { InteractiveMathExpression } from "../InteractiveMathExpression/InteractiveMathExpression";
 import {
+    BlurredContainer,
+    BlurredContainerProps,
+} from "../BlurredContainer/BlurredContainer";
+import {
     FC,
     useRef,
     useState,
@@ -17,11 +21,9 @@ import "./math_parallax_scene.css";
 
 export type MathParallaxSceneProps = ChildlessComponentProps<HTMLDivElement> & {
     sparseness?: number;
-    blurPercentage?: `${number}%`;
     duration?: `${number}${"s" | "ms"}`;
     direction?: { x?: "left" | "right"; y?: "top" | "bottom" };
-    blurType?: "radial" | "horizontal" | "vertical" | "rectangular";
-};
+} & Omit<BlurredContainerProps, "children">;
 
 export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     id,
@@ -49,7 +51,6 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
 
     const style = {
         "--duration": duration,
-        "--blur-percentage": blurPercentage,
         "--y": direction.y == "top" ? 1 : direction.y == "bottom" ? -1 : 0,
         "--x": direction.x == "left" ? 1 : direction.x == "right" ? -1 : 0,
     } as CSSProperties;
@@ -93,27 +94,27 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
     );
 
     return (
-        <section
+        <BlurredContainer
             id={id}
             style={style}
             ref={sectionRef}
             className={twMerge(
                 "math-parallax-scene relative h-full w-full overflow-hidden",
                 !isDarkThemed && "text-background-darker",
-                `${blurType}-blur`,
                 className
             )}
+            variant="section"
+            blurType={blurType}
+            blurPercentage={blurPercentage}
         >
-            <div className="absolute inset-0">
-                {new Array(4).fill(null).map((_, i) => (
-                    <EquationContainer
-                        key={i}
-                        style={{
-                            animationName: `math-equation-movement${i + 1}`,
-                        }}
-                    />
-                ))}
-            </div>
-        </section>
+            {new Array(4).fill(null).map((_, i) => (
+                <EquationContainer
+                    key={i}
+                    style={{
+                        animationName: `math-equation-movement${i + 1}`,
+                    }}
+                />
+            ))}
+        </BlurredContainer>
     );
 };
