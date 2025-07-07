@@ -3,8 +3,10 @@ import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
+import { Logo } from "@/components/Logo/Logo";
 import { Image } from "@/components/Image/Image";
 import { Button } from "@/components/Button/Button";
+import { useClipboard } from "@/hooks/useClipboard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { PROFILE_ROUTES } from "@/routes/profile.routes";
 import { Typography } from "@/components/Typography/Typography";
@@ -20,7 +22,6 @@ import menu_icon from "@icons/menu.svg";
 import arrow_icon from "@icons/direction_arrow.svg";
 
 import profile_dummy_data from "@data/profile.dummy.json";
-import { Logo } from "@/components/Logo/Logo";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes" | "base">;
@@ -36,6 +37,8 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     ...props
 }) => {
     const { direction } = useLocalization();
+    const { CopyToClipboard } = useClipboard();
+
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -99,10 +102,15 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                         <Typography
                             className={twJoin(
                                 direction == "ltr" && "text-end",
-                                "max-w-44 overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                                "max-w-44 cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
                             )}
                             dir="ltr"
                             variant="p"
+                            onClick={(_e) =>
+                                CopyToClipboard(
+                                    `@${profile_dummy_data.username}`
+                                )
+                            }
                         >
                             @{profile_dummy_data.username}
                         </Typography>
