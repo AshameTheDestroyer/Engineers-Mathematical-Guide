@@ -1,6 +1,26 @@
 {
-    "name": "Hashem Wannous",
-    "username": "ashamethedestroyer",
-    "banner": "src/assets/images/minecraft_wallpaper.jpg",
-    "avatar": "src/assets/images/hashem_wannous_avatar.png"
+     "name": "Batoul Kazak",
+    "username": "dieblauekatze",
+    "banner": "src/assets/images/nature.png",
+    "avatar": "src/assets/images/batouls_avatar.png",
+    "specialization": "AI Engineering",
+    "about": "A Passionate Student in Computer Science Damascus University, with big interest of math and AI",
+    "region": "Damascus - Syria",
+    "userRating":"7084xp",
+    "finishedCourses": 
+    [
+             "linear-algebra",
+            "calculus-i",
+            "calculus-ii",
+            "probability-theory",
+            "mathematical-statistics"
+    ],
+
+    "ratedCourses": [
+           {"id":"linear-algebra", "rating": 4.5 },
+           {"id": "calculus-i", "rating": 3.9},
+           {"id": "calculus-ii", "rating": 4.8},
+           {"id": "probability-theory", "rating": 5},
+           {"id": "mathematical-statistics", "rating": 1.8}
+    ]
 }

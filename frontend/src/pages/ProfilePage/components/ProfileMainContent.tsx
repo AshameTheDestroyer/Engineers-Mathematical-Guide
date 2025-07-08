@@ -11,10 +11,14 @@ import { IconButton } from "@/components/IconButton/IconButton";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-
+import graduation_cap from "@/assets/icons/graduation_cap.svg";
 import configure_icon from "@icons/cog.svg";
 
 import profile_dummy_data from "@data/profile.dummy.json";
+import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
+import { Icon } from "@/components/Icon/Icon";
+import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
+import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 
 export const ProfileMainContent: FC = () => {
     const { direction } = useLocalization();
@@ -23,6 +27,20 @@ export const ProfileMainContent: FC = () => {
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
+
+    const { data: finishedCourses } = useGetCoursesByIDs(
+        profile_dummy_data.finishedCourses,
+        {
+            usesSuspense: true,
+        }
+    );
+
+    const { data: ratedCourses } = useGetCoursesByIDs(
+        profile_dummy_data.ratedCourses.map((item) => item.id),
+        {
+            usesSuspense: true,
+        }
+    );
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
@@ -107,6 +125,29 @@ export const ProfileMainContent: FC = () => {
                 >
                     @{profile_dummy_data.username}
                 </Typography>
+
+                <Flexbox gap="2" placeItems="center">
+                    <Icon source={graduation_cap} />
+                    <Typography variant="p">
+                        {profile_dummy_data.specialization}
+                    </Typography>
+                </Flexbox>
+                <div>{profile_dummy_data.about}</div>
+            </Flexbox>
+            <Flexbox gap="8" direction="column">
+                <Flexbox gap="4" direction="column">
+                    <Typography variant="h2" className="text-xl">
+                        Finished Courses
+                    </Typography>
+                    <CoursesDisplay courses={finishedCourses} />
+                </Flexbox>
+                <Flexbox gap="4" direction="column">
+                    <Typography variant="h2" className="text-xl">
+                        Ratings
+                    </Typography>
+                    <CoursesDisplay courses={ratedCourses} />
+                </Flexbox>
+                <div>personalization</div>
             </Flexbox>
         </Flexbox>
     );
