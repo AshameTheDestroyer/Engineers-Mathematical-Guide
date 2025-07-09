@@ -18,6 +18,7 @@ import profile_dummy_data from "@data/profile.dummy.json";
 import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
 import { Icon } from "@/components/Icon/Icon";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
+import { CourseWithUserRatingDisplay } from "./CourseWithUserRatingDisplay";
 
 export const ProfileMainContent: FC = () => {
     const { direction } = useLocalization();
@@ -134,32 +135,45 @@ export const ProfileMainContent: FC = () => {
                 </Flexbox>
 
                 <Flexbox gap="2" placeItems="center">
-                    <Icon source={graduation_cap} />
-                    <Flexbox className="space-between bg-blue-300" gap="5">
-                        <Typography variant="p">
-                            {profile_dummy_data.specialization}
-                        </Typography>
-                        <Typography variant="p">
-                            {profile_dummy_data.region}
-                        </Typography>
+                    <Flexbox gap="6" alignItems="center" placeContent="center">
+                        <Flexbox
+                            gap="3"
+                            alignItems="center"
+                            className="bg-lagoon-background-darker rounded-full p-1 px-5 pr-7 text-white"
+                        >
+                            <Icon source={graduation_cap} />
+                            <Typography variant="p">
+                                {profile_dummy_data.specialization}
+                            </Typography>
+                        </Flexbox>
+                        <Flexbox className="bg-crimson-background-darker rounded-full p-2 px-5 pr-7 text-white">
+                            <Typography variant="p">
+                                {profile_dummy_data.region}
+                            </Typography>
+                        </Flexbox>
                     </Flexbox>
                 </Flexbox>
                 <div>{profile_dummy_data.about}</div>
             </Flexbox>
             <Flexbox gap="12" direction="column">
                 <Flexbox gap="4" direction="column">
-                    <Typography variant="h2" className="text-xl">
+                    <Typography variant="h2" className="text-xl font-bold">
                         Finished Courses
                     </Typography>
-                    <CoursesDisplay courses={finishedCourses} />
+                    <CourseWithUserRatingDisplay
+                        courses={finishedCourses}
+                        studentRatingName={profile_dummy_data.name}
+                        items={profile_dummy_data.userRating}
+                    />
+                    {}
                 </Flexbox>
-                <div className="h-1 w-full rounded-2xl bg-gray-400"></div>
+                {/* <div className="h-1 w-full rounded-2xl bg-gray-400"></div>
                 <Flexbox gap="4" direction="column">
                     <Typography variant="h2" className="text-xl">
                         Ratings
                     </Typography>
                     <CoursesDisplay courses={ratedCourses} />
-                </Flexbox>
+                </Flexbox> */}
             </Flexbox>
         </Flexbox>
     );
