@@ -17,7 +17,6 @@ import configure_icon from "@icons/cog.svg";
 import profile_dummy_data from "@data/profile.dummy.json";
 import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
 import { Icon } from "@/components/Icon/Icon";
-import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 
 export const ProfileMainContent: FC = () => {
@@ -112,42 +111,55 @@ export const ProfileMainContent: FC = () => {
                 >
                     {profile_dummy_data.name}
                 </Typography>
-                <Typography
-                    className={twJoin(
-                        direction == "rtl" ? "text-end" : "",
-                        "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
-                    )}
-                    dir="ltr"
-                    variant="h2"
-                    onClick={(_e) =>
-                        CopyToClipboard(`@${profile_dummy_data.username}`)
-                    }
-                >
-                    @{profile_dummy_data.username}
-                </Typography>
+                <Flexbox placeItems="center" justifyContent="space-between">
+                    <Typography
+                        className={twJoin(
+                            direction == "rtl" ? "text-end" : "",
+                            "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
+                        )}
+                        dir="ltr"
+                        variant="h2"
+                        onClick={(_e) =>
+                            CopyToClipboard(`@${profile_dummy_data.username}`)
+                        }
+                    >
+                        @{profile_dummy_data.username}
+                    </Typography>
+                    <Typography
+                        variant="h3"
+                        className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark mr-20 rounded-full rounded-br-xl rounded-tl-xl p-2 px-8 font-bold"
+                    >
+                        {profile_dummy_data.userRating}
+                    </Typography>
+                </Flexbox>
 
                 <Flexbox gap="2" placeItems="center">
                     <Icon source={graduation_cap} />
-                    <Typography variant="p">
-                        {profile_dummy_data.specialization}
-                    </Typography>
+                    <Flexbox className="space-between bg-blue-300" gap="5">
+                        <Typography variant="p">
+                            {profile_dummy_data.specialization}
+                        </Typography>
+                        <Typography variant="p">
+                            {profile_dummy_data.region}
+                        </Typography>
+                    </Flexbox>
                 </Flexbox>
                 <div>{profile_dummy_data.about}</div>
             </Flexbox>
-            <Flexbox gap="8" direction="column">
+            <Flexbox gap="12" direction="column">
                 <Flexbox gap="4" direction="column">
                     <Typography variant="h2" className="text-xl">
                         Finished Courses
                     </Typography>
                     <CoursesDisplay courses={finishedCourses} />
                 </Flexbox>
+                <div className="h-1 w-full rounded-2xl bg-gray-400"></div>
                 <Flexbox gap="4" direction="column">
                     <Typography variant="h2" className="text-xl">
                         Ratings
                     </Typography>
                     <CoursesDisplay courses={ratedCourses} />
                 </Flexbox>
-                <div>personalization</div>
             </Flexbox>
         </Flexbox>
     );
