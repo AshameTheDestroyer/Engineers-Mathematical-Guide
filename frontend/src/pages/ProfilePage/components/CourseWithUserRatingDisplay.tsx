@@ -5,6 +5,7 @@ import { CourseDTO } from "@/schemas/CourseSchema";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Rating } from "@/components/Rating/Rating";
+import { Typography } from "@/components/Typography/Typography";
 
 export type CourseWithUserRatingDisplayProps =
     ChildlessComponentProps<HTMLDivElement> &
@@ -34,15 +35,19 @@ export const CourseWithUserRatingDisplay: FC<
             )}
         >
             {courses.map((course, i) => (
-                <Flexbox direction="column" gap="5">
+                <Flexbox direction="column" gap="2  ">
                     <CourseCard
                         key={isSkeleton ? i : course!.id}
-                        className="aspect-square"
+                        className="aspect-square rounded-bl-none rounded-br-none"
                         isSkeleton={isSkeleton}
                         course={course as CourseDTO}
                     />
                     {items && (
-                        <p className="bg-lagoon-background-darker flex w-full place-content-center place-items-center justify-between rounded-xl p-1 px-4 font-bold">
+                        //add here when hover on previous element this element will also scaled at the same amount
+                        <Typography
+                            variant="p"
+                            className="bg-lagoon-background-darker rounded-bl-4xl rounded-br-4xl flex w-full place-content-center place-items-center justify-between p-3 px-4 font-bold text-white"
+                        >
                             {studentRatingName}'s rating:{" "}
                             {
                                 <Rating
@@ -54,7 +59,7 @@ export const CourseWithUserRatingDisplay: FC<
                                     value={arr[i]}
                                 />
                             }
-                        </p>
+                        </Typography>
                     )}
                 </Flexbox>
             ))}
