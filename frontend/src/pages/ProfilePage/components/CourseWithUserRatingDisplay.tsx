@@ -38,15 +38,17 @@ export const CourseWithUserRatingDisplay: FC<
                 <Flexbox direction="column" gap="2  ">
                     <CourseCard
                         key={isSkeleton ? i : course!.id}
-                        className="aspect-square rounded-bl-none rounded-br-none"
+                        className="aspect-square transform rounded-bl-none rounded-br-none transition-transform group-hover:scale-125"
                         isSkeleton={isSkeleton}
                         course={course as CourseDTO}
                     />
                     {items && (
                         //add here when hover on previous element this element will also scaled at the same amount
-                        <Typography
+                        <Flexbox
+                            placeContent="space-between"
+                            placeItems="center"
                             variant="p"
-                            className="bg-lagoon-background-darker rounded-bl-4xl rounded-br-4xl flex w-full place-content-center place-items-center justify-between p-3 px-4 font-bold text-white"
+                            className="bg-lagoon-background-darker rounded-bl-4xl rounded-br-4xl w-full transform p-3 px-4 font-bold text-white transition-transform group-hover:scale-125"
                         >
                             {studentRatingName}'s rating:{" "}
                             {
@@ -59,7 +61,7 @@ export const CourseWithUserRatingDisplay: FC<
                                     value={arr[i]}
                                 />
                             }
-                        </Typography>
+                        </Flexbox>
                     )}
                 </Flexbox>
             ))}

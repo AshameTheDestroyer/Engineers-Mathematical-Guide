@@ -13,9 +13,12 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import graduation_cap from "@/assets/icons/graduation_cap.svg";
 import configure_icon from "@icons/cog.svg";
-
+import location from "@icons/location.svg";
 import profile_dummy_data from "@data/profile.dummy.json";
-import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
+import fire from "@icons/fire.svg";
+import user from "@icons/user.svg";
+import electricity from "@icons/electricity.svg";
+import flag from "@icons/flag.svg";
 import { Icon } from "@/components/Icon/Icon";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { CourseWithUserRatingDisplay } from "./CourseWithUserRatingDisplay";
@@ -126,12 +129,34 @@ export const ProfileMainContent: FC = () => {
                     >
                         @{profile_dummy_data.username}
                     </Typography>
-                    <Typography
-                        variant="h3"
-                        className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark mr-20 rounded-full rounded-br-xl rounded-tl-xl p-2 px-8 font-bold"
-                    >
-                        {profile_dummy_data.userRating}
-                    </Typography>
+                    <Typography variant="p">|</Typography>
+                    <Flexbox gap="2" placeItems="center">
+                        <Icon source={flag} />
+                        <Typography variant="p">
+                            Followers {profile_dummy_data.followers}
+                        </Typography>
+                    </Flexbox>
+                    <Typography variant="p">|</Typography>
+                    <Flexbox gap="2" placeItems="center">
+                        <Icon source={user} />
+                        <Typography variant="p">
+                            Followees {profile_dummy_data.following}
+                        </Typography>
+                    </Flexbox>
+                    <Typography variant="p">|</Typography>
+                    <Flexbox gap="2" placeItems="center">
+                        <Icon source={electricity} />
+                        <Typography variant="p">
+                            Days Streak {profile_dummy_data.dayStreak}
+                        </Typography>
+                    </Flexbox>
+                    <Typography variant="p">|</Typography>
+                    <Flexbox className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark mr-20 rounded-full rounded-br-xl rounded-tl-xl p-2 px-8 font-bold">
+                        <Icon source={fire} />
+                        <Typography variant="p">
+                            {profile_dummy_data.userRating}
+                        </Typography>
+                    </Flexbox>
                 </Flexbox>
 
                 <Flexbox gap="2" placeItems="center">
@@ -146,9 +171,14 @@ export const ProfileMainContent: FC = () => {
                                 {profile_dummy_data.specialization}
                             </Typography>
                         </Flexbox>
-                        <Flexbox className="bg-crimson-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white">
+                        <Flexbox
+                            gap="3"
+                            alignItems="center"
+                            className="bg-crimson-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white"
+                        >
+                            <Icon source={location} />
                             <Typography variant="p">
-                                {profile_dummy_data.region}
+                                {profile_dummy_data.location}
                             </Typography>
                         </Flexbox>
                     </Flexbox>
@@ -159,7 +189,8 @@ export const ProfileMainContent: FC = () => {
             </Flexbox>
             <Flexbox gap="6" direction="column">
                 <Typography variant="h2" className="text-xl font-bold">
-                    Finished Courses
+                    Finished Courses (
+                    {profile_dummy_data.finishedCourses.length})
                 </Typography>
                 <CourseWithUserRatingDisplay
                     courses={finishedCourses}
