@@ -129,30 +129,33 @@ export const ProfileMainContent: FC = () => {
                     >
                         @{profile_dummy_data.username}
                     </Typography>
-                    <Typography variant="p">|</Typography>
+                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
                     <Flexbox gap="2" placeItems="center">
                         <Icon source={flag} />
                         <Typography variant="p">
                             Followers {profile_dummy_data.followers}
                         </Typography>
                     </Flexbox>
-                    <Typography variant="p">|</Typography>
+                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
+
                     <Flexbox gap="2" placeItems="center">
                         <Icon source={user} />
                         <Typography variant="p">
                             Followees {profile_dummy_data.following}
                         </Typography>
                     </Flexbox>
-                    <Typography variant="p">|</Typography>
+                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
+
                     <Flexbox gap="2" placeItems="center">
-                        <Icon source={electricity} />
+                        <Icon source={fire} />
                         <Typography variant="p">
                             Days Streak {profile_dummy_data.dayStreak}
                         </Typography>
                     </Flexbox>
-                    <Typography variant="p">|</Typography>
+                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
+
                     <Flexbox className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark mr-20 rounded-full rounded-br-xl rounded-tl-xl p-2 px-8 font-bold">
-                        <Icon source={fire} />
+                        <Icon source={electricity} />
                         <Typography variant="p">
                             {profile_dummy_data.userRating}
                         </Typography>
