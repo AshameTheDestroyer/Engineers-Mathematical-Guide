@@ -1,11 +1,10 @@
 import { FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { CourseCard } from "@/pages/ApplicationPage/components/CourseCard";
 import { CourseDTO } from "@/schemas/CourseSchema";
-import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Rating } from "@/components/Rating/Rating";
-import { Typography } from "@/components/Typography/Typography";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { CourseCard } from "@/pages/ApplicationPage/components/CourseCard";
 
 export type CourseWithUserRatingDisplayProps =
     ChildlessComponentProps<HTMLDivElement> &
@@ -18,7 +17,10 @@ export type CourseWithUserRatingDisplayProps =
                 isSkeleton: true;
                 courses: Array<Partial<CourseDTO> | undefined>;
             }
-        >;
+        > & {
+            items: boolean;
+            studentRatingName: string;
+        };
 
 export const CourseWithUserRatingDisplay: FC<
     CourseWithUserRatingDisplayProps
@@ -43,14 +45,13 @@ export const CourseWithUserRatingDisplay: FC<
                         course={course as CourseDTO}
                     />
                     {items && (
-                        //add here when hover on previous element this element will also scaled at the same amount
                         <Flexbox
                             placeContent="space-between"
-                            placeItems="center"
                             variant="p"
+                            placeItems="center"
                             className="bg-lagoon-background-darker rounded-bl-4xl rounded-br-4xl w-full transform p-3 px-4 font-bold text-white transition-transform group-hover:scale-125"
                         >
-                            {studentRatingName}'s rating:{" "}
+                            {studentRatingName}'s Rating:{" "}
                             {
                                 <Rating
                                     iconProps={{

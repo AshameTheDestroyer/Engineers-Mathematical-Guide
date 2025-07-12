@@ -1,5 +1,6 @@
 import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
+import { Icon } from "@/components/Icon/Icon";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
@@ -9,59 +10,50 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { useElementInformation } from "@/hooks/useElementInformation";
-import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
-import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import graduation_cap from "@/assets/icons/graduation_cap.svg";
-import configure_icon from "@icons/cog.svg";
-import location from "@icons/location.svg";
-import profile_dummy_data from "@data/profile.dummy.json";
-import fire from "@icons/fire.svg";
-import user from "@icons/user.svg";
-import electricity from "@icons/electricity.svg";
-import flag from "@icons/flag.svg";
-import { Icon } from "@/components/Icon/Icon";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { CourseWithUserRatingDisplay } from "./CourseWithUserRatingDisplay";
 import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
+import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import flag_icon from "@icons/flag.svg";
+import user_icon from "@icons/user.svg";
+import fire_icon from "@icons/fire.svg";
+import configure_icon from "@icons/cog.svg";
+import location_icon from "@icons/location.svg";
+import electricity_icon from "@icons/electricity.svg";
+import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
+
+import profile_dummy_data from "@data/profile.dummy.json";
 
 export const ProfileMainContent: FC = () => {
-    const { direction, language, GetLocale } = useLocalization();
+    const { direction, language } = useLocalization();
     const { isScreenSize } = useScreenSize();
     const { CopyToClipboard } = useClipboard();
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
 
-    const {
-        data: finishedCourses,
-        error: finished_courses_error,
-        isLoading: finished_courses_isLoading,
-    } = useGetCoursesByIDs(profile_dummy_data.finishedCourses, {
-        usesSuspense: true,
-    });
+    const { data: finishedCourses } = useGetCoursesByIDs(
+        profile_dummy_data.finishedCourses,
+        {
+            usesSuspense: true,
+        }
+    );
 
-    const {
-        data: enrolledCourses,
-        error: enrolled_courses_error,
-        isLoading: enrolled_courses_isLoading,
-    } = useGetCoursesByIDs(profile_dummy_data.enrolledCourses, {
-        usesSuspense: true,
-    });
+    const { data: enrolledCourses } = useGetCoursesByIDs(
+        profile_dummy_data.enrolledCourses,
+        {
+            usesSuspense: true,
+        }
+    );
 
-    const {
-        data: bookmarkedCourses,
-        error: bookmarked_courses_error,
-        isLoading: bookmarked_courses_isLoading,
-    } = useGetCoursesByIDs(profile_dummy_data.bookmarkedCourses, {
-        usesSuspense: true,
-    });
-
-    // const { data: ratedCourses } = useGetCoursesByIDs(
-    //     profile_dummy_data.ratedCourses.map((item) => item.id),
-    //     {
-    //         usesSuspense: true,
-    //     }
-    // );
+    const { data: bookmarkedCourses } = useGetCoursesByIDs(
+        profile_dummy_data.bookmarkedCourses,
+        {
+            usesSuspense: true,
+        }
+    );
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
@@ -153,7 +145,7 @@ export const ProfileMainContent: FC = () => {
                     </Typography>
                     <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
                     <Flexbox gap="2" placeItems="center">
-                        <Icon source={flag} />
+                        <Icon source={flag_icon} />
                         <Typography variant="p">
                             {Intl.NumberFormat(
                                 language == "ar" ? "ar-UA" : "en-US",
@@ -169,7 +161,7 @@ export const ProfileMainContent: FC = () => {
                     <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
 
                     <Flexbox gap="2" placeItems="center">
-                        <Icon source={user} />
+                        <Icon source={user_icon} />
                         <Typography variant="p">
                             {Intl.NumberFormat(
                                 language == "ar" ? "ar-UA" : "en-US",
@@ -185,7 +177,7 @@ export const ProfileMainContent: FC = () => {
                     <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
 
                     <Flexbox className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark rounded-full rounded-br-xl rounded-tl-xl p-2 px-4 font-bold">
-                        <Icon source={electricity} />
+                        <Icon source={electricity_icon} />
                         <Typography variant="p">
                             {profile_dummy_data.userRating}xp
                         </Typography>
@@ -194,7 +186,7 @@ export const ProfileMainContent: FC = () => {
                     <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
 
                     <Flexbox gap="2" placeItems="center">
-                        <Icon source={fire} />
+                        <Icon source={fire_icon} />
                         <Typography variant="p">
                             Days Streak {profile_dummy_data.dayStreak}
                         </Typography>
@@ -208,7 +200,7 @@ export const ProfileMainContent: FC = () => {
                             alignItems="center"
                             className="bg-lagoon-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white"
                         >
-                            <Icon source={graduation_cap} />
+                            <Icon source={graduation_cap_icon} />
                             <Typography variant="p">
                                 {profile_dummy_data.specialization}
                             </Typography>
@@ -218,7 +210,7 @@ export const ProfileMainContent: FC = () => {
                             alignItems="center"
                             className="bg-crimson-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white"
                         >
-                            <Icon source={location} />
+                            <Icon source={location_icon} />
                             <Typography variant="p">
                                 {profile_dummy_data.location}
                             </Typography>
@@ -238,9 +230,9 @@ export const ProfileMainContent: FC = () => {
                     {profile_dummy_data.finishedCourses.length})
                 </Typography>
                 <CourseWithUserRatingDisplay
+                    items
                     courses={finishedCourses}
                     studentRatingName={profile_dummy_data.name}
-                    items={profile_dummy_data.userRating}
                 />
             </Flexbox>
             <div className="my-5 h-[0.3px] w-full bg-gray-400"></div>
@@ -249,91 +241,17 @@ export const ProfileMainContent: FC = () => {
                     Enrolled Courses (
                     {profile_dummy_data.enrolledCourses.length})
                 </Typography>
-                <CoursesDisplay
-                    courses={enrolledCourses}
-                    studentRatingName={profile_dummy_data.name}
-                    items={profile_dummy_data.userRating}
-                />
+                <CoursesDisplay courses={enrolledCourses} />
             </Flexbox>
             <div className="h-[0.3px] w-full bg-gray-400"></div>
 
-            {/* <Line
-                orientation="horizontal"
-                height="h-1"
-                width="3/4"
-                color="bg-green-500"
-                styleType="double"
-            /> */}
             <Flexbox gap="6" direction="column">
                 <Typography variant="h2" className="text-xl font-bold">
                     Bookmarked Courses (
                     {profile_dummy_data.bookmarkedCourses.length})
                 </Typography>
-                <CoursesDisplay
-                    courses={bookmarkedCourses}
-                    studentRatingName={profile_dummy_data.name}
-                    items={profile_dummy_data.userRating}
-                />
+                <CoursesDisplay courses={bookmarkedCourses} />
             </Flexbox>
-            {/* <div className="h-1 w-full rounded-2xl bg-gray-400"></div>
-                <Flexbox gap="4" direction="column">
-                    <Typography variant="h2" className="text-xl">
-                        Ratings
-                    </Typography>
-                    <CoursesDisplay courses={ratedCourses} />
-                </Flexbox> */}
         </Flexbox>
     );
 };
-
-//    {isLoading_finished ||
-//                 profile_dummy_data.finishedCourses == null ? (
-//                     <CourseWithUserRatingDisplay
-//                         isSkeleton
-//                         courses={skeletonArray}
-//                     />
-//                 ) : isError_finished ? (
-//                     <SearchResultDisplay
-//                         className="grow"
-//                         iconType="error"
-//                         title={GetLocale(
-//                             locals_profile_page.finishedCourses.error,
-//                             language
-//                         )}
-//                         paragraph={GetLocale(
-//                             locales.display.error.paragraph,
-//                             language
-//                         )}
-//                         buttons={
-//                             <Button onClick={(_e) => refetch()}>
-//                                 <Locale>{locales.display.error.button}</Locale>
-//                             </Button>
-//                         }
-//                     />
-//                 ) : profile_dummy_data.finishedCourses.length == 0 ? (
-//                     (
-//                         <SearchResultDisplay
-//                             className="grow"
-//                             iconType="empty"
-//                             title={GetLocale(locales.display.empty.title, language)}
-//                             paragraph={GetLocale(
-//                                 locales.display.empty.paragraph,
-//                                 language
-//                             ).replace(
-//                                 /\*\*([^\*]+)\*\*/,
-//                                 `**"${debouncedSearchQuery}"**`
-//                             )}
-//                             buttons={
-//                                 <Button onClick={(_e) => setSearchQuery("")}>
-//                                     <Locale>{locales.display.empty.button}</Locale>
-//                                 </Button>
-//                             }
-//                         />
-//                     )
-//                 ) : (
-//                     <CourseWithUserRatingDisplay
-//                         courses={finishedCourses}
-//                         studentRatingName={profile_dummy_data.name}
-//                         items={profile_dummy_data.userRating}
-//                     />
-//                 )}
