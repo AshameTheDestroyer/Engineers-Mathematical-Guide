@@ -7,30 +7,28 @@
     "specialization": "AI Engineering",
     "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum tempora, aliquid, quaerat officia porro quia possimus adipisci suscipit enim non odit ratione ab deleniti architecto. Cumque dolor nesciunt veritatis nulla, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum tempora, aliquid, quaerat officia porro quia possimus adipisci suscipit enim non odit ratione ab deleniti architecto. Cumque dolor nesciunt veritatis nulla.",
     "location": "Damascus - Syria",
-    "userRating":"7084xp",
+    "userRating":7084,
     "dayStreak": 643,
-    "following": 23,
-    "followers": 10,
+    "followees": 23243,
+    "followers": 2540000,
     "finishedCourses": 
     [
-             "linear-algebra",
-            "calculus-i",
-            "calculus-ii",
-            "probability-theory",
-            "mathematical-statistics",
-            "computer vision",
-            "machine learning",
-            "ai"
+      "linear-algebra",
+      "calculus-i",
+      "calculus-ii",
+      "probability-theory",
+      "mathematical-statistics",
+      "machine learning",
+      "algorithms"
     ],
+    "enrolledCourses": [
+            "ai",
+            "computer-vision"
 
-    "ratedCourses": [
-              4.5 ,
-            3.9,
-            4.8,
-            5,
-              1.8,
-              2,
-              4,
-              3
+    ],
+    "bookmarkedCourses": [
+            "mathematical-statistics",
+            "discrete-mathematics"
     ]
 }
+

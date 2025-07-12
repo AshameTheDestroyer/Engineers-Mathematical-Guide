@@ -1,0 +1,14 @@
+{
+    "followers": "المُتابِِعون",
+    "followees": "المُتابَعون",
+    "Day Streak": "أيام النشاط",
+    "finishedCourses": {
+        "error": "Error Loading Finished Courses"
+    },
+      "bookmarkedCourses": {
+        "error": "Error Loading bookmarked Courses"
+    },
+      "enrolledCourses": {
+        "error": "Error Loading enrolled Courses"
+    }
+}
