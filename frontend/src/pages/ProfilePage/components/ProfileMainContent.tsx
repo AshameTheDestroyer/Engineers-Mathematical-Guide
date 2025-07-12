@@ -32,26 +32,29 @@ export const ProfileMainContent: FC = () => {
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
 
-    const { data: finishedCourses } = useGetCoursesByIDs(
-        profile_dummy_data.finishedCourses,
-        {
-            usesSuspense: true,
-        }
-    );
+    const {
+        data: finishedCourses,
+        error: finished_courses_error,
+        isLoading: finished_courses_isLoading,
+    } = useGetCoursesByIDs(profile_dummy_data.finishedCourses, {
+        usesSuspense: true,
+    });
 
-    const { data: enrolledCourses } = useGetCoursesByIDs(
-        profile_dummy_data.enrolledCourses,
-        {
-            usesSuspense: true,
-        }
-    );
+    const {
+        data: enrolledCourses,
+        error: enrolled_courses_error,
+        isLoading: enrolled_courses_isLoading,
+    } = useGetCoursesByIDs(profile_dummy_data.enrolledCourses, {
+        usesSuspense: true,
+    });
 
-    const { data: bookmarkedCourses } = useGetCoursesByIDs(
-        profile_dummy_data.bookmarkedCourses,
-        {
-            usesSuspense: true,
-        }
-    );
+    const {
+        data: bookmarkedCourses,
+        error: bookmarked_courses_error,
+        isLoading: bookmarked_courses_isLoading,
+    } = useGetCoursesByIDs(profile_dummy_data.bookmarkedCourses, {
+        usesSuspense: true,
+    });
 
     // const { data: ratedCourses } = useGetCoursesByIDs(
     //     profile_dummy_data.ratedCourses.map((item) => item.id),
@@ -282,3 +285,55 @@ export const ProfileMainContent: FC = () => {
         </Flexbox>
     );
 };
+
+//    {isLoading_finished ||
+//                 profile_dummy_data.finishedCourses == null ? (
+//                     <CourseWithUserRatingDisplay
+//                         isSkeleton
+//                         courses={skeletonArray}
+//                     />
+//                 ) : isError_finished ? (
+//                     <SearchResultDisplay
+//                         className="grow"
+//                         iconType="error"
+//                         title={GetLocale(
+//                             locals_profile_page.finishedCourses.error,
+//                             language
+//                         )}
+//                         paragraph={GetLocale(
+//                             locales.display.error.paragraph,
+//                             language
+//                         )}
+//                         buttons={
+//                             <Button onClick={(_e) => refetch()}>
+//                                 <Locale>{locales.display.error.button}</Locale>
+//                             </Button>
+//                         }
+//                     />
+//                 ) : profile_dummy_data.finishedCourses.length == 0 ? (
+//                     (
+//                         <SearchResultDisplay
+//                             className="grow"
+//                             iconType="empty"
+//                             title={GetLocale(locales.display.empty.title, language)}
+//                             paragraph={GetLocale(
+//                                 locales.display.empty.paragraph,
+//                                 language
+//                             ).replace(
+//                                 /\*\*([^\*]+)\*\*/,
+//                                 `**"${debouncedSearchQuery}"**`
+//                             )}
+//                             buttons={
+//                                 <Button onClick={(_e) => setSearchQuery("")}>
+//                                     <Locale>{locales.display.empty.button}</Locale>
+//                                 </Button>
+//                             }
+//                         />
+//                     )
+//                 ) : (
+//                     <CourseWithUserRatingDisplay
+//                         courses={finishedCourses}
+//                         studentRatingName={profile_dummy_data.name}
+//                         items={profile_dummy_data.userRating}
+//                     />
+//                 )}
