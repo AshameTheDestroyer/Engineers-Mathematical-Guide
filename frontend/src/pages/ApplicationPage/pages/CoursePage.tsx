@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
@@ -216,7 +216,8 @@ export const CoursePage: FC = () => {
 
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
                     {relatedCourses.map((coursesData, i) => (
-                        <>
+                        <Fragment key={i}>
+                            |
                             {i > 0 && (
                                 <Separator
                                     className="border-background-dark-hover"
@@ -224,8 +225,8 @@ export const CoursePage: FC = () => {
                                     orientation="horizontal"
                                 />
                             )}
-                            <RenderedRelatedCourses key={i} {...coursesData} />
-                        </>
+                            <RenderedRelatedCourses {...coursesData} />
+                        </Fragment>
                     ))}
                 </Flexbox>
             </main>

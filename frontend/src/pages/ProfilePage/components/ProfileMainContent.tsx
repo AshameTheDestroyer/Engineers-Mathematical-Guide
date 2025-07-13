@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC, Fragment, useRef } from "react";
 import { ProfileHeader } from "./ProfileHeader";
 import { ProfileBanner } from "./ProfileBanner";
 import { Gender } from "@/schemas/SignupSchema";
@@ -100,7 +100,7 @@ export const ProfileMainContent: FC = () => {
 
             <Flexbox className="lg:col-span-2" direction="column" gap="4">
                 {relatedCourses.map((coursesData, i) => (
-                    <>
+                    <Fragment key={i}>
                         {i > 0 && (
                             <Separator
                                 className="border-background-dark-hover"
@@ -108,8 +108,8 @@ export const ProfileMainContent: FC = () => {
                                 orientation="horizontal"
                             />
                         )}
-                        <RenderedRelatedCourses key={i} {...coursesData} />
-                    </>
+                        <RenderedRelatedCourses {...coursesData} />
+                    </Fragment>
                 ))}
             </Flexbox>
         </Flexbox>
