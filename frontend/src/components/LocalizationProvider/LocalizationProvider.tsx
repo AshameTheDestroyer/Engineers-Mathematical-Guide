@@ -1,3 +1,4 @@
+import { Gender } from "@/schemas/SignupSchema";
 import {
     WritingDirection,
     LocalStorageManager,
@@ -22,6 +23,11 @@ export type LocalizationStateProps = {
     SetLanguage: (language: string) => void;
     SetDirectionMode: (direction: WritingDirectionMode) => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
+    GetGenderedLocale: (
+        locales: Record<string, string | Record<Gender, string>>,
+        language: string,
+        gender: Gender
+    ) => string;
     GetRouteLocales: (
         routes: Record<string, Omit<Anchor, "routes">>,
         locales: Record<string, Record<string, string>>,
@@ -49,6 +55,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         GetErrorLocale,
         GetRouteLocales,
         SetDirectionMode,
+        GetGenderedLocale,
         language: LocalStorageManager.Instance.items.language,
         "direction-mode": LocalStorageManager.Instance.items["direction-mode"],
         direction: GetDirection(
@@ -80,6 +87,19 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
 
     function GetLocale(locales: Record<string, string>, language: string) {
         const locale = locales[language];
+        if (locale == null) {
+            // Fetch translation API and return result.
+        }
+        return locale;
+    }
+
+    function GetGenderedLocale(
+        locales: Record<string, string | Record<Gender, string>>,
+        language: string,
+        gender: Gender
+    ) {
+        const locale_ = locales[language];
+        const locale = typeof locale_ == "string" ? locale_ : locale_[gender];
         if (locale == null) {
             // Fetch translation API and return result.
         }

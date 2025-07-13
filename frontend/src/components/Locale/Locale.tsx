@@ -1,10 +1,18 @@
 import { FC } from "react";
+import { Gender } from "@/schemas/SignupSchema";
 import { Typography, TypographyProps } from "../Typography/Typography";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
-export type LocaleProps = {
-    children: Record<string, string>;
-} & Either<{ variant?: undefined }, Omit<TypographyProps, "children">>;
+export type LocaleProps = Either<
+    {
+        children: Record<string, string>;
+    },
+    {
+        gender: Gender;
+        children: Record<string, string | Record<Gender, string>>;
+    }
+> &
+    Either<{ variant?: undefined }, Omit<TypographyProps, "children">>;
 
 export const Locale: FC<LocaleProps> = ({
     id,
@@ -14,8 +22,11 @@ export const Locale: FC<LocaleProps> = ({
     className,
     ...props
 }) => {
-    const { GetLocale, language } = useLocalization();
-    const locale = GetLocale(children, language);
+    const { GetLocale, GetGenderedLocale, language } = useLocalization();
+    const locale =
+        "gender" in props
+            ? GetGenderedLocale(children, language, props.gender as Gender)
+            : GetLocale(children as Record<string, string>, language);
 
     if (variant == null) {
         return locale;
