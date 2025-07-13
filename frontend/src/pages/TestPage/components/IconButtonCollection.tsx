@@ -10,12 +10,12 @@ import cog_icon from "@icons/cog.svg";
 import user_icon from "@icons/user.svg";
 import star_icon from "@icons/star.svg";
 import home_icon from "@icons/home.svg";
-import epic_icon from "@icons/epic.svg";
-import error_icon from "@icons/error.svg";
-import success_icon from "@icons/success.svg";
-import warning_icon from "@icons/warning.svg";
-import information_icon from "@icons/information.svg";
+import variant_epic_icon from "@icons/variant_epic.svg";
 import network_error_icon from "@icons/network_error.svg";
+import variant_error_icon from "@icons/variant_error.svg";
+import variant_success_icon from "@icons/variant_success.svg";
+import variant_warning_icon from "@icons/variant_warning.svg";
+import variant_information_icon from "@icons/variant_information.svg";
 
 export const IconButtonCollection: FC = () => {
     const cogIcon: IconButtonProps["icon"] = {
@@ -80,18 +80,24 @@ export const IconButtonCollection: FC = () => {
                 <ButtonBox>
                     <IconButton
                         variant="information"
-                        icon={{ source: information_icon }}
+                        icon={{ source: variant_information_icon }}
                     />
                     <IconButton
                         variant="warning"
-                        icon={{ source: warning_icon }}
+                        icon={{ source: variant_warning_icon }}
                     />
                     <IconButton
                         variant="success"
-                        icon={{ source: success_icon }}
+                        icon={{ source: variant_success_icon }}
                     />
-                    <IconButton variant="error" icon={{ source: error_icon }} />
-                    <IconButton variant="epic" icon={{ source: epic_icon }} />
+                    <IconButton
+                        variant="error"
+                        icon={{ source: variant_error_icon }}
+                    />
+                    <IconButton
+                        variant="epic"
+                        icon={{ source: variant_epic_icon }}
+                    />
                 </ButtonBox>
             </Collection>
             <Collection

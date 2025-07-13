@@ -20,7 +20,7 @@ import { useGetPrerequisiteCourses } from "@/services/Courses/useGetPrerequisite
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisiteCourses";
 
-import enrollment_icon from "@icons/enrollment.svg";
+import course_enrollment_icon from "@icons/course_enrollment.svg";
 
 import locales from "@localization/courses_page.json";
 
@@ -114,7 +114,7 @@ export const CoursePage: FC = () => {
                     variant="primary"
                     icon={{
                         placement: "left",
-                        source: enrollment_icon,
+                        source: course_enrollment_icon,
                     }}
                 >
                     <Locale>{locales.profile.buttons["enroll-now"]}</Locale>

@@ -19,10 +19,10 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import user_icon from "@icons/user.svg";
 import fire_icon from "@icons/fire.svg";
-import streak_icon from "@icons/streak.svg";
 import configure_icon from "@icons/cog.svg";
 import location_icon from "@icons/location.svg";
 import electricity_icon from "@icons/electricity.svg";
+import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
 import profile_dummy_data from "@data/profile.dummy.json";
@@ -163,8 +163,8 @@ export const ProfileMainContent: FC = () => {
                     >
                         <Flexbox gap="2" placeItems="center">
                             <Icon
-                                className="text-background-dark-hover"
-                                source={streak_icon}
+                                className="text-background-dark-hover scale-125"
+                                source={progress_arrow_icon}
                             />
                             <Typography variant="p">
                                 {Intl.NumberFormat(
