@@ -1,60 +1,94 @@
 import { FC, useRef } from "react";
-import { twJoin } from "tailwind-merge";
-import { Icon } from "@/components/Icon/Icon";
-import { ProfileAvatar } from "./ProfileAvatar";
-import { Image } from "@/components/Image/Image";
+import { ProfileHeader } from "./ProfileHeader";
+import { ProfileBanner } from "./ProfileBanner";
+import { Gender } from "@/schemas/SignupSchema";
 import { Title } from "@/components/Title/Title";
-import { useClipboard } from "@/hooks/useClipboard";
-import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { ProfileInformation } from "./ProfileInformation";
 import { Separator } from "@/components/Separator/Separator";
-import { Typography } from "@/components/Typography/Typography";
-import { IconButton } from "@/components/IconButton/IconButton";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
-import { CourseWithUserRatingDisplay } from "./CourseWithUserRatingDisplay";
-import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDisplay";
-import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { RelatedCoursesDisplay } from "@/pages/ApplicationPage/components/RelatedCoursesDisplay";
 
-import user_icon from "@icons/user.svg";
-import fire_icon from "@icons/fire.svg";
-import configure_icon from "@icons/cog.svg";
-import location_icon from "@icons/location.svg";
-import electricity_icon from "@icons/electricity.svg";
-import progress_arrow_icon from "@icons/progress_arrow.svg";
-import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
-
+import locales from "@localization/profile_page.json";
 import profile_dummy_data from "@data/profile.dummy.json";
 
 export const ProfileMainContent: FC = () => {
-    const { isScreenSize } = useScreenSize();
-    const { CopyToClipboard } = useClipboard();
-    const { direction, language } = useLocalization();
+    const { language, GetLocale, GetGenderedLocale } = useLocalization();
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
 
-    const { data: finishedCourses } = useGetCoursesByIDs(
-        profile_dummy_data.finishedCourses,
-        {
-            usesSuspense: true,
-        }
+    const finishedCoursesQuery = useGetCoursesByIDs(
+        profile_dummy_data.finishedCourses
     );
 
-    const { data: enrolledCourses } = useGetCoursesByIDs(
-        profile_dummy_data.enrolledCourses,
-        {
-            usesSuspense: true,
-        }
+    const enrolledCoursesQuery = useGetCoursesByIDs(
+        profile_dummy_data.enrolledCourses
     );
 
-    const { data: bookmarkedCourses } = useGetCoursesByIDs(
-        profile_dummy_data.bookmarkedCourses,
-        {
-            usesSuspense: true,
-        }
+    const bookmarkedCoursesQuery = useGetCoursesByIDs(
+        profile_dummy_data.bookmarkedCourses
     );
+
+    const skeletonArray = new Array(5).fill(null);
+
+    const relatedCourses = [
+        {
+            query: finishedCoursesQuery,
+            locales: locales["related-courses"].finished,
+        },
+        {
+            query: enrolledCoursesQuery,
+            locales: locales["related-courses"].enrolled,
+        },
+        {
+            query: bookmarkedCoursesQuery,
+            locales: locales["related-courses"].bookmarked,
+        },
+    ];
+
+    const RenderedRelatedCourses = (
+        coursesData: (typeof relatedCourses)[number]
+    ) => {
+        const errorLocales = locales["related-courses-error"];
+        return (
+            <Flexbox className="lg:col-span-2" gap="4" direction="column">
+                <Locale
+                    className="text-lg font-bold"
+                    variant="h2"
+                    gender={profile_dummy_data.gender as Gender}
+                >
+                    {coursesData.locales.title}
+                </Locale>
+                <RelatedCoursesDisplay
+                    {...coursesData.query}
+                    skeletonArray={skeletonArray}
+                    errorDisplay={{
+                        title: GetLocale(errorLocales.title, language),
+                        button: GetLocale(errorLocales.button, language),
+                        paragraph: GetLocale(errorLocales.paragraph, language),
+                    }}
+                    emptyDisplay={{
+                        title: GetLocale(
+                            coursesData.locales.empty.title,
+                            language
+                        ),
+                        paragraph: GetGenderedLocale(
+                            coursesData.locales.empty.paragraph,
+                            language,
+                            profile_dummy_data.gender as Gender
+                        ).replace(
+                            /\*\*([^\*]+)\*\*/,
+                            `**"${profile_dummy_data.name}"**`
+                        ),
+                    }}
+                />
+            </Flexbox>
+        );
+    };
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
@@ -63,6 +97,20 @@ export const ProfileMainContent: FC = () => {
             <ProfileBanner profilePictureRef={profilePictureRef} />
             <ProfileHeader profilePictureRect={profilePictureRect} />
             <ProfileInformation profilePictureRect={profilePictureRect} />
+
+            <Flexbox className="lg:col-span-2" direction="column" gap="4">
+                {relatedCourses.map((coursesData, i) => (
+                    <>
+                        {i > 0 && (
+                            <Separator
+                                className="border-background-dark-hover"
+                                thickness="thick"
+                                orientation="horizontal"
+                            />
+                        )}
+                        <RenderedRelatedCourses key={i} {...coursesData} />
+                    </>
+                ))}
             </Flexbox>
         </Flexbox>
     );

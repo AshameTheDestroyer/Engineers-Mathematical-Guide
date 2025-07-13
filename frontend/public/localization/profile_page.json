@@ -1,14 +1,122 @@
 {
-    "followers": "المُتابِِعون",
-    "followees": "المُتابَعون",
-    "Day Streak": "أيام النشاط",
-    "finishedCourses": {
-        "error": "Error Loading Finished Courses"
+    "buttons": {
+        "edit-profile": {
+            "en": "Edit Profile",
+            "ar": "تَعديلُ المِلَفِّ الشَّخصيّ"
+        }
     },
-      "bookmarkedCourses": {
-        "error": "Error Loading bookmarked Courses"
+    "information": {
+        "followers": {
+            "en": "Followers",
+            "ar": {
+                "male": "يُتابِعونَه",
+                "female": "يُتابِعونَها"
+            }
+        },
+        "followees": {
+            "en": "Followees",
+            "ar": {
+                "male": "يُتابِعُهم",
+                "female": "تُتابِعُهم"
+            }
+        },
+        "xp": {
+            "en": "XP",
+            "ar": "نُقطة"
+        },
+        "streak": {
+            "en": "Days",
+            "ar": "يَوماً"
+        },
+        "biography": {
+            "en": "Biography",
+            "ar": {
+                "male": "سيرَتُهُ الذّاتيّة",
+                "female": "سيرَتُها الذّاتيّة"
+            }
+        }
     },
-      "enrolledCourses": {
-        "error": "Error Loading enrolled Courses"
+
+    "related-courses-error": {
+        "title": {
+            "en": "Error!",
+            "ar": "حَدثَ خَطأ!"
+        },
+        "paragraph": {
+            "en": "An error occurred while fetching courses, try refetching.",
+            "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُقرَّرات، يُرجى المُحاولةُ مِنْ جَديد."
+        },
+        "button": {
+            "en": "Refetch Courses",
+            "ar": "إعادةُ جَلبِ المُقرَّرات"
+        }
+    },
+    "related-courses": {
+        "finished": {
+            "title": {
+                "en": "Finished Courses",
+                "ar": {
+                    "male": "المُقرَّراتُ الَّتي أنْهاها",
+                    "female": "المُقرَّراتُ الَّتي أنْهَتها"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The user **user** hasn't finished any course from what we offer yet.",
+                    "ar": {
+                        "male": "إنَّ المُستَخدِمَ **المستخدم** لَمْ يَقُمْ بِإنهاءِ أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات.",
+                        "female": "إنَّ المُستَخدِمةَ **المستخدم** لَمْ تَقُمْ بِإنهاءِ أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات."
+                    }
+                }
+            }
+        },
+        "enrolled": {
+            "title": {
+                "en": "Enrolled Courses",
+                "ar": {
+                    "male": "المُقرَّراتُ الَّتي سَجَّلَ فيها",
+                    "female": "المُقرَّراتُ الَّتي سَجَّلَتْ فيها"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The user **user** hasn't enrolled in any course from what we offer yet.",
+                    "ar": {
+                        "male": "إنَّ المُستَخدِمَ **المستخدم** لَمْ يَقُمْ بِالتَّسجيلِ في أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات.",
+                        "female": "إنَّ المُستَخدِمةَ **المستخدم** لَمْ تَقُمْ بِالتَّسجيلِ في أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات."
+                    }
+                }
+            }
+        },
+        "bookmarked": {
+            "title": {
+                "en": "Bookmarked Courses",
+                "ar": {
+                    "male": "المُقرَّراتُ الَّتي حَفِظَها",
+                    "female": "المُقرَّراتُ الَّتي حَفِظَتْها"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The user **user** hasn't bookmarked any course from what we offer yet.",
+                    "ar": {
+                        "male": "إنَّ المُستَخدِمَ **المستخدم** لَمْ يَقُمْ بِحِفْظِ أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات.",
+                        "female": "إنَّ المُستَخدِمةَ **المستخدم** لَمْ تَقُمْ بِحِفْظِ أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات."
+                    }
+                }
+            }
+        }
     }
 }

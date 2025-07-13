@@ -1,6 +1,7 @@
 import { twJoin } from "tailwind-merge";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { Image } from "@/components/Image/Image";
+import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { FC, Ref, useImperativeHandle, useRef } from "react";
@@ -10,6 +11,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import configure_icon from "@icons/cog.svg";
 
+import locales from "@localization/profile_page.json";
 import profile_dummy_data from "@data/profile.dummy.json";
 
 export type ProfileBannerProps = {
@@ -55,7 +57,7 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                 thickness="thick"
                 variant="primary"
             >
-                Edit Profile
+                <Locale>{locales.buttons["edit-profile"]}</Locale>
             </Button>
             <Image
                 className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"

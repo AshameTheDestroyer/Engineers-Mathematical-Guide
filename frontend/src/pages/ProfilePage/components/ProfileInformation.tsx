@@ -1,5 +1,8 @@
 import { FC } from "react";
+import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
+import { Gender } from "@/schemas/SignupSchema";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
@@ -13,6 +16,7 @@ import electricity_icon from "@icons/electricity.svg";
 import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
+import locales from "@localization/profile_page.json";
 import profile_dummy_data from "@data/profile.dummy.json";
 
 export type ProfileInformationProps = {
@@ -23,7 +27,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
     profilePictureRect,
 }) => {
     const { isScreenSize } = useScreenSize();
-    const { direction, language } = useLocalization();
+    const { direction, language, GetGenderedLocale } = useLocalization();
 
     return (
         <Flexbox
@@ -60,7 +64,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                     maximumFractionDigits: 1,
                                 }
                             ).format(profile_dummy_data.followers)}{" "}
-                            Followers
+                            {GetGenderedLocale(
+                                locales.information.followers,
+                                language,
+                                profile_dummy_data.gender as Gender
+                            )}
                         </Typography>
                     </Flexbox>
                     <Separator
@@ -83,7 +91,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                     maximumFractionDigits: 1,
                                 }
                             ).format(profile_dummy_data.followees)}{" "}
-                            Followees
+                            {GetGenderedLocale(
+                                locales.information.followees,
+                                language,
+                                profile_dummy_data.gender as Gender
+                            )}
                         </Typography>
                     </Flexbox>
                     <Separator
@@ -98,32 +110,49 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                             source={electricity_icon}
                         />
                         <Typography variant="p">
-                            {profile_dummy_data.userRating} XP
+                            {profile_dummy_data.userRating}{" "}
+                            {GetGenderedLocale(
+                                locales.information.xp,
+                                language,
+                                profile_dummy_data.gender as Gender
+                            )}
                         </Typography>
                     </Flexbox>
                 </Flexbox>
 
                 <Flexbox
-                    className="bg-secondary-normal place-self-end rounded-full rounded-br-xl rounded-tl-xl px-6 py-2 font-bold text-white max-md:place-self-center md:ml-auto"
+                    className={twJoin(
+                        direction == "ltr" ? "md:ml-auto" : "md:mr-auto",
+                        "bg-secondary-normal place-self-end rounded-full px-6 py-2 font-bold text-white max-md:place-self-center",
+                        direction == "ltr"
+                            ? "rounded-br-xl rounded-tl-xl"
+                            : "rounded-bl-xl rounded-tr-xl"
+                    )}
                     gap="2"
                     placeItems="center"
                     placeContent="space-between"
                 >
                     <Icon source={fire_icon} />
                     <Typography className="text-nowrap" variant="p">
-                        {profile_dummy_data.dayStreak} Days
+                        {profile_dummy_data.dayStreak}{" "}
+                        {GetGenderedLocale(
+                            locales.information.streak,
+                            language,
+                            profile_dummy_data.gender as Gender
+                        )}
                     </Typography>
                 </Flexbox>
             </Flexbox>
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
+
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
                 <Flexbox
                     className="bg-primary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
                     gap="3"
                     alignItems="center"
                 >
-                    <Icon source={graduation_cap_icon} />
+                    <Icon className="absolute" source={graduation_cap_icon} />
                     <Typography
-                        className="overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
                         variant="p"
                     >
                         {profile_dummy_data.specialization}
@@ -134,9 +163,9 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     gap="3"
                     alignItems="center"
                 >
-                    <Icon source={location_icon} />
+                    <Icon className="absolute" source={location_icon} />
                     <Typography
-                        className="overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
                         variant="p"
                     >
                         {profile_dummy_data.location}
@@ -145,13 +174,14 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             </div>
 
             <Flexbox className="border-3 border-background-dark-hover relative rounded-xl p-4">
-                <Typography
+                <Locale
                     className="bg-background-light text-background-dark-active absolute -top-3.5 px-3 font-bold"
                     variant="legend"
+                    gender={profile_dummy_data.gender as Gender}
                 >
-                    Biography
-                </Typography>
-                <Typography className="text-justify" variant="p">
+                    {locales.information.biography}
+                </Locale>
+                <Typography className="text-justify" variant="p" dir="ltr">
                     {profile_dummy_data.about}
                 </Typography>
             </Flexbox>
