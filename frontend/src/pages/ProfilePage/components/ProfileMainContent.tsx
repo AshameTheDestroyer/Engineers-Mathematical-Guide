@@ -7,6 +7,7 @@ import { Title } from "@/components/Title/Title";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { useElementInformation } from "@/hooks/useElementInformation";
@@ -27,9 +28,9 @@ import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 import profile_dummy_data from "@data/profile.dummy.json";
 
 export const ProfileMainContent: FC = () => {
-    const { direction, language } = useLocalization();
     const { isScreenSize } = useScreenSize();
     const { CopyToClipboard } = useClipboard();
+    const { direction, language } = useLocalization();
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
@@ -125,25 +126,25 @@ export const ProfileMainContent: FC = () => {
                 >
                     {profile_dummy_data.name}
                 </Typography>
+                <Typography
+                    className={twJoin(
+                        direction == "rtl" ? "text-end" : "",
+                        "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
+                    )}
+                    dir="ltr"
+                    variant="h2"
+                    onClick={(_e) =>
+                        CopyToClipboard(`@${profile_dummy_data.username}`)
+                    }
+                >
+                    @{profile_dummy_data.username}
+                </Typography>
+
                 <Flexbox
-                    placeItems="center"
-                    justifyContent="space-between"
+                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 max-md:place-content-center [&>:not(hr)]:h-12"
+                    gap="4"
                     wrap="wrap"
                 >
-                    <Typography
-                        className={twJoin(
-                            direction == "rtl" ? "text-end" : "",
-                            "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
-                        )}
-                        dir="ltr"
-                        variant="h2"
-                        onClick={(_e) =>
-                            CopyToClipboard(`@${profile_dummy_data.username}`)
-                        }
-                    >
-                        @{profile_dummy_data.username}
-                    </Typography>
-                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
                     <Flexbox gap="2" placeItems="center">
                         <Icon source={flag_icon} />
                         <Typography variant="p">
@@ -158,7 +159,11 @@ export const ProfileMainContent: FC = () => {
                             Followers
                         </Typography>
                     </Flexbox>
-                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
+                    <Separator
+                        className="border-background-dark-hover"
+                        thickness="thin"
+                        orientation="vertical"
+                    />
 
                     <Flexbox gap="2" placeItems="center">
                         <Icon source={user_icon} />
@@ -174,56 +179,79 @@ export const ProfileMainContent: FC = () => {
                             Followees
                         </Typography>
                     </Flexbox>
-                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
-
-                    <Flexbox className="bg-secondary-normal border-secondary-normal-active border-3 text-sakura-foreground-dark rounded-full rounded-br-xl rounded-tl-xl p-2 px-4 font-bold">
-                        <Icon source={electricity_icon} />
-                        <Typography variant="p">
-                            {profile_dummy_data.userRating}xp
-                        </Typography>
-                    </Flexbox>
-
-                    <div className="bg-gray-dark-hover h-8 w-[0.3px]"></div>
+                    <Separator
+                        className="border-background-dark-hover"
+                        thickness="thin"
+                        orientation="vertical"
+                    />
 
                     <Flexbox gap="2" placeItems="center">
-                        <Icon source={fire_icon} />
+                        <Icon source={electricity_icon} />
                         <Typography variant="p">
-                            Days Streak {profile_dummy_data.dayStreak}
+                            {profile_dummy_data.userRating} XP
                         </Typography>
+                    </Flexbox>
+
+                    <Flexbox
+                        className="max-md:min-w-full max-md:flex-1 md:ml-auto"
+                        placeContent="center"
+                    >
+                        <Flexbox
+                            className="bg-secondary-normal rounded-full rounded-br-xl rounded-tl-xl px-6 py-2 font-bold text-white"
+                            gap="2"
+                            placeItems="center"
+                            placeContent="space-between"
+                        >
+                            <Icon source={fire_icon} />
+                            <Typography className="text-nowrap" variant="p">
+                                {profile_dummy_data.dayStreak} Days
+                            </Typography>
+                        </Flexbox>
                     </Flexbox>
                 </Flexbox>
 
-                <Flexbox gap="2" placeItems="center">
-                    <Flexbox gap="6" alignItems="center" placeContent="center">
-                        <Flexbox
-                            gap="3"
-                            alignItems="center"
-                            className="bg-lagoon-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white"
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
+                    <Flexbox
+                        className="bg-primary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
+                        gap="3"
+                        alignItems="center"
+                    >
+                        <Icon source={graduation_cap_icon} />
+                        <Typography
+                            className="overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                            variant="p"
                         >
-                            <Icon source={graduation_cap_icon} />
-                            <Typography variant="p">
-                                {profile_dummy_data.specialization}
-                            </Typography>
-                        </Flexbox>
-                        <Flexbox
-                            gap="3"
-                            alignItems="center"
-                            className="bg-crimson-background-darker rounded-full p-2 px-5 pr-7 font-bold text-white"
-                        >
-                            <Icon source={location_icon} />
-                            <Typography variant="p">
-                                {profile_dummy_data.location}
-                            </Typography>
-                        </Flexbox>
+                            {profile_dummy_data.specialization}
+                        </Typography>
                     </Flexbox>
-                </Flexbox>
+                    <Flexbox
+                        className="bg-tertiary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
+                        gap="3"
+                        alignItems="center"
+                    >
+                        <Icon source={location_icon} />
+                        <Typography
+                            className="overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                            variant="p"
+                        >
+                            {profile_dummy_data.location}
+                        </Typography>
+                    </Flexbox>
+                </div>
+            </Flexbox>
+
+            <Flexbox className="border-3 border-background-dark-hover relative rounded-xl p-4">
                 <Typography
-                    variant="p"
-                    className="border-gray-dark text-wrap border-4 bg-gradient-to-r from-blue-500 to-purple-500 p-5 text-justify"
+                    className="bg-background-light text-background-dark-active absolute -top-3.5 px-3 font-bold"
+                    variant="legend"
                 >
+                    Biography
+                </Typography>
+                <Typography className="text-justify" variant="p">
                     {profile_dummy_data.about}
                 </Typography>
             </Flexbox>
+
             <Flexbox gap="6" direction="column">
                 <Typography variant="h2" className="text-xl font-bold">
                     Finished Courses (
@@ -235,7 +263,12 @@ export const ProfileMainContent: FC = () => {
                     studentRatingName={profile_dummy_data.name}
                 />
             </Flexbox>
-            <div className="my-5 h-[0.3px] w-full bg-gray-400"></div>
+
+            <Separator
+                className="border-background-dark-hover"
+                thickness="thick"
+                orientation="horizontal"
+            />
             <Flexbox gap="6" direction="column">
                 <Typography variant="h2" className="text-xl font-bold">
                     Enrolled Courses (
@@ -243,8 +276,12 @@ export const ProfileMainContent: FC = () => {
                 </Typography>
                 <CoursesDisplay courses={enrolledCourses} />
             </Flexbox>
-            <div className="h-[0.3px] w-full bg-gray-400"></div>
 
+            <Separator
+                className="border-background-dark-hover"
+                thickness="thick"
+                orientation="horizontal"
+            />
             <Flexbox gap="6" direction="column">
                 <Typography variant="h2" className="text-xl font-bold">
                     Bookmarked Courses (
