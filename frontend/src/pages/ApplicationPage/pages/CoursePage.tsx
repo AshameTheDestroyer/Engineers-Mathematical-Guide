@@ -8,6 +8,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
+import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
@@ -217,7 +218,11 @@ export const CoursePage: FC = () => {
                     {relatedCourses.map((coursesData, i) => (
                         <>
                             {i > 0 && (
-                                <hr className="border-background-normal border-3 my-2 rounded-full" />
+                                <Separator
+                                    className="border-background-dark-hover"
+                                    thickness="thick"
+                                    orientation="horizontal"
+                                />
                             )}
                             <RenderedRelatedCourses key={i} {...coursesData} />
                         </>

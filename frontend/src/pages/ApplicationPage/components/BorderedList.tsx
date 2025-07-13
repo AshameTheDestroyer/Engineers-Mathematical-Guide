@@ -2,6 +2,7 @@ import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { Separator } from "@/components/Separator/Separator";
 
 export type BorderedListProps = {
     list: Array<{ title: string; path: string }>;
@@ -20,7 +21,11 @@ export const BorderedList: FC<BorderedListProps> = ({ list }) => {
             {list.map((item, i, array) => (
                 <Fragment key={i}>
                     {i > 0 && (
-                        <hr className="border-background-darker border" />
+                        <Separator
+                            className="border-background-darker"
+                            thickness="thin"
+                            orientation="horizontal"
+                        />
                     )}
                     <Flexbox variant="li">
                         <button
