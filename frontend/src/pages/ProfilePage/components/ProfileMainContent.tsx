@@ -17,9 +17,9 @@ import { CoursesDisplay } from "@/pages/ApplicationPage/components/CoursesDispla
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import flag_icon from "@icons/flag.svg";
 import user_icon from "@icons/user.svg";
 import fire_icon from "@icons/fire.svg";
+import streak_icon from "@icons/streak.svg";
 import configure_icon from "@icons/cog.svg";
 import location_icon from "@icons/location.svg";
 import electricity_icon from "@icons/electricity.svg";
@@ -164,7 +164,7 @@ export const ProfileMainContent: FC = () => {
                         <Flexbox gap="2" placeItems="center">
                             <Icon
                                 className="text-background-dark-hover"
-                                source={flag_icon}
+                                source={streak_icon}
                             />
                             <Typography variant="p">
                                 {Intl.NumberFormat(
