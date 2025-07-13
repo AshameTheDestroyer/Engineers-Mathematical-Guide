@@ -139,78 +139,98 @@ export const ProfileMainContent: FC = () => {
                 >
                     @{profile_dummy_data.username}
                 </Typography>
+            </Flexbox>
 
-                <Flexbox
-                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 max-md:place-content-center [&>:not(hr)]:h-12"
-                    gap="4"
-                    wrap="wrap"
-                >
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon source={flag_icon} />
-                        <Typography variant="p">
-                            {Intl.NumberFormat(
-                                language == "ar" ? "ar-UA" : "en-US",
-                                {
-                                    notation: "compact",
-                                    compactDisplay: "short",
-                                    maximumFractionDigits: 1,
-                                }
-                            ).format(profile_dummy_data.followers)}{" "}
-                            Followers
-                        </Typography>
-                    </Flexbox>
-                    <Separator
-                        className="border-background-dark-hover"
-                        thickness="thin"
-                        orientation="vertical"
-                    />
-
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon source={user_icon} />
-                        <Typography variant="p">
-                            {Intl.NumberFormat(
-                                language == "ar" ? "ar-UA" : "en-US",
-                                {
-                                    notation: "compact",
-                                    compactDisplay: "short",
-                                    maximumFractionDigits: 1,
-                                }
-                            ).format(profile_dummy_data.followees)}{" "}
-                            Followees
-                        </Typography>
-                    </Flexbox>
-                    <Separator
-                        className="border-background-dark-hover"
-                        thickness="thin"
-                        orientation="vertical"
-                    />
-
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon source={electricity_icon} />
-                        <Typography variant="p">
-                            {profile_dummy_data.userRating} XP
-                        </Typography>
-                    </Flexbox>
-
+            <Flexbox
+                className="max-xl:md:mt-16"
+                gap="8"
+                direction="column"
+                style={{
+                    marginRight:
+                        isScreenSize.xl && direction == "rtl"
+                            ? `calc(${profilePictureRect.width}px + 5rem)`
+                            : "0",
+                    marginLeft:
+                        isScreenSize.xl && direction == "ltr"
+                            ? `calc(${profilePictureRect.left + profilePictureRect.width}px + 1rem)`
+                            : "0",
+                }}
+            >
+                <Flexbox className="max-xl:gap-8 max-md:flex-col max-md:place-content-center">
                     <Flexbox
-                        className="max-md:min-w-full max-md:flex-1 md:ml-auto"
-                        placeContent="center"
+                        className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-4 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
+                        wrap="wrap"
                     >
-                        <Flexbox
-                            className="bg-secondary-normal rounded-full rounded-br-xl rounded-tl-xl px-6 py-2 font-bold text-white"
-                            gap="2"
-                            placeItems="center"
-                            placeContent="space-between"
-                        >
-                            <Icon source={fire_icon} />
-                            <Typography className="text-nowrap" variant="p">
-                                {profile_dummy_data.dayStreak} Days
+                        <Flexbox gap="2" placeItems="center">
+                            <Icon
+                                className="text-background-dark-hover"
+                                source={flag_icon}
+                            />
+                            <Typography variant="p">
+                                {Intl.NumberFormat(
+                                    language == "ar" ? "ar-UA" : "en-US",
+                                    {
+                                        notation: "compact",
+                                        compactDisplay: "short",
+                                        maximumFractionDigits: 1,
+                                    }
+                                ).format(profile_dummy_data.followers)}{" "}
+                                Followers
+                            </Typography>
+                        </Flexbox>
+                        <Separator
+                            className="border-background-dark-hover"
+                            thickness="thin"
+                            orientation="vertical"
+                        />
+
+                        <Flexbox gap="2" placeItems="center">
+                            <Icon
+                                className="text-background-dark-hover"
+                                source={user_icon}
+                            />
+                            <Typography variant="p">
+                                {Intl.NumberFormat(
+                                    language == "ar" ? "ar-UA" : "en-US",
+                                    {
+                                        notation: "compact",
+                                        compactDisplay: "short",
+                                        maximumFractionDigits: 1,
+                                    }
+                                ).format(profile_dummy_data.followees)}{" "}
+                                Followees
+                            </Typography>
+                        </Flexbox>
+                        <Separator
+                            className="border-background-dark-hover"
+                            thickness="thin"
+                            orientation="vertical"
+                        />
+
+                        <Flexbox gap="2" placeItems="center">
+                            <Icon
+                                className="text-background-dark-hover"
+                                source={electricity_icon}
+                            />
+                            <Typography variant="p">
+                                {profile_dummy_data.userRating} XP
                             </Typography>
                         </Flexbox>
                     </Flexbox>
-                </Flexbox>
 
-                <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
+                    <Flexbox
+                        className="bg-secondary-normal place-self-end rounded-full rounded-br-xl rounded-tl-xl px-6 py-2 font-bold text-white max-md:place-self-center md:ml-auto"
+                        gap="2"
+                        placeItems="center"
+                        placeContent="space-between"
+                    >
+                        <Icon source={fire_icon} />
+                        <Typography className="text-nowrap" variant="p">
+                            {profile_dummy_data.dayStreak} Days
+                        </Typography>
+                    </Flexbox>
+                </Flexbox>
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1">
                     <Flexbox
                         className="bg-primary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
                         gap="3"
@@ -238,18 +258,18 @@ export const ProfileMainContent: FC = () => {
                         </Typography>
                     </Flexbox>
                 </div>
-            </Flexbox>
 
-            <Flexbox className="border-3 border-background-dark-hover relative rounded-xl p-4">
-                <Typography
-                    className="bg-background-light text-background-dark-active absolute -top-3.5 px-3 font-bold"
-                    variant="legend"
-                >
-                    Biography
-                </Typography>
-                <Typography className="text-justify" variant="p">
-                    {profile_dummy_data.about}
-                </Typography>
+                <Flexbox className="border-3 border-background-dark-hover relative rounded-xl p-4">
+                    <Typography
+                        className="bg-background-light text-background-dark-active absolute -top-3.5 px-3 font-bold"
+                        variant="legend"
+                    >
+                        Biography
+                    </Typography>
+                    <Typography className="text-justify" variant="p">
+                        {profile_dummy_data.about}
+                    </Typography>
+                </Flexbox>
             </Flexbox>
 
             <Flexbox gap="6" direction="column">
