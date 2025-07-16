@@ -41,7 +41,7 @@ export const FlippableContainer: FC<FlippableContainerProps> = ({
             className={twMerge(
                 "perspective-distant relative",
                 flipType == "click"
-                    ? `cursor-pointer ${doesShowFront && "[&>div]:rotate-y-180"}`
+                    ? `cursor-pointer ${!doesShowFront && "[&>div]:rotate-y-180"}`
                     : "hover:[&>div]:rotate-y-180",
                 className
             )}

@@ -37,7 +37,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             style={{
                 marginRight:
                     isScreenSize.xl && direction == "rtl"
-                        ? `calc(${profilePictureRect.width}px + 5rem)`
+                        ? `calc(${profilePictureRect.width}px + 8rem)`
                         : "0",
                 marginLeft:
                     isScreenSize.xl && direction == "ltr"

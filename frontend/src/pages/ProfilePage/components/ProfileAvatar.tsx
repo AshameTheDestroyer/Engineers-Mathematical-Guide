@@ -26,26 +26,20 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             className={className}
             flipType="click"
             frontChild={
-                <div
-                    className="overflow-hidden rounded-full"
+                <Image
+                    className="overflow-visible! [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                >
-                    <Image
-                        source={profile_dummy_data.avatar}
-                        alternative={`Avatar of ${profile_dummy_data.name}'s Profile.`}
-                    />
-                </div>
+                    source={profile_dummy_data.avatar}
+                    alternative={`Avatar of ${profile_dummy_data.name}'s Profile.`}
+                />
             }
             backChild={
-                <div
-                    className="overflow-hidden rounded-full"
+                <Image
+                    className="overflow-visible! [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                >
-                    <Image
-                        source={profile_dummy_data.personalImage}
-                        alternative={`Personal Image of ${profile_dummy_data.name}'s Profile.`}
-                    />
-                </div>
+                    source={profile_dummy_data.personalImage}
+                    alternative={`Personal Image of ${profile_dummy_data.name}'s Profile.`}
+                />
             }
         />
     );

@@ -30,7 +30,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                     : "0",
                 marginRight:
                     isScreenSize.md && direction == "rtl"
-                        ? `calc(${profilePictureRect.width}px + 5rem)`
+                        ? `calc(${profilePictureRect.width}px + 8rem)`
                         : "0",
                 marginLeft:
                     isScreenSize.md && direction == "ltr"
