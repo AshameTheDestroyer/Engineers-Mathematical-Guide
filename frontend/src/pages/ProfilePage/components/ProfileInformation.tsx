@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { Gender } from "@/schemas/SignupSchema";
@@ -29,6 +29,41 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
     const { isScreenSize } = useScreenSize();
     const { direction, language, GetGenderedLocale } = useLocalization();
 
+    const followersText =
+        Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
+            notation: "compact",
+            compactDisplay: "short",
+            maximumFractionDigits: 1,
+        }).format(profile_dummy_data.followers) +
+        " " +
+        GetGenderedLocale(
+            locales.information.followers,
+            language,
+            profile_dummy_data.gender as Gender
+        );
+
+    const followeesText =
+        Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
+            notation: "compact",
+            compactDisplay: "short",
+            maximumFractionDigits: 1,
+        }).format(profile_dummy_data.followees) +
+        " " +
+        GetGenderedLocale(
+            locales.information.followees,
+            language,
+            profile_dummy_data.gender as Gender
+        );
+
+    const experienceText =
+        profile_dummy_data.userRating +
+        " " +
+        GetGenderedLocale(
+            locales.information.xp,
+            language,
+            profile_dummy_data.gender as Gender
+        );
+
     return (
         <Flexbox
             className="max-xl:md:mt-16"
@@ -50,74 +85,37 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-4 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
                     wrap="wrap"
                 >
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon
-                            className="text-background-dark-hover scale-125"
-                            source={progress_arrow_icon}
-                        />
-                        <Typography variant="p">
-                            {Intl.NumberFormat(
-                                language == "ar" ? "ar-UA" : "en-US",
-                                {
-                                    notation: "compact",
-                                    compactDisplay: "short",
-                                    maximumFractionDigits: 1,
-                                }
-                            ).format(profile_dummy_data.followers)}{" "}
-                            {GetGenderedLocale(
-                                locales.information.followers,
-                                language,
-                                profile_dummy_data.gender as Gender
+                    {[
+                        {
+                            className: "scale-150",
+                            text: followersText,
+                            icon: progress_arrow_icon,
+                        },
+                        { icon: user_icon, text: followeesText },
+                        { text: experienceText, icon: electricity_icon },
+                    ].map((information, i) => (
+                        <Fragment key={i}>
+                            {i > 0 && (
+                                <Separator
+                                    className="border-background-dark-hover"
+                                    thickness="thin"
+                                    orientation="vertical"
+                                />
                             )}
-                        </Typography>
-                    </Flexbox>
-                    <Separator
-                        className="border-background-dark-hover"
-                        thickness="thin"
-                        orientation="vertical"
-                    />
-
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon
-                            className="text-background-dark-hover"
-                            source={user_icon}
-                        />
-                        <Typography variant="p">
-                            {Intl.NumberFormat(
-                                language == "ar" ? "ar-UA" : "en-US",
-                                {
-                                    notation: "compact",
-                                    compactDisplay: "short",
-                                    maximumFractionDigits: 1,
-                                }
-                            ).format(profile_dummy_data.followees)}{" "}
-                            {GetGenderedLocale(
-                                locales.information.followees,
-                                language,
-                                profile_dummy_data.gender as Gender
-                            )}
-                        </Typography>
-                    </Flexbox>
-                    <Separator
-                        className="border-background-dark-hover"
-                        thickness="thin"
-                        orientation="vertical"
-                    />
-
-                    <Flexbox gap="2" placeItems="center">
-                        <Icon
-                            className="text-background-dark-hover"
-                            source={electricity_icon}
-                        />
-                        <Typography variant="p">
-                            {profile_dummy_data.userRating}{" "}
-                            {GetGenderedLocale(
-                                locales.information.xp,
-                                language,
-                                profile_dummy_data.gender as Gender
-                            )}
-                        </Typography>
-                    </Flexbox>
+                            <Flexbox gap="2" placeItems="center">
+                                <Icon
+                                    className={twJoin(
+                                        "text-background-dark-hover",
+                                        information.className
+                                    )}
+                                    source={information.icon}
+                                />
+                                <Typography variant="p">
+                                    {information.text}
+                                </Typography>
+                            </Flexbox>
+                        </Fragment>
+                    ))}
                 </Flexbox>
 
                 <Flexbox
