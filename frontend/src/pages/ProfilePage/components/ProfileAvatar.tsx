@@ -20,22 +20,28 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-primary-normal border-primary-dark border-3 cursor-pointer overflow-hidden rounded-full p-2",
+                "perspective-distant",
+                doesShowAvatar && "[&>div]:rotate-y-180",
                 className
             )}
-            onClick={() =>
-                setDoesShowAvatar((doesShowAvatar) => !doesShowAvatar)
-            }
         >
-            <Image
-                className="bg-background-normal border-3 rounded-full border-[inherit]"
-                source={
-                    doesShowAvatar
-                        ? profile_dummy_data.avatar
-                        : profile_dummy_data.personalImage
+            <div
+                className="border-primary-dark border-3 bg-primary-normal transform-3d perspective-distant relative cursor-pointer rounded-full duration-500"
+                onClick={() =>
+                    setDoesShowAvatar((doesShowAvatar) => !doesShowAvatar)
                 }
-                alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
-            />
+            >
+                <Image
+                    className="border-3 border-primary-dark bg-primary-normal backface-hidden absolute inset-0 h-full w-full scale-[0.97] rounded-full"
+                    source={profile_dummy_data.avatar}
+                    alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
+                />
+                <Image
+                    className="border-3 border-primary-dark bg-primary-normal backface-hidden rotate-y-180 absolute inset-0 h-full w-full scale-[0.97] rounded-full"
+                    source={profile_dummy_data.personalImage}
+                    alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
+                />
+            </div>
         </Flexbox>
     );
 };

@@ -38,7 +38,7 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                         : "max-md:left-1/2 md:right-[6vw]"
                 )}
             >
-                <ProfileAvatar className="h-full w-full" />
+                <ProfileAvatar className="h-full w-full [&>div]:h-full [&>div]:w-full" />
                 <IconButton
                     className={twJoin(
                         "bottom-1/9 max-sm:[&>div:first-child]:p-2! absolute md:hidden",
