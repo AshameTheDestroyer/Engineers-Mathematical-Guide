@@ -1,5 +1,6 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 import { Image } from "@/components/Image/Image";
+import { useOutlines } from "@/hooks/useOutlines";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
 
@@ -12,11 +13,11 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     ref,
     className,
 }) => {
-    const Container = (props: PropsWithChildren) => (
-        <div className="overflow-hidden rounded-full shadow-[0_0_0_3px_var(--color-primary-dark),0_0_0_9px_var(--color-primary-normal),0_0_0_12px_var(--color-primary-dark)]">
-            {props.children}
-        </div>
-    );
+    const outlines = useOutlines([
+        "3px var(--color-primary-dark)",
+        "6px var(--color-primary-normal)",
+        "3px var(--color-primary-dark)",
+    ]);
 
     return (
         <FlippableContainer
@@ -25,20 +26,26 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             className={className}
             flipType="click"
             frontChild={
-                <Container>
+                <div
+                    className="overflow-hidden rounded-full"
+                    style={{ boxShadow: outlines }}
+                >
                     <Image
                         source={profile_dummy_data.avatar}
                         alternative={`Avatar of ${profile_dummy_data.name}'s Profile.`}
                     />
-                </Container>
+                </div>
             }
             backChild={
-                <Container>
+                <div
+                    className="overflow-hidden rounded-full"
+                    style={{ boxShadow: outlines }}
+                >
                     <Image
                         source={profile_dummy_data.personalImage}
                         alternative={`Personal Image of ${profile_dummy_data.name}'s Profile.`}
                     />
-                </Container>
+                </div>
             }
         />
     );
