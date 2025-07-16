@@ -1,8 +1,7 @@
-import { FC, useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { FC, PropsWithChildren } from "react";
 import { Image } from "@/components/Image/Image";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
 
 import profile_dummy_data from "@data/profile.dummy.json";
 
@@ -13,35 +12,34 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     ref,
     className,
 }) => {
-    const [doesShowAvatar, setDoesShowAvatar] = useState(true);
+    const Container = (props: PropsWithChildren) => (
+        <div className="overflow-hidden rounded-full shadow-[0_0_0_3px_var(--color-primary-dark),0_0_0_9px_var(--color-primary-normal),0_0_0_12px_var(--color-primary-dark)]">
+            {props.children}
+        </div>
+    );
 
     return (
-        <Flexbox
+        <FlippableContainer
             id={id}
             ref={ref}
-            className={twMerge(
-                "perspective-distant",
-                doesShowAvatar && "[&>div]:rotate-y-180",
-                className
-            )}
-        >
-            <div
-                className="border-primary-dark border-3 bg-primary-normal transform-3d perspective-distant relative cursor-pointer rounded-full duration-500"
-                onClick={() =>
-                    setDoesShowAvatar((doesShowAvatar) => !doesShowAvatar)
-                }
-            >
-                <Image
-                    className="border-3 border-primary-dark bg-primary-normal backface-hidden absolute inset-0 h-full w-full scale-[0.97] rounded-full"
-                    source={profile_dummy_data.avatar}
-                    alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
-                />
-                <Image
-                    className="border-3 border-primary-dark bg-primary-normal backface-hidden rotate-y-180 absolute inset-0 h-full w-full scale-[0.97] rounded-full"
-                    source={profile_dummy_data.personalImage}
-                    alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
-                />
-            </div>
-        </Flexbox>
+            className={className}
+            flipType="click"
+            frontChild={
+                <Container>
+                    <Image
+                        source={profile_dummy_data.avatar}
+                        alternative={`Avatar of ${profile_dummy_data.name}'s Profile.`}
+                    />
+                </Container>
+            }
+            backChild={
+                <Container>
+                    <Image
+                        source={profile_dummy_data.personalImage}
+                        alternative={`Personal Image of ${profile_dummy_data.name}'s Profile.`}
+                    />
+                </Container>
+            }
+        />
     );
 };
