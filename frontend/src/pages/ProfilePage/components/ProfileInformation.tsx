@@ -101,8 +101,8 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                 <Separator
                                     className={
                                         isDarkThemed
-                                            ? "border-foreground-dark"
-                                            : "border-background-dark-hover"
+                                            ? "bg-foreground-dark"
+                                            : "bg-background-dark-hover"
                                     }
                                     thickness="thin"
                                     orientation="vertical"

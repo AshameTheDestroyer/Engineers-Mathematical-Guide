@@ -41,8 +41,10 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                 <ProfileAvatar className="h-full w-full [&>div]:h-full [&>div]:w-full">
                     <IconButton
                         className={twJoin(
-                            "max-sm:[&>div:first-child]:p-2! bottom-1/11 absolute md:hidden",
-                            direction == "ltr" ? "right-1/11" : "left-1/11"
+                            "max-sm:[&>div:first-child]:p-2! absolute bottom-[9%] max-sm:bottom-[8%] md:hidden",
+                            direction == "ltr"
+                                ? "right-[9%] max-sm:right-[8%]"
+                                : "left-[9%] max-sm:left-[8%]"
                         )}
                         variant="primary"
                         icon={{ source: configure_icon }}
