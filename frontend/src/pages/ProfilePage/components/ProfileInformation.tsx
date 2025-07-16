@@ -6,6 +6,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -26,6 +27,7 @@ export type ProfileInformationProps = {
 export const ProfileInformation: FC<ProfileInformationProps> = ({
     profilePictureRect,
 }) => {
+    const { isDarkThemed } = useThemeMode();
     const { isScreenSize } = useScreenSize();
     const { direction, language, GetGenderedLocale } = useLocalization();
 
@@ -97,7 +99,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         <Fragment key={i}>
                             {i > 0 && (
                                 <Separator
-                                    className="border-background-dark-hover"
+                                    className={
+                                        isDarkThemed
+                                            ? "border-foreground-dark"
+                                            : "border-background-dark-hover"
+                                    }
                                     thickness="thin"
                                     orientation="vertical"
                                 />
@@ -105,7 +111,9 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                             <Flexbox gap="2" placeItems="center">
                                 <Icon
                                     className={twJoin(
-                                        "text-background-dark-hover",
+                                        isDarkThemed
+                                            ? "text-foreground-dark"
+                                            : "text-background-dark-hover",
                                         information.className
                                     )}
                                     source={information.icon}
@@ -157,7 +165,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     </Typography>
                 </Flexbox>
                 <Flexbox
-                    className="bg-tertiary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
+                    className={twJoin(
+                        isDarkThemed
+                            ? "bg-tertiary-light"
+                            : "bg-tertiary-normal",
+                        "rounded-full p-2 px-5 pr-7 font-bold text-white"
+                    )}
                     gap="3"
                     alignItems="center"
                 >
@@ -171,9 +184,21 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 </Flexbox>
             </div>
 
-            <Flexbox className="border-3 border-background-dark-hover relative rounded-xl p-4">
+            <Flexbox
+                className={twJoin(
+                    isDarkThemed
+                        ? "border-foreground-dark"
+                        : "border-background-dark-hover",
+                    "border-3 relative rounded-xl p-4"
+                )}
+            >
                 <Locale
-                    className="bg-background-light text-background-dark-active absolute -top-3.5 px-3 font-bold"
+                    className={twJoin(
+                        isDarkThemed
+                            ? "text-foreground-dark"
+                            : "text-background-dark-active",
+                        "bg-background-light absolute -top-3.5 px-3 font-bold"
+                    )}
                     variant="legend"
                     gender={profile_dummy_data.gender as Gender}
                 >
