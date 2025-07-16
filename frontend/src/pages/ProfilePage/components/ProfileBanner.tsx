@@ -38,16 +38,18 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                         : "max-md:left-1/2 md:right-[6vw]"
                 )}
             >
-                <ProfileAvatar className="h-full w-full [&>div]:h-full [&>div]:w-full" />
-                <IconButton
-                    className={twJoin(
-                        "bottom-1/9 max-sm:[&>div:first-child]:p-2! absolute md:hidden",
-                        direction == "ltr" ? "right-1/9" : "left-1/9"
-                    )}
-                    variant="primary"
-                    icon={{ source: configure_icon }}
-                    thickness={isScreenSize.sm ? "normal" : "thin"}
-                />
+                <ProfileAvatar className="h-full w-full [&>div]:h-full [&>div]:w-full">
+                    <IconButton
+                        className={twJoin(
+                            "max-sm:[&>div:first-child]:p-2! bottom-1/11 absolute md:hidden",
+                            direction == "ltr" ? "right-1/11" : "left-1/11"
+                        )}
+                        variant="primary"
+                        icon={{ source: configure_icon }}
+                        onClick={(e) => e.stopPropagation()}
+                        thickness={isScreenSize.sm ? "normal" : "thin"}
+                    />
+                </ProfileAvatar>
             </Flexbox>
             <Button
                 className={twJoin(

@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { Image } from "@/components/Image/Image";
 import { useOutlines } from "@/hooks/useOutlines";
-import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { ComponentProps } from "@/types/ComponentProps";
 import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
 
 import profile_dummy_data from "@data/profile.dummy.json";
 
-export type ProfileAvatarProps = ChildlessComponentProps<HTMLDivElement>;
+export type ProfileAvatarProps = ComponentProps<HTMLDivElement>;
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     id,
     ref,
+    children,
     className,
 }) => {
     const outlines = useOutlines([
@@ -41,6 +42,8 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
                     alternative={`Personal Image of ${profile_dummy_data.name}'s Profile.`}
                 />
             }
-        />
+        >
+            {children}
+        </FlippableContainer>
     );
 };

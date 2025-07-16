@@ -55,9 +55,11 @@ export const FlippableContainer: FC<FlippableContainerProps> = ({
             <div className="transform-3d absolute inset-0 duration-500">
                 <div className="backface-hidden absolute inset-0">
                     {frontChild}
+                    {children}
                 </div>
                 <div className="backface-hidden rotate-y-180 absolute inset-0">
                     {backChild}
+                    {children}
                 </div>
             </div>
         </Element>
