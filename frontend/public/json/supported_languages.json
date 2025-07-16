@@ -1,4 +1,4 @@
 [
-    { "code": "en", "name": "English", "flag-code": "gb" },
-    { "code": "ar", "name": "عَربيٌّ", "flag-code": "sy" }
+    { "code": "en", "name": "English", "flag-code": "gb", "direction": "ltr" },
+    { "code": "ar", "name": "عَربيٌّ", "flag-code": "sy", "direction": "rtl" }
 ]

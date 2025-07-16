@@ -5,7 +5,7 @@ import { RichText } from "@/components/RichText/RichText";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
-import empty_icon from "@icons/empty.svg";
+import search_empty_icon from "@icons/search_empty.svg";
 import network_error_icon from "@icons/network_error.svg";
 
 export type SearchResultDisplayProps = {
@@ -50,14 +50,14 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
                     {...(iconType == "custom" ? iconProps : {})}
                     source={
                         iconType == "empty"
-                            ? empty_icon
+                            ? search_empty_icon
                             : iconType == "error"
                               ? network_error_icon
                               : iconProps!.source
                     }
                 />
             )}
-            <Typography className="text-xl font-bold" variant="h2">
+            <Typography className="text-center text-xl font-bold" variant="h2">
                 {title}
             </Typography>
             <RichText

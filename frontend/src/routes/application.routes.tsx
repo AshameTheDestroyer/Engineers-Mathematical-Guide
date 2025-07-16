@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
+import { WEBSITE_ROUTES } from "./website.routes";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
@@ -28,6 +29,7 @@ export const APPLICATION_ROUTES = BuildRouter({
     base: {
         href: "/",
         routes: {
+            home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
             courses: { href: "courses" },
             "learning-tracks": { href: "learning-tracks" },
             "math-equations": { href: "math-equations" },

@@ -1,6 +1,9 @@
+import { Gender } from "@/schemas/SignupSchema";
 import {
     WritingDirection,
     LocalStorageManager,
+    WritingDirectionMode,
+    WritingDirectionModeEnum,
 } from "@/managers/LocalStorageManager";
 import {
     FC,
@@ -11,12 +14,20 @@ import {
     PropsWithChildren,
 } from "react";
 
+import supported_languages from "@json/supported_languages.json";
+
 export type LocalizationStateProps = {
     language: string;
     direction: WritingDirection;
+    "direction-mode": WritingDirectionMode;
     SetLanguage: (language: string) => void;
-    SetDirection: (direction: WritingDirection) => void;
+    SetDirectionMode: (direction: WritingDirectionMode) => void;
     GetLocale: (locales: Record<string, string>, language: string) => string;
+    GetGenderedLocale: (
+        locales: Record<string, string | Record<Gender, string>>,
+        language: string,
+        gender: Gender
+    ) => string;
     GetRouteLocales: (
         routes: Record<string, Omit<Anchor, "routes">>,
         locales: Record<string, Record<string, string>>,
@@ -41,12 +52,24 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
     const [state, setState] = useState<LocalizationStateProps>({
         GetLocale,
         SetLanguage,
-        SetDirection,
         GetErrorLocale,
         GetRouteLocales,
+        SetDirectionMode,
+        GetGenderedLocale,
         language: LocalStorageManager.Instance.items.language,
-        direction: LocalStorageManager.Instance.items.direction,
+        "direction-mode": LocalStorageManager.Instance.items["direction-mode"],
+        direction: GetDirection(
+            LocalStorageManager.Instance.items["direction-mode"],
+            LocalStorageManager.Instance.items.language
+        ),
     });
+
+    useEffect(() => {
+        setState((state) => ({
+            ...state,
+            direction: GetDirection(state["direction-mode"], state.language),
+        }));
+    }, [state["direction-mode"], state.language]);
 
     useEffect(() => {
         document.body.style.direction = state.direction;
@@ -57,13 +80,26 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         setState((state) => ({ ...state, language }));
     }
 
-    function SetDirection(direction: WritingDirection) {
-        LocalStorageManager.Instance.SetItem("direction", direction);
-        setState((state) => ({ ...state, direction }));
+    function SetDirectionMode(directionMode: WritingDirectionMode) {
+        LocalStorageManager.Instance.SetItem("direction-mode", directionMode);
+        setState((state) => ({ ...state, "direction-mode": directionMode }));
     }
 
     function GetLocale(locales: Record<string, string>, language: string) {
         const locale = locales[language];
+        if (locale == null) {
+            // Fetch translation API and return result.
+        }
+        return locale;
+    }
+
+    function GetGenderedLocale(
+        locales: Record<string, string | Record<Gender, string>>,
+        language: string,
+        gender: Gender
+    ) {
+        const locale_ = locales[language];
+        const locale = typeof locale_ == "string" ? locale_ : locale_[gender];
         if (locale == null) {
             // Fetch translation API and return result.
         }
@@ -111,6 +147,20 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         }
 
         return errorKey && GetLocale(locales[errorKey], language);
+    }
+
+    function GetDirection(
+        directionMode: WritingDirectionMode,
+        language: string
+    ): WritingDirection {
+        if (directionMode == WritingDirectionModeEnum.auto) {
+            const language_ = supported_languages.find(
+                (language_) => language_.code == language
+            );
+            return language_?.direction as WritingDirection;
+        }
+
+        return directionMode;
     }
 
     return (

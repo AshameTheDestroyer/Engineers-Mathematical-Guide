@@ -3,7 +3,8 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { ErrorBoundaryProps } from "react-error-boundary";
 import { FallbackPage } from "../FallbackPage/FallbackPage";
-import { Typography } from "@/components/Typography/Typography";
+import { CodeBlock } from "@/components/CodeBlock/CodeBlock";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
 import locales from "@localization/error_page.json";
 
@@ -15,6 +16,8 @@ export const ErrorPage: FC<ErrorPageProps> = ({
     error,
     resetErrorBoundary,
 }) => {
+    const { isDarkThemed } = useThemeMode();
+
     return (
         <FallbackPage>
             <Locale variant="h1" className="text-3xl font-bold">
@@ -23,9 +26,13 @@ export const ErrorPage: FC<ErrorPageProps> = ({
             <Locale variant="p" className="font-bold">
                 {locales.subtitle}
             </Locale>
-            <Typography variant="p" className="max-w-[40rem] font-bold">
+            <CodeBlock
+                className="max-w-[calc(100vw-var(--spacing-page)*2)]"
+                language="json"
+                theme={isDarkThemed ? "duotoneSea" : "materialLight"}
+            >
                 {`${error}`}
-            </Typography>
+            </CodeBlock>
             <Button
                 className="max-w-max place-self-center [&>div]:px-4"
                 onClick={resetErrorBoundary}

@@ -37,6 +37,7 @@ export const CodeBlock: FC<CodeBlockProps> = ({
             ref={ref}
             className={twMerge(
                 "[&_code]:text-md! [&>*:first-child]:p-8! relative [&>*:first-child]:rounded-2xl [&>*:first-child]:[direction:ltr]",
+                !hideCopyButton && "[&>*:first-child]:pr-16!",
                 className
             )}
         >

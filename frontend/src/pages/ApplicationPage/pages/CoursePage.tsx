@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
@@ -8,6 +8,7 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
+import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
@@ -19,7 +20,7 @@ import { useGetPrerequisiteCourses } from "@/services/Courses/useGetPrerequisite
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisiteCourses";
 
-import enrollment_icon from "@icons/enrollment.svg";
+import course_enrollment_icon from "@icons/course_enrollment.svg";
 
 import locales from "@localization/courses_page.json";
 
@@ -56,7 +57,7 @@ export const CoursePage: FC = () => {
         },
     ];
 
-    const RenderRelatedCourses = (
+    const RenderedRelatedCourses = (
         coursesData: (typeof relatedCourses)[number]
     ) => {
         const errorLocales = locales.profile["related-courses-error"];
@@ -113,7 +114,7 @@ export const CoursePage: FC = () => {
                     variant="primary"
                     icon={{
                         placement: "left",
-                        source: enrollment_icon,
+                        source: course_enrollment_icon,
                     }}
                 >
                     <Locale>{locales.profile.buttons["enroll-now"]}</Locale>
@@ -215,7 +216,17 @@ export const CoursePage: FC = () => {
 
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
                     {relatedCourses.map((coursesData, i) => (
-                        <RenderRelatedCourses key={i} {...coursesData} />
+                        <Fragment key={i}>
+                            |
+                            {i > 0 && (
+                                <Separator
+                                    className="border-background-dark-hover"
+                                    thickness="thick"
+                                    orientation="horizontal"
+                                />
+                            )}
+                            <RenderedRelatedCourses {...coursesData} />
+                        </Fragment>
                     ))}
                 </Flexbox>
             </main>

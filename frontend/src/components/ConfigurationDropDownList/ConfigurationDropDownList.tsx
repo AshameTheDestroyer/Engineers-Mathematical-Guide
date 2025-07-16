@@ -4,6 +4,7 @@ import { PALETTE_ICONS } from "@/constants/PaletteIcons";
 import { Button, ButtonProps } from "@/components/Button/Button";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { DropDown, DropDownProps } from "@/components/DropDown/DropDown";
+import { WritingDirectionModeEnum } from "@/managers/LocalStorageManager";
 import { useThemePalette } from "../ThemePaletteProvider/ThemePaletteProvider";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import {
@@ -16,6 +17,7 @@ import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
 import arrow_icon from "@icons/arrow.svg";
 import monitor_icon from "@icons/monitor.svg";
+import arrow_double_icon from "@icons/arrow_double.svg";
 
 import supported_languages from "@json/supported_languages.json";
 import locales from "@localization/configuration_drop_down_list.json";
@@ -37,8 +39,13 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
 }) => {
     const { themeMode, SetThemeMode } = useThemeMode();
     const { themePalette, themePalettes, SetThemePalette } = useThemePalette();
-    const { language, direction, SetLanguage, SetDirection } =
-        useLocalization();
+    const {
+        language,
+        direction,
+        SetLanguage,
+        SetDirectionMode,
+        "direction-mode": directionMode,
+    } = useLocalization();
 
     const position: Position =
         _position ?? (direction == "ltr" ? "bottom-end" : "bottom-start");
@@ -149,34 +156,57 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                     </Locale>
                 }
             >
-                <Button
-                    doesTextGrow
-                    icon={{
-                        className: "rotate-90",
-                        source: arrow_icon,
-                        placement: direction == "ltr" ? "left" : "right",
-                    }}
-                    variant={direction == "ltr" ? "primary" : "default"}
-                    onClick={(_e) => SetDirection("ltr")}
-                >
-                    <Locale>
-                        {locales["writing-direction"].values["left-to-right"]}
-                    </Locale>
-                </Button>
-                <Button
-                    doesTextGrow
-                    icon={{
-                        className: "-rotate-90",
-                        source: arrow_icon,
-                        placement: direction == "ltr" ? "left" : "right",
-                    }}
-                    variant={direction == "rtl" ? "primary" : "default"}
-                    onClick={(_e) => SetDirection("rtl")}
-                >
-                    <Locale>
-                        {locales["writing-direction"].values["right-to-left"]}
-                    </Locale>
-                </Button>
+                {Object.getEnumValues(WritingDirectionModeEnum)
+                    .map((writingDirection) => ({
+                        value: writingDirection,
+                        className: {
+                            ltr: "rotate-90",
+                            rtl: "-rotate-90",
+                            auto: "rotate-90",
+                        }[writingDirection],
+                        iconSource: {
+                            ltr: arrow_icon,
+                            rtl: arrow_icon,
+                            auto: arrow_double_icon,
+                        }[writingDirection],
+                        thickness: { ltr: 1, rtl: 1, auto: 4 }[
+                            writingDirection
+                        ],
+                        locale: {
+                            ltr: locales["writing-direction"].values[
+                                "left-to-right"
+                            ],
+                            rtl: locales["writing-direction"].values[
+                                "right-to-left"
+                            ],
+                            auto: locales["writing-direction"].values[
+                                "automatic"
+                            ],
+                        }[writingDirection],
+                    }))
+                    .map((writingDirection, i) => (
+                        <Button
+                            key={i}
+                            doesTextGrow
+                            onClick={(_e) =>
+                                SetDirectionMode(writingDirection.value)
+                            }
+                            icon={{
+                                className: writingDirection.className,
+                                thickness: 4,
+                                source: writingDirection.iconSource,
+                                placement:
+                                    direction == "ltr" ? "left" : "right",
+                            }}
+                            variant={
+                                directionMode == writingDirection.value
+                                    ? "primary"
+                                    : "default"
+                            }
+                        >
+                            <Locale>{writingDirection.locale}</Locale>
+                        </Button>
+                    ))}
             </DropDown>
             <DropDown
                 doesTextGrow

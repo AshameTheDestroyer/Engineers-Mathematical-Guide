@@ -1,0 +1,26 @@
+{
+    "name": "Hashem Wannous",
+    "username": "ashamethedestroyer",
+    "banner": "src/assets/images/minecraft_wallpaper.jpg",
+    "avatar": "src/assets/images/hashem_wannous_avatar.png",
+    "personalImage": "src/assets/images/hashem_wannous.jpg",
+    "specialization": "AI Engineering",
+    "about": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum tempora, aliquid, quaerat officia porro quia possimus adipisci suscipit enim non odit ratione ab deleniti architecto. Cumque dolor nesciunt veritatis nulla, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum tempora, aliquid, quaerat officia porro quia possimus adipisci suscipit enim non odit ratione ab deleniti architecto. Cumque dolor nesciunt veritatis nulla.",
+    "location": "Damascus - Syria",
+    "userRating": 7084,
+    "dayStreak": 643,
+    "followees": 23243,
+    "gender": "male",
+    "followers": 2540000,
+    "finishedCourses": [
+        "linear-algebra",
+        "calculus-i",
+        "calculus-ii",
+        "probability-theory",
+        "mathematical-statistics",
+        "machine learning",
+        "algorithms"
+    ],
+    "enrolledCourses": ["ai", "computer-vision"],
+    "bookmarkedCourses": ["mathematical-statistics", "discrete-mathematics"]
+}

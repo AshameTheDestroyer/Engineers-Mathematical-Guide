@@ -26,6 +26,7 @@ export const RoutingCollection: FC = () => {
             >
                 <NavigationBar
                     direction="row"
+                    base={TEST_ROUTES?.base.absolute ?? ""}
                     routes={GetRouteLocales(
                         TEST_ROUTES != null
                             ? { ...TEST_ROUTES.base.routes }

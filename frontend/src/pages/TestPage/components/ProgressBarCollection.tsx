@@ -4,11 +4,11 @@ import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
 
 import sun_icon from "@icons/sun.svg";
 import moon_icon from "@icons/moon.svg";
-import epic_icon from "@icons/epic.svg";
-import error_icon from "@icons/error.svg";
-import success_icon from "@icons/success.svg";
-import warning_icon from "@icons/warning.svg";
-import information_icon from "@icons/information.svg";
+import variant_epic_icon from "@icons/variant_epic.svg";
+import variant_error_icon from "@icons/variant_error.svg";
+import variant_success_icon from "@icons/variant_success.svg";
+import variant_warning_icon from "@icons/variant_warning.svg";
+import variant_information_icon from "@icons/variant_information.svg";
 
 export const ProgressBarCollection: FC = () => {
     const themeIconCheckpoints = [
@@ -17,11 +17,11 @@ export const ProgressBarCollection: FC = () => {
     ];
 
     const vibrantIconCheckpoints = [
-        { value: 17, icon: { source: information_icon } },
-        { value: 33, icon: { source: warning_icon } },
-        { value: 50, icon: { source: success_icon } },
-        { value: 67, icon: { source: error_icon } },
-        { value: 83, icon: { source: epic_icon } },
+        { value: 17, icon: { source: variant_information_icon } },
+        { value: 33, icon: { source: variant_warning_icon } },
+        { value: 50, icon: { source: variant_success_icon } },
+        { value: 67, icon: { source: variant_error_icon } },
+        { value: 83, icon: { source: variant_epic_icon } },
     ];
 
     return (
