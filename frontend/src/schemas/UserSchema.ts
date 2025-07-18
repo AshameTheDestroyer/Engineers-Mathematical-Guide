@@ -6,6 +6,7 @@ export const UserSchema = ZodIntersectMany(
     SignupStepSchemas["personal-information"],
     SignupCredentialsSchema.pick({ email: true }),
     z.object({
+        flag: z.string(),
         avatar: z.string().optional(),
         "personal-image": z.string().optional(),
         "day-streak": z

@@ -39,20 +39,32 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                         : "0",
             }}
         >
-            <Typography
-                className={twJoin(
-                    direction == "rtl" ? "text-end" : "",
-                    "overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-2xl font-bold max-md:text-center max-md:text-xl"
-                )}
-                dir="ltr"
-                variant="h1"
+            <Flexbox
+                className="max-md:place-content-center"
+                alignItems="center"
+                gap="4"
             >
-                {myUser.name} {myUser.surname}
-            </Typography>
+                <Typography
+                    className={twJoin(
+                        direction == "rtl" ? "text-end" : "",
+                        "overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-2xl font-bold max-md:text-xl"
+                    )}
+                    dir="ltr"
+                    variant="h1"
+                >
+                    {myUser.name} {myUser.surname}
+                </Typography>
+                <img
+                    className="h-[48px] translate-y-0 drop-shadow-[3px_3px_1px_#0000004c]"
+                    src={`/flags/${myUser.flag}.svg`}
+                    width={48}
+                    height={48}
+                />
+            </Flexbox>
             <Typography
                 className={twJoin(
                     direction == "rtl" ? "text-end" : "",
-                    "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
+                    "text-primary-normal w-fit cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:place-self-center max-md:text-lg"
                 )}
                 dir="ltr"
                 variant="h2"
