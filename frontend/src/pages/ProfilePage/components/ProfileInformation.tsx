@@ -1,7 +1,7 @@
 import { FC, Fragment } from "react";
-import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { Gender } from "@/schemas/SignupSchema";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedUserDTO } from "@/schemas/UserSchema";
@@ -13,6 +13,8 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import user_icon from "@icons/user.svg";
 import fire_icon from "@icons/fire.svg";
+import phone_icon from "@icons/phone.svg";
+import email_icon from "@icons/email.svg";
 import location_icon from "@icons/location.svg";
 import electricity_icon from "@icons/electricity.svg";
 import progress_arrow_icon from "@icons/progress_arrow.svg";
@@ -99,8 +101,8 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                 <Separator
                                     className={
                                         isDarkThemed
-                                            ? "bg-foreground-dark"
-                                            : "bg-background-dark-hover"
+                                            ? "border-foreground-dark"
+                                            : "border-background-dark-hover"
                                     }
                                     thickness="thin"
                                     orientation="vertical"
@@ -148,38 +150,50 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 </Flexbox>
             </Flexbox>
 
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
-                <Flexbox
-                    className="bg-primary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
-                    gap="3"
-                    alignItems="center"
-                >
-                    <Icon className="absolute" source={graduation_cap_icon} />
-                    <Typography
-                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
-                        variant="p"
-                    >
-                        {myUser.specialization}
-                    </Typography>
-                </Flexbox>
-                <Flexbox
-                    className={twJoin(
-                        isDarkThemed
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
+                {[
+                    {
+                        className: "bg-primary-normal",
+                        icon: graduation_cap_icon,
+                        text: myUser.specialization?.toTitleCase("ai"),
+                    },
+                    {
+                        className: isDarkThemed
                             ? "bg-tertiary-light"
                             : "bg-tertiary-normal",
-                        "rounded-full p-2 px-5 pr-7 font-bold text-white"
-                    )}
-                    gap="3"
-                    alignItems="center"
-                >
-                    <Icon className="absolute" source={location_icon} />
-                    <Typography
-                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
-                        variant="p"
+                        icon: email_icon,
+                        text: myUser.email,
+                    },
+                    {
+                        icon: location_icon,
+                        text: `${myUser.city} - ${myUser.country}`,
+                    },
+                    {
+                        icon: phone_icon,
+                        text: myUser["phone-number"],
+                    },
+                ].map((information, i) => (
+                    <Flexbox
+                        key={i}
+                        className={twMerge(
+                            isDarkThemed
+                                ? "bg-foreground-light"
+                                : "bg-background-dark-active",
+                            "rounded-full p-2 px-5 pr-7 font-bold text-white",
+                            information.className
+                        )}
+                        gap="3"
+                        alignItems="center"
                     >
-                        {myUser.city} {myUser.country}
-                    </Typography>
-                </Flexbox>
+                        <Icon source={information.icon} />
+                        <Typography
+                            className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                            variant="p"
+                        >
+                            {information.text}
+                        </Typography>
+                    </Flexbox>
+                ))}
             </div>
 
             <Flexbox
