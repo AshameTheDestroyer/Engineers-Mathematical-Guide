@@ -1,0 +1,222 @@
+[
+    {
+        "name": "Hashem",
+        "surname": "Wannous",
+        "username": "ashamethedestroyer",
+        "gender": "male",
+        "country": "Syria",
+        "avatar": "src/assets/images/hashem_wannous_avatar.png",
+        "personal-image": "src/assets/images/hashem_wannous.jpg",
+        "day-streak": 643
+    },
+    {
+        "name": "Batoul",
+        "surname": "Kazak",
+        "username": "dieblauekatze",
+        "gender": "female",
+        "country": "Syria",
+        "avatar": "src/assets/images/batoul_kazak_avatar.png",
+        "personal-image": "src/assets/images/batoul_kazak.png",
+        "day-streak": 234
+    },
+    {
+        "email": "ahmed.ali@example.com",
+        "username": "shadowhunter99",
+        "name": "Ahmed",
+        "gender": "male",
+        "country": "Egypt",
+        "phone-number": "+201234567890",
+        "surname": "Ali",
+        "day-streak": 327
+    },
+    {
+        "email": "fatima.hassan@example.com",
+        "username": "starlightdreams",
+        "name": "Fatima",
+        "gender": "female",
+        "country": "Saudi Arabia",
+        "phone-number": "+966501234567",
+        "surname": "Hassan",
+        "day-streak": 842
+    },
+    {
+        "email": "youssef.mohamed@example.com",
+        "username": "codemaster_y",
+        "name": "Youssef",
+        "gender": "male",
+        "country": "Sudan",
+        "phone-number": "+249912345678",
+        "surname": "Mohamed",
+        "day-streak": 156
+    },
+    {
+        "email": "layan.jaber@example.com",
+        "username": "layanj_001",
+        "name": "Layan",
+        "gender": "female",
+        "country": "Jordan",
+        "phone-number": "+962798765432",
+        "surname": "Jaber",
+        "day-streak": 603
+    },
+    {
+        "email": "khalid.nasser@example.com",
+        "username": "khalidas",
+        "name": "Khalid",
+        "gender": "male",
+        "country": "United Arab Emirates",
+        "phone-number": "+971501234567",
+        "surname": "Nasser",
+        "day-streak": 911
+    },
+    {
+        "email": "noor.salem@example.com",
+        "username": "noorsalem202",
+        "name": "Noor",
+        "gender": "female",
+        "country": "Qatar",
+        "phone-number": "+97433123456",
+        "surname": "Salem",
+        "day-streak": 244
+    },
+    {
+        "email": "mohammad.kadour@example.com",
+        "username": "moethedev",
+        "name": "Mohammad",
+        "gender": "male",
+        "country": "Lebanon",
+        "phone-number": "+96170123456",
+        "surname": "Kadour",
+        "day-streak": 730
+    },
+    {
+        "email": "asmaa.tariq@example.com",
+        "username": "asmat_98",
+        "name": "Asmaa",
+        "gender": "female",
+        "country": "Morocco",
+        "phone-number": "+212612345678",
+        "surname": "Tariq",
+        "day-streak": 412
+    },
+    {
+        "email": "ibrahim.farouk@example.com",
+        "username": "ibradev007",
+        "name": "Ibrahim",
+        "gender": "male",
+        "country": "Algeria",
+        "phone-number": "+213551234567",
+        "surname": "Farouk",
+        "day-streak": 975
+    },
+    {
+        "email": "hala.abdullah@example.com",
+        "username": "halacodes",
+        "name": "Hala",
+        "gender": "female",
+        "country": "Bahrain",
+        "phone-number": "+97339123456",
+        "surname": "Abdullah",
+        "day-streak": 109
+    },
+    {
+        "email": "tarek.zaher@example.com",
+        "username": "tarekzdev",
+        "name": "Tarek",
+        "gender": "male",
+        "country": "Iraq",
+        "phone-number": "+9647501234567",
+        "surname": "Zaher",
+        "day-streak": 582
+    },
+    {
+        "email": "nada.amin@example.com",
+        "username": "nadaamin123",
+        "name": "Nada",
+        "gender": "female",
+        "country": "Oman",
+        "phone-number": "+96891234567",
+        "surname": "Amin",
+        "day-streak": 333
+    },
+    {
+        "email": "zaid.rashid@example.com",
+        "username": "zaidrash",
+        "name": "Zaid",
+        "gender": "male",
+        "country": "Palestine",
+        "phone-number": "+972501234567",
+        "surname": "Rashid",
+        "day-streak": 764
+    },
+    {
+        "email": "dalal.hussein@example.com",
+        "username": "dalalhuss",
+        "name": "Dalal",
+        "gender": "female",
+        "country": "Kuwait",
+        "phone-number": "+96560012345",
+        "surname": "Hussein",
+        "day-streak": 89
+    },
+    {
+        "email": "anas.walid@example.com",
+        "username": "anaswdev",
+        "name": "Anas",
+        "gender": "male",
+        "country": "Yemen",
+        "phone-number": "+967712345678",
+        "surname": "Walid",
+        "day-streak": 201
+    },
+    {
+        "email": "reem.ghani@example.com",
+        "username": "reemghani",
+        "name": "Reem",
+        "gender": "female",
+        "country": "Syria",
+        "phone-number": "+963912345678",
+        "surname": "Ghani",
+        "day-streak": 467
+    },
+    {
+        "email": "sami.dabbous@example.com",
+        "username": "samidab1",
+        "name": "Sami",
+        "gender": "male",
+        "country": "Tunisia",
+        "phone-number": "+21621234567",
+        "surname": "Dabbous",
+        "day-streak": 122
+    },
+    {
+        "email": "layla.makki@example.com",
+        "username": "laylamakki",
+        "name": "Layla",
+        "gender": "female",
+        "country": "Libya",
+        "phone-number": "+218912345678",
+        "surname": "Makki",
+        "day-streak": 635
+    },
+    {
+        "email": "omar.bakri@example.com",
+        "username": "omarbakridev",
+        "name": "Omar",
+        "gender": "male",
+        "country": "Somalia",
+        "phone-number": "+252901234567",
+        "surname": "Bakri",
+        "day-streak": 99
+    },
+    {
+        "email": "aya.adel@example.com",
+        "username": "ayaadeldev",
+        "name": "Aya",
+        "gender": "female",
+        "country": "Djibouti",
+        "phone-number": "+25377123456",
+        "surname": "Adel",
+        "day-streak": 540
+    }
+]
