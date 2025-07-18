@@ -19,7 +19,7 @@ export const DetailedUserSchema = z.intersection(
         banner: z.string().optional(),
         specialization: z.string().optional(),
         city: z.string({ required_error: "required" }),
-        about: z.string({ required_error: "required" }).default(""),
+        about: z.string({ required_error: "required" }),
         followees: z
             .number({ required_error: "required" })
             .nonnegative("nonnegative")
@@ -28,21 +28,16 @@ export const DetailedUserSchema = z.intersection(
             .number({ required_error: "required" })
             .nonnegative("nonnegative")
             .int("integer"),
-        "finished-courses": z
-            .array(z.string({ required_error: "required" }), {
-                required_error: "required",
-            })
-            .default([]),
-        "enrolled-courses": z
-            .array(z.string({ required_error: "required" }), {
-                required_error: "required",
-            })
-            .default([]),
-        "bookmarked-courses": z
-            .array(z.string({ required_error: "required" }), {
-                required_error: "required",
-            })
-            .default([]),
+        "finished-courses": z.array(z.string({ required_error: "required" }), {
+            required_error: "required",
+        }),
+        "enrolled-courses": z.array(z.string({ required_error: "required" }), {
+            required_error: "required",
+        }),
+        "bookmarked-courses": z.array(
+            z.string({ required_error: "required" }),
+            { required_error: "required" }
+        ),
     })
 );
 

@@ -1,0 +1,32 @@
+import { DetailedUserDTO, DetailedUserSchema } from "@/schemas/UserSchema";
+import {
+    useSchematicQuery,
+    InheritableQueryOptions,
+} from "@/hooks/useSchematicQuery";
+
+import detailed_users_dummy_data from "@data/detailed_users.dummy.json";
+
+export const GET_USER_BY_ID_KEY = "get-user-by-id";
+
+export const useGetUserByID = <TUsesSuspense extends boolean = false>(
+    id: string | undefined,
+    options?: InheritableQueryOptions<
+        TUsesSuspense,
+        DetailedUserDTO,
+        DetailedUserDTO | undefined
+    >
+) =>
+    useSchematicQuery<
+        TUsesSuspense,
+        DetailedUserDTO,
+        DetailedUserDTO | undefined
+    >({
+        schema: DetailedUserSchema,
+        queryFn: () =>
+            (detailed_users_dummy_data as Array<DetailedUserDTO>).find(
+                (user) => user.username == id
+            ),
+        parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
+        ...options,
+        queryKey: [GET_USER_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
+    });
