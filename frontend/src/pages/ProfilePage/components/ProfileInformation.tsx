@@ -43,7 +43,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
         GetGenderedLocale(
             locales.information.followers,
             language,
-            myUser.gender as Gender
+            myUser.gender
         );
 
     const followeesText =
@@ -56,17 +56,13 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
         GetGenderedLocale(
             locales.information.followees,
             language,
-            myUser.gender as Gender
+            myUser.gender
         );
 
     const experienceText =
         myUser.xp +
         " " +
-        GetGenderedLocale(
-            locales.information.xp,
-            language,
-            myUser.gender as Gender
-        );
+        GetGenderedLocale(locales.information.xp, language, myUser.gender);
 
     return (
         <Flexbox
@@ -146,7 +142,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         {GetGenderedLocale(
                             locales.information.streak,
                             language,
-                            myUser.gender as Gender
+                            myUser.gender
                         )}
                     </Typography>
                 </Flexbox>

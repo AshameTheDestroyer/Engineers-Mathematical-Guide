@@ -75,7 +75,7 @@ export const ProfileMainContent: FC = () => {
                         paragraph: GetGenderedLocale(
                             coursesData.locales.empty.paragraph,
                             language,
-                            myUser.gender as Gender
+                            myUser.gender
                         ).replace(/\*\*([^\*]+)\*\*/, `**"${myUser.name}"**`),
                     }}
                 />
