@@ -4,6 +4,7 @@ import { Icon } from "@/components/Icon/Icon";
 import { Gender } from "@/schemas/SignupSchema";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
@@ -18,13 +19,14 @@ import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
 import locales from "@localization/profile_page.json";
-import profile_dummy_data from "@data/profile.dummy.json";
 
 export type ProfileInformationProps = {
+    myUser: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileInformation: FC<ProfileInformationProps> = ({
+    myUser,
     profilePictureRect,
 }) => {
     const { isDarkThemed } = useThemeMode();
@@ -36,12 +38,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(profile_dummy_data.followers) +
+        }).format(myUser.followers) +
         " " +
         GetGenderedLocale(
             locales.information.followers,
             language,
-            profile_dummy_data.gender as Gender
+            myUser.gender as Gender
         );
 
     const followeesText =
@@ -49,21 +51,21 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(profile_dummy_data.followees) +
+        }).format(myUser.followees) +
         " " +
         GetGenderedLocale(
             locales.information.followees,
             language,
-            profile_dummy_data.gender as Gender
+            myUser.gender as Gender
         );
 
     const experienceText =
-        profile_dummy_data.userRating +
+        myUser.xp +
         " " +
         GetGenderedLocale(
             locales.information.xp,
             language,
-            profile_dummy_data.gender as Gender
+            myUser.gender as Gender
         );
 
     return (
@@ -140,11 +142,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 >
                     <Icon source={fire_icon} />
                     <Typography className="text-nowrap" variant="p">
-                        {profile_dummy_data.dayStreak}{" "}
+                        {myUser["day-streak"]}{" "}
                         {GetGenderedLocale(
                             locales.information.streak,
                             language,
-                            profile_dummy_data.gender as Gender
+                            myUser.gender as Gender
                         )}
                     </Typography>
                 </Flexbox>
@@ -161,7 +163,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
                         variant="p"
                     >
-                        {profile_dummy_data.specialization}
+                        {myUser.specialization}
                     </Typography>
                 </Flexbox>
                 <Flexbox
@@ -179,7 +181,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
                         variant="p"
                     >
-                        {profile_dummy_data.location}
+                        {myUser.city} {myUser.country}
                     </Typography>
                 </Flexbox>
             </div>
@@ -200,12 +202,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         "bg-background-light absolute -top-3.5 px-3 font-bold"
                     )}
                     variant="legend"
-                    gender={profile_dummy_data.gender as Gender}
+                    gender={myUser.gender as Gender}
                 >
                     {locales.information.biography}
                 </Locale>
                 <Typography className="text-justify" variant="p" dir="ltr">
-                    {profile_dummy_data.about}
+                    {myUser.biography}
                 </Typography>
             </Flexbox>
         </Flexbox>

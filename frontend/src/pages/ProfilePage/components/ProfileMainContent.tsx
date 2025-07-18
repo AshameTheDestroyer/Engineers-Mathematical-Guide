@@ -7,13 +7,13 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { ProfileInformation } from "./ProfileInformation";
 import { Separator } from "@/components/Separator/Separator";
+import { useGetMyUser } from "@/services/Users/useGetMyUser";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedCoursesDisplay } from "@/pages/ApplicationPage/components/RelatedCoursesDisplay";
 
 import locales from "@localization/profile_page.json";
-import profile_dummy_data from "@data/profile.dummy.json";
 
 export const ProfileMainContent: FC = () => {
     const { language, GetLocale, GetGenderedLocale } = useLocalization();
@@ -21,16 +21,12 @@ export const ProfileMainContent: FC = () => {
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
 
-    const finishedCoursesQuery = useGetCoursesByIDs(
-        profile_dummy_data.finishedCourses
-    );
+    const { data: myUser } = useGetMyUser({ usesSuspense: true });
 
-    const enrolledCoursesQuery = useGetCoursesByIDs(
-        profile_dummy_data.enrolledCourses
-    );
-
+    const finishedCoursesQuery = useGetCoursesByIDs(myUser["finished-courses"]);
+    const enrolledCoursesQuery = useGetCoursesByIDs(myUser["enrolled-courses"]);
     const bookmarkedCoursesQuery = useGetCoursesByIDs(
-        profile_dummy_data.bookmarkedCourses
+        myUser["bookmarked-courses"]
     );
 
     const skeletonArray = new Array(5).fill(null);
@@ -59,7 +55,7 @@ export const ProfileMainContent: FC = () => {
                 <Locale
                     className="text-lg font-bold"
                     variant="h2"
-                    gender={profile_dummy_data.gender as Gender}
+                    gender={myUser.gender as Gender}
                 >
                     {coursesData.locales.title}
                 </Locale>
@@ -79,11 +75,8 @@ export const ProfileMainContent: FC = () => {
                         paragraph: GetGenderedLocale(
                             coursesData.locales.empty.paragraph,
                             language,
-                            profile_dummy_data.gender as Gender
-                        ).replace(
-                            /\*\*([^\*]+)\*\*/,
-                            `**"${profile_dummy_data.name}"**`
-                        ),
+                            myUser.gender as Gender
+                        ).replace(/\*\*([^\*]+)\*\*/, `**"${myUser.name}"**`),
                     }}
                 />
             </Flexbox>
@@ -92,11 +85,20 @@ export const ProfileMainContent: FC = () => {
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
-            <Title>{profile_dummy_data.name}</Title>
+            <Title>{myUser.name}</Title>
 
-            <ProfileBanner profilePictureRef={profilePictureRef} />
-            <ProfileHeader profilePictureRect={profilePictureRect} />
-            <ProfileInformation profilePictureRect={profilePictureRect} />
+            <ProfileBanner
+                myUser={myUser}
+                profilePictureRef={profilePictureRef}
+            />
+            <ProfileHeader
+                myUser={myUser}
+                profilePictureRect={profilePictureRect}
+            />
+            <ProfileInformation
+                myUser={myUser}
+                profilePictureRect={profilePictureRect}
+            />
 
             <Flexbox className="lg:col-span-2" direction="column" gap="4">
                 {relatedCourses.map((coursesData, i) => (

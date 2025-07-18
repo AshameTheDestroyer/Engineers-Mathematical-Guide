@@ -1,8 +1,10 @@
 import { z } from "zod";
-import { SignupStepSchemas } from "./SignupSchema";
+import { ZodIntersectMany } from "@/functions/Zod.IntersectMany";
+import { SignupCredentialsSchema, SignupStepSchemas } from "./SignupSchema";
 
-export const UserSchema = z.intersection(
+export const UserSchema = ZodIntersectMany(
     SignupStepSchemas["personal-information"],
+    SignupCredentialsSchema.pick({ email: true }),
     z.object({
         avatar: z.string().optional(),
         "personal-image": z.string().optional(),
@@ -19,7 +21,11 @@ export const DetailedUserSchema = z.intersection(
         banner: z.string().optional(),
         specialization: z.string().optional(),
         city: z.string({ required_error: "required" }),
-        about: z.string({ required_error: "required" }),
+        biography: z.string({ required_error: "required" }),
+        xp: z
+            .number({ required_error: "required" })
+            .nonnegative("nonnegative")
+            .int("integer"),
         followees: z
             .number({ required_error: "required" })
             .nonnegative("nonnegative")

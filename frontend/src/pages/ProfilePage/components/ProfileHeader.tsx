@@ -2,17 +2,18 @@ import { FC } from "react";
 import { twJoin } from "tailwind-merge";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import profile_dummy_data from "@data/profile.dummy.json";
-
 export type ProfileHeaderProps = {
+    myUser: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
+    myUser,
     profilePictureRect,
 }) => {
     const { direction } = useLocalization();
@@ -46,7 +47,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 dir="ltr"
                 variant="h1"
             >
-                {profile_dummy_data.name}
+                {myUser.name} {myUser.surname}
             </Typography>
             <Typography
                 className={twJoin(
@@ -55,11 +56,9 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 )}
                 dir="ltr"
                 variant="h2"
-                onClick={(_e) =>
-                    CopyToClipboard(`@${profile_dummy_data.username}`)
-                }
+                onClick={(_e) => CopyToClipboard(`@${myUser.username}`)}
             >
-                @{profile_dummy_data.username}
+                @{myUser.username}
             </Typography>
         </Flexbox>
     );

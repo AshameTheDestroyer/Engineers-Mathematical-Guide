@@ -9,6 +9,7 @@ import { Button } from "@/components/Button/Button";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { PROFILE_ROUTES } from "@/routes/profile.routes";
+import { useGetMyUser } from "@/services/Users/useGetMyUser";
 import { Typography } from "@/components/Typography/Typography";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
@@ -20,8 +21,6 @@ import {
 
 import menu_icon from "@icons/menu.svg";
 import arrow_icon from "@icons/direction_arrow.svg";
-
-import profile_dummy_data from "@data/profile.dummy.json";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes" | "base">;
@@ -40,6 +39,8 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     const { CopyToClipboard } = useClipboard();
 
     const [isOpen, setIsOpen] = useState(false);
+
+    const { data: myUser } = useGetMyUser({ usesSuspense: true });
 
     return (
         <>
@@ -84,8 +85,8 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                             className="scale-150"
                             width={48}
                             height={48}
-                            source={profile_dummy_data.avatar}
-                            alternative={`Image of ${profile_dummy_data.name}'s Profile.`}
+                            source={myUser.avatar}
+                            alternative={`Image of ${myUser.name}'s Profile.`}
                         />
                     </Button>
                     <Flexbox direction="column">
@@ -97,7 +98,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                             dir="ltr"
                             variant="p"
                         >
-                            {profile_dummy_data.name}
+                            {myUser.name} {myUser.surname}
                         </Typography>
                         <Typography
                             className={twJoin(
@@ -107,12 +108,10 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                             dir="ltr"
                             variant="p"
                             onClick={(_e) =>
-                                CopyToClipboard(
-                                    `@${profile_dummy_data.username}`
-                                )
+                                CopyToClipboard(`@${myUser.username}`)
                             }
                         >
-                            @{profile_dummy_data.username}
+                            @{myUser.username}
                         </Typography>
                     </Flexbox>
                 </Flexbox>
