@@ -161,6 +161,9 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         text: `${user.city} - ${user.country}`,
                     },
                     {
+                        className:
+                            direction == "rtl" &&
+                            "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
                         icon: phone_icon,
                         text: user["phone-number"],
                     },
