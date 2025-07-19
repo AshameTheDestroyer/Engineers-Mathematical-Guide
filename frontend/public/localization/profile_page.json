@@ -48,6 +48,72 @@
             }
         }
     },
+    "related-users-error": {
+        "title": {
+            "en": "Error!",
+            "ar": "حَدثَ خَطأ!"
+        },
+        "paragraph": {
+            "en": "An error occurred while fetching users, try refetching.",
+            "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُستَخدِمينَ، يُرجى المُحاولةُ مِنْ جَديد."
+        },
+        "button": {
+            "en": "Refetch Users",
+            "ar": "إعادةُ جَلبِ المُستَخدمين"
+        }
+    },
+    "related-users": {
+        "followers": {
+            "title": {
+                "en": {
+                    "male": "Users Who Follow Him",
+                    "female": "Users Who Follow Her"
+                },
+                "ar": {
+                    "male": "المُستَخدِمونَ الَّذينَ يُتابِعونَه",
+                    "female": "المُستَخدِمونَ الَّذينَ يُتابِعونَها"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The user **user** isn't followed by anyone yet.",
+                    "ar": {
+                        "male": "إنَّ المُستَخدِمَ **المستخدم** لا يَملِكُ أيَّ مُتابِعين حَتَّى الآن.",
+                        "female": "إنَّ المُستَخدِمةَ **المستخدم** لا تَملِكُ أيَّ مُتابِعين حَتَّى الآن."
+                    }
+                }
+            }
+        },
+        "followees": {
+            "title": {
+                "en": {
+                    "male": "Users Whom He Follows",
+                    "female": "Users Whom She Follows"
+                },
+                "ar": {
+                    "male": "المُستَخدِمونَ الَّذينَ يُتابِعُهُم",
+                    "female": "المُستَخدِمونَ الَّذينَ تُتابِعُهُم"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The user **user** doesn't follow anyone yet.",
+                    "ar": {
+                        "male": "إنَّ المُستَخدِمَ **المستخدم** لا يُتابِعُ أيَّ أحَدٍ حَتَّى الآن.",
+                        "female": "إنَّ المُستَخدِمةَ **المستخدم** لا تُتابِعُ أيَّ أحَدٍ حَتَّى الآن."
+                    }
+                }
+            }
+        }
+    },
     "related-courses-error": {
         "title": {
             "en": "Error!",
