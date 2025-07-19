@@ -6,13 +6,13 @@ import { ComponentProps } from "@/types/ComponentProps";
 import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
 
 export type ProfileAvatarProps = {
-    myUser: DetailedUserDTO;
+    user: DetailedUserDTO;
 } & ComponentProps<HTMLDivElement>;
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     id,
     ref,
-    myUser,
+    user,
     children,
     className,
 }) => {
@@ -30,18 +30,18 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             flipType="click"
             frontChild={
                 <Image
-                    className="overflow-visible! [&>img]:rounded-full"
+                    className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                    source={myUser.avatar}
-                    alternative={`Avatar of ${myUser.name}'s Profile.`}
+                    source={user.avatar}
+                    alternative={`Avatar of ${user.name}'s Profile.`}
                 />
             }
             backChild={
                 <Image
-                    className="overflow-visible! [&>img]:rounded-full"
+                    className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                    source={myUser["personal-image"]}
-                    alternative={`Personal Image of ${myUser.name}'s Profile.`}
+                    source={user["personal-image"]}
+                    alternative={`Personal Image of ${user.name}'s Profile.`}
                 />
             }
         >

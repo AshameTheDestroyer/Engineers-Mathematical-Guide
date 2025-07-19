@@ -23,12 +23,12 @@ import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 import locales from "@localization/profile_page.json";
 
 export type ProfileInformationProps = {
-    myUser: DetailedUserDTO;
+    user: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileInformation: FC<ProfileInformationProps> = ({
-    myUser,
+    user,
     profilePictureRect,
 }) => {
     const { isDarkThemed } = useThemeMode();
@@ -40,31 +40,23 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(myUser.followers) +
+        }).format(user.followers) +
         " " +
-        GetGenderedLocale(
-            locales.information.followers,
-            language,
-            myUser.gender
-        );
+        GetGenderedLocale(locales.information.followers, language, user.gender);
 
     const followeesText =
         Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(myUser.followees) +
+        }).format(user.followees) +
         " " +
-        GetGenderedLocale(
-            locales.information.followees,
-            language,
-            myUser.gender
-        );
+        GetGenderedLocale(locales.information.followees, language, user.gender);
 
     const experienceText =
-        myUser.xp +
+        user.xp +
         " " +
-        GetGenderedLocale(locales.information.xp, language, myUser.gender);
+        GetGenderedLocale(locales.information.xp, language, user.gender);
 
     return (
         <Flexbox
@@ -140,11 +132,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 >
                     <Icon source={fire_icon} />
                     <Typography className="text-nowrap" variant="p">
-                        {myUser["day-streak"]}{" "}
+                        {user["day-streak"]}{" "}
                         {GetGenderedLocale(
                             locales.information.streak,
                             language,
-                            myUser.gender
+                            user.gender
                         )}
                     </Typography>
                 </Flexbox>
@@ -155,22 +147,22 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     {
                         className: "bg-primary-normal",
                         icon: graduation_cap_icon,
-                        text: myUser.specialization?.toTitleCase("ai"),
+                        text: user.specialization?.toTitleCase("ai"),
                     },
                     {
                         className: isDarkThemed
                             ? "bg-tertiary-light"
                             : "bg-tertiary-normal",
                         icon: email_icon,
-                        text: myUser.email,
+                        text: user.email,
                     },
                     {
                         icon: location_icon,
-                        text: `${myUser.city} - ${myUser.country}`,
+                        text: `${user.city} - ${user.country}`,
                     },
                     {
                         icon: phone_icon,
-                        text: myUser["phone-number"],
+                        text: user["phone-number"],
                     },
                 ].map((information, i) => (
                     <Flexbox
@@ -212,12 +204,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         "bg-background-light absolute -top-3.5 px-3 font-bold"
                     )}
                     variant="legend"
-                    gender={myUser.gender as Gender}
+                    gender={user.gender as Gender}
                 >
                     {locales.information.biography}
                 </Locale>
                 <Typography className="text-justify" variant="p" dir="ltr">
-                    {myUser.biography}
+                    {user.biography}
                 </Typography>
             </Flexbox>
         </Flexbox>

@@ -1,5 +1,17 @@
 {
     "buttons": {
+        "login": {
+            "en": "Login",
+            "ar": "تَسجيلُ الدُّخول"
+        },
+        "signup": {
+            "en": "Sign up",
+            "ar": "إنشاءُ حِساب"
+        },
+        "signout": {
+            "en": "Sign out",
+            "ar": "الخُروجُ مِنَ الحِساب"
+        },
         "edit-profile": {
             "en": "Edit Profile",
             "ar": "تَعديلُ المِلَفِّ الشَّخصيّ"
@@ -36,7 +48,6 @@
             }
         }
     },
-
     "related-courses-error": {
         "title": {
             "en": "Error!",
@@ -116,6 +127,28 @@
                         "female": "إنَّ المُستَخدِمةَ **المستخدم** لَمْ تَقُمْ بِحِفْظِ أيِّ مُقرَّرٍ مِمّا نُقَدِّم مِنْ مُقرَّرات."
                     }
                 }
+            }
+        }
+    },
+    "display": {
+        "logged-out": {
+            "title": {
+                "en": "You Aren't Logged in",
+                "ar": "لَمْ تَقُمْ بِتَسجيلِ الدُّخول"
+            },
+            "paragraph": {
+                "en": "You can't view your profile because you're not currently logged in.",
+                "ar": "لا يُمكِنُكَ عَرضُ مِلَفِّكَ الشَّخصيِّ لِأنَّكَ غَيرُ مُسَجِّلٍ الدُّخولَ في حِسابِكَ حاليّاً."
+            }
+        },
+        "not-found": {
+            "title": {
+                "en": "User Not Found",
+                "ar": "المُستَخدِمُ غَيرُ مَوجود"
+            },
+            "paragraph": {
+                "en": "There is no user with the username **username**, try another one.",
+                "ar": "لا يُوجَدُ مُستَخدِمٌ يَملِكُ المُعَرِّفَ **المعرف**، حاوِلْ استِخدامَ مُعَرِّفٍ آخَر."
             }
         }
     }

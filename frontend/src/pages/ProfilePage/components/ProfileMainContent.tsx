@@ -5,9 +5,9 @@ import { Gender } from "@/schemas/SignupSchema";
 import { Title } from "@/components/Title/Title";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { ProfileInformation } from "./ProfileInformation";
 import { Separator } from "@/components/Separator/Separator";
-import { useGetMyUser } from "@/services/Users/useGetMyUser";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -15,18 +15,20 @@ import { RelatedCoursesDisplay } from "@/pages/ApplicationPage/components/Relate
 
 import locales from "@localization/profile_page.json";
 
-export const ProfileMainContent: FC = () => {
+export type ProfileMainContentProps = {
+    user: DetailedUserDTO;
+};
+
+export const ProfileMainContent: FC<ProfileMainContentProps> = ({ user }) => {
     const { language, GetLocale, GetGenderedLocale } = useLocalization();
 
     const profilePictureRef = useRef<HTMLDivElement>(null);
     const profilePictureRect = useElementInformation(profilePictureRef);
 
-    const { data: myUser } = useGetMyUser({ usesSuspense: true });
-
-    const finishedCoursesQuery = useGetCoursesByIDs(myUser["finished-courses"]);
-    const enrolledCoursesQuery = useGetCoursesByIDs(myUser["enrolled-courses"]);
+    const finishedCoursesQuery = useGetCoursesByIDs(user["finished-courses"]);
+    const enrolledCoursesQuery = useGetCoursesByIDs(user["enrolled-courses"]);
     const bookmarkedCoursesQuery = useGetCoursesByIDs(
-        myUser["bookmarked-courses"]
+        user["bookmarked-courses"]
     );
 
     const skeletonArray = new Array(5).fill(null);
@@ -55,7 +57,7 @@ export const ProfileMainContent: FC = () => {
                 <Locale
                     className="text-lg font-bold"
                     variant="h2"
-                    gender={myUser.gender as Gender}
+                    gender={user.gender as Gender}
                 >
                     {coursesData.locales.title}
                 </Locale>
@@ -75,8 +77,8 @@ export const ProfileMainContent: FC = () => {
                         paragraph: GetGenderedLocale(
                             coursesData.locales.empty.paragraph,
                             language,
-                            myUser.gender
-                        ).replace(/\*\*([^\*]+)\*\*/, `**"${myUser.name}"**`),
+                            user.gender
+                        ).replace(/\*\*([^\*]+)\*\*/, `**"${user.name}"**`),
                     }}
                 />
             </Flexbox>
@@ -85,18 +87,15 @@ export const ProfileMainContent: FC = () => {
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
-            <Title>{myUser.name}</Title>
+            <Title>{user.name}</Title>
 
-            <ProfileBanner
-                myUser={myUser}
-                profilePictureRef={profilePictureRef}
-            />
+            <ProfileBanner user={user} profilePictureRef={profilePictureRef} />
             <ProfileHeader
-                myUser={myUser}
+                user={user}
                 profilePictureRect={profilePictureRect}
             />
             <ProfileInformation
-                myUser={myUser}
+                user={user}
                 profilePictureRect={profilePictureRect}
             />
 

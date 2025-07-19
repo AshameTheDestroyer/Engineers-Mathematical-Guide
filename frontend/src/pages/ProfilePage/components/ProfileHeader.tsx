@@ -8,12 +8,12 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export type ProfileHeaderProps = {
-    myUser: DetailedUserDTO;
+    user: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
-    myUser,
+    user,
     profilePictureRect,
 }) => {
     const { direction } = useLocalization();
@@ -52,11 +52,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                     dir="ltr"
                     variant="h1"
                 >
-                    {myUser.name} {myUser.surname}
+                    {user.name} {user.surname}
                 </Typography>
                 <img
                     className="h-[48px] translate-y-0 drop-shadow-[3px_3px_1px_#0000004c]"
-                    src={`/flags/${myUser.flag}.svg`}
+                    src={`/flags/${user.flag}.svg`}
                     width={48}
                     height={48}
                 />
@@ -68,9 +68,9 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 )}
                 dir="ltr"
                 variant="h2"
-                onClick={(_e) => CopyToClipboard(`@${myUser.username}`)}
+                onClick={(_e) => CopyToClipboard(`@${user.username}`)}
             >
-                @{myUser.username}
+                @{user.username}
             </Typography>
         </Flexbox>
     );

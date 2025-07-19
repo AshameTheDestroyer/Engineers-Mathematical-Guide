@@ -15,12 +15,12 @@ import configure_icon from "@icons/cog.svg";
 import locales from "@localization/profile_page.json";
 
 export type ProfileBannerProps = {
-    myUser: DetailedUserDTO;
+    user: DetailedUserDTO;
     profilePictureRef: Ref<HTMLDivElement>;
 };
 
 export const ProfileBanner: FC<ProfileBannerProps> = ({
-    myUser,
+    user,
     profilePictureRef: profilePictureRef_,
 }) => {
     const { direction } = useLocalization();
@@ -42,7 +42,7 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
             >
                 <ProfileAvatar
                     className="h-full w-full [&>div]:h-full [&>div]:w-full"
-                    myUser={myUser}
+                    user={user}
                 >
                     <IconButton
                         className={twJoin(
@@ -70,8 +70,8 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
             </Button>
             <Image
                 className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                source={myUser.banner}
-                alternative={`Image of ${myUser.name}'s Background.`}
+                source={user.banner}
+                alternative={`Image of ${user.name}'s Background.`}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
         </figure>

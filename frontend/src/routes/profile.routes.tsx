@@ -12,6 +12,7 @@ export const PROFILE_ROUTES = BuildRouter({
         routes: {
             home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
             profile: { href: "" },
+            profileID: { href: ":profileID" },
             application: { href: "/" },
         },
     },
@@ -22,6 +23,14 @@ export const ProfileRoute = () => {
         <Route path={PROFILE_ROUTES.base.href} element={<Outlet />}>
             <Route
                 path={PROFILE_ROUTES.base.routes.profile.href}
+                element={
+                    <LazyPage>
+                        <ProfilePage />
+                    </LazyPage>
+                }
+            />
+            <Route
+                path={PROFILE_ROUTES.base.routes.profileID.href}
                 element={
                     <LazyPage>
                         <ProfilePage />
