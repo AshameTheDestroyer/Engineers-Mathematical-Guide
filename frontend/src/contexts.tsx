@@ -1,4 +1,5 @@
 import { HashRouter } from "react-router-dom";
+import { DetailedUserDTO } from "./schemas/UserSchema";
 import { ComposeProviders } from "./functions/ComposeProviders";
 import { MathJaxContext as MathJaxProvider } from "better-react-mathjax";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -15,6 +16,8 @@ export const queryClient = new QueryClient({
 
 export type MainStateProps = {
     rootTitle: string;
+    myUser?: DetailedUserDTO;
+    setMyUser: (user: DetailedUserDTO | undefined) => void;
 };
 
 export const MainContext = createContext<MainStateProps>(null!);
@@ -23,8 +26,10 @@ export const useMain = () => useContext(MainContext);
 
 export const ContextProviders = [
     ({ children }: PropsWithChildren) => {
-        const [state, _setState] = useState<MainStateProps>({
+        const [state, setState] = useState<MainStateProps>({
             rootTitle: document.title,
+            setMyUser: (user) =>
+                setState((state) => ({ ...state, myUser: user })),
         });
 
         return (
