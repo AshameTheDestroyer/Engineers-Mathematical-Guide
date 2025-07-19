@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import {
     DetailedLearningTrackDTO,
     DetailedLearningTrackSchema,
@@ -17,22 +18,26 @@ export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         DetailedLearningTrackDTO,
         DetailedLearningTrackDTO | undefined
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
     useSchematicQuery<
         TUsesSuspense,
         DetailedLearningTrackDTO,
         DetailedLearningTrackDTO | undefined
-    >({
-        schema: DetailedLearningTrackSchema,
-        queryFn: () =>
-            detailed_learningTracks_dummy_data.find(
-                (learningTrack) => learningTrack.id == id
-            ),
-        ...options,
-        queryKey: [
-            GET_LEARNING_TRACK_BY_ID_KEY,
-            id,
-            ...(options?.queryKey ?? []),
-        ],
-    });
+    >(
+        {
+            schema: DetailedLearningTrackSchema,
+            queryFn: () =>
+                detailed_learningTracks_dummy_data.find(
+                    (learningTrack) => learningTrack.id == id
+                ),
+            ...options,
+            queryKey: [
+                GET_LEARNING_TRACK_BY_ID_KEY,
+                id,
+                ...(options?.queryKey ?? []),
+            ],
+        },
+        queryClient
+    );

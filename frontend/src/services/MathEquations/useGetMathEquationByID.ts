@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import {
     DetailedMathEquationDTO,
     DetailedMathEquationSchema,
@@ -17,22 +18,26 @@ export const useGetMathEquationByID = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         DetailedMathEquationDTO,
         DetailedMathEquationDTO | undefined
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
     useSchematicQuery<
         TUsesSuspense,
         DetailedMathEquationDTO,
         DetailedMathEquationDTO | undefined
-    >({
-        schema: DetailedMathEquationSchema,
-        queryFn: () =>
-            (
-                detailed_math_equations_dummy_data as Array<DetailedMathEquationDTO>
-            ).find((mathEquation) => mathEquation.id == id),
-        ...options,
-        queryKey: [
-            GET_MATH_EQUATION_BY_ID_KEY,
-            id,
-            ...(options?.queryKey ?? []),
-        ],
-    });
+    >(
+        {
+            schema: DetailedMathEquationSchema,
+            queryFn: () =>
+                (
+                    detailed_math_equations_dummy_data as Array<DetailedMathEquationDTO>
+                ).find((mathEquation) => mathEquation.id == id),
+            ...options,
+            queryKey: [
+                GET_MATH_EQUATION_BY_ID_KEY,
+                id,
+                ...(options?.queryKey ?? []),
+            ],
+        },
+        queryClient
+    );

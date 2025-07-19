@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { CreateFilterFunction } from "@/functions/CreateFilterFunction";
 import {
     LearningTrackDTO,
@@ -18,7 +19,8 @@ export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         LearningTrackDTO,
         Array<LearningTrackDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
     useSchematicQuery<TUsesSuspense, LearningTrackDTO, Array<LearningTrackDTO>>(
         {
@@ -42,5 +44,6 @@ export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
                 searchQuery,
                 ...(options?.queryKey ?? []),
             ],
-        }
+        },
+        queryClient
     );

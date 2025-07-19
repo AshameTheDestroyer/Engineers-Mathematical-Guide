@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { useGetLearningTracks } from "./useGetLearningTracks";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
 import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
@@ -14,7 +15,8 @@ export const useGetSimilarLearningTracks = <
         TUsesSuspense,
         LearningTrackDTO,
         Array<LearningTrackDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) => {
     const { data: learningTracks, ...result } = useGetLearningTracks(
         learningTrack.tags.join(" "),
@@ -25,7 +27,8 @@ export const useGetSimilarLearningTracks = <
                 learningTrack.id,
                 ...(options?.queryKey ?? []),
             ],
-        }
+        },
+        queryClient
     );
 
     return {

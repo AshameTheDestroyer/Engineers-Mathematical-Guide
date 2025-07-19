@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { useGetCoursesByIDs } from "./useGetCoursesByIDs";
 import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
 import { CourseDTO, DetailedCourseDTO } from "@/schemas/CourseSchema";
@@ -12,13 +13,18 @@ export const useGetPostrequisiteCourses = <
         TUsesSuspense,
         CourseDTO,
         Array<CourseDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
-    useGetCoursesByIDs(course.postrequisites, {
-        ...(options ?? ({} as typeof options & {})),
-        queryKey: [
-            GET_POSTREQUISITE_COURSES_KEY,
-            course.id,
-            ...(options?.queryKey ?? []),
-        ],
-    });
+    useGetCoursesByIDs(
+        course.postrequisites,
+        {
+            ...(options ?? ({} as typeof options & {})),
+            queryKey: [
+                GET_POSTREQUISITE_COURSES_KEY,
+                course.id,
+                ...(options?.queryKey ?? []),
+            ],
+        },
+        queryClient
+    );

@@ -1,4 +1,5 @@
 import { useGetUserByID } from "./useGetUserByID";
+import { QueryClient } from "@tanstack/react-query";
 import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
 
@@ -11,5 +12,6 @@ export const useGetMyUser = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         DetailedUserDTO,
         DetailedUserDTO | undefined
-    >
-) => useGetUserByID(MY_USERNAME, options);
+    >,
+    queryClient?: QueryClient
+) => useGetUserByID(MY_USERNAME, options, queryClient);

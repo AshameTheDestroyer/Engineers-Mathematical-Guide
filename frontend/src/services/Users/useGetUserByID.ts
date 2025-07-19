@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { DetailedUserDTO, DetailedUserSchema } from "@/schemas/UserSchema";
 import {
     useSchematicQuery,
@@ -14,18 +15,22 @@ export const useGetUserByID = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         DetailedUserDTO,
         DetailedUserDTO | undefined
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
     useSchematicQuery<
         TUsesSuspense,
         DetailedUserDTO,
         DetailedUserDTO | undefined
-    >({
-        schema: DetailedUserSchema,
-        queryFn: () =>
-            (detailed_users_dummy_data as Array<DetailedUserDTO>).find(
-                (user) => user.username == id
-            ),
-        ...options,
-        queryKey: [GET_USER_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
-    });
+    >(
+        {
+            schema: DetailedUserSchema,
+            queryFn: () =>
+                (detailed_users_dummy_data as Array<DetailedUserDTO>).find(
+                    (user) => user.username == id
+                ),
+            ...options,
+            queryKey: [GET_USER_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
+        },
+        queryClient
+    );

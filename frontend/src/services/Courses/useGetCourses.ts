@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
 import { CreateFilterFunction } from "@/functions/CreateFilterFunction";
 import {
@@ -15,21 +16,29 @@ export const useGetCourses = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         CourseDTO,
         Array<CourseDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>({
-        schema: CourseSchema,
-        queryFn: () =>
-            courses_dummy_data.filter(
-                CreateFilterFunction<CourseDTO>(searchQuery, {
-                    title: (course, term) =>
-                        course.title.toLowerCase().includes(term),
-                    tags: (course, term) =>
-                        course.tags.some((tag) => tag.includes(term)),
-                })
-            ),
-        parseFn: (data, schema) =>
-            data?.map((datum) => schema.parse(datum)) ?? [],
-        ...options,
-        queryKey: [GET_COURSES_KEY, searchQuery, ...(options?.queryKey ?? [])],
-    });
+    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>(
+        {
+            schema: CourseSchema,
+            queryFn: () =>
+                courses_dummy_data.filter(
+                    CreateFilterFunction<CourseDTO>(searchQuery, {
+                        title: (course, term) =>
+                            course.title.toLowerCase().includes(term),
+                        tags: (course, term) =>
+                            course.tags.some((tag) => tag.includes(term)),
+                    })
+                ),
+            parseFn: (data, schema) =>
+                data?.map((datum) => schema.parse(datum)) ?? [],
+            ...options,
+            queryKey: [
+                GET_COURSES_KEY,
+                searchQuery,
+                ...(options?.queryKey ?? []),
+            ],
+        },
+        queryClient
+    );
