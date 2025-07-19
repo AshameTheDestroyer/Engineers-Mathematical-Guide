@@ -20,9 +20,9 @@
             "en": "Sign up",
             "ar": "إنشاءُ حِساب"
         },
-        "signout": {
-            "en": "Sign out",
-            "ar": "الخُروجُ مِنَ الحِساب"
+        "logout": {
+            "en": "Log out",
+            "ar": "تَسجيلُ الخُروج"
         },
         "start": {
             "en": "Start Your Journey Now",
@@ -31,6 +31,28 @@
         "learn": {
             "en": "Learn More",
             "ar": "إقرأْ المَزيد"
+        }
+    },
+    "modals": {
+        "logout": {
+            "title": {
+                "en": "Confirm Logout",
+                "ar": "تأكيدُ تَسجيلِ الخُروج"
+            },
+            "paragraph": {
+                "en": "Are you sure you want to log out of your account?",
+                "ar": "هَلْ أنتَ مُتأكِّدٌ مِنْ أنَّكَ تُريدُ تَسجيلَ الخُروجِ مِنْ حِسابِك؟"
+            },
+            "buttons": {
+                "logout": {
+                    "en": "Log out",
+                    "ar": "تَسجيلُ الخُروج"
+                },
+                "cancel": {
+                    "en": "Cancel",
+                    "ar": "إلغاء"
+                }
+            }
         }
     }
 }

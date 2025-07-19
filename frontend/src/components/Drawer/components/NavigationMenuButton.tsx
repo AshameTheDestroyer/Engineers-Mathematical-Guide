@@ -1,16 +1,19 @@
 import { Drawer } from "../Drawer";
 import { FC, useState } from "react";
 import { useMain } from "@/contexts";
-import { Link } from "react-router-dom";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { Logo } from "@/components/Logo/Logo";
 import { Image } from "@/components/Image/Image";
+import { Modal } from "@/components/Modal/Modal";
 import { Button } from "@/components/Button/Button";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
+import { Link, useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { PROFILE_ROUTES } from "@/routes/profile.routes";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
@@ -24,7 +27,7 @@ import {
 import menu_icon from "@icons/menu.svg";
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
-import signout_icon from "@icons/signout.svg";
+import logout_icon from "@icons/logout.svg";
 import arrow_icon from "@icons/direction_arrow.svg";
 
 import locales from "@localization/website_page.json";
@@ -42,10 +45,12 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     variant = "default",
     ...props
 }) => {
+    const Navigate = useNavigate();
     const { direction } = useLocalization();
     const { CopyToClipboard } = useClipboard();
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
     const { myUser, setMyUser } = useMain();
 
@@ -60,6 +65,34 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                 onClick={(e) => (onClick?.(e), setIsOpen(true))}
                 {...props}
             />
+
+            <Modal
+                className="bg-background-light gap-4"
+                hasCloseButton
+                isOpen={isLogoutModalOpen}
+                setIsOpen={setIsLogoutModalOpen}
+                closeButtonProps={{ isSquare: true }}
+            >
+                <Locale className="text-lg font-bold" variant="h1">
+                    {locales.modals.logout.title}
+                </Locale>
+                <Locale variant="p">{locales.modals.logout.paragraph}</Locale>
+                <ButtonBox className="w-full place-content-stretch [&>button]:grow">
+                    <Button onClick={(_e) => setIsLogoutModalOpen(false)}>
+                        <Locale>{locales.modals.logout.buttons.cancel}</Locale>
+                    </Button>
+                    <Button
+                        variant="error"
+                        onClick={(_e) => (
+                            setMyUser(undefined),
+                            Navigate(WEBSITE_ROUTES.base.absolute)
+                        )}
+                    >
+                        <Locale>{locales.modals.logout.buttons.logout}</Locale>
+                    </Button>
+                </ButtonBox>
+            </Modal>
+
             <Drawer
                 className={twJoin(
                     direction == "ltr" ? "pl-10 pr-4" : "pl-4 pr-10",
@@ -204,11 +237,13 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                             variant="error"
                             icon={{
                                 placement: "right",
-                                source: signout_icon,
+                                source: logout_icon,
                             }}
-                            onClick={(_e) => setMyUser(undefined)}
+                            onClick={(_e) => (
+                                setIsOpen(false), setIsLogoutModalOpen(true)
+                            )}
                         >
-                            <Locale>{locales.buttons.signout}</Locale>
+                            <Locale>{locales.buttons.logout}</Locale>
                         </Button>
                     )}
                     <Logo className="mx-auto" />
