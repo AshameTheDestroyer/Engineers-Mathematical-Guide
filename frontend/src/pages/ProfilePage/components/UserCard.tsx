@@ -82,6 +82,12 @@ export const UserCard: FC<UserCardProps> = ({
                     )}
                     source={user?.avatar ?? default_avatar}
                     alternative={`Avatar of ${user?.name}'s Profile.`}
+                    style={{
+                        filter:
+                            !isSkeleton && user.avatar == null
+                                ? `hue-rotate(${~~(Math.random() * 360)}deg)`
+                                : "",
+                    }}
                 />
             </div>
             {(isSkeleton || user["day-streak"] > 365) && (

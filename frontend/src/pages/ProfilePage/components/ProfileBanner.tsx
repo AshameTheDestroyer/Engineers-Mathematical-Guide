@@ -73,6 +73,12 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                 className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                 source={user.banner ?? default_banner}
                 alternative={`Image of ${user.name}'s Background.`}
+                style={{
+                    filter:
+                        user.banner == null
+                            ? `hue-rotate(${~~(Math.random() * 360)}deg)`
+                            : "",
+                }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
         </figure>
