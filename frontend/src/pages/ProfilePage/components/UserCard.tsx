@@ -32,6 +32,8 @@ export const UserCard: FC<UserCardProps> = ({
     isSkeleton,
 }) => {
     const shadow = useShadow();
+    const fireShadow = useShadow("var(--color-secondary-normal)");
+
     const Navigate = useNavigate();
     const { direction, language } = useLocalization();
 
@@ -48,14 +50,17 @@ export const UserCard: FC<UserCardProps> = ({
             className={twMerge(
                 isSkeleton
                     ? "animate-pulse"
-                    : "cursor-pointer transition duration-200 focus-within:outline-2 focus-within:-outline-offset-1 [&:focus-within>:is(div,span)]:outline-2 [&:focus-within>:is(div,span)]:-outline-offset-1 [&:focus-within>:is(div,span)]:outline-black [&:is(:hover,:focus-within)]:scale-105",
+                    : "[&:focus-within>:is(div,span)]:outline-foreground-darker cursor-pointer transition duration-200 focus-within:outline-2 focus-within:-outline-offset-1 [&:focus-within>:is(div,span)]:outline-2 [&:focus-within>:is(div,span)]:-outline-offset-1 [&:is(:hover,:focus-within)]:scale-105",
                 "bg-background-normal rounded-b-4xl relative flex flex-col gap-4 p-4",
                 className
             )}
             style={{
-                boxShadow: shadow,
-                marginTop: buttonInformation.width / 2,
                 paddingTop: buttonInformation.width / 2,
+                marginTop: `calc(${buttonInformation.width / 2}px + 1rem)`,
+                boxShadow:
+                    ~~((user?.["day-streak"] ?? 0) / 365) > 0
+                        ? fireShadow
+                        : shadow,
             }}
             role="region"
             tabIndex={isSkeleton ? -1 : 0}
