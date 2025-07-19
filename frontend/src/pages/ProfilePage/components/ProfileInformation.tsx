@@ -122,11 +122,10 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
 
                 <Flexbox
                     className={twJoin(
-                        direction == "ltr" ? "md:ml-auto" : "md:mr-auto",
                         "bg-secondary-normal place-self-end rounded-full px-6 py-2 font-bold text-white max-md:place-self-center",
                         direction == "ltr"
-                            ? "rounded-br-xl rounded-tl-xl"
-                            : "rounded-bl-xl rounded-tr-xl"
+                            ? "rounded-br-xl rounded-tl-xl md:ml-auto"
+                            : "rounded-bl-xl rounded-tr-xl md:mr-auto"
                     )}
                     gap="2"
                     placeItems="center"

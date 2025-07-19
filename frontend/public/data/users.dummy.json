@@ -8,6 +8,7 @@
         "country": "Syria",
         "avatar": "src/assets/images/hashem_wannous_avatar.png",
         "personal-image": "src/assets/images/hashem_wannous.jpg",
+        "phone-number": "+963947233978",
         "day-streak": 643,
         "flag": "sy"
     },
@@ -20,6 +21,7 @@
         "country": "Palestine",
         "avatar": "src/assets/images/batoul_kazak_avatar.png",
         "personal-image": "src/assets/images/batoul_kazak.jpg",
+        "phone-number": "+972942823923",
         "day-streak": 234,
         "flag": "ps"
     },

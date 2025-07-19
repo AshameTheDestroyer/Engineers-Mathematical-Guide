@@ -41,8 +41,10 @@ export const CourseCard: FC<CourseCardProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                isSkeleton && "animate-pulse",
-                "bg-background-normal relative isolate flex cursor-pointer overflow-hidden rounded-2xl p-8 text-start text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105 [&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
+                isSkeleton
+                    ? "animate-pulse"
+                    : "cursor-pointer transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                "bg-background-normal relative isolate flex overflow-hidden rounded-2xl p-8 text-start text-white [&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]",
                 className
             )}
             role="region"
