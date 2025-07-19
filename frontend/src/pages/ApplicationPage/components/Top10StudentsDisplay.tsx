@@ -5,7 +5,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 
-import students_dummy_data from "@data/students.dummy.json";
+import users_dummy_data from "@data/users.dummy.json";
 
 export type Top10StudentsDisplayProps = {
     title: string;
@@ -21,7 +21,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
         requestTime: 500,
         queryKey: ["students"],
         usesSuspense: !isSkeleton,
-        dummyData: isSkeleton ? [] : students_dummy_data,
+        dummyData: isSkeleton ? [] : users_dummy_data,
     });
 
     const students = useMemo(

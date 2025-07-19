@@ -1,5 +1,6 @@
 import { useGetCourses } from "./useGetCourses";
 import { CourseDTO } from "@/schemas/CourseSchema";
+import { QueryClient } from "@tanstack/react-query";
 import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
 
 export const SIMILAR_COURSES_LIMIT = 5;
@@ -12,16 +13,21 @@ export const useGetSimilarCourses = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         CourseDTO,
         Array<CourseDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) => {
-    const { data: courses, ...result } = useGetCourses(course.tags.join(" "), {
-        ...(options ?? ({} as typeof options & {})),
-        queryKey: [
-            GET_SIMILAR_COURSES_KEY,
-            course.id,
-            ...(options?.queryKey ?? []),
-        ],
-    });
+    const { data: courses, ...result } = useGetCourses(
+        course.tags.join(" "),
+        {
+            ...(options ?? ({} as typeof options & {})),
+            queryKey: [
+                GET_SIMILAR_COURSES_KEY,
+                course.id,
+                ...(options?.queryKey ?? []),
+            ],
+        },
+        queryClient
+    );
 
     return {
         data: courses

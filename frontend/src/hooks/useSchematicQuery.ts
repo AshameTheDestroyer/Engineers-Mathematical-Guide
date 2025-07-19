@@ -94,11 +94,21 @@ export const useSchematicQuery = <
 ): UseSchematicQueryResult<TSchema, TParseFnData, TUsesSuspense, TError> => {
     const { data: _data, ...query } = useExtendedQuery(options, queryClient);
 
-    const data =
-        !options.usesSuspense && query.isLoading && _data == null
-            ? _data
-            : (options.parseFn?.(_data, options.schema) ??
-              options.schema.parse(_data));
+    const data = (() => {
+        if (!options.usesSuspense && query.isLoading && _data == null) {
+            return _data;
+        }
+
+        if (options.parseFn != null) {
+            return options.parseFn?.(_data, options.schema);
+        }
+
+        if (_data != null) {
+            return options.schema.parse(_data);
+        }
+
+        return null;
+    })();
 
     return { data, ...query } as any;
 };

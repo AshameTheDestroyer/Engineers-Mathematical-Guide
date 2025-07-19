@@ -2,11 +2,12 @@ import {
     useQuery,
     QueryKey,
     QueryClient,
+    QueryFunction,
     UseQueryResult,
     UseQueryOptions,
     useSuspenseQuery,
-    UseSuspenseQueryOptions,
     UseSuspenseQueryResult,
+    UseSuspenseQueryOptions,
 } from "@tanstack/react-query";
 
 export type UseExtendedQueryResult<
@@ -45,11 +46,22 @@ export const useExtendedQuery = <
     >,
     queryClient?: QueryClient
 ): UseExtendedQueryResult<TUsesSuspense, TData, TError> => {
-    const { staleTime = 3000 * 60 * 10, ...options_ } = options;
+    const { queryFn: queryFn_, ...options_ } = options;
+
+    const queryFn: QueryFunction<TQueryFnData | null, TQueryKey> = async (
+        context
+    ) => {
+        if (queryFn_ == null) {
+            return null;
+        }
+
+        const data = await (queryFn_ as any)(context);
+        return data ?? null;
+    };
 
     const query = options.usesSuspense
-        ? useSuspenseQuery({ staleTime, ...options_ } as any, queryClient)
-        : useQuery({ staleTime, ...options_ }, queryClient);
+        ? useSuspenseQuery({ queryFn, ...options_ } as any, queryClient)
+        : useQuery({ queryFn, ...options_ } as any, queryClient);
 
     return query as any;
 };

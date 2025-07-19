@@ -1,9 +1,10 @@
 import { FC, Fragment } from "react";
-import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { Gender } from "@/schemas/SignupSchema";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
@@ -12,19 +13,22 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import user_icon from "@icons/user.svg";
 import fire_icon from "@icons/fire.svg";
+import phone_icon from "@icons/phone.svg";
+import email_icon from "@icons/email.svg";
 import location_icon from "@icons/location.svg";
 import electricity_icon from "@icons/electricity.svg";
 import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
 import locales from "@localization/profile_page.json";
-import profile_dummy_data from "@data/profile.dummy.json";
 
 export type ProfileInformationProps = {
+    user: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileInformation: FC<ProfileInformationProps> = ({
+    user,
     profilePictureRect,
 }) => {
     const { isDarkThemed } = useThemeMode();
@@ -36,35 +40,23 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(profile_dummy_data.followers) +
+        }).format(user.followers) +
         " " +
-        GetGenderedLocale(
-            locales.information.followers,
-            language,
-            profile_dummy_data.gender as Gender
-        );
+        GetGenderedLocale(locales.information.followers, language, user.gender);
 
     const followeesText =
         Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US", {
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(profile_dummy_data.followees) +
+        }).format(user.followees) +
         " " +
-        GetGenderedLocale(
-            locales.information.followees,
-            language,
-            profile_dummy_data.gender as Gender
-        );
+        GetGenderedLocale(locales.information.followees, language, user.gender);
 
     const experienceText =
-        profile_dummy_data.userRating +
+        user.xp +
         " " +
-        GetGenderedLocale(
-            locales.information.xp,
-            language,
-            profile_dummy_data.gender as Gender
-        );
+        GetGenderedLocale(locales.information.xp, language, user.gender);
 
     return (
         <Flexbox
@@ -101,8 +93,8 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                 <Separator
                                     className={
                                         isDarkThemed
-                                            ? "bg-foreground-dark"
-                                            : "bg-background-dark-hover"
+                                            ? "border-foreground-dark"
+                                            : "border-background-dark-hover"
                                     }
                                     thickness="thin"
                                     orientation="vertical"
@@ -140,48 +132,63 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 >
                     <Icon source={fire_icon} />
                     <Typography className="text-nowrap" variant="p">
-                        {profile_dummy_data.dayStreak}{" "}
+                        {user["day-streak"]}{" "}
                         {GetGenderedLocale(
                             locales.information.streak,
                             language,
-                            profile_dummy_data.gender as Gender
+                            user.gender
                         )}
                     </Typography>
                 </Flexbox>
             </Flexbox>
 
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(20rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
-                <Flexbox
-                    className="bg-primary-normal rounded-full p-2 px-5 pr-7 font-bold text-white"
-                    gap="3"
-                    alignItems="center"
-                >
-                    <Icon className="absolute" source={graduation_cap_icon} />
-                    <Typography
-                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
-                        variant="p"
-                    >
-                        {profile_dummy_data.specialization}
-                    </Typography>
-                </Flexbox>
-                <Flexbox
-                    className={twJoin(
-                        isDarkThemed
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
+                {[
+                    {
+                        className: "bg-primary-normal",
+                        icon: graduation_cap_icon,
+                        text: user.specialization?.toTitleCase("ai"),
+                    },
+                    {
+                        className: isDarkThemed
                             ? "bg-tertiary-light"
                             : "bg-tertiary-normal",
-                        "rounded-full p-2 px-5 pr-7 font-bold text-white"
-                    )}
-                    gap="3"
-                    alignItems="center"
-                >
-                    <Icon className="absolute" source={location_icon} />
-                    <Typography
-                        className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-center"
-                        variant="p"
+                        icon: email_icon,
+                        text: user.email,
+                    },
+                    {
+                        icon: location_icon,
+                        text: `${user.city} - ${user.country}`,
+                    },
+                    {
+                        className:
+                            direction == "rtl" &&
+                            "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
+                        icon: phone_icon,
+                        text: user["phone-number"],
+                    },
+                ].map((information, i) => (
+                    <Flexbox
+                        key={i}
+                        className={twMerge(
+                            isDarkThemed
+                                ? "bg-foreground-light"
+                                : "bg-background-dark-active",
+                            "rounded-full p-2 px-5 pr-7 font-bold text-white",
+                            information.className
+                        )}
+                        gap="3"
+                        alignItems="center"
                     >
-                        {profile_dummy_data.location}
-                    </Typography>
-                </Flexbox>
+                        <Icon source={information.icon} />
+                        <Typography
+                            className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
+                            variant="p"
+                        >
+                            {information.text}
+                        </Typography>
+                    </Flexbox>
+                ))}
             </div>
 
             <Flexbox
@@ -200,12 +207,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         "bg-background-light absolute -top-3.5 px-3 font-bold"
                     )}
                     variant="legend"
-                    gender={profile_dummy_data.gender as Gender}
+                    gender={user.gender as Gender}
                 >
                     {locales.information.biography}
                 </Locale>
                 <Typography className="text-justify" variant="p" dir="ltr">
-                    {profile_dummy_data.about}
+                    {user.biography}
                 </Typography>
             </Flexbox>
         </Flexbox>

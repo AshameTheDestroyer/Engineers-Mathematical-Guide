@@ -1,12 +1,38 @@
 [
     {
+        "email": "hashemwnoos@gmail.com",
+        "name": "Hashem",
+        "surname": "Wannous",
+        "username": "ashamethedestroyer",
+        "gender": "male",
+        "country": "Syria",
+        "avatar": "src/assets/images/hashem_wannous_avatar.png",
+        "personal-image": "src/assets/images/hashem_wannous.jpg",
+        "day-streak": 643,
+        "flag": "sy"
+    },
+    {
+        "email": "batoulkazak297@gmail.com",
+        "name": "Batoul",
+        "surname": "Kazak",
+        "username": "dieblauekatze",
+        "gender": "female",
+        "country": "Palestine",
+        "avatar": "src/assets/images/batoul_kazak_avatar.png",
+        "personal-image": "src/assets/images/batoul_kazak.jpg",
+        "day-streak": 234,
+        "flag": "ps"
+    },
+    {
         "email": "ahmed.ali@example.com",
         "username": "shadowhunter99",
         "name": "Ahmed",
         "gender": "male",
         "country": "Egypt",
-        "phoneNumber": "+201234567890",
-        "surname": "Ali"
+        "phone-number": "+201234567890",
+        "surname": "Ali",
+        "day-streak": 327,
+        "flag": "eg"
     },
     {
         "email": "fatima.hassan@example.com",
@@ -14,8 +40,10 @@
         "name": "Fatima",
         "gender": "female",
         "country": "Saudi Arabia",
-        "phoneNumber": "+966501234567",
-        "surname": "Hassan"
+        "phone-number": "+966501234567",
+        "surname": "Hassan",
+        "day-streak": 842,
+        "flag": "sa"
     },
     {
         "email": "youssef.mohamed@example.com",
@@ -23,8 +51,10 @@
         "name": "Youssef",
         "gender": "male",
         "country": "Sudan",
-        "phoneNumber": "+249912345678",
-        "surname": "Mohamed"
+        "phone-number": "+249912345678",
+        "surname": "Mohamed",
+        "day-streak": 156,
+        "flag": "sd"
     },
     {
         "email": "layan.jaber@example.com",
@@ -32,8 +62,10 @@
         "name": "Layan",
         "gender": "female",
         "country": "Jordan",
-        "phoneNumber": "+962798765432",
-        "surname": "Jaber"
+        "phone-number": "+962798765432",
+        "surname": "Jaber",
+        "day-streak": 603,
+        "flag": "jo"
     },
     {
         "email": "khalid.nasser@example.com",
@@ -41,8 +73,10 @@
         "name": "Khalid",
         "gender": "male",
         "country": "United Arab Emirates",
-        "phoneNumber": "+971501234567",
-        "surname": "Nasser"
+        "phone-number": "+971501234567",
+        "surname": "Nasser",
+        "day-streak": 911,
+        "flag": "ae"
     },
     {
         "email": "noor.salem@example.com",
@@ -50,8 +84,10 @@
         "name": "Noor",
         "gender": "female",
         "country": "Qatar",
-        "phoneNumber": "+97433123456",
-        "surname": "Salem"
+        "phone-number": "+97433123456",
+        "surname": "Salem",
+        "day-streak": 244,
+        "flag": "qa"
     },
     {
         "email": "mohammad.kadour@example.com",
@@ -59,8 +95,10 @@
         "name": "Mohammad",
         "gender": "male",
         "country": "Lebanon",
-        "phoneNumber": "+96170123456",
-        "surname": "Kadour"
+        "phone-number": "+96170123456",
+        "surname": "Kadour",
+        "day-streak": 730,
+        "flag": "lb"
     },
     {
         "email": "asmaa.tariq@example.com",
@@ -68,8 +106,10 @@
         "name": "Asmaa",
         "gender": "female",
         "country": "Morocco",
-        "phoneNumber": "+212612345678",
-        "surname": "Tariq"
+        "phone-number": "+212612345678",
+        "surname": "Tariq",
+        "day-streak": 412,
+        "flag": "ma"
     },
     {
         "email": "ibrahim.farouk@example.com",
@@ -77,8 +117,10 @@
         "name": "Ibrahim",
         "gender": "male",
         "country": "Algeria",
-        "phoneNumber": "+213551234567",
-        "surname": "Farouk"
+        "phone-number": "+213551234567",
+        "surname": "Farouk",
+        "day-streak": 975,
+        "flag": "dz"
     },
     {
         "email": "hala.abdullah@example.com",
@@ -86,8 +128,10 @@
         "name": "Hala",
         "gender": "female",
         "country": "Bahrain",
-        "phoneNumber": "+97339123456",
-        "surname": "Abdullah"
+        "phone-number": "+97339123456",
+        "surname": "Abdullah",
+        "day-streak": 109,
+        "flag": "bh"
     },
     {
         "email": "tarek.zaher@example.com",
@@ -95,8 +139,10 @@
         "name": "Tarek",
         "gender": "male",
         "country": "Iraq",
-        "phoneNumber": "+9647501234567",
-        "surname": "Zaher"
+        "phone-number": "+9647501234567",
+        "surname": "Zaher",
+        "day-streak": 582,
+        "flag": "iq"
     },
     {
         "email": "nada.amin@example.com",
@@ -104,8 +150,10 @@
         "name": "Nada",
         "gender": "female",
         "country": "Oman",
-        "phoneNumber": "+96891234567",
-        "surname": "Amin"
+        "phone-number": "+96891234567",
+        "surname": "Amin",
+        "day-streak": 333,
+        "flag": "om"
     },
     {
         "email": "zaid.rashid@example.com",
@@ -113,8 +161,10 @@
         "name": "Zaid",
         "gender": "male",
         "country": "Palestine",
-        "phoneNumber": "+972501234567",
-        "surname": "Rashid"
+        "phone-number": "+972501234567",
+        "surname": "Rashid",
+        "day-streak": 764,
+        "flag": "ps"
     },
     {
         "email": "dalal.hussein@example.com",
@@ -122,8 +172,10 @@
         "name": "Dalal",
         "gender": "female",
         "country": "Kuwait",
-        "phoneNumber": "+96560012345",
-        "surname": "Hussein"
+        "phone-number": "+96560012345",
+        "surname": "Hussein",
+        "day-streak": 89,
+        "flag": "kw"
     },
     {
         "email": "anas.walid@example.com",
@@ -131,8 +183,10 @@
         "name": "Anas",
         "gender": "male",
         "country": "Yemen",
-        "phoneNumber": "+967712345678",
-        "surname": "Walid"
+        "phone-number": "+967712345678",
+        "surname": "Walid",
+        "day-streak": 201,
+        "flag": "ye"
     },
     {
         "email": "reem.ghani@example.com",
@@ -140,8 +194,10 @@
         "name": "Reem",
         "gender": "female",
         "country": "Syria",
-        "phoneNumber": "+963912345678",
-        "surname": "Ghani"
+        "phone-number": "+963912345678",
+        "surname": "Ghani",
+        "day-streak": 467,
+        "flag": "sy"
     },
     {
         "email": "sami.dabbous@example.com",
@@ -149,8 +205,10 @@
         "name": "Sami",
         "gender": "male",
         "country": "Tunisia",
-        "phoneNumber": "+21621234567",
-        "surname": "Dabbous"
+        "phone-number": "+21621234567",
+        "surname": "Dabbous",
+        "day-streak": 122,
+        "flag": "tn"
     },
     {
         "email": "layla.makki@example.com",
@@ -158,8 +216,10 @@
         "name": "Layla",
         "gender": "female",
         "country": "Libya",
-        "phoneNumber": "+218912345678",
-        "surname": "Makki"
+        "phone-number": "+218912345678",
+        "surname": "Makki",
+        "day-streak": 635,
+        "flag": "ly"
     },
     {
         "email": "omar.bakri@example.com",
@@ -167,8 +227,10 @@
         "name": "Omar",
         "gender": "male",
         "country": "Somalia",
-        "phoneNumber": "+252901234567",
-        "surname": "Bakri"
+        "phone-number": "+252901234567",
+        "surname": "Bakri",
+        "day-streak": 99,
+        "flag": "so"
     },
     {
         "email": "aya.adel@example.com",
@@ -176,7 +238,9 @@
         "name": "Aya",
         "gender": "female",
         "country": "Djibouti",
-        "phoneNumber": "+25377123456",
-        "surname": "Adel"
+        "phone-number": "+25377123456",
+        "surname": "Adel",
+        "day-streak": 540,
+        "flag": "dj"
     }
 ]

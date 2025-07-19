@@ -1,3 +1,4 @@
+import { QueryClient } from "@tanstack/react-query";
 import { CourseDTO, CourseSchema } from "@/schemas/CourseSchema";
 import {
     useSchematicQuery,
@@ -14,18 +15,22 @@ export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
         TUsesSuspense,
         CourseDTO,
         Array<CourseDTO>
-    >
+    >,
+    queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>({
-        schema: CourseSchema,
-        queryFn: () =>
-            ids
-                .map((id) =>
-                    courses_dummy_data.find((course) => course.id == id)
-                )
-                .filter((id) => id != null),
-        parseFn: (data, schema) =>
-            data?.map((datum) => schema.parse(datum)) ?? [],
-        ...options,
-        queryKey: [GET_COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
-    });
+    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>(
+        {
+            schema: CourseSchema,
+            queryFn: () =>
+                ids
+                    .map((id) =>
+                        courses_dummy_data.find((course) => course.id == id)
+                    )
+                    .filter((id) => id != null),
+            parseFn: (data, schema) =>
+                data?.map((datum) => schema.parse(datum)) ?? [],
+            ...options,
+            queryKey: [GET_COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
+        },
+        queryClient
+    );

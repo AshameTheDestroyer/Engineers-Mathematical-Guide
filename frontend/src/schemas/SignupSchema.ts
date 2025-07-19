@@ -8,25 +8,27 @@ export enum GenderEnum {
 
 export type Gender = ExtractEnumValue<GenderEnum>;
 
+export const SignupCredentialsSchema = z.object({
+    email: z.string({ required_error: "required" }).email("pattern"),
+    password: z
+        .string({ required_error: "required" })
+        .min(8, "minimum")
+        .max(20, "maximum"),
+    "confirm-password": z.string({ required_error: "required" }),
+    "terms-and-conditions": z.boolean({ required_error: "required" }),
+});
+
 export const SignupStepSchemas = {
-    credentials: z
-        .object({
-            email: z.string({ required_error: "required" }).email("pattern"),
-            password: z
-                .string({ required_error: "required" })
-                .min(8, "minimum")
-                .max(20, "maximum"),
-            "confirm-password": z.string({ required_error: "required" }),
-            "terms-and-conditions": z.boolean({ required_error: "required" }),
-        })
-        .refine((data) => data.password == data["confirm-password"], {
+    credentials: SignupCredentialsSchema.refine(
+        (data) => data.password == data["confirm-password"],
+        {
             message: "match",
             path: ["confirm-password"],
-        })
-        .refine((data) => data["terms-and-conditions"], {
-            message: "agreement",
-            path: ["terms-and-conditions"],
-        }),
+        }
+    ).refine((data) => data["terms-and-conditions"], {
+        message: "agreement",
+        path: ["terms-and-conditions"],
+    }),
     "personal-information": z.object({
         username: z
             .string({ required_error: "required" })

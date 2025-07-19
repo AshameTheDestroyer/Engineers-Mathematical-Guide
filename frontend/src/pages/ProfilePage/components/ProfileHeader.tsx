@@ -2,17 +2,18 @@ import { FC } from "react";
 import { twJoin } from "tailwind-merge";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import profile_dummy_data from "@data/profile.dummy.json";
-
 export type ProfileHeaderProps = {
+    user: DetailedUserDTO;
     profilePictureRect: DOMRect;
 };
 
 export const ProfileHeader: FC<ProfileHeaderProps> = ({
+    user,
     profilePictureRect,
 }) => {
     const { direction } = useLocalization();
@@ -38,28 +39,38 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                         : "0",
             }}
         >
-            <Typography
-                className={twJoin(
-                    direction == "rtl" ? "text-end" : "",
-                    "overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-2xl font-bold max-md:text-center max-md:text-xl"
-                )}
-                dir="ltr"
-                variant="h1"
+            <Flexbox
+                className="max-md:place-content-center"
+                alignItems="center"
+                gap="4"
             >
-                {profile_dummy_data.name}
-            </Typography>
+                <Typography
+                    className={twJoin(
+                        direction == "rtl" ? "text-end" : "",
+                        "overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-2xl font-bold max-md:text-xl"
+                    )}
+                    dir="ltr"
+                    variant="h1"
+                >
+                    {user.name} {user.surname}
+                </Typography>
+                <img
+                    className="h-[48px] translate-y-0 drop-shadow-[3px_3px_1px_#0000004c]"
+                    src={`/flags/${user.flag}.svg`}
+                    width={48}
+                    height={48}
+                />
+            </Flexbox>
             <Typography
                 className={twJoin(
                     direction == "rtl" ? "text-end" : "",
-                    "text-primary-normal cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:text-center max-md:text-lg"
+                    "text-primary-normal w-fit cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap text-xl font-bold max-md:place-self-center max-md:text-lg"
                 )}
                 dir="ltr"
                 variant="h2"
-                onClick={(_e) =>
-                    CopyToClipboard(`@${profile_dummy_data.username}`)
-                }
+                onClick={(_e) => CopyToClipboard(`@${user.username}`)}
             >
-                @{profile_dummy_data.username}
+                @{user.username}
             </Typography>
         </Flexbox>
     );

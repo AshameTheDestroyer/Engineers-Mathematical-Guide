@@ -14,19 +14,45 @@
     "buttons": {
         "login": {
             "en": "Login",
-            "ar": "تسجيل الدّخول"
+            "ar": "تَسجيلُ الدُّخول"
         },
         "signup": {
             "en": "Sign up",
-            "ar": "إنشاء حساب"
+            "ar": "إنشاءُ حِساب"
+        },
+        "logout": {
+            "en": "Log out",
+            "ar": "تَسجيلُ الخُروج"
         },
         "start": {
             "en": "Start Your Journey Now",
-            "ar": "إبدأ رحلتك الآن"
+            "ar": "إبدأْ رِحلتَكَ الآن"
         },
         "learn": {
             "en": "Learn More",
-            "ar": "إقرأ المزيد"
+            "ar": "إقرأْ المَزيد"
+        }
+    },
+    "modals": {
+        "logout": {
+            "title": {
+                "en": "Confirm Logout",
+                "ar": "تأكيدُ تَسجيلِ الخُروج"
+            },
+            "paragraph": {
+                "en": "Are you sure you want to log out of your account?",
+                "ar": "هَلْ أنتَ مُتأكِّدٌ مِنْ أنَّكَ تُريدُ تَسجيلَ الخُروجِ مِنْ حِسابِك؟"
+            },
+            "buttons": {
+                "logout": {
+                    "en": "Log out",
+                    "ar": "تَسجيلُ الخُروج"
+                },
+                "cancel": {
+                    "en": "Cancel",
+                    "ar": "إلغاء"
+                }
+            }
         }
     }
 }
