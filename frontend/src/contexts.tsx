@@ -1,14 +1,21 @@
 import { HashRouter } from "react-router-dom";
 import { DetailedUserDTO } from "./schemas/UserSchema";
+import { useGetMyUser } from "./services/Users/useGetMyUser";
 import { ComposeProviders } from "./functions/ComposeProviders";
 import { MathJaxContext as MathJaxProvider } from "better-react-mathjax";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastProvider } from "./components/ToastProvider/ToastProvider";
-import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ScreenSizeProvider } from "./components/ScreenSizeProvider/ScreenSizeProvider";
 import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
+import {
+    useState,
+    useEffect,
+    useContext,
+    createContext,
+    PropsWithChildren,
+} from "react";
 
 export const queryClient = new QueryClient({
     defaultOptions: { queries: { staleTime: 3000 * 60 * 10 } },
@@ -31,6 +38,15 @@ export const ContextProviders = [
             setMyUser: (user) =>
                 setState((state) => ({ ...state, myUser: user })),
         });
+
+        const { data: myUser } = useGetMyUser(
+            { usesSuspense: true },
+            queryClient
+        );
+
+        useEffect(() => {
+            setState((state) => ({ ...state, myUser }));
+        }, []);
 
         return (
             <MainContext.Provider value={state}>
