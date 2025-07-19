@@ -11,6 +11,7 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import configure_icon from "@icons/cog.svg";
+import default_banner from "@images/default_banner.jpg";
 
 import locales from "@localization/profile_page.json";
 
@@ -70,7 +71,7 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
             </Button>
             <Image
                 className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                source={user.banner}
+                source={user.banner ?? default_banner}
                 alternative={`Image of ${user.name}'s Background.`}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />

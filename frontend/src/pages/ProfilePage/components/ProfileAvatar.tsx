@@ -5,6 +5,9 @@ import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { ComponentProps } from "@/types/ComponentProps";
 import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
 
+import default_avatar from "@images/default_avatar.png";
+import default_personal_image from "@images/default_personal_image.png";
+
 export type ProfileAvatarProps = {
     user: DetailedUserDTO;
 } & ComponentProps<HTMLDivElement>;
@@ -32,7 +35,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
                 <Image
                     className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                    source={user.avatar}
+                    source={user.avatar ?? default_avatar}
                     alternative={`Avatar of ${user.name}'s Profile.`}
                 />
             }
@@ -40,7 +43,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
                 <Image
                     className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
                     style={{ boxShadow: outlines }}
-                    source={user["personal-image"]}
+                    source={user["personal-image"] ?? default_personal_image}
                     alternative={`Personal Image of ${user.name}'s Profile.`}
                 />
             }
