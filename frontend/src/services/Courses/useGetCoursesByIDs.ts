@@ -26,7 +26,7 @@ export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
                     .map((id) =>
                         courses_dummy_data.find((course) => course.id == id)
                     )
-                    .filter((id) => id != null),
+                    .filter((course) => course != null),
             parseFn: (data, schema) =>
                 data?.map((datum) => schema.parse(datum)) ?? [],
             ...options,
