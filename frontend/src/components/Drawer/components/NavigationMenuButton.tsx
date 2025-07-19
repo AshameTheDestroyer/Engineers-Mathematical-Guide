@@ -85,6 +85,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                         variant="error"
                         onClick={(_e) => (
                             setMyUser(undefined),
+                            setIsLogoutModalOpen(false),
                             Navigate(WEBSITE_ROUTES.base.absolute)
                         )}
                     >
