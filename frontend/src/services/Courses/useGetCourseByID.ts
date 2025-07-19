@@ -27,7 +27,6 @@ export const useGetCourseByID = <TUsesSuspense extends boolean = false>(
         schema: DetailedCourseSchema,
         queryFn: () =>
             detailed_courses_dummy_data.find((course) => course.id == id),
-        parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
         ...options,
         queryKey: [GET_COURSE_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
     });

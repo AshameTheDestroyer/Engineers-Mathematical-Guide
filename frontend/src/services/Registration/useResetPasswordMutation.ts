@@ -12,6 +12,6 @@ export const useForgotPasswordMutation = (
 ) =>
     useMutation({
         ...options,
-        mutationKey: [FORGOT_PASSWORD_KEY, options?.mutationKey],
+        mutationKey: [FORGOT_PASSWORD_KEY, ...(options?.mutationKey ?? [])],
         mutationFn: (data) => HTTPManager.post("/auth/forgot-password", data),
     });

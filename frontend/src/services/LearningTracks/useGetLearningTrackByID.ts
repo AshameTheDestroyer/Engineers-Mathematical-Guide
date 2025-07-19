@@ -29,7 +29,6 @@ export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
             detailed_learningTracks_dummy_data.find(
                 (learningTrack) => learningTrack.id == id
             ),
-        parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
         ...options,
         queryKey: [
             GET_LEARNING_TRACK_BY_ID_KEY,

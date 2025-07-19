@@ -29,7 +29,6 @@ export const useGetMathEquationByID = <TUsesSuspense extends boolean = false>(
             (
                 detailed_math_equations_dummy_data as Array<DetailedMathEquationDTO>
             ).find((mathEquation) => mathEquation.id == id),
-        parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
         ...options,
         queryKey: [
             GET_MATH_EQUATION_BY_ID_KEY,

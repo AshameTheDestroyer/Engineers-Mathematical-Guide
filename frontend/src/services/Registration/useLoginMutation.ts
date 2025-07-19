@@ -9,7 +9,7 @@ export const useLoginMutation = (
 ) =>
     useMutation({
         ...options,
-        mutationKey: [LOGIN_KEY, options?.mutationKey],
+        mutationKey: [LOGIN_KEY, ...(options?.mutationKey ?? [])],
         mutationFn: (data) =>
             HTTPManager.post<{ accessToken: string }>("/auth/login", data),
     });

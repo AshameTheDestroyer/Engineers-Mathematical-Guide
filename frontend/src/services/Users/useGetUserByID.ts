@@ -26,7 +26,6 @@ export const useGetUserByID = <TUsesSuspense extends boolean = false>(
             (detailed_users_dummy_data as Array<DetailedUserDTO>).find(
                 (user) => user.username == id
             ),
-        parseFn: (data, schema) => (data != null ? schema.parse(data) : data),
         ...options,
         queryKey: [GET_USER_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
     });

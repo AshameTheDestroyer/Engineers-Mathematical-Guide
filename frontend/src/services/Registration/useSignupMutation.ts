@@ -9,7 +9,7 @@ export const useSignupMutation = (
 ) =>
     useMutation({
         ...options,
-        mutationKey: [SIGNUP_KEY, options?.mutationKey],
+        mutationKey: [SIGNUP_KEY, ...(options?.mutationKey ?? [])],
         mutationFn: ({ "phone-number": phoneNumber, ...data }) =>
             HTTPManager.post<{ accessToken: string }>("/auth/signup", {
                 ...Object.omit(

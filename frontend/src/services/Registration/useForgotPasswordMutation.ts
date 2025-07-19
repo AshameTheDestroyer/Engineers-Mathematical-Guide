@@ -12,7 +12,7 @@ export const useResetPasswordMutation = (
 ) =>
     useMutation({
         ...options,
-        mutationKey: [RESET_PASSWORD_KEY, options?.mutationKey],
+        mutationKey: [RESET_PASSWORD_KEY, ...(options?.mutationKey ?? [])],
         mutationFn: (data) =>
             HTTPManager.post(
                 "/auth/reset-password",
