@@ -87,7 +87,7 @@ export const ProfileMainContent: FC<ProfileMainContentProps> = ({ user }) => {
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
-            <Title>{user.name}</Title>
+            <Title>{`${user.name} ${user.surname}`}</Title>
 
             <ProfileBanner user={user} profilePictureRef={profilePictureRef} />
             <ProfileHeader
