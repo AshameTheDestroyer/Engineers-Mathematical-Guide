@@ -27,14 +27,12 @@ export const DetailedUserSchema = z.intersection(
             .number({ required_error: "required" })
             .nonnegative("nonnegative")
             .int("integer"),
-        followees: z
-            .number({ required_error: "required" })
-            .nonnegative("nonnegative")
-            .int("integer"),
-        followers: z
-            .number({ required_error: "required" })
-            .nonnegative("nonnegative")
-            .int("integer"),
+        followees: z.array(z.string({ required_error: "required" }), {
+            required_error: "required",
+        }),
+        followers: z.array(z.string({ required_error: "required" }), {
+            required_error: "required",
+        }),
         "finished-courses": z.array(z.string({ required_error: "required" }), {
             required_error: "required",
         }),

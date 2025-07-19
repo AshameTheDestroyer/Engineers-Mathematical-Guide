@@ -40,7 +40,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(user.followers) +
+        }).format(user.followers.length) +
         " " +
         GetGenderedLocale(locales.information.followers, language, user.gender);
 
@@ -49,12 +49,14 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             notation: "compact",
             compactDisplay: "short",
             maximumFractionDigits: 1,
-        }).format(user.followees) +
+        }).format(user.followees.length) +
         " " +
         GetGenderedLocale(locales.information.followees, language, user.gender);
 
     const experienceText =
-        user.xp +
+        Intl.NumberFormat(language == "ar" ? "ar-UA" : "en-US").format(
+            user.xp
+        ) +
         " " +
         GetGenderedLocale(locales.information.xp, language, user.gender);
 
