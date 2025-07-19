@@ -9,7 +9,9 @@ import { ScreenSizeProvider } from "./components/ScreenSizeProvider/ScreenSizePr
 import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+    defaultOptions: { queries: { staleTime: 3000 * 60 * 10 } },
+});
 
 export type MainStateProps = {
     rootTitle: string;
