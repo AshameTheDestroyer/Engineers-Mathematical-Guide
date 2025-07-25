@@ -18,7 +18,7 @@ import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResu
 
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
-import logged_out_icon from "@icons/logged_out.svg";
+import logged_out_icon from "@icons/user_cross.svg";
 
 import locales from "@localization/profile_page.json";
 import route_locales from "@localization/profile_page_routes.json";

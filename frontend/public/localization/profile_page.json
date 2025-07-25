@@ -15,6 +15,14 @@
         "edit-profile": {
             "en": "Edit Profile",
             "ar": "تَعديلُ المِلَفِّ الشَّخصيّ"
+        },
+        "follow": {
+            "en": "Follow",
+            "ar": "مُتابَعة"
+        },
+        "unfollow": {
+            "en": "Unfollow",
+            "ar": "إلغاءُ المُتابَعة"
         }
     },
     "information": {
