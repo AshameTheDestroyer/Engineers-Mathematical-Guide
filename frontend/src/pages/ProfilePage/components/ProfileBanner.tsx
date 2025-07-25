@@ -5,8 +5,8 @@ import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedUserDTO } from "@/schemas/UserSchema";
-import { FC, Ref, useImperativeHandle, useRef } from "react";
 import { IconButton } from "@/components/IconButton/IconButton";
+import { FC, Ref, useImperativeHandle, useMemo, useRef } from "react";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -29,6 +29,11 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
     const profilePictureRef = useRef<HTMLDivElement>(null);
 
     useImperativeHandle(profilePictureRef_, () => profilePictureRef.current!);
+
+    const bannerHue = useMemo(
+        () => (user?.username.hash() ?? 0) % 360,
+        [user?.username]
+    );
 
     return (
         <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
@@ -76,7 +81,7 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                 style={{
                     filter:
                         user.banner == null
-                            ? `hue-rotate(${~~(Math.random() * 360)}deg)`
+                            ? `hue-rotate(${bannerHue}deg)`
                             : "",
                 }}
             />

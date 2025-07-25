@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { UserDTO } from "@/schemas/UserSchema";
 import { Image } from "@/components/Image/Image";
 import { useOutlines } from "@/hooks/useOutlines";
@@ -39,6 +39,11 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
         `3px var(--color-tertiary-${isDarkThemed ? "normal" : "dark"})`,
     ]);
 
+    const [avatarHue, personalImageHue] = useMemo(() => {
+        const hash = user?.username.hash() ?? 0;
+        return [hash % 360, (hash * 2) % 360];
+    }, [user?.username]);
+
     return (
         <FlippableContainer
             id={id}
@@ -54,7 +59,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
                         boxShadow: primaryOutlines,
                         filter:
                             user?.avatar == null
-                                ? `hue-rotate(${~~(Math.random() * 360)}deg)`
+                                ? `hue-rotate(${avatarHue}deg)`
                                 : "",
                     }}
                 />
@@ -68,7 +73,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
                         boxShadow: tertiaryOutlines,
                         filter:
                             user?.["personal-image"] == null
-                                ? `hue-rotate(${~~(Math.random() * 360)}deg)`
+                                ? `hue-rotate(${personalImageHue}deg)`
                                 : "",
                     }}
                 />
