@@ -140,6 +140,14 @@
             "enroll-now": {
                 "en": "Enroll Now",
                 "ar": "سَجِّلْ الآن"
+            },
+            "open": {
+                "en": "Open Course",
+                "ar": "افتَحْ المُقَرَّر"
+            },
+            "deroll": {
+                "en": "Deroll",
+                "ar": "إلغاءُ التَّسجيل"
             }
         }
     }

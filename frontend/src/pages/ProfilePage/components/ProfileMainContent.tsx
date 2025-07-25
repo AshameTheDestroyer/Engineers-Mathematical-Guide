@@ -31,10 +31,17 @@ export const ProfileMainContent: FC<ProfileMainContentProps> = ({ user }) => {
     const followersQuery = useGetFollowers(user);
     const followeesQuery = useGetFollowees(user);
 
-    const finishedCoursesQuery = useGetCoursesByIDs(user["finished-courses"]);
-    const enrolledCoursesQuery = useGetCoursesByIDs(user["enrolled-courses"]);
+    const finishedCoursesQuery = useGetCoursesByIDs(user["finished-courses"], {
+        queryKey: ["get-finished-courses"],
+    });
+
+    const enrolledCoursesQuery = useGetCoursesByIDs(user["enrolled-courses"], {
+        queryKey: ["get-enrolled-courses"],
+    });
+
     const bookmarkedCoursesQuery = useGetCoursesByIDs(
-        user["bookmarked-courses"]
+        user["bookmarked-courses"],
+        { queryKey: ["get-bookmarked-courses"] }
     );
 
     const skeletonArray = new Array(5).fill(null);
