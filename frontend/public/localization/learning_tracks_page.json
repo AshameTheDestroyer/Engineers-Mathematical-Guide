@@ -112,6 +112,14 @@
             "specialize-now": {
                 "en": "Specialize Now",
                 "ar": "اختَصَّ الآن"
+            },
+            "open": {
+                "en": "Open Specialization",
+                "ar": "افتَحْ التَّخَصُّص"
+            },
+            "despecialize": {
+                "en": "Despecialize",
+                "ar": "غادِرْ التَّخَصُّص"
             }
         }
     }

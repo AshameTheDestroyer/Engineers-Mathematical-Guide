@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
@@ -8,14 +9,16 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
-import { Typography } from "@/components/Typography/Typography";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearningTrackByID";
 import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSimilarLearningTracks";
 
+import arrow_icon from "@icons/arrow.svg";
 import specialize_icon from "@icons/star.svg";
 
 import locales from "@localization/learning_tracks_page.json";
@@ -29,6 +32,11 @@ export const LearningTrackPage: FC = () => {
     const { data: learningTrack } = useGetLearningTrackByID(learningTrackID, {
         usesSuspense: true,
     });
+
+    const { myUser } = useMain();
+
+    const haveISpecialized =
+        learningTrackID != null && myUser?.specialization == learningTrackID;
 
     const similarLearningTracksQuery = useGetSimilarLearningTracks(
         learningTrack,
@@ -70,20 +78,50 @@ export const LearningTrackPage: FC = () => {
                         language
                     )}
                 />
-                <Button
-                    className={twJoin(
-                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
-                        "absolute bottom-0 z-[1] translate-y-1/2 font-bold"
-                    )}
-                    thickness="thick"
-                    variant="warning"
-                    icon={{
-                        placement: "left",
-                        source: specialize_icon,
-                    }}
-                >
-                    <Locale>{locales.profile.buttons["specialize-now"]}</Locale>
-                </Button>
+                {myUser != null && (
+                    <ButtonBox
+                        className={twJoin(
+                            direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
+                            !haveISpecialized && "font-bold",
+                            "absolute bottom-0 z-[1] translate-y-1/2 max-sm:inset-x-0 max-sm:scale-90 max-sm:place-content-end max-sm:gap-2"
+                        )}
+                    >
+                        <Button
+                            thickness="thick"
+                            variant={haveISpecialized ? "default" : "warning"}
+                            icon={
+                                haveISpecialized
+                                    ? undefined
+                                    : {
+                                          placement: "left",
+                                          source: specialize_icon,
+                                      }
+                            }
+                        >
+                            <Locale>
+                                {haveISpecialized
+                                    ? locales.profile.buttons.despecialize
+                                    : locales.profile.buttons["specialize-now"]}
+                            </Locale>
+                        </Button>
+                        {haveISpecialized && (
+                            <Button
+                                thickness="thick"
+                                variant="primary"
+                                icon={{
+                                    className:
+                                        direction == "ltr"
+                                            ? "rotate-90"
+                                            : "-rotate-90",
+                                    placement: "right",
+                                    source: arrow_icon,
+                                }}
+                            >
+                                <Locale>{locales.profile.buttons.open}</Locale>
+                            </Button>
+                        )}
+                    </ButtonBox>
+                )}
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     source={learningTrack.image}
