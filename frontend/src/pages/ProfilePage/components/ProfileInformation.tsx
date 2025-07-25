@@ -1,10 +1,13 @@
 import { FC, Fragment } from "react";
 import { Icon } from "@/components/Icon/Icon";
+import { useNavigate } from "react-router-dom";
 import { Gender } from "@/schemas/SignupSchema";
 import { twJoin, twMerge } from "tailwind-merge";
+import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedUserDTO } from "@/schemas/UserSchema";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
@@ -31,8 +34,10 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
     user,
     profilePictureRect,
 }) => {
+    const Navigate = useNavigate();
     const { isDarkThemed } = useThemeMode();
     const { isScreenSize } = useScreenSize();
+    const { CopyToClipboard } = useClipboard();
     const { direction, language, GetGenderedLocale } = useLocalization();
 
     const followersText =
@@ -68,6 +73,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                       className: "bg-primary-normal",
                       icon: graduation_cap_icon,
                       text: user.specialization.toTitleCase("ai"),
+                      onClick: () =>
+                          Navigate(
+                              DISCOVER_ROUTES.base.routes.learningTrackID.MapVariable(
+                                  user.specialization!
+                              )
+                          ),
                   },
               ]),
         {
@@ -78,10 +89,12 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             ),
             icon: email_icon,
             text: user.email,
+            onClick: () => CopyToClipboard(user.email),
         },
         {
             icon: location_icon,
             text: `${user.city} - ${user.country}`,
+            onClick: () => CopyToClipboard(`${user.city} - ${user.country}`),
         },
         {
             className:
@@ -89,6 +102,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                 "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
             icon: phone_icon,
             text: user["phone-number"],
+            onClick: () => CopyToClipboard(user["phone-number"]),
         },
     ];
 
@@ -187,11 +201,13 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                             isDarkThemed
                                 ? "bg-foreground-light"
                                 : "bg-background-dark-active",
-                            "rounded-full p-2 px-5 pr-7 font-bold text-white",
+                            "cursor-pointer rounded-full p-2 px-5 pr-7 font-bold text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
                             informationDatum.className
                         )}
                         gap="3"
+                        tabIndex={0}
                         alignItems="center"
+                        onClick={informationDatum.onClick}
                     >
                         <Icon source={informationDatum.icon} />
                         <Typography
