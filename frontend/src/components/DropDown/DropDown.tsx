@@ -28,6 +28,7 @@ export const DropDown: FC<DropDownProps> = ({
     ref,
     text,
     icon,
+    onClick,
     position,
     children,
     className,
@@ -112,7 +113,7 @@ export const DropDown: FC<DropDownProps> = ({
         >
             <Button_
                 className="flex w-full items-center justify-start gap-8"
-                onClick={() => setIsOpen((isOpen) => !isOpen)}
+                onClick={(e) => (setIsOpen((isOpen) => !isOpen), onClick?.(e))}
                 icon={{
                     ...icon,
                     placement: icon?.placement ?? "right",
