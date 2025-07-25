@@ -9,23 +9,11 @@ import {
 
 export type UseSchematicQueryResult<
     TSchema extends FieldValues,
-    TParseFnData = undefined,
+    TParseFnData = TSchema,
+    TTransformFnData = TParseFnData,
     TUsesSuspense extends boolean = false,
     TError = Error,
-> = UseExtendedQueryResult<
-    TUsesSuspense,
-    Exclude<
-        TParseFnData extends undefined
-            ? TSchema
-            : Exclude<TParseFnData, undefined>,
-        TParseFnData extends undefined
-            ? never
-            : TSchema extends TParseFnData
-              ? never
-              : TSchema
-    >,
-    TError
->;
+> = UseExtendedQueryResult<TUsesSuspense, TTransformFnData, TError>;
 
 export type UseSchematicQueryOptions<
     TUsesSuspense extends boolean = false,
@@ -34,7 +22,8 @@ export type UseSchematicQueryOptions<
     TQueryFnData = TParseFnData,
     TError = Error,
     TData = TQueryFnData,
-    TQueryKey extends QueryKey = readonly unknown[],
+    TQueryKey extends QueryKey = QueryKey,
+    TTransformFnData = TParseFnData,
 > = UseExtendedQueryOptions<
     TUsesSuspense,
     TQueryFnData,
@@ -47,16 +36,18 @@ export type UseSchematicQueryOptions<
         data: TData | undefined,
         schema: ZodSchema<TSchema>
     ) => TParseFnData;
+    transform?: (data: TParseFnData) => TTransformFnData;
 };
 
 export type InheritableQueryOptions<
     TUsesSuspense extends boolean = false,
     TSchema extends FieldValues = Record<string, any>,
     TParseFnData = TSchema,
+    TTransformFnData = TParseFnData,
     TQueryFnData = TParseFnData,
     TError = Error,
     TData = TQueryFnData,
-    TQueryKey extends QueryKey = readonly unknown[],
+    TQueryKey extends QueryKey = QueryKey,
 > = Omit<
     UseSchematicQueryOptions<
         TUsesSuspense,
@@ -65,9 +56,10 @@ export type InheritableQueryOptions<
         TQueryFnData,
         TError,
         TData,
-        TQueryKey
+        TQueryKey,
+        TTransformFnData
     >,
-    "schema" | "queryFn" | "parseFn" | "queryKey"
+    "schema" | "queryFn" | "parseFn" | "queryKey" | "select"
 > & {
     queryKey?: QueryKey;
 };
@@ -76,10 +68,11 @@ export const useSchematicQuery = <
     TUsesSuspense extends boolean = false,
     TSchema extends FieldValues = Record<string, any>,
     TParseFnData = TSchema,
+    TTransformFnData = TParseFnData,
     TQueryFnData = TParseFnData,
     TError = Error,
     TData = TQueryFnData,
-    TQueryKey extends QueryKey = readonly unknown[],
+    TQueryKey extends QueryKey = QueryKey,
 >(
     options: UseSchematicQueryOptions<
         TUsesSuspense,
@@ -88,27 +81,45 @@ export const useSchematicQuery = <
         TQueryFnData,
         TError,
         TData,
-        TQueryKey
+        TQueryKey,
+        TTransformFnData
     >,
     queryClient?: QueryClient
-): UseSchematicQueryResult<TSchema, TParseFnData, TUsesSuspense, TError> => {
-    const { data: _data, ...query } = useExtendedQuery(options, queryClient);
+): UseSchematicQueryResult<
+    TSchema,
+    TParseFnData,
+    TTransformFnData,
+    TUsesSuspense,
+    TError
+> => {
+    const { data: _data, ...query } = useExtendedQuery<
+        TUsesSuspense,
+        TQueryFnData,
+        TError,
+        TData,
+        TQueryKey
+    >(options, queryClient);
 
     const data = (() => {
         if (!options.usesSuspense && query.isLoading && _data == null) {
             return _data;
         }
 
+        let parsed;
+
         if (options.parseFn != null) {
-            return options.parseFn?.(_data, options.schema);
+            parsed = options.parseFn(_data, options.schema);
+        } else if (_data != null) {
+            parsed = options.schema.parse(_data) as any;
+        } else {
+            parsed = null as unknown as TParseFnData;
         }
 
-        if (_data != null) {
-            return options.schema.parse(_data);
-        }
-
-        return null;
+        return options.transform != null ? options.transform(parsed) : parsed;
     })();
 
-    return { data, ...query } as any;
+    return {
+        data,
+        ...query,
+    } as any;
 };

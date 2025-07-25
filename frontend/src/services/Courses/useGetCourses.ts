@@ -10,16 +10,25 @@ import courses_dummy_data from "@data/courses.dummy.json";
 
 export const GET_COURSES_KEY = "get-courses";
 
-export const useGetCourses = <TUsesSuspense extends boolean = false>(
+export const useGetCourses = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<CourseDTO>,
+>(
     searchQuery: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         CourseDTO,
-        Array<CourseDTO>
+        Array<CourseDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>(
+    useSchematicQuery<
+        TUsesSuspense,
+        CourseDTO,
+        Array<CourseDTO>,
+        TTransformFnData
+    >(
         {
             schema: CourseSchema,
             queryFn: () =>

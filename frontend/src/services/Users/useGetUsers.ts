@@ -10,12 +10,20 @@ import users_dummy_data from "@data/users.dummy.json";
 
 export const GET_USERS_KEY = "get-users";
 
-export const useGetUsers = <TUsesSuspense extends boolean = false>(
+export const useGetUsers = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<UserDTO>,
+>(
     searchQuery: string | undefined,
-    options?: InheritableQueryOptions<TUsesSuspense, UserDTO, Array<UserDTO>>,
+    options?: InheritableQueryOptions<
+        TUsesSuspense,
+        UserDTO,
+        Array<UserDTO>,
+        TTransformFnData
+    >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, UserDTO, Array<UserDTO>>(
+    useSchematicQuery<TUsesSuspense, UserDTO, Array<UserDTO>, TTransformFnData>(
         {
             schema: UserSchema,
             queryFn: () =>

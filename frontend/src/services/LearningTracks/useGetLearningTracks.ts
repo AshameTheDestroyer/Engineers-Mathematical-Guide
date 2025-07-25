@@ -13,16 +13,25 @@ import learningTracks_dummy_data from "@data/learning_tracks.dummy.json";
 
 export const GET_LEARNING_TRACKS_KEY = "get-learning-tracks";
 
-export const useGetLearningTracks = <TUsesSuspense extends boolean = false>(
+export const useGetLearningTracks = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<LearningTrackDTO>,
+>(
     searchQuery: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         LearningTrackDTO,
-        Array<LearningTrackDTO>
+        Array<LearningTrackDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, LearningTrackDTO, Array<LearningTrackDTO>>(
+    useSchematicQuery<
+        TUsesSuspense,
+        LearningTrackDTO,
+        Array<LearningTrackDTO>,
+        TTransformFnData
+    >(
         {
             schema: LearningTrackSchema,
             queryFn: () =>

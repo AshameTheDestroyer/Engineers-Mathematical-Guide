@@ -9,12 +9,20 @@ import users_dummy_data from "@data/users.dummy.json";
 
 export const GET_USERS_BY_IDS_KEY = "get-users-by-ids";
 
-export const useGetUsersByIDs = <TUsesSuspense extends boolean = false>(
+export const useGetUsersByIDs = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<UserDTO>,
+>(
     ids: Array<string>,
-    options?: InheritableQueryOptions<TUsesSuspense, UserDTO, Array<UserDTO>>,
+    options?: InheritableQueryOptions<
+        TUsesSuspense,
+        UserDTO,
+        Array<UserDTO>,
+        TTransformFnData
+    >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, UserDTO, Array<UserDTO>>(
+    useSchematicQuery<TUsesSuspense, UserDTO, Array<UserDTO>, TTransformFnData>(
         {
             schema: UserSchema,
             queryFn: () =>
