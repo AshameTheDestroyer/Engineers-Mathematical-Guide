@@ -62,7 +62,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
 
     return (
         <Flexbox
-            className="max-xl:md:mt-16"
+            className="max-xl:md:mt-20"
             gap="8"
             direction="column"
             style={{
@@ -78,7 +78,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
         >
             <Flexbox className="max-xl:gap-8 max-md:flex-col max-md:place-content-center">
                 <Flexbox
-                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-4 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
+                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-8 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
                     wrap="wrap"
                 >
                     {[
@@ -108,11 +108,15 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                         isDarkThemed
                                             ? "text-foreground-dark"
                                             : "text-background-dark-hover",
+                                        "max-sm:[&>svg]:h-6 max-sm:[&>svg]:w-6",
                                         information.className
                                     )}
                                     source={information.icon}
                                 />
-                                <Typography variant="p">
+                                <Typography
+                                    className="whitespace-nowrap"
+                                    variant="p"
+                                >
                                     {information.text}
                                 </Typography>
                             </Flexbox>
