@@ -94,12 +94,9 @@ export const ProfilePage: FC = () => {
                 <SearchResultDisplay
                     className="grow"
                     iconType="empty"
-                    title={GetLocale(
-                        locales.display["not-found"].title,
-                        language
-                    )}
+                    title={GetLocale(locales.display.empty.title, language)}
                     paragraph={GetLocale(
-                        locales.display["not-found"].paragraph,
+                        locales.display.empty.paragraph,
                         language
                     ).replace(/\*\*([^\*]+)\*\*/, `**"${profileID}"**`)}
                 />
