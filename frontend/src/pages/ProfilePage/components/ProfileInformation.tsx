@@ -60,6 +60,38 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
         " " +
         GetGenderedLocale(locales.information.xp, language, user.gender);
 
+    const informationData = [
+        ...(user.specialization == null
+            ? []
+            : [
+                  {
+                      className: "bg-primary-normal",
+                      icon: graduation_cap_icon,
+                      text: user.specialization.toTitleCase("ai"),
+                  },
+              ]),
+        {
+            className: twJoin(
+                isDarkThemed ? "bg-tertiary-light" : "bg-tertiary-normal",
+                direction == "ltr" ? "text-start" : "text-end",
+                "[&>.typography]:[direction:ltr]"
+            ),
+            icon: email_icon,
+            text: user.email,
+        },
+        {
+            icon: location_icon,
+            text: `${user.city} - ${user.country}`,
+        },
+        {
+            className:
+                direction == "rtl" &&
+                "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
+            icon: phone_icon,
+            text: user["phone-number"],
+        },
+    ];
+
     return (
         <Flexbox
             className="max-xl:md:mt-20"
@@ -148,31 +180,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             </Flexbox>
 
             <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
-                {[
-                    {
-                        className: "bg-primary-normal",
-                        icon: graduation_cap_icon,
-                        text: user.specialization?.toTitleCase("ai"),
-                    },
-                    {
-                        className: isDarkThemed
-                            ? "bg-tertiary-light"
-                            : "bg-tertiary-normal",
-                        icon: email_icon,
-                        text: user.email,
-                    },
-                    {
-                        icon: location_icon,
-                        text: `${user.city} - ${user.country}`,
-                    },
-                    {
-                        className:
-                            direction == "rtl" &&
-                            "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
-                        icon: phone_icon,
-                        text: user["phone-number"],
-                    },
-                ].map((information, i) => (
+                {informationData.map((informationDatum, i) => (
                     <Flexbox
                         key={i}
                         className={twMerge(
@@ -180,17 +188,17 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                                 ? "bg-foreground-light"
                                 : "bg-background-dark-active",
                             "rounded-full p-2 px-5 pr-7 font-bold text-white",
-                            information.className
+                            informationDatum.className
                         )}
                         gap="3"
                         alignItems="center"
                     >
-                        <Icon source={information.icon} />
+                        <Icon source={informationDatum.icon} />
                         <Typography
                             className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
                             variant="p"
                         >
-                            {information.text}
+                            {informationDatum.text}
                         </Typography>
                     </Flexbox>
                 ))}
