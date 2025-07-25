@@ -19,6 +19,7 @@ import { useGetSimilarCourses } from "@/services/Courses/useGetSimilarCourses";
 import { useGetPrerequisiteCourses } from "@/services/Courses/useGetPrerequisiteCourses";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisiteCourses";
+import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 import course_enrollment_icon from "@icons/course_enrollment.svg";
 
@@ -36,9 +37,17 @@ export const CoursePage: FC = () => {
 
     const { data: course } = useGetCourseByID(courseID, { usesSuspense: true });
 
-    const similarCoursesQuery = useGetSimilarCourses(course);
-    const prerequisiteCoursesQuery = useGetPrerequisiteCourses(course);
-    const postrequisiteCoursesQuery = useGetPostrequisiteCourses(course);
+    const similarCoursesQuery = useGetSimilarCourses(course, undefined, {
+        enabled: course != null,
+    });
+
+    const prerequisiteCoursesQuery = useGetPrerequisiteCourses(course, {
+        enabled: course != null,
+    });
+
+    const postrequisiteCoursesQuery = useGetPostrequisiteCourses(course, {
+        enabled: course != null,
+    });
 
     const skeletonArray = new Array(5).fill(null);
 
@@ -56,6 +65,20 @@ export const CoursePage: FC = () => {
             locales: locales.profile["related-courses"].postrequisites,
         },
     ];
+
+    if (course == null) {
+        return (
+            <SearchResultDisplay
+                className="grow"
+                iconType="empty"
+                title={GetLocale(locales.display["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.display["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${courseID}"**`)}
+            />
+        );
+    }
 
     const RenderedRelatedCourses = (
         coursesData: (typeof relatedCourses)[number]
@@ -217,7 +240,6 @@ export const CoursePage: FC = () => {
                 <Flexbox className="lg:col-span-2" direction="column" gap="4">
                     {relatedCourses.map((coursesData, i) => (
                         <Fragment key={i}>
-                            |
                             {i > 0 && (
                                 <Separator
                                     className="border-background-dark-hover"

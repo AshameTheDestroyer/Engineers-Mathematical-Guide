@@ -11,6 +11,7 @@ import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RelatedCoursesDisplay } from "../components/RelatedCoursesDisplay";
 import { useGetMathEquationByID } from "@/services/MathEquations/useGetMathEquationByID";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 import locales from "@localization/math_equations_page.json";
 
@@ -25,9 +26,25 @@ export const MathEquationPage: FC = () => {
     });
 
     const relatedCoursesQuery = useGetCoursesByIDs(
-        mathEquation["related-courses"]
+        mathEquation?.["related-courses"] ?? [],
+        { enabled: mathEquation != null }
     );
+
     const skeletonArray = new Array(3).fill(null);
+
+    if (mathEquation == null) {
+        return (
+            <SearchResultDisplay
+                className="grow"
+                iconType="empty"
+                title={GetLocale(locales.display["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.display["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${mathEquationID}"**`)}
+            />
+        );
+    }
 
     return (
         <Flexbox

@@ -12,6 +12,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
+import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearningTrackByID";
 import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSimilarLearningTracks";
 
@@ -29,10 +30,29 @@ export const LearningTrackPage: FC = () => {
         usesSuspense: true,
     });
 
-    const similarLearningTracksQuery =
-        useGetSimilarLearningTracks(learningTrack);
+    const similarLearningTracksQuery = useGetSimilarLearningTracks(
+        learningTrack,
+        undefined,
+        {
+            enabled: learningTrack != null,
+        }
+    );
 
     const skeletonArray = new Array(5).fill(null);
+
+    if (learningTrack == null) {
+        return (
+            <SearchResultDisplay
+                className="grow"
+                iconType="empty"
+                title={GetLocale(locales.display["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.display["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${learningTrackID}"**`)}
+            />
+        );
+    }
 
     return (
         <Flexbox variant="main" direction="column" gap="8">
