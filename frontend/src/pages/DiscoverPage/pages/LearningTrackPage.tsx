@@ -9,7 +9,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
 import { Typography } from "@/components/Typography/Typography";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
@@ -24,7 +24,7 @@ export const LearningTrackPage: FC = () => {
     const { direction, language, GetLocale } = useLocalization();
 
     const { learningTrackID } =
-        useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
+        useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { data: learningTrack } = useGetLearningTrackByID(learningTrackID, {
         usesSuspense: true,
@@ -117,7 +117,7 @@ export const LearningTrackPage: FC = () => {
                         <BorderedList
                             list={learningTrack.courses.map((courseID) => ({
                                 title: courseID.toTitleCase(),
-                                path: APPLICATION_ROUTES.base.routes.courseID.MapVariable(
+                                path: DISCOVER_ROUTES.base.routes.courseID.MapVariable(
                                     courseID
                                 ),
                             }))}
@@ -133,7 +133,7 @@ export const LearningTrackPage: FC = () => {
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
                                     to={
-                                        APPLICATION_ROUTES.base.routes[
+                                        DISCOVER_ROUTES.base.routes[
                                             "learning-tracks"
                                         ].absolute +
                                         "?" +

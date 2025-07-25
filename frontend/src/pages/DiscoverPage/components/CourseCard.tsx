@@ -7,7 +7,7 @@ import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/courses_page.json";
@@ -54,9 +54,7 @@ export const CourseCard: FC<CourseCardProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    APPLICATION_ROUTES.base.routes.courseID.MapVariable(
-                        course.id
-                    )
+                    DISCOVER_ROUTES.base.routes.courseID.MapVariable(course.id)
                 )
             }
         >

@@ -7,7 +7,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { MathEquationDTO } from "@/schemas/MathEquationSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -53,7 +53,7 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    APPLICATION_ROUTES.base.routes.mathEquationID.MapVariable(
+                    DISCOVER_ROUTES.base.routes.mathEquationID.MapVariable(
                         mathEquation.id
                     )
                 )

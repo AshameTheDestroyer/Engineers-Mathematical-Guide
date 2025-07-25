@@ -9,7 +9,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/learning_tracks_page.json";
@@ -136,7 +136,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                         variant="primary"
                         onClick={(_e) =>
                             Navigate(
-                                APPLICATION_ROUTES.base.routes.learningTrackID.MapVariable(
+                                DISCOVER_ROUTES.base.routes.learningTrackID.MapVariable(
                                     learningTrack.id
                                 )
                             )

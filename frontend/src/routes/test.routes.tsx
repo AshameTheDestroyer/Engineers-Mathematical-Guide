@@ -1,6 +1,5 @@
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { WEBSITE_ROUTES } from "./website.routes";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
@@ -20,7 +19,7 @@ const TEST_ROUTES_ = BuildRouter({
     base: {
         href: "test",
         routes: {
-            home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
+            home: { href: "/website" },
             colours: { href: "colours" },
             typography: { href: "typography" },
             components: { href: "components" },

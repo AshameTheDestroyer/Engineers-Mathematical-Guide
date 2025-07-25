@@ -14,7 +14,7 @@ import { useGetFollowees } from "@/services/Users/useGetFollowees";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import { RelatedCoursesDisplay } from "@/pages/ApplicationPage/components/RelatedCoursesDisplay";
+import { RelatedCoursesDisplay } from "@/pages/DiscoverPage/components/RelatedCoursesDisplay";
 
 import locales from "@localization/profile_page.json";
 

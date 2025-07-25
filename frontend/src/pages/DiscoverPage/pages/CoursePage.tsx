@@ -10,7 +10,7 @@ import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
 import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
@@ -32,8 +32,7 @@ export const POSTREQUISITE_COURSES_LIMIT = 5;
 export const CoursePage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
-    const { courseID } =
-        useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
+    const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { data: course } = useGetCourseByID(courseID, { usesSuspense: true });
 
@@ -201,7 +200,7 @@ export const CoursePage: FC = () => {
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
                                     to={
-                                        APPLICATION_ROUTES.base.routes.courses
+                                        DISCOVER_ROUTES.base.routes.courses
                                             .absolute +
                                         "?" +
                                         new URLSearchParams({ query: tag })

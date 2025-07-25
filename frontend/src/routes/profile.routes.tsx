@@ -13,7 +13,7 @@ export const PROFILE_ROUTES = BuildRouter({
             home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
             profile: { href: "" },
             profileID: { href: ":profileID", isVariable: true },
-            application: { href: "/" },
+            discover: { href: "/" },
         },
     },
 });

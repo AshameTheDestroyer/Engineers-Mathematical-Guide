@@ -2,28 +2,28 @@ import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 
-import route_locales from "@localization/application_page_routes.json";
+import route_locales from "@localization/discover_page_routes.json";
 
-export const ApplicationPage: FC = () => {
+export const DiscoverPage: FC = () => {
     useScrollRestoration();
     useDefaultRoute(
-        APPLICATION_ROUTES.base.href,
-        APPLICATION_ROUTES.base.routes.courses.href
+        DISCOVER_ROUTES.base.href,
+        DISCOVER_ROUTES.base.routes.courses.href
     );
 
     return (
         <Page>
             <ApplicationBar
                 routeLocales={route_locales}
-                baseRoute={APPLICATION_ROUTES.base.absolute}
+                baseRoute={DISCOVER_ROUTES.base.absolute}
                 routes={Object.omit(
-                    APPLICATION_ROUTES.base.routes,
+                    DISCOVER_ROUTES.base.routes,
                     "courseID",
                     "learningTrackID",
                     "mathEquationID"

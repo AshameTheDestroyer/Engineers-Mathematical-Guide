@@ -1,35 +1,34 @@
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { WEBSITE_ROUTES } from "./website.routes";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-const CoursePage = LazyImport("./pages/ApplicationPage/pages/CoursePage");
-const CoursesPage = LazyImport("./pages/ApplicationPage/pages/CoursesPage");
-const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
+const CoursePage = LazyImport("./pages/DiscoverPage/pages/CoursePage");
+const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
+const DiscoverPage = LazyImport("./pages/DiscoverPage/DiscoverPage");
 const LearningTrackPage = LazyImport(
-    "./pages/ApplicationPage/pages/LearningTrackPage"
+    "./pages/DiscoverPage/pages/LearningTrackPage"
 );
 const LearningTracksPage = LazyImport(
-    "./pages/ApplicationPage/pages/LearningTracksPage"
+    "./pages/DiscoverPage/pages/LearningTracksPage"
 );
 const MathEquationPage = LazyImport(
-    "./pages/ApplicationPage/pages/MathEquationPage"
+    "./pages/DiscoverPage/pages/MathEquationPage"
 );
 const MathEquationsPage = LazyImport(
-    "./pages/ApplicationPage/pages/MathEquationsPage"
+    "./pages/DiscoverPage/pages/MathEquationsPage"
 );
 
-import route_locales from "@localization/application_page_routes.json";
+import route_locales from "@localization/discover_page_routes.json";
 
-export const APPLICATION_ROUTES = BuildRouter({
+export const DISCOVER_ROUTES = BuildRouter({
     base: {
-        href: "/",
+        href: "/discover",
         routes: {
-            home: { href: WEBSITE_ROUTES.base.routes.home.absolute },
+            home: { href: "/website" },
             courses: { href: "courses" },
             "learning-tracks": { href: "learning-tracks" },
             "math-equations": { href: "math-equations" },
@@ -49,20 +48,20 @@ export const APPLICATION_ROUTES = BuildRouter({
     },
 });
 
-export const ApplicationRoute = () => {
+export const DiscoverRoute = () => {
     const { language, GetLocale } = useLocalization();
 
     return (
         <Route
-            path={APPLICATION_ROUTES.base.href}
+            path={DISCOVER_ROUTES.base.href}
             element={
                 <LazyPage>
-                    <ApplicationPage />
+                    <DiscoverPage />
                 </LazyPage>
             }
         >
             <Route
-                path={APPLICATION_ROUTES.base.routes.courses.href}
+                path={DISCOVER_ROUTES.base.routes.courses.href}
                 element={
                     <LazyComponent>
                         <CoursesPage />
@@ -73,7 +72,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes.courseID.href}
+                path={DISCOVER_ROUTES.base.routes.courseID.href}
                 element={
                     <LazyComponent>
                         <CoursePage />
@@ -81,7 +80,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes["learning-tracks"].href}
+                path={DISCOVER_ROUTES.base.routes["learning-tracks"].href}
                 element={
                     <LazyComponent>
                         <LearningTracksPage />
@@ -95,7 +94,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes.learningTrackID.href}
+                path={DISCOVER_ROUTES.base.routes.learningTrackID.href}
                 element={
                     <LazyComponent>
                         <LearningTrackPage />
@@ -103,7 +102,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes["math-equations"].href}
+                path={DISCOVER_ROUTES.base.routes["math-equations"].href}
                 element={
                     <LazyComponent>
                         <MathEquationsPage />
@@ -117,7 +116,7 @@ export const ApplicationRoute = () => {
                 }
             />
             <Route
-                path={APPLICATION_ROUTES.base.routes.mathEquationID.href}
+                path={DISCOVER_ROUTES.base.routes.mathEquationID.href}
                 element={
                     <LazyComponent>
                         <MathEquationPage />
