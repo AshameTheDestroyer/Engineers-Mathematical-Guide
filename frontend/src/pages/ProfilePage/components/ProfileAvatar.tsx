@@ -1,17 +1,21 @@
 import { FC } from "react";
+import { UserDTO } from "@/schemas/UserSchema";
 import { Image } from "@/components/Image/Image";
 import { useOutlines } from "@/hooks/useOutlines";
-import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { ComponentProps } from "@/types/ComponentProps";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
-import { FlippableContainer } from "@/components/FlippableContainer/FlippableContainer";
+import {
+    FlippableContainer,
+    FlippableContainerProps,
+} from "@/components/FlippableContainer/FlippableContainer";
 
 import default_avatar from "@images/default_avatar.png";
 import default_personal_image from "@images/default_personal_image.png";
 
 export type ProfileAvatarProps = {
-    user: DetailedUserDTO;
-} & ComponentProps<HTMLDivElement>;
+    user?: UserDTO;
+} & ComponentProps<HTMLDivElement> &
+    Omit<FlippableContainerProps, "frontChild" | "backChild">;
 
 export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     id,
@@ -19,6 +23,7 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
     user,
     children,
     className,
+    ...props
 }) => {
     const { isDarkThemed } = useThemeMode();
 
@@ -43,12 +48,12 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             frontChild={
                 <Image
                     className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
-                    source={user.avatar ?? default_avatar}
-                    alternative={`Avatar of ${user.name}'s Profile.`}
+                    source={user?.avatar ?? default_avatar}
+                    alternative={`Avatar of ${user?.name}'s Profile.`}
                     style={{
                         boxShadow: primaryOutlines,
                         filter:
-                            user.avatar == null
+                            user?.avatar == null
                                 ? `hue-rotate(${~~(Math.random() * 360)}deg)`
                                 : "",
                     }}
@@ -57,17 +62,18 @@ export const ProfileAvatar: FC<ProfileAvatarProps> = ({
             backChild={
                 <Image
                     className="overflow-visible! [&>img]:bg-background-normal [&>img]:rounded-full"
-                    source={user["personal-image"] ?? default_personal_image}
-                    alternative={`Personal Image of ${user.name}'s Profile.`}
+                    source={user?.["personal-image"] ?? default_personal_image}
+                    alternative={`Personal Image of ${user?.name}'s Profile.`}
                     style={{
                         boxShadow: tertiaryOutlines,
                         filter:
-                            user["personal-image"] == null
+                            user?.["personal-image"] == null
                                 ? `hue-rotate(${~~(Math.random() * 360)}deg)`
                                 : "",
                     }}
                 />
             }
+            {...props}
         >
             {children}
         </FlippableContainer>

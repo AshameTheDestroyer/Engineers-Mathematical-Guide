@@ -1,16 +1,14 @@
 import { useShadow } from "@/hooks/useShadow";
 import { UserDTO } from "@/schemas/UserSchema";
 import { useNavigate } from "react-router-dom";
+import { ProfileAvatar } from "./ProfileAvatar";
 import { twJoin, twMerge } from "tailwind-merge";
-import { Image } from "@/components/Image/Image";
 import { FC, useImperativeHandle, useRef } from "react";
 import { PROFILE_ROUTES } from "@/routes/profile.routes";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-
-import default_avatar from "@images/default_avatar.png";
 
 export type UserCardProps = ChildlessComponentProps<HTMLButtonElement> &
     Either<
@@ -74,22 +72,14 @@ export const UserCard: FC<UserCardProps> = ({
                 )
             }
         >
-            <div className="bg-background-normal absolute inset-x-0 bottom-[calc(50%-1.5rem)] rounded-full p-3">
-                <Image
-                    className={twJoin(
-                        isSkeleton && "saturate-0",
-                        "[&>img]:bg-background-dark-active rounded-full"
-                    )}
-                    source={user?.avatar ?? default_avatar}
-                    alternative={`Avatar of ${user?.name}'s Profile.`}
-                    style={{
-                        filter:
-                            !isSkeleton && user.avatar == null
-                                ? `hue-rotate(${~~(Math.random() * 360)}deg)`
-                                : "",
-                    }}
-                />
-            </div>
+            <ProfileAvatar
+                className={twJoin(
+                    isSkeleton && "[&>div]:rotate-y-0! [&>div]:saturate-0",
+                    "[&_img]:bg-background-dark-active! bg-background-normal absolute inset-x-0 bottom-[calc(50%-1.75rem)] aspect-square w-full rounded-full [&>div]:inset-6"
+                )}
+                flipType="hover"
+                user={user as UserDTO}
+            />
             {(isSkeleton || user["day-streak"] > 365) && (
                 <span
                     className={twJoin(
