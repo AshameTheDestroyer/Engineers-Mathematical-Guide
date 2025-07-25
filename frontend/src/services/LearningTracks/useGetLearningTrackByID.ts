@@ -12,19 +12,24 @@ import detailed_learningTracks_dummy_data from "@data/detailed_learning_tracks.d
 
 export const GET_LEARNING_TRACK_BY_ID_KEY = "get-learning-track-by-id";
 
-export const useGetLearningTrackByID = <TUsesSuspense extends boolean = false>(
+export const useGetLearningTrackByID = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = DetailedLearningTrackDTO | undefined,
+>(
     id: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         DetailedLearningTrackDTO,
-        DetailedLearningTrackDTO | undefined
+        DetailedLearningTrackDTO | undefined,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
     useSchematicQuery<
         TUsesSuspense,
         DetailedLearningTrackDTO,
-        DetailedLearningTrackDTO | undefined
+        DetailedLearningTrackDTO | undefined,
+        TTransformFnData
     >(
         {
             schema: DetailedLearningTrackSchema,

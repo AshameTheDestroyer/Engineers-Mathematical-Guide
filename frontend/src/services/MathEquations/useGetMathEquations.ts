@@ -14,16 +14,25 @@ import detailed_math_equations_dummy_data from "@data/detailed_math_equations.du
 
 export const GET_MATH_EQUATIONS_KEY = "get-math-equations";
 
-export const useGetMathEquations = <TUsesSuspense extends boolean = false>(
+export const useGetMathEquations = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<MathEquationDTO>,
+>(
     searchQuery: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         MathEquationDTO,
-        Array<MathEquationDTO>
+        Array<MathEquationDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, MathEquationDTO, Array<MathEquationDTO>>(
+    useSchematicQuery<
+        TUsesSuspense,
+        MathEquationDTO,
+        Array<MathEquationDTO>,
+        TTransformFnData
+    >(
         {
             schema: MathEquationSchema,
             queryFn: () =>

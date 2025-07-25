@@ -7,11 +7,15 @@ const MY_USERNAME = "ashamethedestroyer";
 
 export const GET_MY_USER_KEY = "get-my-user";
 
-export const useGetMyUser = <TUsesSuspense extends boolean = false>(
+export const useGetMyUser = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = DetailedUserDTO | undefined,
+>(
     options?: InheritableQueryOptions<
         TUsesSuspense,
         DetailedUserDTO,
-        DetailedUserDTO | undefined
+        DetailedUserDTO | undefined,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) => useGetUserByID(MY_USERNAME, options, queryClient);

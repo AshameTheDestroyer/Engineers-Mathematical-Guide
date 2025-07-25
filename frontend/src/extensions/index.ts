@@ -1,6 +1,7 @@
 import "./Zip.ts";
 import "./Pick.ts";
 import "./Omit.ts";
+import "./Hash.ts";
 import "./ToNth.ts";
 import "./MinBy.ts";
 import "./MaxBy.ts";

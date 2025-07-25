@@ -8,33 +8,34 @@ export const GET_SIMILAR_LEARNING_TRACKS_KEY = "get-similar-learning-tracks";
 
 export const useGetSimilarLearningTracks = <
     TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<LearningTrackDTO>,
 >(
-    learningTrack: LearningTrackDTO,
+    learningTrack: LearningTrackDTO | undefined,
     limit: number = SIMILAR_LEARNING_TRACKS_LIMIT,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         LearningTrackDTO,
-        Array<LearningTrackDTO>
+        Array<LearningTrackDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
-) => {
-    const { data: learningTracks, ...result } = useGetLearningTracks(
-        learningTrack.tags.join(" "),
+) =>
+    useGetLearningTracks(
+        learningTrack?.tags.join(" "),
         {
+            transform: (data) =>
+                data
+                    ?.filter(
+                        (learningTrack_) =>
+                            learningTrack_.id != learningTrack?.id
+                    )
+                    ?.slice(0, limit),
             ...(options ?? ({} as typeof options & {})),
             queryKey: [
                 GET_SIMILAR_LEARNING_TRACKS_KEY,
-                learningTrack.id,
+                learningTrack?.id,
                 ...(options?.queryKey ?? []),
             ],
         },
         queryClient
     );
-
-    return {
-        data: learningTracks
-            ?.filter((learningTrack_) => learningTrack_.id != learningTrack.id)
-            ?.slice(0, limit),
-        ...result,
-    };
-};

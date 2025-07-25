@@ -7,22 +7,24 @@ export const GET_POSTREQUISITE_COURSES_KEY = "get-postrequisite-courses";
 
 export const useGetPostrequisiteCourses = <
     TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<CourseDTO>,
 >(
-    course: DetailedCourseDTO,
+    course: DetailedCourseDTO | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         CourseDTO,
-        Array<CourseDTO>
+        Array<CourseDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
     useGetCoursesByIDs(
-        course.postrequisites,
+        course?.postrequisites ?? [],
         {
             ...(options ?? ({} as typeof options & {})),
             queryKey: [
                 GET_POSTREQUISITE_COURSES_KEY,
-                course.id,
+                course?.id,
                 ...(options?.queryKey ?? []),
             ],
         },

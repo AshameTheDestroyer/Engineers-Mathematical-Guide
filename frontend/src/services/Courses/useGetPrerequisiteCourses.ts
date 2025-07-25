@@ -7,22 +7,24 @@ export const GET_PREREQUISITE_COURSES_KEY = "get-prerequisite-courses";
 
 export const useGetPrerequisiteCourses = <
     TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<CourseDTO>,
 >(
-    course: DetailedCourseDTO,
+    course: DetailedCourseDTO | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         CourseDTO,
-        Array<CourseDTO>
+        Array<CourseDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
     useGetCoursesByIDs(
-        course.prerequisites,
+        course?.prerequisites ?? [],
         {
             ...(options ?? ({} as typeof options & {})),
             queryKey: [
                 GET_PREREQUISITE_COURSES_KEY,
-                course.id,
+                course?.id,
                 ...(options?.queryKey ?? []),
             ],
         },

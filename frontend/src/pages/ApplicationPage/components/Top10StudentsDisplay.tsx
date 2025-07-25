@@ -1,11 +1,10 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { RankingBadge } from "./RankingBadge";
-import { useMockQuery } from "@/hooks/useMockQuery";
+import { UserDTO } from "@/schemas/UserSchema";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedCourseDTO } from "@/schemas/CourseSchema";
 import { Typography } from "@/components/Typography/Typography";
-
-import users_dummy_data from "@data/users.dummy.json";
+import { useGetUsersByIDs } from "@/services/Users/useGetUsersByIDs";
 
 export type Top10StudentsDisplayProps = {
     title: string;
@@ -17,24 +16,19 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
     isSkeleton,
     "top-10-students": top10Students,
 }) => {
-    const { data } = useMockQuery({
-        requestTime: 500,
-        queryKey: ["students"],
-        usesSuspense: !isSkeleton,
-        dummyData: isSkeleton ? [] : users_dummy_data,
-    });
-
-    const students = useMemo(
-        () =>
-            top10Students.map((student) => ({
-                ...student,
-                ...(isSkeleton
-                    ? { name: "" }
-                    : data!.find(
-                          (datum) => datum.username == student.username
-                      )!),
-            })),
-        [data, top10Students, isSkeleton]
+    const { data: students } = useGetUsersByIDs(
+        top10Students.map((datum) => datum.username),
+        {
+            usesSuspense: !isSkeleton,
+            transform: (data) =>
+                data.map((datum) => ({
+                    ...datum,
+                    grade:
+                        top10Students.find(
+                            (student) => student.username == datum.username
+                        )?.grade ?? 0,
+                })),
+        }
     );
 
     return (
@@ -43,12 +37,12 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
                 {title}
             </Typography>
             <Flexbox variant="ol" direction="column" gap="4">
-                {students.map((student, i) => (
+                {(isSkeleton ? top10Students : students!).map((student, i) => (
                     <Flexbox variant="li" key={i}>
                         <RankingBadge
                             rank={i + 1}
-                            student={student}
                             isSkeleton={isSkeleton}
+                            student={student as UserDTO & { grade: number }}
                         />
                     </Flexbox>
                 ))}

@@ -2,11 +2,14 @@ import { FC, useRef } from "react";
 import { twJoin } from "tailwind-merge";
 import { Icon } from "@/components/Icon/Icon";
 import { useColour } from "@/hooks/useColour";
+import { UserDTO } from "@/schemas/UserSchema";
+import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { PROFILE_ROUTES } from "@/routes/profile.routes";
 import { Typography } from "@/components/Typography/Typography";
+import { ProfileAvatar } from "@/pages/ProfilePage/components/ProfileAvatar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import user_icon from "@icons/user.svg";
 import medal_third_place_icon from "@icons/medal_third_place.svg";
 import medal_first_place_icon from "@icons/medal_first_place.svg";
 import medal_second_place_icon from "@icons/medal_second_place.svg";
@@ -20,13 +23,7 @@ const MEDAL_ICONS = [
 export type RankingBadgeProps = {
     rank: number;
     isSkeleton?: boolean;
-    // TODO: Create Student Schema.
-    student: {
-        name: string;
-        grade: number;
-        username: string;
-        surname?: string;
-    };
+    student: UserDTO & { grade: number };
 };
 
 export const RankingBadge: FC<RankingBadgeProps> = ({
@@ -34,6 +31,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
     student,
     isSkeleton,
 }) => {
+    const Navigate = useNavigate();
     const { direction } = useLocalization();
     const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -73,6 +71,14 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                 !isSkeleton && classNames.bullet[rank - 1]
             )}
             tabIndex={isSkeleton ? -1 : 0}
+            onClick={(_e) =>
+                !isSkeleton &&
+                Navigate(
+                    PROFILE_ROUTES.base.routes.profileID.MapVariable(
+                        student.username
+                    )
+                )
+            }
         >
             <Flexbox
                 className={twJoin(
@@ -100,28 +106,14 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                     </Typography>
                 )}
             </Flexbox>
-            <div
+            <ProfileAvatar
                 className={twJoin(
-                    isSkeleton && "animate-pulse",
-                    "bg-background-light -m-0.5 aspect-square rounded-[inherit] p-2 transition duration-200"
+                    isSkeleton && "[&>div]:rotate-y-0! [&>div]:saturate-0",
+                    "scale-70 aspect-square h-full bg-inherit"
                 )}
-            >
-                {
-                    // TODO: Add avatars.
-                    // student.avatar != null ? (
-                    //     <Image
-                    //         className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                    //         source={course.image}
-                    //         alternative={`Image of ${course.title} Course.`}
-                    //     />
-                    // ) : (
-                    <Icon
-                        className="h-full w-full transition duration-200 [&>svg]:h-full [&>svg]:w-full"
-                        source={user_icon}
-                    />
-                    // )
-                }
-            </div>
+                user={student}
+                flipType="hover"
+            />
             <Flexbox
                 className={twJoin(isSkeleton && "opacity-0", "overflow-hidden")}
                 direction="column"

@@ -5,9 +5,17 @@ import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
 
 export const GET_FOLLOWERS_KEY = "get-followers";
 
-export const useGetFollowers = <TUsesSuspense extends boolean = false>(
+export const useGetFollowers = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<UserDTO>,
+>(
     user: DetailedUserDTO,
-    options?: InheritableQueryOptions<TUsesSuspense, UserDTO, Array<UserDTO>>,
+    options?: InheritableQueryOptions<
+        TUsesSuspense,
+        UserDTO,
+        Array<UserDTO>,
+        TTransformFnData
+    >,
     queryClient?: QueryClient
 ) =>
     useGetUsersByIDs(

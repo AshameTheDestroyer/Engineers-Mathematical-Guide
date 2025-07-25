@@ -12,19 +12,24 @@ import detailed_math_equations_dummy_data from "@data/detailed_math_equations.du
 
 export const GET_MATH_EQUATION_BY_ID_KEY = "get-math-equation-by-id";
 
-export const useGetMathEquationByID = <TUsesSuspense extends boolean = false>(
+export const useGetMathEquationByID = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = DetailedMathEquationDTO | undefined,
+>(
     id: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         DetailedMathEquationDTO,
-        DetailedMathEquationDTO | undefined
+        DetailedMathEquationDTO | undefined,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
     useSchematicQuery<
         TUsesSuspense,
         DetailedMathEquationDTO,
-        DetailedMathEquationDTO | undefined
+        DetailedMathEquationDTO | undefined,
+        TTransformFnData
     >(
         {
             schema: DetailedMathEquationSchema,

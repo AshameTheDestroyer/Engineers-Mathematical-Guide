@@ -32,12 +32,15 @@ export const NavigationBar: FC<NavigationBarProps> = ({
     const RenderedRouters = routes
         .map((route) => ({
             ...route,
-            selected: pathname.startsWith(
-                (base + (base.endsWith("/") ? "" : "/") + route.href).replace(
-                    /\/$/,
-                    ""
-                )
-            ),
+            selected:
+                route.href != "/" &&
+                pathname.startsWith(
+                    (
+                        base +
+                        (base.endsWith("/") ? "" : "/") +
+                        route.href
+                    ).replace(/\/$/, "")
+                ),
         }))
         .map(Renders ?? (() => undefined));
 

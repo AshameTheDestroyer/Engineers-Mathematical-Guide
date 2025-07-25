@@ -26,9 +26,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
             gap="4"
             direction="column"
             style={{
-                marginTop: isScreenSize["max-md"]
-                    ? `${profilePictureRect.height / 2}px`
-                    : "0",
+                marginTop: isScreenSize["max-sm"]
+                    ? `calc(${profilePictureRect.height / 2}px - 3rem)`
+                    : isScreenSize["max-md"]
+                      ? `${profilePictureRect.height / 2}px`
+                      : "0",
                 marginRight:
                     isScreenSize.md && direction == "rtl"
                         ? `calc(${profilePictureRect.width}px + 8rem)`

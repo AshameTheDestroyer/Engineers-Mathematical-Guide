@@ -9,16 +9,25 @@ import courses_dummy_data from "@data/courses.dummy.json";
 
 export const GET_COURSES_BY_IDS_KEY = "get-courses-by-ids";
 
-export const useGetCoursesByIDs = <TUsesSuspense extends boolean = false>(
+export const useGetCoursesByIDs = <
+    TUsesSuspense extends boolean = false,
+    TTransformFnData = Array<CourseDTO>,
+>(
     ids: Array<string>,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         CourseDTO,
-        Array<CourseDTO>
+        Array<CourseDTO>,
+        TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, CourseDTO, Array<CourseDTO>>(
+    useSchematicQuery<
+        TUsesSuspense,
+        CourseDTO,
+        Array<CourseDTO>,
+        TTransformFnData
+    >(
         {
             schema: CourseSchema,
             queryFn: () =>
