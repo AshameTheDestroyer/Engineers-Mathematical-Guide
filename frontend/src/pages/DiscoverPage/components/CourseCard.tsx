@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { useMain } from "@/contexts";
-import { twJoin, twMerge } from "tailwind-merge";
 import { CardSummary } from "./CardSummary";
 import { Icon } from "@/components/Icon/Icon";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
@@ -74,6 +74,12 @@ export const CourseCard: FC<CourseCardProps> = ({
                     {course.description}
                 </Typography>
             )}
+            {!isSkeleton && course.locked && (
+                <Icon
+                    className="-translate-1/2 absolute left-1/2 top-1/2 z-[1] aspect-square w-[10%] [&>svg]:h-full [&>svg]:w-full"
+                    source={locked_icon}
+                />
+            )}
             <figure className="absolute inset-0 z-[-1]">
                 {!isSkeleton && (
                     <CardSummary
@@ -102,12 +108,6 @@ export const CourseCard: FC<CourseCardProps> = ({
                                 : add_bookmark_icon,
                         }}
                         onClick={(e) => e.stopPropagation()}
-                    />
-                )}
-                {!isSkeleton && course.locked && (
-                    <Icon
-                        className="-translate-1/2 absolute left-1/2 top-1/2 z-[1] aspect-square w-[10%] [&>svg]:h-full [&>svg]:w-full"
-                        source={locked_icon}
                     />
                 )}
                 {!isSkeleton && course.image != null && (
