@@ -17,13 +17,13 @@ import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTrack
 import { useGetSpecializedUsers } from "@/services/LearningTracks/useGetSpecializedUsers";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearningTrackByID";
+import { RelatedUsersDisplay } from "@/pages/ApplicationPage/components/RelatedUsersDisplay";
 import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSimilarLearningTracks";
 
 import arrow_icon from "@icons/arrow.svg";
 import specialize_icon from "@icons/star.svg";
 
 import locales from "@localization/learning_tracks_page.json";
-import { RelatedUsersDisplay } from "@/pages/ApplicationPage/components/RelatedUsersDisplay";
 
 export const LearningTrackPage: FC = () => {
     const { direction, language, GetLocale } = useLocalization();

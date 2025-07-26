@@ -5,7 +5,7 @@ import {
     InheritableQueryOptions,
 } from "@/hooks/useSchematicQuery";
 
-import users_dummy_data from "@data/users.dummy.json";
+import detailed_users_dummy_data from "@data/detailed_users.dummy.json";
 
 export const GET_USERS_BY_IDS_KEY = "get-users-by-ids";
 
@@ -33,9 +33,9 @@ export const useGetUsersByIDs = <
             queryFn: () =>
                 ids
                     .map((id) =>
-                        (users_dummy_data as Array<DetailedUserDTO>).find(
-                            (user) => user.username == id
-                        )
+                        (
+                            detailed_users_dummy_data as Array<DetailedUserDTO>
+                        ).find((user) => user.username == id)
                     )
                     .filter((user) => user != null),
             parseFn: (data, schema) =>
