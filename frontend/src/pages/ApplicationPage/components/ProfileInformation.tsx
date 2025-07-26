@@ -201,11 +201,11 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                             isDarkThemed
                                 ? "bg-foreground-light"
                                 : "bg-background-dark-active",
-                            "cursor-pointer rounded-full p-2 px-5 pr-7 font-bold text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                            "cursor-pointer rounded-full p-2 px-5 pr-7 text-start font-bold text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
                             informationDatum.className
                         )}
                         gap="3"
-                        tabIndex={0}
+                        variant="button"
                         alignItems="center"
                         onClick={informationDatum.onClick}
                     >
