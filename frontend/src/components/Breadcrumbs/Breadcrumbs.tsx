@@ -89,7 +89,7 @@ export const Breadcrumbs: FC<BreadcrumbsProps> = ({
             <ol className="flex items-center gap-x-2 gap-y-1 overflow-x-auto py-2">
                 {shownPaths.map((path, i) => (
                     <Fragment key={i}>
-                        <li className="text-md flex items-center">
+                        <li className="flex items-center">
                             {path == null ? (
                                 <p>...</p>
                             ) : (
