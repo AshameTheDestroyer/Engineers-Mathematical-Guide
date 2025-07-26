@@ -1,5 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
-import { UserDTO, UserSchema } from "@/schemas/UserSchema";
+import { DetailedUserDTO, DetailedUserSchema } from "@/schemas/UserSchema";
 import {
     useSchematicQuery,
     InheritableQueryOptions,
@@ -11,24 +11,29 @@ export const GET_USERS_BY_IDS_KEY = "get-users-by-ids";
 
 export const useGetUsersByIDs = <
     TUsesSuspense extends boolean = false,
-    TTransformFnData = Array<UserDTO>,
+    TTransformFnData = Array<DetailedUserDTO>,
 >(
     ids: Array<string>,
     options?: InheritableQueryOptions<
         TUsesSuspense,
-        UserDTO,
-        Array<UserDTO>,
+        DetailedUserDTO,
+        Array<DetailedUserDTO>,
         TTransformFnData
     >,
     queryClient?: QueryClient
 ) =>
-    useSchematicQuery<TUsesSuspense, UserDTO, Array<UserDTO>, TTransformFnData>(
+    useSchematicQuery<
+        TUsesSuspense,
+        DetailedUserDTO,
+        Array<DetailedUserDTO>,
+        TTransformFnData
+    >(
         {
-            schema: UserSchema,
+            schema: DetailedUserSchema,
             queryFn: () =>
                 ids
                     .map((id) =>
-                        (users_dummy_data as Array<UserDTO>).find(
+                        (users_dummy_data as Array<DetailedUserDTO>).find(
                             (user) => user.username == id
                         )
                     )
