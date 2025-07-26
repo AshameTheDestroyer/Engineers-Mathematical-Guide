@@ -44,6 +44,7 @@ export const DISCOVER_ROUTES = BuildRouter({
                 isVariable: true,
                 href: "math-equations/:mathEquationID",
             },
+            application: { href: "/" },
         },
     },
 });

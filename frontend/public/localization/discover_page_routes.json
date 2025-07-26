@@ -8,5 +8,6 @@
     "math-equations": {
         "en": "Math Equations",
         "ar": "المُعادلاتُ الرِّياضيّة"
-    }
+    },
+    "application": { "en": "Application", "ar": "التَّطبيق" }
 }
