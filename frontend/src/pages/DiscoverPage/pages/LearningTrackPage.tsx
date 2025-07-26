@@ -14,6 +14,7 @@ import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
+import { useGetSpecializedUsers } from "@/services/LearningTracks/useGetSpecializedUsers";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearningTrackByID";
 import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSimilarLearningTracks";
@@ -22,6 +23,7 @@ import arrow_icon from "@icons/arrow.svg";
 import specialize_icon from "@icons/star.svg";
 
 import locales from "@localization/learning_tracks_page.json";
+import { RelatedUsersDisplay } from "@/pages/ApplicationPage/components/RelatedUsersDisplay";
 
 export const LearningTrackPage: FC = () => {
     const { direction, language, GetLocale } = useLocalization();
@@ -31,6 +33,10 @@ export const LearningTrackPage: FC = () => {
 
     const { data: learningTrack } = useGetLearningTrackByID(learningTrackID, {
         usesSuspense: true,
+    });
+
+    const specializedUsersQuery = useGetSpecializedUsers(learningTrack, {
+        enabled: learningTrack != null,
     });
 
     const { myUser } = useMain();
@@ -183,6 +189,48 @@ export const LearningTrackPage: FC = () => {
                             ))}
                         </Flexbox>
                     </Flexbox>
+                </Flexbox>
+
+                <Flexbox className="h-fit" gap="4" direction="column">
+                    <Locale className="text-lg font-bold" variant="h2">
+                        {locales.profile["specialized-users"].title}
+                    </Locale>
+                    <RelatedUsersDisplay
+                        {...specializedUsersQuery}
+                        skeletonArray={skeletonArray}
+                        errorDisplay={{
+                            title: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .title,
+                                language
+                            ),
+                            button: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .button,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .paragraph,
+                                language
+                            ),
+                        }}
+                        emptyDisplay={{
+                            title: GetLocale(
+                                locales.profile["specialized-users"].empty
+                                    .title,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["specialized-users"].empty
+                                    .paragraph,
+                                language
+                            ).replace(
+                                /\*\*([^\*]+)\*\*/,
+                                `**"${learningTrack.title}"**`
+                            ),
+                        }}
+                    />
                 </Flexbox>
 
                 <Flexbox className="lg:col-span-2" gap="4" direction="column">
