@@ -1,18 +1,23 @@
 import { FC } from "react";
+import { useMain } from "@/contexts";
 import { twMerge } from "tailwind-merge";
 import { CardSummary } from "./CardSummary";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
 import { CourseDTO } from "@/schemas/CourseSchema";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { IconButton } from "@/components/IconButton/IconButton";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import add_bookmark_icon from "@icons/bookmark_plus.svg";
+import remove_bookmark_icon from "@icons/bookmark_minus.svg";
 
 import locales from "@localization/courses_page.json";
 
-export type CourseCardProps = ChildlessComponentProps<HTMLButtonElement> &
+export type CourseCardProps = ChildlessComponentProps<HTMLDivElement> &
     Either<
         {
             isSkeleton?: false;
@@ -36,8 +41,12 @@ export const CourseCard: FC<CourseCardProps> = ({
 
     const { GetLocale, language } = useLocalization();
 
+    const { myUser } = useMain();
+    const haveIBookmarked =
+        !isSkeleton && myUser?.["bookmarked-courses"].includes(course.id);
+
     return (
-        <button
+        <div
             id={id}
             ref={ref}
             className={twMerge(
@@ -59,7 +68,7 @@ export const CourseCard: FC<CourseCardProps> = ({
             }
         >
             {!isSkeleton && (
-                <Typography variant="p" dir="ltr">
+                <Typography className="mr-8" variant="p" dir="ltr">
                     {course.description}
                 </Typography>
             )}
@@ -80,6 +89,19 @@ export const CourseCard: FC<CourseCardProps> = ({
                         )}
                     />
                 )}
+                {myUser != null && !isSkeleton && (
+                    <IconButton
+                        className="absolute right-3 top-3 z-[2]"
+                        isSquare
+                        variant={haveIBookmarked ? "error" : "success"}
+                        icon={{
+                            source: haveIBookmarked
+                                ? remove_bookmark_icon
+                                : add_bookmark_icon,
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                )}
                 {!isSkeleton && course.image != null && (
                     <Image
                         className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
@@ -89,6 +111,6 @@ export const CourseCard: FC<CourseCardProps> = ({
                 )}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
             </figure>
-        </button>
+        </div>
     );
 };
