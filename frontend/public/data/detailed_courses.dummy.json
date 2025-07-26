@@ -176,11 +176,11 @@
         "detailed-description": "This foundational course provides a comprehensive understanding of vector spaces, matrix operations, and linear transformations. Topics include solving systems of linear equations using Gaussian elimination, determinants, inner products, orthogonality, and spectral theory. Eigenvalues and eigenvectors are emphasized for their importance in applied fields like computer graphics and machine learning.",
         "top-10-students": [
             {
-                "username": "layanj_001",
-                "grade": 95
+                "username": "ashamethedestroyer",
+                "grade": 100
             },
             {
-                "username": "shadowhunter99",
+                "username": "dieblauekatze",
                 "grade": 92
             },
             {
@@ -226,7 +226,7 @@
             "systems of linear equations",
             "inner product spaces"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "differential-equations",

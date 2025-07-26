@@ -55,7 +55,7 @@
             "systems of linear equations",
             "inner product spaces"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "differential-equations",
