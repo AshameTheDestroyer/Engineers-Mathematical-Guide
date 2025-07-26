@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { useMain } from "@/contexts";
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { CardSummary } from "./CardSummary";
+import { Icon } from "@/components/Icon/Icon";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
@@ -12,6 +13,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locked_icon from "@icons/locked.svg";
 import add_bookmark_icon from "@icons/bookmark_plus.svg";
 import remove_bookmark_icon from "@icons/bookmark_minus.svg";
 
@@ -89,9 +91,9 @@ export const CourseCard: FC<CourseCardProps> = ({
                         )}
                     />
                 )}
-                {myUser != null && !isSkeleton && (
+                {!isSkeleton && myUser != null && (
                     <IconButton
-                        className="absolute right-3 top-3 z-[2]"
+                        className="absolute right-3 top-3 z-[1]"
                         isSquare
                         variant={haveIBookmarked ? "error" : "success"}
                         icon={{
@@ -102,9 +104,18 @@ export const CourseCard: FC<CourseCardProps> = ({
                         onClick={(e) => e.stopPropagation()}
                     />
                 )}
+                {!isSkeleton && course.locked && (
+                    <Icon
+                        className="-translate-1/2 absolute left-1/2 top-1/2 z-[1] aspect-square w-[10%] [&>svg]:h-full [&>svg]:w-full"
+                        source={locked_icon}
+                    />
+                )}
                 {!isSkeleton && course.image != null && (
                     <Image
-                        className="absolute inset-0 [&>img]:h-full [&>img]:object-cover"
+                        className={twJoin(
+                            course.locked && "blur-xs grayscale",
+                            "absolute inset-0 [&>img]:h-full [&>img]:object-cover"
+                        )}
                         source={course.image}
                         alternative={`Image of ${course.title} Course.`}
                     />

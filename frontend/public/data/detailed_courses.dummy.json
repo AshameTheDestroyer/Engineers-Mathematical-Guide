@@ -73,7 +73,8 @@
             "fundamental theorem of calculus",
             "applications of derivatives",
             "basic functions"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "calculus-ii",
@@ -147,7 +148,8 @@
             "polar coordinates",
             "improper integrals",
             "applications of integration"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "linear-algebra",
@@ -223,7 +225,8 @@
             "eigenvectors",
             "systems of linear equations",
             "inner product spaces"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "differential-equations",
@@ -295,7 +298,8 @@
             "laplace transforms",
             "systems of equations",
             "numerical solutions"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "probability-theory",
@@ -367,7 +371,8 @@
             "variance",
             "law of large numbers",
             "central limit theorem"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "abstract-algebra",
@@ -434,7 +439,8 @@
             "galois theory",
             "group actions",
             "modules"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "multivariable-calculus",
@@ -511,7 +517,8 @@
             "surface integrals",
             "greens theorem",
             "stokes theorem"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "real-analysis",
@@ -585,7 +592,8 @@
             "measure theory",
             "compactness",
             "convergence"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "complex-analysis",
@@ -656,7 +664,8 @@
             "laurent series",
             "conformal mappings",
             "harmonic functions"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "numerical-methods",
@@ -728,7 +737,8 @@
             "linear system solvers",
             "approximation theory",
             "monte carlo methods"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "discrete-mathematics",
@@ -801,7 +811,8 @@
             "modular arithmetic",
             "proof techniques",
             "recurrence relations"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "mathematical-statistics",
@@ -872,7 +883,8 @@
             "maximum likelihood",
             "bayesian inference",
             "statistical distributions"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "topology",
@@ -945,7 +957,8 @@
             "metric topology",
             "homotopy",
             "manifolds"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "partial-differential-equations",
@@ -1017,7 +1030,8 @@
             "method of characteristics",
             "separation of variables",
             "green functions"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "optimization-theory",
@@ -1089,7 +1103,8 @@
             "duality",
             "integer programming",
             "constrained optimization"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "fourier-analysis",
@@ -1160,7 +1175,8 @@
             "signal processing",
             "frequency domain",
             "convolution"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "graph-theory",
@@ -1233,7 +1249,8 @@
             "shortest paths",
             "eulerian paths",
             "hamiltonian cycles"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "game-theory",
@@ -1305,7 +1322,8 @@
             "evolutionary game theory",
             "mechanism design",
             "decision theory"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "category-theory",
@@ -1377,7 +1395,8 @@
             "monads",
             "limits colimits",
             "topos theory"
-        ]
+        ],
+        "locked": true
     },
     {
         "id": "set-theory",
@@ -1451,6 +1470,7 @@
             "choice axiom",
             "independence proofs",
             "infinity"
-        ]
+        ],
+        "locked": true
     }
 ]

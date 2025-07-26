@@ -25,6 +25,7 @@ import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisi
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 import arrow_icon from "@icons/arrow.svg";
+import locked_icon from "@icons/locked.svg";
 import add_bookmark_icon from "@icons/bookmark_plus.svg";
 import remove_bookmark_icon from "@icons/bookmark_minus.svg";
 import course_enrollment_icon from "@icons/course_enrollment.svg";
@@ -183,14 +184,18 @@ export const CoursePage: FC = () => {
                         {(haveIEnrolled || haveIFinished) && (
                             <Button
                                 thickness="thick"
-                                variant="primary"
+                                disabled={course.locked}
+                                variant={course.locked ? "default" : "primary"}
                                 icon={{
-                                    className:
-                                        direction == "ltr"
-                                            ? "rotate-90"
-                                            : "-rotate-90",
+                                    className: course.locked
+                                        ? ""
+                                        : direction == "ltr"
+                                          ? "rotate-90"
+                                          : "-rotate-90",
                                     placement: "right",
-                                    source: arrow_icon,
+                                    source: course.locked
+                                        ? locked_icon
+                                        : arrow_icon,
                                 }}
                             >
                                 <Locale>{locales.profile.buttons.open}</Locale>
