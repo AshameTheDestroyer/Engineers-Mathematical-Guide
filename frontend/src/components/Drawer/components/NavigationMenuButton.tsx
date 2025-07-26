@@ -11,7 +11,7 @@ import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
 import { Link, useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { PROFILE_ROUTES } from "@/routes/profile.routes";
+import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
@@ -121,7 +121,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                         <Button
                             className="aspect-square [&>div[data-content]]:overflow-hidden [&>div[data-thickness]]:h-full [&>div]:rounded-full"
                             variant="primary"
-                            link={PROFILE_ROUTES.base.absolute}
+                            link={APPLICATION_ROUTES.base.absolute}
                         >
                             <Image
                                 className="scale-150"

@@ -16,6 +16,7 @@ const WEBSITE_ROUTES_ = BuildRouter({
             references: { href: "references" },
             help: { href: "help" },
             discover: { href: "/discover" },
+            application: { href: "/" },
         },
     },
 });

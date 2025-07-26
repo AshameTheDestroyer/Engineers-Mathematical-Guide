@@ -5,9 +5,9 @@ import { useColour } from "@/hooks/useColour";
 import { UserDTO } from "@/schemas/UserSchema";
 import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { PROFILE_ROUTES } from "@/routes/profile.routes";
+import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { Typography } from "@/components/Typography/Typography";
-import { ProfileAvatar } from "@/pages/ProfilePage/components/ProfileAvatar";
+import { ProfileAvatar } from "@/pages/ApplicationPage/components/ProfileAvatar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import medal_third_place_icon from "@icons/medal_third_place.svg";
@@ -74,7 +74,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    PROFILE_ROUTES.base.routes.profileID.MapVariable(
+                    APPLICATION_ROUTES.base.routes.profileID.MapVariable(
                         student.username
                     )
                 )
