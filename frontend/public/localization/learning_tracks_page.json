@@ -78,6 +78,36 @@
             "en": "Tags",
             "ar": "الوُسوم"
         },
+        "specialized-users": {
+            "title": {
+                "en": "Specialized Users",
+                "ar": "المُستَخدِمونَ المُختَصّون"
+            },
+            "error": {
+                "title": {
+                    "en": "Error!",
+                    "ar": "حَدثَ خَطأ!"
+                },
+                "paragraph": {
+                    "en": "An error occurred while fetching specialized users, try refetching.",
+                    "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُستَخدِمينَ المُختَصّين، يُرجى المُحاولةُ مِنْ جَديد."
+                },
+                "button": {
+                    "en": "Refetch Specialized Users",
+                    "ar": "إعادةُ جَلبِ المُستَخدِمينَ المُختَصّين"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "There Are None",
+                    "ar": "لا يُوجَد"
+                },
+                "paragraph": {
+                    "en": "The learning track **track** has no specialized users yet.",
+                    "ar": "لا يُوجَدُ أي مُستَخدِمٍ قامَ بِالاختِصاصِ في المَسارَ الدِّراسيَّ **المسار** حَتَّى الآن."
+                }
+            }
+        },
         "similar-learning-tracks": {
             "title": {
                 "en": "Similar Learning Tracks",
@@ -112,6 +142,14 @@
             "specialize-now": {
                 "en": "Specialize Now",
                 "ar": "اختَصَّ الآن"
+            },
+            "open": {
+                "en": "Open Specialization",
+                "ar": "افتَحْ التَّخَصُّص"
+            },
+            "despecialize": {
+                "en": "Despecialize",
+                "ar": "غادِرْ التَّخَصُّص"
             }
         }
     }

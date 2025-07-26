@@ -1,0 +1,13 @@
+{
+    "home": { "en": "Home", "ar": "الصَّفحةُ الرَّئيسيّة" },
+    "courses": { "en": "Courses", "ar": "المُقرَّرات" },
+    "learning-tracks": {
+        "en": "Learning Tracks",
+        "ar": "المَساراتُ الدِّراسيّة"
+    },
+    "math-equations": {
+        "en": "Math Equations",
+        "ar": "المُعادلاتُ الرِّياضيّة"
+    },
+    "application": { "en": "Application", "ar": "التَّطبيق" }
+}

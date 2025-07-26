@@ -5,7 +5,7 @@ import { Icon } from "@/components/Icon/Icon";
 import { Locale } from "@/components/Locale/Locale";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathEquationLevel } from "@/schemas/MathEquationSchema";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { MathEquationsModeEnum } from "../pages/MathEquationsPage";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -47,7 +47,7 @@ export const LevelTag: FC<LevelTagProps> = ({ id, ref, level, className }) => {
                 className
             )}
             to={
-                APPLICATION_ROUTES.base.routes["math-equations"].absolute +
+                DISCOVER_ROUTES.base.routes["math-equations"].absolute +
                 "?" +
                 new URLSearchParams({
                     query: level,

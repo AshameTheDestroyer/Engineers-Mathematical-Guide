@@ -36,7 +36,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
             <Typography className="text-lg font-bold" variant="h2">
                 {title}
             </Typography>
-            <Flexbox variant="ol" direction="column" gap="4">
+            <ol className="space-y-4">
                 {(isSkeleton ? top10Students : students!).map((student, i) => (
                     <Flexbox variant="li" key={i}>
                         <RankingBadge
@@ -46,7 +46,7 @@ export const Top10StudentsDisplay: FC<Top10StudentsDisplayProps> = ({
                         />
                     </Flexbox>
                 ))}
-            </Flexbox>
+            </ol>
         </Flexbox>
     );
 };

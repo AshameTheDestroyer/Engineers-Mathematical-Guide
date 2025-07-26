@@ -55,7 +55,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 {!withoutLogo && <Logo className="h-10 min-w-max" />}
                 {!withoutBreadcrumbs && (
                     <Breadcrumbs
-                        className="overflow-hidden [&>*]:flex-wrap"
+                        className="text-md overflow-hidden max-sm:text-sm [&>*]:flex-wrap max-sm:[&_.icon>svg]:h-4 max-sm:[&_.icon>svg]:w-4"
                         Renders={(path) =>
                             path?.toTitleCase("i", "ii", "iii", "ai")
                         }

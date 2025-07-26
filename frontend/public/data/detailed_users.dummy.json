@@ -22,8 +22,14 @@
             "omarbakridev"
         ],
         "finished-courses": ["calculus-i", "abstract-algebra"],
-        "enrolled-courses": ["category-theory", "set-theory"],
-        "bookmarked-courses": ["linear-algebra", "real-analysis"],
+        "enrolled-courses": ["category-theory", "linear-algebra", "set-theory"],
+        "bookmarked-courses": [
+            "linear-algebra",
+            "calculus-ii",
+            "probability-theory",
+            "graph-theory",
+            "real-analysis"
+        ],
         "specialization": "ai-engineering",
         "flag": "sy"
     },

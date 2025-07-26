@@ -20,6 +20,7 @@ export const CourseSchema = z.object({
     tags: z.array(z.string({ required_error: "required" }), {
         required_error: "required",
     }),
+    locked: z.boolean({ required_error: "required" }),
 });
 
 export const DetailedCourseSchema = z.intersection(

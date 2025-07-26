@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { MathEquationDTO } from "@/schemas/MathEquationSchema";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { FC, useEffect, useImperativeHandle, useRef } from "react";
 import {
     MathExpression,
@@ -53,7 +53,7 @@ export const InteractiveMathExpression: FC<InteractiveMathExpressionProps> = ({
             role="button"
             onClick={(_e) =>
                 Navigate(
-                    APPLICATION_ROUTES.base.routes.mathEquationID.MapVariable(
+                    DISCOVER_ROUTES.base.routes.mathEquationID.MapVariable(
                         information.id
                     )
                 )

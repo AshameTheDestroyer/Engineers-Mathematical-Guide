@@ -5,9 +5,9 @@ import { useColour } from "@/hooks/useColour";
 import { UserDTO } from "@/schemas/UserSchema";
 import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { PROFILE_ROUTES } from "@/routes/profile.routes";
 import { Typography } from "@/components/Typography/Typography";
-import { ProfileAvatar } from "@/pages/ProfilePage/components/ProfileAvatar";
+import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { ProfileAvatar } from "@/pages/ApplicationPage/components/ProfileAvatar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import medal_third_place_icon from "@icons/medal_third_place.svg";
@@ -62,7 +62,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                     ? "ml-22 max-sm:ml-10"
                     : "mr-22 max-sm:mr-10",
                 isDarkColour ? "text-white" : "text-black",
-                "bg-background-normal relative flex grow place-content-evenly gap-4 rounded-full p-2 transition duration-200",
+                "bg-background-normal relative flex grow place-content-evenly gap-4 rounded-full p-2 transition duration-200 max-sm:gap-1",
                 "[&_.icon]:text-background-normal",
                 isSkeleton
                     ? "animate-pulse"
@@ -74,7 +74,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    PROFILE_ROUTES.base.routes.profileID.MapVariable(
+                    APPLICATION_ROUTES.base.routes.profileID.MapVariable(
                         student.username
                     )
                 )
@@ -119,7 +119,10 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                 direction="column"
             >
                 <Typography
-                    className="max-sm:text-md overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold"
+                    className={twJoin(
+                        direction == "ltr" ? "text-start" : "text-end",
+                        "max-sm:text-md overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold [direction:ltr]"
+                    )}
                     variant="strong"
                 >
                     {isSkeleton
@@ -127,7 +130,10 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                         : `${student.name} ${student.surname ?? ""}`}
                 </Typography>
                 <Typography
-                    className="overflow-hidden text-ellipsis whitespace-nowrap text-start"
+                    className={twJoin(
+                        direction == "ltr" ? "text-start" : "text-end",
+                        "overflow-hidden text-ellipsis whitespace-nowrap text-start [direction:ltr]"
+                    )}
                     variant="p"
                 >
                     @{student.username}

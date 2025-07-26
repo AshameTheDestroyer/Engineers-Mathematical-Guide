@@ -1,10 +1,13 @@
 import { FC, Fragment } from "react";
 import { Icon } from "@/components/Icon/Icon";
+import { useNavigate } from "react-router-dom";
 import { Gender } from "@/schemas/SignupSchema";
 import { twJoin, twMerge } from "tailwind-merge";
+import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DetailedUserDTO } from "@/schemas/UserSchema";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Separator } from "@/components/Separator/Separator";
 import { Typography } from "@/components/Typography/Typography";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
@@ -31,8 +34,10 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
     user,
     profilePictureRect,
 }) => {
+    const Navigate = useNavigate();
     const { isDarkThemed } = useThemeMode();
     const { isScreenSize } = useScreenSize();
+    const { CopyToClipboard } = useClipboard();
     const { direction, language, GetGenderedLocale } = useLocalization();
 
     const followersText =
@@ -59,6 +64,47 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
         ) +
         " " +
         GetGenderedLocale(locales.information.xp, language, user.gender);
+
+    const informationData = [
+        ...(user.specialization == null
+            ? []
+            : [
+                  {
+                      className: "bg-primary-normal",
+                      icon: graduation_cap_icon,
+                      text: user.specialization.toTitleCase("ai"),
+                      onClick: () =>
+                          Navigate(
+                              DISCOVER_ROUTES.base.routes.learningTrackID.MapVariable(
+                                  user.specialization!
+                              )
+                          ),
+                  },
+              ]),
+        {
+            className: twJoin(
+                isDarkThemed ? "bg-tertiary-light" : "bg-tertiary-normal",
+                direction == "ltr" ? "text-start" : "text-end",
+                "[&>.typography]:[direction:ltr]"
+            ),
+            icon: email_icon,
+            text: user.email,
+            onClick: () => CopyToClipboard(user.email),
+        },
+        {
+            icon: location_icon,
+            text: `${user.city} - ${user.country}`,
+            onClick: () => CopyToClipboard(`${user.city} - ${user.country}`),
+        },
+        {
+            className:
+                direction == "rtl" &&
+                "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
+            icon: phone_icon,
+            text: user["phone-number"],
+            onClick: () => CopyToClipboard(user["phone-number"]),
+        },
+    ];
 
     return (
         <Flexbox
@@ -148,49 +194,27 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
             </Flexbox>
 
             <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
-                {[
-                    {
-                        className: "bg-primary-normal",
-                        icon: graduation_cap_icon,
-                        text: user.specialization?.toTitleCase("ai"),
-                    },
-                    {
-                        className: isDarkThemed
-                            ? "bg-tertiary-light"
-                            : "bg-tertiary-normal",
-                        icon: email_icon,
-                        text: user.email,
-                    },
-                    {
-                        icon: location_icon,
-                        text: `${user.city} - ${user.country}`,
-                    },
-                    {
-                        className:
-                            direction == "rtl" &&
-                            "[&>.typography]:[direction:ltr] [&>.typography]:text-end",
-                        icon: phone_icon,
-                        text: user["phone-number"],
-                    },
-                ].map((information, i) => (
+                {informationData.map((informationDatum, i) => (
                     <Flexbox
                         key={i}
                         className={twMerge(
                             isDarkThemed
                                 ? "bg-foreground-light"
                                 : "bg-background-dark-active",
-                            "rounded-full p-2 px-5 pr-7 font-bold text-white",
-                            information.className
+                            "cursor-pointer rounded-full p-2 px-5 pr-7 text-start font-bold text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                            informationDatum.className
                         )}
                         gap="3"
+                        variant="button"
                         alignItems="center"
+                        onClick={informationDatum.onClick}
                     >
-                        <Icon source={information.icon} />
+                        <Icon source={informationDatum.icon} />
                         <Typography
                             className="grow overflow-hidden overflow-ellipsis whitespace-nowrap text-nowrap"
                             variant="p"
                         >
-                            {information.text}
+                            {informationDatum.text}
                         </Typography>
                     </Flexbox>
                 ))}

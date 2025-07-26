@@ -1,19 +1,19 @@
 import { QueryClient } from "@tanstack/react-query";
 import { useGetUsersByIDs } from "./useGetUsersByIDs";
-import { UserDTO, DetailedUserDTO } from "@/schemas/UserSchema";
+import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { InheritableQueryOptions } from "@/hooks/useSchematicQuery";
 
 export const GET_FOLLOWEES_KEY = "get-followees";
 
 export const useGetFollowees = <
     TUsesSuspense extends boolean = false,
-    TTransformFnData = Array<UserDTO>,
+    TTransformFnData = Array<DetailedUserDTO>,
 >(
     user: DetailedUserDTO,
     options?: InheritableQueryOptions<
         TUsesSuspense,
-        UserDTO,
-        Array<UserDTO>,
+        DetailedUserDTO,
+        Array<DetailedUserDTO>,
         TTransformFnData
     >,
     queryClient?: QueryClient

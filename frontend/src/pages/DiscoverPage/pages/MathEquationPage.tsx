@@ -5,7 +5,7 @@ import { LevelTag } from "../components/LevelTag";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RelatedCoursesDisplay } from "../components/RelatedCoursesDisplay";
@@ -17,7 +17,7 @@ import locales from "@localization/math_equations_page.json";
 
 export const MathEquationPage: FC = () => {
     const { mathEquationID } =
-        useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
+        useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { direction, language, GetLocale } = useLocalization();
 

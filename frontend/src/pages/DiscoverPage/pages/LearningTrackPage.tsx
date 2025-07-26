@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
@@ -8,14 +9,18 @@ import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
+import { useGetSpecializedUsers } from "@/services/LearningTracks/useGetSpecializedUsers";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 import { useGetLearningTrackByID } from "@/services/LearningTracks/useGetLearningTrackByID";
+import { RelatedUsersDisplay } from "@/pages/ApplicationPage/components/RelatedUsersDisplay";
 import { useGetSimilarLearningTracks } from "@/services/LearningTracks/useGetSimilarLearningTracks";
 
+import arrow_icon from "@icons/arrow.svg";
 import specialize_icon from "@icons/star.svg";
 
 import locales from "@localization/learning_tracks_page.json";
@@ -24,11 +29,20 @@ export const LearningTrackPage: FC = () => {
     const { direction, language, GetLocale } = useLocalization();
 
     const { learningTrackID } =
-        useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
+        useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { data: learningTrack } = useGetLearningTrackByID(learningTrackID, {
         usesSuspense: true,
     });
+
+    const specializedUsersQuery = useGetSpecializedUsers(learningTrack, {
+        enabled: learningTrack != null,
+    });
+
+    const { myUser } = useMain();
+
+    const haveISpecialized =
+        learningTrackID != null && myUser?.specialization == learningTrackID;
 
     const similarLearningTracksQuery = useGetSimilarLearningTracks(
         learningTrack,
@@ -70,20 +84,50 @@ export const LearningTrackPage: FC = () => {
                         language
                     )}
                 />
-                <Button
-                    className={twJoin(
-                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
-                        "absolute bottom-0 z-[1] translate-y-1/2 font-bold"
-                    )}
-                    thickness="thick"
-                    variant="warning"
-                    icon={{
-                        placement: "left",
-                        source: specialize_icon,
-                    }}
-                >
-                    <Locale>{locales.profile.buttons["specialize-now"]}</Locale>
-                </Button>
+                {myUser != null && (
+                    <ButtonBox
+                        className={twJoin(
+                            direction == "ltr" ? "right-[6vw]" : "left-[6vw]",
+                            !haveISpecialized && "font-bold",
+                            "absolute bottom-0 z-[1] translate-y-1/2 max-sm:inset-x-0 max-sm:scale-90 max-sm:place-content-end max-sm:gap-2"
+                        )}
+                    >
+                        <Button
+                            thickness="thick"
+                            variant={haveISpecialized ? "default" : "warning"}
+                            icon={
+                                haveISpecialized
+                                    ? undefined
+                                    : {
+                                          placement: "left",
+                                          source: specialize_icon,
+                                      }
+                            }
+                        >
+                            <Locale>
+                                {haveISpecialized
+                                    ? locales.profile.buttons.despecialize
+                                    : locales.profile.buttons["specialize-now"]}
+                            </Locale>
+                        </Button>
+                        {haveISpecialized && (
+                            <Button
+                                thickness="thick"
+                                variant="primary"
+                                icon={{
+                                    className:
+                                        direction == "ltr"
+                                            ? "rotate-90"
+                                            : "-rotate-90",
+                                    placement: "right",
+                                    source: arrow_icon,
+                                }}
+                            >
+                                <Locale>{locales.profile.buttons.open}</Locale>
+                            </Button>
+                        )}
+                    </ButtonBox>
+                )}
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     source={learningTrack.image}
@@ -117,7 +161,7 @@ export const LearningTrackPage: FC = () => {
                         <BorderedList
                             list={learningTrack.courses.map((courseID) => ({
                                 title: courseID.toTitleCase(),
-                                path: APPLICATION_ROUTES.base.routes.courseID.MapVariable(
+                                path: DISCOVER_ROUTES.base.routes.courseID.MapVariable(
                                     courseID
                                 ),
                             }))}
@@ -133,7 +177,7 @@ export const LearningTrackPage: FC = () => {
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
                                     to={
-                                        APPLICATION_ROUTES.base.routes[
+                                        DISCOVER_ROUTES.base.routes[
                                             "learning-tracks"
                                         ].absolute +
                                         "?" +
@@ -145,6 +189,48 @@ export const LearningTrackPage: FC = () => {
                             ))}
                         </Flexbox>
                     </Flexbox>
+                </Flexbox>
+
+                <Flexbox className="h-fit" gap="4" direction="column">
+                    <Locale className="text-lg font-bold" variant="h2">
+                        {locales.profile["specialized-users"].title}
+                    </Locale>
+                    <RelatedUsersDisplay
+                        {...specializedUsersQuery}
+                        skeletonArray={skeletonArray}
+                        errorDisplay={{
+                            title: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .title,
+                                language
+                            ),
+                            button: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .button,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["specialized-users"].error
+                                    .paragraph,
+                                language
+                            ),
+                        }}
+                        emptyDisplay={{
+                            title: GetLocale(
+                                locales.profile["specialized-users"].empty
+                                    .title,
+                                language
+                            ),
+                            paragraph: GetLocale(
+                                locales.profile["specialized-users"].empty
+                                    .paragraph,
+                                language
+                            ).replace(
+                                /\*\*([^\*]+)\*\*/,
+                                `**"${learningTrack.title}"**`
+                            ),
+                        }}
+                    />
                 </Flexbox>
 
                 <Flexbox className="lg:col-span-2" gap="4" direction="column">

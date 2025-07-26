@@ -1,11 +1,15 @@
 import { FC } from "react";
+import { Icon } from "../Icon/Icon";
 import { twMerge } from "tailwind-merge";
 import { Button } from "../Button/Button";
 import { Locale } from "../Locale/Locale";
 import { Modal, ModalProps } from "../Modal/Modal";
 import { useNetworkStatus } from "@/hooks/useNetworkStatus";
 
+import offline_icon from "@icons/offline.svg";
+
 import locales from "@localization/offline_modal.json";
+import { Flexbox } from "../Flexbox/Flexbox";
 
 export type OfflineModalProps = Omit<
     ModalProps,
@@ -29,9 +33,12 @@ export const OfflineModal: FC<OfflineModalProps> = ({
             setIsOpen={() => {}}
             {...props}
         >
-            <Locale className="text-lg font-bold" variant="h1">
-                {locales.title}
-            </Locale>
+            <Flexbox gap="4">
+                <Icon source={offline_icon} />
+                <Locale className="text-lg font-bold" variant="h1">
+                    {locales.title}
+                </Locale>
+            </Flexbox>
             <Locale variant="p">{locales.paragraph}</Locale>
             <Button className="w-full" onClick={Refresh}>
                 <Locale>{locales.buttons.refresh}</Locale>

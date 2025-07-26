@@ -15,6 +15,7 @@ const WEBSITE_ROUTES_ = BuildRouter({
             "contact-us": { href: "contact-us" },
             references: { href: "references" },
             help: { href: "help" },
+            discover: { href: "/discover" },
             application: { href: "/" },
         },
     },

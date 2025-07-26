@@ -5,7 +5,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { RichText } from "@/components/RichText/RichText";
 import { ButtonBox } from "@components/ButtonBox/ButtonBox";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -58,7 +58,7 @@ export const WebsiteMainContent: FC = () => {
                         <Locale>{locales.buttons.learn}</Locale>
                     </Button>
                     <Button
-                        link={APPLICATION_ROUTES.base.absolute}
+                        link={DISCOVER_ROUTES.base.absolute}
                         variant="primary"
                         icon={{
                             placement: "right",

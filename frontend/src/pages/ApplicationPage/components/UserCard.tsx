@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { twJoin, twMerge } from "tailwind-merge";
 import { FC, useImperativeHandle, useRef } from "react";
-import { PROFILE_ROUTES } from "@/routes/profile.routes";
+import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useElementInformation } from "@/hooks/useElementInformation";
@@ -66,7 +66,7 @@ export const UserCard: FC<UserCardProps> = ({
             onClick={(_e) =>
                 !isSkeleton &&
                 Navigate(
-                    PROFILE_ROUTES.base.routes.profileID.MapVariable(
+                    APPLICATION_ROUTES.base.routes.profileID.MapVariable(
                         user.username
                     )
                 )

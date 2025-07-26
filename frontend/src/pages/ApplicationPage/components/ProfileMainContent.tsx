@@ -14,7 +14,7 @@ import { useGetFollowees } from "@/services/Users/useGetFollowees";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
-import { RelatedCoursesDisplay } from "@/pages/ApplicationPage/components/RelatedCoursesDisplay";
+import { RelatedCoursesDisplay } from "@/pages/DiscoverPage/components/RelatedCoursesDisplay";
 
 import locales from "@localization/profile_page.json";
 
@@ -31,10 +31,17 @@ export const ProfileMainContent: FC<ProfileMainContentProps> = ({ user }) => {
     const followersQuery = useGetFollowers(user);
     const followeesQuery = useGetFollowees(user);
 
-    const finishedCoursesQuery = useGetCoursesByIDs(user["finished-courses"]);
-    const enrolledCoursesQuery = useGetCoursesByIDs(user["enrolled-courses"]);
+    const finishedCoursesQuery = useGetCoursesByIDs(user["finished-courses"], {
+        queryKey: ["get-finished-courses"],
+    });
+
+    const enrolledCoursesQuery = useGetCoursesByIDs(user["enrolled-courses"], {
+        queryKey: ["get-enrolled-courses"],
+    });
+
     const bookmarkedCoursesQuery = useGetCoursesByIDs(
-        user["bookmarked-courses"]
+        user["bookmarked-courses"],
+        { queryKey: ["get-bookmarked-courses"] }
     );
 
     const skeletonArray = new Array(5).fill(null);
