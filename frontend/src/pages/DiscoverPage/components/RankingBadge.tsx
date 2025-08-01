@@ -117,11 +117,12 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
             <Flexbox
                 className={twJoin(isSkeleton && "opacity-0", "overflow-hidden")}
                 direction="column"
+                placeContent="start"
             >
                 <Typography
                     className={twJoin(
                         direction == "ltr" ? "text-start" : "text-end",
-                        "max-sm:text-md overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold [direction:ltr]"
+                        "max-sm:text-md w-fit overflow-hidden text-ellipsis whitespace-nowrap text-start text-lg font-bold [direction:ltr]"
                     )}
                     variant="strong"
                 >
@@ -132,7 +133,7 @@ export const RankingBadge: FC<RankingBadgeProps> = ({
                 <Typography
                     className={twJoin(
                         direction == "ltr" ? "text-start" : "text-end",
-                        "overflow-hidden text-ellipsis whitespace-nowrap text-start [direction:ltr]"
+                        "w-fit overflow-hidden text-ellipsis whitespace-nowrap text-start [direction:ltr]"
                     )}
                     variant="p"
                 >
