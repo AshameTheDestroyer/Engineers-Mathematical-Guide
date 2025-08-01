@@ -69,7 +69,7 @@ export const Drawer: FC<DrawerProps> = ({
     useEffect(() => {
         const { width, height } = drawerInformation;
         const percentage = +closingPercentage.replace("%", "") / 100;
-        console.log({ percentage });
+
         if (width == 0 || height == 0) {
             return;
         }
