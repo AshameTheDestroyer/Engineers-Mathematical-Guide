@@ -6,9 +6,11 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-const CoursePage = LazyImport("./pages/DiscoverPage/pages/CoursePage");
-const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
 const DiscoverPage = LazyImport("./pages/DiscoverPage/DiscoverPage");
+const ModulePage = LazyImport("./pages/DiscoverPage/pages/ModulePage");
+const CoursePage = LazyImport("./pages/DiscoverPage/pages/CoursePage");
+const ModulesPage = LazyImport("./pages/DiscoverPage/pages/ModulesPage");
+const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
 const LearningTrackPage = LazyImport(
     "./pages/DiscoverPage/pages/LearningTrackPage"
 );
@@ -44,6 +46,16 @@ export const DISCOVER_ROUTES = BuildRouter({
                 isVariable: true,
                 href: "math-equations/:mathEquationID",
             },
+            modules: {
+                isVariable: true,
+                variables: ["courseID"] as const,
+                href: "courses/:courseID/modules",
+            },
+            moduleID: {
+                isVariable: true,
+                href: "courses/:courseID/modules/:moduleID",
+                variables: ["courseID", "moduleID"] as const,
+            },
             application: { href: "/" },
         },
     },
@@ -77,6 +89,22 @@ export const DiscoverRoute = () => {
                 element={
                     <LazyComponent>
                         <CoursePage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={DISCOVER_ROUTES.base.routes.modules.href}
+                element={
+                    <LazyComponent>
+                        <ModulesPage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={DISCOVER_ROUTES.base.routes.moduleID.href}
+                element={
+                    <LazyComponent>
+                        <ModulePage />
                     </LazyComponent>
                 }
             />

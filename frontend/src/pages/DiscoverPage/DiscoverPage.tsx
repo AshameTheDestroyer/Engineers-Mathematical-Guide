@@ -24,9 +24,11 @@ export const DiscoverPage: FC = () => {
                 baseRoute={DISCOVER_ROUTES.base.absolute}
                 routes={Object.omit(
                     DISCOVER_ROUTES.base.routes,
+                    "modules",
+                    "moduleID",
                     "courseID",
-                    "learningTrackID",
-                    "mathEquationID"
+                    "mathEquationID",
+                    "learningTrackID"
                 )}
             />
             <Outlet />

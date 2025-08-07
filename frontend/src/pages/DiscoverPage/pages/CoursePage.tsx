@@ -3,7 +3,6 @@ import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
-import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
@@ -12,6 +11,7 @@ import { BorderedList } from "../components/BorderedList";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Separator } from "@/components/Separator/Separator";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Typography } from "@/components/Typography/Typography";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
@@ -37,6 +37,7 @@ export const PREREQUISITE_COURSES_LIMIT = 5;
 export const POSTREQUISITE_COURSES_LIMIT = 5;
 
 export const CoursePage: FC = () => {
+    const Navigate = useNavigate();
     const { direction, GetLocale, language } = useLocalization();
 
     const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
@@ -186,6 +187,13 @@ export const CoursePage: FC = () => {
                                 thickness="thick"
                                 disabled={course.locked}
                                 variant={course.locked ? "default" : "primary"}
+                                onClick={(_e) =>
+                                    Navigate(
+                                        DISCOVER_ROUTES.base.routes.modules.MapVariables(
+                                            { courseID }
+                                        )
+                                    )
+                                }
                                 icon={{
                                     className: course.locked
                                         ? ""
