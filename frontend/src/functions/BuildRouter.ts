@@ -17,6 +17,15 @@ export function BuildRouter<T extends Record<string, Anchor>>(
                               `:${key}`,
                               value
                           ),
+                      MapVariables: (
+                          values: Record<string, string>,
+                          relative = false
+                      ) =>
+                          Object.entries(values).reduce(
+                              (accumulator, [key, value]) =>
+                                  accumulator.replace(`:${key}`, value),
+                              relative ? href : absolute
+                          ),
                   }
                 : {}),
         };
