@@ -20,7 +20,6 @@
         "react-error-boundary": "^5.0.0",
         "react-hook-form": "^7.55.0",
         "react-router-dom": "^7.2.0",
-        "react-syntax-highlighter": "^5.8.0",
         "react-toastify": "^11.0.5",
         "tailwind-merge": "^3.0.2",
         "tailwindcss": "^4.0.14",
@@ -38,6 +37,7 @@
         "globals": "^15.15.0",
         "prettier": "^3.5.3",
         "prettier-plugin-tailwindcss": "^0.6.11",
+        "react-syntax-highlighter": "^15.6.1",
         "typescript": "~5.7.2",
         "typescript-eslint": "^8.24.1",
         "vite": "^6.2.2"
