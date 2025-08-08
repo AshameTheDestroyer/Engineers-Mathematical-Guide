@@ -10,7 +10,11 @@ export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
     variant?: Variant;
     onComplete?: () => void;
     onProgress?: (value: number) => void;
-    checkpoints?: Array<number | { value: number; icon: IconProps }>;
+    checkpoints?: Array<
+        | number
+        | { value: number; label: string }
+        | { value: number; icon: IconProps }
+    >;
 };
 
 export const ProgressBar: FC<ProgressBarProps> = ({
@@ -119,6 +123,9 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                         {typeof checkpoint != "number" &&
                         "icon" in checkpoint ? (
                             <Icon width={24} height={24} {...checkpoint.icon} />
+                        ) : typeof checkpoint != "number" &&
+                          "label" in checkpoint ? (
+                            <p>{checkpoint.label}</p>
                         ) : (
                             checkpointValue
                         )}

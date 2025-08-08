@@ -40,13 +40,16 @@ export const ModuleCard: FC<ModuleCardProps> = ({
         ])
     );
 
+    const lessonCount = module["lesson-count"];
+    const finishedLessons =
+        modulesEnrollments[module.id]?.["finished-lessons"] ?? 0;
+
     const haveIEnrolled =
         enrollment != null && modulesEnrollments[module.id] != null;
 
     const haveIFinished =
         modulesEnrollments[module.id] != null &&
-        modulesEnrollments[module.id]["finished-lessons"] ==
-            module["lesson-count"] &&
+        finishedLessons == lessonCount &&
         modulesEnrollments[module.id].grade != null;
 
     return (
@@ -55,7 +58,7 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             ref={ref}
             className={twMerge(
                 "bg-background-normal relative flex flex-col gap-4 rounded-lg p-6",
-                orientation == "landscape" && "min-w-[20rem]",
+                orientation == "landscape" && "min-w-[20rem] max-w-[30rem]",
                 orientation == "landscape" &&
                     haveIFinished &&
                     (direction == "ltr" ? "mr-6" : "ml-6"),
@@ -97,17 +100,19 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             {haveIEnrolled && (
                 <Flexbox direction="column" gap="4">
                     <Typography className="text-lg font-bold" variant="h4">
-                        Progress (
-                        {modulesEnrollments[module.id]["finished-lessons"]}/
-                        {module["lesson-count"]})
+                        Progress ({finishedLessons}/{lessonCount})
                     </Typography>
                     <ProgressBar
-                        className="my-4 w-[calc(100%-3rem)] place-self-center"
+                        className={twJoin(
+                            "my-4 w-[calc(100%-3rem)] place-self-center [&_[data-checkpoint]:nth-of-type(2)]:scale-125",
+                            finishedLessons != lessonCount &&
+                                finishedLessons > 0
+                                ? "[&_[data-checkpoint]:nth-of-type(2)]:z-1"
+                                : "[&_[data-checkpoint]:last-of-type]:z-1"
+                        )}
                         minimum={0}
-                        maximum={module["lesson-count"]}
-                        value={
-                            modulesEnrollments[module.id]["finished-lessons"]
-                        }
+                        maximum={lessonCount}
+                        value={finishedLessons}
                         variant={
                             haveIFinished
                                 ? "success"
@@ -116,18 +121,18 @@ export const ModuleCard: FC<ModuleCardProps> = ({
                                   : "default"
                         }
                         checkpoints={[
-                            modulesEnrollments[module.id]["finished-lessons"],
+                            finishedLessons,
                             {
                                 value: 0,
                                 icon: { source: flag_icon },
                             },
                             !haveIFinished
-                                ? module["lesson-count"]
+                                ? lessonCount
                                 : {
                                       icon: {
                                           source: check_icon,
                                       },
-                                      value: module["lesson-count"],
+                                      value: lessonCount,
                                   },
                         ]}
                     />

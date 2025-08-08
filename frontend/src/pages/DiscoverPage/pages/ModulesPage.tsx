@@ -57,6 +57,17 @@ export const ModulesPage: FC = () => {
               ) / enrollment.progress.length
             : undefined;
 
+    const modulesCheckpoints = modules.reduce(
+        (accumulator, module, i) => {
+            accumulator.array.push({
+                value: (accumulator.counter += module["lesson-count"]),
+                label: `M${i + 1}`,
+            });
+            return accumulator;
+        },
+        { array: [] as Array<{ value: number; label: string }>, counter: 0 }
+    ).array;
+
     if (course == null) {
         return (
             <SearchResultDisplay
@@ -154,8 +165,9 @@ export const ModulesPage: FC = () => {
                     </Typography>
                     <ProgressBar
                         className={twJoin(
-                            "my-4 w-[calc(100%-2rem)] place-self-center",
-                            totalFinishedLessons != totalLessonCount
+                            "my-4 w-[calc(100%-2rem)] place-self-center [&_[data-checkpoint]:nth-of-type(2)]:scale-125",
+                            totalFinishedLessons != totalLessonCount &&
+                                totalFinishedLessons > 0
                                 ? "[&_[data-checkpoint]:nth-of-type(2)]:z-1"
                                 : "[&_[data-checkpoint]:last-of-type]:z-1"
                         )}
@@ -165,6 +177,7 @@ export const ModulesPage: FC = () => {
                         checkpoints={[
                             totalFinishedLessons,
                             { value: 0, icon: { source: flag_icon } },
+                            ...modulesCheckpoints,
                             totalFinishedLessons != totalLessonCount
                                 ? totalLessonCount
                                 : {
