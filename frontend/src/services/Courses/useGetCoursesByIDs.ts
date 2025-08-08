@@ -39,7 +39,11 @@ export const useGetCoursesByIDs = <
             parseFn: (data, schema) =>
                 data?.map((datum) => schema.parse(datum)) ?? [],
             ...options,
-            queryKey: [GET_COURSES_BY_IDS_KEY, ...(options?.queryKey ?? [])],
+            queryKey: [
+                GET_COURSES_BY_IDS_KEY,
+                ...ids,
+                ...(options?.queryKey ?? []),
+            ],
         },
         queryClient
     );
