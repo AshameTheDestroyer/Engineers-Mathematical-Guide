@@ -10,6 +10,7 @@ import {
 
 export type ScreenSizeStateProps = {
     screenSize: number;
+    orientation: "landscape" | "portrait";
     breakpoints: Record<Breakpoint, number>;
     isScreenSize: Record<Breakpoint | `max-${Breakpoint}`, boolean>;
 };
@@ -29,22 +30,31 @@ export const ScreenSizeProvider: FC<ScreenSizeProviderProps> = ({
             breakpoints,
             screenSize: window.innerWidth,
             isScreenSize: LogicizeScreenSize(window.innerWidth, breakpoints),
+            orientation:
+                window.innerWidth > window.innerHeight
+                    ? "landscape"
+                    : "portrait",
         };
     });
 
-    const throttledScreenSize = useThrottle(window.innerWidth, 100);
+    const throttledScreenWidth = useThrottle(window.innerWidth, 100);
+    const throttledScreenHeight = useThrottle(window.innerHeight, 100);
 
     useEffect(() => {
         function OnScreenResize() {
             const isScreenSize = LogicizeScreenSize(
-                throttledScreenSize,
+                throttledScreenWidth,
                 state.breakpoints
             );
 
             setState((prevState) => ({
                 ...prevState,
                 isScreenSize,
-                screenSize: throttledScreenSize,
+                screenSize: throttledScreenWidth,
+                orientation:
+                    throttledScreenWidth > throttledScreenHeight
+                        ? "landscape"
+                        : "portrait",
             }));
         }
 
@@ -55,7 +65,7 @@ export const ScreenSizeProvider: FC<ScreenSizeProviderProps> = ({
         return () => {
             window.removeEventListener("resize", OnScreenResize);
         };
-    }, [state.breakpoints, throttledScreenSize]);
+    }, [state.breakpoints, throttledScreenWidth, throttledScreenHeight]);
 
     function GetBreakpoints() {
         const root = document.querySelector(":root") as HTMLElement;
