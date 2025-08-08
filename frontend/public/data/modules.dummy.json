@@ -1,0 +1,26 @@
+[
+    {
+        "id": "la-vectors",
+        "title": "Vectors",
+        "lesson-count": 54,
+        "description": "Explore the foundation of linear algebra with vectors — mathematical objects that represent direction and magnitude. Learn how to add, scale, and combine vectors, and discover key concepts like span, linear independence, dot products, cross products, and geometric applications in 2D and 3D space. This module builds the intuition needed for all advanced topics in linear algebra."
+    },
+    {
+        "id": "la-matrices",
+        "title": "Matrices",
+        "lesson-count": 1,
+        "description": "Matrices are powerful tools for organizing and transforming data. In this module, you'll learn how matrices represent linear systems, perform row operations, and transform vectors. Topics include matrix multiplication, reduced row echelon form, and the role of matrices in solving real-world problems in computer graphics, engineering, and data science."
+    },
+    {
+        "id": "la-determinants",
+        "title": "Determinants",
+        "lesson-count": 1,
+        "description": "The determinant is a scalar value that reveals deep properties of a square matrix. In this module, you'll learn how to compute determinants, understand their geometric meaning (such as scaling factor of area or volume), and use them to determine if a matrix is invertible. Determinants are essential for solving eigenvalue problems and understanding linear transformations."
+    },
+    {
+        "id": "la-eigenvalues-and-eigenvectors",
+        "title": "Eigenvalues and Eigenvectors",
+        "lesson-count": 1,
+        "description": "Eigenvalues and eigenvectors reveal the 'special' directions in which a linear transformation acts simply by stretching or compressing. This module covers how to compute them, interpret their meaning, and apply them in fields like physics, machine learning (PCA), differential equations, and Google's PageRank algorithm. A cornerstone of advanced linear algebra."
+    }
+]
