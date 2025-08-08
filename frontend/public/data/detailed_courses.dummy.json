@@ -160,10 +160,10 @@
         "rating-count": 68321,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "la-vectors",
-            "la-matrices",
-            "la-determinants",
-            "la-eigenvalues-and-eigenvectors"
+            "la-systems-and-solutions",
+            "la-transformations-and-matrices",
+            "la-vector-spaces-and-bases",
+            "la-eigenvalues-and-orthogonality"
         ],
         "prerequisites": [],
         "postrequisites": [

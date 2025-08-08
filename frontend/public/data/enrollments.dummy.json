@@ -3,8 +3,15 @@
         "course": "linear-algebra",
         "username": "ashamethedestroyer",
         "progress": [
-            { "module": "la-vectors", "finished-lessons": 54, "grade": 89 },
-            { "module": "la-matrices", "finished-lessons": 0 }
+            {
+                "module": "la-systems-and-solutions",
+                "finished-lessons": 26,
+                "grade": 93
+            },
+            {
+                "module": "la-transformations-and-matrices",
+                "finished-lessons": 7
+            }
         ]
     }
 ]
