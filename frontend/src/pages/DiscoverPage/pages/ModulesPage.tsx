@@ -144,8 +144,12 @@ export const ModulesPage: FC = () => {
                             </span>
                         )}
 
-                    <Typography className="text-xl font-bold" variant="h1">
-                        Total Progress
+                    <Typography
+                        className="text-xl font-bold max-md:text-lg"
+                        variant="h1"
+                    >
+                        Total Progress ({totalFinishedLessons}/
+                        {totalLessonCount})
                     </Typography>
                     <ProgressBar
                         className={twJoin(

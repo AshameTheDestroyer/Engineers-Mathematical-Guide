@@ -12,6 +12,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import flag_icon from "@icons/flag.svg";
 import check_icon from "@icons/variant_success.svg";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type ModuleCardProps = {
     courseID: string;
@@ -87,34 +88,43 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             </Typography>
 
             {haveIEnrolled && (
-                <ProgressBar
-                    className="my-4 w-[calc(100%-3rem)] place-self-center"
-                    minimum={0}
-                    maximum={module["lesson-count"]}
-                    value={modulesEnrollments[module.id]["finished-lessons"]}
-                    variant={
-                        haveIFinished
-                            ? "success"
-                            : haveIEnrolled
-                              ? "secondary"
-                              : "default"
-                    }
-                    checkpoints={[
-                        modulesEnrollments[module.id]["finished-lessons"],
-                        {
-                            value: 0,
-                            icon: { source: flag_icon },
-                        },
-                        !haveIFinished
-                            ? module["lesson-count"]
-                            : {
-                                  icon: {
-                                      source: check_icon,
+                <Flexbox direction="column" gap="4">
+                    <Typography className="text-lg font-bold" variant="h4">
+                        Progress (
+                        {modulesEnrollments[module.id]["finished-lessons"]}/
+                        {module["lesson-count"]})
+                    </Typography>
+                    <ProgressBar
+                        className="my-4 w-[calc(100%-3rem)] place-self-center"
+                        minimum={0}
+                        maximum={module["lesson-count"]}
+                        value={
+                            modulesEnrollments[module.id]["finished-lessons"]
+                        }
+                        variant={
+                            haveIFinished
+                                ? "success"
+                                : haveIEnrolled
+                                  ? "secondary"
+                                  : "default"
+                        }
+                        checkpoints={[
+                            modulesEnrollments[module.id]["finished-lessons"],
+                            {
+                                value: 0,
+                                icon: { source: flag_icon },
+                            },
+                            !haveIFinished
+                                ? module["lesson-count"]
+                                : {
+                                      icon: {
+                                          source: check_icon,
+                                      },
+                                      value: module["lesson-count"],
                                   },
-                                  value: module["lesson-count"],
-                              },
-                    ]}
-                />
+                        ]}
+                    />
+                </Flexbox>
             )}
             <Button
                 className={twJoin(haveIEnrolled && "font-bold")}
