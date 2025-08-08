@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { Icon, IconProps } from "../Icon/Icon";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 export type ProgressBarProps = ChildlessComponentProps<HTMLDivElement> & {
     value: number;
@@ -29,6 +30,8 @@ export const ProgressBar: FC<ProgressBarProps> = ({
     maximum = 100,
     variant = "primary",
 }) => {
+    const { direction } = useLocalization();
+
     if (minimum >= maximum) {
         throw new Error("Minimum value must be less than maximum value.");
     }
@@ -117,8 +120,16 @@ export const ProgressBar: FC<ProgressBarProps> = ({
                         key={i}
                         data-checkpoint
                         data-reached={value >= checkpointValue}
-                        className="absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-x-[calc(50%-2px)] -translate-y-1/2 place-content-center place-items-center rounded-full border-2 font-bold"
-                        style={{ left: `${GetPercentage(checkpointValue)}%` }}
+                        className={twJoin(
+                            direction == "ltr"
+                                ? "-translate-x-[calc(50%-2px)]"
+                                : "translate-x-[calc(50%-2px)]",
+                            "absolute top-1/2 flex aspect-square w-[calc(3ch+var(--spacing)*4)] -translate-y-1/2 place-content-center place-items-center rounded-full border-2 font-bold"
+                        )}
+                        style={{
+                            [direction == "ltr" ? "left" : "right"]:
+                                `${GetPercentage(checkpointValue)}%`,
+                        }}
                     >
                         {typeof checkpoint != "number" &&
                         "icon" in checkpoint ? (
