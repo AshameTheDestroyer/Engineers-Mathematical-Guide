@@ -250,13 +250,16 @@ export const CoursePage: FC = () => {
                             {locales.profile.modules}
                         </Locale>
                         <BorderedList
-                            list={course.modules.map((modules) => ({
-                                title: modules,
-                                // TODO: Implement this.
-                                path: "",
-                                // path: APPLICATION_ROUTES.base.routes.courseID.MapVariable(
-                                //     modules
-                                // ),
+                            list={course.modules.map((module) => ({
+                                title: module
+                                    .replace(/^[^-]*-/, "")
+                                    .toTitleCase(),
+                                path: DISCOVER_ROUTES.base.routes.moduleID.MapVariables(
+                                    {
+                                        courseID: course.id,
+                                        moduleID: module.replace(/^[^-]*-/, ""),
+                                    }
+                                ),
                             }))}
                         />
                     </Flexbox>

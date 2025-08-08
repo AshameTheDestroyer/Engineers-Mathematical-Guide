@@ -8,10 +8,10 @@
         "rating-count": 76245,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Limits",
-            "Derivatives",
-            "Integrals",
-            "Applications of Integration"
+            "ci-limits",
+            "ci-derivatives",
+            "ci-integrals",
+            "ci-applications-of-integration"
         ],
         "prerequisites": [],
         "postrequisites": [
@@ -85,10 +85,10 @@
         "rating-count": 41239,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Advanced Integration",
-            "Sequences",
-            "Series",
-            "Parametric and Polar Equations"
+            "cii-advanced-integration",
+            "cii-sequences",
+            "cii-series",
+            "cii-parametric-and-polar-equations"
         ],
         "prerequisites": ["calculus-i"],
         "postrequisites": [
@@ -160,10 +160,10 @@
         "rating-count": 68321,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Vectors",
-            "Matrices",
-            "Determinants",
-            "Eigenvalues and Eigenvectors"
+            "la-vectors",
+            "la-matrices",
+            "la-determinants",
+            "la-eigenvalues-and-eigenvectors"
         ],
         "prerequisites": [],
         "postrequisites": [
@@ -237,10 +237,10 @@
         "rating-count": 38472,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "First Order ODEs",
-            "Second Order ODEs",
-            "Systems of ODEs",
-            "Laplace Transforms"
+            "de-first-order-odes",
+            "de-second-order-odes",
+            "de-systems-of-odes",
+            "de-laplace-transforms"
         ],
         "prerequisites": ["calculus-i"],
         "postrequisites": ["partial-differential-equations", "control-theory"],
@@ -310,10 +310,10 @@
         "rating-count": 52389,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Basic Probability",
-            "Random Variables",
-            "Discrete Distributions",
-            "Continuous Distributions"
+            "pt-basic-probability",
+            "pt-random-variables",
+            "pt-discrete-distributions",
+            "pt-continuous-distributions"
         ],
         "prerequisites": ["calculus-i"],
         "postrequisites": ["mathematical-statistics", "stochastic-processes"],
@@ -382,7 +382,7 @@
         "rating": 2.6,
         "rating-count": 26789,
         "image": "src/assets/images/calculator.jpg",
-        "modules": ["Groups", "Rings", "Fields", "Homomorphisms"],
+        "modules": ["aa-groups", "aa-rings", "aa-fields", "aa-homomorphisms"],
         "prerequisites": ["linear-algebra"],
         "postrequisites": ["category-theory"],
         "exam-xp": 140,
@@ -451,10 +451,10 @@
         "rating-count": 40123,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Partial Derivatives",
-            "Multiple Integrals",
-            "Vector Fields",
-            "Green's Theorem"
+            "mc-partial-derivatives",
+            "mc-multiple-integrals",
+            "mc-vector-fields",
+            "mc-green's-theorem"
         ],
         "prerequisites": ["calculus-i"],
         "postrequisites": [
@@ -529,11 +529,11 @@
         "rating-count": 19876,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Real Numbers",
-            "Sequences",
-            "Continuity",
-            "Differentiation",
-            "Integration"
+            "ra-real-numbers",
+            "ra-sequences",
+            "ra-continuity",
+            "ra-differentiation",
+            "ra-integration"
         ],
         "prerequisites": ["calculus-ii", "set-theory"],
         "postrequisites": ["complex-analysis", "functional-analysis"],
@@ -604,10 +604,10 @@
         "rating-count": 14321,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Complex Numbers",
-            "Analytic Functions",
-            "Contour Integration",
-            "Residue Theory"
+            "ca-complex-numbers",
+            "ca-analytic-functions",
+            "ca-contour-integration",
+            "ca-residue-theory"
         ],
         "prerequisites": ["real-analysis"],
         "postrequisites": [],
@@ -676,10 +676,10 @@
         "rating-count": 35678,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Root Finding",
-            "Interpolation",
-            "Numerical Integration",
-            "ODE Solvers"
+            "nm-root-finding",
+            "nm-interpolation",
+            "nm-numerical-integration",
+            "nm-ode-solvers"
         ],
         "prerequisites": ["linear-algebra", "calculus-i"],
         "postrequisites": [],
@@ -749,11 +749,11 @@
         "rating-count": 73210,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Logic",
-            "Set Theory",
-            "Combinatorics",
-            "Graph Theory",
-            "Algorithms"
+            "dm-logic",
+            "dm-set-theory",
+            "dm-combinatorics",
+            "dm-graph-theory",
+            "dm-algorithms"
         ],
         "prerequisites": [],
         "postrequisites": ["graph-theory", "set-theory", "game-theory"],
@@ -823,10 +823,10 @@
         "rating-count": 34567,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Estimation",
-            "Hypothesis Testing",
-            "Regression",
-            "Bayesian Inference"
+            "ms-estimation",
+            "ms-hypothesis-testing",
+            "ms-regression",
+            "ms-bayesian-inference"
         ],
         "prerequisites": ["probability-theory"],
         "postrequisites": [],
@@ -895,10 +895,10 @@
         "rating-count": 18976,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Topological Spaces",
-            "Continuity",
-            "Compactness",
-            "Connectedness"
+            "t-topological-spaces",
+            "t-continuity",
+            "t-compactness",
+            "t-connectedness"
         ],
         "prerequisites": ["real-analysis"],
         "postrequisites": ["functional-analysis", "algebraic-topology"],
@@ -969,10 +969,10 @@
         "rating-count": 28901,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Wave Equation",
-            "Heat Equation",
-            "Laplace Equation",
-            "Fourier Series"
+            "pde-wave-equation",
+            "pde-heat-equation",
+            "pde-laplace-equation",
+            "pde-fourier-series"
         ],
         "prerequisites": ["differential-equations", "multivariable-calculus"],
         "postrequisites": [],
@@ -1042,10 +1042,10 @@
         "rating-count": 33456,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Linear Programming",
-            "Convex Optimization",
-            "Gradient Descent",
-            "Constrained Optimization"
+            "ot-linear-programming",
+            "ot-convex-optimization",
+            "ot-gradient-descent",
+            "ot-constrained-optimization"
         ],
         "prerequisites": ["linear-algebra", "calculus-i"],
         "postrequisites": [],
@@ -1115,10 +1115,10 @@
         "rating-count": 22345,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Fourier Series",
-            "Fourier Transform",
-            "Applications",
-            "Fast Fourier Transform"
+            "fa-fourier-series",
+            "fa-fourier-transform",
+            "fa-applications",
+            "fa-fast-fourier-transform"
         ],
         "prerequisites": ["calculus-ii", "differential-equations"],
         "postrequisites": [],
@@ -1187,10 +1187,10 @@
         "rating-count": 48901,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Graph Basics",
-            "Trees",
-            "Network Flows",
-            "Coloring Problems"
+            "gt-graph-basics",
+            "gt-trees",
+            "gt-network-flows",
+            "gt-coloring-problems"
         ],
         "prerequisites": ["discrete-mathematics", "linear-algebra"],
         "postrequisites": [],
@@ -1261,10 +1261,10 @@
         "rating-count": 27890,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Zero-Sum Games",
-            "Nash Equilibrium",
-            "Repeated Games",
-            "Evolutionary Game Theory"
+            "gt-zero-sum-games",
+            "gt-nash-equilibrium",
+            "gt-repeated-games",
+            "gt-evolutionary-game-theory"
         ],
         "prerequisites": ["discrete-mathematics"],
         "postrequisites": [],
@@ -1334,10 +1334,10 @@
         "rating-count": 12345,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Categories",
-            "Functors",
-            "Natural Transformations",
-            "Universal Properties"
+            "ct-categories",
+            "ct-functors",
+            "ct-natural-transformations",
+            "ct-universal-properties"
         ],
         "prerequisites": ["abstract-algebra"],
         "postrequisites": [],
@@ -1407,11 +1407,11 @@
         "rating-count": 21234,
         "image": "src/assets/images/calculator.jpg",
         "modules": [
-            "Sets",
-            "Relations",
-            "Functions",
-            "Cardinality",
-            "ZFC Axioms"
+            "st-sets",
+            "st-relations",
+            "st-functions",
+            "st-cardinality",
+            "st-zfc-axioms"
         ],
         "prerequisites": ["discrete-mathematics"],
         "postrequisites": ["real-analysis", "category-theory"],
