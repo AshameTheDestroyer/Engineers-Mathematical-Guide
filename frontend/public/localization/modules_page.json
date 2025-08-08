@@ -1,0 +1,60 @@
+{
+    "title": {
+        "en": "Modules",
+        "ar": "الوِحداتُ الدِّراسيّة"
+    },
+    "total-progress": {
+        "en": "Total Progress",
+        "ar": "نِسبةُ الإِنجازِ الكُلِّيّة"
+    },
+    "display": {
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching modules, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ الوِحداتِ الدِّراسيّة، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Refetch Modules",
+                "ar": "إعادةُ جَلبِ الوِحداتِ الدِّراسيّة"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Modules Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ وِحدةٍ دِراسيّة"
+            },
+            "paragraph": {
+                "en": "The course **course** has no modules yet, try seeing another one.",
+                "ar": "لا يوجَدُ أيُّ وِحدةٍ دِراسيّةٍ لِلمُقَرَّر **المقرر** حَتَّى الآن، جَرِّبْ رؤيةَ مُقَرَّرٍ آخر."
+            },
+            "button": {
+                "en": "Clear Search",
+                "ar": "مَسحُ الاستِعلام"
+            }
+        }
+    },
+    "card": {
+        "progress": {
+            "en": "Progress",
+            "ar": "نِسبةُ الإِنجاز"
+        },
+        "buttons": {
+            "review": {
+                "en": "Review",
+                "ar": "مُراجَعة"
+            },
+            "continue": {
+                "en": "Continue",
+                "ar": "اكمِلْ الوِحدة"
+            },
+            "open": {
+                "en": "Open Module",
+                "ar": "افتَحْ الوِحدة "
+            }
+        }
+    }
+}

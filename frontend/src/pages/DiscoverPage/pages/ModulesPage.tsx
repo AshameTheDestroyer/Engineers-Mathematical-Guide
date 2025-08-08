@@ -3,6 +3,8 @@ import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
+import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { ModuleCard } from "../components/ModuleCard";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CourseBanner } from "../components/CourseBanner";
@@ -19,18 +21,31 @@ import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResu
 import flag_icon from "@icons/flag.svg";
 import check_icon from "@icons/variant_success.svg";
 
+import locales from "@localization/modules_page.json";
+
 export const ModulesPage: FC = () => {
     const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
-    const { direction } = useLocalization();
     const { orientation } = useScreenSize();
+    const { direction, language, GetLocale } = useLocalization();
 
     const { myUser } = useMain();
-    const { data: course } = useGetCourseByID(courseID, { usesSuspense: true });
-    const { data: modules } = useGetModulesByIDs(course?.modules ?? [], {
+
+    const {
+        data: course,
+        isError: isCourseError,
+        refetch: refetchCourse,
+    } = useGetCourseByID(courseID, { usesSuspense: true });
+
+    const {
+        data: modules,
+        isError: isModulesError,
+        refetch: refetchModules,
+    } = useGetModulesByIDs(course?.modules ?? [], {
         usesSuspense: true,
         enabled: courseID != null,
     });
+
     const { data: enrollment } = useGetEnrollmentByID(
         courseID,
         myUser?.username,
@@ -68,34 +83,40 @@ export const ModulesPage: FC = () => {
         { array: [] as Array<{ value: number; label: string }>, counter: 0 }
     ).array;
 
-    if (course == null) {
+    if (isCourseError || isModulesError) {
         return (
             <SearchResultDisplay
                 className="grow"
-                iconType="empty"
-                title="Course not Found"
-                paragraph={`Couldn't find the course **${courseID}**, sorry not sorry.`}
-                // title={GetLocale(locales.display["empty"].title, language)}
-                // paragraph={GetLocale(
-                //     locales.display["empty"].paragraph,
-                //     language
-                // ).replace(/\*\*([^\*]+)\*\*/, `**"${courseID}"**`)}
+                iconType="error"
+                title={GetLocale(locales.display.error.title, language)}
+                paragraph={GetLocale(locales.display.error.paragraph, language)}
+                buttons={
+                    <Button
+                        onClick={(_e) =>
+                            isCourseError
+                                ? refetchCourse()
+                                : isModulesError
+                                  ? refetchModules()
+                                  : {}
+                        }
+                    >
+                        <Locale>{locales.display.error.button}</Locale>
+                    </Button>
+                }
             />
         );
     }
 
-    if (modules.length == 0) {
+    if (course == null || modules.length == 0) {
         return (
             <SearchResultDisplay
                 className="grow"
                 iconType="empty"
-                title="Modules not Found"
-                paragraph={`Couldn't find the modules for the course **${courseID}**, sorry not sorry.`}
-                // title={GetLocale(locales.display["empty"].title, language)}
-                // paragraph={GetLocale(
-                //     locales.display["empty"].paragraph,
-                //     language
-                // ).replace(/\*\*([^\*]+)\*\*/, `**"${courseID}"**`)}
+                title={GetLocale(locales.display["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.display["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${courseID}"**`)}
             />
         );
     }
@@ -105,9 +126,9 @@ export const ModulesPage: FC = () => {
             <Title>{`Modules of ${course.title}`}</Title>
             <CourseBanner course={course} />
 
-            <Typography className="order-2 text-2xl font-bold" variant="h1">
-                Modules
-            </Typography>
+            <Locale className="order-2 text-2xl font-bold" variant="h1">
+                {locales.title}
+            </Locale>
             <Flexbox
                 className={twJoin(
                     "order-3",
@@ -160,12 +181,12 @@ export const ModulesPage: FC = () => {
                         className="text-xl font-bold max-md:text-lg"
                         variant="h1"
                     >
-                        Total Progress ({totalFinishedLessons}/
-                        {totalLessonCount})
+                        <Locale>{locales["total-progress"]}</Locale> (
+                        {totalFinishedLessons}/{totalLessonCount})
                     </Typography>
                     <ProgressBar
                         className={twJoin(
-                            "my-4 w-[calc(100%-2rem)] place-self-center [&_[data-checkpoint]:nth-of-type(2)]:scale-125",
+                            "my-4 w-[calc(100%-2rem)] place-self-center max-md:[&_[data-checkpoint]:not(:nth-of-type(2))]:scale-75 md:[&_[data-checkpoint]:nth-of-type(2)]:scale-125",
                             totalFinishedLessons != totalLessonCount &&
                                 totalFinishedLessons > 0
                                 ? "[&_[data-checkpoint]:nth-of-type(2)]:z-1"

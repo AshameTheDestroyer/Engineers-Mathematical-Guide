@@ -2,6 +2,7 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ModuleDTO } from "@/schemas/ModuleSchema";
+import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { EnrollmentDTO } from "@/schemas/EnrollmentSchema";
@@ -14,6 +15,8 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import flag_icon from "@icons/flag.svg";
 import check_icon from "@icons/variant_success.svg";
+
+import locales from "@localization/modules_page.json";
 
 export type ModuleCardProps = ChildlessComponentProps<HTMLDivElement> & {
     courseID: string;
@@ -85,8 +88,8 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             )}
             <Typography
                 className={twJoin(
-                    direction == "ltr" ? "mr-12" : "ml-12",
-                    "overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-lg font-bold"
+                    direction == "ltr" ? "mr-12" : "ml-12 text-end",
+                    "text-lg font-bold"
                 )}
                 dir="ltr"
                 variant="h3"
@@ -100,11 +103,12 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             {haveIEnrolled && (
                 <Flexbox direction="column" gap="4">
                     <Typography className="text-lg font-bold" variant="h4">
-                        Progress ({finishedLessons}/{lessonCount})
+                        <Locale>{locales.card.progress}</Locale> (
+                        {finishedLessons}/{lessonCount})
                     </Typography>
                     <ProgressBar
                         className={twJoin(
-                            "my-4 w-[calc(100%-3rem)] place-self-center [&_[data-checkpoint]:nth-of-type(2)]:scale-125",
+                            "my-4 w-[calc(100%-3rem)] place-self-center max-md:[&_[data-checkpoint]:not(:nth-of-type(2))]:scale-75 md:[&_[data-checkpoint]:nth-of-type(2)]:scale-125",
                             finishedLessons != lessonCount &&
                                 finishedLessons > 0
                                 ? "[&_[data-checkpoint]:nth-of-type(2)]:z-1"
@@ -156,11 +160,17 @@ export const ModuleCard: FC<ModuleCardProps> = ({
                     )
                 }
             >
-                {haveIFinished
-                    ? "Review"
-                    : haveIEnrolled
-                      ? "Continue"
-                      : "Open Module"}
+                <Locale>
+                    {
+                        locales.card.buttons[
+                            haveIFinished
+                                ? "review"
+                                : haveIEnrolled
+                                  ? "continue"
+                                  : "open"
+                        ]
+                    }
+                </Locale>
             </Button>
         </figure>
     );
