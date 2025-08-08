@@ -1,0 +1,10 @@
+[
+    {
+        "course": "linear-algebra",
+        "username": "ashamethedestroyer",
+        "progress": [
+            { "module": "la-vectors", "finished-lessons": 54, "grade": 89 },
+            { "module": "la-matrices", "finished-lessons": 0 }
+        ]
+    }
+]
