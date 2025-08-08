@@ -20,10 +20,10 @@ export const ProgressBar: FC<ProgressBarProps> = ({
     className,
     onProgress,
     onComplete,
+    checkpoints,
     minimum = 0,
     maximum = 100,
     variant = "primary",
-    checkpoints,
 }) => {
     if (minimum >= maximum) {
         throw new Error("Minimum value must be less than maximum value.");
