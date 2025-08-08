@@ -109,6 +109,7 @@ export const ModulesPage: FC = () => {
                     <ModuleCard
                         key={i}
                         module={module}
+                        className="flex-1"
                         courseID={course.id}
                         enrollment={enrollment}
                     />

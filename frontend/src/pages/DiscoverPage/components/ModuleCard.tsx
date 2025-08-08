@@ -1,28 +1,32 @@
 import { FC } from "react";
-import { twJoin } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { ModuleDTO } from "@/schemas/ModuleSchema";
 import { Button } from "@/components/Button/Button";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { EnrollmentDTO } from "@/schemas/EnrollmentSchema";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Typography } from "@/components/Typography/Typography";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import flag_icon from "@icons/flag.svg";
 import check_icon from "@icons/variant_success.svg";
-import { Flexbox } from "@/components/Flexbox/Flexbox";
 
-export type ModuleCardProps = {
+export type ModuleCardProps = ChildlessComponentProps<HTMLDivElement> & {
     courseID: string;
     module: ModuleDTO;
     enrollment: EnrollmentDTO | undefined;
 };
 
 export const ModuleCard: FC<ModuleCardProps> = ({
+    id,
+    ref,
     module,
     courseID,
+    className,
     enrollment,
 }) => {
     const Navigate = useNavigate();
@@ -47,12 +51,15 @@ export const ModuleCard: FC<ModuleCardProps> = ({
 
     return (
         <figure
-            className={twJoin(
+            id={id}
+            ref={ref}
+            className={twMerge(
                 "bg-background-normal relative flex flex-col gap-4 rounded-lg p-6",
                 orientation == "landscape" && "min-w-[20rem]",
                 orientation == "landscape" &&
                     haveIFinished &&
-                    (direction == "ltr" ? "mr-6" : "ml-6")
+                    (direction == "ltr" ? "mr-6" : "ml-6"),
+                className
             )}
         >
             {haveIFinished && (
