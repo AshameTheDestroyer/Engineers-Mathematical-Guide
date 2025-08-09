@@ -149,7 +149,12 @@ export const LearningTrackPage: FC = () => {
                         </Locale>
                         <BorderedList
                             list={learningTrack.courses.map((courseID) => ({
-                                title: courseID.toTitleCase(),
+                                title: courseID.toTitleCase(
+                                    "i",
+                                    "ii",
+                                    "iii",
+                                    "ai"
+                                ),
                                 path: DISCOVER_ROUTES.base.routes.courseID.MapVariable(
                                     courseID
                                 ),
