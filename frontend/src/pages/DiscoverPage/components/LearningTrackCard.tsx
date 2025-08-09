@@ -1,19 +1,19 @@
 import React from "react";
-import { twJoin, twMerge } from "tailwind-merge";
 import { CardSummary } from "./CardSummary";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
 import { Image } from "@/components/Image/Image";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Button } from "@/components/Button/Button";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
-import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/learning_tracks_page.json";
-import { Locale } from "@/components/Locale/Locale";
 
 export type LearningTrackCardProps =
     ChildlessComponentProps<HTMLButtonElement> &
@@ -52,7 +52,22 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
             gap="4"
             style={{ boxShadow: shadow }}
         >
-            <div className="max-lg:mb-4 max-lg:h-64 lg:aspect-square">
+            <div
+                className={twJoin(
+                    !isSkeleton &&
+                        "[:is(:hover,:focus-within)]:scale-105 cursor-pointer transition duration-200",
+                    "max-lg:mb-4 max-lg:h-64 lg:aspect-square"
+                )}
+                tabIndex={0}
+                onClick={(_e) =>
+                    !isSkeleton &&
+                    Navigate(
+                        DISCOVER_ROUTES.base.routes.learningTrackID.MapVariable(
+                            learningTrack.id
+                        )
+                    )
+                }
+            >
                 <Image
                     className="h-full rounded-lg [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     hideNotFoundIcon
@@ -65,46 +80,44 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                 />
             </div>
 
-            {
-                <Flexbox
-                    className="lg:grow"
-                    gap="4"
-                    direction="column"
-                    justifyContent="space-between"
+            <Flexbox
+                className="lg:grow"
+                gap="4"
+                direction="column"
+                justifyContent="space-between"
+            >
+                <Typography
+                    className={twMerge(
+                        isSkeleton && "animate-pulse",
+                        "bg-secondary-normal max-lg:top-63 flex place-items-center gap-2 place-self-start whitespace-nowrap rounded-full p-2 pr-4 font-bold text-white max-lg:absolute"
+                    )}
+                    variant="p"
                 >
-                    <Typography
-                        className={twMerge(
-                            isSkeleton && "animate-pulse",
-                            "bg-secondary-normal max-lg:top-63 flex place-items-center gap-2 place-self-start whitespace-nowrap rounded-full p-2 pr-4 font-bold text-white max-lg:absolute"
+                    <span
+                        className={twJoin(
+                            direction == "ltr" ? "-ml-4" : "-mr-4",
+                            "bg-secondary-light-active text-secondary-normal border-secondary-normal -my-4 flex aspect-square h-[calc(var(--spacing)*12)] place-content-center place-items-center rounded-full border-4"
                         )}
+                    >
+                        {learningTrack?.["courses-count"]}
+                    </span>{" "}
+                    <Locale>{locales.card.courses}</Locale>
+                </Typography>
+                {!isSkeleton && (
+                    <Typography className="lg:hidden" variant="p" dir="ltr">
+                        {learningTrack.description}
+                    </Typography>
+                )}
+                {!isSkeleton && (
+                    <Typography
+                        className="text-justify max-lg:hidden"
+                        dir="ltr"
                         variant="p"
                     >
-                        <span
-                            className={twJoin(
-                                direction == "ltr" ? "-ml-4" : "-mr-4",
-                                "bg-secondary-light-active text-secondary-normal border-secondary-normal -my-4 flex aspect-square h-[calc(var(--spacing)*12)] place-content-center place-items-center rounded-full border-4"
-                            )}
-                        >
-                            {learningTrack?.["courses-count"]}
-                        </span>{" "}
-                        <Locale>{locales.card.courses}</Locale>
+                        {learningTrack["detailed-description"]}
                     </Typography>
-                    {!isSkeleton && (
-                        <Typography className="lg:hidden" variant="p" dir="ltr">
-                            {learningTrack.description}
-                        </Typography>
-                    )}
-                    {!isSkeleton && (
-                        <Typography
-                            className="text-justify max-lg:hidden"
-                            dir="ltr"
-                            variant="p"
-                        >
-                            {learningTrack["detailed-description"]}
-                        </Typography>
-                    )}
-                </Flexbox>
-            }
+                )}
+            </Flexbox>
 
             {!isSkeleton && (
                 <Flexbox
