@@ -18,6 +18,7 @@ import add_bookmark_icon from "@icons/bookmark_plus.svg";
 import remove_bookmark_icon from "@icons/bookmark_minus.svg";
 
 import locales from "@localization/courses_page.json";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 
 export type CourseCardProps = ChildlessComponentProps<HTMLDivElement> &
     Either<
@@ -74,12 +75,6 @@ export const CourseCard: FC<CourseCardProps> = ({
                     {course.description}
                 </Typography>
             )}
-            {!isSkeleton && course.locked && (
-                <Icon
-                    className="-translate-1/2 absolute left-1/2 top-1/2 z-[1] aspect-square w-[10%] [&>svg]:h-full [&>svg]:w-full"
-                    source={locked_icon}
-                />
-            )}
             <figure className="absolute inset-0 z-[-1]">
                 {!isSkeleton && (
                     <CardSummary
@@ -98,23 +93,38 @@ export const CourseCard: FC<CourseCardProps> = ({
                     />
                 )}
                 {!isSkeleton && myUser != null && (
-                    <IconButton
+                    <Flexbox
                         className="absolute right-3 top-3 z-[1]"
-                        isSquare
-                        variant={haveIBookmarked ? "error" : "success"}
-                        icon={{
-                            source: haveIBookmarked
-                                ? remove_bookmark_icon
-                                : add_bookmark_icon,
-                        }}
-                        onClick={(e) => e.stopPropagation()}
-                    />
+                        gap="4"
+                        direction="column"
+                        placeItems="center"
+                        placeContent="center"
+                    >
+                        <IconButton
+                            isSquare
+                            className="[&_.icon]:drop-shadow-none"
+                            variant={haveIBookmarked ? "error" : "success"}
+                            icon={{
+                                source: haveIBookmarked
+                                    ? remove_bookmark_icon
+                                    : add_bookmark_icon,
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                        {course.locked && (
+                            <Icon
+                                className="text-vibrant-red-normal stroke-vibrant-red-dark aspect-square w-[24px] [&>svg]:h-full [&>svg]:w-full"
+                                thickness={32}
+                                source={locked_icon}
+                            />
+                        )}
+                    </Flexbox>
                 )}
                 {!isSkeleton && course.image != null && (
                     <Image
                         className={twJoin(
-                            course.locked && "blur-xs grayscale",
-                            "absolute inset-0 [&>img]:h-full [&>img]:object-cover"
+                            // course.locked && "blur-xs grayscale",
+                            "absolute inset-0 [&>img]:h-full [&>img]:object-cover [&>img]:blur-[1px]"
                         )}
                         source={course.image}
                         alternative={`Image of ${course.title} Course.`}
