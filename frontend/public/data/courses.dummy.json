@@ -6,7 +6,7 @@
         "enrollment-count": 89231,
         "rating": 4.3,
         "rating-count": 76245,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/calculus_i.jpg",
         "tags": [
             "limits",
             "derivatives",
@@ -25,7 +25,7 @@
         "enrollment-count": 67452,
         "rating": 4.2,
         "rating-count": 41239,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/calculus_ii.jpg",
         "tags": [
             "integration techniques",
             "sequences",
@@ -44,7 +44,7 @@
         "enrollment-count": 54301,
         "rating": 3.4,
         "rating-count": 68321,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/linear_algebra.jpg",
         "tags": [
             "matrices",
             "vector spaces",
@@ -64,7 +64,7 @@
         "enrollment-count": 49876,
         "rating": 3.2,
         "rating-count": 38472,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/differential_equations.jpg",
         "tags": [
             "ode",
             "pde",
@@ -84,7 +84,7 @@
         "enrollment-count": 61234,
         "rating": 2.1,
         "rating-count": 52389,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/probability_theory.jpg",
         "tags": [
             "random variables",
             "probability distributions",
@@ -104,7 +104,7 @@
         "enrollment-count": 34567,
         "rating": 2.6,
         "rating-count": 26789,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/abstract_algebra.jpg",
         "tags": [
             "groups",
             "rings",
@@ -124,7 +124,7 @@
         "enrollment-count": 45678,
         "rating": 1.9,
         "rating-count": 40123,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/multivariable_calculus.jpg",
         "tags": [
             "partial derivatives",
             "multiple integrals",
@@ -146,7 +146,7 @@
         "enrollment-count": 23456,
         "rating": 1.1,
         "rating-count": 19876,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/real_analysis.jpg",
         "tags": [
             "metric spaces",
             "sequences and series",
@@ -167,7 +167,7 @@
         "enrollment-count": 12098,
         "rating": 0.1,
         "rating-count": 14321,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/complex_analysis.jpg",
         "tags": [
             "complex functions",
             "analytic functions",
@@ -186,7 +186,7 @@
         "enrollment-count": 18976,
         "rating": 0.7,
         "rating-count": 35678,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/numerical_methods.jpg",
         "tags": [
             "root finding",
             "interpolation",
@@ -206,7 +206,7 @@
         "enrollment-count": 98765,
         "rating": 4.5,
         "rating-count": 73210,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/discrete_mathematics.jpg",
         "tags": [
             "logic",
             "set theory",
@@ -226,7 +226,7 @@
         "enrollment-count": 56789,
         "rating": 4.3,
         "rating-count": 34567,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/mathematical_statistics.jpg",
         "tags": [
             "estimation theory",
             "hypothesis testing",
@@ -245,7 +245,7 @@
         "enrollment-count": 23456,
         "rating": 4,
         "rating-count": 18976,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/topology.jpg",
         "tags": [
             "topological spaces",
             "open and closed sets",
@@ -266,7 +266,7 @@
         "enrollment-count": 45678,
         "rating": 4.1,
         "rating-count": 28901,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/partial_differential_equations.jpg",
         "tags": [
             "heat equation",
             "wave equation",
@@ -286,7 +286,7 @@
         "enrollment-count": 54321,
         "rating": 4.2,
         "rating-count": 33456,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/optimization_theory.jpg",
         "tags": [
             "linear programming",
             "nonlinear optimization",
@@ -306,7 +306,7 @@
         "enrollment-count": 34567,
         "rating": 4.1,
         "rating-count": 22345,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/fourier_analysis.jpg",
         "tags": [
             "fourier series",
             "fourier transform",
@@ -325,7 +325,7 @@
         "enrollment-count": 76543,
         "rating": 4.4,
         "rating-count": 48901,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/graph_theory.jpg",
         "tags": [
             "graphs",
             "trees",
@@ -346,7 +346,7 @@
         "enrollment-count": 65432,
         "rating": 4.3,
         "rating-count": 27890,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/game_theory.jpg",
         "tags": [
             "nash equilibrium",
             "zero sum games",
@@ -366,7 +366,7 @@
         "enrollment-count": 23456,
         "rating": 4,
         "rating-count": 12345,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/category_theory.jpg",
         "tags": [
             "categories",
             "functors",
@@ -386,7 +386,7 @@
         "enrollment-count": 34567,
         "rating": 4.1,
         "rating-count": 21234,
-        "image": "src/assets/images/calculator.jpg",
+        "image": "src/assets/images/set_theory.jpg",
         "tags": [
             "naive set theory",
             "axiomatic set theory",
