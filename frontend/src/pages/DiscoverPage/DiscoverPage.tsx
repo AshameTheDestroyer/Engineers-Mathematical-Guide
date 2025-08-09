@@ -28,7 +28,8 @@ export const DiscoverPage: FC = () => {
                     "moduleID",
                     "courseID",
                     "mathEquationID",
-                    "learningTrackID"
+                    "learningTrackID",
+                    "learningTrackIDCourses"
                 )}
             />
             <Outlet />

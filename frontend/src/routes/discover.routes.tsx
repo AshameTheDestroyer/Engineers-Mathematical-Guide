@@ -14,6 +14,9 @@ const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
 const LearningTrackPage = LazyImport(
     "./pages/DiscoverPage/pages/LearningTrackPage"
 );
+const LearningTrackCoursesPage = LazyImport(
+    "./pages/DiscoverPage/pages/LearningTrackCoursesPage"
+);
 const LearningTracksPage = LazyImport(
     "./pages/DiscoverPage/pages/LearningTracksPage"
 );
@@ -55,6 +58,11 @@ export const DISCOVER_ROUTES = BuildRouter({
                 isVariable: true,
                 href: "courses/:courseID/modules/:moduleID",
                 variables: ["courseID", "moduleID"] as const,
+            },
+            learningTrackIDCourses: {
+                isVariable: true,
+                variables: ["learningTrackID"] as const,
+                href: "learning-tracks/:learningTrackID/courses",
             },
             application: { href: "/" },
         },
@@ -127,6 +135,14 @@ export const DiscoverRoute = () => {
                 element={
                     <LazyComponent>
                         <LearningTrackPage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={DISCOVER_ROUTES.base.routes.learningTrackIDCourses.href}
+                element={
+                    <LazyComponent>
+                        <LearningTrackCoursesPage />
                     </LazyComponent>
                 }
             />

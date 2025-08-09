@@ -70,13 +70,59 @@
             "en": "Description",
             "ar": "الوَصف"
         },
-        "courses": {
-            "en": "Courses",
-            "ar": "المُقرَّرات"
-        },
         "tags": {
             "en": "Tags",
             "ar": "الوُسوم"
+        },
+        "courses": {
+            "title": {
+                "en": "Courses",
+                "ar": "المُقرَّرات"
+            },
+            "progress": {
+                "en": "Progress",
+                "ar": "نِسبةُ الإِنجاز"
+            },
+            "unenrollment": {
+                "title": {
+                    "en": "Unenrolled",
+                    "ar": {
+                        "male": "غَيرُ مُسَجِّل",
+                        "female": "غَيرُ مُسَجِّلة"
+                    }
+                },
+                "paragraph": {
+                    "en": "You haven't enrolled in this course yet.",
+                    "ar": {
+                        "male": "لَمْ تَقُمْ بِالتَّسجيلِ في هَذا المُقَرَّرِ بَعد.",
+                        "female": "لَمْ تَقومي بِالتَّسجيلِ في هَذا المُقَرَّرِ بَعد."
+                    }
+                }
+            },
+            "error": {
+                "title": {
+                    "en": "Error!",
+                    "ar": "حَدثَ خَطأ!"
+                },
+                "paragraph": {
+                    "en": "An error occurred while fetching courses, try refetching.",
+                    "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُقرَّرات، يُرجى المُحاولةُ مِنْ جَديد."
+                },
+                "button": {
+                    "en": "Refetch Courses",
+                    "ar": "إعادةُ جَلبِ المُقرَّرات"
+                }
+            },
+            "empty": {
+                "title": {
+                    "en": "No Courses Found",
+                    "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُقرَّر"
+                },
+                "paragraph": {
+                    "en": "The learning track **track** has no courses yet, try seeing another one.",
+                    "ar": "لا يوجَدُ أيُّ مُقَرَّرٍ لِلمَسارِ الدِّراسيِّ **االمسار** حَتَّى الآن، جَرِّبْ رؤيةَ مَسارٍ دِراسيٍّ آخر."
+                }
+            }
         },
         "specialized-users": {
             "title": {
