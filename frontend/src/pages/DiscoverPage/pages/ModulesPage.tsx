@@ -58,6 +58,7 @@ export const ModulesPage: FC = () => {
                 accumulator + progress["finished-lessons"],
             0
         ) ?? 0;
+
     const totalLessonCount = modules.reduce(
         (accumulator, module) => accumulator + module["lesson-count"],
         0

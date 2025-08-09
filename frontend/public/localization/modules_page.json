@@ -30,10 +30,6 @@
             "paragraph": {
                 "en": "The course **course** has no modules yet, try seeing another one.",
                 "ar": "لا يوجَدُ أيُّ وِحدةٍ دِراسيّةٍ لِلمُقَرَّر **المقرر** حَتَّى الآن، جَرِّبْ رؤيةَ مُقَرَّرٍ آخر."
-            },
-            "button": {
-                "en": "Clear Search",
-                "ar": "مَسحُ الاستِعلام"
             }
         }
     },
