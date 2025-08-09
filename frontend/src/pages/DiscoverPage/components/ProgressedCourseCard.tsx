@@ -99,7 +99,7 @@ export const ProgressedCourseCard: FC<ProgressedCourseCardProps> = ({
             ref={ref}
             className={twMerge(
                 isDarkThemed ? "bg-background-normal" : "bg-foreground-dark",
-                "relative cursor-pointer overflow-hidden rounded-lg p-6 text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                "relative cursor-pointer rounded-lg p-6 text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
                 className
             )}
             gap="8"
@@ -111,15 +111,28 @@ export const ProgressedCourseCard: FC<ProgressedCourseCardProps> = ({
                 )
             }
         >
+            {grade != null && (
+                <span className="z-1 bg-vibrant-green-normal border-vibrant-green-dark absolute left-2.5 top-2.5 flex aspect-square min-w-[calc(5ch+0.75rem)] -translate-x-1/2 -translate-y-1/2 place-content-center place-items-center rounded-full border-2 text-center font-bold text-white">
+                    <p className="scale-80">
+                        {Intl.NumberFormat("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        }).format(grade)}
+                        %
+                    </p>
+                </span>
+            )}
+
             <BlurredContainer
-                className="-m-6 aspect-square h-auto w-auto"
+                className="-m-6 aspect-square h-auto w-auto rounded-lg"
                 blurType={myUser == null ? "none" : "bottom"}
             >
                 <CourseCard
-                    className="[&:is(:hover,:focus-within)]:scale-100! h-full w-full rounded-none"
+                    className="[&:is(:hover,:focus-within)]:scale-100! h-full w-full rounded-lg"
                     course={course}
                 />
             </BlurredContainer>
+
             {haveIEnrolled ? (
                 <Flexbox
                     className="grow"
