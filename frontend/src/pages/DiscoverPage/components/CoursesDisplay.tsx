@@ -1,6 +1,6 @@
-import { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { CourseCard } from "./CourseCard";
+import { FC, PropsWithChildren } from "react";
 import { CourseDTO } from "@/schemas/CourseSchema";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
@@ -9,6 +9,10 @@ export type CoursesDisplayProps = ChildlessComponentProps<HTMLDivElement> &
         {
             isSkeleton?: false;
             courses: Array<CourseDTO>;
+            Renders?: (
+                course: CourseDTO,
+                i: number
+            ) => PropsWithChildren["children"];
         },
         {
             isSkeleton: true;
@@ -20,6 +24,7 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
     id,
     ref,
     courses,
+    Renders,
     className,
     isSkeleton,
 }) => {
@@ -32,14 +37,18 @@ export const CoursesDisplay: FC<CoursesDisplayProps> = ({
                 className
             )}
         >
-            {courses.map((course, i) => (
-                <CourseCard
-                    key={isSkeleton ? i : course!.id}
-                    className="aspect-square"
-                    isSkeleton={isSkeleton}
-                    course={course as CourseDTO}
-                />
-            ))}
+            {courses.map((course, i) =>
+                !isSkeleton && Renders != null ? (
+                    Renders(course as CourseDTO, i)
+                ) : (
+                    <CourseCard
+                        key={isSkeleton ? i : course!.id}
+                        className="aspect-square"
+                        isSkeleton={isSkeleton}
+                        course={course as CourseDTO}
+                    />
+                )
+            )}
         </div>
     );
 };
