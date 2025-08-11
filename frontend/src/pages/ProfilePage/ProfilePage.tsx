@@ -44,7 +44,6 @@ export const ProfilePage: FC = () => {
                 baseRoute={PROFILE_ROUTES.base.absolute}
                 routes={Object.omit(PROFILE_ROUTES.base.routes, "profileID")}
             />
-
             {user != null ? (
                 <ProfileMainContent user={user} />
             ) : profileID == null ? (

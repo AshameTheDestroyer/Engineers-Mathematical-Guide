@@ -1,16 +1,19 @@
 import { FC, Fragment } from "react";
+import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Separator } from "@/components/Separator/Separator";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
-import { APPLICATION_ROUTES } from "@/routes/application.routes";
+import { IconButton } from "@/components/IconButton/IconButton";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
 import { Top10StudentsDisplay } from "../components/Top10StudentsDisplay";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
@@ -20,7 +23,12 @@ import { useGetPrerequisiteCourses } from "@/services/Courses/useGetPrerequisite
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { useGetPostrequisiteCourses } from "@/services/Courses/useGetPostrequisiteCourses";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 
+import arrow_icon from "@icons/arrow.svg";
+import locked_icon from "@icons/locked.svg";
+import add_bookmark_icon from "@icons/bookmark_plus.svg";
+import remove_bookmark_icon from "@icons/bookmark_minus.svg";
 import course_enrollment_icon from "@icons/course_enrollment.svg";
 
 import locales from "@localization/courses_page.json";
@@ -32,10 +40,18 @@ export const POSTREQUISITE_COURSES_LIMIT = 5;
 export const CoursePage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
-    const { courseID } =
-        useParams<keyof typeof APPLICATION_ROUTES.base.routes>();
+    const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { data: course } = useGetCourseByID(courseID, { usesSuspense: true });
+
+    const { myUser } = useMain();
+
+    const haveIBookmarked =
+        courseID != null && myUser?.["bookmarked-courses"].includes(courseID);
+    const haveIEnrolled =
+        courseID != null && myUser?.["enrolled-courses"].includes(courseID);
+    let haveIFinished =
+        courseID != null && myUser?.["finished-courses"].includes(courseID);
 
     const similarCoursesQuery = useGetSimilarCourses(course, undefined, {
         enabled: course != null,
@@ -50,6 +66,8 @@ export const CoursePage: FC = () => {
     });
 
     const skeletonArray = new Array(5).fill(null);
+
+    const Navigate = useNavigate();
 
     const relatedCourses = [
         {
@@ -128,21 +146,71 @@ export const CoursePage: FC = () => {
                     )}
                     reviewsParagraph={GetLocale(locales.card.reviews, language)}
                 />
-                <Button
-                    className={twJoin(
-                        "absolute bottom-0 z-[1] translate-y-1/2",
-                        direction == "ltr" ? "right-[6vw]" : "left-[6vw]"
-                    )}
-                    thickness="thick"
-                    variant="primary"
-                    icon={{
-                        placement: "left",
-                        source: course_enrollment_icon,
-                    }}
-                    onClick={() => console.log("....")}
-                >
-                    <Locale>{locales.profile.buttons["enroll-now"]}</Locale>
-                </Button>
+                {myUser != null && (
+                    <ButtonBox
+                        className={twJoin(
+                            "absolute bottom-0 z-[1] translate-y-1/2 max-sm:gap-2",
+                            direction == "ltr" ? "right-[6vw]" : "left-[6vw]"
+                        )}
+                    >
+                        <IconButton
+                            className="[&>div]:p-2"
+                            isSquare
+                            thickness="thick"
+                            variant={haveIBookmarked ? "error" : "success"}
+                            icon={{
+                                source: haveIBookmarked
+                                    ? remove_bookmark_icon
+                                    : add_bookmark_icon,
+                            }}
+                        />
+                        {!haveIFinished && (
+                            <Button
+                                thickness="thick"
+                                variant={haveIEnrolled ? "default" : "primary"}
+                                icon={
+                                    haveIEnrolled
+                                        ? undefined
+                                        : {
+                                              placement: "left",
+                                              source: course_enrollment_icon,
+                                          }
+                                }
+                                onClick={() =>
+                                    Navigate(
+                                        WEBSITE_ROUTES.base.routes.home.absolute
+                                    )
+                                }
+                            >
+                                <Locale>
+                                    {haveIEnrolled
+                                        ? locales.profile.buttons.deroll
+                                        : locales.profile.buttons["enroll-now"]}
+                                </Locale>
+                            </Button>
+                        )}
+                        {(haveIEnrolled || haveIFinished) && (
+                            <Button
+                                thickness="thick"
+                                disabled={course.locked}
+                                variant={course.locked ? "default" : "primary"}
+                                icon={{
+                                    className: course.locked
+                                        ? ""
+                                        : direction == "ltr"
+                                          ? "rotate-90"
+                                          : "-rotate-90",
+                                    placement: "right",
+                                    source: course.locked
+                                        ? locked_icon
+                                        : arrow_icon,
+                                }}
+                            >
+                                <Locale>{locales.profile.buttons.open}</Locale>
+                            </Button>
+                        )}
+                    </ButtonBox>
+                )}
                 <Image
                     className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     source={course.image}
@@ -202,7 +270,7 @@ export const CoursePage: FC = () => {
                                     key={i}
                                     className="bg-background-dark active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover cursor-pointer rounded-full px-3 py-1 transition duration-200"
                                     to={
-                                        APPLICATION_ROUTES.base.routes.courses
+                                        DISCOVER_ROUTES.base.routes.courses
                                             .absolute +
                                         "?" +
                                         new URLSearchParams({ query: tag })
