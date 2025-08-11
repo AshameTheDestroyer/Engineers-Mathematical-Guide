@@ -7,7 +7,7 @@ export const ModuleSchema = z.object({
     "lesson-count": z
         .number({ required_error: "required" })
         .nonnegative("nonnegative")
-        .int("int"),
+        .int("integer"),
 });
 
 export type ModuleDTO = z.infer<typeof ModuleSchema>;
