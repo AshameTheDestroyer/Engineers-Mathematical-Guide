@@ -3,6 +3,7 @@
 // IT MIXES QUESTIONS FROM MANY SUBJECTS ACCORDING TO USER CHOICE & USER CAN CONTROL HARD LEVEL (SO IT OS HIGHLY CUSTOMIZED)
 
 import React, { useState, useEffect } from "react";
+import MatrixCalculator from "./MatriciesCalculator";
 
 interface Question {
     id: number;
@@ -375,6 +376,8 @@ const RandomQuiz: React.FC = () => {
     const [message, setMessage] = useState("");
     const [isAnswerCorrect, setIsAnswerCorrect] = useState<number>(-1);
 
+    const [isShowCalc, setIsShowCalc] = useState(false);
+
     const totalPoints = precalculusQuestionsState.reduce(
         (sum, q) => sum + q.point,
         0
@@ -477,19 +480,24 @@ const RandomQuiz: React.FC = () => {
             setShowResults(true);
         }
 
-        return () => clearInterval(interval);
-    }, [
-        quizStarted,
-        showResults,
-        timeLeft,
-        selectedAnswers,
-        precalculusQuestionsState,
-    ]);
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [quizStarted, showResults, timeLeft]);
+
+    //   useEffect(() => {
+    //   if (isAnswerCorrect !== -1) {
+    //     const timer = setTimeout(moveToNextQuestion, 3000);
+    //     return () => clearTimeout(timer);
+    //   }
+    // }, [isAnswerCorrect]);
 
     const formatTime = (seconds: number) => {
-        const mins = Math.floor(seconds / 60);
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
         const secs = seconds % 60;
-        return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+
+        return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
     };
 
     const goToQuestion = (index: number) => {
@@ -581,6 +589,11 @@ const RandomQuiz: React.FC = () => {
         <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
             <header className="flex items-center justify-between bg-black bg-opacity-30 p-4 backdrop-blur-sm">
                 <h1 className="text-2xl font-bold">Math Quiz</h1>
+                <button
+                    onClick={() => setIsShowCalc((isShowCalc) => !isShowCalc)}
+                >
+                    Matrices Calculator
+                </button>
                 <div className="rounded-full bg-red-600 px-4 py-2 font-mono text-xl shadow-lg">
                     ⏳ {formatTime(timeLeft)}
                 </div>
@@ -606,7 +619,7 @@ const RandomQuiz: React.FC = () => {
                     ></div>
                 </div>
             </div>
-
+            {isShowCalc && <MatrixCalculator />}
             <main className="mx-auto max-w-3xl p-6">
                 <div className="rounded-2xl bg-white bg-opacity-10 p-8 shadow-2xl backdrop-blur-md">
                     <h2 className="mb-6 text-2xl font-semibold leading-relaxed text-yellow-100">
