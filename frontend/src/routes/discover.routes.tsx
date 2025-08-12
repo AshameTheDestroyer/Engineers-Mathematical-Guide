@@ -8,6 +8,7 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 const DiscoverPage = LazyImport("./pages/DiscoverPage/DiscoverPage");
 const ModulePage = LazyImport("./pages/DiscoverPage/pages/ModulePage");
+const LessonPage = LazyImport("./pages/DiscoverPage/pages/LessonPage");
 const CoursePage = LazyImport("./pages/DiscoverPage/pages/CoursePage");
 const ModulesPage = LazyImport("./pages/DiscoverPage/pages/ModulesPage");
 const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
@@ -64,6 +65,11 @@ export const DISCOVER_ROUTES = BuildRouter({
                 variables: ["learningTrackID"] as const,
                 href: "learning-tracks/:learningTrackID/courses",
             },
+            lessonID: {
+                isVariable: true,
+                href: "courses/:courseID/modules/:moduleID/:lessonID",
+                variables: ["courseID", "moduleID", "lessonID"] as const,
+            },
             application: { href: "/" },
         },
     },
@@ -113,6 +119,14 @@ export const DiscoverRoute = () => {
                 element={
                     <LazyComponent>
                         <ModulePage />
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={DISCOVER_ROUTES.base.routes.lessonID.href}
+                element={
+                    <LazyComponent>
+                        <LessonPage />
                     </LazyComponent>
                 }
             />
