@@ -37,8 +37,9 @@ export const useGetLessonByID = <
                     LESSONS[
                         courseID! as keyof typeof LESSONS
                     ] as Array<LessonDTO>
-                ).find((lesson) =>
-                    lesson.id.startsWith(
+                ).find(
+                    (lesson) =>
+                        lesson.id ==
                         courseID!
                             .split("-")
                             .map((word) => word[0])
@@ -47,7 +48,6 @@ export const useGetLessonByID = <
                             moduleID +
                             "-" +
                             lessonID
-                    )
                 ),
             ...options,
             queryKey: [

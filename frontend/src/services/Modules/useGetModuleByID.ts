@@ -13,7 +13,8 @@ export const useGetModuleByID = <
     TUsesSuspense extends boolean = false,
     TTransformFnData = ModuleDTO | undefined,
 >(
-    id: string | undefined,
+    courseID: string | undefined,
+    moduleID: string | undefined,
     options?: InheritableQueryOptions<
         TUsesSuspense,
         ModuleDTO,
@@ -30,9 +31,24 @@ export const useGetModuleByID = <
     >(
         {
             schema: ModuleSchema,
-            queryFn: () => modules_dummy_data.find((module) => module.id == id),
+            queryFn: () =>
+                modules_dummy_data.find(
+                    (module) =>
+                        module.id ==
+                        courseID!
+                            .split("-")
+                            .map((word) => word[0])
+                            .join("") +
+                            "-" +
+                            moduleID
+                ),
             ...options,
-            queryKey: [GET_MODULE_BY_ID_KEY, id, ...(options?.queryKey ?? [])],
+            queryKey: [
+                GET_MODULE_BY_ID_KEY,
+                courseID,
+                moduleID,
+                ...(options?.queryKey ?? []),
+            ],
         },
         queryClient
     );

@@ -36,7 +36,7 @@ export const useGetLessons = <
                     LESSONS[
                         courseID! as keyof typeof LESSONS
                     ] as Array<LessonDTO>
-                ).filter((lesson) =>
+                )?.filter((lesson) =>
                     lesson.id.startsWith(
                         courseID!
                             .split("-")
