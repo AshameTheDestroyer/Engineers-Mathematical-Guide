@@ -11,7 +11,7 @@ export type IconProps = {
     stroke?: string;
     thickness?: number;
 } & ChildlessComponentProps<HTMLDivElement> &
-    HTMLAttributes<HTMLDivElement>;
+    Omit<HTMLAttributes<HTMLDivElement>, "children">;
 
 export const Icon: FC<IconProps> = ({
     id,
