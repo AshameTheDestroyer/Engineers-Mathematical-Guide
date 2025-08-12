@@ -52,5 +52,17 @@
                 "ar": "افتَحْ الوِحدة "
             }
         }
+    },
+    "lessons": {
+        "empty": {
+            "title": {
+                "en": "No Lessons Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ دَرْس"
+            },
+            "paragraph": {
+                "en": "The module **module** has no lessons yet, try seeing another one.",
+                "ar": "لا يوجَدُ أيُّ دَرْسٍ لِلوِحدةِ الدِّراسيّةِ **الوحدة** حَتَّى الآن، جَرِّبْ رؤيةَ وِحدةٍ دِراسيّةٍ أُخرى."
+            }
+        }
     }
 }

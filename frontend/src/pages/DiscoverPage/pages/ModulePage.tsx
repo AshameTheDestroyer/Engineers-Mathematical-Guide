@@ -2,24 +2,35 @@ import { twJoin } from "tailwind-merge";
 import { FC, useMemo, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Icon } from "@/components/Icon/Icon";
+import { Title } from "@/components/Title/Title";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { LessonButton } from "../components/LessonButton";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { useGetLessons } from "@/services/Lessons/useGetLessons";
 import { useElementInformation } from "@/hooks/useElementInformation";
+import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 import { GenerateZigZagSequence } from "@/functions/GenerateZigZagSequence";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 import arrow_icon from "@icons/arrow.svg";
 
+import locales from "@localization/modules_page.json";
+
 export const ModulePage: FC = () => {
     const { orientation } = useScreenSize();
+    const { language, GetLocale } = useLocalization();
 
     const { courseID, moduleID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
+
+    const { data: module } = useGetModuleByID(courseID, moduleID, {
+        usesSuspense: true,
+    });
 
     const { data: lessons } = useGetLessons(courseID, moduleID, {
         usesSuspense: true,
@@ -43,12 +54,32 @@ export const ModulePage: FC = () => {
         [courseID, moduleID]
     );
 
-    if (courseID == null || moduleID == null) {
-        return <></>;
+    if (courseID == null || moduleID == null || module == null) {
+        return (
+            <SearchResultDisplay
+                className="grow"
+                iconType="empty"
+                title={GetLocale(locales.display["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.display["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${courseID}"**`)}
+            />
+        );
     }
 
     if (lessons.length == 0) {
-        return <></>;
+        return (
+            <SearchResultDisplay
+                className="grow"
+                iconType="empty"
+                title={GetLocale(locales.lessons["empty"].title, language)}
+                paragraph={GetLocale(
+                    locales.lessons["empty"].paragraph,
+                    language
+                ).replace(/\*\*([^\*]+)\*\*/, `**"${moduleID}"**`)}
+            />
+        );
     }
 
     return (
@@ -66,6 +97,7 @@ export const ModulePage: FC = () => {
             gap={orientation == "landscape" ? "8" : "8"}
             direction={orientation == "landscape" ? "row" : "column"}
         >
+            <Title>{module.title}</Title>
             {lessons.map((lesson, i) => (
                 <LessonButton
                     key={i}
