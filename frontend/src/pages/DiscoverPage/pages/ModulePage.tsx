@@ -111,9 +111,7 @@ export const ModulePage: FC = () => {
                     RendersArrow={() =>
                         i < lessons.length - 1 && (
                             <Icon
-                                className="text-tertiary-light stroke-tertiary-light-active"
-                                width={48}
-                                height={48}
+                                className="text-tertiary-light stroke-tertiary-light-active h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] [&>svg]:h-full [&>svg]:w-full"
                                 thickness={1.5}
                                 source={arrow_icon}
                                 style={{

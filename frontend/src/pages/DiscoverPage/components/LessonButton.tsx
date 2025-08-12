@@ -47,11 +47,11 @@ export const LessonButton: FC<LessonButtonProps> = ({
                 placeContent="center"
             >
                 <IconButton
-                    className="max-w-28 active:[&>[data-content]]:translate-y-2.5 [&>[data-thickness]]:translate-y-1"
+                    className="max-w-28 sm:active:[&>[data-content]]:translate-y-2.5 sm:[&>[data-thickness]]:translate-y-1"
                     thickness="thick"
                     icon={{
-                        width: 64,
-                        height: 64,
+                        className:
+                            "sm:w-[64px] sm:h-[64px] w-[40px] h-[40px] [&>svg]:w-full [&>svg]:h-full",
                         source:
                             lesson.type == LessonTypeEnum.video
                                 ? video_icon
@@ -64,9 +64,9 @@ export const LessonButton: FC<LessonButtonProps> = ({
                     })}
                 />
 
-                <Flexbox className="border-3 bg-tertiary-light border-tertiary-light-active max-w-64 rounded-2xl p-4">
+                <Flexbox className="border-3 bg-tertiary-light border-tertiary-light-active max-w-40 rounded-2xl p-2 sm:max-w-64 sm:p-4">
                     <Typography
-                        className="text-center text-lg font-bold"
+                        className="text-center font-bold sm:text-lg"
                         variant="h3"
                     >
                         {lesson.title}
