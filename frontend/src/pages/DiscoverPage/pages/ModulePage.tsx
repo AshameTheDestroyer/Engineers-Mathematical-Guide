@@ -1,19 +1,19 @@
-import { FC, useMemo, useRef } from "react";
 import { twJoin } from "tailwind-merge";
+import { FC, useMemo, useRef } from "react";
 import { useParams } from "react-router-dom";
+import { Icon } from "@/components/Icon/Icon";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
-import { LessonTypeEnum } from "@/schemas/LessonSchema";
+import { LessonButton } from "../components/LessonButton";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
-import { IconButton } from "@/components/IconButton/IconButton";
 import { useGetLessons } from "@/services/Lessons/useGetLessons";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
-import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
-
-import video_icon from "@icons/video.svg";
-import reading_icon from "@icons/reading.svg";
 import { GenerateZigZagSequence } from "@/functions/GenerateZigZagSequence";
+import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
+
+import arrow_icon from "@icons/arrow.svg";
 
 export const ModulePage: FC = () => {
     const { orientation } = useScreenSize();
@@ -63,28 +63,36 @@ export const ModulePage: FC = () => {
             variant="main"
             placeItems="start"
             placeContent="start"
-            gap={orientation == "landscape" ? "32" : "16"}
+            gap={orientation == "landscape" ? "8" : "8"}
             direction={orientation == "landscape" ? "row" : "column"}
         >
             {lessons.map((lesson, i) => (
-                <IconButton
+                <LessonButton
                     key={i}
-                    className="active:[&>[data-content]]:translate-y-2.5 [&>[data-thickness]]:translate-y-1"
-                    thickness="thick"
-                    icon={{
-                        width: 64,
-                        height: 64,
-                        source:
-                            lesson.type == LessonTypeEnum.video
-                                ? video_icon
-                                : reading_icon,
-                    }}
+                    lesson={lesson}
                     style={{
                         transform:
                             orientation == "landscape"
                                 ? `translateY(calc((${mainContainerInformation.height}px - var(--spacing-page) * 4 - 100%) * ${zigZagSequence[i] / 100}))`
                                 : `translateX(calc((${mainContainerInformation.width}px - var(--spacing-page) * 2 - 100%) * ${zigZagSequence[i] / 100}))`,
                     }}
+                    RendersArrow={() =>
+                        i < lessons.length - 1 && (
+                            <Icon
+                                className="text-tertiary-light stroke-tertiary-light-active"
+                                width={48}
+                                height={48}
+                                thickness={1.5}
+                                source={arrow_icon}
+                                style={{
+                                    transform:
+                                        orientation == "landscape"
+                                            ? `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "135" : "45"}deg)`
+                                            : `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "145" : "215"}deg)`,
+                                }}
+                            />
+                        )
+                    }
                 />
             ))}
 
@@ -96,6 +104,8 @@ export const ModulePage: FC = () => {
                 className="text-background-dark -right-page fixed top-0 z-[-1] translate-x-1/4 translate-y-2/3 [animation-direction:reverse]"
                 size={250}
             />
+
+            <MathParallaxScene className="-z-2 fixed inset-0" />
         </Flexbox>
     );
 };

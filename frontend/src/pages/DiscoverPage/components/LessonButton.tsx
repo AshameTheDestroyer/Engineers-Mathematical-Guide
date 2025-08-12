@@ -1,0 +1,80 @@
+import { useParams } from "react-router-dom";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { FC, HTMLAttributes, PropsWithChildren } from "react";
+import { Typography } from "@/components/Typography/Typography";
+import { IconButton } from "@/components/IconButton/IconButton";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
+import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
+import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+
+import video_icon from "@icons/video.svg";
+import reading_icon from "@icons/reading.svg";
+
+export type LessonButtonProps = {
+    lesson: LessonDTO;
+    RendersArrow?: () => PropsWithChildren["children"];
+} & ChildlessComponentProps<HTMLDivElement> &
+    Omit<HTMLAttributes<HTMLDivElement>, "children">;
+
+export const LessonButton: FC<LessonButtonProps> = ({
+    id,
+    ref,
+    lesson,
+    className,
+    RendersArrow,
+    ...props
+}) => {
+    const { orientation } = useScreenSize();
+
+    const { courseID, moduleID } =
+        useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
+
+    return (
+        <Flexbox
+            id={id}
+            ref={ref}
+            className={className}
+            gap="8"
+            direction={orientation == "landscape" ? "row" : "column"}
+            placeItems={orientation == "landscape" ? "baseline" : "center"}
+            {...props}
+        >
+            <Flexbox
+                gap="8"
+                direction="column"
+                placeItems="center"
+                placeContent="center"
+            >
+                <IconButton
+                    className="max-w-28 active:[&>[data-content]]:translate-y-2.5 [&>[data-thickness]]:translate-y-1"
+                    thickness="thick"
+                    icon={{
+                        width: 64,
+                        height: 64,
+                        source:
+                            lesson.type == LessonTypeEnum.video
+                                ? video_icon
+                                : reading_icon,
+                    }}
+                    link={DISCOVER_ROUTES.base.routes.lessonID.MapVariables({
+                        courseID: courseID!,
+                        moduleID: moduleID!,
+                        lessonID: lesson.id.replace(/^[^]*-/, ""),
+                    })}
+                />
+
+                <Flexbox className="border-3 bg-tertiary-light border-tertiary-light-active max-w-64 rounded-2xl p-4">
+                    <Typography
+                        className="text-center text-lg font-bold"
+                        variant="h3"
+                    >
+                        {lesson.title}
+                    </Typography>
+                </Flexbox>
+            </Flexbox>
+
+            {RendersArrow?.()}
+        </Flexbox>
+    );
+};

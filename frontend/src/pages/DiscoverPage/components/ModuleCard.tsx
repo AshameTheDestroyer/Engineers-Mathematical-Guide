@@ -1,5 +1,4 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import { twJoin, twMerge } from "tailwind-merge";
 import { ModuleDTO } from "@/schemas/ModuleSchema";
 import { Locale } from "@/components/Locale/Locale";
@@ -32,7 +31,6 @@ export const ModuleCard: FC<ModuleCardProps> = ({
     className,
     enrollment,
 }) => {
-    const Navigate = useNavigate();
     const { direction } = useLocalization();
     const { orientation } = useScreenSize();
 
@@ -151,14 +149,10 @@ export const ModuleCard: FC<ModuleCardProps> = ({
                           ? "secondary"
                           : "default"
                 }
-                onClick={(_e) =>
-                    Navigate(
-                        DISCOVER_ROUTES.base.routes.moduleID.MapVariables({
-                            courseID,
-                            moduleID: module.id.replace(/^[^-]*-/, ""),
-                        })
-                    )
-                }
+                link={DISCOVER_ROUTES.base.routes.moduleID.MapVariables({
+                    courseID,
+                    moduleID: module.id.replace(/^[^-]*-/, ""),
+                })}
             >
                 <Locale>
                     {
