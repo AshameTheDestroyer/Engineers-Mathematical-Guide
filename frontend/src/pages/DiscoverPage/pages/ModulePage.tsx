@@ -1,3 +1,4 @@
+import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { FC, useMemo, useRef } from "react";
 import { useParams } from "react-router-dom";
@@ -13,6 +14,7 @@ import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 import { GenerateZigZagSequence } from "@/functions/GenerateZigZagSequence";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
@@ -22,6 +24,7 @@ import arrow_icon from "@icons/arrow.svg";
 import locales from "@localization/modules_page.json";
 
 export const ModulePage: FC = () => {
+    const { myUser } = useMain();
     const { orientation } = useScreenSize();
     const { language, GetLocale } = useLocalization();
 
@@ -35,6 +38,16 @@ export const ModulePage: FC = () => {
     const { data: lessons } = useGetLessons(courseID, moduleID, {
         usesSuspense: true,
     });
+
+    const { data: enrollment } = useGetEnrollmentByID(
+        courseID,
+        myUser?.username,
+        { usesSuspense: true, enabled: courseID != null && myUser != null }
+    );
+
+    const moduleEnrollment = enrollment?.progress.find(
+        (progress) => progress.module == module?.id
+    );
 
     const mainContainerReference = useRef<HTMLDivElement>(null);
     const mainContainerInformation = useElementInformation(
@@ -94,7 +107,7 @@ export const ModulePage: FC = () => {
             variant="main"
             placeItems="start"
             placeContent="start"
-            gap={orientation == "landscape" ? "8" : "8"}
+            gap={orientation == "landscape" ? "8" : "4"}
             direction={orientation == "landscape" ? "row" : "column"}
         >
             <Title>{module.title}</Title>
@@ -102,6 +115,28 @@ export const ModulePage: FC = () => {
                 <LessonButton
                     key={i}
                     lesson={lesson}
+                    buttonProps={{
+                        variant:
+                            enrollment == null
+                                ? "default"
+                                : moduleEnrollment == null
+                                  ? "default"
+                                  : i < moduleEnrollment["finished-lessons"]
+                                    ? "success"
+                                    : i > moduleEnrollment["finished-lessons"]
+                                      ? "default"
+                                      : "secondary",
+                        disabled:
+                            enrollment == null
+                                ? true
+                                : moduleEnrollment == null
+                                  ? true
+                                  : i < moduleEnrollment["finished-lessons"]
+                                    ? false
+                                    : i > moduleEnrollment["finished-lessons"]
+                                      ? true
+                                      : false,
+                    }}
                     style={{
                         transform:
                             orientation == "landscape"

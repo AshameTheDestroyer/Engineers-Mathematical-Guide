@@ -1,18 +1,23 @@
+import { twMerge } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { FC, HTMLAttributes, PropsWithChildren } from "react";
 import { Typography } from "@/components/Typography/Typography";
-import { IconButton } from "@/components/IconButton/IconButton";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+import {
+    IconButton,
+    IconButtonProps,
+} from "@/components/IconButton/IconButton";
 
 import video_icon from "@icons/video.svg";
 import reading_icon from "@icons/reading.svg";
 
 export type LessonButtonProps = {
     lesson: LessonDTO;
+    buttonProps?: Omit<IconButtonProps, "icon" | "link">;
     RendersArrow?: () => PropsWithChildren["children"];
 } & ChildlessComponentProps<HTMLDivElement> &
     Omit<HTMLAttributes<HTMLDivElement>, "children">;
@@ -22,6 +27,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
     ref,
     lesson,
     className,
+    buttonProps,
     RendersArrow,
     ...props
 }) => {
@@ -34,8 +40,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
         <Flexbox
             id={id}
             ref={ref}
-            className={className}
-            gap="8"
+            className={twMerge("gap-4 sm:gap-8", className)}
             direction={orientation == "landscape" ? "row" : "column"}
             placeItems={orientation == "landscape" ? "baseline" : "center"}
             {...props}
@@ -47,7 +52,10 @@ export const LessonButton: FC<LessonButtonProps> = ({
                 placeContent="center"
             >
                 <IconButton
-                    className="max-w-28 sm:active:[&>[data-content]]:translate-y-2.5 sm:[&>[data-thickness]]:translate-y-1"
+                    className={twMerge(
+                        "max-w-28 sm:active:[&>[data-content]]:translate-y-2.5 sm:[&>[data-thickness]]:translate-y-1",
+                        buttonProps?.className
+                    )}
                     thickness="thick"
                     icon={{
                         className:
@@ -62,6 +70,9 @@ export const LessonButton: FC<LessonButtonProps> = ({
                         moduleID: moduleID!,
                         lessonID: lesson.id.replace(/^[^]*-/, ""),
                     })}
+                    {...(buttonProps != null
+                        ? Object.omit(buttonProps, "className")
+                        : {})}
                 />
 
                 <Flexbox className="border-3 bg-tertiary-light border-tertiary-light-active max-w-40 rounded-2xl p-2 sm:max-w-64 sm:p-4">
