@@ -172,6 +172,11 @@
         "type": "reading"
     },
     {
+        "id": "la-systems-and-solutions-27",
+        "title": "Examination: System and Solutions",
+        "type": "examination"
+    },
+    {
         "id": "la-transformations-and-matrices-1",
         "title": "Testing for Linear Independence or Dependence",
         "type": "video",
@@ -337,6 +342,11 @@
         "type": "reading"
     },
     {
+        "id": "la-transformations-and-matrices-26",
+        "title": "Examination: Transformations and Matrices",
+        "type": "examination"
+    },
+    {
         "id": "la-vector-spaces-and-bases-1",
         "title": "Determinants: A Tool to Test Matrix Invertibility",
         "type": "video",
@@ -486,6 +496,11 @@
         "id": "la-vector-spaces-and-bases-23",
         "title": "Rank, Nullity, and Change of Basis",
         "type": "reading"
+    },
+    {
+        "id": "la-vector-spaces-and-bases-24",
+        "title": "Examination: Vector Spaces and Bases",
+        "type": "examination"
     },
     {
         "id": "la-eigenvalues-and-orthogonality-1",
@@ -665,5 +680,10 @@
         "type": "video",
         "duration": 336,
         "url": "https://www.youtube.com/embed/bDUs-ar16OI"
+    },
+    {
+        "id": "la-eigenvalues-and-orthogonality-28",
+        "title": "Examination: Eigenvalues and Orthogonality",
+        "type": "examination"
     }
 ]

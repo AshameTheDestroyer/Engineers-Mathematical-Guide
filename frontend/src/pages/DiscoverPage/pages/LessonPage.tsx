@@ -10,9 +10,11 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { LessonTypeEnum } from "@/schemas/LessonSchema";
 import { VideoLesson } from "../components/VideoLesson";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { ReadingLesson } from "../components/ReadingLesson";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { LessonButtonProps } from "../components/LessonButton";
 import { Typography } from "@/components/Typography/Typography";
+import { ExaminationLesson } from "../components/ExaminationLesson";
 import { useGetLessonByID } from "@/services/Lessons/useGetLessonByID";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
@@ -124,7 +126,9 @@ export const LessonPage: FC = () => {
                         case LessonTypeEnum.video:
                             return <VideoLesson lesson={lesson} />;
                         case LessonTypeEnum.reading:
-                            return <p>Reading</p>;
+                            return <ReadingLesson lesson={lesson} />;
+                        case LessonTypeEnum.examination:
+                            return <ExaminationLesson lesson={lesson} />;
                     }
                 })()}
 

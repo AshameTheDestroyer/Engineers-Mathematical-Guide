@@ -1,16 +1,17 @@
-import { twJoin, twMerge } from "tailwind-merge";
 import { useParams } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { FC, HTMLAttributes, PropsWithChildren } from "react";
+import { LessonDTO, LessonType } from "@/schemas/LessonSchema";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 
 import video_icon from "@icons/video.svg";
 import reading_icon from "@icons/reading.svg";
+import examination_icon from "@icons/examination.svg";
 
 export type LessonButtonProps = {
     lesson: LessonDTO;
@@ -66,10 +67,13 @@ export const LessonButton: FC<LessonButtonProps> = ({
                     icon={{
                         className:
                             "sm:w-[64px] sm:h-[64px] w-[40px] h-[40px] [&>svg]:w-full [&>svg]:h-full",
-                        source:
-                            lesson.type == LessonTypeEnum.video
-                                ? video_icon
-                                : reading_icon,
+                        source: (
+                            {
+                                video: video_icon,
+                                reading: reading_icon,
+                                examination: examination_icon,
+                            } as Record<LessonType, string>
+                        )[lesson.type],
                     }}
                     variant={
                         (
