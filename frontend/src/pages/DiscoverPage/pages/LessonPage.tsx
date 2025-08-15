@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
-import { ModulePage } from "./ModulePage";
 import { useParams } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
 import { Button } from "@/components/Button/Button";
@@ -12,6 +11,7 @@ import { VideoLesson } from "../components/VideoLesson";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { ReadingLesson } from "../components/ReadingLesson";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { LessonDropView } from "../components/LessonDropView";
 import { LessonButtonProps } from "../components/LessonButton";
 import { Typography } from "@/components/Typography/Typography";
 import { ExaminationLesson } from "../components/ExaminationLesson";
@@ -99,15 +99,14 @@ export const LessonPage: FC = () => {
             className="grow"
             gap="8"
             variant="main"
-            direction={isScreenSize["max-lg"] ? "column-reverse" : "row"}
+            direction={isScreenSize["max-xl"] ? "column-reverse" : "row"}
         >
             <Title>{lesson.title}</Title>
 
-            <ModulePage
-                className="m-0 lg:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] lg:min-w-[32rem] lg:max-w-[32rem] lg:overflow-y-auto lg:overflow-x-hidden"
-                withoutMathematicalEquations
+            <LessonDropView
+                className="bg-background-normal-hover rounded-2xl xl:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] xl:min-w-[32rem] xl:max-w-[32rem] xl:overflow-y-auto xl:overflow-x-hidden"
                 orientation={
-                    isScreenSize["max-sm"] || isScreenSize.lg
+                    isScreenSize["max-sm"] || isScreenSize.xl
                         ? "portrait"
                         : "landscape"
                 }
