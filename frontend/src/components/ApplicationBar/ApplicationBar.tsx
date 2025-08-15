@@ -84,7 +84,9 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                     />
                 </ButtonBox>
             </ButtonBox>
-            {isScreenSize["max-lg"] && <JumpToTopButton />}
+            {isScreenSize["max-lg"] && (
+                <JumpToTopButton orientation="vertical" />
+            )}
         </Header>
     );
 };

@@ -1,8 +1,8 @@
 import { useMain } from "@/contexts";
-import { twMerge } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { LessonButton } from "./LessonButton";
 import { Icon } from "@/components/Icon/Icon";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { FC, useImperativeHandle, useMemo, useRef } from "react";
@@ -11,6 +11,7 @@ import { useGetLessons } from "@/services/Lessons/useGetLessons";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { GenerateZigZagSequence } from "@/functions/GenerateZigZagSequence";
+import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -31,7 +32,7 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
     orientation: _orientation,
 }) => {
     const { myUser } = useMain();
-    const { language, GetLocale } = useLocalization();
+    const { direction, language, GetLocale } = useLocalization();
 
     const { orientation: screenOrientation } = useScreenSize();
     const orientation = _orientation ?? screenOrientation;
@@ -114,11 +115,13 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
                     : "p-page",
                 className
             )}
-            dir="ltr"
-            placeItems="start"
-            placeContent="start"
             gap={orientation == "landscape" ? "8" : "4"}
             direction={orientation == "landscape" ? "row" : "column"}
+            placeItems={
+                direction == "ltr" || orientation == "landscape"
+                    ? "start"
+                    : "end"
+            }
         >
             {lessons.map((lesson, i) => (
                 <LessonButton
@@ -161,9 +164,9 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
                                     source={arrow_icon}
                                     style={{
                                         transform:
-                                            orientation == "landscape"
-                                                ? `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "135" : "45"}deg)`
-                                                : `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "145" : "215"}deg)`,
+                                            orientation == "portrait"
+                                                ? `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "145" : "215"}deg)`
+                                                : `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? (direction == "ltr" ? "135" : "225") : direction == "ltr" ? "45" : "315"}deg)`,
                                     }}
                                 />
                             </div>
@@ -171,6 +174,28 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
                     }
                 />
             ))}
+
+            {(_orientation != null || orientation == "landscape") && (
+                <JumpToTopButton
+                    className={twJoin(
+                        (direction == "ltr" ||
+                            (direction == "rtl" &&
+                                orientation == "landscape")) &&
+                            "place-self-end",
+                        orientation == "portrait"
+                            ? "left-auto! right-auto! bottom-0!"
+                            : "left-0! right-0! bottom-auto!",
+                        orientation == "landscape" &&
+                            (direction == "ltr"
+                                ? "translate-page"
+                                : "-translate-x-page translate-y-page [&_.icon]:rotate-90")
+                    )}
+                    isContainerized
+                    orientation={
+                        orientation == "portrait" ? "vertical" : "horizontal"
+                    }
+                />
+            )}
         </Flexbox>
     );
 };

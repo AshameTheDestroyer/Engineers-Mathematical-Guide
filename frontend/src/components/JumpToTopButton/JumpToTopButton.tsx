@@ -8,12 +8,14 @@ import arrow_icon from "@icons/arrow.svg";
 export type JumpToTopButtonProps = Omit<IconButtonProps, "icon"> & {
     threshold?: number;
     isContainerized?: boolean;
+    orientation: "horizontal" | "vertical";
 };
 
 export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
     id,
     onClick,
     className,
+    orientation,
     isContainerized,
     threshold = 100,
     ...props
@@ -27,9 +29,13 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
 
     const GetScrollValue = useCallback(
         () =>
-            isContainerized
-                ? buttonReference.current!.parentElement!.scrollTop
-                : window.scrollY,
+            Math.abs(
+                isContainerized
+                    ? buttonReference.current!.parentElement![
+                          orientation == "vertical" ? "scrollTop" : "scrollLeft"
+                      ]
+                    : window[orientation == "vertical" ? "scrollY" : "scrollX"]
+            ),
         [buttonReference.current]
     );
 
@@ -52,6 +58,8 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
             return;
         }
 
+        console.log(GetScrollValue());
+
         buttonReference.current.classList[
             GetScrollValue() < threshold ? "add" : "remove"
         ]("hidden");
@@ -62,7 +70,10 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
             return;
         }
 
-        rootElement.scrollTo({ top: 0, behavior: "smooth" });
+        rootElement.scrollTo({
+            [orientation == "vertical" ? "top" : "left"]: 0,
+            behavior: "smooth",
+        });
     }
 
     return (
@@ -75,8 +86,11 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
                 direction == "ltr" ? "right-page" : "left-page",
                 className
             )}
-            icon={{ source: arrow_icon }}
             onClick={(e) => (JumpToTop(), onClick?.(e))}
+            icon={{
+                source: arrow_icon,
+                className: orientation == "horizontal" ? "rotate-270" : "",
+            }}
             {...props}
         />
     );
