@@ -5,13 +5,13 @@ import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 import arrow_icon from "@icons/arrow.svg";
 
-export type JumpToTopButtonProps = Omit<IconButtonProps, "icon"> & {
+export type JumpToStartButtonProps = Omit<IconButtonProps, "icon"> & {
     threshold?: number;
     isContainerized?: boolean;
     orientation: "horizontal" | "vertical";
 };
 
-export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
+export const JumpToStartButton: FC<JumpToStartButtonProps> = ({
     id,
     onClick,
     className,
@@ -65,7 +65,7 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
         ]("hidden");
     }
 
-    function JumpToTop() {
+    function JumpToStart() {
         if (rootElement == null) {
             return;
         }
@@ -86,10 +86,15 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
                 direction == "ltr" ? "right-page" : "left-page",
                 className
             )}
-            onClick={(e) => (JumpToTop(), onClick?.(e))}
+            onClick={(e) => (JumpToStart(), onClick?.(e))}
             icon={{
                 source: arrow_icon,
-                className: orientation == "horizontal" ? "rotate-270" : "",
+                className:
+                    orientation == "horizontal"
+                        ? direction == "ltr"
+                            ? "rotate-270"
+                            : "rotate-90"
+                        : "",
             }}
             {...props}
         />

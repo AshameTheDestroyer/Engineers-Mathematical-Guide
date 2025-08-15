@@ -11,7 +11,7 @@ import { useGetLessons } from "@/services/Lessons/useGetLessons";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { GenerateZigZagSequence } from "@/functions/GenerateZigZagSequence";
-import { JumpToTopButton } from "@/components/JumpToTopButton/JumpToTopButton";
+import { JumpToStartButton } from "@/components/JumpToStartButton/JumpToStartButton";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -176,7 +176,7 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
             ))}
 
             {(_orientation != null || orientation == "landscape") && (
-                <JumpToTopButton
+                <JumpToStartButton
                     className={twJoin(
                         (direction == "ltr" ||
                             (direction == "rtl" &&
@@ -188,7 +188,7 @@ export const LessonDropView: FC<LessonDropViewProps> = ({
                         orientation == "landscape" &&
                             (direction == "ltr"
                                 ? "translate-page"
-                                : "-translate-x-page translate-y-page [&_.icon]:rotate-90")
+                                : "-translate-x-page translate-y-page")
                     )}
                     isContainerized
                     orientation={
