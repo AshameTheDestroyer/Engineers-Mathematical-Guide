@@ -10,7 +10,7 @@ import {
 
 export type ScreenSizeStateProps = {
     screenSize: number;
-    orientation: "landscape" | "portrait";
+    orientation: Orientation;
     breakpoints: Record<Breakpoint, number>;
     isScreenSize: Record<Breakpoint | `max-${Breakpoint}`, boolean>;
 };

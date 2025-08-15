@@ -1,6 +1,5 @@
 import { useMain } from "@/contexts";
-import { twJoin } from "tailwind-merge";
-import { FC, useMemo, useRef } from "react";
+import { twMerge } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Icon } from "@/components/Icon/Icon";
 import { Title } from "@/components/Title/Title";
@@ -8,7 +7,9 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
 import { LessonButton } from "../components/LessonButton";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { FC, useImperativeHandle, useMemo, useRef } from "react";
 import { useGetLessons } from "@/services/Lessons/useGetLessons";
+import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { useElementInformation } from "@/hooks/useElementInformation";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
@@ -23,10 +24,23 @@ import arrow_icon from "@icons/arrow.svg";
 
 import locales from "@localization/modules_page.json";
 
-export const ModulePage: FC = () => {
+export type ModulePageProps = {
+    orientation?: Orientation;
+    withoutMathematicalEquations?: boolean;
+} & ChildlessComponentProps<HTMLDivElement>;
+
+export const ModulePage: FC<ModulePageProps> = ({
+    id,
+    ref,
+    className,
+    orientation: _orientation,
+    withoutMathematicalEquations,
+}) => {
     const { myUser } = useMain();
-    const { orientation } = useScreenSize();
     const { language, GetLocale } = useLocalization();
+    const { orientation: screenOrientation } = useScreenSize();
+
+    const orientation = _orientation ?? screenOrientation;
 
     const { courseID, moduleID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
@@ -50,6 +64,9 @@ export const ModulePage: FC = () => {
     );
 
     const mainContainerReference = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => mainContainerReference.current!);
+
     const mainContainerInformation = useElementInformation(
         mainContainerReference
     );
@@ -97,13 +114,16 @@ export const ModulePage: FC = () => {
 
     return (
         <Flexbox
+            id={id}
             ref={mainContainerReference}
-            className={twJoin(
+            className={twMerge(
                 "-m-page relative grow",
                 orientation == "landscape"
                     ? "overflow-x-auto overflow-y-hidden p-[calc(var(--spacing-page)*2)]"
-                    : "p-page"
+                    : "p-page",
+                className
             )}
+            dir="ltr"
             variant="main"
             placeItems="start"
             placeContent="start"
@@ -115,47 +135,49 @@ export const ModulePage: FC = () => {
                 <LessonButton
                     key={i}
                     lesson={lesson}
-                    buttonProps={{
-                        variant:
-                            enrollment == null
-                                ? "default"
-                                : moduleEnrollment == null
-                                  ? "default"
-                                  : i < moduleEnrollment["finished-lessons"]
-                                    ? "success"
-                                    : i > moduleEnrollment["finished-lessons"]
-                                      ? "default"
-                                      : "secondary",
-                        disabled:
-                            enrollment == null
-                                ? true
-                                : moduleEnrollment == null
-                                  ? true
-                                  : i < moduleEnrollment["finished-lessons"]
-                                    ? false
-                                    : i > moduleEnrollment["finished-lessons"]
-                                      ? true
-                                      : false,
-                    }}
+                    orientation={orientation}
+                    enrollment={
+                        enrollment == null
+                            ? "unenrolled"
+                            : moduleEnrollment == null
+                              ? "unenrolled"
+                              : i < moduleEnrollment["finished-lessons"]
+                                ? "passed"
+                                : i > moduleEnrollment["finished-lessons"]
+                                  ? "unenrolled"
+                                  : "enrolled"
+                    }
                     style={{
                         transform:
                             orientation == "landscape"
                                 ? `translateY(calc((${mainContainerInformation.height}px - var(--spacing-page) * 4 - 100%) * ${zigZagSequence[i] / 100}))`
                                 : `translateX(calc((${mainContainerInformation.width}px - var(--spacing-page) * 2 - 100%) * ${zigZagSequence[i] / 100}))`,
                     }}
-                    RendersArrow={() =>
+                    RendersArrow={(enrollment) =>
                         i < lessons.length - 1 && (
-                            <Icon
-                                className="text-tertiary-light stroke-tertiary-light-active h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] [&>svg]:h-full [&>svg]:w-full"
-                                thickness={1.5}
-                                source={arrow_icon}
-                                style={{
-                                    transform:
-                                        orientation == "landscape"
-                                            ? `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "135" : "45"}deg)`
-                                            : `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "145" : "215"}deg)`,
-                                }}
-                            />
+                            <div
+                                className={twMerge(
+                                    "text-tertiary-light stroke-tertiary-light-active h-[32px] w-[32px] sm:h-[48px] sm:w-[48px] [&>svg]:h-full [&>svg]:w-full",
+                                    enrollment == "passed" &&
+                                        "text-vibrant-green-normal stroke-vibrant-green-dark",
+                                    enrollment == "enrolled" &&
+                                        "text-secondary-normal stroke-secondary-dark",
+                                    enrollment == "unenrolled"
+                                        ? "grayscale-25 saturate-75 contrast-85"
+                                        : "animate-bounce"
+                                )}
+                            >
+                                <Icon
+                                    thickness={1.5}
+                                    source={arrow_icon}
+                                    style={{
+                                        transform:
+                                            orientation == "landscape"
+                                                ? `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "135" : "45"}deg)`
+                                                : `rotate(${zigZagSequence[i + 1] > zigZagSequence[i] ? "145" : "215"}deg)`,
+                                    }}
+                                />
+                            </div>
                         )
                     }
                 />
@@ -170,7 +192,9 @@ export const ModulePage: FC = () => {
                 size={250}
             />
 
-            <MathParallaxScene className="-z-2 fixed inset-0" />
+            {!withoutMathematicalEquations && (
+                <MathParallaxScene className="-z-2 fixed inset-0" />
+            )}
         </Flexbox>
     );
 };

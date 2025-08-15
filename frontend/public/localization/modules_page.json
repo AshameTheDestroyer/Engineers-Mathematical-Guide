@@ -63,6 +63,28 @@
                 "en": "The module **module** has no lessons yet, try seeing another one.",
                 "ar": "لا يوجَدُ أيُّ دَرْسٍ لِلوِحدةِ الدِّراسيّةِ **الوحدة** حَتَّى الآن، جَرِّبْ رؤيةَ وِحدةٍ دِراسيّةٍ أُخرى."
             }
+        },
+        "buttons": {
+            "mark-completeness": {
+                "en": "Mark as Complete",
+                "ar": "تَمييزٌ كَمُنتَهٍ"
+            },
+            "completed": {
+                "en": "Completed",
+                "ar": "مُنتَهيٌ"
+            }
+        },
+        "video": {
+            "loading": {
+                "title": {
+                    "en": "Video is Loading...",
+                    "ar": "جارٍ تَحميلُ الفيديو"
+                },
+                "paragraph": {
+                    "en": "Wait a little for the video to completely load.",
+                    "ar": "انتَظِرْ قَليلاً رَيثَما يَتِمُّ تَحميلُ الفيديو بِشَكلٍ كامِل."
+                }
+            }
         }
     }
 }
