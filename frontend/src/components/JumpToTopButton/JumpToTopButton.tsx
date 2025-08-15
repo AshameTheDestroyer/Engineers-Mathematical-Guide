@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { FC, useEffect, useRef } from "react";
+import { FC, useCallback, useEffect, useRef } from "react";
 import { IconButton, IconButtonProps } from "../IconButton/IconButton";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
@@ -7,40 +7,62 @@ import arrow_icon from "@icons/arrow.svg";
 
 export type JumpToTopButtonProps = Omit<IconButtonProps, "icon"> & {
     threshold?: number;
+    isContainerized?: boolean;
 };
 
 export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
     id,
     onClick,
     className,
+    isContainerized,
     threshold = 100,
     ...props
 }) => {
     const { direction } = useLocalization();
     const buttonReference = useRef<HTMLButtonElement>(null);
 
+    const rootElement = isContainerized
+        ? buttonReference.current?.parentElement
+        : window;
+
+    const GetScrollValue = useCallback(
+        () =>
+            isContainerized
+                ? buttonReference.current!.parentElement!.scrollTop
+                : window.scrollY,
+        [buttonReference.current]
+    );
+
     useEffect(() => {
         ScrollCallback();
 
-        window.addEventListener("scroll", ScrollCallback);
+        if (rootElement == null) {
+            return;
+        }
+
+        rootElement.addEventListener("scroll", ScrollCallback);
 
         return () => {
-            window.removeEventListener("scroll", ScrollCallback);
+            rootElement.removeEventListener("scroll", ScrollCallback);
         };
-    }, []);
+    }, [rootElement]);
 
     function ScrollCallback() {
-        if (buttonReference.current == null) {
+        if (buttonReference.current == null || rootElement == null) {
             return;
         }
 
         buttonReference.current.classList[
-            window.scrollY < threshold ? "add" : "remove"
+            GetScrollValue() < threshold ? "add" : "remove"
         ]("hidden");
     }
 
     function JumpToTop() {
-        window.scrollTo({ top: 0 });
+        if (rootElement == null) {
+            return;
+        }
+
+        rootElement.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     return (
@@ -48,13 +70,12 @@ export const JumpToTopButton: FC<JumpToTopButtonProps> = ({
             id={id}
             ref={buttonReference}
             className={twMerge(
-                "bottom-page fixed z-50 opacity-75",
+                "bottom-page z-50 opacity-75",
+                isContainerized ? "sticky" : "fixed",
                 direction == "ltr" ? "right-page" : "left-page",
                 className
             )}
-            icon={{
-                source: arrow_icon,
-            }}
+            icon={{ source: arrow_icon }}
             onClick={(e) => (JumpToTop(), onClick?.(e))}
             {...props}
         />
