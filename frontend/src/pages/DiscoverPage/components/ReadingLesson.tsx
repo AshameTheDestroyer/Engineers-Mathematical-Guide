@@ -3,6 +3,7 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Markdown } from "@/components/Markdown/Markdown";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
 import { useGetMarkdownByID } from "@/services/Markdown/useGetMarkdownByID";
+import { JumpToStartButton } from "@/components/JumpToStartButton/JumpToStartButton";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
@@ -44,6 +45,12 @@ export const ReadingLesson: FC<ReadingLessonProps> = ({ lesson }) => {
                         ).replace(/\*\*([^\*]+)\*\*/, `**"${lesson.title}"**`)}
                     />
                 )}
+
+                <JumpToStartButton
+                    className="right-4! left-4! bottom-4! place-self-end"
+                    isContainerized
+                    orientation="vertical"
+                />
             </Flexbox>
         </Flexbox>
     );
