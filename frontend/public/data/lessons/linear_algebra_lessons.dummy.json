@@ -174,7 +174,304 @@
     {
         "id": "la-systems-and-solutions-27",
         "title": "Examination: System and Solutions",
-        "type": "examination"
+        "type": "examination",
+        "time": 90,
+        "questions": [
+        {
+            "question": "What is the value of sin(π/2)?",
+            "type": "choose",
+            "options": [
+                "0",
+                "1/2",
+                "√2/2",
+                "1"
+            ],
+            "correctAnswer": "1",
+            "points": 2
+        },
+        {
+            "question": "What is the domain of f(x) = √(x - 3)?",
+            "type": "choose",
+            "options": [
+                "x ≥ 3",
+                "x > 3",
+                "x ≤ 3",
+                "x < 3"
+            ],
+            "correctAnswer": "x ≥ 3",
+            "points": 2
+        },
+        {
+            "question": "What is the degree of the polynomial 4x³ - 2x² + 7?",
+            "type": "choose",
+            "options": [
+                "2",
+                "3",
+                "4",
+                "1"
+            ],
+            "correctAnswer": "3",
+            "points": 2
+        },
+        {
+            "question": "What is the value of log₁₀(100)?",
+            "type": "choose",
+            "options": [
+                "1",
+                "2",
+                "10",
+                "0"
+            ],
+            "correctAnswer": "2",
+            "points": 2
+        },
+        {
+            "question": "Which function is even: f(x) = x², f(x) = x³, f(x) = x + 1, f(x) = √x?",
+            "type": "choose",
+            "options": [
+                "f(x) = x³",
+                "f(x) = x + 1",
+                "f(x) = √x",
+                "f(x) = x²"
+            ],
+            "correctAnswer": "f(x) = x²",
+            "points": 2
+        },
+        {
+            "question": "Simplify: (x⁴)(x³)",
+            "type": "choose",
+            "options": [
+                "x⁷",
+                "x¹²",
+                "2x⁷",
+                "x¹"
+            ],
+            "correctAnswer": "x⁷",
+            "points": 2
+        },
+        {
+            "question": "What is the slope of a horizontal line?",
+            "type": "choose",
+            "options": [
+                "0",
+                "1",
+                "undefined",
+                "-1"
+            ],
+            "correctAnswer": "0",
+            "points": 2
+        },
+        {
+            "question": "Write the equation of a circle with center (0,0) and radius 5.",
+            "type": "write",
+            "correctAnswer": "x^2 + y^2 = 25",
+            "points": 2
+        },
+        {
+            "question": "What is the period of the function f(x) = sin(x)?",
+            "type": "choose",
+            "options": [
+                "π",
+                "2π",
+                "π/2",
+                "4π"
+            ],
+            "correctAnswer": "2π",
+            "points": 2
+        },
+        {
+            "question": "Evaluate: 5! (5 factorial)",
+            "type": "write",
+            "correctAnswer": "120",
+            "points": 2
+        },
+        {
+            "question": "Find the inverse of f(x) = 2x + 4.",
+            "type": "choose",
+            "options": [
+                "f⁻¹(x) = (x - 4)/2",
+                "f⁻¹(x) = (x + 4)/2",
+                "f⁻¹(x) = 2x - 4",
+                "f⁻¹(x) = x/2 - 4"
+            ],
+            "correctAnswer": "f⁻¹(x) = (x - 4)/2",
+            "points": 4
+        },
+        {
+            "question": "Solve for x: log₂(x) = 3",
+            "type": "choose",
+            "options": [
+                "6",
+                "8",
+                "9",
+                "16"
+            ],
+            "correctAnswer": "8",
+            "points": 4
+        },
+        {
+            "question": "What is the exact value of cos(π/3)?",
+            "type": "choose",
+            "options": [
+                "√3/2",
+                "1/2",
+                "√2/2",
+                "1"
+            ],
+            "correctAnswer": "1/2",
+            "points": 4
+        },
+        {
+            "question": "Simplify: (3 + 4i)(2 - i)",
+            "type": "choose",
+            "options": [
+                "10 + 5i",
+                "6 - 4i",
+                "7 + 4i",
+                "10 + 3i"
+            ],
+            "correctAnswer": "10 + 5i",
+            "points": 4
+        },
+        {
+            "question": "Find the vertex of the parabola: y = x² - 6x + 5",
+            "type": "choose",
+            "options": [
+                "(3, -4)",
+                "(3, 4)",
+                "(-3, 4)",
+                "(6, 5)"
+            ],
+            "correctAnswer": "(3, -4)",
+            "points": 4
+        },
+        {
+            "question": "What is the amplitude of y = 4cos(2x)?",
+            "type": "write",
+            "correctAnswer": "4",
+            "points": 4
+        },
+        {
+            "question": "Solve: 2^(x+1) = 16",
+            "type": "write",
+            "correctAnswer": "3",
+            "points": 4
+        },
+        {
+            "question": "Which is equivalent to sin²θ + cos²θ?",
+            "type": "choose",
+            "options": [
+                "0",
+                "1",
+                "sin(2θ)",
+                "tan²θ"
+            ],
+            "correctAnswer": "1",
+            "points": 4
+        },
+        {
+            "question": "What is the range of f(x) = 1/x?",
+            "type": "choose",
+            "options": [
+                "All real numbers",
+                "All real numbers except 0",
+                "x > 0",
+                "x ≥ 0"
+            ],
+            "correctAnswer": "All real numbers except 0",
+            "points": 4
+        },
+        {
+            "question": "Find the exact value of tan(5π/6)",
+            "type": "choose",
+            "options": [
+                "√3/3",
+                "-√3/3",
+                "√3",
+                "-√3"
+            ],
+            "correctAnswer": "-√3/3",
+            "points": 4
+        },
+        {
+            "question": "Find the exact value of sin(7π/12) using sum formula.",
+            "type": "write",
+            "correctAnswer": "(√6 + √2)/4",
+            "points": 8
+        },
+        {
+            "question": "Solve: 2cos²x - 3cosx + 1 = 0 for 0 ≤ x < 2π",
+            "type": "write",
+            "correctAnswer": "0, π/3, 5π/3",
+            "points": 8
+        },
+        {
+            "question": "Which is the polar form of z = -2 + 2i?",
+            "type": "choose",
+            "options": [
+                "2√2 cis(π/4)",
+                "2 cis(3π/4)",
+                "2√2 cis(3π/4)",
+                "√2 cis(π/2)"
+            ],
+            "correctAnswer": "2√2 cis(3π/4)",
+            "points": 8
+        },
+        {
+            "question": "What is the limit as x approaches 0 of (sin(3x))/x?",
+            "type": "write",
+            "correctAnswer": "3",
+            "points": 8
+        },
+        {
+            "question": "Find the partial fraction decomposition of (3x + 2)/(x² + x).",
+            "type": "write",
+            "correctAnswer": "2/x + 1/(x+1)",
+            "points": 8
+        },
+        {
+            "question": "If log₃(x) = 4 and log₃(y) = 2, what is log₃(x²/y)?",
+            "type": "choose",
+            "options": [
+                "4",
+                "6",
+                "8",
+                "10"
+            ],
+            "correctAnswer": "6",
+            "points": 8
+        },
+        {
+            "question": "What is the eccentricity of the ellipse (x²/25) + (y²/9) = 1?",
+            "type": "write",
+            "correctAnswer": "4/5",
+            "points": 8
+        },
+        {
+            "question": "Find the sum of the infinite geometric series: 8 + 4 + 2 + 1 + ...",
+            "type": "write",
+            "correctAnswer": "16",
+            "points": 8
+        },
+        {
+            "question": "Which describes the asymptotes of f(x) = (2x² + 3)/(x² - 1)?",
+            "type": "choose",
+            "options": [
+                "Vertical: x=±1, Horizontal: y=2",
+                "Vertical: x=2, Horizontal: y=1",
+                "Vertical: x=0, Horizontal: y=3",
+                "No asymptotes"
+            ],
+            "correctAnswer": "Vertical: x=±1, Horizontal: y=2",
+            "points": 8
+        },
+        {
+            "question": "Given vectors u = ⟨3, -4⟩ and v = ⟨1, 2⟩, find the angle between them (in degrees).",
+            "type": "write",
+            "correctAnswer": "104.0",
+            "points": 8
+        }
+    ]
     },
     {
         "id": "la-transformations-and-matrices-1",
