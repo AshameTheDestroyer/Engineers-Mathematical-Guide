@@ -33,6 +33,11 @@ export const ReadingLessonSchema = z.intersection(
         type: z.nativeEnum(Object.pick(LessonTypeEnum, "reading"), {
             errorMap: () => ({ message: "required" }),
         }),
+        "estimated-reading-time": z
+            .number({ required_error: "required" })
+            .nonnegative("nonnegative")
+            .int("integer")
+            .default(0),
     })
 );
 
