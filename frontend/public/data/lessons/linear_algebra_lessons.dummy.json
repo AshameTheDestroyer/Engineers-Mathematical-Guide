@@ -30,7 +30,8 @@
     {
         "id": "la-systems-and-solutions-5",
         "title": "Foundations of Linear Systems and Their Geometric Meaning",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 720
     },
     {
         "id": "la-systems-and-solutions-6",
