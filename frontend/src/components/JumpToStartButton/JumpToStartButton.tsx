@@ -58,8 +58,6 @@ export const JumpToStartButton: FC<JumpToStartButtonProps> = ({
             return;
         }
 
-        console.log(GetScrollValue());
-
         buttonReference.current.classList[
             GetScrollValue() < threshold ? "add" : "remove"
         ]("hidden");
