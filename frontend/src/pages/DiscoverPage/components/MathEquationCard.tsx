@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { LevelTag } from "./LevelTag";
-import { twJoin, twMerge } from "tailwind-merge";
 import { useShadow } from "@/hooks/useShadow";
 import { useNavigate } from "react-router-dom";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { MathEquationDTO } from "@/schemas/MathEquationSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -62,6 +62,7 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
             {!isSkeleton && (
                 <MathExpression
                     className="my-auto w-full overflow-x-auto overflow-y-hidden px-1 py-2 text-lg [&>*]:mx-auto [&>*]:w-min"
+                    dir="ltr"
                     variant="p"
                 >
                     {mathEquation.equation}
