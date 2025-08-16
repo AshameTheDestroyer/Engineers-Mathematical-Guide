@@ -115,9 +115,16 @@ export const LessonPage: FC = () => {
             <Flexbox className="grow" gap="8" direction="column">
                 <Typography className="text-xl font-bold" variant="h1">
                     {lesson.title}{" "}
-                    {lesson.type == LessonTypeEnum.video
-                        ? `(${Intl.DateTimeFormat("en-US", { minute: "2-digit", second: "2-digit" }).format(new Date(0, 0, 0, 0, 0, lesson.duration - 1))})`
-                        : ""}
+                    <span className="text-lg">
+                        {(() => {
+                            switch (lesson.type) {
+                                case LessonTypeEnum.video:
+                                    return `(${Intl.DateTimeFormat("en-US", { minute: "2-digit", second: "2-digit" }).format(new Date(0, 0, 0, 0, 0, lesson.duration - 1))})`;
+                                case LessonTypeEnum.reading:
+                                    return `(${Intl.DateTimeFormat("en-US", { minute: "numeric" }).format(new Date(0, 0, 0, 0, 0, lesson["estimated-reading-time"]))} minutes of reading)`;
+                            }
+                        })()}
+                    </span>
                 </Typography>
 
                 {(() => {
