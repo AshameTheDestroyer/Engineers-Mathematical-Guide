@@ -21,7 +21,7 @@ export const ReadingLesson: FC<ReadingLessonProps> = ({ lesson }) => {
     });
 
     return (
-        <Flexbox className="bg-background-normal-hover relative min-h-[60dvh] grow rounded-2xl p-4">
+        <Flexbox className="bg-background-normal relative min-h-[60dvh] grow rounded-2xl p-4">
             <Flexbox
                 className="absolute inset-0 overflow-auto p-[inherit]"
                 gap="8"

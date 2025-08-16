@@ -15,7 +15,7 @@ export const VideoLesson: FC<VideoLessonProps> = ({ lesson }) => {
     const { language, GetLocale } = useLocalization();
 
     return (
-        <Flexbox className="bg-background-normal-hover relative min-h-[60dvh] grow rounded-2xl p-4">
+        <Flexbox className="bg-background-normal relative min-h-[60dvh] grow rounded-2xl p-4">
             <Flexbox
                 className="-translate-1/2 absolute left-1/2 top-1/2"
                 gap="4"

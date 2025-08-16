@@ -53,7 +53,7 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                                     h6: "text-xs",
                                     a: "text-secondary-normal font-bold underline",
                                     q: twJoin(
-                                        "bg-background-dark-hover border-3 border-transparent",
+                                        "bg-background-dark border-3 border-transparent",
                                         direction == "ltr"
                                             ? "border-l-primary-normal! rounded-r-lg pl-2"
                                             : "border-r-primary-normal! rounded-l-lg pr-2"
@@ -97,7 +97,7 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                 return ({ className, ...props }) => (
                     <table
                         className={twMerge(
-                            "[&_:is(td,th)]:border-background-darker [&>thead>tr]:bg-background-dark-active [&>tbody>tr:nth-of-type(2n)]:bg-background-dark-hover [&_:is(td,th)]:border-2 [&_:is(td,th)]:p-2 [&_:is(td,th)]:text-start",
+                            "[&_:is(td,th)]:border-background-darker [&>thead>tr]:bg-background-dark-active [&>tbody>tr:nth-of-type(2n)]:bg-background-dark-hover [&>tbody>tr:nth-of-type(2n+1)]:bg-background-normal [&_:is(td,th)]:border-2 [&_:is(td,th)]:p-2 [&_:is(td,th)]:text-start",
                             className as string
                         )}
                         {...props}
@@ -107,7 +107,7 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                 return ({ className, ...props }) => (
                     <Separator
                         className={twMerge(
-                            "border-background-darker",
+                            "border-background-dark",
                             className as string
                         )}
                         thickness="thick"

@@ -104,7 +104,7 @@ export const LessonPage: FC = () => {
             <Title>{lesson.title}</Title>
 
             <LessonDropView
-                className="bg-background-normal-hover rounded-2xl xl:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] xl:min-w-[32rem] xl:max-w-[32rem] xl:overflow-y-auto xl:overflow-x-hidden"
+                className="bg-background-normal rounded-2xl xl:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] xl:min-w-[32rem] xl:max-w-[32rem] xl:overflow-y-auto xl:overflow-x-hidden"
                 orientation={
                     isScreenSize["max-sm"] || isScreenSize.xl
                         ? "portrait"
