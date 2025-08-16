@@ -39,7 +39,7 @@
     { "element": "h3", "children": "Example (2×2 System):" },
     {
         "element": "mathjax",
-        "children": "\\begin{align*} (1)&\\quad 2x + y = 5 \\ (2)&\\quad x - y = 1 \\end{align*}"
+        "children": "\\begin{align*} (1)&\\quad 2x + y &= 5 \\\\ (2)&\\quad x - y &= 1 \\end{align*}"
     },
     {
         "element": "p",
@@ -179,13 +179,13 @@
     { "element": "h4", "children": "Example: No Solution (Parallel)" },
     {
         "element": "mathjax",
-        "children": "\\begin{align*} x + y &= 3 \\ x + y &= 5 \\end{align*}"
+        "children": "\\begin{align*} x + y &= 3 \\\\ x + y &= 5 \\end{align*}"
     },
     { "element": "p", "children": "→ Parallel lines → ❌ No intersection" },
     { "element": "h4", "children": "Example: Infinite Solutions (Same Line)" },
     {
         "element": "mathjax",
-        "children": "\\begin{align*} 2x + 3y &= 6 \\ 4x + 6y &= 12 \\quad \\text{(just doubled)} \\end{align*}"
+        "children": "\\begin{align*} 2x + 3y &= 6 \\\\ 4x + 6y &= 12 \\quad \\text{(just doubled)} \\end{align*}"
     },
     {
         "element": "p",
@@ -204,7 +204,7 @@
     { "element": "h3", "children": "Example (3×3 System):" },
     {
         "element": "mathjax",
-        "children": "\\begin{align*} x + y + z &= 6 \\ 2x - y + z &= 3 \\ x + z &= 4 \\end{align*}"
+        "children": "\\begin{align*} x + y + z &= 6 \\\\ 2x - y + z &= 3 \\\\ x + z &= 4 \\end{align*}"
     },
     {
         "element": "p",
