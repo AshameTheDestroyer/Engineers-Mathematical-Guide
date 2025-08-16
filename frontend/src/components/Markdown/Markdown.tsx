@@ -1,20 +1,24 @@
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { RichText } from "../RichText/RichText";
 import { FC, JSX, PropsWithChildren } from "react";
 import { Separator } from "../Separator/Separator";
 import { MarkdownDTO } from "@/schemas/MarkdownSchema";
 import { MathExpression } from "../MathExpression/MathExpression";
+import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
 export type MarkdownProps = MarkdownDTO;
 
 export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
+    const { direction } = useLocalization();
+
     const Element = (() => {
         switch (element) {
             case "ul":
                 return ({ className, ...props }) => (
                     <ul
                         className={twMerge(
-                            "list-disc pl-8",
+                            "list-disc",
+                            direction == "ltr" ? "pl-8" : "pr-8",
                             className as string
                         )}
                         {...props}
@@ -48,7 +52,12 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                                     h5: "text-xs font-bold",
                                     h6: "text-xs",
                                     a: "text-secondary-normal font-bold underline",
-                                    q: "border-l-primary-normal! bg-background-dark-hover border-3 rounded-r-lg border-transparent pl-2",
+                                    q: twJoin(
+                                        "bg-background-dark-hover border-3 border-transparent",
+                                        direction == "ltr"
+                                            ? "border-l-primary-normal! rounded-r-lg pl-2"
+                                            : "border-r-primary-normal! rounded-l-lg pr-2"
+                                    ),
                                 } as Record<typeof element, string>
                             )[element],
                             className as string
