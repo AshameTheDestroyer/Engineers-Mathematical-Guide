@@ -1,5 +1,6 @@
 import { Button } from "../Button/Button";
 import { twJoin, twMerge } from "tailwind-merge";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "../SearchResultDisplay/SearchResultDisplay";
 import {
@@ -51,6 +52,7 @@ export const Table = <T extends Record<string, any>>({
     loadingTypography,
 }: TableProps<T>): ReturnType<FC<TableProps<T>>> => {
     const { direction } = useLocalization();
+    const { isDarkThemed } = useThemeMode();
 
     const keys = useMemo(
         () => _keys ?? Object.keys(data?.[0] ?? {}),
@@ -120,6 +122,7 @@ export const Table = <T extends Record<string, any>>({
                 <Table.Cell
                     key={i}
                     className={twJoin(
+                        "font-bold text-white",
                         i == 0 &&
                             (direction == "ltr"
                                 ? "rounded-tl-[inherit]"
@@ -127,7 +130,10 @@ export const Table = <T extends Record<string, any>>({
                         i == keys.length - 1 &&
                             (direction == "ltr"
                                 ? "rounded-tr-[inherit]"
-                                : "rounded-tl-[inherit]")
+                                : "rounded-tl-[inherit]"),
+                        isDarkThemed
+                            ? "bg-background-dark/50"
+                            : "bg-background-darker/75"
                     )}
                     type="heading"
                 >
@@ -148,7 +154,12 @@ export const Table = <T extends Record<string, any>>({
                                 j == keys.length - 1 &&
                                 (direction == "ltr"
                                     ? "rounded-br-[inherit]"
-                                    : "rounded-bl-[inherit]")
+                                    : "rounded-bl-[inherit]"),
+                            i % 2 != 0
+                                ? isDarkThemed
+                                    ? "bg-background-light/75"
+                                    : "bg-background-dark/75"
+                                : isDarkThemed && "bg-background-dark/25"
                         )}
                         type="cell"
                     >
@@ -167,12 +178,17 @@ Table.Wrapper = <T extends Record<string, any>>({
     children,
     className,
 }: ComponentProps<HTMLDivElement> & Pick<TableProps<T>, "keys">) => {
+    const { isDarkThemed } = useThemeMode();
+
     return (
         <div
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-background-dark/50 border-background-darker border-1 relative grid auto-rows-max overflow-auto rounded-2xl p-4 [&::-webkit-scrollbar]:hidden",
+                "border-background-darker border-1 relative grid auto-rows-max overflow-auto rounded-2xl p-4 [&::-webkit-scrollbar]:hidden",
+                isDarkThemed
+                    ? "bg-background-light/25"
+                    : "bg-background-dark/50",
                 className
             )}
             role="table"
