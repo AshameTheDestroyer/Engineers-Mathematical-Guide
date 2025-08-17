@@ -1,3 +1,5 @@
+import { Anchor, NestableBuiltAnchor } from "@/types/Anchor";
+
 export function BuildRouter<T extends Record<string, Anchor>>(
     routes: T,
     parentsPath: string = ""

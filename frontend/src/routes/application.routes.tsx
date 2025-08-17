@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
@@ -19,7 +20,7 @@ export const APPLICATION_ROUTES = BuildRouter({
     },
 });
 
-export const ApplicationRoute = () => {
+export const ApplicationRoute: FC = () => {
     return (
         <Route
             path={APPLICATION_ROUTES.base.href}

@@ -165,8 +165,10 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                 <NavigationBar
                     className="[&>ul]:gap-0"
                     base={base}
-                    routes={routes}
                     direction="column"
+                    routes={routes.filter(
+                        (route) => route.renderingPredicate?.(myUser) ?? true
+                    )}
                     Renders={(route, i, array) => (
                         <Link
                             key={i}

@@ -3,9 +3,9 @@ import { twJoin } from "tailwind-merge";
 import { Link } from "react-router-dom";
 import { Icon } from "@/components/Icon/Icon";
 import { Locale } from "@/components/Locale/Locale";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathEquationLevel } from "@/schemas/MathEquationSchema";
-import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { MathEquationsModeEnum } from "../pages/MathEquationsPage";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 

@@ -1,18 +1,21 @@
-type Anchor = {
+import { DetailedUserDTO } from "@/schemas/UserSchema";
+
+export type Anchor = {
     href: string;
     title?: string;
     routes?: Record<string, Anchor>;
+    renderingPredicate?: (myUser: DetailedUserDTO | undefined) => boolean;
 } & Either<
     {
         isVariable?: false;
     },
     {
         isVariable: true;
-        variables?: readonly Array<string>;
+        variables?: readonly string[];
     }
 >;
 
-type BuiltAnchor<
+export type BuiltAnchor<
     T extends Anchor,
     U extends readonly string[] = T["variables"] extends readonly string[]
         ? T["variables"]
@@ -34,14 +37,14 @@ type BuiltAnchor<
                   variables: U;
                   MapVariables: (
                       value: Record<U[number], string>,
-                      relative = false
+                      relative: boolean
                   ) => string;
               }
             : {
-                  MapVariable: (value: string, relative = false) => string;
+                  MapVariable: (value: string, relative: boolean) => string;
               }
         : object);
 
-type NestableBuiltAnchor<T extends Record<string, Anchor>> = {
+export type NestableBuiltAnchor<T extends Record<string, Anchor>> = {
     [K in keyof T]: BuiltAnchor<T[K]>;
 };

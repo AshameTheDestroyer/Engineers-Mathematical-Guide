@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
@@ -32,7 +33,7 @@ export const REGISTRATION_ROUTES = BuildRouter({
     },
 });
 
-export const RegistrationRoute = () => {
+export const RegistrationRoute: FC = () => {
     const { language, GetLocale } = useLocalization();
 
     return (

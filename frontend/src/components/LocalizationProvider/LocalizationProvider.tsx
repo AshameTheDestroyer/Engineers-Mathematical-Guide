@@ -1,3 +1,4 @@
+import { Anchor } from "@/types/Anchor";
 import { Gender } from "@/schemas/SignupSchema";
 import {
     WritingDirection,
@@ -114,7 +115,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         const routeLocales = Object.entries(routes).map(([key, value]) => {
             if (key in locales) {
                 return {
-                    href: value.href,
+                    ...value,
                     locale: locales[key],
                 };
             }
@@ -127,7 +128,7 @@ export const LocalizationProvider: FC<LocalizationProviderProps> = ({
         return routeLocales.map(
             (routeLocale) =>
                 ({
-                    href: routeLocale.href,
+                    ...routeLocale,
                     title: GetLocale(routeLocale.locale, language),
                 }) as Anchor
         );

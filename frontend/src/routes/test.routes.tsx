@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
@@ -15,9 +16,11 @@ const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
 
 import route_locales from "@localization/test_page_routes.json";
 
-const TEST_ROUTES_ = BuildRouter({
+export const TEST_ROUTES = BuildRouter({
     base: {
         href: "test",
+        renderingPredicate: () =>
+            EnvironmentVariables.ENVIRONMENT == "development",
         routes: {
             home: { href: "/website" },
             colours: { href: "colours" },
@@ -28,12 +31,7 @@ const TEST_ROUTES_ = BuildRouter({
     },
 });
 
-export const TEST_ROUTES =
-    EnvironmentVariables.ENVIRONMENT == "development"
-        ? TEST_ROUTES_
-        : undefined;
-
-export const TestRoute = () => {
+export const TestRoute: FC = () => {
     const { language, GetLocale } = useLocalization();
 
     if (TEST_ROUTES == null) {
