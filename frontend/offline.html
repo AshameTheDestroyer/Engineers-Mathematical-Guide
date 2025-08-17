@@ -27,6 +27,7 @@
                 min-height: 100vh;
                 min-height: 100dvh;
                 font-family: "offline-font-en", "offline-font-ar";
+                background-image: linear-gradient(180deg, #00af64, #00834b);
             }
             #root {
                 gap: 1.25rem;
@@ -42,8 +43,41 @@
                 place-content: center;
                 flex-direction: column;
                 text-shadow: 0px 0px 5px black;
-                background-image: linear-gradient(180deg, #00af64, #00834b);
+
+                background-image:
+                    linear-gradient(135deg, #00af64 50%, transparent),
+                    radial-gradient(#00834b 8px, #00af64 16px);
+                background-size:
+                    100% 100%,
+                    64px 64px;
+
+                animation-duration: 120s;
+                animation-name: background-moving;
+                animation-timing-function: ease-in-out;
+                animation-iteration-count: infinite;
+                animation-fill-mode: forwards;
+                animation-direction: normal;
             }
+
+            @media (width < 48rem) {
+                #root {
+                    animation-duration: 240s;
+                }
+            }
+
+            @keyframes background-moving {
+                from {
+                    background-position:
+                        0 0,
+                        0 0;
+                }
+                to {
+                    background-position:
+                        0 0,
+                        100% 100%;
+                }
+            }
+
             h1,
             p {
                 margin: 0;
