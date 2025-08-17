@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
-import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
@@ -22,11 +21,8 @@ export const VideoLesson: FC<VideoLessonProps> = ({ lesson }) => {
                 direction="column"
                 placeItems="center"
             >
-                <DoubleCogIcon
-                    size={64}
-                    className="scale-85 [&>*]:[animation-duration:3s]"
-                />
                 <SearchResultDisplay
+                    iconType="loading"
                     title={GetLocale(
                         locales.lessons.video.loading.title,
                         language

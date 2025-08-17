@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Icon, IconProps } from "@/components/Icon/Icon";
 import { RichText } from "@/components/RichText/RichText";
+import { DoubleCogIcon } from "../DoubleCogIcon/DoubleCogIcon";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 
@@ -14,7 +15,7 @@ export type SearchResultDisplayProps = {
     buttons?: PropsWithChildren["children"];
 } & Either<
     {
-        iconType?: "error" | "empty" | "none";
+        iconType?: "error" | "empty" | "none" | "loading";
     },
     {
         iconType: "custom";
@@ -43,20 +44,26 @@ export const SearchResultDisplay: FC<SearchResultDisplayProps> = ({
             placeItems="center"
             placeContent="center"
         >
-            {iconType != "none" && (
-                <Icon
-                    width={128}
-                    height={128}
-                    {...(iconType == "custom" ? iconProps : {})}
-                    source={
-                        iconType == "empty"
-                            ? search_empty_icon
-                            : iconType == "error"
-                              ? network_error_icon
-                              : iconProps!.source
-                    }
-                />
-            )}
+            {iconType != "none" &&
+                (iconType == "loading" ? (
+                    <DoubleCogIcon
+                        size={64}
+                        className="scale-85 [&>*]:[animation-duration:3s]"
+                    />
+                ) : (
+                    <Icon
+                        width={128}
+                        height={128}
+                        {...(iconType == "custom" ? iconProps : {})}
+                        source={
+                            iconType == "empty"
+                                ? search_empty_icon
+                                : iconType == "error"
+                                  ? network_error_icon
+                                  : iconProps!.source
+                        }
+                    />
+                ))}
             <Typography className="text-center text-xl font-bold" variant="h2">
                 {title}
             </Typography>
