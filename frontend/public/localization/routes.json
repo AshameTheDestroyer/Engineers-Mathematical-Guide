@@ -12,8 +12,10 @@
     "profile": { "en": "Profile", "ar": "المِلَفُّ الشَّخصيّ" },
     "components": { "en": "Components", "ar": "المُكوِّنات" },
     "typography": { "en": "Typography", "ar": "النُّصوص" },
+    "dashboard": { "en": "Dashboard", "ar": "لَوحةُ التَّحَكُّم" },
     "application": { "en": "Application", "ar": "التَّطبيق" },
     "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
+    "dashboard-users": { "en": "Users", "ar": "المُستَخدِمون" },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"

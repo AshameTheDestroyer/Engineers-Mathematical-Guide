@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Route } from "react-router-dom";
+import { RoleEnum } from "@/schemas/UserSchema";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
@@ -16,6 +17,10 @@ export const APPLICATION_ROUTES = BuildRouter({
             profile: { href: "profile" },
             profileID: { href: "profile/:profileID", isVariable: true },
             discover: { href: "/discover" },
+            dashboard: {
+                href: "/dashboard",
+                renderingPredicate: (myUser) => myUser?.role == RoleEnum.admin,
+            },
         },
     },
 });
