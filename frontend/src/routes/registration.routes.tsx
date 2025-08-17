@@ -7,6 +7,8 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/routes.json";
+
 const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
 const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
 const RegistrationPage = LazyImport(
@@ -18,8 +20,6 @@ const ForgotPasswordPage = LazyImport(
 const TermsAndConditionsPage = LazyImport(
     "./pages/RegistrationPage/pages/TermsAndConditionsPage"
 );
-
-import route_locales from "@localization/registration_page_routes.json";
 
 export const REGISTRATION_ROUTES = BuildRouter({
     base: {
@@ -50,9 +50,7 @@ export const RegistrationRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <SignupPage />
-                        <Title>
-                            {GetLocale(route_locales.signup, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.signup, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -61,9 +59,7 @@ export const RegistrationRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <LoginPage />
-                        <Title>
-                            {GetLocale(route_locales.login, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.login, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -73,10 +69,7 @@ export const RegistrationRoute: FC = () => {
                     <LazyComponent>
                         <ForgotPasswordPage />
                         <Title>
-                            {GetLocale(
-                                route_locales["forgot-password"],
-                                language
-                            )}
+                            {GetLocale(locales["forgot-password"], language)}
                         </Title>
                     </LazyComponent>
                 }
@@ -90,7 +83,7 @@ export const RegistrationRoute: FC = () => {
                         <TermsAndConditionsPage />
                         <Title>
                             {GetLocale(
-                                route_locales["terms-and-conditions"],
+                                locales["terms-and-conditions"],
                                 language
                             )}
                         </Title>

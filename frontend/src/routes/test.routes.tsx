@@ -8,13 +8,13 @@ import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/routes.json";
+
 const TestPage = LazyImport("./pages/TestPage/TestPage");
 const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
 const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
 const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
 const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
-
-import route_locales from "@localization/test_page_routes.json";
 
 export const TEST_ROUTES = BuildRouter({
     base: {
@@ -52,9 +52,7 @@ export const TestRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <ColoursPage />
-                        <Title>
-                            {GetLocale(route_locales.colours, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.colours, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -63,9 +61,7 @@ export const TestRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <TypographyPage />
-                        <Title>
-                            {GetLocale(route_locales.typography, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.typography, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -74,9 +70,7 @@ export const TestRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <ComponentsPage />
-                        <Title>
-                            {GetLocale(route_locales.components, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.components, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -85,9 +79,7 @@ export const TestRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <PalettesPage />
-                        <Title>
-                            {GetLocale(route_locales.palettes, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.palettes, language)}</Title>
                     </LazyComponent>
                 }
             />

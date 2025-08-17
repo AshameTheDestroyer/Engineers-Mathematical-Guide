@@ -10,8 +10,6 @@ import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 import { ExaminationResultModal } from "./components/ExaminationResultModal";
 import { ExaminationDisclaimerModal } from "./components/ExaminationDisclaimerModal";
 
-import route_locales from "@localization/discover_page_routes.json";
-
 export const DiscoverPage: FC = () => {
     useScrollRestoration();
     useDefaultRoute(
@@ -22,7 +20,6 @@ export const DiscoverPage: FC = () => {
     return (
         <Page>
             <ApplicationBar
-                routeLocales={route_locales}
                 baseRoute={DISCOVER_ROUTES.base.absolute}
                 routes={Object.omit(
                     DISCOVER_ROUTES.base.routes,

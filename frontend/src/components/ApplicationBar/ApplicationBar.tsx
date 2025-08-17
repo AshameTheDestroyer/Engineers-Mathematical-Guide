@@ -13,13 +13,14 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
+import locales from "@localization/routes.json";
+
 export type ApplicationBarProps = ComponentProps<HTMLDivElement> & {
     baseRoute: string;
     withoutLogo?: boolean;
     withoutBreadcrumbs?: boolean;
     routes: Record<string, Anchor>;
     buttons?: PropsWithChildren["children"];
-    routeLocales: Record<string, Record<string, string>>;
 };
 
 export const ApplicationBar: FC<ApplicationBarProps> = ({
@@ -31,7 +32,6 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     baseRoute,
     className,
     withoutLogo,
-    routeLocales,
     withoutBreadcrumbs,
 }) => {
     const { isScreenSize } = useScreenSize();
@@ -81,7 +81,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                     <NavigationMenuButton
                         thickness="thin"
                         base={baseRoute}
-                        routes={GetRouteLocales(routes, routeLocales, language)}
+                        routes={GetRouteLocales(routes, locales, language)}
                     />
                 </ButtonBox>
             </ButtonBox>
