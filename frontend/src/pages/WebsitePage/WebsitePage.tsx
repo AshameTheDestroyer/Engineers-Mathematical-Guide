@@ -14,7 +14,6 @@ import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
 
 import locales from "@localization/website_page.json";
-import route_locales from "@localization/website_page_routes.json";
 
 export const WebsitePage: FC = () => {
     useScrollRestoration();
@@ -24,7 +23,6 @@ export const WebsitePage: FC = () => {
     return (
         <Page className="overflow-x-clip">
             <ApplicationBar
-                routeLocales={route_locales}
                 routes={WEBSITE_ROUTES.base.routes}
                 baseRoute={WEBSITE_ROUTES.base.absolute}
                 buttons={

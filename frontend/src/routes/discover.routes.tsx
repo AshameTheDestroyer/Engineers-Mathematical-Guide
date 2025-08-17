@@ -7,6 +7,8 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/routes.json";
+
 const DiscoverPage = LazyImport("./pages/DiscoverPage/DiscoverPage");
 const ModulePage = LazyImport("./pages/DiscoverPage/pages/ModulePage");
 const LessonPage = LazyImport("./pages/DiscoverPage/pages/LessonPage");
@@ -28,8 +30,6 @@ const MathEquationPage = LazyImport(
 const MathEquationsPage = LazyImport(
     "./pages/DiscoverPage/pages/MathEquationsPage"
 );
-
-import route_locales from "@localization/discover_page_routes.json";
 
 export const DISCOVER_ROUTES = BuildRouter({
     base: {
@@ -93,9 +93,7 @@ export const DiscoverRoute: FC = () => {
                 element={
                     <LazyComponent>
                         <CoursesPage />
-                        <Title>
-                            {GetLocale(route_locales.courses, language)}
-                        </Title>
+                        <Title>{GetLocale(locales.courses, language)}</Title>
                     </LazyComponent>
                 }
             />
@@ -137,10 +135,7 @@ export const DiscoverRoute: FC = () => {
                     <LazyComponent>
                         <LearningTracksPage />
                         <Title>
-                            {GetLocale(
-                                route_locales["learning-tracks"],
-                                language
-                            )}
+                            {GetLocale(locales["learning-tracks"], language)}
                         </Title>
                     </LazyComponent>
                 }
@@ -167,10 +162,7 @@ export const DiscoverRoute: FC = () => {
                     <LazyComponent>
                         <MathEquationsPage />
                         <Title>
-                            {GetLocale(
-                                route_locales["math-equations"],
-                                language
-                            )}
+                            {GetLocale(locales["math-equations"], language)}
                         </Title>
                     </LazyComponent>
                 }

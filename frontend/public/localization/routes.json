@@ -1,0 +1,34 @@
+{
+    "test": { "en": "TEST", "ar": "لِلاخْتِبار" },
+    "about": { "en": "About", "ar": "حَوْل" },
+    "help": { "en": "Help", "ar": "مُساعَدة" },
+    "colours": { "en": "Colours", "ar": "الأَلْوان" },
+    "home": { "en": "Home", "ar": "الصَّفحةُ الرَّئيسيّة" },
+    "login": { "en": "Login", "ar": "تَسجيلُ الدّخول" },
+    "discover": { "en": "Discover", "ar": "اكتَشِف" },
+    "signup": { "en": "Sign up", "ar": "إنشاءُ حِساب" },
+    "palettes": { "en": "Palettes", "ar": "لِوَحُ الأَلْوان" },
+    "references": { "en": "References", "ar": "المَراجِع" },
+    "profile": { "en": "Profile", "ar": "المِلَفُّ الشَّخصيّ" },
+    "components": { "en": "Components", "ar": "المُكوِّنات" },
+    "typography": { "en": "Typography", "ar": "النُّصوص" },
+    "application": { "en": "Application", "ar": "التَّطبيق" },
+    "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
+    "forgot-password": {
+        "en": "Forgot Password",
+        "ar": "نَسيتُ كَلمةَ المُرور"
+    },
+    "terms-and-conditions": {
+        "en": "Terms and Conditions",
+        "ar": "المَعاييرُ والضّوابِط"
+    },
+    "courses": { "en": "Courses", "ar": "المُقرَّرات" },
+    "learning-tracks": {
+        "en": "Learning Tracks",
+        "ar": "المَساراتُ الدِّراسيّة"
+    },
+    "math-equations": {
+        "en": "Math Equations",
+        "ar": "المُعادلاتُ الرِّياضيّة"
+    }
+}

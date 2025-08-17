@@ -7,8 +7,6 @@ import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 
-import route_locales from "@localization/test_page_routes.json";
-
 export const TestPage: FC = () => {
     if (!TEST_ROUTES.base.renderingPredicate()) {
         return <Navigate to={APPLICATION_ROUTES.base.absolute} />;
@@ -23,7 +21,6 @@ export const TestPage: FC = () => {
     return (
         <Page>
             <ApplicationBar
-                routeLocales={route_locales}
                 routes={TEST_ROUTES.base.routes}
                 baseRoute={TEST_ROUTES.base.absolute}
             />
