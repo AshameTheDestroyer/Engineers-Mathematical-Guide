@@ -1,5 +1,5 @@
-import { twJoin, twMerge } from "tailwind-merge";
 import { RichText } from "../RichText/RichText";
+import { twJoin, twMerge } from "tailwind-merge";
 import { FC, JSX, PropsWithChildren } from "react";
 import { Separator } from "../Separator/Separator";
 import { MarkdownDTO } from "@/schemas/MarkdownSchema";
@@ -53,7 +53,7 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                                     h6: "text-xs",
                                     a: "text-secondary-normal font-bold underline",
                                     q: twJoin(
-                                        "bg-background-dark border-3 border-transparent",
+                                        "bg-background-dark-hover border-3 border-transparent",
                                         direction == "ltr"
                                             ? "border-l-primary-normal! rounded-r-lg pl-2"
                                             : "border-r-primary-normal! rounded-l-lg pr-2"
@@ -107,7 +107,7 @@ export const Markdown: FC<MarkdownProps> = ({ props, element, children }) => {
                 return ({ className, ...props }) => (
                     <Separator
                         className={twMerge(
-                            "border-background-dark",
+                            "border-background-dark-hover",
                             className as string
                         )}
                         thickness="thick"
