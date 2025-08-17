@@ -1,0 +1,291 @@
+[
+    { "element": "h2", "children": "Overview" },
+    {
+        "element": "p",
+        "children": "In this lesson, you’ll learn how to simplify and solve systems of linear equations using **elementary row operations**. You’ll also explore the different types of solution structures: unique, infinite, and no solutions — and how to identify them systematically."
+    },
+    {
+        "element": "p",
+        "children": "This is the foundation for methods like **Gaussian elimination** and understanding the **rank** and **consistency** of a system."
+    },
+    {
+        "element": "p",
+        "children": "By the end of this lesson, you will:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Use augmented matrices to represent systems of linear equations."
+            },
+            {
+                "element": "li",
+                "children": "Apply the three elementary row operations to transform a matrix."
+            },
+            {
+                "element": "li",
+                "children": "Recognize row-echelon form and its role in solving systems."
+            },
+            {
+                "element": "li",
+                "children": "Identify whether a system has a unique solution, infinitely many solutions, or no solution."
+            },
+            {
+                "element": "li",
+                "children": "Interpret free variables and express infinite solutions using parameters."
+            }
+        ]
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "1. Augmented Matrices: A Compact Representation"
+    },
+    {
+        "element": "p",
+        "children": "A system of linear equations can be represented as an **augmented matrix**, which combines the coefficients and constants into a single structure."
+    },
+    {
+        "element": "p",
+        "children": "For example, the system:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*}\nx + 2y - z &= 1 \\\\\n2x - y + 3z &= 4 \\\\\n3x + y + 2z &= 5\n\\end{align*}"
+    },
+    {
+        "element": "p",
+        "children": "is represented by the augmented matrix:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{ccc|c}\n1 & 2 & -1 & 1 \\\\\n2 & -1 & 3 & 4 \\\\\n3 & 1 & 2 & 5\n\\end{array}\\right]"
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "2. Elementary Row Operations"
+    },
+    {
+        "element": "p",
+        "children": "We can manipulate the rows of an augmented matrix using three **elementary row operations**, which do **not change the solution set**:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**Row Swap**: Exchange two rows. For example, swap row 1 and row 2: **$ R_1 \\leftrightarrow R_2 $**"
+            },
+            {
+                "element": "li",
+                "children": "**Row Scaling**: Multiply a row by a nonzero constant. For example, double row 3: **$ R_3 \\leftarrow 2R_3 $**"
+            },
+            {
+                "element": "li",
+                "children": "**Row Replacement**: Add a multiple of one row to another. For example: **$ R_2 \\leftarrow R_2 - 2R_1 $**"
+            }
+        ]
+    },
+    {
+        "element": "q",
+        "children": "✅ These operations help us transform the matrix into simpler forms — like **row-echelon form** or **reduced row-echelon form** — where solutions become obvious."
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "3. Goal: Row-Echelon Form"
+    },
+    {
+        "element": "p",
+        "children": "A matrix is in **row-echelon form** if:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "All nonzero rows are above any rows of all zeros"
+            },
+            {
+                "element": "li",
+                "children": "Each leading entry (first nonzero) of a row is to the right of the leading entry above it"
+            },
+            {
+                "element": "li",
+                "children": "All entries below a leading entry are zero"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "Example of row-echelon form:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{ccc|c}\n1 & 2 & -1 & 1 \\\\\n0 & 1 & -2 & 3 \\\\\n0 & 0 & 1 & 2\n\\end{array}\\right]"
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "4. Solution Structures: Three Possibilities"
+    },
+    {
+        "element": "p",
+        "children": "After applying row operations, we can determine the **solution structure** of the system."
+    },
+    {
+        "element": "h3",
+        "children": "Case 1: Unique Solution"
+    },
+    {
+        "element": "p",
+        "children": "If every variable corresponds to a **leading 1** (pivot), and there are no contradictions, the system has **exactly one solution**."
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{cc|c}\n1 & 0 & 3 \\\\\n0 & 1 & -1\n\\end{array}\\right] \\Rightarrow x = 3,\\ y = -1"
+    },
+    {
+        "element": "h3",
+        "children": "Case 2: Infinitely Many Solutions"
+    },
+    {
+        "element": "p",
+        "children": "If there is at least one **free variable** (a column without a pivot), the system has **infinitely many solutions**."
+    },
+    {
+        "element": "p",
+        "children": "For example:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{ccc|c}\n1 & 2 & 0 & 4 \\\\\n0 & 0 & 1 & 1\n\\end{array}\\right]"
+    },
+    {
+        "element": "p",
+        "children": "Here, **$ y $** has no pivot → it's a **free variable**. Let **$ y = t $**, then **$ x = 4 - 2t $**, **$ z = 1 $**. The solution is parametric:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\begin{cases}\nx = 4 - 2t \\\\\ny = t \\\\\nz = 1\n\\end{cases}"
+    },
+    {
+        "element": "h3",
+        "children": "Case 3: No Solution (Inconsistent System)"
+    },
+    {
+        "element": "p",
+        "children": "If a row reduces to **$ 0 = 1 $** (or equivalent), the system is **inconsistent**."
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{cc|c}\n1 & 2 & 3 \\\\\n0 & 0 & 1\n\\end{array}\\right] \\Rightarrow 0x + 0y = 1"
+    },
+    {
+        "element": "p",
+        "children": "This is impossible → ❌ **no solution**."
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "5. Example: Solving via Row Operations"
+    },
+    {
+        "element": "p",
+        "children": "Solve the system:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*}\nx + y + z &= 6 \\\\\n2x + 3y + z &= 10 \\\\\nx + y + 2z &= 7\n\\end{align*}"
+    },
+    {
+        "element": "p",
+        "children": "Step 1: Write the augmented matrix:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n2 & 3 & 1 & 10 \\\\\n1 & 1 & 2 & 7\n\\end{array}\\right]"
+    },
+    {
+        "element": "p",
+        "children": "Step 2: Eliminate below pivot in column 1:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**$ R_2 \\leftarrow R_2 - 2R_1 $**"
+            },
+            {
+                "element": "li",
+                "children": "**$ R_3 \\leftarrow R_3 - R_1 $**"
+            }
+        ]
+    },
+    {
+        "element": "mathjax",
+        "children": "\\left[\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & -1 & -2 \\\\\n0 & 0 & 1 & 1\n\\end{array}\\right]"
+    },
+    {
+        "element": "p",
+        "children": "Now in row-echelon form. Back-substitute:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "From row 3: **$ z = 1 $**"
+            },
+            {
+                "element": "li",
+                "children": "From row 2: **$ y - z = -2 \\Rightarrow y = -1 $**"
+            },
+            {
+                "element": "li",
+                "children": "From row 1: **$ x + y + z = 6 \\Rightarrow x = 6 $**"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "✅ Solution: **$ (x, y, z) = (6, -1, 1) $** — **unique solution**."
+    },
+    { "element": "hr" },
+    {
+        "element": "h2",
+        "children": "6. Summary"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Use **augmented matrices** to represent linear systems compactly."
+            },
+            {
+                "element": "li",
+                "children": "Apply **elementary row operations** to simplify the system."
+            },
+            {
+                "element": "li",
+                "children": "Transform to **row-echelon form** to analyze solutions."
+            },
+            {
+                "element": "li",
+                "children": "Three outcomes: **unique**, **infinite**, or **no solution**."
+            },
+            {
+                "element": "li",
+                "children": "Free variables → infinite solutions; contradiction → no solution."
+            }
+        ]
+    },
+    {
+        "element": "q",
+        "children": "💡 Row operations are the engine of linear algebra. Master them, and you’ll unlock matrix inverses, determinants, and vector spaces later!"
+    }
+]

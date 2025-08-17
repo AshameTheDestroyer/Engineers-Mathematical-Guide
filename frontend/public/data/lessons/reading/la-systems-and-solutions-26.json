@@ -1,0 +1,396 @@
+[
+    {
+        "element": "h2",
+        "children": "Overview"
+    },
+    {
+        "element": "p",
+        "children": "In this lesson, we dive deep into the structure of solution sets for linear systems, focusing on the powerful idea of **homogeneity** and its connection to **linear independence**. You’ll see how the solutions to **$ A\\vec{x} = \\vec{0} $** form a subspace — the **null space** — and how this shapes the solutions to non-homogeneous systems."
+    },
+    {
+        "element": "p",
+        "children": "We’ll also define **linear independence** precisely and show how it determines whether solutions are unique."
+    },
+    {
+        "element": "p",
+        "children": "By the end of this lesson, you will:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Understand the difference between **homogeneous** and **non-homogeneous** systems."
+            },
+            {
+                "element": "li",
+                "children": "Describe the **null space** of a matrix as a subspace defined by **$ A\\vec{x} = \\vec{0} $**."
+            },
+            {
+                "element": "li",
+                "children": "Recognize that solution sets of **$ A\\vec{x} = \\vec{b} $** are **translations** of the null space."
+            },
+            {
+                "element": "li",
+                "children": "Define **linear independence** of vectors and test it using matrix rank."
+            },
+            {
+                "element": "li",
+                "children": "Connect linear independence to the **uniqueness** of solutions."
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "1. Homogeneous Systems: **$ A\\vec{x} = \\vec{0} $**"
+    },
+    {
+        "element": "p",
+        "children": "A linear system is **homogeneous** if it has the form:"
+    },
+    {
+        "element": "mathjax",
+        "children": "A\\vec{x} = \\vec{0}"
+    },
+    {
+        "element": "p",
+        "children": "The zero vector on the right-hand side guarantees **at least one solution**: the **trivial solution** **$ \\vec{x} = \\vec{0} $**."
+    },
+    {
+        "element": "p",
+        "children": "But are there others?"
+    },
+    {
+        "element": "h3",
+        "children": "Trivial vs. Non-Trivial Solutions"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**Trivial solution**: **$ \\vec{x} = \\vec{0} $** — always exists."
+            },
+            {
+                "element": "li",
+                "children": "**Non-trivial solution**: Some **$ \\vec{x} \\neq \\vec{0} $** such that **$ A\\vec{x} = \\vec{0} $**."
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "✅ Non-trivial solutions exist **if and only if** the columns of **$ A $** are **linearly dependent**."
+    },
+    {
+        "element": "q",
+        "children": "The existence of non-trivial solutions means some column can be written as a combination of the others."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "2. The Null Space: A Solution Space"
+    },
+    {
+        "element": "p",
+        "children": "The set of all solutions to **$ A\\vec{x} = \\vec{0} $** is called the **null space** of **$ A $**, denoted **$ \\text{Nul}(A) $**."
+    },
+    {
+        "element": "p",
+        "children": "It is always a **subspace** of **$ \\mathbb{R}^n $** (where **$ n $** is the number of variables), meaning:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "It contains the zero vector."
+            },
+            {
+                "element": "li",
+                "children": "It is closed under vector addition: if **$ \\vec{u}, \\vec{v} \\in \\text{Nul}(A) $**, then **$ \\vec{u} + \\vec{v} \\in \\text{Nul}(A) $**."
+            },
+            {
+                "element": "li",
+                "children": "It is closed under scalar multiplication: if **$ \\vec{u} \\in \\text{Nul}(A) $**, then **$ t\\vec{u} \\in \\text{Nul}(A) $** for any scalar **$ t $**."
+            }
+        ]
+    },
+    {
+        "element": "h3",
+        "children": "Example"
+    },
+    {
+        "element": "p",
+        "children": "Let:"
+    },
+    {
+        "element": "mathjax",
+        "children": "A = \\begin{bmatrix} 1 & -2 & 1 \\\\ 0 & 1 & -3 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "Solve **$ A\\vec{x} = \\vec{0} $**. After row reduction:"
+    },
+    {
+        "element": "mathjax",
+        "children": "x_1 - 2x_2 + x_3 = 0,\\quad x_2 - 3x_3 = 0"
+    },
+    {
+        "element": "p",
+        "children": "Let **$ x_3 = t $**. Then **$ x_2 = 3t $**, **$ x_1 = 2(3t) - t = 5t $**. So:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{x} = t \\begin{bmatrix} 5 \\\\ 3 \\\\ 1 \\end{bmatrix},\\quad t \\in \\mathbb{R}"
+    },
+    {
+        "element": "p",
+        "children": "✅ The null space is the **line** through the origin in the direction of **$ \\begin{bmatrix} 5 \\\\ 3 \\\\ 1 \\end{bmatrix} $**."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "3. Non-Homogeneous Systems: **$ A\\vec{x} = \\vec{b} $**, **$ \\vec{b} \\neq \\vec{0} $**"
+    },
+    {
+        "element": "p",
+        "children": "Now consider a system where **$ \\vec{b} \\neq \\vec{0} $**. Its solution set is **not** a subspace — but it’s closely related."
+    },
+    {
+        "element": "p",
+        "children": "If there is **one solution** **$ \\vec{x}_p $**, then the **complete solution set** is:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{x} = \\vec{x}_p + \\vec{x}_h"
+    },
+    {
+        "element": "p",
+        "children": "where **$ \\vec{x}_h $** is **any solution** to the homogeneous equation."
+    },
+    {
+        "element": "q",
+        "children": "💡 The solution set of **$ A\\vec{x} = \\vec{b} $** is a **translated null space** — it’s parallel to **$ \\text{Nul}(A) $**, but shifted by **$ \\vec{x}_p $**."
+    },
+    {
+        "element": "h3",
+        "children": "Geometric Interpretation"
+    },
+    {
+        "element": "p",
+        "children": "Imagine the null space is a **plane through the origin**. Then the solution set to **$ A\\vec{x} = \\vec{b} $** (if solvable) is a **parallel plane**, not through the origin."
+    },
+    {
+        "element": "p",
+        "children": "This is analogous to lines in 2D:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**$ y = 2x $** → line through origin (homogeneous)"
+            },
+            {
+                "element": "li",
+                "children": "**$ y = 2x + 1 $** → parallel line, shifted up (non-homogeneous)"
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "4. Linear Independence: Are Vectors Redundant?"
+    },
+    {
+        "element": "p",
+        "children": "A set of vectors **$ \\vec{v}_1, \\vec{v}_2, \\dots, \\vec{v}_p $** is **linearly independent** if the **only** solution to:"
+    },
+    {
+        "element": "mathjax",
+        "children": "c_1\\vec{v}_1 + c_2\\vec{v}_2 + \\cdots + c_p\\vec{v}_p = \\vec{0}"
+    },
+    {
+        "element": "p",
+        "children": "is **$ c_1 = c_2 = \\cdots = c_p = 0 $** — the **trivial** combination."
+    },
+    {
+        "element": "p",
+        "children": "If there’s a **non-trivial** solution (some **$ c_i \\neq 0 $**), the vectors are **linearly dependent**."
+    },
+    {
+        "element": "h3",
+        "children": "Testing Linear Independence"
+    },
+    {
+        "element": "p",
+        "children": "Place the vectors as **columns** in a matrix **$ A $**. Then:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "If **$ A\\vec{x} = \\vec{0} $** has **only** the trivial solution → vectors are **independent**."
+            },
+            {
+                "element": "li",
+                "children": "If there are **free variables** → vectors are **dependent**."
+            }
+        ]
+    },
+    {
+        "element": "h3",
+        "children": "Example"
+    },
+    {
+        "element": "p",
+        "children": "Are these vectors linearly independent?"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{v}_1 = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix},\\quad\n\\vec{v}_2 = \\begin{bmatrix} 0 \\\\ 1 \\\\ 1 \\end{bmatrix},\\quad\n\\vec{v}_3 = \\begin{bmatrix} 1 \\\\ 1 \\\\ 2 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "Form matrix **$ A = [\\vec{v}_1\\ \\vec{v}_2\\ \\vec{v}_3] $** and solve **$ A\\vec{x} = \\vec{0} $**. Row reduction shows:"
+    },
+    {
+        "element": "mathjax",
+        "children": "x_3 \\text{ is free} \\Rightarrow \\text{dependent}"
+    },
+    {
+        "element": "p",
+        "children": "Indeed: **$ \\vec{v}_3 = \\vec{v}_1 + \\vec{v}_2 $** — it’s redundant!"
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "5. Connection to Solution Uniqueness"
+    },
+    {
+        "element": "p",
+        "children": "Linear independence determines whether a solution (if it exists) is **unique**."
+    },
+    {
+        "element": "table",
+        "children": [
+            {
+                "element": "thead",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "th",
+                                "children": "Property of **$ A $**"
+                            },
+                            {
+                                "element": "th",
+                                "children": "Homogeneous: **$ A\\vec{x} = \\vec{0} $**"
+                            },
+                            {
+                                "element": "th",
+                                "children": "Non-Homogeneous: **$ A\\vec{x} = \\vec{b} $**"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "element": "tbody",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "Columns **independent**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Only **trivial** solution"
+                            },
+                            {
+                                "element": "td",
+                                "children": "At most **one** solution (if exists)"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "Columns **dependent**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Infinitely many solutions (non-trivial)"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Zero or **infinitely many** solutions"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "element": "q",
+        "children": "Linear independence means no redundancy — every vector adds new direction."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "6. Summary"
+    },
+    {
+        "element": "p",
+        "children": "Key takeaways:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "The solution set of **$ A\\vec{x} = \\vec{0} $** is a **subspace**: the **null space**."
+            },
+            {
+                "element": "li",
+                "children": "The solution set of **$ A\\vec{x} = \\vec{b} $** is a **translated null space** — not through the origin."
+            },
+            {
+                "element": "li",
+                "children": "Linear independence means: **no vector is a linear combination of the others**."
+            },
+            {
+                "element": "li",
+                "children": "Columns of **$ A $** independent **$\\Leftrightarrow$** **$ A\\vec{x} = \\vec{0} $** has only trivial solution."
+            },
+            {
+                "element": "li",
+                "children": "Uniqueness of solution to **$ A\\vec{x} = \\vec{b} $** depends entirely on linear independence."
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "This algebraic-geometric duality is the heart of linear algebra — and will be essential for understanding eigenvectors, orthogonality, and more."
+    }
+]

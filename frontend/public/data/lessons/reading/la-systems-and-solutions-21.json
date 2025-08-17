@@ -1,0 +1,344 @@
+[
+    {
+        "element": "h2",
+        "children": "Overview"
+    },
+    {
+        "element": "p",
+        "children": "In this lesson, we unify the algebraic and geometric views of linear systems through the powerful equation **$ A\\vec{x} = \\vec{b} $**. You’ll learn how matrix-vector multiplication works, what it means for **$ \\vec{b} $** to be in the **span** of the columns of **$ A $**, and how this determines whether a solution exists."
+    },
+    {
+        "element": "p",
+        "children": "This perspective — called the **column view** — is fundamental to understanding linear algebra beyond rote computation."
+    },
+    {
+        "element": "p",
+        "children": "By the end of this lesson, you will:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Interpret the equation **$ A\\vec{x} = \\vec{b} $** as a **linear combination of columns**."
+            },
+            {
+                "element": "li",
+                "children": "Determine whether **$ \\vec{b} $** lies in the **span** of the columns of **$ A $**."
+            },
+            {
+                "element": "li",
+                "children": "Understand the **existence** and **uniqueness** of solutions in terms of column span and linear independence."
+            },
+            {
+                "element": "li",
+                "children": "Connect solution sets of **$ A\\vec{x} = \\vec{b} $** to vector spaces and translation of subspaces."
+            },
+            {
+                "element": "li",
+                "children": "Recognize when a matrix **$ A $** can map some **$ \\vec{x} $** to any desired **$ \\vec{b} $** in **$ \\mathbb{R}^m $**."
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "1. The Equation **$ A\\vec{x} = \\vec{b} $**: Two Views"
+    },
+    {
+        "element": "p",
+        "children": "We’ve seen linear systems row by row. Now, let’s flip the perspective: view them **column by column**."
+    },
+    {
+        "element": "p",
+        "children": "Given a matrix **$ A $** and vectors **$ \\vec{x} $**, **$ \\vec{b} $**, the equation:"
+    },
+    {
+        "element": "mathjax",
+        "children": "A\\vec{x} = \\vec{b}"
+    },
+    {
+        "element": "q",
+        "children": "asks: Can we combine the **columns** of **$ A $** using the entries of **$ \\vec{x} $** to get **$ \\vec{b} $**?"
+    },
+    {
+        "element": "h3",
+        "children": "Matrix-Vector Multiplication as Linear Combination"
+    },
+    {
+        "element": "p",
+        "children": "Let:"
+    },
+    {
+        "element": "mathjax",
+        "children": "A = \\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\end{bmatrix},\\quad\n\\vec{x} = \\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix},\\quad\n\\vec{b} = \\begin{bmatrix} 5 \\\\ 1 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "Then **$ A\\vec{x} $** is:"
+    },
+    {
+        "element": "mathjax",
+        "children": "x_1 \\begin{bmatrix} 1 \\\\ 3 \\end{bmatrix} + x_2 \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 5 \\\\ 1 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "✅ So solving **$ A\\vec{x} = \\vec{b} $** means: *Find weights **$ x_1, x_2 $** such that the linear combination of **$ A $**’s columns equals **$ \\vec{b} $**.*"
+    },
+    {
+        "element": "q",
+        "children": "The vector **$ \\vec{b} $** must lie in the span of the columns of **$ A $** for a solution to exist."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "2. The Column Space of **$ A $**"
+    },
+    {
+        "element": "p",
+        "children": "The **column space** of a matrix **$ A $**, denoted **$ \\text{Col}(A) $**, is the **span of its column vectors**."
+    },
+    {
+        "element": "p",
+        "children": "It answers the question:"
+    },
+    {
+        "element": "q",
+        "children": "For which vectors **$ \\vec{b} $** does **$ A\\vec{x} = \\vec{b} $** have a solution?"
+    },
+    {
+        "element": "p",
+        "children": "Answer: **Exactly when** **$ \\vec{b} \\in \\text{Col}(A) $**."
+    },
+    {
+        "element": "h3",
+        "children": "Example: When **$ \\vec{b} $** Is in the Span"
+    },
+    {
+        "element": "p",
+        "children": "Let:"
+    },
+    {
+        "element": "mathjax",
+        "children": "A = \\begin{bmatrix} 1 & -1 \\\\ 2 & 3 \\end{bmatrix},\\quad\n\\vec{b} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "Are the columns of **$ A $** enough to span **$ \\vec{b} $**? Try to solve:"
+    },
+    {
+        "element": "mathjax",
+        "children": "x_1 \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} + x_2 \\begin{bmatrix} -1 \\\\ 3 \\end{bmatrix} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "This leads to a system that has a solution (**$ x_1 = 2, x_2 = -1 $**), so **$ \\vec{b} \\in \\text{Col}(A) $**."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "3. Existence vs. Uniqueness"
+    },
+    {
+        "element": "p",
+        "children": "Two key questions about **$ A\\vec{x} = \\vec{b} $**:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**Existence**: Is there *any* solution? **$\\Leftrightarrow$** Is **$ \\vec{b} $** in **$ \\text{Col}(A) $**?"
+            },
+            {
+                "element": "li",
+                "children": "**Uniqueness**: Is there *only one* solution? **$\\Leftrightarrow$** Are the columns of **$ A $** **linearly independent**?"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "These two questions are independent:"
+    },
+    {
+        "element": "table",
+        "children": [
+            {
+                "element": "thead",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "th", "children": "Existence" },
+                            { "element": "th", "children": "Uniqueness" },
+                            { "element": "th", "children": "Solution Set" },
+                            { "element": "th", "children": "Geometric Meaning" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "element": "tbody",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "Yes" },
+                            { "element": "td", "children": "Yes" },
+                            { "element": "td", "children": "Single point" },
+                            {
+                                "element": "td",
+                                "children": "Unique solution: **$ \\vec{x} $** lands exactly on **$ \\vec{b} $**"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "Yes" },
+                            { "element": "td", "children": "No" },
+                            { "element": "td", "children": "Line or plane" },
+                            {
+                                "element": "td",
+                                "children": "Infinitely many combinations reach **$ \\vec{b} $**"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "No" },
+                            { "element": "td", "children": "—" },
+                            { "element": "td", "children": "Empty set" },
+                            {
+                                "element": "td",
+                                "children": "**$ \\vec{b} $** is not in the column space"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "4. The General Solution Structure"
+    },
+    {
+        "element": "p",
+        "children": "Suppose we’re solving **$ A\\vec{x} = \\vec{b} $** (non-homogeneous)."
+    },
+    {
+        "element": "p",
+        "children": "If there is **at least one solution** **$ \\vec{x}_p $** (a **particular solution**), then the **complete solution** is:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{x} = \\vec{x}_p + \\vec{x}_h"
+    },
+    {
+        "element": "p",
+        "children": "where **$ \\vec{x}_h $** is **any solution** to the homogeneous equation **$ A\\vec{x} = \\vec{0} $**."
+    },
+    {
+        "element": "p",
+        "children": "Geometrically: the solution set is the **homogeneous solution space** (a line/plane through origin), **shifted** by **$ \\vec{x}_p $**."
+    },
+    {
+        "element": "h3",
+        "children": "Example"
+    },
+    {
+        "element": "p",
+        "children": "Let **$ A\\vec{x} = \\vec{b} $** have a particular solution **$ \\vec{x}_p = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix} $**, and suppose the null space is spanned by **$ \\begin{bmatrix} 1 \\\\ -1 \\end{bmatrix} $**. Then the general solution is:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{x} = \\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix} + t\\begin{bmatrix} 1 \\\\ -1 \\end{bmatrix},\\quad t \\in \\mathbb{R}"
+    },
+    {
+        "element": "p",
+        "children": "This is a **line** in **$ \\mathbb{R}^2 $** — not through the origin, but parallel to the null space."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "5. When Does **$ A\\vec{x} = \\vec{b} $** Have a Solution for **Every** **$ \\vec{b} $**?"
+    },
+    {
+        "element": "p",
+        "children": "A matrix **$ A $** (size **$ m \\times n $**) can reach **every** vector in **$ \\mathbb{R}^m $** **if and only if** its columns **span** all of **$ \\mathbb{R}^m $**."
+    },
+    {
+        "element": "p",
+        "children": "This requires:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "At least **$ m $** columns (i.e., **$ n \\geq m $**) — but more importantly,"
+            },
+            {
+                "element": "li",
+                "children": "The **pivot columns** must cover all **$ m $** rows — meaning **$rank = m $**."
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "Such a matrix has a **wide or square** shape and **full row rank**."
+    },
+    {
+        "element": "q",
+        "children": "💡 If **$ \\text{Col}(A) = \\mathbb{R}^m $**, then **$ A\\vec{x} = \\vec{b} $** is solvable for **any** **$ \\vec{b} $** — though not necessarily uniquely."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "6. Summary"
+    },
+    {
+        "element": "p",
+        "children": "The equation **$ A\\vec{x} = \\vec{b} $** is more than algebra — it’s a **geometric membership test**:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "✅ **Solution exists** **$\\Leftrightarrow$** **$ \\vec{b} $** is in the **span of the columns** of **$ A $**"
+            },
+            {
+                "element": "li",
+                "children": "✅ **Solution unique** **$\\Leftrightarrow$** **Columns of** **$ A $** are **linearly independent**"
+            },
+            {
+                "element": "li",
+                "children": "✅ **General solution** = **particular solution** + **homogeneous solutions**"
+            },
+            {
+                "element": "li",
+                "children": "✅ The column space determines **what outputs** **$ A $** **can produce**"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "Mastering this view unlocks deeper topics: invertibility, rank, least squares, and eigenvectors."
+    }
+]
