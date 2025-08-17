@@ -20,6 +20,20 @@ export type TableProps<T extends Record<string, any>> = QueryProps<
     keys: Array<string>;
     searchQuery: string;
     setSearchQuery: Dispatch<SetStateAction<string>>;
+    loadingTypography: {
+        title: string;
+        paragraph: string;
+    };
+    errorTypography: {
+        title: string;
+        button: string;
+        paragraph: string;
+    };
+    emptyTypography: {
+        title: string;
+        button: string;
+        paragraph: string;
+    };
 } & ChildlessComponentProps<HTMLDivElement>;
 
 export const Table = <T extends Record<string, any>>({
@@ -32,6 +46,9 @@ export const Table = <T extends Record<string, any>>({
     className,
     keys: _keys,
     setSearchQuery,
+    emptyTypography,
+    errorTypography,
+    loadingTypography,
 }: TableProps<T>): ReturnType<FC<TableProps<T>>> => {
     const { direction } = useLocalization();
 
@@ -40,20 +57,26 @@ export const Table = <T extends Record<string, any>>({
         [_keys, data]
     );
 
-    const Wrapper = ({ children }: PropsWithChildren) => (
-        <Table.Wrapper id={id} ref={ref} className={className} keys={keys}>
+    const Wrapper = ({
+        children,
+        className: className_,
+    }: PropsWithChildren & { className?: string }) => (
+        <Table.Wrapper
+            id={id}
+            ref={ref}
+            className={twMerge(className, className_)}
+            keys={keys}
+        >
             {children}
         </Table.Wrapper>
     );
 
     if (isLoading || data == null) {
         return (
-            <Wrapper>
+            <Wrapper className="flex! place-content-center place-items-center">
                 <SearchResultDisplay
-                    className="-translate-1/2 absolute left-1/2 top-1/2"
                     iconType="loading"
-                    title="Loading..."
-                    paragraph="Wait till it loads."
+                    {...loadingTypography}
                 />
             </Wrapper>
         );
@@ -61,14 +84,14 @@ export const Table = <T extends Record<string, any>>({
 
     if (isError) {
         return (
-            <Wrapper>
+            <Wrapper className="flex! place-content-center place-items-center">
                 <SearchResultDisplay
-                    className="-translate-1/2 absolute left-1/2 top-1/2"
                     iconType="error"
-                    title="Error!"
-                    paragraph="An unexpected error happened."
+                    {...errorTypography}
                     buttons={
-                        <Button onClick={(_e) => refetch()}>Reset Error</Button>
+                        <Button onClick={(_e) => refetch()}>
+                            {errorTypography.button}
+                        </Button>
                     }
                 />
             </Wrapper>
@@ -77,22 +100,13 @@ export const Table = <T extends Record<string, any>>({
 
     if (data.length == 0) {
         return (
-            <Wrapper>
+            <Wrapper className="flex! place-content-center place-items-center">
                 <SearchResultDisplay
-                    className="-translate-1/2 absolute left-1/2 top-1/2"
                     iconType="empty"
-                    title="No Data Found"
-                    paragraph="There were no data found."
-                    // paragraph={GetLocale(
-                    //     locales.display.empty.paragraph,
-                    //     language
-                    // ).replace(
-                    //     /\*\*([^\*]+)\*\*/,
-                    //     `**"${searchQuery}"**`
-                    // )}
+                    {...emptyTypography}
                     buttons={
                         <Button onClick={(_e) => setSearchQuery("")}>
-                            Reset Search
+                            {emptyTypography.button}
                         </Button>
                     }
                 />
@@ -158,7 +172,7 @@ Table.Wrapper = <T extends Record<string, any>>({
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-background-dark/50 border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-[1.5px] p-4 [&::-webkit-scrollbar]:hidden",
+                "bg-background-dark/50 border-background-darker border-1 relative grid auto-rows-max overflow-auto rounded-2xl p-4 [&::-webkit-scrollbar]:hidden",
                 className
             )}
             role="table"

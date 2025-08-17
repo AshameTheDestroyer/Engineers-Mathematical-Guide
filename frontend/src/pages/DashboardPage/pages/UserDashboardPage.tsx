@@ -6,24 +6,25 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { SearchHeader } from "@/components/SearchHeader";
 import { useGetUsers } from "@/services/Users/useGetUsers";
 import { useSchematicSearch } from "@/hooks/useSchematicSearch";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import locales from "@localization/user_dashboard_page.json";
 
 export const UserDashboardPage: FC = () => {
+    const { language, GetLocale } = useLocalization();
+
     const { searchQuery, setSearchQuery, debouncedSearchQuery } =
         useSchematicSearch();
 
     const usersQuery = useGetUsers(debouncedSearchQuery);
-
-    console.log(UserSchema._def);
 
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="8">
             <SearchHeader
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
-                title="Users"
-                inputLabel="Search"
-                // title={GetLocale(locales.title, language)}
-                // inputLabel={GetLocale(locales.inputs.search.label, language)}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
             />
 
             <Table
@@ -32,6 +33,29 @@ export const UserDashboardPage: FC = () => {
                 searchQuery={searchQuery}
                 keys={ZodGetKeys(UserSchema)}
                 setSearchQuery={setSearchQuery}
+                loadingTypography={{
+                    title: GetLocale(locales.table.loading.title, language),
+                    paragraph: GetLocale(
+                        locales.table.loading.paragraph,
+                        language
+                    ),
+                }}
+                errorTypography={{
+                    title: GetLocale(locales.table.error.title, language),
+                    button: GetLocale(locales.table.error.button, language),
+                    paragraph: GetLocale(
+                        locales.table.error.paragraph,
+                        language
+                    ),
+                }}
+                emptyTypography={{
+                    title: GetLocale(locales.table.empty.title, language),
+                    button: GetLocale(locales.table.empty.button, language),
+                    paragraph: GetLocale(
+                        locales.table.empty.paragraph,
+                        language
+                    ).replace(/\*\*([^\*]+)\*\*/, `**"${searchQuery}"**`),
+                }}
             />
         </Flexbox>
     );
