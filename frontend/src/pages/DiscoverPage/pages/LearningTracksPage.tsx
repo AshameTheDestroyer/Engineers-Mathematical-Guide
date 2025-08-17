@@ -1,11 +1,9 @@
-import { z } from "zod";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Input } from "@/components/Input/Input";
-import { useDebounce } from "@/hooks/useDebounce";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useSchematicSearch } from "@/hooks/useSchematicSearch";
 import { LearningTracksDisplay } from "../components/LearningTracksDisplay";
 import { useGetLearningTracks } from "@/services/LearningTracks/useGetLearningTracks";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -13,19 +11,11 @@ import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResu
 
 import locales from "@localization/learning_tracks_page.json";
 
-export const LearningTracksQueryParamsSchema = z.object({
-    query: z.string().optional().default(""),
-});
-
 export const LearningTracksPage: FC = () => {
-    const { queryParams, setQueryParams } = useSchematicQueryParams(
-        LearningTracksQueryParamsSchema
-    );
-
     const { language, GetLocale } = useLocalization();
 
-    const [searchQuery, setSearchQuery] = useState(queryParams.query);
-    const debouncedSearchQuery = useDebounce(searchQuery);
+    const { searchQuery, setSearchQuery, debouncedSearchQuery } =
+        useSchematicSearch();
 
     const {
         refetch,
@@ -35,13 +25,6 @@ export const LearningTracksPage: FC = () => {
     } = useGetLearningTracks(debouncedSearchQuery);
 
     const skeletonArray = new Array(20).fill(null);
-
-    useEffect(() => {
-        setQueryParams((queryParams) => ({
-            ...queryParams,
-            query: debouncedSearchQuery.trimAll(),
-        }));
-    }, [debouncedSearchQuery]);
 
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="8">
