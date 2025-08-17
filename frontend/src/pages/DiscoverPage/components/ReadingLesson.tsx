@@ -21,37 +21,35 @@ export const ReadingLesson: FC<ReadingLessonProps> = ({ lesson }) => {
     });
 
     return (
-        <Flexbox className="bg-background-normal relative min-h-[60dvh] grow rounded-2xl p-4">
-            <Flexbox
-                className="absolute inset-0 overflow-auto p-[inherit]"
-                gap="8"
-                direction="column"
-            >
-                {markdowns.length > 0 ? (
-                    markdowns.map((markdown, i) => (
-                        <Markdown key={i} {...markdown} />
-                    ))
-                ) : (
-                    <SearchResultDisplay
-                        className="-translate-1/2 absolute left-1/2 top-1/2"
-                        iconType="empty"
-                        title={GetLocale(
-                            locales.lessons.reading.empty.title,
-                            language
-                        )}
-                        paragraph={GetLocale(
-                            locales.lessons.reading.empty.paragraph,
-                            language
-                        ).replace(/\*\*([^\*]+)\*\*/, `**"${lesson.title}"**`)}
-                    />
-                )}
-
-                <JumpToStartButton
-                    className="right-4! left-4! bottom-4! place-self-end"
-                    isContainerized
-                    orientation="vertical"
+        <Flexbox
+            className="absolute inset-0 overflow-auto p-8 max-md:p-[inherit]"
+            gap="8"
+            direction="column"
+        >
+            {markdowns.length > 0 ? (
+                markdowns.map((markdown, i) => (
+                    <Markdown key={i} {...markdown} />
+                ))
+            ) : (
+                <SearchResultDisplay
+                    className="-translate-1/2 absolute left-1/2 top-1/2"
+                    iconType="empty"
+                    title={GetLocale(
+                        locales.lessons.reading.empty.title,
+                        language
+                    )}
+                    paragraph={GetLocale(
+                        locales.lessons.reading.empty.paragraph,
+                        language
+                    ).replace(/\*\*([^\*]+)\*\*/, `**"${lesson.title}"**`)}
                 />
-            </Flexbox>
+            )}
+
+            <JumpToStartButton
+                className="right-0! left-0! bottom-0! place-self-end"
+                isContainerized
+                orientation="vertical"
+            />
         </Flexbox>
     );
 };
