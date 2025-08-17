@@ -32,14 +32,34 @@ body {
         100% 100%,
         64px 64px;
 
-    animation-name: body-background-moving;
+    animation-name: background-moving;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-direction: normal;
 }
 
-@keyframes body-background-moving {
+.fallback-page {
+    @apply [animation-duration:120s] max-md:[animation-duration:240s];
+
+    background-image:
+        linear-gradient(135deg, var(--color-primary-normal) 50%, transparent),
+        radial-gradient(
+            var(--color-primary-dark) 8px,
+            var(--color-primary-normal) 16px
+        );
+    background-size:
+        100% 100%,
+        64px 64px;
+
+    animation-name: background-moving;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+}
+
+@keyframes background-moving {
     from {
         background-position:
             0 0,
