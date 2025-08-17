@@ -64,7 +64,8 @@
     {
         "id": "la-systems-and-solutions-10",
         "title": "Row Operations and Solution Structures in Linear Systems",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 900
     },
     {
         "id": "la-systems-and-solutions-11",
@@ -97,7 +98,8 @@
     {
         "id": "la-systems-and-solutions-15",
         "title": "Vectors, Spans, and the Geometry of Solutions",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 1080
     },
     {
         "id": "la-systems-and-solutions-16",
@@ -137,7 +139,8 @@
     {
         "id": "la-systems-and-solutions-21",
         "title": "Ax = b, Span, and Algebraic Foundations",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 1200
     },
     {
         "id": "la-systems-and-solutions-22",
@@ -170,7 +173,8 @@
     {
         "id": "la-systems-and-solutions-26",
         "title": "Solution Sets, Homogeneity, and Linear Independence",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 1360
     },
     {
         "id": "la-systems-and-solutions-27",
