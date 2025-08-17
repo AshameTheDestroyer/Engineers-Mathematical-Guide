@@ -4,6 +4,7 @@ import Question from "./Question";
 import Timer from "./Timer";
 import { QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import ExamResultsScreen from "./ResultsScreen";
+import { Button } from "@/components/Button/Button";
 
 export type ExaminationLessonProps = {
     lesson: LessonDTO & { type: LessonTypeEnum.examination };
@@ -11,14 +12,15 @@ export type ExaminationLessonProps = {
 
 export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
     const { questions, title, type, id, time } = lesson;
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState<(string | number | boolean)[][]>([]);
     const [quizFinished, setQuizFinished] = useState(false);
     const [isRunning, setIsRunning] = useState(true);
-    const [isExamFinished, setIsExamFinished] = useState(false);
     const timerRef = useRef<number | null>(null);
+
     const handleFinishQuiz = () => {
         if (timerRef.current) clearInterval(timerRef.current);
         setQuizFinished(true);
+        setIsRunning(false);
     };
 
     const handleTimeUp = () => {
@@ -26,45 +28,49 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
         setIsRunning(false);
     };
 
+    if (quizFinished) {
+        return (
+            <ExamResultsScreen
+                questions={questions}
+                answers={answers}
+                totalTimeMinutes={time}
+                timeLeft={0}
+            />
+        );
+    }
+
     return (
-        <div>
-            {!isExamFinished ? <Timer
+        <div className="examination-lesson w-full">
+            <Timer
                 minutes={time}
-                isRunning={!quizFinished}
+                isRunning={isRunning}
                 onTimeUp={handleTimeUp}
             />
-            <div>
+            <div className="questions-container">
                 {questions.map((question, i) => (
-                    <Question
-                        key={question.title}
-                        question={question.title}
-                        options={question.options}
-                        isMany={question.type === "many"}
-                        points={question.points}
-                        correctAnswer={
-                            question.type == QuestionTypeEnum.choose
-                                ? question.answer
-                                : question.answers
-                        }
-                        // correctAnswer={question.}
-                        setAnswers={setAnswers}
-                        answers={answers}
-                        idx={i}
-                    />
+                    <div key={question.id || i} className="question-wrapper">
+                        <Question
+                            question={question.title}
+                            options={question.options}
+                            isMany={question.type === QuestionTypeEnum.many}
+                            points={question.points}
+                            correctAnswer={
+                                question.type === QuestionTypeEnum.choose
+                                    ? question.options[question.answer]
+                                    : question.options.filter((_, idx) =>
+                                          question.answers?.includes(idx)
+                                      )
+                            }
+                            setAnswers={setAnswers}
+                            answers={answers}
+                            idx={i}
+                        />
+                    </div>
                 ))}
-                <button onClick={handleFinishQuiz}>Finish</button>
-            </div> : (
-
-                <div>
-  <ExamResultsScreen
-    questions={quizQuestions}
-    answers={answers}
-    totalTimeMinutes={5}
-    timeLeft={timeLeft}
-  />
             </div>
-        )
-            }
+            <Button onClick={handleFinishQuiz} className="finish-quiz-btn">
+                Finish Quiz
+            </Button>
         </div>
     );
 };
