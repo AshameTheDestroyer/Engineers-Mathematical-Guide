@@ -127,16 +127,18 @@ export const LessonPage: FC = () => {
                     </span>
                 </Typography>
 
-                {(() => {
-                    switch (lesson.type) {
-                        case LessonTypeEnum.video:
-                            return <VideoLesson lesson={lesson} />;
-                        case LessonTypeEnum.reading:
-                            return <ReadingLesson lesson={lesson} />;
-                        case LessonTypeEnum.examination:
-                            return <ExaminationLesson lesson={lesson} />;
-                    }
-                })()}
+                <Flexbox className="bg-background-normal relative min-h-[60dvh] grow rounded-2xl p-4">
+                    {(() => {
+                        switch (lesson.type) {
+                            case LessonTypeEnum.video:
+                                return <VideoLesson lesson={lesson} />;
+                            case LessonTypeEnum.reading:
+                                return <ReadingLesson lesson={lesson} />;
+                            case LessonTypeEnum.examination:
+                                return <ExaminationLesson lesson={lesson} />;
+                        }
+                    })()}
+                </Flexbox>
 
                 <ButtonBox direction="reverse-row">
                     <Button
