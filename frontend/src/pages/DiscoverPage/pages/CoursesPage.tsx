@@ -1,35 +1,21 @@
-import { z } from "zod";
-import { queryClient } from "@/contexts";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Input } from "@/components/Input/Input";
-import { useDebounce } from "@/hooks/useDebounce";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CoursesDisplay } from "../components/CoursesDisplay";
-import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useSchematicSearch } from "@/hooks/useSchematicSearch";
+import { useGetCourses } from "@/services/Courses/useGetCourses";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
-import {
-    useGetCourses,
-    GET_COURSES_KEY,
-} from "@/services/Courses/useGetCourses";
 
 import locales from "@localization/courses_page.json";
 
-export const CoursesQueryParamsSchema = z.object({
-    query: z.string().optional().default(""),
-});
-
 export const CoursesPage: FC = () => {
-    const { queryParams, setQueryParams } = useSchematicQueryParams(
-        CoursesQueryParamsSchema
-    );
-
     const { language, GetLocale } = useLocalization();
 
-    const [searchQuery, setSearchQuery] = useState(queryParams.query);
-    const debouncedSearchQuery = useDebounce(searchQuery);
+    const { searchQuery, setSearchQuery, debouncedSearchQuery } =
+        useSchematicSearch();
 
     const {
         refetch,
@@ -39,17 +25,6 @@ export const CoursesPage: FC = () => {
     } = useGetCourses(debouncedSearchQuery);
 
     const skeletonArray = new Array(20).fill(null);
-
-    useEffect(() => {
-        setQueryParams((queryParams) => ({
-            ...queryParams,
-            query: debouncedSearchQuery.trimAll(),
-        }));
-
-        queryClient.invalidateQueries({
-            queryKey: [GET_COURSES_KEY],
-        });
-    }, [debouncedSearchQuery]);
 
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="8">
