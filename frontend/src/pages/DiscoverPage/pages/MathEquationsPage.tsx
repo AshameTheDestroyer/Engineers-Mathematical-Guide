@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { FC } from "react";
-import { Input } from "@/components/Input/Input";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { SearchHeader } from "@/components/SearchHeader";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { useSchematicSearch } from "@/hooks/useSchematicSearch";
 import { MathEquationsDisplay } from "../components/MathEquationsDisplay";
@@ -63,18 +63,15 @@ export const MathEquationsPage: FC = () => {
             direction="column"
             className="flex-grow"
         >
-            <Flexbox
-                rowGap="4"
-                columnGap="8"
-                variant="header"
-                placeItems="center"
-                placeContent="space-between"
-                className="max-sm:flex-wrap"
-            >
-                <Flexbox gap="4">
-                    <Locale variant="h1" className="text-2xl font-bold">
-                        {locales.title}
-                    </Locale>
+            <SearchHeader
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
+                withoutSearchInput={
+                    queryParams.mode != MathEquationsModeEnum.cards
+                }
+                buttons={
                     <IconButton
                         className="my-auto"
                         icon={{
@@ -100,19 +97,8 @@ export const MathEquationsPage: FC = () => {
                             }))
                         }
                     />
-                </Flexbox>
-
-                {queryParams.mode == MathEquationsModeEnum.cards && (
-                    <Input
-                        className="max-sm:grow"
-                        name="query"
-                        type="search"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        label={<Locale>{locales.inputs.search.label}</Locale>}
-                    />
-                )}
-            </Flexbox>
+                }
+            />
 
             {queryParams.mode == MathEquationsModeEnum.cards ? (
                 <Flexbox className="grow" variant="main">

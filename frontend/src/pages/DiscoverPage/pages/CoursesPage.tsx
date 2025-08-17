@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { Input } from "@/components/Input/Input";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { SearchHeader } from "@/components/SearchHeader";
 import { CoursesDisplay } from "../components/CoursesDisplay";
 import { useSchematicSearch } from "@/hooks/useSchematicSearch";
 import { useGetCourses } from "@/services/Courses/useGetCourses";
@@ -28,26 +28,12 @@ export const CoursesPage: FC = () => {
 
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="8">
-            <Flexbox
-                rowGap="4"
-                columnGap="8"
-                variant="header"
-                placeItems="center"
-                placeContent="space-between"
-                className="max-sm:flex-wrap"
-            >
-                <Locale variant="h1" className="text-2xl font-bold">
-                    {locales.title}
-                </Locale>
-                <Input
-                    className="max-sm:grow"
-                    name="query"
-                    type="search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    label={<Locale>{locales.inputs.search.label}</Locale>}
-                />
-            </Flexbox>
+            <SearchHeader
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
+            />
             <Flexbox className="grow" variant="main">
                 {isLoading || courses == null ? (
                     <CoursesDisplay isSkeleton courses={skeletonArray} />
