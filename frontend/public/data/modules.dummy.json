@@ -1,0 +1,26 @@
+[
+    {
+        "id": "la-systems-and-solutions",
+        "title": "Systems and Solutions",
+        "description": "Covers the fundamentals of linear systems, including solving systems using row operations, geometric interpretations, matrix notation, solution types, and the concepts of span and linear independence.",
+        "lesson-count": 27
+    },
+    {
+        "id": "la-transformations-and-matrices",
+        "title": "Transformations and Matrices",
+        "description": "Explores linear transformations, their relationship to matrices, matrix multiplication, inverses, determinants, and the connection between transformations and system solvability.",
+        "lesson-count": 26
+    },
+    {
+        "id": "la-vector-spaces-and-bases",
+        "title": "Vector Spaces and Bases",
+        "description": "Introduces vector spaces, subspaces, null and column spaces, basis, dimension, rank, nullity, and coordinate systems with non-standard bases.",
+        "lesson-count": 24
+    },
+    {
+        "id": "la-eigenvalues-and-orthogonality",
+        "title": "Eigenvalues and Orthogonality",
+        "description": "Delves into eigenvalues and eigenvectors, diagonalization, orthogonal projections, Gram-Schmidt process, and least squares approximation for solving inconsistent systems.",
+        "lesson-count": 28
+    }
+]

@@ -2,6 +2,13 @@ import { z } from "zod";
 import { ZodIntersectMany } from "@/functions/Zod.IntersectMany";
 import { SignupCredentialsSchema, SignupStepSchemas } from "./SignupSchema";
 
+export enum RoleEnum {
+    user = "user",
+    admin = "admin",
+}
+
+export type Role = ExtractEnumValue<RoleEnum>;
+
 export const UserSchema = ZodIntersectMany(
     SignupStepSchemas["personal-information"],
     SignupCredentialsSchema.pick({ email: true }),
@@ -23,6 +30,9 @@ export const DetailedUserSchema = z.intersection(
         specialization: z.string().optional(),
         city: z.string({ required_error: "required" }),
         biography: z.string({ required_error: "required" }),
+        role: z.nativeEnum(RoleEnum, {
+            errorMap: () => ({ message: "required" }),
+        }),
         xp: z
             .number({ required_error: "required" })
             .nonnegative("nonnegative")

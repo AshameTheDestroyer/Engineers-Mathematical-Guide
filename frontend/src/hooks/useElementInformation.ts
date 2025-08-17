@@ -27,7 +27,7 @@ export function useElementInformation<T extends HTMLElement>(
         return () => {
             window.removeEventListener("resize", UpdateClientInfo);
         };
-    }, [ref]);
+    }, [ref.current]);
 
     return rect;
 }

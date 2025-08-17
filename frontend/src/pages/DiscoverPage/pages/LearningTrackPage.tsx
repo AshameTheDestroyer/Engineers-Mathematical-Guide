@@ -1,17 +1,16 @@
 import { FC } from "react";
 import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
-import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
-import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Typography } from "@/components/Typography/Typography";
+import { LearningTrackBanner } from "../components/LearningTrackBanner";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RelatedLearningTracksDisplay } from "../components/RelatedLearningTracksDisplay";
 import { useGetSpecializedUsers } from "@/services/LearningTracks/useGetSpecializedUsers";
@@ -26,6 +25,7 @@ import specialize_icon from "@icons/star.svg";
 import locales from "@localization/learning_tracks_page.json";
 
 export const LearningTrackPage: FC = () => {
+    const Navigate = useNavigate();
     const { direction, language, GetLocale } = useLocalization();
 
     const { learningTrackID } =
@@ -71,19 +71,7 @@ export const LearningTrackPage: FC = () => {
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <Title>{learningTrack.title}</Title>
-            <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
-                <CardSummary
-                    className="[&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]"
-                    title={learningTrack.title}
-                    rating={learningTrack.rating}
-                    ratingCount={learningTrack["rating-count"]}
-                    registerCount={learningTrack["specialized-count"]}
-                    reviewsParagraph={GetLocale(locales.card.reviews, language)}
-                    registerParagraph={GetLocale(
-                        locales.card.specialization,
-                        language
-                    )}
-                />
+            <LearningTrackBanner learningTrack={learningTrack}>
                 {myUser != null && (
                     <ButtonBox
                         className={twJoin(
@@ -114,6 +102,13 @@ export const LearningTrackPage: FC = () => {
                             <Button
                                 thickness="thick"
                                 variant="primary"
+                                onClick={(_e) =>
+                                    Navigate(
+                                        DISCOVER_ROUTES.base.routes.learningTrackIDCourses.MapVariables(
+                                            { learningTrackID }
+                                        )
+                                    )
+                                }
                                 icon={{
                                     className:
                                         direction == "ltr"
@@ -128,13 +123,7 @@ export const LearningTrackPage: FC = () => {
                         )}
                     </ButtonBox>
                 )}
-                <Image
-                    className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                    source={learningTrack.image}
-                    alternative={`Image of ${learningTrack.title} Course.`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
-            </figure>
+            </LearningTrackBanner>
 
             <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
                 <Flexbox variant="section" direction="column" gap="8">
@@ -156,11 +145,16 @@ export const LearningTrackPage: FC = () => {
                     </Flexbox>
                     <Flexbox direction="column" gap="4">
                         <Locale className="text-lg font-bold" variant="h2">
-                            {locales.profile.courses}
+                            {locales.profile.courses.title}
                         </Locale>
                         <BorderedList
                             list={learningTrack.courses.map((courseID) => ({
-                                title: courseID.toTitleCase(),
+                                title: courseID.toTitleCase(
+                                    "i",
+                                    "ii",
+                                    "iii",
+                                    "ai"
+                                ),
                                 path: DISCOVER_ROUTES.base.routes.courseID.MapVariable(
                                     courseID
                                 ),

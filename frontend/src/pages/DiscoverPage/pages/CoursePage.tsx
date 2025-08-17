@@ -1,17 +1,16 @@
 import { FC, Fragment } from "react";
 import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
-import { Image } from "@/components/Image/Image";
 import { Title } from "@/components/Title/Title";
-import { Link, useParams } from "react-router-dom";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { CardSummary } from "../components/CardSummary";
 import { BorderedList } from "../components/BorderedList";
+import { CourseBanner } from "../components/CourseBanner";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Separator } from "@/components/Separator/Separator";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Typography } from "@/components/Typography/Typography";
 import { IconButton } from "@/components/IconButton/IconButton";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
@@ -37,6 +36,7 @@ export const PREREQUISITE_COURSES_LIMIT = 5;
 export const POSTREQUISITE_COURSES_LIMIT = 5;
 
 export const CoursePage: FC = () => {
+    const Navigate = useNavigate();
     const { direction, GetLocale, language } = useLocalization();
 
     const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
@@ -130,19 +130,7 @@ export const CoursePage: FC = () => {
     return (
         <Flexbox variant="main" direction="column" gap="8">
             <Title>{course.title}</Title>
-            <figure className="border-background-dark -m-page relative mb-auto border-b-2 text-white">
-                <CardSummary
-                    className="[&_.icon]:drop-shadow-[3px_3px_1px_#0000007c] [&_.typography]:[text-shadow:2px_2px_2.5px_black]"
-                    title={course.title}
-                    rating={course.rating}
-                    ratingCount={course["rating-count"]}
-                    registerCount={course["enrollment-count"]}
-                    registerParagraph={GetLocale(
-                        locales.card.enrollment,
-                        language
-                    )}
-                    reviewsParagraph={GetLocale(locales.card.reviews, language)}
-                />
+            <CourseBanner course={course}>
                 {myUser != null && (
                     <ButtonBox
                         className={twJoin(
@@ -186,6 +174,13 @@ export const CoursePage: FC = () => {
                                 thickness="thick"
                                 disabled={course.locked}
                                 variant={course.locked ? "default" : "primary"}
+                                onClick={(_e) =>
+                                    Navigate(
+                                        DISCOVER_ROUTES.base.routes.modules.MapVariables(
+                                            { courseID }
+                                        )
+                                    )
+                                }
                                 icon={{
                                     className: course.locked
                                         ? ""
@@ -203,13 +198,7 @@ export const CoursePage: FC = () => {
                         )}
                     </ButtonBox>
                 )}
-                <Image
-                    className="h-[60vh] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                    source={course.image}
-                    alternative={`Image of ${course.title} Course.`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/75 to-100%" />
-            </figure>
+            </CourseBanner>
 
             <main className="gap-page grid grid-cols-2 max-lg:grid-cols-1">
                 <Flexbox variant="section" direction="column" gap="8">
@@ -242,13 +231,16 @@ export const CoursePage: FC = () => {
                             {locales.profile.modules}
                         </Locale>
                         <BorderedList
-                            list={course.modules.map((modules) => ({
-                                title: modules,
-                                // TODO: Implement this.
-                                path: "",
-                                // path: APPLICATION_ROUTES.base.routes.courseID.MapVariable(
-                                //     modules
-                                // ),
+                            list={course.modules.map((module) => ({
+                                title: module
+                                    .replace(/^[^-]*-/, "")
+                                    .toTitleCase(),
+                                path: DISCOVER_ROUTES.base.routes.moduleID.MapVariables(
+                                    {
+                                        courseID: course.id,
+                                        moduleID: module.replace(/^[^-]*-/, ""),
+                                    }
+                                ),
                             }))}
                         />
                     </Flexbox>

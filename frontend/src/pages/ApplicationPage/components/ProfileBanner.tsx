@@ -1,17 +1,19 @@
 import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
+import { Icon } from "@/components/Icon/Icon";
 import { ProfileAvatar } from "./ProfileAvatar";
 import { Image } from "@/components/Image/Image";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { DetailedUserDTO } from "@/schemas/UserSchema";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { DetailedUserDTO, RoleEnum } from "@/schemas/UserSchema";
 import { DropDownList } from "@/components/DropDownList/DropDownList";
 import { FC, Ref, useImperativeHandle, useMemo, useRef } from "react";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import star_icon from "@icons/star.svg";
 import configure_icon from "@icons/cog.svg";
 import follow_icon from "@icons/user_plus.svg";
 import unfollow_icon from "@icons/user_minus.svg";
@@ -86,6 +88,13 @@ export const ProfileBanner: FC<ProfileBannerProps> = ({
                     className="h-full w-full max-sm:[&>div>div>div>img]:scale-75 [&>div]:h-full [&>div]:w-full"
                     user={user}
                 >
+                    {user.role == RoleEnum.admin && (
+                        <Icon
+                            className="text-vibrant-yellow-normal stroke-vibrant-yellow-dark absolute bottom-4 left-1/2 -translate-x-1/2 md:[&>svg]:h-[48px] md:[&>svg]:w-[48px]"
+                            thickness={2}
+                            source={star_icon}
+                        />
+                    )}
                     <DropDownList
                         className={twJoin(
                             "max-sm:[&>div:first-child]:p-2! absolute bottom-[9%] max-sm:bottom-[19%] md:hidden",

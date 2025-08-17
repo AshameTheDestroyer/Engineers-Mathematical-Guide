@@ -1,0 +1,102 @@
+{
+    "title": {
+        "en": "Modules",
+        "ar": "الوِحداتُ الدِّراسيّة"
+    },
+    "total-progress": {
+        "en": "Total Progress",
+        "ar": "نِسبةُ الإِنجازِ الكُلِّيّة"
+    },
+    "display": {
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching modules, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ الوِحداتِ الدِّراسيّة، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Refetch Modules",
+                "ar": "إعادةُ جَلبِ الوِحداتِ الدِّراسيّة"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Modules Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ وِحدةٍ دِراسيّة"
+            },
+            "paragraph": {
+                "en": "The course **course** has no modules yet, try seeing another one.",
+                "ar": "لا يوجَدُ أيُّ وِحدةٍ دِراسيّةٍ لِلمُقَرَّر **المقرر** حَتَّى الآن، جَرِّبْ رؤيةَ مُقَرَّرٍ آخر."
+            }
+        }
+    },
+    "card": {
+        "progress": {
+            "en": "Progress",
+            "ar": "نِسبةُ الإِنجاز"
+        },
+        "buttons": {
+            "review": {
+                "en": "Review",
+                "ar": "مُراجَعة"
+            },
+            "continue": {
+                "en": "Continue",
+                "ar": "اكمِلْ الوِحدة"
+            },
+            "open": {
+                "en": "Open Module",
+                "ar": "افتَحْ الوِحدة "
+            }
+        }
+    },
+    "lessons": {
+        "empty": {
+            "title": {
+                "en": "No Lessons Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ دَرْس"
+            },
+            "paragraph": {
+                "en": "The module **module** has no lessons yet, try seeing another one.",
+                "ar": "لا يوجَدُ أيُّ دَرْسٍ لِلوِحدةِ الدِّراسيّةِ **الوحدة** حَتَّى الآن، جَرِّبْ رؤيةَ وِحدةٍ دِراسيّةٍ أُخرى."
+            }
+        },
+        "buttons": {
+            "mark-completeness": {
+                "en": "Mark as Complete",
+                "ar": "تَمييزٌ كَمُنتَهٍ"
+            },
+            "completed": {
+                "en": "Completed",
+                "ar": "مُنتَهيٌ"
+            }
+        },
+        "video": {
+            "loading": {
+                "title": {
+                    "en": "Video is Loading...",
+                    "ar": "جارٍ تَحميلُ الفيديو"
+                },
+                "paragraph": {
+                    "en": "Wait a little for the video to completely load.",
+                    "ar": "انتَظِرْ قَليلاً رَيثَما يَتِمُّ تَحميلُ الفيديو بِشَكلٍ كامِل."
+                }
+            }
+        },
+        "reading": {
+            "empty": {
+                "title": {
+                    "en": "No Data Found",
+                    "ar": "لَمْ يَتِمَّ إيجادُ أيِّ بَيانات"
+                },
+                "paragraph": {
+                    "en": "The lesson **lesson** has no data yet, try seeing another one.",
+                    "ar": "لا توجَدُ أيُّ بَياناتٍ لِلدَّرسِ **الدرس** حَتَّى الآن، جَرِّبْ رؤيةَ دَرسٍ آخر."
+                }
+            }
+        }
+    }
+}

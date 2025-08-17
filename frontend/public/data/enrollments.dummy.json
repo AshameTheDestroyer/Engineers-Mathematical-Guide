@@ -1,0 +1,17 @@
+[
+    {
+        "course": "linear-algebra",
+        "username": "ashamethedestroyer",
+        "progress": [
+            {
+                "module": "la-systems-and-solutions",
+                "finished-lessons": 27,
+                "grade": 93
+            },
+            {
+                "module": "la-transformations-and-matrices",
+                "finished-lessons": 7
+            }
+        ]
+    }
+]

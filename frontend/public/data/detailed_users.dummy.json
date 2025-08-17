@@ -7,7 +7,7 @@
         "gender": "male",
         "country": "Syria",
         "phone-number": "+963947233978",
-        "banner": "src/assets/images/minecraft_wallpaper.jpg",
+        "banner": "src/assets/images/hashem_wannous_banner.jpg",
         "avatar": "src/assets/images/hashem_wannous_avatar.png",
         "personal-image": "src/assets/images/hashem_wannous.jpg",
         "day-streak": 643,
@@ -31,7 +31,8 @@
             "real-analysis"
         ],
         "specialization": "ai-engineering",
-        "flag": "sy"
+        "flag": "sy",
+        "role": "admin"
     },
     {
         "email": "batoulkazak297@gmail.com",
@@ -54,7 +55,8 @@
         "enrolled-courses": ["machine-learning", "optimization-theory"],
         "bookmarked-courses": ["graph-theory", "game-theory"],
         "specialization": "data-science",
-        "flag": "ps"
+        "flag": "ps",
+        "role": "user"
     },
     {
         "email": "ahmed.ali@example.com",
@@ -82,7 +84,8 @@
         ],
         "bookmarked-courses": ["fourier-analysis", "optimization-theory"],
         "specialization": "applied-mathematics",
-        "flag": "eg"
+        "flag": "eg",
+        "role": "user"
     },
     {
         "email": "fatima.hassan@example.com",
@@ -112,7 +115,8 @@
         "enrolled-courses": ["linear-algebra", "discrete-mathematics"],
         "bookmarked-courses": ["game-theory", "graph-theory"],
         "specialization": "machine-learning",
-        "flag": "sa"
+        "flag": "sa",
+        "role": "user"
     },
     {
         "email": "youssef.mohamed@example.com",
@@ -135,7 +139,8 @@
         ],
         "bookmarked-courses": ["category-theory", "set-theory"],
         "specialization": "theoretical-computer-science",
-        "flag": "sd"
+        "flag": "sd",
+        "role": "user"
     },
     {
         "email": "layan.jaber@example.com",
@@ -155,7 +160,8 @@
         "enrolled-courses": ["linear-algebra", "complex-analysis"],
         "bookmarked-courses": ["fourier-analysis", "topology"],
         "specialization": "quantum-computing",
-        "flag": "jo"
+        "flag": "jo",
+        "role": "user"
     },
     {
         "email": "khalid.nasser@example.com",
@@ -183,7 +189,8 @@
         ],
         "bookmarked-courses": ["complex-analysis", "topology"],
         "specialization": "theoretical-physics",
-        "flag": "ae"
+        "flag": "ae",
+        "role": "user"
     },
     {
         "email": "noor.salem@example.com",
@@ -207,7 +214,8 @@
         "enrolled-courses": ["probability-theory", "optimization-theory"],
         "bookmarked-courses": ["game-theory", "discrete-mathematics"],
         "specialization": "financial-engineering",
-        "flag": "qa"
+        "flag": "qa",
+        "role": "user"
     },
     {
         "email": "mohammad.kadour@example.com",
@@ -236,7 +244,8 @@
         "enrolled-courses": ["differential-equations", "numerical-methods"],
         "bookmarked-courses": ["fourier-analysis", "optimization-theory"],
         "specialization": "robotics-and-control-systems",
-        "flag": "lb"
+        "flag": "lb",
+        "role": "user"
     },
     {
         "email": "asmaa.tariq@example.com",
@@ -260,7 +269,8 @@
         "finished-courses": ["discrete-mathematics", "graph-theory"],
         "enrolled-courses": ["game-theory", "linear-algebra"],
         "bookmarked-courses": ["set-theory", "category-theory"],
-        "flag": "ma"
+        "flag": "ma",
+        "role": "user"
     },
     {
         "email": "ibrahim.farouk@example.com",
@@ -284,7 +294,8 @@
         "enrolled-courses": ["probability-theory", "linear-algebra"],
         "bookmarked-courses": ["graph-theory", "game-theory"],
         "specialization": "machine-learning",
-        "flag": "dz"
+        "flag": "dz",
+        "role": "user"
     },
     {
         "email": "hala.abdullah@example.com",
@@ -304,7 +315,8 @@
         "enrolled-courses": ["calculus-i", "multivariable-calculus"],
         "bookmarked-courses": ["fourier-analysis", "complex-analysis"],
         "specialization": "computer-vision",
-        "flag": "bh"
+        "flag": "bh",
+        "role": "user"
     },
     {
         "email": "tarek.zaher@example.com",
@@ -323,7 +335,8 @@
         "finished-courses": ["calculus-i", "topology"],
         "enrolled-courses": ["real-analysis", "complex-analysis"],
         "bookmarked-courses": ["category-theory", "set-theory"],
-        "flag": "iq"
+        "flag": "iq",
+        "role": "user"
     },
     {
         "email": "nada.amin@example.com",
@@ -342,7 +355,8 @@
         "finished-courses": ["game-theory", "discrete-mathematics"],
         "enrolled-courses": ["probability-theory", "mathematical-statistics"],
         "bookmarked-courses": ["graph-theory", "optimization-theory"],
-        "flag": "om"
+        "flag": "om",
+        "role": "user"
     },
     {
         "email": "zaid.rashid@example.com",
@@ -362,7 +376,8 @@
         "enrolled-courses": ["linear-algebra", "fourier-analysis"],
         "bookmarked-courses": ["category-theory", "set-theory"],
         "specialization": "quantum-computing",
-        "flag": "ps"
+        "flag": "ps",
+        "role": "user"
     },
     {
         "email": "dalal.hussein@example.com",
@@ -381,7 +396,8 @@
         "finished-courses": ["calculus-i"],
         "enrolled-courses": ["probability-theory"],
         "bookmarked-courses": ["linear-algebra"],
-        "flag": "kw"
+        "flag": "kw",
+        "role": "user"
     },
     {
         "email": "anas.walid@example.com",
@@ -401,7 +417,8 @@
         "enrolled-courses": ["graph-theory", "game-theory"],
         "bookmarked-courses": ["category-theory", "set-theory"],
         "specialization": "theoretical-computer-science",
-        "flag": "ye"
+        "flag": "ye",
+        "role": "user"
     },
     {
         "email": "reem.ghani@example.com",
@@ -421,7 +438,8 @@
         "enrolled-courses": ["data-science", "machine-learning"],
         "bookmarked-courses": ["graph-theory", "optimization-theory"],
         "specialization": "data-science",
-        "flag": "sy"
+        "flag": "sy",
+        "role": "user"
     },
     {
         "email": "sami.dabbous@example.com",
@@ -441,7 +459,8 @@
         "enrolled-courses": ["calculus-i", "multivariable-calculus"],
         "bookmarked-courses": ["fourier-analysis", "complex-analysis"],
         "specialization": "computer-vision",
-        "flag": "tn"
+        "flag": "tn",
+        "role": "user"
     },
     {
         "email": "layla.makki@example.com",
@@ -461,7 +480,8 @@
         "enrolled-courses": ["data-science", "machine-learning"],
         "bookmarked-courses": ["optimization-theory", "graph-theory"],
         "specialization": "data-science",
-        "flag": "ly"
+        "flag": "ly",
+        "role": "user"
     },
     {
         "email": "omar.bakri@example.com",
@@ -480,7 +500,8 @@
         "finished-courses": ["calculus-i"],
         "enrolled-courses": ["probability-theory"],
         "bookmarked-courses": ["linear-algebra"],
-        "flag": "so"
+        "flag": "so",
+        "role": "user"
     },
     {
         "email": "aya.adel@example.com",
@@ -504,6 +525,7 @@
         "enrolled-courses": ["probability-theory", "optimization-theory"],
         "bookmarked-courses": ["graph-theory", "game-theory"],
         "specialization": "ai-engineering",
-        "flag": "dj"
+        "flag": "dj",
+        "role": "user"
     }
 ]

@@ -1,5 +1,5 @@
-import { FC } from "react";
 import { twMerge } from "tailwind-merge";
+import { FC, HTMLAttributes } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
@@ -10,10 +10,12 @@ export type IconProps = {
     height?: number;
     stroke?: string;
     thickness?: number;
-} & ChildlessComponentProps;
+} & ChildlessComponentProps<HTMLDivElement> &
+    Omit<HTMLAttributes<HTMLDivElement>, "children">;
 
 export const Icon: FC<IconProps> = ({
     id,
+    ref,
     fill,
     width,
     source,
@@ -21,6 +23,7 @@ export const Icon: FC<IconProps> = ({
     stroke,
     thickness,
     className,
+    ...props
 }) => {
     const { data, isLoading, isError } = useQuery({
         queryKey: [`ICON-${source}`, fill, width, height, stroke, thickness],
@@ -68,10 +71,12 @@ export const Icon: FC<IconProps> = ({
     return (
         <div
             id={id}
+            ref={ref}
             className={twMerge("icon", className)}
             dangerouslySetInnerHTML={{
                 __html: isLoading ? "..." : isError ? "ERR" : (data ?? ""),
             }}
+            {...props}
         />
     );
 };

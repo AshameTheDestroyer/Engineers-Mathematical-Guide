@@ -1,0 +1,322 @@
+[
+    {
+        "element": "h2",
+        "children": "Overview"
+    },
+    {
+        "element": "p",
+        "children": "In this lesson, we’ll dive into the geometric world of vectors and spans, and uncover how they reveal the deeper structure of solutions to linear systems. You’ll see how solutions aren’t just numbers — they’re points, lines, planes, or even higher-dimensional spaces formed by vector combinations."
+    },
+    {
+        "element": "p",
+        "children": "We’ll build intuition using 2D and 3D geometry, then connect it back to algebra through linear combinations and spans."
+    },
+    {
+        "element": "p",
+        "children": "By the end of this lesson, you will:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Define **vectors** and understand their role as directed quantities in space."
+            },
+            {
+                "element": "li",
+                "children": "Perform **vector addition** and **scalar multiplication** geometrically and algebraically."
+            },
+            {
+                "element": "li",
+                "children": "Understand the meaning of **linear combination** and **span** of vectors."
+            },
+            {
+                "element": "li",
+                "children": "Visualize what **$ \\text{Span}\\{\\vec{v_1}, \\vec{v_2}\\} $** means in 2D and 3D."
+            },
+            {
+                "element": "li",
+                "children": "Connect solution sets of homogeneous systems to **lines and planes through the origin**."
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "1. What Is a Vector?"
+    },
+    {
+        "element": "p",
+        "children": "A **vector** is a mathematical object that has both **magnitude** (length) and **direction**. In **$ \\mathbb{R}^2 $** or **$ \\mathbb{R}^3 $**, we represent vectors as arrows from the origin to a point."
+    },
+    {
+        "element": "p",
+        "children": "Algebraically, a vector is written as an ordered list. For example, the vector from the origin to the point **$ (3, 4) $** is:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{v} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "We can add vectors and scale them:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "**Vector addition**: **$ \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} + \\begin{bmatrix} 3 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 4 \\\\ 1 \\end{bmatrix} $**"
+            },
+            {
+                "element": "li",
+                "children": "**Scalar multiplication**: **$ 2 \\cdot \\begin{bmatrix} 1 \\\\ -3 \\end{bmatrix} = \\begin{bmatrix} 2 \\\\ -6 \\end{bmatrix} $**"
+            }
+        ]
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "2. Linear Combinations"
+    },
+    {
+        "element": "p",
+        "children": "A **linear combination** of vectors is a sum of scaled vectors. Given vectors **$ \\vec{v_1} $** and **$ \\vec{v_2} $**, any expression of the form:"
+    },
+    {
+        "element": "mathjax",
+        "children": "a\\vec{v_1} + b\\vec{v_2}"
+    },
+    {
+        "element": "p",
+        "children": "where **$ a $** and **$ b $** are scalars, is a linear combination."
+    },
+    {
+        "element": "p",
+        "children": "For example, let **$ \\vec{v_1} = \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} $**, **$ \\vec{v_2} = \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix} $**. Then:"
+    },
+    {
+        "element": "mathjax",
+        "children": "3\\vec{v_1} - \\vec{v_2} = 3\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} - \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix} = \\begin{bmatrix} 1 \\\\ 4 \\end{bmatrix}"
+    },
+    {
+        "element": "q",
+        "children": "Every point you can reach by scaling and adding vectors lives in their span."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "3. What Is the Span?"
+    },
+    {
+        "element": "p",
+        "children": "The **span** of a set of vectors is the set of **all possible linear combinations** of those vectors."
+    },
+    {
+        "element": "p",
+        "children": "Let’s explore what **$ \\text{Span}\\{\\vec{v}\\} $** and **$ \\text{Span}\\{\\vec{u}, \\vec{v}\\} $** look like."
+    },
+    {
+        "element": "h3",
+        "children": "Case 1: One Vector in **$ \\mathbb{R}^2 $**"
+    },
+    {
+        "element": "p",
+        "children": "If **$ \\vec{v} = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} $**, then **$ \\text{Span}\\{\\vec{v}\\} $** includes all scalar multiples: **$ t\\vec{v} $**, where **$ t \\in \\mathbb{R} $**."
+    },
+    {
+        "element": "p",
+        "children": "Geometrically, this is a **line through the origin** in the direction of **$ \\vec{v} $**."
+    },
+    {
+        "element": "h3",
+        "children": "Case 2: Two Vectors in **$ \\mathbb{R}^2 $**"
+    },
+    {
+        "element": "p",
+        "children": "Let **$ \\vec{u} = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix} $**, **$ \\vec{v} = \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} $**. Then **$ \\text{Span}\\{\\vec{u}, \\vec{v}\\} $** covers all of **$ \\mathbb{R}^2 $** — every point **$ \\begin{bmatrix} x \\\\ y \\end{bmatrix} $** can be written as **$ x\\vec{u} + y\\vec{v} $**."
+    },
+    {
+        "element": "p",
+        "children": "But if **$ \\vec{u} = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} $** and **$ \\vec{v} = \\begin{bmatrix} 2 \\\\ 4 \\end{bmatrix} $**, they point in the same direction — so **$ \\text{Span}\\{\\vec{u}, \\vec{v}\\} $** is still just a **line**, not the whole plane."
+    },
+    {
+        "element": "h3",
+        "children": "Case 3: Two Vectors in **$ \\mathbb{R}^3 $**"
+    },
+    {
+        "element": "p",
+        "children": "Two non-parallel vectors in 3D span a **plane through the origin**. For example:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{v_1} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 0 \\end{bmatrix},\\quad \\vec{v_2} = \\begin{bmatrix} 0 \\\\ 1 \\\\ 0 \\end{bmatrix} \\Rightarrow \\text{Span}\\{\\vec{v_1}, \\vec{v_2}\\} = \\text{the } xy\\text{-plane}"
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "4. Geometry of Solution Sets"
+    },
+    {
+        "element": "p",
+        "children": "Consider a **homogeneous** linear system: **$ A\\vec{x} = \\vec{0} $**. Its solutions always include **$ \\vec{x} = \\vec{0} $**, but often include much more."
+    },
+    {
+        "element": "p",
+        "children": "The set of all solutions forms a **subspace** — specifically, the **null space** of **$ A $** — and it has a beautiful geometric structure."
+    },
+    {
+        "element": "h3",
+        "children": "Example: Plane of Solutions"
+    },
+    {
+        "element": "p",
+        "children": "Solve:"
+    },
+    {
+        "element": "mathjax",
+        "children": "x - 2y + z = 0"
+    },
+    {
+        "element": "p",
+        "children": "Let **$ y = s $**, **$ z = t $**. Then **$ x = 2s - t $**. So:"
+    },
+    {
+        "element": "mathjax",
+        "children": "\\vec{x} = \\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = s\\begin{bmatrix} 2 \\\\ 1 \\\\ 0 \\end{bmatrix} + t\\begin{bmatrix} -1 \\\\ 0 \\\\ 1 \\end{bmatrix}"
+    },
+    {
+        "element": "p",
+        "children": "✅ The solution set is **$ \\text{Span}\\left\\{ \\begin{bmatrix} 2 \\\\ 1 \\\\ 0 \\end{bmatrix}, \\begin{bmatrix} -1 \\\\ 0 \\\\ 1 \\end{bmatrix} \\right\\} $** — a **plane through the origin** in **$ \\mathbb{R}^3 $**!"
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "5. Summary: Span and Solution Geometry"
+    },
+    {
+        "element": "table",
+        "children": [
+            {
+                "element": "thead",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "th",
+                                "children": "Number of Vectors"
+                            },
+                            { "element": "th", "children": "Space" },
+                            { "element": "th", "children": "Geometric Object" },
+                            { "element": "th", "children": "Condition" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "element": "tbody",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "One nonzero vector"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**$ \\mathbb{R}^2 $** or **$ \\mathbb{R}^3 $**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Line through origin"
+                            },
+                            { "element": "td", "children": "Always" }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "Two independent vectors"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**$ \\mathbb{R}^2 $**"
+                            },
+                            { "element": "td", "children": "Entire plane" },
+                            { "element": "td", "children": "Not parallel" }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "Two independent vectors"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**$ \\mathbb{R}^3 $**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Plane through origin"
+                            },
+                            { "element": "td", "children": "Not parallel" }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "Three independent vectors"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**$ \\mathbb{R}^3 $**"
+                            },
+                            { "element": "td", "children": "All of 3D space" },
+                            {
+                                "element": "td",
+                                "children": "No one is a combo of others"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "element": "q",
+        "children": "💡 The solution set of a homogeneous system is always a **span** — a line, plane, or higher-dimensional flat space passing through the origin."
+    },
+    {
+        "element": "hr"
+    },
+    {
+        "element": "h2",
+        "children": "6. Final Thoughts"
+    },
+    {
+        "element": "p",
+        "children": "Vectors are more than arrows or lists of numbers — they are **building blocks**. When you take their linear combinations, you generate entire spaces."
+    },
+    {
+        "element": "p",
+        "children": "Understanding **span** helps you see linear systems not just as algebra problems, but as **geometric constructions**. This perspective is essential for mastering linear algebra — from matrix rank to eigenvectors and beyond."
+    }
+]

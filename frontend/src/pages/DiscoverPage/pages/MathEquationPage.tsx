@@ -4,8 +4,8 @@ import { Title } from "@/components/Title/Title";
 import { LevelTag } from "../components/LevelTag";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { Typography } from "@/components/Typography/Typography";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { Typography } from "@/components/Typography/Typography";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RelatedCoursesDisplay } from "../components/RelatedCoursesDisplay";
@@ -128,11 +128,11 @@ export const MathEquationPage: FC = () => {
                 </Flexbox>
             </Flexbox>
             <Flexbox
-                className="bg-background-dark max-h-[calc(100vh-8rem)] overflow-x-auto overflow-y-hidden rounded-2xl p-8 text-white lg:flex-1 xl:sticky xl:top-[6rem] xl:max-w-[calc(50vw-4rem)]"
+                className="bg-background-dark max-h-[calc(100vh-8rem)] overflow-x-auto overflow-y-hidden rounded-2xl p-8 lg:flex-1 xl:sticky xl:top-[6rem] xl:max-w-[calc(50vw-4rem)]"
                 variant="section"
             >
                 <MathExpression
-                    className="m-auto text-2xl [text-shadow:2px_2px_2.5px_black] max-xl:text-xl max-lg:text-lg"
+                    className="m-auto text-2xl max-xl:text-xl max-lg:text-lg"
                     variant="p"
                 >
                     {mathEquation.equation}

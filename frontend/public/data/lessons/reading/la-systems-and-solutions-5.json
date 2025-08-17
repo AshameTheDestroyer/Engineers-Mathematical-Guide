@@ -1,0 +1,453 @@
+[
+    { "element": "h2", "children": "Overview" },
+    {
+        "element": "p",
+        "children": "In this lesson, you'll explore the **foundations of linear systems** — sets of linear equations — and understand their **geometric meaning** in two and three dimensions. You'll learn how solutions to these systems correspond to **points of intersection** between lines or planes, and gain insight into when solutions exist, are unique, or don’t exist at all."
+    },
+    { "element": "p", "children": "By the end of this lesson, you will:" },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Define a system of linear equations."
+            },
+            {
+                "element": "li",
+                "children": "Solve simple 2×2 systems algebraically and geometrically."
+            },
+            {
+                "element": "li",
+                "children": "Interpret solutions geometrically (intersecting, parallel, coincident lines)."
+            },
+            {
+                "element": "li",
+                "children": "Understand the three possible outcomes for linear systems."
+            },
+            {
+                "element": "li",
+                "children": "Extend intuition to 3D (planes in space)."
+            }
+        ]
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "📐 1. What Is a Linear System?" },
+    {
+        "element": "p",
+        "children": "A **system of linear equations** is a collection of two or more linear equations involving the same set of variables."
+    },
+    { "element": "h3", "children": "Example (2×2 System):" },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*} (1)&\\quad 2x + y &= 5 \\\\ (2)&\\quad x - y &= 1 \\end{align*}"
+    },
+    {
+        "element": "p",
+        "children": "We seek values of **$x$** and **$y$** that satisfy **both equations simultaneously**."
+    },
+    {
+        "element": "q",
+        "children": "✅ A **solution** to a linear system is an assignment of values to the variables that makes **all equations true** at once."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🧮 2. Solving a System Algebraically" },
+    {
+        "element": "p",
+        "children": "Let’s solve the above system using **substitution** or **elimination**."
+    },
+    { "element": "h3", "children": "Using Elimination:" },
+    { "element": "p", "children": "Add equations (1) and (2):" },
+    {
+        "element": "mathjax",
+        "children": "(2x + y) + (x - y) = 5 + 1 \\Rightarrow 3x = 6 \\Rightarrow x = 2"
+    },
+    { "element": "p", "children": "Plug **$x = 2$** into equation (2):" },
+    { "element": "mathjax", "children": "2 - y = 1 \\Rightarrow y = 1" },
+    { "element": "q", "children": "✅ Solution: **$(x, y) = (2, 1)$**" },
+    {
+        "element": "p",
+        "children": "This is the **only pair** that satisfies both equations."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🖼️ 3. Geometric Interpretation in 2D" },
+    {
+        "element": "p",
+        "children": "Each linear equation in two variables (**$x$**, **$y$**) represents a **line** in the 2D coordinate plane."
+    },
+    { "element": "p", "children": "So, solving a 2×2 system means:" },
+    {
+        "element": "q",
+        "children": "🔎 **Finding the point(s) where the two lines intersect.**"
+    },
+    { "element": "p", "children": "Let’s plot our example:" },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "Line 1: **$2x + y = 5$** → Passes through (0,5) and (2.5,0)"
+            },
+            {
+                "element": "li",
+                "children": "Line 2: **$x - y = 1$** → Passes through (0,-1) and (1,0)"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "They intersect at **$(2, 1)$** — exactly our algebraic solution!"
+    },
+    { "element": "h3", "children": "🎯 Three Possible Cases in 2D:" },
+    {
+        "element": "table",
+        "children": [
+            {
+                "element": "thead",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "th", "children": "Case" },
+                            { "element": "th", "children": "Geometry" },
+                            {
+                                "element": "th",
+                                "children": "Numbers of Solutions"
+                            },
+                            { "element": "th", "children": "Description" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "element": "tbody",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "1" },
+                            {
+                                "element": "td",
+                                "children": "✅ Intersecting lines"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**One unique solution**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Lines cross at one point"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "2" },
+                            {
+                                "element": "td",
+                                "children": "❌ Parallel lines"
+                            },
+                            { "element": "td", "children": "**No solution**" },
+                            {
+                                "element": "td",
+                                "children": "Same slope, different intercepts"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "3" },
+                            {
+                                "element": "td",
+                                "children": "🔁 Coincident lines"
+                            },
+                            {
+                                "element": "td",
+                                "children": "**Infinitely many solutions**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Same line, just different forms"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    { "element": "h4", "children": "Example: No Solution (Parallel)" },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*} x + y &= 3 \\\\ x + y &= 5 \\end{align*}"
+    },
+    { "element": "p", "children": "→ Parallel lines → ❌ No intersection" },
+    { "element": "h4", "children": "Example: Infinite Solutions (Same Line)" },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*} 2x + 3y &= 6 \\\\ 4x + 6y &= 12 \\quad \\text{(just doubled)} \\end{align*}"
+    },
+    {
+        "element": "p",
+        "children": "→ Both represent the same line → 🔁 Every point on the line is a solution"
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🧊 4. Extending to 3D: Planes in Space" },
+    {
+        "element": "p",
+        "children": "Now consider three variables: **$x$**, **$y$**, **$z$**. Each linear equation represents a **plane** in 3D space."
+    },
+    {
+        "element": "p",
+        "children": "A system of three equations defines **three planes**. The solution is the point (or set of points) where **all three planes intersect**."
+    },
+    { "element": "h3", "children": "Example (3×3 System):" },
+    {
+        "element": "mathjax",
+        "children": "\\begin{align*} x + y + z &= 6 \\\\ 2x - y + z &= 3 \\\\ x + z &= 4 \\end{align*}"
+    },
+    {
+        "element": "p",
+        "children": "Solving this (via substitution or matrix methods) gives:"
+    },
+    {
+        "element": "p",
+        "children": "**$x = 1,\\ y = 2,\\ z = 3$** → A single point: **$(1, 2, 3)$**"
+    },
+    {
+        "element": "p",
+        "children": "Geometrically: The three planes meet at a **single point**."
+    },
+    { "element": "h3", "children": "🎯 Possible Cases in 3D:" },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": "✅ **One solution**: Planes intersect at a single point."
+            },
+            {
+                "element": "li",
+                "children": "❌ **No solution**: Planes are parallel or form a \"triangular prism\" with no common point."
+            },
+            {
+                "element": "li",
+                "children": "🔁 **Infinite solutions**: Planes intersect along a line or are identical."
+            }
+        ]
+    },
+    {
+        "element": "q",
+        "children": "💡 Just like in 2D, consistency and independence determine the nature of the solution."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🧠 Key Concepts Summary" },
+    {
+        "element": "table",
+        "children": [
+            {
+                "element": "thead",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "th", "children": "Concept" },
+                            { "element": "th", "children": "Meaning" }
+                        ]
+                    }
+                ]
+            },
+            {
+                "element": "tbody",
+                "children": [
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**Linear Equation**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "An equation like **$ax + by = c$**, graphed as a straight line (or plane)"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**System of Equations**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Multiple equations to solve together"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            { "element": "td", "children": "**Solution Set**" },
+                            {
+                                "element": "td",
+                                "children": "All variable assignments that satisfy every equation"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**Consistent System**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Has **at least one** solution"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**Inconsistent System**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Has **no solution**"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**Independent Equations**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "Each adds new information (not redundant)"
+                            }
+                        ]
+                    },
+                    {
+                        "element": "tr",
+                        "children": [
+                            {
+                                "element": "td",
+                                "children": "**Dependent Equations**"
+                            },
+                            {
+                                "element": "td",
+                                "children": "One can be derived from others → infinite solutions"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🧩 Real-World Connection" },
+    { "element": "p", "children": "Linear systems model real situations:" },
+    {
+        "element": "ul",
+        "children": [
+            { "element": "li", "children": "Balancing chemical equations" },
+            {
+                "element": "li",
+                "children": "Finding break-even points in business"
+            },
+            {
+                "element": "li",
+                "children": "Computer graphics (intersection of surfaces)"
+            },
+            {
+                "element": "li",
+                "children": "GPS triangulation (solving for position)"
+            }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "Understanding the **geometry** behind them helps you **visualize and verify** solutions."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "📝 Check Your Understanding" },
+    {
+        "element": "p",
+        "children": "**Q1:** What is the geometric meaning of the solution to a 2×2 linear system?"
+    },
+    {
+        "element": "q",
+        "children": "A: The point where the two lines intersect."
+    },
+    {
+        "element": "p",
+        "children": "**Q2:** Can two lines in a plane have exactly two intersection points? Why or why not?"
+    },
+    {
+        "element": "q",
+        "children": "A: No. Two distinct lines can only intersect 0 times (parallel), 1 time (crossing), or infinitely many (same line). Lines are straight — they can’t \"curve back\"."
+    },
+    {
+        "element": "p",
+        "children": "**Q3:** If three planes in 3D space are parallel, how many solutions does the system have?"
+    },
+    {
+        "element": "q",
+        "children": "A: Zero — no common point of intersection."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "🚀 What’s Next?" },
+    {
+        "element": "p",
+        "children": "In the next lesson, we’ll formalize solving linear systems using:"
+    },
+    {
+        "element": "ul",
+        "children": [
+            { "element": "li", "children": "**Row operations**" },
+            { "element": "li", "children": "**Augmented matrices**" },
+            { "element": "li", "children": "**Gaussian elimination**" }
+        ]
+    },
+    {
+        "element": "p",
+        "children": "This will give you a powerful algorithmic tool to solve larger systems (4×4, 10×10, or more!) efficiently."
+    },
+    { "element": "hr" },
+    { "element": "h2", "children": "📚 Additional Resources" },
+    {
+        "element": "ul",
+        "children": [
+            {
+                "element": "li",
+                "children": [
+                    {
+                        "element": "a",
+                        "children": "Khan Academy: Systems of Equations",
+                        "props": {
+                            "href": "(https://www.khanacademy.org/math/algebra/x2f8bb11595b61c86:systems-of-equations)"
+                        }
+                    }
+                ]
+            },
+            {
+                "element": "li",
+                "children": [
+                    {
+                        "element": "a",
+                        "children": "Interactive 3D graphing",
+                        "props": { "href": "(https://www.geogebra.org/3d)" }
+                    }
+                ]
+            }
+        ]
+    }
+]

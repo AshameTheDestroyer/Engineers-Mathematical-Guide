@@ -13,6 +13,7 @@ export type BlurredContainerProps<
     blurType?:
         | "top"
         | "left"
+        | "none"
         | "right"
         | "bottom"
         | "radial"
