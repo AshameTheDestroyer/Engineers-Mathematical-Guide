@@ -99,7 +99,7 @@ export const LessonButton: FC<LessonButtonProps> = ({
                         className="text-center font-bold sm:text-lg"
                         variant="h3"
                     >
-                        {lesson.title}
+                        {lesson.id.match(/\d*$/)}. {lesson.title}
                     </Typography>
                 </Flexbox>
             </Flexbox>
