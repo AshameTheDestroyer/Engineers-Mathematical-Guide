@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
@@ -75,7 +76,7 @@ export const DISCOVER_ROUTES = BuildRouter({
     },
 });
 
-export const DiscoverRoute = () => {
+export const DiscoverRoute: FC = () => {
     const { language, GetLocale } = useLocalization();
 
     return (

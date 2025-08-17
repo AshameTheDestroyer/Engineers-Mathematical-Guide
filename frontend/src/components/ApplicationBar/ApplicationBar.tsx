@@ -1,3 +1,4 @@
+import { Anchor } from "@/types/Anchor";
 import { twMerge } from "tailwind-merge";
 import { Flexbox } from "../Flexbox/Flexbox";
 import { FC, PropsWithChildren } from "react";
@@ -6,8 +7,8 @@ import { Header } from "@components/Header/Header";
 import { ComponentProps } from "@/types/ComponentProps";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
-import { JumpToStartButton } from "../JumpToStartButton/JumpToStartButton";
 import { useScreenSize } from "../ScreenSizeProvider/ScreenSizeProvider";
+import { JumpToStartButton } from "../JumpToStartButton/JumpToStartButton";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";

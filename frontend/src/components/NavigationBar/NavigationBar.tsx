@@ -1,3 +1,4 @@
+import { Anchor } from "@/types/Anchor";
 import { FC, PropsWithChildren } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
