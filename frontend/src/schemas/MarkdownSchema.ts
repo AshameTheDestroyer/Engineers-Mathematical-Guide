@@ -1,38 +1,35 @@
 import { z } from "zod";
 
-export const BaseMarkdownSchema = z.object({
-    props: z.object({}).optional(),
-    element: z.string({ required_error: "required" }),
-    children: z.union([z.string(), z.array(z.any())]).optional(),
+const BaseMarkdownSchema = z.object({
+    element: z.string(),
+    props: z
+        .record(
+            z.union([
+                z.string(),
+                z.number(),
+                z.boolean(),
+                z.null(),
+                z.undefined(),
+            ])
+        )
+        .optional(),
 });
 
-export const MarkdownSchema = z
-    .intersection(BaseMarkdownSchema, z.object({}))
-    .superRefine(({ children }) => {
-        if (children == null) {
-            return true;
-        }
-
-        if (typeof children == "string") {
-            return true;
-        }
-
-        return children
-            .map((child) => {
-                const { error } = BaseMarkdownSchema.safeParse(child);
-                if (error) {
-                    return false;
-                }
-
-                return true;
-            })
-            .every(Boolean);
-    });
-
-export type MarkdownDTO = Omit<
-    z.infer<typeof MarkdownSchema>,
-    "children" | "props"
-> & {
-    children?: Array<MarkdownDTO> | string;
-    props?: Record<string, Primitive>;
+type BaseMarkdownDTO = z.infer<typeof BaseMarkdownSchema>;
+export type MarkdownDTO = BaseMarkdownDTO & {
+    children?: string | Array<MarkdownDTO>;
 };
+
+export const MarkdownSchema: z.ZodType<MarkdownDTO> = z.intersection(
+    BaseMarkdownSchema,
+    z.lazy(() =>
+        z.object({
+            children: z
+                .union([
+                    z.string().optional(),
+                    z.array(MarkdownSchema).optional(),
+                ])
+                .optional(),
+        })
+    )
+);
