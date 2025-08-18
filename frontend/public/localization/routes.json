@@ -27,6 +27,10 @@
         "en": "Learning Track Dashboard",
         "ar": "لَوحةُ تَحكُّمِ المَساراتِ الدِّراسيّة"
     },
+    "math-equation-dashboard": {
+        "en": "Math Equation Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُعادَلاتِ الرِّياضيّة"
+    },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"

@@ -17,6 +17,9 @@ const CourseDashboardPage = LazyImport(
 const LearningTrackDashboardPage = LazyImport(
     "./pages/DashboardPage/pages/LearningTrackDashboardPage"
 );
+const MathEquationDashboardPage = LazyImport(
+    "./pages/DashboardPage/pages/MathEquationDashboardPage"
+);
 
 import locales from "@localization/routes.json";
 
@@ -28,6 +31,7 @@ export const DASHBOARD_ROUTES = BuildRouter({
             "user-dashboard": { href: "users" },
             "course-dashboard": { href: "courses" },
             "learning-track-dashboard": { href: "learning-tracks" },
+            "math-equation-dashboard": { href: "math-equations" },
         },
     },
 });
@@ -77,6 +81,22 @@ export const DashboardRoute: FC = () => {
                         <Title>
                             {GetLocale(
                                 locales["learning-track-dashboard"],
+                                language
+                            )}
+                        </Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={
+                    DASHBOARD_ROUTES.base.routes["math-equation-dashboard"].href
+                }
+                element={
+                    <LazyComponent>
+                        <MathEquationDashboardPage />
+                        <Title>
+                            {GetLocale(
+                                locales["math-equation-dashboard"],
                                 language
                             )}
                         </Title>
