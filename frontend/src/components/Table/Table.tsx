@@ -156,7 +156,7 @@ export const Table = <T extends Record<string, any>>({
                     )}
                     type="heading"
                 >
-                    {key.toTitleCase()}
+                    {key.toTitleCase("id")}
                 </Table.Cell>
             ))}
             {data.map((datum, i) =>
