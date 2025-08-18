@@ -31,7 +31,7 @@ export const UserDashboardPage: FC = () => {
             />
 
             <Table
-                className="max-h-[calc(100dvh-14rem)] grow [&_.cell[role=cell]]:place-content-center [&_.cell[role=cell]]:place-items-center"
+                className="max-h-[calc(100dvh-15rem)] grow [&_.cell[role=cell]]:place-content-center [&_.cell[role=cell]]:place-items-center"
                 {...usersQuery}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
