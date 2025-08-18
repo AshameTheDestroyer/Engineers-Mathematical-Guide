@@ -3,8 +3,8 @@ import { z } from "zod";
 export function ZodGetKeys(schema: z.ZodType) {
     let keys = [] as Array<string>;
 
-    if ("_cached" in schema) {
-        keys = [...(schema._cached as any).keys];
+    if ("shape" in schema._def) {
+        keys = [...Object.keys((schema._def.shape as any)())];
     }
 
     if ("left" in schema._def) {
