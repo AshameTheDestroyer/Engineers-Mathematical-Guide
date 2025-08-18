@@ -11,10 +11,13 @@ import {
 } from "@/types/ComponentProps";
 import {
     FC,
+    useRef,
     useMemo,
     Dispatch,
     SetStateAction,
     PropsWithChildren,
+    useImperativeHandle,
+    useEffect,
 } from "react";
 
 export type TableProps<T extends Record<string, any>> = QueryProps<
@@ -141,7 +144,7 @@ export const Table = <T extends Record<string, any>>({
                 <Table.Cell
                     key={i}
                     className={twJoin(
-                        "z-1 sticky -top-4 font-bold text-white",
+                        "z-1 bg-background-darker sticky -top-4 font-bold text-white",
                         i == 0 &&
                             (direction == "ltr"
                                 ? "rounded-tl-[inherit]"
@@ -150,9 +153,6 @@ export const Table = <T extends Record<string, any>>({
                             (direction == "ltr"
                                 ? "rounded-tr-[inherit]"
                                 : "rounded-tl-[inherit]"),
-                        isDarkThemed
-                            ? "bg-background-dark"
-                            : "bg-background-darker",
                         keysClassNames?.[key]
                     )}
                     type="heading"
@@ -239,13 +239,43 @@ Table.Wrapper = <T extends Record<string, any>>({
     className,
 }: ComponentProps<HTMLDivElement> & Pick<TableProps<T>, "keys">) => {
     const { isDarkThemed } = useThemeMode();
+    const tableReference = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(ref, () => tableReference.current!);
+
+    useEffect(() => {
+        if (tableReference.current == null) {
+            return;
+        }
+
+        tableReference.current.addEventListener("scroll", ScrollCallback);
+
+        return () => {
+            tableReference.current?.removeEventListener(
+                "scroll",
+                ScrollCallback
+            );
+        };
+    }, []);
+
+    function ScrollCallback() {
+        if (tableReference.current == null) {
+            return;
+        }
+
+        if (tableReference.current.scrollTop >= 48) {
+            tableReference.current.setAttribute("data-scrolled-down", "true");
+        } else {
+            tableReference.current.removeAttribute("data-scrolled-down");
+        }
+    }
 
     return (
         <div
             id={id}
-            ref={ref}
+            ref={tableReference}
             className={twMerge(
-                "border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-2 p-4 [&::-webkit-scrollbar]:hidden",
+                "border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-2 p-4 [&::-webkit-scrollbar]:hidden [&[data-scrolled-down=true]_.cell[role=heading]]:rounded-none",
                 isDarkThemed
                     ? "bg-background-normal/50"
                     : "bg-background-dark/50",
