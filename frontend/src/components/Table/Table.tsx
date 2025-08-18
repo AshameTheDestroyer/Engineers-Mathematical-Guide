@@ -141,7 +141,7 @@ export const Table = <T extends Record<string, any>>({
                 <Table.Cell
                     key={i}
                     className={twJoin(
-                        "font-bold text-white",
+                        "z-1 sticky -top-4 font-bold text-white",
                         i == 0 &&
                             (direction == "ltr"
                                 ? "rounded-tl-[inherit]"
@@ -151,8 +151,8 @@ export const Table = <T extends Record<string, any>>({
                                 ? "rounded-tr-[inherit]"
                                 : "rounded-tl-[inherit]"),
                         isDarkThemed
-                            ? "bg-background-dark/50"
-                            : "bg-background-darker/75",
+                            ? "bg-background-dark"
+                            : "bg-background-darker",
                         keysClassNames?.[key]
                     )}
                     type="heading"
