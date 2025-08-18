@@ -1,12 +1,21 @@
 import { FC } from "react";
+import { twJoin } from "tailwind-merge";
+import { Icon } from "@/components/Icon/Icon";
 import { Table } from "@/components/Table/Table";
 import { UserSchema } from "@/schemas/UserSchema";
+import { GenderEnum } from "@/schemas/SignupSchema";
 import { ZodGetKeys } from "@/functions/Zod.GetKeys";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { SearchHeader } from "@/components/SearchHeader";
 import { useGetUsers } from "@/services/Users/useGetUsers";
 import { useSchematicSearch } from "@/hooks/useSchematicSearch";
+import { Typography } from "@/components/Typography/Typography";
+import { ProfileAvatar } from "@/pages/ApplicationPage/components/ProfileAvatar";
+import { DayStreakBadge } from "@/pages/ApplicationPage/components/DayStreakBadge";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+import male_icon from "@icons/male.svg";
+import female_icon from "@icons/female.svg";
 
 import locales from "@localization/user_dashboard_page.json";
 
@@ -28,11 +37,19 @@ export const UserDashboardPage: FC = () => {
             />
 
             <Table
-                className="max-h-[calc(100dvh-14rem)] grow"
+                className="max-h-[calc(100dvh-14rem)] grow [&_.cell[role=cell]]:place-content-center [&_.cell[role=cell]]:place-items-center"
                 {...usersQuery}
                 searchQuery={searchQuery}
-                keys={ZodGetKeys(UserSchema)}
+                keys={ZodGetKeys(UserSchema).filter(
+                    (key) => !["personal-image"].includes(key)
+                )}
                 setSearchQuery={setSearchQuery}
+                keysClassNames={{
+                    flag: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center grow min-w-max",
+                    avatar: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center",
+                    "phone-number": "[&[role=cell]]:[direction:ltr]",
+                    username: "[&[role=cell]]:[direction:ltr]",
+                }}
                 loadingTypography={{
                     title: GetLocale(locales.table.loading.title, language),
                     paragraph: GetLocale(
@@ -55,6 +72,59 @@ export const UserDashboardPage: FC = () => {
                         locales.table.empty.paragraph,
                         language
                     ).replace(/\*\*([^\*]+)\*\*/, `**"${searchQuery}"**`),
+                }}
+                CellRenders={({ key, value }, datum) => {
+                    switch (key) {
+                        case "flag":
+                            return (
+                                <img
+                                    className="w-[64px] drop-shadow-[3px_3px_1px_#0000004c]"
+                                    src={`/flags/${value}.svg`}
+                                    width={64}
+                                    height={64}
+                                />
+                            );
+                        case "avatar":
+                            return (
+                                <ProfileAvatar
+                                    className="scale-65 -m-3 aspect-square h-24"
+                                    user={datum}
+                                />
+                            );
+                        case "day-streak":
+                            return <DayStreakBadge user={datum} />;
+                        case "username":
+                            return `@${value}`;
+                        case "gender":
+                            return (
+                                <Flexbox
+                                    className={twJoin(
+                                        "rounded-2xl px-2 py-1",
+                                        value == GenderEnum.male &&
+                                            "bg-blue-500",
+                                        value == GenderEnum.female &&
+                                            "bg-pink-500"
+                                    )}
+                                    gap="2"
+                                    placeItems="center"
+                                    placeContent="space-between"
+                                >
+                                    <Icon
+                                        source={
+                                            { male_icon, female_icon }[
+                                                `${value}_icon`
+                                            ]
+                                        }
+                                    />
+                                    <Typography
+                                        className="min-w-[6ch] text-center font-bold"
+                                        variant="p"
+                                    >
+                                        {value.toTitleCase()}
+                                    </Typography>
+                                </Flexbox>
+                            );
+                    }
                 }}
             />
         </Flexbox>

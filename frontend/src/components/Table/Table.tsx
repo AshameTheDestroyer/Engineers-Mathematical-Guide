@@ -1,4 +1,5 @@
 import { Button } from "../Button/Button";
+import { Flexbox } from "../Flexbox/Flexbox";
 import { twJoin, twMerge } from "tailwind-merge";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
@@ -21,6 +22,7 @@ export type TableProps<T extends Record<string, any>> = QueryProps<
     keys: Array<string>;
     searchQuery: string;
     setSearchQuery: Dispatch<SetStateAction<string>>;
+    keysClassNames?: Partial<Record<keyof T, string>>;
     loadingTypography: {
         title: string;
         paragraph: string;
@@ -35,6 +37,15 @@ export type TableProps<T extends Record<string, any>> = QueryProps<
         button: string;
         paragraph: string;
     };
+    CellRenders?: (
+        cell: {
+            [K in keyof T]: {
+                key: K;
+                value: T[K];
+            };
+        }[keyof T] & {},
+        datum: T
+    ) => PropsWithChildren["children"] | void;
 } & ChildlessComponentProps<HTMLDivElement>;
 
 export const Table = <T extends Record<string, any>>({
@@ -46,6 +57,8 @@ export const Table = <T extends Record<string, any>>({
     isLoading,
     className,
     keys: _keys,
+    CellRenders,
+    keysClassNames,
     setSearchQuery,
     emptyTypography,
     errorTypography,
@@ -133,7 +146,8 @@ export const Table = <T extends Record<string, any>>({
                                 : "rounded-tl-[inherit]"),
                         isDarkThemed
                             ? "bg-background-dark/50"
-                            : "bg-background-darker/75"
+                            : "bg-background-darker/75",
+                        keysClassNames?.[key]
                     )}
                     type="heading"
                 >
@@ -159,11 +173,14 @@ export const Table = <T extends Record<string, any>>({
                                 ? isDarkThemed
                                     ? "bg-background-light/75"
                                     : "bg-background-dark/75"
-                                : isDarkThemed && "bg-background-dark/25"
+                                : isDarkThemed && "bg-background-dark/25",
+                            keysClassNames?.[key]
                         )}
                         type="cell"
                     >
-                        {datum[key] ?? "None"}
+                        {CellRenders?.({ key, value: datum[key] }, datum) ??
+                            datum[key] ??
+                            "None"}
                     </Table.Cell>
                 ))
             )}
@@ -209,16 +226,16 @@ Table.Cell = ({
     className,
 }: ComponentProps<HTMLDivElement> & { type: "heading" | "cell" }) => {
     return (
-        <div
+        <Flexbox
             id={id}
             ref={ref}
             className={twMerge(
-                "border-background-darker border-1 text-nowrap px-4 py-2",
+                "cell border-background-darker border-1 text-nowrap px-4 py-2",
                 className
             )}
             role={type}
         >
             {children}
-        </div>
+        </Flexbox>
     );
 };
