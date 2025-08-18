@@ -5,7 +5,6 @@ import { Rating } from "@/components/Rating/Rating";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import { GenerateTextShadow } from "@/functions/GenerateTextShadow";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import user_icon from "@icons/user.svg";
@@ -58,13 +57,6 @@ export const CardSummary: FC<CardSummaryProps> = ({
                 </Typography>
             </Flexbox>
             <Flexbox placeItems="center" gap="2">
-                <Typography
-                    className="rating text-vibrant-yellow-normal min-w-[3ch] text-center font-bold"
-                    variant="p"
-                    style={{ textShadow: GenerateTextShadow() }}
-                >
-                    {rating}
-                </Typography>
                 <Rating
                     value={rating}
                     iconProps={{
