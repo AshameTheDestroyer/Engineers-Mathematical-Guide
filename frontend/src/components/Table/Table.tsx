@@ -1,3 +1,4 @@
+import { Image } from "../Image/Image";
 import { Button } from "../Button/Button";
 import { Flexbox } from "../Flexbox/Flexbox";
 import { twJoin, twMerge } from "tailwind-merge";
@@ -15,7 +16,6 @@ import {
     SetStateAction,
     PropsWithChildren,
 } from "react";
-import { Image } from "../Image/Image";
 
 export type TableProps<T extends Record<string, any>> = QueryProps<
     Array<T> | undefined
@@ -209,7 +209,7 @@ export const Table = <T extends Record<string, any>>({
                                         ) {
                                             return (
                                                 <Image
-                                                    className="-mx-4 -my-2 w-[128px] [&>img]:object-cover"
+                                                    className="-mx-4 -my-2 h-[64px] w-[128px] rounded-[inherit] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                                                     source={datum[key]}
                                                     alternative="Data image."
                                                 />
