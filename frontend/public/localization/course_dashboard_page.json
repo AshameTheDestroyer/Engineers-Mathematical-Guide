@@ -33,13 +33,13 @@
             },
             "button": {
                 "en": "Refetch Courses",
-                "ar": "إعادةُ جَلبِ المُستَخدِمين"
+                "ar": "إعادةُ جَلبِ المُقرَّرات"
             }
         },
         "empty": {
             "title": {
                 "en": "No Courses Found",
-                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُستَخدِم"
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُقرَّر"
             },
             "paragraph": {
                 "en": "The term **term** was not found, try searching for another thing.",
