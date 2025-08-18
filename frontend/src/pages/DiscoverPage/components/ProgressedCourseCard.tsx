@@ -98,8 +98,10 @@ export const ProgressedCourseCard: FC<ProgressedCourseCardProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                isDarkThemed ? "bg-background-normal" : "bg-foreground-dark",
-                "relative cursor-pointer rounded-lg p-6 text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                "border-background-darker relative cursor-pointer rounded-lg border-2 p-6 text-white transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                isDarkThemed
+                    ? "bg-background-normal/50"
+                    : "bg-foreground-darker/75",
                 className
             )}
             gap="8"

@@ -9,6 +9,7 @@ import { MathEquationDTO } from "@/schemas/MathEquationSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 export type MathEquationCardProps = ChildlessComponentProps<HTMLButtonElement> &
@@ -33,6 +34,7 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
     const shadow = useShadow();
     const Navigate = useNavigate();
 
+    const { isDarkThemed } = useThemeMode();
     const { direction } = useLocalization();
 
     return (
@@ -40,10 +42,12 @@ export const MathEquationCard: FC<MathEquationCardProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                isSkeleton
-                    ? "animate-pulse bg-black/50"
-                    : "bg-background-normal",
-                "relative isolate flex cursor-pointer flex-col overflow-hidden rounded-2xl p-8 text-start transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                "border-background-darker relative isolate flex cursor-pointer flex-col overflow-hidden rounded-2xl border-2 p-8 text-start transition duration-200 [&:is(:hover,:focus-within)]:scale-105",
+                isDarkThemed
+                    ? "bg-background-normal/50"
+                    : "bg-background-dark/50",
+                isSkeleton && "animate-pulse bg-black/50",
+
                 className
             )}
             role="region"

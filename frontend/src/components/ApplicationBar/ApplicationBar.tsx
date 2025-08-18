@@ -7,6 +7,7 @@ import { Header } from "@components/Header/Header";
 import { ComponentProps } from "@/types/ComponentProps";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
+import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useScreenSize } from "../ScreenSizeProvider/ScreenSizeProvider";
 import { JumpToStartButton } from "../JumpToStartButton/JumpToStartButton";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -34,6 +35,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
     withoutLogo,
     withoutBreadcrumbs,
 }) => {
+    const { isDarkThemed } = useThemeMode();
     const { isScreenSize } = useScreenSize();
     const { GetRouteLocales, language, direction } = useLocalization();
 
@@ -42,13 +44,16 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-background-dark flex-nowrap place-items-start transition duration-200",
+                "border-background-darker flex-nowrap place-items-start border-b-2 transition duration-200",
+                isDarkThemed
+                    ? "bg-background-dark/75"
+                    : "bg-background-dark/100",
                 className
             )}
             isSticky
             onHeaderScroll={(direction, header) => {
                 header.classList[direction == "up" ? "remove" : "add"](
-                    "not-hover:not-focus-within:opacity-50"
+                    "not-hover:not-focus-within:opacity-85"
                 );
             }}
         >

@@ -17,6 +17,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ExaminationLesson } from "../components/ExaminationLesson";
 import { useGetLessonByID } from "@/services/Lessons/useGetLessonByID";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
@@ -30,6 +31,7 @@ import locales from "@localization/modules_page.json";
 
 export const LessonPage: FC = () => {
     const { myUser } = useMain();
+    const { isDarkThemed } = useThemeMode();
     const { isScreenSize } = useScreenSize();
     const { language, GetLocale } = useLocalization();
 
@@ -131,7 +133,12 @@ export const LessonPage: FC = () => {
             <Title>{lesson.title}</Title>
 
             <LessonDropView
-                className="bg-background-normal rounded-2xl xl:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] xl:min-w-[32rem] xl:max-w-[32rem] xl:overflow-y-auto xl:overflow-x-hidden"
+                className={twJoin(
+                    "border-background-darker rounded-2xl border-2 xl:max-h-[calc(100dvh-var(--spacing-page)*2-var(--spacing)*16)] xl:min-w-[32rem] xl:max-w-[32rem] xl:overflow-y-auto xl:overflow-x-hidden",
+                    isDarkThemed
+                        ? "bg-background-normal/50"
+                        : "bg-background-dark/50"
+                )}
                 orientation={
                     isScreenSize["max-sm"] || isScreenSize.xl
                         ? "portrait"
@@ -159,7 +166,14 @@ export const LessonPage: FC = () => {
                     </span>
                 </Typography>
 
-                <Flexbox className="sm:bg-background-normal max-sm:-m-page relative min-h-[60dvh] grow rounded-2xl p-4">
+                <Flexbox
+                    className={twJoin(
+                        "border-background-darker relative min-h-[60dvh] grow rounded-2xl border-2 p-4",
+                        isDarkThemed
+                            ? "bg-background-normal/50"
+                            : "bg-background-dark/50"
+                    )}
+                >
                     {(() => {
                         switch (lesson.type) {
                             case LessonTypeEnum.video:

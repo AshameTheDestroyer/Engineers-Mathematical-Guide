@@ -11,6 +11,7 @@ import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LearningTrackDTO } from "@/schemas/LearningTrackSchema";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import locales from "@localization/learning_tracks_page.json";
@@ -38,6 +39,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
     const shadow = useShadow();
     const Navigate = useNavigate();
 
+    const { isDarkThemed } = useThemeMode();
     const { GetLocale, language, direction } = useLocalization();
 
     return (
@@ -46,7 +48,10 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
             ref={ref}
             className={twMerge(
                 isSkeleton && "animate-pulse",
-                "bg-background-normal relative place-self-stretch rounded-lg p-4 max-lg:flex-col lg:h-64",
+                "border-background-darker relative place-self-stretch rounded-lg border-2 p-4 max-lg:flex-col lg:h-64",
+                isDarkThemed
+                    ? "bg-background-normal/50"
+                    : "bg-background-dark/50",
                 className
             )}
             gap="4"
@@ -69,7 +74,7 @@ export const LearningTrackCard: React.FC<LearningTrackCardProps> = ({
                 }
             >
                 <Image
-                    className="h-full rounded-lg [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
+                    className="border-background-darker h-full rounded-lg border-2 [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
                     hideNotFoundIcon
                     source={learningTrack?.image}
                     alternative={

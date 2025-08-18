@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
 import { LevelTag } from "../components/LevelTag";
@@ -9,6 +10,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { useGetCoursesByIDs } from "@/services/Courses/useGetCoursesByIDs";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RelatedCoursesDisplay } from "../components/RelatedCoursesDisplay";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useGetMathEquationByID } from "@/services/MathEquations/useGetMathEquationByID";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
@@ -19,6 +21,7 @@ export const MathEquationPage: FC = () => {
     const { mathEquationID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
+    const { isDarkThemed } = useThemeMode();
     const { direction, language, GetLocale } = useLocalization();
 
     const { data: mathEquation } = useGetMathEquationByID(mathEquationID, {
@@ -128,7 +131,12 @@ export const MathEquationPage: FC = () => {
                 </Flexbox>
             </Flexbox>
             <Flexbox
-                className="bg-background-dark max-h-[calc(100vh-8rem)] overflow-x-auto overflow-y-hidden rounded-2xl p-8 lg:flex-1 xl:sticky xl:top-[6rem] xl:max-w-[calc(50vw-4rem)]"
+                className={twJoin(
+                    "border-background-darker max-h-[calc(100vh-8rem)] overflow-x-auto overflow-y-hidden rounded-2xl border-2 p-8 lg:flex-1 xl:sticky xl:top-[6rem] xl:max-w-[calc(50vw-4rem)]",
+                    isDarkThemed
+                        ? "bg-background-normal/50"
+                        : "bg-background-dark/50"
+                )}
                 variant="section"
             >
                 <MathExpression
