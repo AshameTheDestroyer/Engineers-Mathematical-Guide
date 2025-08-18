@@ -3,6 +3,7 @@ import { Icon } from "@/components/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { Gender } from "@/schemas/SignupSchema";
 import { twJoin, twMerge } from "tailwind-merge";
+import { DayStreakBadge } from "./DayStreakBadge";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
@@ -15,7 +16,6 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import user_icon from "@icons/user.svg";
-import fire_icon from "@icons/fire.svg";
 import phone_icon from "@icons/phone.svg";
 import email_icon from "@icons/email.svg";
 import location_icon from "@icons/location.svg";
@@ -170,27 +170,7 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     ))}
                 </Flexbox>
 
-                <Flexbox
-                    className={twJoin(
-                        "bg-secondary-normal place-self-end rounded-full px-6 py-2 font-bold text-white max-md:place-self-center",
-                        direction == "ltr"
-                            ? "rounded-br-xl rounded-tl-xl md:ml-auto"
-                            : "rounded-bl-xl rounded-tr-xl md:mr-auto"
-                    )}
-                    gap="2"
-                    placeItems="center"
-                    placeContent="space-between"
-                >
-                    <Icon source={fire_icon} />
-                    <Typography className="text-nowrap" variant="p">
-                        {user["day-streak"]}{" "}
-                        {GetGenderedLocale(
-                            locales.information.streak,
-                            language,
-                            user.gender
-                        )}
-                    </Typography>
-                </Flexbox>
+                <DayStreakBadge className="md:place-self-end" user={user} />
             </Flexbox>
 
             <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">
