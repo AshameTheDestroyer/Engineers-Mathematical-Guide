@@ -11,6 +11,9 @@ const DashboardPage = LazyImport("./pages/DashboardPage/DashboardPage");
 const UserDashboardPage = LazyImport(
     "./pages/DashboardPage/pages/UserDashboardPage"
 );
+const CourseDashboardPage = LazyImport(
+    "./pages/DashboardPage/pages/CourseDashboardPage"
+);
 
 import locales from "@localization/routes.json";
 
@@ -20,6 +23,7 @@ export const DASHBOARD_ROUTES = BuildRouter({
         routes: {
             home: { href: "/website" },
             "user-dashboard": { href: "users" },
+            "course-dashboard": { href: "courses" },
         },
     },
 });
@@ -43,6 +47,17 @@ export const DashboardRoute: FC = () => {
                         <UserDashboardPage />
                         <Title>
                             {GetLocale(locales["user-dashboard"], language)}
+                        </Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={DASHBOARD_ROUTES.base.routes["course-dashboard"].href}
+                element={
+                    <LazyComponent>
+                        <CourseDashboardPage />
+                        <Title>
+                            {GetLocale(locales["course-dashboard"], language)}
                         </Title>
                     </LazyComponent>
                 }
