@@ -197,22 +197,25 @@ export const Table = <T extends Record<string, any>>({
                                     case "string":
                                         if (
                                             [
-                                                ".jpg",
-                                                ".jpeg",
                                                 ".png",
-                                                ".bmp",
-                                                ".tiff",
+                                                ".jpg",
                                                 ".wbp",
+                                                ".bmp",
+                                                ".jpeg",
+                                                ".tiff",
                                             ].some((extension) =>
                                                 datum[key].endsWith(extension)
                                             )
                                         ) {
                                             return (
-                                                <Image
-                                                    className="-mx-4 -my-2 h-[64px] w-[128px] rounded-[inherit] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
-                                                    source={datum[key]}
-                                                    alternative="Data image."
-                                                />
+                                                <>
+                                                    <Image
+                                                        className="-z-1 absolute inset-0 rounded-[inherit] [&>img]:h-full [&>img]:w-full [&>img]:object-cover"
+                                                        source={datum[key]}
+                                                        alternative="Data image."
+                                                    />
+                                                    <div className="min-h-[64px] min-w-[128px]" />
+                                                </>
                                             );
                                         }
                                         return datum[key];
@@ -270,7 +273,7 @@ Table.Cell = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "cell border-background-darker border-1 text-nowrap px-4 py-2",
+                "cell border-background-darker border-1 relative isolate text-nowrap px-4 py-2",
                 className
             )}
             role={type}
