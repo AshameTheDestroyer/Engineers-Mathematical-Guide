@@ -184,7 +184,11 @@ export const Table = <T extends Record<string, any>>({
                         type="cell"
                     >
                         {CellRenders?.({ key, value: datum[key] }, datum) ??
-                            datum[key] ??
+                            (typeof datum[key] == "boolean"
+                                ? datum[key]
+                                    ? "True"
+                                    : "False"
+                                : datum[key]) ??
                             "None"}
                     </Table.Cell>
                 ))
