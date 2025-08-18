@@ -19,10 +19,7 @@ export const DASHBOARD_ROUTES = BuildRouter({
         href: "/dashboard",
         routes: {
             home: { href: "/website" },
-            "dashboard-users": {
-                href: "users",
-                title: "User Dashboard",
-            },
+            "user-dashboard": { href: "users" },
         },
     },
 });
@@ -40,12 +37,12 @@ export const DashboardRoute: FC = () => {
             }
         >
             <Route
-                path={DASHBOARD_ROUTES.base.routes["dashboard-users"].href}
+                path={DASHBOARD_ROUTES.base.routes["user-dashboard"].href}
                 element={
                     <LazyComponent>
                         <UserDashboardPage />
                         <Title>
-                            {GetLocale(locales["dashboard-users"], language)}
+                            {GetLocale(locales["user-dashboard"], language)}
                         </Title>
                     </LazyComponent>
                 }

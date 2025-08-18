@@ -15,7 +15,10 @@
     "dashboard": { "en": "Dashboard", "ar": "لَوحةُ التَّحَكُّم" },
     "application": { "en": "Application", "ar": "التَّطبيق" },
     "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
-    "dashboard-users": { "en": "Users", "ar": "المُستَخدِمون" },
+    "user-dashboard": {
+        "en": "User Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُستَخدِمين"
+    },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"

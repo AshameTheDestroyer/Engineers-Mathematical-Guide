@@ -14,7 +14,7 @@ export const DashboardPage: FC = () => {
     useScrollRestoration();
     useDefaultRoute(
         DASHBOARD_ROUTES.base.href,
-        DASHBOARD_ROUTES.base.routes["dashboard-users"].href
+        DASHBOARD_ROUTES.base.routes["user-dashboard"].href
     );
 
     return (
