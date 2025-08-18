@@ -14,6 +14,9 @@ const UserDashboardPage = LazyImport(
 const CourseDashboardPage = LazyImport(
     "./pages/DashboardPage/pages/CourseDashboardPage"
 );
+const LearningTrackDashboardPage = LazyImport(
+    "./pages/DashboardPage/pages/LearningTrackDashboardPage"
+);
 
 import locales from "@localization/routes.json";
 
@@ -24,6 +27,7 @@ export const DASHBOARD_ROUTES = BuildRouter({
             home: { href: "/website" },
             "user-dashboard": { href: "users" },
             "course-dashboard": { href: "courses" },
+            "learning-track-dashboard": { href: "learning-tracks" },
         },
     },
 });
@@ -58,6 +62,23 @@ export const DashboardRoute: FC = () => {
                         <CourseDashboardPage />
                         <Title>
                             {GetLocale(locales["course-dashboard"], language)}
+                        </Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={
+                    DASHBOARD_ROUTES.base.routes["learning-track-dashboard"]
+                        .href
+                }
+                element={
+                    <LazyComponent>
+                        <LearningTrackDashboardPage />
+                        <Title>
+                            {GetLocale(
+                                locales["learning-track-dashboard"],
+                                language
+                            )}
                         </Title>
                     </LazyComponent>
                 }
