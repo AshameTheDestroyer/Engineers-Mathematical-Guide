@@ -49,7 +49,7 @@ export const Rating: FC<RatingProps> = ({
                     variant="p"
                     style={{ textShadow: GenerateTextShadow() }}
                 >
-                    {value}
+                    {_value}
                 </Typography>
             )}
             <Flexbox>
