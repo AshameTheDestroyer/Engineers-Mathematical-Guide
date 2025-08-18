@@ -3,6 +3,7 @@ import { twJoin } from "tailwind-merge";
 import { useNavigate } from "react-router-dom";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Separator } from "@/components/Separator/Separator";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 
 export type BorderedListProps = {
     list: Array<{ title: string; path: string }>;
@@ -10,10 +11,16 @@ export type BorderedListProps = {
 
 export const BorderedList: FC<BorderedListProps> = ({ list }) => {
     const Navigate = useNavigate();
+    const { isDarkThemed } = useThemeMode();
 
     return (
         <Flexbox
-            className="bg-background-normal border-background-darker rounded-lg border-2 p-4"
+            className={twJoin(
+                "border-background-darker rounded-lg border-2 p-4",
+                isDarkThemed
+                    ? "bg-background-normal/50"
+                    : "bg-background-dark/50"
+            )}
             gap="2"
             variant="ol"
             direction="column"
@@ -30,7 +37,10 @@ export const BorderedList: FC<BorderedListProps> = ({ list }) => {
                     <Flexbox variant="li">
                         <button
                             className={twJoin(
-                                "active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal-hover w-full grow cursor-pointer p-4 text-start text-lg transition duration-200",
+                                "w-full grow cursor-pointer p-4 text-start text-lg transition duration-200",
+                                isDarkThemed
+                                    ? "active:bg-background-normal-active [&:where(:hover,:focus-within)]:bg-background-normal/75"
+                                    : "active:bg-background-dark [&:where(:hover,:focus-within)]:bg-background-normal-active",
                                 i == 0
                                     ? "rounded-t-lg"
                                     : i == array.length - 1

@@ -13,6 +13,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
 import { useGetCourseByID } from "@/services/Courses/useGetCourseByID";
 import { useGetModulesByIDs } from "@/services/Modules/useGetModulesByIDs";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
@@ -24,10 +25,11 @@ import check_icon from "@icons/variant_success.svg";
 import locales from "@localization/modules_page.json";
 
 export const ModulesPage: FC = () => {
-    const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
-
     const { orientation } = useScreenSize();
+    const { isDarkThemed } = useThemeMode();
     const { direction, language, GetLocale } = useLocalization();
+
+    const { courseID } = useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
     const { myUser } = useMain();
 
@@ -152,7 +154,10 @@ export const ModulesPage: FC = () => {
             {enrollment != null && (
                 <Flexbox
                     className={twJoin(
-                        "bg-background-normal relative rounded-lg p-6",
+                        "border-background-darker relative rounded-lg border-2 p-6",
+                        isDarkThemed
+                            ? "bg-background-normal/50"
+                            : "bg-background-dark/50",
                         orientation == "portrait" ? "order-1" : "order-4"
                     )}
                     gap="4"

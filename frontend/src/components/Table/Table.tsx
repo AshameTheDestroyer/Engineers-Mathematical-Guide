@@ -185,9 +185,9 @@ Table.Wrapper = <T extends Record<string, any>>({
             id={id}
             ref={ref}
             className={twMerge(
-                "border-background-darker border-1 relative grid auto-rows-max overflow-auto rounded-2xl p-4 [&::-webkit-scrollbar]:hidden",
+                "border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-2 p-4 [&::-webkit-scrollbar]:hidden",
                 isDarkThemed
-                    ? "bg-background-light/25"
+                    ? "bg-background-normal/50"
                     : "bg-background-dark/50",
                 className
             )}
