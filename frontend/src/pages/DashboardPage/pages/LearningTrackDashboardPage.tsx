@@ -75,7 +75,7 @@ export const LearningTrackDashboardPage: FC = () => {
                         language
                     ).replace(/\*\*([^\*]+)\*\*/, `**"${searchQuery}"**`),
                 }}
-                CellRenders={({ key, value }, datum) => {
+                CellRenders={({ key, value }) => {
                     switch (key) {
                         case "rating":
                             return (
@@ -97,7 +97,7 @@ export const LearningTrackDashboardPage: FC = () => {
                                     compactDisplay: "short",
                                     maximumFractionDigits: 1,
                                 }
-                            ).format(datum["rating-count"]);
+                            ).format(value);
                     }
                 }}
             />

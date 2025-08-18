@@ -74,7 +74,7 @@ export const CourseDashboardPage: FC = () => {
                         language
                     ).replace(/\*\*([^\*]+)\*\*/, `**"${searchQuery}"**`),
                 }}
-                CellRenders={({ key, value }, datum) => {
+                CellRenders={({ key, value }) => {
                     switch (key) {
                         case "rating":
                             return (
@@ -96,7 +96,7 @@ export const CourseDashboardPage: FC = () => {
                                     compactDisplay: "short",
                                     maximumFractionDigits: 1,
                                 }
-                            ).format(datum["rating-count"]);
+                            ).format(value);
                         case "locked":
                             return <BooleanBadge value={value} />;
                     }
