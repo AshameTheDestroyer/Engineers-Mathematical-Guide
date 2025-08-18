@@ -184,11 +184,18 @@ export const Table = <T extends Record<string, any>>({
                         type="cell"
                     >
                         {CellRenders?.({ key, value: datum[key] }, datum) ??
-                            (typeof datum[key] == "boolean"
-                                ? datum[key]
-                                    ? "True"
-                                    : "False"
-                                : datum[key]) ??
+                            (() => {
+                                switch (typeof datum[key]) {
+                                    case "boolean":
+                                        return datum[key] ? "True" : "False";
+                                    case "object":
+                                        return Array.isArray(datum[key])
+                                            ? datum[key].join(", ") + "."
+                                            : JSON.stringify(datum[key]);
+                                    default:
+                                        return datum[key];
+                                }
+                            })() ??
                             "None"}
                     </Table.Cell>
                 ))
