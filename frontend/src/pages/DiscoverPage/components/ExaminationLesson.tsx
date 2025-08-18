@@ -40,7 +40,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
     }
 
     return (
-        <div className="examination-lesson w-full">
+        <div className="examination-lesson absolute inset-0 overflow-auto p-[inherit]">
             <Timer
                 minutes={time}
                 isRunning={isRunning}
