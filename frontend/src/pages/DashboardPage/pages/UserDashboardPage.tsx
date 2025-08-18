@@ -40,15 +40,27 @@ export const UserDashboardPage: FC = () => {
                 className="max-h-[calc(100dvh-14rem)] grow [&_.cell[role=cell]]:place-content-center [&_.cell[role=cell]]:place-items-center"
                 {...usersQuery}
                 searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
                 keys={ZodGetKeys(UserSchema).filter(
                     (key) => !["personal-image"].includes(key)
                 )}
-                setSearchQuery={setSearchQuery}
+                prioritizedKeys={[
+                    "avatar",
+                    "name",
+                    "surname",
+                    "username",
+                    "email",
+                    "flag",
+                    "country",
+                    "day-streak",
+                    "phone-number",
+                    "gender",
+                ]}
                 keysClassNames={{
-                    flag: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center grow min-w-max",
-                    avatar: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center",
-                    "phone-number": "[&[role=cell]]:[direction:ltr]",
                     username: "[&[role=cell]]:[direction:ltr]",
+                    "phone-number": "[&[role=cell]]:[direction:ltr]",
+                    avatar: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center",
+                    flag: "[&[role=cell]]:place-content-center [&[role=cell]]:place-items-center grow min-w-max",
                 }}
                 loadingTypography={{
                     title: GetLocale(locales.table.loading.title, language),
@@ -99,7 +111,7 @@ export const UserDashboardPage: FC = () => {
                             return (
                                 <Flexbox
                                     className={twJoin(
-                                        "rounded-2xl px-2 py-1",
+                                        "rounded-2xl px-2 py-1 text-white",
                                         value == GenderEnum.male &&
                                             "bg-blue-500",
                                         value == GenderEnum.female &&

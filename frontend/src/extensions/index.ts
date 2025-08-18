@@ -10,6 +10,7 @@ import "./TrimAll.ts";
 import "./Permute.ts";
 import "./GroupBy.ts";
 import "./ToUTCDate.ts";
+import "./Prioritize.ts";
 import "./ToClassName.ts";
 import "./ToTitleCase.ts";
 import "./PromiseWait.ts";

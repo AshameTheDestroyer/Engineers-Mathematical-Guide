@@ -21,6 +21,7 @@ export type TableProps<T extends Record<string, any>> = QueryProps<
 > & {
     keys: Array<string>;
     searchQuery: string;
+    prioritizedKeys?: Array<keyof T>;
     setSearchQuery: Dispatch<SetStateAction<string>>;
     keysClassNames?: Partial<Record<keyof T, string>>;
     loadingTypography: {
@@ -60,6 +61,7 @@ export const Table = <T extends Record<string, any>>({
     CellRenders,
     keysClassNames,
     setSearchQuery,
+    prioritizedKeys,
     emptyTypography,
     errorTypography,
     loadingTypography,
@@ -68,7 +70,10 @@ export const Table = <T extends Record<string, any>>({
     const { isDarkThemed } = useThemeMode();
 
     const keys = useMemo(
-        () => _keys ?? Object.keys(data?.[0] ?? {}),
+        () =>
+            (_keys ?? Object.keys(data?.[0] ?? {})).prioritize(
+                (prioritizedKeys as Array<string>) ?? []
+            ),
         [_keys, data]
     );
 
