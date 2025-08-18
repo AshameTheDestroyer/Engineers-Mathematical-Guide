@@ -24,6 +24,7 @@ import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
 import locales from "@localization/profile_page.json";
+import { GenderBadge } from "./GenderBadge";
 
 export type ProfileInformationProps = {
     user: DetailedUserDTO;
@@ -122,10 +123,13 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         : "0",
             }}
         >
-            <Flexbox className="max-xl:gap-8 max-md:flex-col max-md:place-content-center">
+            <Flexbox
+                className="max-md:flex-col max-md:place-content-center"
+                gap="4"
+            >
                 <Flexbox
-                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-8 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
-                    wrap="wrap"
+                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 place-self-center max-md:-mx-8 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
+                    // wrap="wrap"
                 >
                     {[
                         {
@@ -170,7 +174,18 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                     ))}
                 </Flexbox>
 
-                <DayStreakBadge className="md:place-self-end" user={user} />
+                <Flexbox
+                    className={twJoin(
+                        "place-self-center",
+                        direction == "ltr" ? "md:ml-auto" : "md:mr-auto"
+                    )}
+                    gap="4"
+                    wrap="wrap-reverse"
+                    direction="row-reverse"
+                >
+                    <DayStreakBadge user={user} />
+                    <GenderBadge gender={user.gender} />
+                </Flexbox>
             </Flexbox>
 
             <div className="grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))] gap-4 max-md:grid-cols-2 max-sm:grid-cols-1 [&>div]:h-12">

@@ -48,6 +48,16 @@
             "en": "Days",
             "ar": "يَوماً"
         },
+        "gender": {
+            "male": {
+                "en": "Male",
+                "ar": "ذَكَرٌ"
+            },
+            "female": {
+                "en": "Female",
+                "ar": "أُنْثى"
+            }
+        },
         "biography": {
             "en": "Biography",
             "ar": {
