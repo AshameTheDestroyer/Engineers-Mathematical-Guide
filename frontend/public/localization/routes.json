@@ -19,6 +19,10 @@
         "en": "User Dashboard",
         "ar": "لَوحةُ تَحكُّمِ المُستَخدِمين"
     },
+    "course-dashboard": {
+        "en": "Course Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُقرَّرات"
+    },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"
