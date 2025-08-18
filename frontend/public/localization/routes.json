@@ -23,6 +23,10 @@
         "en": "Course Dashboard",
         "ar": "لَوحةُ تَحكُّمِ المُقرَّرات"
     },
+    "learning-track-dashboard": {
+        "en": "Learning Track Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المَساراتِ الدِّراسيّة"
+    },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"
