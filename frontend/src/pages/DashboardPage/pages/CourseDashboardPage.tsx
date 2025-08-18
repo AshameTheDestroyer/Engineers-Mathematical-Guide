@@ -34,10 +34,23 @@ export const CourseDashboardPage: FC = () => {
                 {...coursesQuery}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
-                keys={ZodGetKeys(CourseSchema).filter(
-                    (key) => !["personal-image"].includes(key)
-                )}
-                prioritizedKeys={["image", "title", "id"]}
+                keys={ZodGetKeys(CourseSchema)}
+                keysClassNames={{
+                    description:
+                        "[&[role=cell]]:w-[32rem] [&[role=cell]]:text-wrap",
+                    tags: "[&[role=cell]]:w-[32rem] [&[role=cell]]:text-wrap",
+                }}
+                prioritizedKeys={[
+                    "image",
+                    "title",
+                    "id",
+                    "description",
+                    "rating",
+                    "rating-count",
+                    "enrollment-count",
+                    "locked",
+                    "tags",
+                ]}
                 loadingTypography={{
                     title: GetLocale(locales.table.loading.title, language),
                     paragraph: GetLocale(
