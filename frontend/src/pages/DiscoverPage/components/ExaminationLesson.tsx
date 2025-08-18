@@ -5,6 +5,7 @@ import Timer from "./Timer";
 import { QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import ExamResultsScreen from "./ResultsScreen";
 import { Button } from "@/components/Button/Button";
+import MathToolsBar from "@/components/MathToolsBar/MathToolsBar";
 
 export type ExaminationLessonProps = {
     lesson: LessonDTO & { type: LessonTypeEnum.examination };
@@ -41,6 +42,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
 
     return (
         <div className="examination-lesson w-full">
+            {/* <MathToolsBar /> */}
             <Timer
                 minutes={time}
                 isRunning={isRunning}
@@ -52,7 +54,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                         <Question
                             question={question.title}
                             options={question.options}
-                            isMany={question.type === QuestionTypeEnum.many}
+                            questionType={question.type}
                             points={question.points}
                             correctAnswer={
                                 question.type === QuestionTypeEnum.choose

@@ -121,7 +121,7 @@ const ExamResultsScreen: React.FC<ExamResultsScreenProps> = ({
                         key={q.title}
                         question={q.title}
                         options={q.options}
-                        isMany={q.type === "many"}
+                        questionType={q.type}
                         points={q.points}
                         correctAnswer={q.correctAnswer}
                         answers={answers}
@@ -129,6 +129,7 @@ const ExamResultsScreen: React.FC<ExamResultsScreenProps> = ({
                         showFeedback={false}
                         showResult={true}
                         userAnswer={userAnswer?.chosenAnswer}
+                        isFinished={true}
                     />
                 );
             })}

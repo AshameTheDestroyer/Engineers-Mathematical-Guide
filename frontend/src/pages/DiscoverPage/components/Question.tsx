@@ -1,3 +1,5 @@
+import { Checkbox } from "@/components/Checkbox/Checkbox";
+import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Input } from "@/components/Input/Input";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RichText } from "@/components/RichText/RichText";
@@ -13,9 +15,10 @@ interface Answer {
 type QuestionTypeEnum = "select" | "many";
 
 interface QuestionProps {
+    idx: number;
     question: string;
     options: string[];
-    isMany: boolean;
+    questionType: string;
     points: number;
     correctAnswer: string | string[];
     answers: Answer[];
@@ -25,9 +28,10 @@ interface QuestionProps {
 }
 
 const Question: React.FC<QuestionProps> = ({
+    idx,
     question,
     options,
-    isMany,
+    questionType = "many",
     points,
     correctAnswer,
     answers,
@@ -57,11 +61,12 @@ const Question: React.FC<QuestionProps> = ({
     const getPoints = (): number => (isCorrect() ? points : 0);
 
     const handleSelect = (option: string) => {
-        const newSelected = isMany
-            ? isSelected(option)
-                ? selectedAnswers.filter((ans) => ans !== option)
-                : [...selectedAnswers, option]
-            : [option];
+        const newSelected =
+            questionType === "many"
+                ? isSelected(option)
+                    ? selectedAnswers.filter((ans) => ans !== option)
+                    : [...selectedAnswers, option]
+                : [option];
 
         const newAnswers = answers.filter(
             (ans) => ans.questionTitle !== question
@@ -75,33 +80,49 @@ const Question: React.FC<QuestionProps> = ({
     };
 
     return (
-        <div className="mb-6 w-full rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md">
-            <div className="mb-4 flex flex-wrap items-center justify-between">
-                <RichText
-                    variant="h1"
-                    className="text-black"
-                    extractor="$"
-                    ExtractedTextRenders={(extractedText) => (
-                        <MathExpression
-                            className="inline-block"
-                            inline
-                            variant="span"
-                        >
-                            {extractedText}
-                        </MathExpression>
-                    )}
-                >
-                    {question}
-                </RichText>
-                {!isFinished && (
+        <Flexbox
+            direction="column"
+            className="mb-6 w-full rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
+        >
+            <Flexbox className="mb-4 flex justify-between">
+                <Flexbox direction="row">
+                    <Typography variant="p" className="text-black">
+                        {idx}.
+                    </Typography>
+                    <RichText
+                        variant="h1"
+                        className="flex-wrap text-black"
+                        extractor="$"
+                        ExtractedTextRenders={(extractedText) => (
+                            <MathExpression
+                                className="inline-block"
+                                inline
+                                variant="span"
+                            >
+                                {extractedText}
+                            </MathExpression>
+                        )}
+                    >
+                        {question}
+                    </RichText>
+                </Flexbox>
+
+                {!isFinished ? (
                     <Typography
                         variant="span"
-                        className="rounded-full bg-blue-50 px-3 py-1 text-sm font-medium text-blue-600"
+                        className="w-30 flex justify-end font-medium text-blue-600"
                     >
                         {points} point{points !== 1 ? "s" : ""}
                     </Typography>
+                ) : (
+                    <Typography
+                        variant="span"
+                        className="w-50 flex justify-end text-sm text-gray-500"
+                    >
+                        points: {getPoints()} / {points}
+                    </Typography>
                 )}
-            </div>
+            </Flexbox>
 
             <div className="mb-4 space-y-3">
                 {options.map((option) => {
@@ -143,7 +164,7 @@ const Question: React.FC<QuestionProps> = ({
                             key={option}
                             className={`flex cursor-pointer items-center space-x-3 rounded-md border p-3 transition-all duration-150 ${bgColor} ${borderColor} ${textColor}`}
                         >
-                            {isMany ? (
+                            {questionType === "choose" ? (
                                 <Input
                                     name={question}
                                     type="checkbox"
@@ -153,6 +174,10 @@ const Question: React.FC<QuestionProps> = ({
                                     className={`h-4 w-4 cursor-pointer rounded ${checkboxColor}`}
                                 />
                             ) : (
+                                // <>
+                                //     <Checkbox name={question} />
+                                //     <p>skdfnlsdnfksdfdsfdsfsdfsdfsdfsdfdf</p>
+                                // </>
                                 <Input
                                     type="radio"
                                     name={question}
@@ -199,17 +224,17 @@ const Question: React.FC<QuestionProps> = ({
                 </div>
             )}
 
-            {!showFeedback && isFinished && answerObj && (
+            {/* {!showFeedback && isFinished && answerObj && (
                 <div className="mt-2 text-right">
                     <Typography
                         variant="span"
                         className="text-sm text-gray-500"
                     >
-                        Score: {getPoints()} / {points}
+                     
                     </Typography>
                 </div>
-            )}
-        </div>
+            )} */}
+        </Flexbox>
     );
 };
 
