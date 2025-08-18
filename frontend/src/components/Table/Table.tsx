@@ -15,6 +15,7 @@ import {
     SetStateAction,
     PropsWithChildren,
 } from "react";
+import { Image } from "../Image/Image";
 
 export type TableProps<T extends Record<string, any>> = QueryProps<
     Array<T> | undefined
@@ -189,9 +190,32 @@ export const Table = <T extends Record<string, any>>({
                                     case "boolean":
                                         return datum[key] ? "True" : "False";
                                     case "object":
-                                        return Array.isArray(datum[key])
-                                            ? datum[key].join(", ") + "."
-                                            : JSON.stringify(datum[key]);
+                                        if (Array.isArray(datum[key])) {
+                                            return datum[key].join(", ") + ".";
+                                        }
+                                        return JSON.stringify(datum[key]);
+                                    case "string":
+                                        if (
+                                            [
+                                                ".jpg",
+                                                ".jpeg",
+                                                ".png",
+                                                ".bmp",
+                                                ".tiff",
+                                                ".wbp",
+                                            ].some((extension) =>
+                                                datum[key].endsWith(extension)
+                                            )
+                                        ) {
+                                            return (
+                                                <Image
+                                                    className="-mx-4 -my-2 w-[128px] [&>img]:object-cover"
+                                                    source={datum[key]}
+                                                    alternative="Data image."
+                                                />
+                                            );
+                                        }
+                                        return datum[key];
                                     default:
                                         return datum[key];
                                 }
