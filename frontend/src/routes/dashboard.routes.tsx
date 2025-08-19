@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Route } from "react-router-dom";
+import { RoleEnum } from "@/schemas/UserSchema";
 import { Title } from "@/components/Title/Title";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
@@ -26,6 +27,7 @@ import locales from "@localization/routes.json";
 export const DASHBOARD_ROUTES = BuildRouter({
     base: {
         href: "/dashboard",
+        renderingPredicate: (myUser) => myUser?.role == RoleEnum.admin,
         routes: {
             home: { href: "/website" },
             "user-dashboard": { href: "users" },
