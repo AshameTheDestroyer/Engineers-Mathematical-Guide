@@ -70,14 +70,18 @@ export const Table = <T extends Record<string, any>>({
     errorTypography,
     loadingTypography,
 }: TableProps<T>): ReturnType<FC<TableProps<T>>> => {
+    const INDEX_KEY = "$i$";
+
     const { direction } = useLocalization();
     const { isDarkThemed } = useThemeMode();
 
     const keys = useMemo(
         () =>
-            (_keys ?? Object.keys(data?.[0] ?? {})).prioritize(
-                (prioritizedKeys as Array<string>) ?? []
-            ),
+            [INDEX_KEY]
+                .concat(_keys ?? Object.keys(data?.[0] ?? {}))
+                .prioritize(
+                    [INDEX_KEY].concat(prioritizedKeys as Array<string>) ?? []
+                ),
         [_keys, data]
     );
 
@@ -144,7 +148,7 @@ export const Table = <T extends Record<string, any>>({
                 <Table.Cell
                     key={i}
                     className={twJoin(
-                        "z-1 bg-background-darker sticky -top-4 font-bold text-white",
+                        "z-2 bg-background-darker sticky -top-4 font-bold text-white",
                         i == 0 &&
                             (direction == "ltr"
                                 ? "rounded-tl-[inherit]"
@@ -157,7 +161,7 @@ export const Table = <T extends Record<string, any>>({
                     )}
                     type="heading"
                 >
-                    {key.toTitleCase("id")}
+                    {key == INDEX_KEY ? "" : key.toTitleCase("id")}
                 </Table.Cell>
             ))}
             {data.map((datum, i) =>
@@ -180,12 +184,21 @@ export const Table = <T extends Record<string, any>>({
                                     ? "bg-background-light/75"
                                     : "bg-background-dark/75"
                                 : isDarkThemed && "bg-background-dark/25",
+                            j == 0 &&
+                                "index bg-background-darker z-1 sticky font-bold text-white",
+                            j == 0 &&
+                                (direction == "ltr" ? "-left-4" : "-right-4"),
+                            j == 0 && i == data.length - 1 && "last",
                             keysClassNames?.[key]
                         )}
                         type="cell"
                     >
                         {CellRenders?.({ key, value: datum[key] }, datum) ??
                             (() => {
+                                if (key == INDEX_KEY) {
+                                    return i + 1;
+                                }
+
                                 switch (typeof datum[key]) {
                                     case "boolean":
                                         return datum[key] ? "True" : "False";
@@ -268,6 +281,17 @@ Table.Wrapper = <T extends Record<string, any>>({
         } else {
             tableReference.current.removeAttribute("data-scrolled-down");
         }
+
+        if (Math.abs(tableReference.current.scrollLeft) >= 64) {
+            tableReference.current.setAttribute(
+                "data-scrolled-horizontally",
+                "true"
+            );
+        } else {
+            tableReference.current.removeAttribute(
+                "data-scrolled-horizontally"
+            );
+        }
     }
 
     return (
@@ -275,7 +299,7 @@ Table.Wrapper = <T extends Record<string, any>>({
             id={id}
             ref={tableReference}
             className={twMerge(
-                "border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-2 p-4 [&::-webkit-scrollbar]:hidden [&[data-scrolled-down=true]_.cell[role=heading]]:rounded-none",
+                "border-background-darker relative grid auto-rows-max overflow-auto rounded-2xl border-2 p-4 [&::-webkit-scrollbar]:hidden [&[data-scrolled-down=true]_.cell[role=heading]]:rounded-none [&[data-scrolled-horizontally=true]_.cell.index.last]:rounded-none",
                 isDarkThemed
                     ? "bg-background-normal/50"
                     : "bg-background-dark/50",
@@ -283,7 +307,7 @@ Table.Wrapper = <T extends Record<string, any>>({
             )}
             role="table"
             style={{
-                gridTemplateColumns: `repeat(${keys.length}, 1fr)`,
+                gridTemplateColumns: `3rem repeat(${keys.length - 1}, 1fr)`,
             }}
         >
             {children}
