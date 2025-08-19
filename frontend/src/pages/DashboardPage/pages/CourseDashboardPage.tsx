@@ -37,8 +37,8 @@ export const CourseDashboardPage: FC = () => {
                 keys={ZodGetKeys(CourseSchema)}
                 keysClassNames={{
                     description:
-                        "[&[role=cell]]:w-[32rem] [&[role=cell]]:text-wrap",
-                    tags: "[&[role=cell]]:w-[32rem] [&[role=cell]]:text-wrap",
+                        "[&[role=cell]]:min-w-[32rem] [&[role=cell]]:text-wrap",
+                    tags: "[&[role=cell]]:min-w-[32rem] [&[role=cell]]:text-wrap",
                 }}
                 prioritizedKeys={[
                     "image",

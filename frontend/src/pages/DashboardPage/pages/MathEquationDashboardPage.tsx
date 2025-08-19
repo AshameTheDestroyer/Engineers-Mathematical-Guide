@@ -37,7 +37,7 @@ export const MathEquationDashboardPage: FC = () => {
                 keys={ZodGetKeys(MathEquationSchema)}
                 keysClassNames={{
                     description:
-                        "[&[role=cell]]:w-[18rem] [&[role=cell]]:text-wrap",
+                        "[&[role=cell]]:min-w-[16rem] [&[role=cell]]:text-wrap",
                 }}
                 prioritizedKeys={[
                     "title",

@@ -38,8 +38,8 @@ export const LearningTrackDashboardPage: FC = () => {
                 )}
                 keysClassNames={{
                     description:
-                        "[&[role=cell]]:w-[32rem] [&[role=cell]]:text-wrap",
-                    tags: "[&[role=cell]]:w-[40rem] [&[role=cell]]:text-wrap",
+                        "[&[role=cell]]:min-w-[32rem] [&[role=cell]]:text-wrap",
+                    tags: "[&[role=cell]]:min-w-[40rem] [&[role=cell]]:text-wrap",
                 }}
                 prioritizedKeys={[
                     "image",
