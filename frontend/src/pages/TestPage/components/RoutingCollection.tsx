@@ -5,7 +5,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
-import route_locales from "@localization/test_page_routes.json";
+import route_locales from "@localization/routes.json";
 
 export const RoutingCollection: FC = () => {
     const { GetRouteLocales, language } = useLocalization();
