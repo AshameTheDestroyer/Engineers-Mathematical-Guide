@@ -52,6 +52,11 @@ export const ExaminationLessonSchema = z.intersection(
             .number({ required_error: "required" })
             .int("integer")
             .nonnegative("nonnegative"),
+        attempts: z
+            .number({ required_error: "required" })
+            .int("integer")
+            .nonnegative("nonnegative")
+            .default(1),
         questions: z.array(QuestionSchema),
     })
 );
