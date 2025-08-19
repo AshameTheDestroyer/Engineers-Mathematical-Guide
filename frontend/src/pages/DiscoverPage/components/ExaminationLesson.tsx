@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { Question } from "./Question";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { QuestionContainer } from "./QuestionContainer";
 import { Typography } from "@/components/Typography/Typography";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
@@ -41,7 +41,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                     gap="8"
                     direction="column"
                 >
-                    <Question
+                    <QuestionContainer
                         key={tab}
                         index={tab + 1}
                         {...lesson.questions[tab]}

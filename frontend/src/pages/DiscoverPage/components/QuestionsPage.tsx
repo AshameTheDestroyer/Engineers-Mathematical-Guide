@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import Question from "./Question";
+import Question from "./QuestionContainer";
 import { useNavigate } from "react-router-dom";
 // import { useQuestions } from "../context/QuestionsContext";
 // import WarningPopup from "./WarningPopup";

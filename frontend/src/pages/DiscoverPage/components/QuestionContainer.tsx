@@ -10,7 +10,7 @@ export type QuestionProps = QuestionDTO & {
     index: number;
 };
 
-export const Question: React.FC<QuestionProps> = ({
+export const QuestionContainer: React.FC<QuestionProps> = ({
     type,
     index,
     title,

@@ -1,5 +1,5 @@
 import React from "react";
-import Question from "./Question";
+import Question from "./QuestionContainer";
 import { Typography } from "@/components/Typography/Typography";
 
 interface ExamResultsScreenProps {
