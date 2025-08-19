@@ -22,7 +22,7 @@ export const ReadingLesson: FC<ReadingLessonProps> = ({ lesson }) => {
 
     return (
         <Flexbox
-            className="absolute inset-0 overflow-auto p-8 max-md:p-[inherit]"
+            className="overflow-auto p-8 max-md:p-[inherit] sm:absolute sm:inset-0 max-sm:[&::-webkit-scrollbar]:hidden"
             gap="8"
             direction="column"
         >

@@ -22,10 +22,10 @@ export const Question: React.FC<QuestionProps> = ({
 
     return (
         <Flexbox gap="8" direction="column">
-            <Flexbox gap="4" placeContent="space-between">
+            <Flexbox className="sm:gap-4" placeContent="space-between">
                 <RichText
                     variant="h3"
-                    className="text-lg font-bold"
+                    className="font-bold sm:text-lg"
                     extractor="$"
                     ExtractedTextRenders={(text) => (
                         <MathExpression
@@ -41,10 +41,10 @@ export const Question: React.FC<QuestionProps> = ({
                 </RichText>
 
                 <Typography
-                    className="bg-background-light text-secondary-normal place-self-start text-nowrap rounded-full px-4 py-2 font-bold"
+                    className="bg-tertiary-normal text-tertiary-light place-self-start text-nowrap rounded-full px-4 py-2 font-bold"
                     variant="span"
                 >
-                    {points} point{points !== 1 ? "s" : ""}
+                    {points} point{points != 1 ? "s" : ""}
                 </Typography>
             </Flexbox>
 

@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { Question } from "./Question";
-import { twJoin } from "tailwind-merge";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Typography } from "@/components/Typography/Typography";
@@ -8,7 +7,6 @@ import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
 import arrow_icon from "@icons/arrow.svg";
-
 import warning_icon from "@icons/warning.svg";
 
 export type ExaminationLessonProps = {
@@ -19,10 +17,10 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
     const [tab, setTab] = useState<number>();
 
     return (
-        <div className="examination-lesson absolute inset-0 overflow-auto p-[inherit]">
+        <div className="p-[inherit] max-sm:w-full sm:absolute sm:inset-0 sm:overflow-auto">
             {tab == null ? (
                 <SearchResultDisplay
-                    className="-translate-1/2 absolute left-1/2 top-1/2"
+                    className="sm:-translate-1/2 sm:absolute sm:left-1/2 sm:top-1/2"
                     iconType="custom"
                     title="Before You Start"
                     iconProps={{ source: warning_icon }}
@@ -39,8 +37,8 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                 />
             ) : (
                 <Flexbox
-                    className="h-full w-full p-4"
-                    gap="4"
+                    className="h-full w-full sm:p-4"
+                    gap="8"
                     direction="column"
                 >
                     <Question
@@ -50,10 +48,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                     />
                     <Flexbox className="mt-auto" placeContent="space-between">
                         <Button
-                            className={twJoin(
-                                "min-w-[calc(8ch+1rem)]",
-                                tab == 0 && "pointer-events-none opacity-0"
-                            )}
+                            className="min-w-[calc(8ch+1rem)]"
                             disabled={tab == 0}
                             icon={{
                                 placement: "left",
@@ -65,17 +60,13 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                             Previous
                         </Button>
                         <Typography
-                            className="bg-background-light text-secondary-normal min-w-[calc(3ch+2rem)] place-self-start text-nowrap rounded-full px-4 py-2 text-center font-bold"
+                            className="bg-tertiary-normal text-tertiary-light min-w-[calc(3ch+2rem)] place-self-start text-nowrap rounded-full px-4 py-2 text-center font-bold"
                             variant="p"
                         >
                             {tab + 1}
                         </Typography>
                         <Button
-                            className={twJoin(
-                                "min-w-[calc(8ch+1rem)]",
-                                tab == lesson.questions.length - 1 &&
-                                    "pointer-events-none opacity-0"
-                            )}
+                            className="min-w-[calc(8ch+1rem)]"
                             disabled={tab == lesson.questions.length - 1}
                             icon={{
                                 placement: "right",
