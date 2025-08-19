@@ -144,12 +144,21 @@ export const LessonPage: FC = () => {
                     <Button
                         className={twJoin(
                             enrollment_ == "passed" && "font-bold",
-                            enrollment_ == "unenrolled" &&
+                            (enrollment_ == "unenrolled" ||
+                                lesson.type == LessonTypeEnum.examination) &&
                                 "pointer-events-none opacity-0"
                         )}
                         thickness="thick"
-                        disabled={enrollment_ != "enrolled"}
-                        tabIndex={enrollment_ != "enrolled" ? 0 : -1}
+                        disabled={
+                            enrollment_ != "enrolled" ||
+                            lesson.type == LessonTypeEnum.examination
+                        }
+                        tabIndex={
+                            enrollment_ != "enrolled" ||
+                            lesson.type == LessonTypeEnum.examination
+                                ? 0
+                                : -1
+                        }
                         variant={
                             enrollment_ == "passed" ? "success" : "default"
                         }
