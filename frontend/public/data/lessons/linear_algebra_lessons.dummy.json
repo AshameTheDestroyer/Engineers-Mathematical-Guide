@@ -181,6 +181,7 @@
         "title": "Examination: System and Solutions",
         "type": "examination",
         "time": 90,
+        "attempts": 3,
         "questions": [
             {
                 "title": "Which of the following best describes the solution to a system of two linear equations in two variables that correspond to two parallel lines?",
@@ -202,12 +203,12 @@
                 "answer": 2
             },
             {
-                "title": "What is the result of the row operation $ R_2 \\leftarrow R_2 - 2R_1 $ applied to the matrix:\n$$\n\\left[\\begin{array}{cc|c}\n1 & 3 & 4 \\\\\n2 & 5 & 7\n\\end{array}\\right]\n$$",
+                "title": "What is the result of the row operation $ R_2 \\leftarrow R_2 - 2R_1 $ applied to the matrix: $ \\left[\\begin{array}{cc|c}1 & 3 & 4 \\\\ 2 & 5 & 7\\end{array}\\right] $",
                 "options": [
-                    "$$\n\\left[\\begin{array}{cc|c}\n1 & 3 & 4 \\\\\n0 & -1 & -1\n\\end{array}\\right]\n$$",
-                    "$$\n\\left[\\begin{array}{cc|c}\n1 & 3 & 4 \\\\\n0 & 1 & -1\n\\end{array}\\right]\n$$",
-                    "$$\n\\left[\\begin{array}{cc|c}\n1 & 3 & 4 \\\\\n0 & 0 & 0\n\\end{array}\\right]\n$$",
-                    "$$\n\\left[\\begin{array}{cc|c}\n1 & 3 & 4 \\\\\n2 & -1 & -1\n\\end{array}\\right]\n$$"
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & -1 & -1 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & 1 & -1 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & 0 & 0 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 2 & -1 & -1 \\end{array}\\right] $"
                 ],
                 "points": 1,
                 "type": "choose",
@@ -355,10 +356,10 @@
             {
                 "title": "Which of the following matrices has linearly independent columns? (Select all that apply)",
                 "options": [
-                    "$$ \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} $$",
-                    "$$ \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix} $$",
-                    "$$ \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{bmatrix} $$ with pivot in each column",
-                    "$$ \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} $$"
+                    "$ \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{bmatrix} $ with pivot in each column",
+                    "$ \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} $"
                 ],
                 "points": 2,
                 "type": "select",
