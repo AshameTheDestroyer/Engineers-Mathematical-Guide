@@ -122,6 +122,8 @@ export const LessonPage: FC = () => {
                                     return `(${Intl.DateTimeFormat("en-US", { minute: "2-digit", second: "2-digit" }).format(new Date(0, 0, 0, 0, 0, lesson.duration - 1))})`;
                                 case LessonTypeEnum.reading:
                                     return `(${Intl.DateTimeFormat("en-US", { minute: "numeric" }).format(new Date(0, 0, 0, 0, 0, lesson["estimated-reading-time"]))} minutes of reading)`;
+                                case LessonTypeEnum.examination:
+                                    return `(${lesson.time}:00 minutes and ${lesson.attempts} attempts left)`;
                             }
                         })()}
                     </span>
