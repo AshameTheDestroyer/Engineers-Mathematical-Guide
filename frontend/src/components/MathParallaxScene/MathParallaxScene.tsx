@@ -47,6 +47,7 @@ export const MathParallaxScene: FC<MathParallaxSceneProps> = ({
 
     const { data: mathEquations } = useGetMathEquations(undefined, {
         usesSuspense: true,
+        transform: (data) => data.shuffle().slice(0, 10),
     });
 
     const style = {
