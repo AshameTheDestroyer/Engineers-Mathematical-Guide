@@ -137,6 +137,7 @@ export const MathEquationPage: FC = () => {
                         ? "bg-background-normal/50"
                         : "bg-background-dark/50"
                 )}
+                dir="ltr"
                 variant="section"
             >
                 <MathExpression
