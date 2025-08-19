@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { Input, InputProps } from "../Input/Input";
 import { IconButton } from "../IconButton/IconButton";
 import { FC, useEffect, useRef, useState } from "react";
@@ -7,6 +7,8 @@ import check_icon from "@icons/check_filled.svg";
 
 export type CheckboxProps = Omit<InputProps, "type" | "placeholder"> & {
     variant?: Variant;
+    isRadio?: boolean;
+    isControlled?: boolean;
     indeterminate?: boolean;
 };
 
@@ -17,9 +19,11 @@ export const Checkbox: FC<CheckboxProps> = ({
     value,
     checked,
     onClick,
+    isRadio,
     onFocus,
     onChange,
     className,
+    isControlled,
     indeterminate,
     variant = "default",
     ...props
@@ -61,8 +65,10 @@ export const Checkbox: FC<CheckboxProps> = ({
 
     function ButtonOnClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         onClick?.(e as any);
-        setIsIndeterminate(false);
-        setIsChecked((isChecked) => !isChecked);
+        if (!isControlled) {
+            setIsIndeterminate(false);
+            setIsChecked((isChecked) => !isChecked);
+        }
         onChange?.({ target: { checked: !isChecked } } as any);
     }
 
@@ -76,6 +82,9 @@ export const Checkbox: FC<CheckboxProps> = ({
                     "[&>input]:absolute [&>input]:left-2.5 [&>input]:top-1/2 [&>input]:w-auto [&>input]:-translate-y-1/2 [&>input]:opacity-0",
                     "[&>label]:translate-0 [&>label>*]:overflow-auto [&>label]:pointer-events-auto [&>label]:static [&>label]:inset-auto [&>label]:h-auto [&>label]:text-clip [&>label]:text-wrap [&>label]:p-0",
                     "[&_[data-error-message]]:col-start-2 [&_[data-error-message]]:w-full [&_[data-error-message]]:px-0",
+                    isRadio &&
+                        "[&>button>div>div]:rounded-full! [&>button>div]:rounded-full",
+                    isControlled && "[&>label]:pointer-events-none",
                     className
                 )}
                 name={name}
@@ -101,7 +110,10 @@ export const Checkbox: FC<CheckboxProps> = ({
                     fill: checkColour,
                     source: check_icon,
                     stroke: checkColour,
-                    className: "scale-140",
+                    className: twJoin(
+                        "scale-140",
+                        isRadio && "rounded-full overflow-hidden"
+                    ),
                 }}
                 onClick={ButtonOnClick}
             />
