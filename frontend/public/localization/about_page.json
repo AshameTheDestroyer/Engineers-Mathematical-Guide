@@ -1,0 +1,62 @@
+{
+    "title": { 
+        "en": "📚 About Mathware - Engineers' Mathematical Guide", 
+        "ar": "حول دليل الرياضيات للمهندسين 📚" 
+    },
+    "welcome": {
+        "welcomeTitle": {
+            "en": "🚀 Welcome to Mathware: The Ultimate Math Companion for Engineers!",
+            "ar": "🚀 مَرْحَبًا بِكَ فِي Mathware: رَفِيقُكَ المِثَالِي لِتَعَلُّمِ الرِّيَاضِيَّاتِ لِلْمُهَنْدِسِينَ!"
+        },
+        "welcomeContent": {
+            "en": "Are you an engineering student or professional looking to sharpen your math skills? Meet Mathware, the revolutionary app designed specifically to help engineers master the mathematical foundations they need to excel in their careers.",
+            "ar": "هَل أنتَ طالبُ هَندسةٍ أو مُهندِسٌ مُحترفٌ وتَسعى لِتطويرِ مَهاراتِكَ في الرّياضيّات؟ تَعرَّفْ على Mathware، التّطبيقُ المُبتَكَرُ الّذي صُمِّمَ خِصِّيصاً لِمُساعدةِ المُهندِسينَ على إتقانِ الأُسُسِ الرّياضيّةِ الّتي يَحتاجونَها لِلتّفوُّقِ في حَياتِهم المِهنيّة."
+        }
+    },
+    "why": {
+        "whyTitle": {
+            "en": "❗❓ Why Mathware?",
+            "ar": "لِمَاذَا Mathware؟"
+        },
+        "whyContent": {
+            "en": "Mathematics is the backbone of engineering, and Mathware is here to ensure you have the tools and knowledge to tackle even the most complex problems. Whether you're solving differential equations, mastering calculus, or working on advanced linear algebra, Mathware makes learning mathematics intuitive, efficient, and enjoyable.",
+            "ar": "الرّياضيّاتُ هِي أساسُ الهَندسةِ، وتَطبيقُ Mathware هُنا لِيَضمنَ لَك الحُصولَ على الأدواتِ والمَعرفةِ المَطلوبةِ لِمُواجهةِ أصعَبِ المَسائل. سَواءً كُنتَ تَحلُّ المُعادلاتِ التّفاضليّةِ، أو تَستَكشِفُ عالمَ التّفاضُلِ والتّكامُلِ، أو تَعملُ في الجَبرِ الخطّيِّ المُتقدّم، فَيَجعلُ Mathware تَعلُّمَ الرّياضيّاتِ أسهلَ وأكثرَ مُتعةً."
+        }
+    },
+    "who": {
+        "whoTitle": {
+            "en": "👤 Who is Mathware Made for?",
+            "ar": "لِمَنْ صُمِّمَ Mathware؟"
+        },
+        "whoContent_section1": {
+            "whoContent_section1_title": {
+                 "en": "Engineering Students:",
+                 "ar": "طُلّابُ الهَندسة:"
+            },
+            "whoContent_section1_content": {
+                "en": "Strengthen your math foundation and ace your exams.",
+                "ar": "لِتَعزيزِ قاعِدتكَ الرّياضيّةِ وتَحقيقِ التّفوّقِ الأكاديميّ."
+            },
+             "whoContent_section2_title": {
+                 "en": "Professional Engineers:",
+                 "ar": "المُهندِسونَ المُحترفون:ُ"
+            },
+            "whoContent_section2_content": {
+                "en": "Refresh your skills or dive deeper into advanced topics.",
+                "ar": "لِتَجديدِ مَهاراتكَ أو الغَوصِ في مَواضيعَ مُتقدّمة.ّ"
+            },
+             "whoContent_section3_title": {
+                 "en": "Lifelong Learners:",
+                 "ar": "عُشّاقُ التَّعلُّم"
+            },
+            "whoContent_section3_content": {
+                "en": "Anyone passionate about math and engineering will find value in Mathware’s comprehensive resources.",
+                "ar": "أيُّ شَخصٍ يُحبُّ الرّياضيّاتِ والهَندسةَ سَيَجِدُ إفادةً في Mathware ومَصادرهِ الغنيّةِ بِالمَعلوماتِ."
+            }
+        }
+    },
+    "about": {
+        "en": " This innovative mathematics platform is meticulously crafted to empower engineering students through a comprehensive, engaging, and interactive learning journey. It offers a vast collection of courses spanning every major area of mathematics, designed to clarify complex concepts and strengthen understanding essential for academic and professional success. Each subject is accompanied by full-length final exams that mirror real academic challenges, complete with timed sessions to simulate authentic exam conditions and sharpen time management skills. The platform is built on an immersive experience-point (XP) system, where every lesson completed and every exam passed contributes to a user’s XP, fostering a dynamic environment of friendly competition and motivation as learners compare rankings and progress with peers. Integrated within both lessons and exams are powerful calculators and specialized math tools, readily available to assist users in solving intricate problems and exploring diverse mathematical applications. Consistency is rewarded through a daily streak system—each day a user engages with a lesson or exam, their streak grows, encouraging persistent learning habits. For guidance or feedback, users can reach out effortlessly through a dedicated contact channel—simply click the **btn** to get in touch. Learning paths are structured intelligently: courses are unlocked progressively within specializations, or users can follow curated learning tracks that organize courses into cohesive, goal-oriented sequences. A smart search feature allows students to look up any mathematical equation and instantly discover relevant courses and supporting materials. Each user enjoys a personalized profile showcasing their XP, current streak, followers, following, chosen specialization, and detailed academic progress including passed, bookmarked, and completed courses—complete with a custom avatar and profile picture to build identity and connection. The platform highlights excellence by displaying the top 10 highest-scoring students in each course, inspiring aspiration and recognition. Additionally, a help section provides answers to frequently asked questions and offers email support for any further assistance, ensuring users are never alone on their journey to mathematical mastery.",
+        "ar": "هَذَا المُنْتَدَى المُبْتَكَرُ فِي مَجَالِ الرِّيَاضِيَّاتِ قَدْ صُمِّمَ بِدِقَّةٍ فَائِقَةٍ لِتَمْكِينِ طُلَّابِ الْهَنْدَسَةِ مِنْ خِلَالِ رِحْلَةِ تَعَلُّمٍ شَامِلَةٍ وَمُشَوِّقَةٍ وَتَفاعُلِيَّةٍ. يُقَدِّمُ الْمَنْصَةُ مَجْمُوعَةً وَاسِعَةً مِنَ الدَّوْرَاتِ الْمُتَنَوِّعَةِ فِي جَمِيعِ الْمَجَالَاتِ الرَّئِيسِيَّةِ لِلرِّيَاضِيَّاتِ، مَصْمُومَةً لِتَوْضِيحِ الْمَفَاهِيمِ الْمُعَقَّدَةِ وَتَعْزِيزِ الْفَهْمِ الَّذِي يُعَدُّ أَسَاسِيًّا لِلنَّجَاحِ الْأَكَادِيمِيِّ وَالْمِهَنِيِّ. كُلُّ مَوْضُوعٍ يَسْبِقُهُ امْتِحَانٌ نِهَائِيٌّ كَامِلُ الطُّولِ يُقَلِّدُ التَّحَدِّيَاتِ الْأَكَادِيمِيَّةَ الْحَقِيقِيَّةَ، مَعَ جَلَسَاتٍ مُحَدَّدَةِ الْوَقْتِ لِتَمْثِيلِ ظُرُوفِ الِامْتِحَانِ الْحَقِيقِيَّةِ وَتَنْمِيَةِ مَهَارَاتِ إِدَارَةِ الْوَقْتِ. تَبْنَى الْمَنْصَةُ عَلَى نِظَامِ النُّقَطِ التَّجْرِيبِيَّةِ (XP) الْغَامِرِ، حَيْثُ يُسَاهِمُ إِتْمَامُ كُلِّ دَرْسٍ وَاجْتِيَازُ كُلِّ امْتِحَانٍ فِي زِيَادَةِ نُقَطِ التَّجْرِبَةِ (XP) لِكُلِّ مُسْتَخْدَمٍ، مَا يُشْجِعُ بِيْئَةً دِينَامِيكِيَّةً مِنَ التَّنَافُسِ الْوَدِّيِّ وَالدَّافِعِيَّةِ، حَيْثُ يُقَارِنُ الْمُتَعَلِّمُونَ تَرَتُّبَهُمْ وَتَقَدُّمَهُمْ مَعَ أَزْمِلَائِهِمْ. تَضُمُّ الدُّرُوسُ وَالِامْتِحَانَاتُ حَوَاسِيبَ قَوِيَّةً وَأَدَوَاتٍ رِيَاضِيَّةً مُتَخَصِّصَةً، تَجِدُهَا فِي مَكَانِهَا لِمُسَاعَدَةِ الْمُسْتَخْدَمِينَ فِي حَلِّ الْمَشَاكِلِ الْمُعْقَّدَةِ وَاسْتِكْشَافِ تَطْبِيقَاتٍ رِيَاضِيَّةٍ مُتَنَوِّعَةٍ. يُثَابُ الِاسْتِمْرَارُّ عَلَى النِّظَامِ الْيَوْمِيِّ لِلسِّلْسِلَةِ—فَكُلَّ يَوْمٍ يَتَدَرَّبُ فِيهِ الْمُسْتَخْدَمُ عَلَى دَرْسٍ أَوْ امْتِحَانٍ، تَزْدَادُ سِلْسِلَتُهُ، مَا يُشْجِعُ عَادَاتِ التَّعَلُّمِ الْمُسْتَمِرَّةِ. لِلْإِشْعَارِ أَوِ التَّغْذِيَةِ الْمَرْتَدَّةِ، يَسْتَطِيعُ الْمُسْتَخْدَمُونَ التَّوَاصُلَ بِسُهُولَةٍ عَبْرَ قَنَاةِ تَوَاصُلٍ مُخَصَّصَةٍ—بِمُجَرَّدِ النَّقْرِ عَلَى الزِّرِّ **btn** لِلتَّوَاصُلِ. تُرْتَّبُ مَسَارَاتُ التَّعَلُّمِ بِشَكْلٍ ذَكِيٍّ: فَالدَّوْرَاتُ تَفْتَتِحُ تَدْرِيجِيًّا فِي دَاخِلِ التَّخَصُّصَاتِ، أَوْ يُمْكِنُ لِلْمُسْتَخْدَمِينَ اتِّبَاعُ مَسَارَاتِ تَعَلُّمٍ مُرَتَّبَةٍ تُنَظِّمُ الدَّوْرَاتِ فِي تَسَلْسُلَاتٍ مُتَمَاسِكَةٍ تَهْدِفُ إِلَى أَهْدَافٍ مُعَيَّنَةٍ. تُمَكِّنُ مِيزَةُ الْبَحْثِ الذَّكِيِّ الطُّلَّابَ مِنَ الْبَحْثِ عَنْ أَيِّ مُعَادَلَةٍ رِيَاضِيَّةٍ يُرِيدُونَهَا، وَالْوُقُوعِ عَلَى الدَّوْرَاتِ الْمُرْتَبِطَةِ وَالْمَوَادِّ الدَّاعِمَةِ فِي لَحْظَةٍ. يَسْتَمْتِعُ كُلُّ مُسْتَخْدَمٍ بِمَلَفٍّ شَخْصِيٍّ يُعْرِضُ نُقَطَ تَجْرِبَتِهِ (XP)، وَسِلْسِلَتَهُ الْحَالِيَّةَ، وَمَنْ يَتَّبِعُهُ، وَمَنْ يَتَّبِعُهُمْ، وَالتَّخَصُّصَ الَّذِي اخْتَارَهُ، وَالتَّقَدُّمَ الْأَكَادِيمِيَّ التَّفْصِيلِيَّ شَامِلًا الدَّوْرَاتِ الْمَنْقُوصَةَ وَالْمَحْفُوظَةَ وَالْمُكَتَمَلَةَ—مَعَ صُورَةِ مُمَثِّلٍ خَاصَّةٍ وَصُورَةِ الْمَلَفِّ لِبِنَاءِ هُوِيَّةٍ وَتَوَاصُلٍ أَكْبَرَ. تُبَيِّنُ الْمَنْصَةُ التَّمَيُّزَ بِعَرْضِ أَفْضَلِ عَشَرَةِ طُلَّابٍ بِأَعْلَى الدَّرَجَاتِ فِي كُلِّ دَوْرَةٍ، مَا يُلْهِمُ الطَّمُوحَ وَالِاعْتِرَافَ. بِالإِضَافَةِ إِلَى ذَلِكَ، يُقَدِّمُ قِسْمُ الْمُسَاعَدَةِ إِجَابَاتٍ عَلَى الْأَسْئِلَةِ الشَّائِعَةِ وَيَضَعُ دَعْمَ الْبَرِيدِ الإِلِكْتُرُونِيِّ فِي مَتْنَ الْيَدِ لِأَيِّ مُسَاعَدَةٍ إِضَافِيَّةٍ، مِمَّا يَضْمَنُ أَنْ لَا يَكُونَ الْمُسْتَخْدَمُ وَحِيدًا فِي رِحْلَتِهِ نَحْوَ الإِحْكَامِ فِي الرِّيَاضِيَّاتِ."
+    }
+}
