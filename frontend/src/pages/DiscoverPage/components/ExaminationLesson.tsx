@@ -16,6 +16,8 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
     const [answers, setAnswers] = useState<(string | number | boolean)[][]>([]);
     const [quizFinished, setQuizFinished] = useState(false);
     const [isRunning, setIsRunning] = useState(true);
+    const [estimatedTime, setEstimatedTime] = useState(0);
+
     const timerRef = useRef<number | null>(null);
 
     const handleFinishQuiz = () => {
@@ -36,16 +38,20 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                 answers={answers}
                 totalTimeMinutes={time}
                 timeLeft={0}
+                estimatedTime={estimatedTime}
             />
         );
     }
 
     return (
         <div className="examination-lesson absolute inset-0 overflow-auto p-[inherit]">
+            {/* <MathToolsBar /> */}
             <Timer
                 minutes={time}
                 isRunning={isRunning}
                 onTimeUp={handleTimeUp}
+                setEstimatedTime={setEstimatedTime}
+                estimatedTime={estimatedTime}
             />
             <div className="questions-container">
                 {questions.map((question, i) => (

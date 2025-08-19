@@ -4,7 +4,7 @@ import { Input } from "@/components/Input/Input";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
 import { RichText } from "@/components/RichText/RichText";
 import { Typography } from "@/components/Typography/Typography";
-import React from "react";
+import React, { useState } from "react";
 
 interface Answer {
     questionTitle: string;
@@ -46,37 +46,65 @@ const Question: React.FC<QuestionProps> = ({
     const answerObj = answers.find((ans) => ans.questionTitle === question);
     const selectedAnswers = answerObj?.answers || [];
 
+    const [oneAnswer, setOneAnswer] = useState<string>("");
+    const [manyAnswers, setManyAnswers] = useState<string[]>([]);
+
+    React.useEffect(() => {
+        if (questionType === "select") {
+            setOneAnswer(selectedAnswers[0] || "");
+        } else {
+            setManyAnswers(selectedAnswers);
+        }
+    }, [selectedAnswers, questionType]);
+
     const isSelected = (option: string): boolean => {
-        return selectedAnswers.includes(option);
+        return questionType === "select"
+            ? oneAnswer === option
+            : manyAnswers.includes(option);
     };
 
     const isCorrect = (): boolean => {
+        const userAnswers =
+            questionType === "select" ? [oneAnswer] : manyAnswers;
         return (
-            selectedAnswers.length === correctArray.length &&
-            selectedAnswers.every((ans) => correctArray.includes(ans)) &&
-            correctArray.every((ans) => selectedAnswers.includes(ans))
+            userAnswers.length === correctArray.length &&
+            userAnswers.every((ans) => correctArray.includes(ans)) &&
+            correctArray.every((ans) => userAnswers.includes(ans))
         );
     };
 
     const getPoints = (): number => (isCorrect() ? points : 0);
 
     const handleSelect = (option: string) => {
-        const newSelected =
-            questionType === "many"
-                ? isSelected(option)
-                    ? selectedAnswers.filter((ans) => ans !== option)
-                    : [...selectedAnswers, option]
-                : [option];
+        if (isFinished) return;
 
-        const newAnswers = answers.filter(
-            (ans) => ans.questionTitle !== question
-        );
-        newAnswers.push({
-            questionTitle: question,
-            answers: newSelected,
-            points: isCorrect() ? points : 0,
-        });
-        setAnswers(newAnswers);
+        if (questionType === "select") {
+            setOneAnswer(option);
+            const newAnswers = answers.filter(
+                (ans) => ans.questionTitle !== question
+            );
+            newAnswers.push({
+                questionTitle: question,
+                answers: [option],
+                points: 0,
+            });
+            setAnswers(newAnswers);
+        } else {
+            const newManyAnswers = manyAnswers.includes(option)
+                ? manyAnswers.filter((ans) => ans !== option)
+                : [...manyAnswers, option];
+
+            setManyAnswers(newManyAnswers);
+            const newAnswers = answers.filter(
+                (ans) => ans.questionTitle !== question
+            );
+            newAnswers.push({
+                questionTitle: question,
+                answers: newManyAnswers,
+                points: 0,
+            });
+            setAnswers(newAnswers);
+        }
     };
 
     return (
@@ -87,7 +115,7 @@ const Question: React.FC<QuestionProps> = ({
             <Flexbox className="mb-4 flex justify-between">
                 <Flexbox direction="row">
                     <Typography variant="p" className="text-black">
-                        {idx}.
+                        {idx + 1}.
                     </Typography>
                     <RichText
                         variant="h1"
@@ -163,28 +191,25 @@ const Question: React.FC<QuestionProps> = ({
                             variant="label"
                             key={option}
                             className={`flex cursor-pointer items-center space-x-3 rounded-md border p-3 transition-all duration-150 ${bgColor} ${borderColor} ${textColor}`}
+                            onClick={() => handleSelect(option)}
                         >
-                            {questionType === "choose" ? (
+                            {questionType === "select" ? (
+                                <Input
+                                    name={question}
+                                    type="radio"
+                                    checked={isSelectedOption}
+                                    onChange={() => {}}
+                                    disabled={isFinished}
+                                    className={`h-4 w-4 cursor-pointer ${checkboxColor}`}
+                                />
+                            ) : (
                                 <Input
                                     name={question}
                                     type="checkbox"
                                     checked={isSelectedOption}
-                                    onChange={() => handleSelect(option)}
+                                    onChange={() => {}}
                                     disabled={isFinished}
                                     className={`h-4 w-4 cursor-pointer rounded ${checkboxColor}`}
-                                />
-                            ) : (
-                                // <>
-                                //     <Checkbox name={question} />
-                                //     <p>skdfnlsdnfksdfdsfdsfsdfsdfsdfsdfdf</p>
-                                // </>
-                                <Input
-                                    type="radio"
-                                    name={question}
-                                    checked={isSelectedOption}
-                                    onChange={() => handleSelect(option)}
-                                    disabled={isFinished}
-                                    className={`h-4 w-4 cursor-pointer ${checkboxColor}`}
                                 />
                             )}
                             <RichText
@@ -223,17 +248,6 @@ const Question: React.FC<QuestionProps> = ({
                     {getPoints() !== 1 ? "s" : ""}.
                 </div>
             )}
-
-            {/* {!showFeedback && isFinished && answerObj && (
-                <div className="mt-2 text-right">
-                    <Typography
-                        variant="span"
-                        className="text-sm text-gray-500"
-                    >
-                     
-                    </Typography>
-                </div>
-            )} */}
         </Flexbox>
     );
 };

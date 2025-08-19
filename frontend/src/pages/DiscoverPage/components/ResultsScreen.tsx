@@ -7,6 +7,7 @@ interface ExamResultsScreenProps {
     answers: Answer[];
     totalTimeMinutes: number;
     timeLeft: number;
+    estimatedTime: number;
 }
 
 const ExamResultsScreen: React.FC<ExamResultsScreenProps> = ({
@@ -14,6 +15,7 @@ const ExamResultsScreen: React.FC<ExamResultsScreenProps> = ({
     answers,
     totalTimeMinutes,
     timeLeft,
+    estimatedTime,
 }) => {
     const totalSeconds = totalTimeMinutes * 60;
     const timeUsed = totalSeconds - timeLeft;
@@ -66,6 +68,7 @@ const ExamResultsScreen: React.FC<ExamResultsScreenProps> = ({
                         className="text-2xl font-bold text-blue-600"
                     >
                         {formatTime(timeUsed)}
+                        {/* {estimatedTime} */}
                     </Typography>
                     <Typography variant="p" className="text-sm text-gray-500">
                         out of {formatTime(totalSeconds)}

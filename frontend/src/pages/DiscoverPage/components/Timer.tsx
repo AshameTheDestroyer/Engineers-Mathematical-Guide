@@ -5,9 +5,17 @@ interface TimerProps {
     minutes: number;
     isRunning: boolean;
     onTimeUp?: () => void;
+    estimatedTIme: number;
+    setEstimatedTime: () => void;
 }
 
-const Timer: React.FC<TimerProps> = ({ minutes, isRunning, onTimeUp }) => {
+const Timer: React.FC<TimerProps> = ({
+    minutes,
+    isRunning,
+    onTimeUp,
+    setEstimatedTime,
+    estimatedTime,
+}) => {
     const totalSeconds = Math.max(0, Math.floor(minutes) * 60);
     const [timeLeft, setTimeLeft] = useState(totalSeconds);
     const timerRef = useRef<number | null>(null);
@@ -26,6 +34,7 @@ const Timer: React.FC<TimerProps> = ({ minutes, isRunning, onTimeUp }) => {
 
     useEffect(() => {
         setTimeLeft(Math.max(0, Math.floor(minutes) * 60));
+        setEstimatedTime(minutes - timeLeft);
     }, [minutes]);
 
     useEffect(() => {
