@@ -1,20 +1,22 @@
 import { FC } from "react";
-import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
+import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { CogIcon } from "@/components/CogIcon/CogIcon";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { RichText } from "@/components/RichText/RichText";
-import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { ButtonBox } from "@components/ButtonBox/ButtonBox";
 import { DoubleCogIcon } from "@/components/DoubleCogIcon/DoubleCogIcon";
+import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import pi_image from "@images/pi.webp";
 import arrow_icon from "@icons/arrow.svg";
 
-import locales from "@localization/website_page.json";
+import locales from "@localization/home_page.json";
 
-export const WebsiteMainContent: FC = () => {
+export const HomePage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
@@ -53,8 +55,7 @@ export const WebsiteMainContent: FC = () => {
                     className="[&>button]:grow"
                     direction={direction == "ltr" ? "row" : "reverse-row"}
                 >
-                    {/* TODO: Add a "learn-more" page. */}
-                    <Button link="/learn-more">
+                    <Button link={WEBSITE_ROUTES.base.routes.about.absolute}>
                         <Locale>{locales.buttons.learn}</Locale>
                     </Button>
                     <Button
@@ -70,6 +71,9 @@ export const WebsiteMainContent: FC = () => {
                     </Button>
                 </ButtonBox>
             </Flexbox>
+
+            <MathParallaxScene className="-z-2 fixed inset-0" />
+
             <img
                 className="w-100 [filter:drop-shadow(4px_4px_2px_#0000007c)] max-md:w-60"
                 loading="lazy"
