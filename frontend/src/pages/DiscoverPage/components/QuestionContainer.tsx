@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
 import { Typography } from "@/components/Typography/Typography";
 import { QuestionDTO, QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import { MathExpression } from "@/components/MathExpression/MathExpression";
+
+import locales from "@localization/modules_page.json";
 
 export type QuestionProps = QuestionDTO & {
     index: number;
@@ -22,11 +25,15 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
 
     return (
         <Flexbox gap="8" direction="column">
-            <Flexbox className="sm:gap-4" placeContent="space-between">
+            <Flexbox
+                className="gap-4 max-sm:gap-2"
+                placeContent="space-between"
+            >
                 <RichText
                     variant="h3"
                     className="font-bold sm:text-lg"
                     extractor="$"
+                    dir="ltr"
                     ExtractedTextRenders={(text) => (
                         <MathExpression
                             className="inline-block"
@@ -44,7 +51,14 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
                     className="bg-tertiary-normal text-tertiary-light place-self-start text-nowrap rounded-full px-4 py-2 font-bold"
                     variant="span"
                 >
-                    {points} point{points != 1 ? "s" : ""}
+                    {points}{" "}
+                    <Locale>
+                        {
+                            locales.lessons.examination.question.points[
+                                points <= 1 ? "singular" : "plural"
+                            ]
+                        }
+                    </Locale>
                 </Typography>
             </Flexbox>
 
@@ -56,7 +70,7 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
                 {options.map((option, i) => (
                     <Checkbox
                         key={i}
-                        className="[&>label]:bg-transparent"
+                        className="[&>label]:bg-transparent [&>label]:[direction:ltr]"
                         isControlled
                         variant="default"
                         name={`answer-${i}`}
