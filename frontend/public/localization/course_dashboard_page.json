@@ -1,0 +1,54 @@
+{
+    "title": {
+        "en": "Course Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُقرَّرات"
+    },
+    "inputs": {
+        "search": {
+            "label": {
+                "en": "Search",
+                "ar": "ابحَثْ"
+            }
+        }
+    },
+    "table": {
+        "loading": {
+            "title": {
+                "en": "Loading...",
+                "ar": "جارٍ التَّحميل"
+            },
+            "paragraph": {
+                "en": "Wait a little for courses to be completely loaded.",
+                "ar": "انتَظِرْ قَليلاً رَيثَما يَتِمُّ تَحميلُ المُقرَّراتِ بِشَكلٍ كامِل."
+            }
+        },
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching courses, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُقرَّراتِ، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Refetch Courses",
+                "ar": "إعادةُ جَلبِ المُقرَّرات"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Courses Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُقرَّر"
+            },
+            "paragraph": {
+                "en": "The term **term** was not found, try searching for another thing.",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُقرَّرٍ يَتعلَّقُ بِالاستِعلامِ **الاستعلام** المُدخَلِ، يُرجى البَحثُ عَنْ شَيءٍ آخَر."
+            },
+            "button": {
+                "en": "Clear Search",
+                "ar": "مَسحُ الاستِعلام"
+            }
+        }
+    }
+}

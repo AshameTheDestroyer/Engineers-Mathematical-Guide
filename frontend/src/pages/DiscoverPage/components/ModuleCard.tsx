@@ -9,6 +9,7 @@ import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { ProgressBar } from "@/components/ProgressBar/ProgressBar";
+import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
@@ -33,6 +34,7 @@ export const ModuleCard: FC<ModuleCardProps> = ({
 }) => {
     const { direction } = useLocalization();
     const { orientation } = useScreenSize();
+    const { isDarkThemed } = useThemeMode();
 
     const modulesEnrollments = Object.fromEntries(
         (enrollment?.progress ?? []).map((progress) => [
@@ -58,7 +60,10 @@ export const ModuleCard: FC<ModuleCardProps> = ({
             id={id}
             ref={ref}
             className={twMerge(
-                "bg-background-normal relative flex flex-col gap-4 rounded-lg p-6",
+                "border-background-darker relative flex flex-col gap-4 rounded-lg border-2 p-6",
+                isDarkThemed
+                    ? "bg-background-normal/50"
+                    : "bg-background-dark/50",
                 orientation == "landscape" && "min-w-[20rem] max-w-[30rem]",
                 orientation == "landscape" &&
                     haveIFinished &&

@@ -12,8 +12,25 @@
     "profile": { "en": "Profile", "ar": "المِلَفُّ الشَّخصيّ" },
     "components": { "en": "Components", "ar": "المُكوِّنات" },
     "typography": { "en": "Typography", "ar": "النُّصوص" },
+    "dashboard": { "en": "Dashboard", "ar": "لَوحةُ التَّحَكُّم" },
     "application": { "en": "Application", "ar": "التَّطبيق" },
     "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
+    "user-dashboard": {
+        "en": "User Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُستَخدِمين"
+    },
+    "course-dashboard": {
+        "en": "Course Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُقرَّرات"
+    },
+    "learning-track-dashboard": {
+        "en": "Learning Track Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المَساراتِ الدِّراسيّة"
+    },
+    "math-equation-dashboard": {
+        "en": "Math Equation Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُعادَلاتِ الرِّياضيّة"
+    },
     "forgot-password": {
         "en": "Forgot Password",
         "ar": "نَسيتُ كَلمةَ المُرور"

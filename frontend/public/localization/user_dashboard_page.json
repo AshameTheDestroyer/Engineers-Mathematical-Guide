@@ -1,0 +1,54 @@
+{
+    "title": {
+        "en": "User Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُستَخدِمين"
+    },
+    "inputs": {
+        "search": {
+            "label": {
+                "en": "Search",
+                "ar": "ابحَثْ"
+            }
+        }
+    },
+    "table": {
+        "loading": {
+            "title": {
+                "en": "Loading...",
+                "ar": "جارٍ التَّحميل"
+            },
+            "paragraph": {
+                "en": "Wait a little for users to be completely loaded.",
+                "ar": "انتَظِرْ قَليلاً رَيثَما يَتِمُّ تَحميلُ المُستَخدِمينَ بِشَكلٍ كامِل."
+            }
+        },
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching users, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُستَخدِمينَ، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Refetch Users",
+                "ar": "إعادةُ جَلبِ المُستَخدِمين"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Users Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُستَخدِم"
+            },
+            "paragraph": {
+                "en": "The term **term** was not found, try searching for another thing.",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُستَخدِمٍ يَتعلَّقُ بِالاستِعلامِ **الاستعلام** المُدخَلِ، يُرجى البَحثُ عَنْ شَيءٍ آخَر."
+            },
+            "button": {
+                "en": "Clear Search",
+                "ar": "مَسحُ الاستِعلام"
+            }
+        }
+    }
+}

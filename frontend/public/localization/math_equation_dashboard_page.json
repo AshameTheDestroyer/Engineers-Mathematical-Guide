@@ -1,0 +1,54 @@
+{
+    "title": {
+        "en": "Math Equation Dashboard",
+        "ar": "لَوحةُ تَحكُّمِ المُعادَلاتِ الرِّياضيّة"
+    },
+    "inputs": {
+        "search": {
+            "label": {
+                "en": "Search",
+                "ar": "ابحَثْ"
+            }
+        }
+    },
+    "table": {
+        "loading": {
+            "title": {
+                "en": "Loading...",
+                "ar": "جارٍ التَّحميل"
+            },
+            "paragraph": {
+                "en": "Wait a little for math equations to be completely loaded.",
+                "ar": "انتَظِرْ قَليلاً رَيثَما يَتِمُّ تَحميلُ المُعادَلاتِ الرِّياضيّةِِ بِشَكلٍ كامِل."
+            }
+        },
+        "error": {
+            "title": {
+                "en": "Error!",
+                "ar": "حَدثَ خَطأ!"
+            },
+            "paragraph": {
+                "en": "An error occurred while fetching math equations, try refetching.",
+                "ar": "حَدثَ خَطأٌ ما أثْناءَ جَلبِ المُعادَلاتِ الرِّياضيّةِِ، يُرجى المُحاولةُ مِنْ جَديد."
+            },
+            "button": {
+                "en": "Refetch Math Equations",
+                "ar": "إعادةُ جَلبِ المُعادَلاتِ الرِّياضيّةِ"
+            }
+        },
+        "empty": {
+            "title": {
+                "en": "No Math Equations Found",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُعادَلةٍ رِياضيّة"
+            },
+            "paragraph": {
+                "en": "The term **term** was not found, try searching for another thing.",
+                "ar": "لَمْ يَتِمَّ إيجادُ أيِّ مُعادَلةٍ رِياضيّةٍ تَتعلَّقُ بِالاستِعلامِ **الاستعلام** المُدخَلِ، يُرجى البَحثُ عَنْ شَيءٍ آخَر."
+            },
+            "button": {
+                "en": "Clear Search",
+                "ar": "مَسحُ الاستِعلام"
+            }
+        }
+    }
+}

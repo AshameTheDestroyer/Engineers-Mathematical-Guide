@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { RoleEnum } from "@/schemas/UserSchema";
 import { Outlet, Route } from "react-router-dom";
 import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
@@ -18,6 +19,10 @@ export const WEBSITE_ROUTES = BuildRouter({
             help: { href: "help" },
             discover: { href: "/discover" },
             application: { href: "/" },
+            dashboard: {
+                href: "/dashboard",
+                renderingPredicate: (myUser) => myUser?.role == RoleEnum.admin,
+            },
             test: {
                 text: "TEST",
                 href: "/test",

@@ -3,6 +3,7 @@ import { Icon } from "@/components/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { Gender } from "@/schemas/SignupSchema";
 import { twJoin, twMerge } from "tailwind-merge";
+import { DayStreakBadge } from "./DayStreakBadge";
 import { useClipboard } from "@/hooks/useClipboard";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
@@ -15,7 +16,6 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
 import user_icon from "@icons/user.svg";
-import fire_icon from "@icons/fire.svg";
 import phone_icon from "@icons/phone.svg";
 import email_icon from "@icons/email.svg";
 import location_icon from "@icons/location.svg";
@@ -24,6 +24,7 @@ import progress_arrow_icon from "@icons/progress_arrow.svg";
 import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
 
 import locales from "@localization/profile_page.json";
+import { GenderBadge } from "./GenderBadge";
 
 export type ProfileInformationProps = {
     user: DetailedUserDTO;
@@ -122,10 +123,13 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
                         : "0",
             }}
         >
-            <Flexbox className="max-xl:gap-8 max-md:flex-col max-md:place-content-center">
+            <Flexbox
+                className="max-md:flex-col max-md:place-content-center"
+                gap="4"
+            >
                 <Flexbox
-                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 max-md:-mx-8 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
-                    wrap="wrap"
+                    className="max-md:[&>:not(hr):not(:last-child)]:flex-0 gap-4 place-self-center max-md:-mx-8 max-md:place-content-center max-md:gap-1.5 max-sm:text-sm [&>:not(hr)]:h-12"
+                    // wrap="wrap"
                 >
                     {[
                         {
@@ -172,24 +176,15 @@ export const ProfileInformation: FC<ProfileInformationProps> = ({
 
                 <Flexbox
                     className={twJoin(
-                        "bg-secondary-normal place-self-end rounded-full px-6 py-2 font-bold text-white max-md:place-self-center",
-                        direction == "ltr"
-                            ? "rounded-br-xl rounded-tl-xl md:ml-auto"
-                            : "rounded-bl-xl rounded-tr-xl md:mr-auto"
+                        "place-self-center",
+                        direction == "ltr" ? "md:ml-auto" : "md:mr-auto"
                     )}
-                    gap="2"
-                    placeItems="center"
-                    placeContent="space-between"
+                    gap="4"
+                    wrap="wrap-reverse"
+                    direction="row-reverse"
                 >
-                    <Icon source={fire_icon} />
-                    <Typography className="text-nowrap" variant="p">
-                        {user["day-streak"]}{" "}
-                        {GetGenderedLocale(
-                            locales.information.streak,
-                            language,
-                            user.gender
-                        )}
-                    </Typography>
+                    <DayStreakBadge user={user} />
+                    <GenderBadge gender={user.gender} />
                 </Flexbox>
             </Flexbox>
 

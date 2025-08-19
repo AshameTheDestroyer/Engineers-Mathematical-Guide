@@ -1,21 +1,16 @@
 import { z } from "zod";
-import { queryClient } from "@/contexts";
-import { FC, useEffect, useState } from "react";
-import { Input } from "@/components/Input/Input";
-import { useDebounce } from "@/hooks/useDebounce";
+import { FC } from "react";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { SearchHeader } from "@/components/SearchHeader";
 import { IconButton } from "@/components/IconButton/IconButton";
-import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useSchematicSearch } from "@/hooks/useSchematicSearch";
 import { MathEquationsDisplay } from "../components/MathEquationsDisplay";
+import { useGetMathEquations } from "@/services/MathEquations/useGetMathEquations";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
-import {
-    useGetMathEquations,
-    GET_MATH_EQUATIONS_KEY,
-} from "@/services/MathEquations/useGetMathEquations";
 
 import function_icon from "@icons/function.svg";
 import card_view_icon from "@icons/card_view.svg";
@@ -32,20 +27,23 @@ export type MathEquationsMode = ExtractEnumValue<MathEquationsModeEnum>;
 export const MathEquationsQueryParamsSchema = z.object({
     query: z.string().optional().default(""),
     mode: z
-        .nativeEnum(MathEquationsModeEnum)
+        .nativeEnum(MathEquationsModeEnum, {
+            errorMap: () => ({ message: "required" }),
+        })
         .optional()
         .default(MathEquationsModeEnum.parallax),
 });
 
 export const MathEquationsPage: FC = () => {
-    const { queryParams, setQueryParams } = useSchematicQueryParams(
-        MathEquationsQueryParamsSchema
-    );
-
     const { language, GetLocale } = useLocalization();
 
-    const [searchQuery, setSearchQuery] = useState(queryParams.query);
-    const debouncedSearchQuery = useDebounce(searchQuery);
+    const {
+        queryParams,
+        searchQuery,
+        setSearchQuery,
+        setQueryParams,
+        debouncedSearchQuery,
+    } = useSchematicSearch(MathEquationsQueryParamsSchema);
 
     const {
         refetch,
@@ -58,17 +56,6 @@ export const MathEquationsPage: FC = () => {
 
     const skeletonArray = new Array(10).fill(null);
 
-    useEffect(() => {
-        setQueryParams((queryParams) => ({
-            ...queryParams,
-            query: debouncedSearchQuery.trimAll(),
-        }));
-
-        queryClient.invalidateQueries({
-            queryKey: [GET_MATH_EQUATIONS_KEY],
-        });
-    }, [debouncedSearchQuery]);
-
     return (
         <Flexbox
             gap="8"
@@ -76,18 +63,15 @@ export const MathEquationsPage: FC = () => {
             direction="column"
             className="flex-grow"
         >
-            <Flexbox
-                rowGap="4"
-                columnGap="8"
-                variant="header"
-                placeItems="center"
-                placeContent="space-between"
-                className="max-sm:flex-wrap"
-            >
-                <Flexbox gap="4">
-                    <Locale variant="h1" className="text-2xl font-bold">
-                        {locales.title}
-                    </Locale>
+            <SearchHeader
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
+                withoutSearchInput={
+                    queryParams.mode != MathEquationsModeEnum.cards
+                }
+                buttons={
                     <IconButton
                         className="my-auto"
                         icon={{
@@ -113,19 +97,8 @@ export const MathEquationsPage: FC = () => {
                             }))
                         }
                     />
-                </Flexbox>
-
-                {queryParams.mode == MathEquationsModeEnum.cards && (
-                    <Input
-                        className="max-sm:grow"
-                        name="query"
-                        type="search"
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        label={<Locale>{locales.inputs.search.label}</Locale>}
-                    />
-                )}
-            </Flexbox>
+                }
+            />
 
             {queryParams.mode == MathEquationsModeEnum.cards ? (
                 <Flexbox className="grow" variant="main">

@@ -1,35 +1,21 @@
-import { z } from "zod";
-import { queryClient } from "@/contexts";
-import { FC, useEffect, useState } from "react";
-import { Input } from "@/components/Input/Input";
-import { useDebounce } from "@/hooks/useDebounce";
+import { FC } from "react";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { SearchHeader } from "@/components/SearchHeader";
 import { CoursesDisplay } from "../components/CoursesDisplay";
-import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
+import { useSchematicSearch } from "@/hooks/useSchematicSearch";
+import { useGetCourses } from "@/services/Courses/useGetCourses";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
-import {
-    useGetCourses,
-    GET_COURSES_KEY,
-} from "@/services/Courses/useGetCourses";
 
 import locales from "@localization/courses_page.json";
 
-export const CoursesQueryParamsSchema = z.object({
-    query: z.string().optional().default(""),
-});
-
 export const CoursesPage: FC = () => {
-    const { queryParams, setQueryParams } = useSchematicQueryParams(
-        CoursesQueryParamsSchema
-    );
-
     const { language, GetLocale } = useLocalization();
 
-    const [searchQuery, setSearchQuery] = useState(queryParams.query);
-    const debouncedSearchQuery = useDebounce(searchQuery);
+    const { searchQuery, setSearchQuery, debouncedSearchQuery } =
+        useSchematicSearch();
 
     const {
         refetch,
@@ -40,39 +26,14 @@ export const CoursesPage: FC = () => {
 
     const skeletonArray = new Array(20).fill(null);
 
-    useEffect(() => {
-        setQueryParams((queryParams) => ({
-            ...queryParams,
-            query: debouncedSearchQuery.trimAll(),
-        }));
-
-        queryClient.invalidateQueries({
-            queryKey: [GET_COURSES_KEY],
-        });
-    }, [debouncedSearchQuery]);
-
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="8">
-            <Flexbox
-                rowGap="4"
-                columnGap="8"
-                variant="header"
-                placeItems="center"
-                placeContent="space-between"
-                className="max-sm:flex-wrap"
-            >
-                <Locale variant="h1" className="text-2xl font-bold">
-                    {locales.title}
-                </Locale>
-                <Input
-                    className="max-sm:grow"
-                    name="query"
-                    type="search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    label={<Locale>{locales.inputs.search.label}</Locale>}
-                />
-            </Flexbox>
+            <SearchHeader
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
+            />
             <Flexbox className="grow" variant="main">
                 {isLoading || courses == null ? (
                     <CoursesDisplay isSkeleton courses={skeletonArray} />

@@ -37,11 +37,11 @@ export type BuiltAnchor<
                   variables: U;
                   MapVariables: (
                       value: Record<U[number], string>,
-                      relative: boolean
+                      relative?: boolean
                   ) => string;
               }
             : {
-                  MapVariable: (value: string, relative: boolean) => string;
+                  MapVariable: (value: string, relative?: boolean) => string;
               }
         : object);
 
