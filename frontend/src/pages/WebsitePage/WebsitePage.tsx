@@ -1,12 +1,12 @@
 import { FC } from "react";
 import { useMain } from "@/contexts";
+import { Outlet } from "react-router-dom";
 import { Page } from "@components/Page/Page";
 import { Locale } from "@/components/Locale/Locale";
 import { Button } from "@/components/Button/Button";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
-import { WebsiteMainContent } from "./components/WebsiteMainContent";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
 import { ExaminationResultModal } from "../DiscoverPage/components/ExaminationResultModal";
@@ -14,7 +14,7 @@ import { ExaminationResultModal } from "../DiscoverPage/components/ExaminationRe
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
 
-import locales from "@localization/website_page.json";
+import locales from "@localization/home_page.json";
 
 export const WebsitePage: FC = () => {
     useScrollRestoration();
@@ -60,7 +60,7 @@ export const WebsitePage: FC = () => {
                     )
                 }
             />
-            <WebsiteMainContent />
+            <Outlet />
             <MathParallaxScene className="-z-2 fixed inset-0" />
             <ExaminationResultModal />
         </Page>

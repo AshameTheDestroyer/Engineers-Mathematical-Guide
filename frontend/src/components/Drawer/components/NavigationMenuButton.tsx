@@ -31,7 +31,7 @@ import signup_icon from "@icons/user.svg";
 import logout_icon from "@icons/logout.svg";
 import arrow_icon from "@icons/direction_arrow.svg";
 
-import locales from "@localization/website_page.json";
+import locales from "@localization/home_page.json";
 
 export type NavigationMenuButtonProps = Omit<IconButtonProps, "icon"> &
     Pick<NavigationBarProps, "routes" | "base">;

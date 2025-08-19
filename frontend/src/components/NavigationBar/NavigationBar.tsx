@@ -2,6 +2,7 @@ import { Anchor } from "@/types/Anchor";
 import { FC, PropsWithChildren } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Link, useLocation } from "react-router-dom";
+import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ChildlessComponentProps } from "@types_/ComponentProps";
 
 export type NavigationBarProps = ChildlessComponentProps<HTMLDivElement> & {
@@ -34,14 +35,17 @@ export const NavigationBar: FC<NavigationBarProps> = ({
         .map((route) => ({
             ...route,
             selected:
-                route.href != "/" &&
-                pathname.startsWith(
-                    (
-                        base +
-                        (base.endsWith("/") ? "" : "/") +
-                        route.href
-                    ).replace(/\/$/, "")
-                ),
+                (pathname == WEBSITE_ROUTES.base.absolute &&
+                    route.href == "") ||
+                (route.href != "/" &&
+                    route.href != "" &&
+                    pathname.startsWith(
+                        (
+                            base +
+                            (base.endsWith("/") ? "" : "/") +
+                            route.href
+                        ).replace(/\/$/, "")
+                    )),
         }))
         .map(Renders ?? (() => undefined));
 

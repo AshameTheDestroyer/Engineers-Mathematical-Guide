@@ -8,6 +8,8 @@ import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 
+import locales from "@localization/routes.json";
+
 const DashboardPage = LazyImport("./pages/DashboardPage/DashboardPage");
 const UserDashboardPage = LazyImport(
     "./pages/DashboardPage/pages/UserDashboardPage"
@@ -21,8 +23,6 @@ const LearningTrackDashboardPage = LazyImport(
 const MathEquationDashboardPage = LazyImport(
     "./pages/DashboardPage/pages/MathEquationDashboardPage"
 );
-
-import locales from "@localization/routes.json";
 
 export const DASHBOARD_ROUTES = BuildRouter({
     base: {
