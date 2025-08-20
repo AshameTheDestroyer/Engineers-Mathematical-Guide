@@ -19,7 +19,7 @@ export enum ForgotPasswordStepEnum {
 
 export type ForgotPasswordStep = ExtractEnumValue<ForgotPasswordStepEnum>;
 
-const ForgotPasswordQueryParamSchema = z.object({
+const ForgotPasswordQueryParamsSchema = z.object({
     step: z
         .nativeEnum(ForgotPasswordStepEnum)
         .default(ForgotPasswordStepEnum.codeRequest),
@@ -27,7 +27,7 @@ const ForgotPasswordQueryParamSchema = z.object({
 
 export const ForgotPasswordPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
-        ForgotPasswordQueryParamSchema
+        ForgotPasswordQueryParamsSchema
     );
 
     const [data, setData] = useState<
