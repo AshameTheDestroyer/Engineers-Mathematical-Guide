@@ -1,12 +1,15 @@
+import { z } from "zod";
 import { useMain } from "@/contexts";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
+import { useSchematicQueryParams } from "@/hooks/useSchematicQueryParams";
 import { QuestionContainer, QuestionContainerProps } from "./QuestionContainer";
+import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
@@ -15,31 +18,52 @@ import warning_icon from "@icons/warning.svg";
 
 import locales from "@localization/modules_page.json";
 
+export const ExaminationLessonQueryParamsSchema = z.object({
+    tab: z.string({ required_error: "required" }).regex(/\d*/, "pattern"),
+});
+
 export type ExaminationLessonProps = {
     lesson: LessonDTO & { type: LessonTypeEnum.examination };
+    courseID: string;
+    moduleID: string;
+    lessonID: string;
 };
 
-export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
+export const ExaminationLesson: FC<ExaminationLessonProps> = ({
+    lesson,
+    courseID,
+    moduleID,
+    lessonID,
+}) => {
     const { myUser } = useMain();
     const { direction, language, GetGenderedLocale } = useLocalization();
 
-    const [tab, setTab] = useState<number>();
-    const [allChosenAnswers, setAllChosenAnswers] = useState<
-        Array<number | undefined | Array<number>>
-    >(
-        lesson.questions.map((question) => {
-            switch (question.type) {
-                case QuestionTypeEnum.choose:
-                    return undefined;
-                case QuestionTypeEnum.select:
-                    return [];
-            }
-        })
+    const { queryParams, setQueryParams } = useSchematicQueryParams(
+        ExaminationLessonQueryParamsSchema
     );
+
+    const {
+        StoreTab,
+        StartExamination,
+        examinationInformation,
+        SetExaminationChosenAnswers,
+    } = useExamination();
+
+    const [tab, setTab] = useState(
+        examinationInformation?.["last-tab"] ?? +queryParams.tab
+    );
+
+    useEffect(() => {
+        StoreTab(tab);
+        setQueryParams((queryParams) => ({
+            ...queryParams,
+            tab: `${tab}`,
+        }));
+    }, [tab]);
 
     const CreateSetChosenAnswer = (tab: number) =>
         ((chosenAnswer) =>
-            setAllChosenAnswers((allChosenAnswers) =>
+            SetExaminationChosenAnswers((allChosenAnswers) =>
                 allChosenAnswers.with(
                     tab,
                     typeof chosenAnswer == "number"
@@ -54,7 +78,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
 
     const CreateSetChosenAnswers = (tab: number) =>
         ((chosenAnswers) =>
-            setAllChosenAnswers((allChosenAnswers) =>
+            SetExaminationChosenAnswers((allChosenAnswers) =>
                 allChosenAnswers.with(
                     tab,
                     Array.isArray(chosenAnswers)
@@ -69,7 +93,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
 
     return (
         <div className="p-[inherit] max-sm:w-full sm:absolute sm:inset-0 sm:overflow-auto">
-            {tab == null ? (
+            {examinationInformation == null ? (
                 <SearchResultDisplay
                     className="sm:-translate-1/2 sm:absolute sm:left-1/2 sm:top-1/2"
                     iconType="custom"
@@ -91,7 +115,31 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                               : text
                     )}
                     buttons={
-                        <Button thickness="thick" onClick={(_e) => setTab(0)}>
+                        <Button
+                            thickness="thick"
+                            onClick={(_e) =>
+                                StartExamination({
+                                    courseID,
+                                    lessonID,
+                                    moduleID,
+                                    "last-tab": 0,
+                                    "attempt-counter": 0,
+                                    "finishes-at": new Date(
+                                        Date.now() + 90 * 60 * 1000
+                                    ).toISOString(),
+                                    "chosen-answers": lesson.questions.map(
+                                        (question) => {
+                                            switch (question.type) {
+                                                case QuestionTypeEnum.choose:
+                                                    return undefined;
+                                                case QuestionTypeEnum.select:
+                                                    return [];
+                                            }
+                                        }
+                                    ),
+                                })
+                            }
+                        >
                             <Locale gender={myUser!.gender}>
                                 {
                                     locales.lessons.examination.disclaimer
@@ -118,9 +166,9 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                                             tab
                                         )}
                                         chosenAnswer={
-                                            allChosenAnswers[tab] as
-                                                | number
-                                                | undefined
+                                            examinationInformation[
+                                                "chosen-answers"
+                                            ][tab] as number | undefined
                                         }
                                     />
                                 );
@@ -133,9 +181,9 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                                             tab
                                         )}
                                         chosenAnswers={
-                                            allChosenAnswers[
-                                                tab
-                                            ] as Array<number>
+                                            examinationInformation[
+                                                "chosen-answers"
+                                            ][tab] as Array<number>
                                         }
                                     />
                                 );

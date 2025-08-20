@@ -67,7 +67,7 @@ export const LessonPage: FC = () => {
         );
     }
 
-    if (lesson == null) {
+    if (lessonID == null || lesson == null) {
         return (
             <SearchResultDisplay
                 className="grow"
@@ -140,7 +140,12 @@ export const LessonPage: FC = () => {
                             case LessonTypeEnum.reading:
                                 return <ReadingLesson lesson={lesson} />;
                             case LessonTypeEnum.examination:
-                                return <ExaminationLesson lesson={lesson} />;
+                                return (
+                                    <ExaminationLesson
+                                        lesson={lesson}
+                                        {...{ courseID, moduleID, lessonID }}
+                                    />
+                                );
                         }
                     })()}
                 </Flexbox>
