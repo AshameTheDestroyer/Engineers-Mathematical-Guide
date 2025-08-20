@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { Locale } from "@/components/Locale/Locale";
+import { Dispatch, FC, SetStateAction } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Checkbox } from "@/components/Checkbox/Checkbox";
 import { RichText } from "@/components/RichText/RichText";
@@ -9,20 +9,32 @@ import { MathExpression } from "@/components/MathExpression/MathExpression";
 
 import locales from "@localization/modules_page.json";
 
-export type QuestionProps = QuestionDTO & {
+export type QuestionContainerProps = QuestionDTO & {
     index: number;
-};
+} & Either<
+        {
+            type: QuestionTypeEnum.choose;
+            chosenAnswer: number | undefined;
+            setChosenAnswer: Dispatch<SetStateAction<number | undefined>>;
+        },
+        {
+            type: QuestionTypeEnum.select;
+            chosenAnswers: Array<number>;
+            setChosenAnswers: Dispatch<SetStateAction<Array<number>>>;
+        }
+    >;
 
-export const QuestionContainer: React.FC<QuestionProps> = ({
+export const QuestionContainer: FC<QuestionContainerProps> = ({
     type,
     index,
     title,
     points,
     options,
+    chosenAnswer,
+    chosenAnswers,
+    setChosenAnswer,
+    setChosenAnswers,
 }) => {
-    const [answer, setAnswer] = useState<number>();
-    const [answers, setAnswers] = useState<Array<number>>([]);
-
     return (
         <Flexbox gap="8" direction="column">
             <Flexbox
@@ -63,7 +75,7 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
             </Flexbox>
 
             <Flexbox
-                key={`${answer}-${answers.length}`}
+                key={`${chosenAnswer ?? -1}-${chosenAnswers?.length ?? 0}`}
                 gap="4"
                 direction="column"
             >
@@ -77,8 +89,8 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
                         isRadio={type == QuestionTypeEnum.choose}
                         checked={
                             type == QuestionTypeEnum.choose
-                                ? answer == i
-                                : answers.includes(i)
+                                ? chosenAnswer == i
+                                : chosenAnswers.includes(i)
                         }
                         label={
                             <RichText
@@ -99,8 +111,8 @@ export const QuestionContainer: React.FC<QuestionProps> = ({
                         }
                         onChange={(e) =>
                             type == QuestionTypeEnum.choose
-                                ? setAnswer(i)
-                                : setAnswers((answers) =>
+                                ? setChosenAnswer(i)
+                                : setChosenAnswers((answers) =>
                                       e.target.checked
                                           ? [...answers, i]
                                           : answers.filter(

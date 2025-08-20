@@ -3,9 +3,10 @@ import { FC, useState } from "react";
 import { Button } from "@/components/Button/Button";
 import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
-import { QuestionContainer } from "./QuestionContainer";
+import { QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import { Typography } from "@/components/Typography/Typography";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
+import { QuestionContainer, QuestionContainerProps } from "./QuestionContainer";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
@@ -20,8 +21,51 @@ export type ExaminationLessonProps = {
 
 export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
     const { myUser } = useMain();
-    const [tab, setTab] = useState<number>();
     const { direction, language, GetGenderedLocale } = useLocalization();
+
+    const [tab, setTab] = useState<number>();
+    const [allChosenAnswers, setAllChosenAnswers] = useState<
+        Array<number | undefined | Array<number>>
+    >(
+        lesson.questions.map((question) => {
+            switch (question.type) {
+                case QuestionTypeEnum.choose:
+                    return undefined;
+                case QuestionTypeEnum.select:
+                    return [];
+            }
+        })
+    );
+
+    const CreateSetChosenAnswer = (tab: number) =>
+        ((chosenAnswer) =>
+            setAllChosenAnswers((allChosenAnswers) =>
+                allChosenAnswers.with(
+                    tab,
+                    typeof chosenAnswer == "number"
+                        ? chosenAnswer
+                        : chosenAnswer?.(
+                              allChosenAnswers[tab] as number | undefined
+                          )
+                )
+            )) as (QuestionContainerProps & {
+            type: QuestionTypeEnum.choose;
+        })["setChosenAnswer"];
+
+    const CreateSetChosenAnswers = (tab: number) =>
+        ((chosenAnswers) =>
+            setAllChosenAnswers((allChosenAnswers) =>
+                allChosenAnswers.with(
+                    tab,
+                    Array.isArray(chosenAnswers)
+                        ? chosenAnswers
+                        : chosenAnswers?.(
+                              allChosenAnswers[tab] as Array<number>
+                          )
+                )
+            )) as (QuestionContainerProps & {
+            type: QuestionTypeEnum.select;
+        })["setChosenAnswers"];
 
     return (
         <div className="p-[inherit] max-sm:w-full sm:absolute sm:inset-0 sm:overflow-auto">
@@ -63,11 +107,40 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({ lesson }) => {
                     gap="8"
                     direction="column"
                 >
-                    <QuestionContainer
-                        key={tab}
-                        index={tab + 1}
-                        {...lesson.questions[tab]}
-                    />
+                    {(() => {
+                        switch (lesson.questions[tab].type) {
+                            case QuestionTypeEnum.choose:
+                                return (
+                                    <QuestionContainer
+                                        index={tab + 1}
+                                        {...lesson.questions[tab]}
+                                        setChosenAnswer={CreateSetChosenAnswer(
+                                            tab
+                                        )}
+                                        chosenAnswer={
+                                            allChosenAnswers[tab] as
+                                                | number
+                                                | undefined
+                                        }
+                                    />
+                                );
+                            case QuestionTypeEnum.select:
+                                return (
+                                    <QuestionContainer
+                                        index={tab + 1}
+                                        {...lesson.questions[tab]}
+                                        setChosenAnswers={CreateSetChosenAnswers(
+                                            tab
+                                        )}
+                                        chosenAnswers={
+                                            allChosenAnswers[
+                                                tab
+                                            ] as Array<number>
+                                        }
+                                    />
+                                );
+                        }
+                    })()}
                     <Flexbox className="mt-auto" placeContent="space-between">
                         <Button
                             className="min-w-[calc(8ch+1rem)]"
