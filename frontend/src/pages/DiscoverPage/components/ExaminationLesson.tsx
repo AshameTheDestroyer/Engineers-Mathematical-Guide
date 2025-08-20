@@ -26,10 +26,11 @@ export const ExaminationLessonQueryParamsSchema = z.object({
 });
 
 export type ExaminationLessonProps = {
-    lesson: LessonDTO & { type: LessonTypeEnum.examination };
     courseID: string;
     moduleID: string;
     lessonID: string;
+    showCorrectAnswers: boolean;
+    lesson: LessonDTO & { type: LessonTypeEnum.examination };
 };
 
 export const ExaminationLesson: FC<ExaminationLessonProps> = ({
@@ -37,6 +38,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
     courseID,
     moduleID,
     lessonID,
+    showCorrectAnswers,
 }) => {
     const { myUser } = useMain();
     const { direction, language, GetGenderedLocale } = useLocalization();
@@ -126,6 +128,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                                     lessonID,
                                     moduleID,
                                     "last-tab": 0,
+                                    finalized: false,
                                     "attempt-counter": 0,
                                     "finishes-at": new Date(
                                         Date.now() + 90 * 60 * 1000
@@ -165,6 +168,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                                     <QuestionContainer
                                         index={tab + 1}
                                         {...lesson.questions[tab]}
+                                        showCorrectAnswers={showCorrectAnswers}
                                         setChosenAnswer={CreateSetChosenAnswer(
                                             tab
                                         )}
@@ -180,6 +184,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                                     <QuestionContainer
                                         index={tab + 1}
                                         {...lesson.questions[tab]}
+                                        showCorrectAnswers={showCorrectAnswers}
                                         setChosenAnswers={CreateSetChosenAnswers(
                                             tab
                                         )}

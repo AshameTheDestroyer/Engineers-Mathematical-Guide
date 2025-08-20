@@ -72,6 +72,10 @@
             "completed": {
                 "en": "Completed",
                 "ar": "مُنتَهيٌ"
+            },
+            "finish-exam": {
+                "en": "Finish Exam",
+                "ar": "إنهاءُ الامتِحان"
             }
         },
         "video": {

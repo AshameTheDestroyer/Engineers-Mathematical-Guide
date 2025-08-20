@@ -11,17 +11,18 @@ import locales from "@localization/modules_page.json";
 
 export type QuestionContainerProps = QuestionDTO & {
     index: number;
+    showCorrectAnswers: boolean;
 } & Either<
         {
             type: QuestionTypeEnum.choose;
             chosenAnswer: number | undefined;
             setChosenAnswer: Dispatch<SetStateAction<number | undefined>>;
-        },
+        } & Pick<QuestionDTO & { type: QuestionTypeEnum.choose }, "answer">,
         {
             type: QuestionTypeEnum.select;
             chosenAnswers: Array<number>;
             setChosenAnswers: Dispatch<SetStateAction<Array<number>>>;
-        }
+        } & Pick<QuestionDTO & { type: QuestionTypeEnum.select }, "answers">
     >;
 
 export const QuestionContainer: FC<QuestionContainerProps> = ({
@@ -29,12 +30,62 @@ export const QuestionContainer: FC<QuestionContainerProps> = ({
     index,
     title,
     points,
+    answer,
+    answers,
     options,
     chosenAnswer,
     chosenAnswers,
     setChosenAnswer,
     setChosenAnswers,
+    showCorrectAnswers,
 }) => {
+    function GetVariant(i: number): Variant {
+        if (!showCorrectAnswers) {
+            return "default";
+        }
+
+        const isCorrect = (() => {
+            switch (type) {
+                case QuestionTypeEnum.choose:
+                    return answer == i;
+                case QuestionTypeEnum.select:
+                    return answers.includes(i);
+            }
+        })();
+
+        if (isCorrect) {
+            const isChosen = (() => {
+                switch (type) {
+                    case QuestionTypeEnum.choose:
+                        return chosenAnswer == i;
+                    case QuestionTypeEnum.select:
+                        return chosenAnswers.includes(i);
+                }
+            })();
+
+            if (isChosen) {
+                return "success";
+            }
+
+            return "primary";
+        }
+
+        const isMischosen = (() => {
+            switch (type) {
+                case QuestionTypeEnum.choose:
+                    return chosenAnswer == i;
+                case QuestionTypeEnum.select:
+                    return chosenAnswers.includes(i);
+            }
+        })();
+
+        if (isMischosen) {
+            return "error";
+        }
+
+        return "default";
+    }
+
     return (
         <Flexbox gap="8" direction="column">
             <Flexbox
@@ -84,8 +135,8 @@ export const QuestionContainer: FC<QuestionContainerProps> = ({
                         key={i}
                         className="[&>label]:bg-transparent"
                         isControlled
-                        variant="default"
-                        name={`answer-${i}`}
+                        variant={GetVariant(i)}
+                        name={`answer-${index}-${i}`}
                         isRadio={type == QuestionTypeEnum.choose}
                         checked={
                             type == QuestionTypeEnum.choose
@@ -110,7 +161,8 @@ export const QuestionContainer: FC<QuestionContainerProps> = ({
                             </RichText>
                         }
                         onChange={(e) =>
-                            type == QuestionTypeEnum.choose
+                            !showCorrectAnswers &&
+                            (type == QuestionTypeEnum.choose
                                 ? setChosenAnswer(i)
                                 : setChosenAnswers((answers) =>
                                       e.target.checked
@@ -118,7 +170,7 @@ export const QuestionContainer: FC<QuestionContainerProps> = ({
                                           : answers.filter(
                                                 (answer) => answer != i
                                             )
-                                  )
+                                  ))
                         }
                     />
                 ))}

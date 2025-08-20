@@ -36,6 +36,7 @@ export const LocalStorageSchema = z.object({
     "theme-mode": z.enum(Object.getEnumValues(ThemeModeEnum)).default("system"),
     examination: z
         .object({
+            finalized: z.boolean().default(false),
             courseID: z.string({ required_error: "required" }),
             moduleID: z.string({ required_error: "required" }),
             lessonID: z.string({ required_error: "required" }),

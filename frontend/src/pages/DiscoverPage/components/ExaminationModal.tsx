@@ -30,8 +30,6 @@ export const ExaminationModal: FC<ExaminationModalProps> = ({
     const { courseID, moduleID, lessonID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
-    console.log({ courseID, moduleID, lessonID });
-
     return (
         <Modal
             id={id}

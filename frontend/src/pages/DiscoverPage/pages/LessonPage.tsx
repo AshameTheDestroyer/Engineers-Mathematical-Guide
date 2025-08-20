@@ -19,6 +19,7 @@ import { useGetLessonByID } from "@/services/Lessons/useGetLessonByID";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
 import { useGetEnrollmentByID } from "@/services/Enrollments/useGetEnrollmentByID";
 import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvider";
+import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
 
@@ -34,6 +35,8 @@ export const LessonPage: FC = () => {
 
     const { courseID, moduleID, lessonID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
+
+    const { examinationInformation, FinalizeExamination } = useExamination();
 
     const { data: module } = useGetModuleByID(courseID, moduleID, {
         usesSuspense: true,
@@ -94,6 +97,23 @@ export const LessonPage: FC = () => {
                   ? "unenrolled"
                   : "enrolled";
 
+    const isExaminationDue =
+        examinationInformation != null &&
+        [
+            examinationInformation.courseID == courseID,
+            examinationInformation.moduleID == moduleID,
+            examinationInformation.lessonID == lessonID,
+        ].every(Boolean);
+
+    const isExaminationFinished =
+        isExaminationDue &&
+        !examinationInformation.finalized &&
+        examinationInformation["chosen-answers"]
+            .map((answer) =>
+                Array.isArray(answer) ? answer.length > 0 : answer != null
+            )
+            .every(Boolean);
+
     return (
         <Flexbox
             className="grow"
@@ -142,8 +162,13 @@ export const LessonPage: FC = () => {
                             case LessonTypeEnum.examination:
                                 return (
                                     <ExaminationLesson
+                                        key={`${examinationInformation?.finalized}`}
                                         lesson={lesson}
                                         {...{ courseID, moduleID, lessonID }}
+                                        showCorrectAnswers={
+                                            isExaminationDue &&
+                                            examinationInformation.finalized
+                                        }
                                     />
                                 );
                         }
@@ -154,38 +179,48 @@ export const LessonPage: FC = () => {
                     <Button
                         className={twJoin(
                             enrollment_ == "passed" && "font-bold",
-                            (enrollment_ == "unenrolled" ||
-                                lesson.type == LessonTypeEnum.examination) &&
+                            enrollment_ == "unenrolled" &&
                                 "pointer-events-none opacity-0"
                         )}
                         thickness="thick"
-                        disabled={
-                            enrollment_ != "enrolled" ||
-                            lesson.type == LessonTypeEnum.examination
-                        }
-                        tabIndex={
-                            enrollment_ != "enrolled" ||
-                            lesson.type == LessonTypeEnum.examination
-                                ? 0
-                                : -1
-                        }
                         variant={
                             enrollment_ == "passed" ? "success" : "default"
                         }
-                        icon={{
-                            placement: "right",
-                            source:
-                                enrollment_ == "passed"
-                                    ? check_filled_icon
-                                    : check_icon,
-                        }}
+                        disabled={
+                            enrollment_ != "enrolled" ||
+                            (lesson.type == LessonTypeEnum.examination &&
+                                !isExaminationFinished)
+                        }
+                        tabIndex={
+                            enrollment_ != "enrolled" ||
+                            (lesson.type == LessonTypeEnum.examination &&
+                                !isExaminationFinished)
+                                ? 0
+                                : -1
+                        }
+                        icon={
+                            isExaminationDue && enrollment_ != "passed"
+                                ? undefined
+                                : {
+                                      placement: "right",
+                                      source:
+                                          enrollment_ == "passed"
+                                              ? check_filled_icon
+                                              : check_icon,
+                                  }
+                        }
+                        onClick={(_e) =>
+                            isExaminationDue && FinalizeExamination()
+                        }
                     >
                         <Locale>
                             {
                                 locales.lessons.buttons[
                                     enrollment_ == "passed"
                                         ? "completed"
-                                        : "mark-completeness"
+                                        : isExaminationDue
+                                          ? "finish-exam"
+                                          : "mark-completeness"
                                 ]
                             }
                         </Locale>

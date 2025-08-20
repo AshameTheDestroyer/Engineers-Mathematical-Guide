@@ -16,6 +16,7 @@ import {
 export type ExaminationStateProps = {
     examinationInformation?: LocalStorageDTO["examination"];
     StoreTab: (tab: number) => void;
+    FinalizeExamination: () => void;
     TerminateExamination: () => void;
     StartExamination: (
         examinationInformation: LocalStorageDTO["examination"] & {}
@@ -45,6 +46,17 @@ export const ExaminationProvider: FC<ExaminationProviderProps> = ({
                         : {
                               ...state.examinationInformation,
                               "last-tab": tab,
+                          },
+            })),
+        FinalizeExamination: () =>
+            setState((state) => ({
+                ...state,
+                examinationInformation:
+                    state.examinationInformation == null
+                        ? undefined
+                        : {
+                              ...state.examinationInformation,
+                              finalized: true,
                           },
             })),
         TerminateExamination: () =>
