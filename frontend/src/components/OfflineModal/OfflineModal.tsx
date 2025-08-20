@@ -28,7 +28,10 @@ export const OfflineModal: FC<OfflineModalProps> = ({
         <Modal
             id={id}
             ref={ref}
-            className={twMerge("bg-background-light gap-4", className)}
+            className={twMerge(
+                "bg-background-light gap-4 max-sm:w-[90vw]",
+                className
+            )}
             isOpen={!isOnline}
             setIsOpen={() => {}}
             {...props}
@@ -39,7 +42,9 @@ export const OfflineModal: FC<OfflineModalProps> = ({
                     {locales.title}
                 </Locale>
             </Flexbox>
-            <Locale variant="p">{locales.paragraph}</Locale>
+            <Locale className="max-w-[16rem]" variant="p">
+                {locales.paragraph}
+            </Locale>
             <Button className="w-full" onClick={Refresh}>
                 <Locale>{locales.buttons.refresh}</Locale>
             </Button>

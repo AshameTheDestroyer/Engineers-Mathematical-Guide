@@ -108,7 +108,7 @@
                     }
                 },
                 "paragraph": {
-                    "en": "You will have only **#time** **minutes** to solve this exam, so there'll be a timer that begins clocking down once you hit the start button. We advise that you study the module very well before you start the exam, because once you start it, you will only have **@attempts** **attempts** to finish the exam.",
+                    "en": "You will have only **#time** **minutes** to solve this examination, so there'll be a timer that begins clocking down once you hit the start button. We advise that you study the module very well before you start the examination, because once you start it, you will only have **@attempts** **attempts** to finish the examination.",
                     "ar": {
                         "male": "سَيَكونُ لَديكَ **#وقت** **دَقيقةٍ** فَقَطْ لِحَلِّ هَذا الامتِحان، لِذا سَيَكونُ هُناكَ مُؤَقِّتٌ سَيَبْدأُ العَدَّ التَّنازُليَّ فَورَ ضَغطِكَ عَلى زِرِّ البِدايةِ. نَنْصَحُكَ بِأنْ تَدرُسَ الوِحدةَ الدِّراسيّةَ بِشَكلٍ جَيِّدٍ قَبلَ أنْ تَبدأَ الامتِحان، لِأنَّهُ عِندَما تَبدأُ بِهِ، سَتَملُكُ **@محاولات** **مُحاوَلاتٍ** لِإنْهاءِ الامتِحانِ فَقَطْ.",
                         "female": "سَيَكونُ لَديكِ **#وقت** **دَقيقةٍ** فَقَطْ لِحَلِّ هَذا الامتِحان، لِذا سَيَكونُ هُناكَ مُؤَقِّتٌ سَيَبْدأُ العَدَّ التَّنازُليَّ فَورَ ضَغطِكِ عَلى زِرِّ البِدايةِ. نَنْصَحُكِ بِأنْ تَدرُسي الوِحدةَ الدِّراسيّةَ بِشَكلٍ جَيِّدٍ قَبلَ أنْ تَبدأي الامتِحان، لِأنَّهُ عِندَما تَبدأي بِهِ، سَتَملُكينَ **@محاولات** **مُحاوَلاتٍ** لِإنْهاءِ الامتِحانِ فَقَطْ."
@@ -143,6 +143,28 @@
                     "next": {
                         "en": "Next",
                         "ar": "التَّالي"
+                    }
+                }
+            },
+            "modal": {
+                "title": {
+                    "en": "You Have an Exam!",
+                    "ar": {
+                        "male": "لَديكَ امتِحان!",
+                        "female": "لَديكِ امتِحان!"
+                    }
+                },
+                "paragraph": {
+                    "en": "You have started an examination that you should be solving right now. You can't browse the application until you finish your exam!",
+                    "ar": {
+                        "male": "لَقَدْ قُمتَ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكَ أنْ تَقومَ بِحَلِّهِ الآَن. لا يُسمَحُ لَكَ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهيَ مِنْ امتِحانِك.",
+                        "female": "لَقَدْ قُمتِ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكِ أنْ تَقومي بِحَلِّهِ الآَن. لا يُسمَحُ لَكِ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهي مِنْ امتِحانِك."
+                    }
+                },
+                "buttons": {
+                    "go-to-exam": {
+                        "en": "Go to Exam",
+                        "ar": "الذَّهابُ إلى الامتِحان"
                     }
                 }
             }

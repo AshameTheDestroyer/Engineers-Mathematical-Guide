@@ -7,6 +7,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+import { ExaminationModal } from "../DiscoverPage/components/ExaminationModal";
 
 import route_locales from "@localization/application_page_routes.json";
 
@@ -24,12 +25,15 @@ export const ApplicationPage: FC = () => {
                 baseRoute={APPLICATION_ROUTES.base.absolute}
                 routes={Object.omit(
                     APPLICATION_ROUTES.base.routes,
-                    "profileID",
+                    "profileID"
                 )}
             />
             <Outlet />
             {EnvironmentVariables.ENVIRONMENT == "production" && (
-                <OfflineModal />
+                <>
+                    <OfflineModal />
+                    <ExaminationModal />
+                </>
             )}
         </Page>
     );

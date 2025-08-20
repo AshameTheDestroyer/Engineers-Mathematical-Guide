@@ -1,5 +1,3 @@
-import { Navigate, useParams } from "react-router-dom";
-import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import {
     LocalStorageDTO,
     LocalStorageManager,
@@ -36,9 +34,6 @@ export type ExaminationProviderProps = PropsWithChildren;
 export const ExaminationProvider: FC<ExaminationProviderProps> = ({
     children,
 }) => {
-    const { courseID, moduleID, lessonID } =
-        useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
-
     const [state, setState] = useState<ExaminationStateProps>({
         examinationInformation: LocalStorageManager.Instance.items.examination,
         StoreTab: (tab) =>
@@ -87,26 +82,7 @@ export const ExaminationProvider: FC<ExaminationProviderProps> = ({
 
     return (
         <ExaminationContext.Provider value={state}>
-            {state.examinationInformation != null &&
-            [
-                state.examinationInformation.courseID != courseID,
-                state.examinationInformation.moduleID != moduleID,
-                state.examinationInformation.lessonID != lessonID,
-            ].some(Boolean) ? (
-                <>
-                    <Navigate
-                        to={
-                            DISCOVER_ROUTES.base.routes.lessonID.MapVariables({
-                                ...state.examinationInformation,
-                            }) +
-                            `?tab=${state.examinationInformation["last-tab"]}`
-                        }
-                    />
-                    {children}
-                </>
-            ) : (
-                children
-            )}
+            {children}
         </ExaminationContext.Provider>
     );
 };

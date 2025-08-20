@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { ExaminationModal } from "./components/ExaminationModal";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
@@ -35,7 +36,10 @@ export const DiscoverPage: FC = () => {
             />
             <Outlet />
             {EnvironmentVariables.ENVIRONMENT == "production" && (
-                <OfflineModal />
+                <>
+                    <OfflineModal />
+                    <ExaminationModal />
+                </>
             )}
         </Page>
     );

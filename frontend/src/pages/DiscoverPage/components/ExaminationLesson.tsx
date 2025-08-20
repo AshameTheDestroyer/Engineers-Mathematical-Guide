@@ -19,7 +19,10 @@ import warning_icon from "@icons/warning.svg";
 import locales from "@localization/modules_page.json";
 
 export const ExaminationLessonQueryParamsSchema = z.object({
-    tab: z.string({ required_error: "required" }).regex(/\d*/, "pattern"),
+    tab: z
+        .string({ required_error: "required" })
+        .regex(/\d*/, "pattern")
+        .default("0"),
 });
 
 export type ExaminationLessonProps = {
@@ -57,7 +60,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
         StoreTab(tab);
         setQueryParams((queryParams) => ({
             ...queryParams,
-            tab: `${tab}`,
+            tab: `${tab + 1}`,
         }));
     }, [tab]);
 
