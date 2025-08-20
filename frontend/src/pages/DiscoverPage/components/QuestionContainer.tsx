@@ -82,7 +82,7 @@ export const QuestionContainer: FC<QuestionContainerProps> = ({
                 {options.map((option, i) => (
                     <Checkbox
                         key={i}
-                        className="[&>label]:bg-transparent [&>label]:[direction:ltr]"
+                        className="[&>label]:bg-transparent"
                         isControlled
                         variant="default"
                         name={`answer-${i}`}
