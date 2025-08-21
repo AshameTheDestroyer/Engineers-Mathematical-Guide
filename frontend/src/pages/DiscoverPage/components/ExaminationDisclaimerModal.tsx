@@ -16,13 +16,12 @@ import warning_icon from "@icons/warning.svg";
 
 import locales from "@localization/modules_page.json";
 
-export type ExaminationModalProps = ChildlessComponentProps<HTMLDivElement>;
+export type ExaminationDisclaimerModalProps =
+    ChildlessComponentProps<HTMLDivElement>;
 
-export const ExaminationModal: FC<ExaminationModalProps> = ({
-    id,
-    ref,
-    className,
-}) => {
+export const ExaminationDisclaimerModal: FC<
+    ExaminationDisclaimerModalProps
+> = ({ id, ref, className }) => {
     const { myUser } = useMain();
     const { isOnline } = useNetworkStatus();
     const { examinationInformation } = useExamination();
