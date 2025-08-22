@@ -1,12 +1,12 @@
-import { IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 
 export class CreateUserDTO {
   @IsString()
   @IsNotEmpty()
   username: string;
 
-  @IsString()
   @IsNotEmpty()
+  @IsEmail()
   email: string;
 
   @IsString()
@@ -28,6 +28,18 @@ export class CreateUserDTO {
   @IsString()
   @IsNotEmpty()
   country: string;
+
+  @IsString()
+  @IsOptional()
+  profileImage: string;
+  
+  @IsString()
+  @IsOptional()
+  coverImage: string;
+
+  @IsString()
+  @IsOptional()
+  bio: string;
 
   @IsOptional()
   salt?: string;

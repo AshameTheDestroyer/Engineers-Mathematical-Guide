@@ -8,6 +8,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   port: configService.get<number>('DATABASE_PORT'),
   username: configService.get<string>('DATABASE_USER'),
   password: configService.get<string>('DATABASE_PASSWORD'),
-  database: 'Engineers-Mathematical-Guide',
+  database: 'Mathware',
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
 };

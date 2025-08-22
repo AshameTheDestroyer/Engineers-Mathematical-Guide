@@ -7,6 +7,8 @@ import { ConfigService } from '@nestjs/config';
 import { SendEmailDTO } from '../mailer/dto/sendEmailDTO.dto';
 import { SignUpDTO } from './dto/signup.dto';
 import { ObjectId } from 'typeorm';
+import * as fs from 'fs'
+import * as path from 'path'
 
 @Injectable()
 export class AuthService {
@@ -38,7 +40,7 @@ export class AuthService {
     return { accessToken: await this.assignToken(payload, '7d') };
   }
 
-  async forgetPassword(email: string): Promise<string> {
+  async forgetPassword(email: string): Promise<{message:string}> {
     const user = await this.userService.findOneByEmail(
       String(email),
       '',
@@ -50,17 +52,28 @@ export class AuthService {
     const token = await this.assignToken(payload, '15m');
 
     // link for reset password page
-    const link = `<a href="${this.configService.get<string>('FRONT_END_DOMAINE')}/reset-password/${token}"> click </a>`;
+    const link = `${this.configService.get<string>('FRONT_END_DOMAINE')}/reset-password/${token}`;
+    
+    const htmlTemplate = fs.readFileSync(path.join(__dirname, '../../template/reset-password.html'), 'utf8');
+
+    const personalizedHtml = htmlTemplate
+      .replace(/{userName}/g, user.username)
+      .replace(/{resetLink}/g, link)
+      .replace(/{currentYear}/g, new Date().getFullYear().toString())
+      .replace(/{companyWebsite}/g, 'https://mathware.com/')
+      .replace(/{privacyPolicy}/g, 'https://mathware.com/privacy')
+      .replace(/{contactUs}/g, 'https://mathware.com/contact');
 
     // send the link to the email
     const sendEmailDTO: SendEmailDTO = {
       recipient: { name: user.username, address: user.email },
       subject: 'Reset Password',
-      info: `Please click on the link : ${link}`,
+      html: personalizedHtml,
+      link
     };
     await this.mailService.sendEmail(sendEmailDTO);
 
-    return 'Reset Link Has Been Sent To Your Email Check It Out';
+    return {message:'Reset Link Has Been Sent To Your Email Check It Out'};
   }
 
   async resetPassword(
