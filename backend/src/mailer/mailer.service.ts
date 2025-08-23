@@ -26,13 +26,16 @@ export class MailerService {
     const transporter = this.mailTransporter();
 
     const options: Mail.Options = {
-      from: {
-        name: this.configService.get<string>('APP_NAME') as string,
-        address: this.configService.get<string>('HOST_EMAIL') as string,
-      },
+      from: '"Mathware" <no-reply@mathware.com>',
       to: sendEmailDTO.recipient as Address,
       subject: sendEmailDTO.subject,
-      html: `<p>${sendEmailDTO.info}</p>`,
+      html: sendEmailDTO.html,
+      text:`Hi ${sendEmailDTO.recipient.name},\n\nWe received a request to reset your password. 
+      Please visit this link to reset your password:\n\n${sendEmailDTO.link}\n\nThis link will expire in 15 mins.
+      \n\nIf you didn't request this, please ignore this email.`,
+      headers:{
+        'Reply-To': 'no-reply@mathware.com',
+      }
     };
     try {
       await transporter.sendMail(options);

@@ -3,20 +3,23 @@ import {
   ConflictException,
   Injectable,
   InternalServerErrorException,
+  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
-import { ObjectId, Repository } from 'typeorm';
+import { MongoRepository } from 'typeorm';
 import * as bcryptjs from 'bcryptjs';
 import { ConfigService } from '@nestjs/config';
 import { CreateUserDTO } from './dto/createUser.dto';
-import { UNIQUE_EXCEPTION_CODE } from 'src/utils/dbErrorCode';
+import { ObjectId } from 'mongodb';
+import { join } from 'path';
+import { existsSync, unlinkSync } from 'fs';
 
 @Injectable()
 export class UserService {
   constructor(
-    @InjectRepository(User) private userRepo: Repository<User>,
+    @InjectRepository(User) private userRepo: MongoRepository<User>,
     private readonly configService: ConfigService,
   ) {}
 
@@ -56,18 +59,15 @@ export class UserService {
   async createUser(createUserDTO: CreateUserDTO): Promise<User> {
     try {
       const salt = await bcryptjs.genSalt(10);
-      console.log(salt);
-      
+      if(await this.userRepo.findOneBy({email:createUserDTO.email})) throw new ConflictException();
       const hashedPassword = await bcryptjs.hash(createUserDTO.password, salt);
       createUserDTO.password = hashedPassword;
       createUserDTO.salt = salt;
       const user = await this.userRepo.save(createUserDTO);
       return user;
     } catch (error: any) {
-      if ((error.code as string) === UNIQUE_EXCEPTION_CODE) {
-        throw new ConflictException('There is an email such that');
-      }
-      console.log(error);
+      Logger.warn(error);      
+      if('response' in error) throw new ConflictException("The Email Used Before");
       throw new InternalServerErrorException();
     }
   }
@@ -76,5 +76,22 @@ export class UserService {
     const user = await this.userRepo.findOne({ where: { id: userId } });
     if (!user) throw new NotFoundException('There is no id like that');
     await this.userRepo.remove(user);
+  }
+
+  async updateFollowerCount(follower: string, followee: string, val: number) {
+    try {
+      await this.userRepo.updateOne({_id: new ObjectId(follower)},{$inc:{followersCount:val}});
+      await this.userRepo.updateOne({_id: new ObjectId(followee)},{$inc:{followeeCount:val}});
+    } catch (error) {
+      Logger.warn(error);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  private deleteFile(filePath: string): void {
+    const fullPath = join(process.cwd(),'uploads', filePath);
+    if (existsSync(fullPath)) {
+      unlinkSync(fullPath);
+    }
   }
 }

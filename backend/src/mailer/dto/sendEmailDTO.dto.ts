@@ -8,5 +8,8 @@ export class SendEmailDTO {
   subject: string;
 
   @IsString()
-  info: string;
+  html: string;
+
+  @IsString()
+  link: string;
 }
