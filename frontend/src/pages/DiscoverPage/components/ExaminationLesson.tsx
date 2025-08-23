@@ -197,7 +197,9 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                             className="hourglass-icon aspect-square max-sm:w-[24px] [&>svg]:h-full [&>svg]:w-full"
                             source={hourglass_icon}
                         />
-                        <span>{FormatTimer(timer)}</span>
+                        <span className="min-w-[5ch] text-end">
+                            {FormatTimer(timer)}
+                        </span>
                     </Flexbox>
                 )}
             </Flexbox>
