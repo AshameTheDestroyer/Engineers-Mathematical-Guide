@@ -1,0 +1,110 @@
+{
+    "introParagraph": {
+        "en": "The proof is in the experience — hear from real engineers, students, and educators who’ve turned complex math into confidence with Mathware",
+        "ar": "البُرهانُ في التَّجربةِ — اسمعْ من مُهندسينَ وطالباتٍ ومحترفينَ حقيقيينَ حوّلوا الرِّياضيّاتِ المعقّدةَ إلى ثقةٍ مع Mathware"
+    },
+    "featured": [
+        {
+            "id": 1,
+            "name": {
+                "en": "Layla Ahmed",
+                "ar": "ليلى أحمد"
+            },
+            "title": {
+                "en": "Mechanical Engineering Student, Cairo University",
+                "ar": "طالبة هندسة ميكانيكية، جامعة القاهرة"
+            },
+            "quote": {
+                "en": "This site broke down Laplace transforms in a way my professor never did. I aced my controls exam!",
+                "ar": "شرح هذا الموقع تحويلات لابلاس بطريقة لم يفعلها أستاذي قط. نجحت في امتحان التحكم الخاص بي بنجاح باهر!"
+            },
+            "image": "/testimonials/layla.jpg",
+            "linkedin": "https://linkedin.com/in/laylaahmed"
+        },
+        {
+            "id": 2,
+            "name": {
+                "en": "Dr. Omar Fayed",
+                "ar": "د. عمر فايد"
+            },
+            "title": {
+                "en": "Math Educator & Researcher",
+                "ar": "مُدرّس رياضيات وباحث"
+            },
+            "quote": {
+                "en": "I recommend Mathware to all my students. It turns abstract concepts into real engineering insight.",
+                "ar": "أنصح جميع طلابي باستخدام Mathware. يحوّل المفاهيم المجردة إلى فهم هندسي حقيقي."
+            },
+            "image": "/testimonials/omar.jpg",
+            "linkedin": "https://linkedin.com/in/omarfayed"
+        },
+        {
+            "id": 3,
+            "name": {
+                "en": "Karim Reda",
+                "ar": "كريم رضا"
+            },
+            "title": {
+                "en": "Computer Engineering Graduate, Ain Shams",
+                "ar": "خريج هندسة حاسوب، عين شمس"
+            },
+            "quote": {
+                "en": "From struggling with differential equations to building AI models — Mathware gave me the foundation.",
+                "ar": "من معاناتي مع المعادلات التفاضلية إلى بناء نماذج الذكاء الاصطناعي — منحني Mathware الأساس."
+            },
+            "image": "/frontend/src/assets/images/person1.jpg",
+            "linkedin": null        }
+    ],
+    "caseStudies": {
+        "title": {
+            "en": "Success Stories: How Engineers Used Mathware",
+            "ar": "قصص النجاح: كيف استخدم المهندسون Mathware"
+        },
+        "stories": [
+            {
+                "id": 1,
+                "name": {
+                    "en": "Maria Gonzalez",
+                    "ar": "ماريا غونзалيس"
+                },
+                "title": {
+                    "en": "Passed Her FE Exam on the First Try",
+                    "ar": "نجحت في امتحان FE من أول محاولة"
+                },
+                "image": "/case-studies/maria.jpg",
+                "summary": {
+                    "en": "Maria was overwhelmed by the breadth of math on the Fundamentals of Engineering exam. Using Mathware’s targeted review courses and timed practice exams, she built confidence and passed with a top score — all in just 8 weeks.",
+                    "ar": "كانت ماريا تشعر بالإرهاق من تنوع الرياضيات في امتحان الأساسيات الهندسية. باستخدام مسارات المراجعة المستهدفة والامتحانات التجريبية المُوَقَّتة من Mathware، بنت ثقتها ونجحت بدرجة عالية — وكل ذلك خلال 8 أسابيع فقط."
+                },
+                "link": "/frontend/src/assets/images/person5.jpg"
+            },
+            {
+                "id": 2,
+                "name": {
+                    "en": "John Carter",
+                    "ar": "جون كارتر"
+                },
+                "title": {
+                    "en": "From Struggling to Confident in Dynamics",
+                    "ar": "من التردد إلى الثقة في مادة الدينا ميك"
+                },
+                "image": "/case-studies/john.jpg",
+                "summary": {
+                    "en": "John struggled with dynamics and failed his midterm. After discovering Mathware’s step-by-step problem breakdowns and visual simulators, he mastered the core concepts and aced his final exam.",
+                    "ar": "عانى جون من مادة الدينا ميك ورسب في الامتحان الفصلي. بعد اكتشافه لشرح المسائل خطوة بخطوة والمحاكّيات البصرية في Mathware، أتقن المفاهيم الأساسية ونجح بنجاح باهر في الامتحان النهائي."
+                },
+                "link": "/frontend/src/assets/images/person4.jpg"
+            }
+        ]
+    },
+    "cta": {
+        "title": {
+            "en": "Join thousands of engineers improving their math skills",
+            "ar": "انضم إلى آلاف المهندسين الذين يطوّرون مهاراتهم في الرياضيات"
+        },
+        "button": {
+            "en": "Start Learning Now",
+            "ar": "ابدأ التعلّم الآن"
+        }
+    }
+}

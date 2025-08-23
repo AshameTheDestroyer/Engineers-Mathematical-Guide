@@ -17,6 +17,7 @@ const HelpPage = LazyImport("./pages/WebsitePage/pages/HelpPage");
 const AboutPage = LazyImport("./pages/WebsitePage/pages/AboutPage");
 const ContactUsPage = LazyImport("./pages/WebsitePage/pages/ContactUsPage");
 const ReferencesPage = LazyImport("./pages/WebsitePage/pages/ReferencesPage");
+const TestimonialPage = LazyImport("./pages/WebsitePage/pages/TestimonialPage");
 
 export const WEBSITE_ROUTES = BuildRouter({
     base: {
@@ -26,6 +27,7 @@ export const WEBSITE_ROUTES = BuildRouter({
             about: { href: "about" },
             "contact-us": { href: "contact-us" },
             references: { href: "references" },
+            testimonial: { href: "testimonial" },
             help: { href: "help" },
             discover: { href: "/discover" },
             application: { href: "/" },
@@ -89,6 +91,17 @@ export const WebsiteRoute: FC = () => {
                     <LazyComponent>
                         <ReferencesPage />
                         <Title>{GetLocale(locales.references, language)}</Title>
+                    </LazyComponent>
+                }
+            />
+            <Route
+                path={WEBSITE_ROUTES.base.routes.testimonial.href}
+                element={
+                    <LazyComponent>
+                        <TestimonialPage />
+                        <Title>
+                            {GetLocale(locales.testimonial, language)}
+                        </Title>
                     </LazyComponent>
                 }
             />

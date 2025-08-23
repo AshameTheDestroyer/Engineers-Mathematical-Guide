@@ -15,6 +15,7 @@
     "dashboard": { "en": "Dashboard", "ar": "لَوحةُ التَّحَكُّم" },
     "application": { "en": "Application", "ar": "التَّطبيق" },
     "contact-us": { "en": "Contact Us", "ar": "تَواصَل مَعَنا" },
+    "testimonial": {"en": "Testimonial", "ar": "شهادة"},
     "user-dashboard": {
         "en": "User Dashboard",
         "ar": "لَوحةُ تَحكُّمِ المُستَخدِمين"

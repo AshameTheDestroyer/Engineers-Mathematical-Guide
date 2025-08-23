@@ -116,24 +116,24 @@
             },
             {
                 "name": {
-                    "en": "Ahmed Tariq",
-                    "ar": "أحمد طارق"
+                    "en": "Hashem Wannous",
+                    "ar": "هاشم ونوس"
                 },
                 "role": {
-                    "en": "Frontend Developer & AI Enthusiast",
-                    "ar": "مطوّر واجهات أمامية ومهتم بالذكاء الاصطناعي"
+                    "en": "Leader of project, worked on the front-end side too.",
+                    "ar": "مشرف المشرو يعمل front-end  "
                 },
                 "credentials": {
-                    "en": "B.Sc. in Computer Science (Expected Graduation: June 2025)",
-                    "ar": "بكالوريوس في علوم الحاسوب (التخرج المتوقع: يونيو 2025)"
+                    "en": "Majored in Information Technology at Syrian Virtual University and Applied Faculty.",
+                    "ar": "تخصص في تكنولوجيا المعلومات في الجامعة الافتراضية السورية والكلية التطبيقية."
                 },
                 "bio": {
-                    "en": "A passionate computer science student deeply interested in machine learning, mathematical modeling, and algorithm design. Contributed to Mathware's frontend architecture, turning complex math concepts into intuitive, interactive experiences. Believes clean code and clear math go hand in hand.",
-                    "ar": "طالب في علوم الحاسوب، شغوف بالذكاء الاصطناعي، والنمذجة الرياضية، وتصميم الخوارزميات. ساهم في هيكلة واجهة Mathware الأمامية، وحوّل المفاهيم الرياضية المعقدة إلى تجارب تفاعلية بسيطة. يؤمن أن الكود النظيف يسير جنبًا إلى جنب مع الرياضيات الواضحة."
+                    "en": "A student who’s passionate about keeping learning as much information as possible, with a dream of topping it, and a will to CARVE his name in the world of technology.",
+                    "ar": "طالب شغوف بمواصلة تعلم أكبر قدر ممكن من المعلومات، ولديه حلم بالتفوق عليه، وإرادة لنحت اسمه في عالم التكنولوجيا."
                 },
                 "personal": {
-                    "en": "Loves solving LeetCode puzzles and writing math explainers on Reddit.",
-                    "ar": "يحب حلّ ألغاز LeetCode وكتابة شروحات رياضية على Reddit."
+                    "en": "I create websites, applications, games, and currently learning artificial intelligence.",
+                    "ar": "أقوم بإنشاء مواقع الويب والتطبيقات والألعاب وأتعلم حاليًا الذكاء الاصطناعي."
                 },
                 "image": "/team/ahmed.jpg",
                 "links": {
