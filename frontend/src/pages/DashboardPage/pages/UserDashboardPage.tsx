@@ -92,6 +92,7 @@ export const UserDashboardPage: FC = () => {
                                 <ProfileAvatar
                                     className="scale-65 -m-3 aspect-square h-24"
                                     user={datum}
+                                    flipType="hover"
                                 />
                             );
                         case "flag":
