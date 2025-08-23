@@ -37,6 +37,8 @@ export const LocalStorageSchema = z.object({
     examination: z
         .object({
             finalized: z.boolean().default(false),
+            "check-my-answers": z.boolean().default(false),
+            "finished-at": z.string().datetime("datetime").nullish(),
             courseID: z.string({ required_error: "required" }),
             moduleID: z.string({ required_error: "required" }),
             lessonID: z.string({ required_error: "required" }),
@@ -60,6 +62,7 @@ export const LocalStorageSchema = z.object({
                 ])
             ),
         })
+        .refine((data) => !data.finalized || data["finished-at"] != null)
         .nullish(),
 });
 

@@ -3,11 +3,12 @@ import { Outlet } from "react-router-dom";
 import { Page } from "@/components/Page/Page";
 import { useDefaultRoute } from "@/hooks/useDefaultRoute";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
-import { ExaminationDisclaimerModal } from "./components/ExaminationDisclaimerModal";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+import { ExaminationResultModal } from "./components/ExaminationResultModal";
+import { ExaminationDisclaimerModal } from "./components/ExaminationDisclaimerModal";
 
 import route_locales from "@localization/discover_page_routes.json";
 
@@ -41,6 +42,7 @@ export const DiscoverPage: FC = () => {
                     <ExaminationDisclaimerModal />
                 </>
             )}
+            <ExaminationResultModal />
         </Page>
     );
 };

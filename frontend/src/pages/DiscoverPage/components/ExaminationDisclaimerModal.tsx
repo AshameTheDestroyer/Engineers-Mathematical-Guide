@@ -37,6 +37,7 @@ export const ExaminationDisclaimerModal: FC<
                 "bg-background-light gap-4 max-sm:w-[90vw]",
                 className
             )}
+            setIsOpen={() => {}}
             isOpen={
                 isOnline &&
                 myUser != null &&
@@ -50,7 +51,6 @@ export const ExaminationDisclaimerModal: FC<
                     examinationInformation.lessonID != lessonID,
                 ].some(Boolean)
             }
-            setIsOpen={() => {}}
         >
             <Flexbox gap="4">
                 <Icon source={warning_icon} />
@@ -59,7 +59,7 @@ export const ExaminationDisclaimerModal: FC<
                     variant="h1"
                     gender={myUser?.gender ?? "male"}
                 >
-                    {locales.lessons.examination.modal.title}
+                    {locales.lessons.examination.modals.disclaimer.title}
                 </Locale>
             </Flexbox>
             <Locale
@@ -67,7 +67,7 @@ export const ExaminationDisclaimerModal: FC<
                 variant="p"
                 gender={myUser?.gender ?? "male"}
             >
-                {locales.lessons.examination.modal.paragraph}
+                {locales.lessons.examination.modals.disclaimer.paragraph}
             </Locale>
             <Button
                 className="w-full"
@@ -79,7 +79,11 @@ export const ExaminationDisclaimerModal: FC<
                 }
             >
                 <Locale>
-                    {locales.lessons.examination.modal.buttons["go-to-exam"]}
+                    {
+                        locales.lessons.examination.modals.disclaimer.buttons[
+                            "go-to-exam"
+                        ]
+                    }
                 </Locale>
             </Button>
         </Modal>

@@ -130,6 +130,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                                     "last-tab": 0,
                                     finalized: false,
                                     "attempt-counter": 0,
+                                    "check-my-answers": false,
                                     "finishes-at": new Date(
                                         Date.now() + 90 * 60 * 1000
                                     ).toISOString(),

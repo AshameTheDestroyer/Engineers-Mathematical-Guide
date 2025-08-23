@@ -7,6 +7,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+import { ExaminationResultModal } from "../DiscoverPage/components/ExaminationResultModal";
 import { ExaminationDisclaimerModal } from "../DiscoverPage/components/ExaminationDisclaimerModal";
 
 import route_locales from "@localization/application_page_routes.json";
@@ -35,6 +36,7 @@ export const ApplicationPage: FC = () => {
                     <ExaminationDisclaimerModal />
                 </>
             )}
+            <ExaminationResultModal />
         </Page>
     );
 };

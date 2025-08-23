@@ -9,6 +9,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { WebsiteMainContent } from "./components/WebsiteMainContent";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
 import { MathParallaxScene } from "@/components/MathParallaxScene/MathParallaxScene";
+import { ExaminationResultModal } from "../DiscoverPage/components/ExaminationResultModal";
 
 import login_icon from "@icons/login.svg";
 import signup_icon from "@icons/user.svg";
@@ -63,6 +64,7 @@ export const WebsitePage: FC = () => {
             />
             <WebsiteMainContent />
             <MathParallaxScene className="-z-2 fixed inset-0" />
+            <ExaminationResultModal />
         </Page>
     );
 };

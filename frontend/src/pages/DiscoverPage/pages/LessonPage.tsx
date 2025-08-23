@@ -36,7 +36,11 @@ export const LessonPage: FC = () => {
     const { courseID, moduleID, lessonID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
-    const { examinationInformation, FinalizeExamination } = useExamination();
+    const {
+        FinalizeExamination,
+        TerminateExamination,
+        examinationInformation,
+    } = useExamination();
 
     const { data: module } = useGetModuleByID(courseID, moduleID, {
         usesSuspense: true,
@@ -107,12 +111,15 @@ export const LessonPage: FC = () => {
 
     const isExaminationFinished =
         isExaminationDue &&
-        !examinationInformation.finalized &&
-        examinationInformation["chosen-answers"]
-            .map((answer) =>
-                Array.isArray(answer) ? answer.length > 0 : answer != null
-            )
-            .every(Boolean);
+        (examinationInformation["check-my-answers"] ||
+            (!examinationInformation.finalized &&
+                examinationInformation["chosen-answers"]
+                    .map((answer) =>
+                        Array.isArray(answer)
+                            ? answer.length > 0
+                            : answer != null
+                    )
+                    .every(Boolean)));
 
     return (
         <Flexbox
@@ -162,12 +169,15 @@ export const LessonPage: FC = () => {
                             case LessonTypeEnum.examination:
                                 return (
                                     <ExaminationLesson
-                                        key={`${examinationInformation?.finalized}`}
+                                        key={`${examinationInformation?.finalized ?? false}${examinationInformation?.["check-my-answers"] ?? false}`}
                                         lesson={lesson}
                                         {...{ courseID, moduleID, lessonID }}
                                         showCorrectAnswers={
                                             isExaminationDue &&
-                                            examinationInformation.finalized
+                                            examinationInformation.finalized &&
+                                            examinationInformation[
+                                                "check-my-answers"
+                                            ]
                                         }
                                     />
                                 );
@@ -210,7 +220,11 @@ export const LessonPage: FC = () => {
                                   }
                         }
                         onClick={(_e) =>
-                            isExaminationDue && FinalizeExamination()
+                            examinationInformation?.["check-my-answers"]
+                                ? TerminateExamination()
+                                : isExaminationDue
+                                  ? FinalizeExamination()
+                                  : undefined
                         }
                     >
                         <Locale>

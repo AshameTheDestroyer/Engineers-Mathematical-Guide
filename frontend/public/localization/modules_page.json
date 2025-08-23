@@ -150,25 +150,143 @@
                     }
                 }
             },
-            "modal": {
-                "title": {
-                    "en": "You Have an Exam!",
-                    "ar": {
-                        "male": "لَديكَ امتِحان!",
-                        "female": "لَديكِ امتِحان!"
+            "modals": {
+                "disclaimer": {
+                    "title": {
+                        "en": "You Have an Exam!",
+                        "ar": {
+                            "male": "لَديكَ امتِحان!",
+                            "female": "لَديكِ امتِحان!"
+                        }
+                    },
+                    "paragraph": {
+                        "en": "You have started an examination that you should be solving right now. You can't browse the application until you finish your exam!",
+                        "ar": {
+                            "male": "لَقَدْ قُمتَ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكَ أنْ تَقومَ بِحَلِّهِ الآَن. لا يُسمَحُ لَكَ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهيَ مِنْ امتِحانِك.",
+                            "female": "لَقَدْ قُمتِ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكِ أنْ تَقومي بِحَلِّهِ الآَن. لا يُسمَحُ لَكِ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهي مِنْ امتِحانِك."
+                        }
+                    },
+                    "buttons": {
+                        "go-to-exam": {
+                            "en": "Go to Exam",
+                            "ar": "الذَّهابُ إلى الامتِحان"
+                        }
                     }
                 },
-                "paragraph": {
-                    "en": "You have started an examination that you should be solving right now. You can't browse the application until you finish your exam!",
-                    "ar": {
-                        "male": "لَقَدْ قُمتَ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكَ أنْ تَقومَ بِحَلِّهِ الآَن. لا يُسمَحُ لَكَ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهيَ مِنْ امتِحانِك.",
-                        "female": "لَقَدْ قُمتِ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكِ أنْ تَقومي بِحَلِّهِ الآَن. لا يُسمَحُ لَكِ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهي مِنْ امتِحانِك."
+                "result-suspense": {
+                    "title": {
+                        "en": "Your Exam is Finished!",
+                        "ar": {
+                            "male": "امتِحانُكَ قَدْ انتَهى!",
+                            "female": "امتِحانُكِ قَدْ انتَهى!"
+                        }
+                    },
+                    "paragraph": {
+                        "en": "Your exam has been finalized, are you ready to see your results?",
+                        "ar": {
+                            "male": "قَدْ انتَهى امتِحانُكَ بِالفِعل، هَلْ أنتَ مُستَعِدٌّ لِرُؤيةِ نَتائِجك؟",
+                            "female": "قَدْ انتَهى امتِحانُكِ بِالفِعل، هَلْ أنتِ مُستَعِدّةٌ لِرُؤيةِ نَتائِجك؟"
+                        }
+                    },
+                    "buttons": {
+                        "show-results": {
+                            "en": "Show Results",
+                            "ar": "اظهِرْ النَّتائِج"
+                        }
                     }
                 },
-                "buttons": {
-                    "go-to-exam": {
-                        "en": "Go to Exam",
-                        "ar": "الذَّهابُ إلى الامتِحان"
+                "result-display": {
+                    "title": {
+                        "failed": {
+                            "en": "Tough Luck",
+                            "ar": "حَظٌّ أوْفَر"
+                        },
+                        "close": {
+                            "en": "So Close!",
+                            "ar": {
+                                "male": "اقتَرَبتَ جِدَّاً!",
+                                "female": "اقتَرَبتِ جِدَّاً!"
+                            }
+                        },
+                        "passed": {
+                            "en": "Congratulations!",
+                            "ar": {
+                                "male": "مُبارَكٌ لَكَ!",
+                                "female": "مُبارَكٌ لَكِ!"
+                            }
+                        },
+                        "good": {
+                            "en": "Great Job!",
+                            "ar": "عَملٌ رائِع!"
+                        },
+                        "excellent": {
+                            "en": "Outstanding!",
+                            "ar": {
+                                "male": "أَحسَنتَ تَقديماً!",
+                                "female": "أَحسَنتِ تَقديماً!"
+                            }
+                        }
+                    },
+                    "paragraph": {
+                        "failed": {
+                            "en": "Unfortunately, you didn't pass the exam. However, don't let this frustrate you and keep trying!",
+                            "ar": {
+                                "male": "بِبالِغِ الأسَفِ، لَمْ تَتَمَكَّنْ مِنْ اجتِيازِ الامتِحان. ولَكِن لا تَدَعْ هَذا يُحبِطُكَ وتابِعْ المُحاولة.",
+                                "female": "بِبالِغِ الأسَفِ، لَمْ تَتَمَكَّني مِنْ اجتِيازِ الامتِحان. ولَكِن لا تَدَعي هَذا يُحبِطُكِ وتابِعي المُحاولة."
+                            }
+                        },
+                        "close": {
+                            "en": "You were so close to pass the exam. You can make it don't worry, there's room for improvement. Keep studying!",
+                            "ar": {
+                                "male": "لَقَدِ كُنتَ قَريباً جِدَّاً لِاجتيازِ الامتِحان. يُمكِنُكَ فِعلُها فَلا تَقلَقْ، أنتَ قادِرٌ عَلى التَّحسُّن. تابِعْ المُذاكَرة!",
+                                "female": "لَقَدِ كُنتِ قَريبةً جِدَّاً لِاجتيازِ الامتِحان. يُمكِنُكِ فِعلُها فَلا تَقلَقي، أنتِ قادِرةٌ عَلى التَّحسُّن. تابِعي المُذاكَرة!"
+                            }
+                        },
+                        "passed": {
+                            "en": "You have successfully passed the exam! Keep up the good work!",
+                            "ar": {
+                                "male": "قَدْ اجتَزتَ الامتِحانَ بِكُلِّ نَجاحٍ! تابِعْ عَلى هَذا المِنوال!",
+                                "female": "قَدْ اجتَزتِ الامتِحانَ بِكُلِّ نَجاحٍ! تابِعي عَلى هَذا المِنوال!"
+                            }
+                        },
+                        "good": {
+                            "en": "You did a great job on the exam! Your hard work is paying off.",
+                            "ar": {
+                                "male": "أَدَّيتَ أَداءً مُمتازاً في الامتِحان! بَدأَ جُهْدُكَ بِإيتاءِ ثِمارِه.",
+                                "female": "أَدَّيتِ أَداءً مُمتازاً في الامتِحان! بَدأَ جُهْدُكِ بِإيتاءِ ثِمارِه."
+                            }
+                        },
+                        "excellent": {
+                            "en": "Outstanding performance! You aced the exam - well done!",
+                            "ar": {
+                                "male": "أَداءٌ مُبهرٌ! لَقَدْ تَفَوَّقتَ في الامتِحان - أَحسَنتَ!",
+                                "female": "أَداءٌ مُبهرٌ! لَقَدْ تَفَوَّقتِ في الامتِحان - أَحسَنتِ!"
+                            }
+                        }
+                    },
+                    "information": {
+                        "time": {
+                            "en": "Time",
+                            "ar": "الوَقْت"
+                        },
+                        "points": {
+                            "en": "Points",
+                            "ar": "النِّقاط"
+                        },
+                        "grade": {
+                            "en": "Grade",
+                            "ar": "العَلامة"
+                        }
+                    },
+                    "buttons": {
+                        "check-my-answers": {
+                            "en": "Check My Answers",
+                            "ar": "التَّحَقُّقُ مِنْ نَتائِجي"
+                        },
+                        "exit": {
+                            "en": "Exit",
+                            "ar": "إِغْلاق"
+                        }
                     }
                 }
             }
