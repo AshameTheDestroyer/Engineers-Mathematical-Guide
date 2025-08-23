@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastProvider } from "./components/ToastProvider/ToastProvider";
 import { ThemeModeProvider } from "./components/ThemeModeProvider/ThemeModeProvider";
 import { ScreenSizeProvider } from "./components/ScreenSizeProvider/ScreenSizeProvider";
+import { ExaminationProvider } from "./components/ExaminationProvider/ExaminationProvider";
 import { LocalizationProvider } from "./components/LocalizationProvider/LocalizationProvider";
 import { ThemePaletteProvider } from "./components/ThemePaletteProvider/ThemePaletteProvider";
 import {
@@ -75,6 +76,9 @@ export const ContextProviders = [
     ),
     ({ children }: PropsWithChildren) => (
         <ScreenSizeProvider>{children}</ScreenSizeProvider>
+    ),
+    ({ children }: PropsWithChildren) => (
+        <ExaminationProvider>{children}</ExaminationProvider>
     ),
     ({ children }: PropsWithChildren) => (
         <MathJaxProvider>{children}</MathJaxProvider>

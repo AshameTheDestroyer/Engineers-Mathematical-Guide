@@ -1,3 +1,4 @@
+import { ZodSchema } from "zod";
 import { LESSONS } from "@/constants/Lessons";
 import { QueryClient } from "@tanstack/react-query";
 import { LessonDTO, LessonSchema } from "@/schemas/LessonSchema";
@@ -29,22 +30,19 @@ export const useGetLessons = <
         TTransformFnData
     >(
         {
-            schema: LessonSchema,
+            schema: LessonSchema as ZodSchema<LessonDTO>,
             enabled: courseID != null && moduleID != null,
             queryFn: () =>
-                (
-                    LESSONS[
-                        courseID! as keyof typeof LESSONS
-                    ] as Array<LessonDTO>
-                )?.filter((lesson) =>
-                    lesson.id.startsWith(
-                        courseID!
-                            .split("-")
-                            .map((word) => word[0])
-                            .join("") +
-                            "-" +
-                            moduleID
-                    )
+                (courseID != null ? (LESSONS[courseID] ?? []) : []).filter(
+                    (lesson) =>
+                        lesson.id.startsWith(
+                            courseID!
+                                .split("-")
+                                .map((word) => word[0])
+                                .join("") +
+                                "-" +
+                                moduleID
+                        )
                 ),
             parseFn: (data, schema) =>
                 data?.map((datum) => schema.parse(datum)) ?? [],

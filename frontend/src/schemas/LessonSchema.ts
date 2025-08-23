@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { QuestionSchema } from "./QuestionSchema";
 
 export enum LessonTypeEnum {
     video = "video",
@@ -19,11 +20,11 @@ export const VideoLessonSchema = z.intersection(
         type: z.nativeEnum(Object.pick(LessonTypeEnum, "video"), {
             errorMap: () => ({ message: "required" }),
         }),
+        url: z.string({ required_error: "required" }).url("pattern"),
         duration: z
             .number({ required_error: "required" })
-            .nonnegative("nonnegative")
-            .int("integer"),
-        url: z.string({ required_error: "required" }).url("pattern"),
+            .int("integer")
+            .nonnegative("nonnegative"),
     })
 );
 
@@ -35,8 +36,8 @@ export const ReadingLessonSchema = z.intersection(
         }),
         "estimated-reading-time": z
             .number({ required_error: "required" })
-            .nonnegative("nonnegative")
             .int("integer")
+            .nonnegative("nonnegative")
             .default(0),
     })
 );
@@ -47,6 +48,11 @@ export const ExaminationLessonSchema = z.intersection(
         type: z.nativeEnum(Object.pick(LessonTypeEnum, "examination"), {
             errorMap: () => ({ message: "required" }),
         }),
+        questions: z.array(QuestionSchema),
+        time: z
+            .number({ required_error: "required" })
+            .int("integer")
+            .nonnegative("nonnegative"),
     })
 );
 

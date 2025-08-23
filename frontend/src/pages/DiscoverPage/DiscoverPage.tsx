@@ -7,6 +7,8 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { OfflineModal } from "@/components/OfflineModal/OfflineModal";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { ApplicationBar } from "@/components/ApplicationBar/ApplicationBar";
+import { ExaminationResultModal } from "./components/ExaminationResultModal";
+import { ExaminationDisclaimerModal } from "./components/ExaminationDisclaimerModal";
 
 export const DiscoverPage: FC = () => {
     useScrollRestoration();
@@ -32,8 +34,12 @@ export const DiscoverPage: FC = () => {
             />
             <Outlet />
             {EnvironmentVariables.ENVIRONMENT == "production" && (
-                <OfflineModal />
+                <>
+                    <OfflineModal />
+                    <ExaminationDisclaimerModal />
+                </>
             )}
+            <ExaminationResultModal />
         </Page>
     );
 };

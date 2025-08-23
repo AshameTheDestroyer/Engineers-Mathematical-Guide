@@ -18,6 +18,7 @@ import { APPLICATION_ROUTES } from "@/routes/application.routes";
 import { REGISTRATION_ROUTES } from "@/routes/registration.routes";
 import { NavigationBar } from "@/components/NavigationBar/NavigationBar";
 import { NavigationBarProps } from "@/components/NavigationBar/NavigationBar";
+import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import {
     IconButton,
@@ -53,6 +54,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
     const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
     const { myUser, setMyUser } = useMain();
+    const { TerminateExamination } = useExamination();
 
     return (
         <>
@@ -85,6 +87,7 @@ export const NavigationMenuButton: FC<NavigationMenuButtonProps> = ({
                         variant="error"
                         onClick={(_e) => (
                             setMyUser(undefined),
+                            TerminateExamination(),
                             setIsLogoutModalOpen(false),
                             Navigate(WEBSITE_ROUTES.base.absolute)
                         )}

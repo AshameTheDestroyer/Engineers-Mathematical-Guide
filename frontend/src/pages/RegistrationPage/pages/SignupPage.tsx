@@ -16,13 +16,13 @@ export enum SignupStepEnum {
 
 export type SignupStep = ExtractEnumValue<SignupStepEnum>;
 
-export const SignupQueryParamSchema = z.object({
+export const SignupQueryParamsSchema = z.object({
     step: z.nativeEnum(SignupStepEnum).default(SignupStepEnum.credentials),
 });
 
 export const SignupPage: FC = () => {
     const { queryParams, setQueryParams } = useSchematicQueryParams(
-        SignupQueryParamSchema
+        SignupQueryParamsSchema
     );
 
     const [data, setData] = useState<

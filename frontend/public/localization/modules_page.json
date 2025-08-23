@@ -72,6 +72,10 @@
             "completed": {
                 "en": "Completed",
                 "ar": "مُنتَهيٌ"
+            },
+            "finish-exam": {
+                "en": "Finish Exam",
+                "ar": "إنهاءُ الامتِحان"
             }
         },
         "video": {
@@ -95,6 +99,214 @@
                 "paragraph": {
                     "en": "The lesson **lesson** has no data yet, try seeing another one.",
                     "ar": "لا توجَدُ أيُّ بَياناتٍ لِلدَّرسِ **الدرس** حَتَّى الآن، جَرِّبْ رؤيةَ دَرسٍ آخر."
+                }
+            }
+        },
+        "examination": {
+            "disclaimer": {
+                "title": {
+                    "en": "Before You Start",
+                    "ar": {
+                        "male": "قَبلَ أنْ تَبدأ",
+                        "female": "قَبلَ أنْ تَبدأي"
+                    }
+                },
+                "paragraph": {
+                    "en": "You will have only **#time** **minutes** to solve this examination, so there'll be a timer that begins clocking down once you hit the start button. We advise that you study the module very well before you start the examination, because once you start it, you won't be able to view the application until you finish.",
+                    "ar": {
+                        "male": "سَيَكونُ لَديكَ **#وقت** **دَقيقةٍ** فَقَطْ لِحَلِّ هَذا الامتِحان، لِذا سَيَكونُ هُناكَ مُؤَقِّتٌ سَيَبْدأُ العَدَّ التَّنازُليَّ فَورَ ضَغطِكَ عَلى زِرِّ البِدايةِ. نَنْصَحُكَ بِأنْ تَدرُسَ الوِحدةَ الدِّراسيّةَ بِشَكلٍ جَيِّدٍ قَبلَ أنْ تَبدأَ الامتِحان، لِأنَّهُ عِندَما تَبدأُ بِهِ، لَنْ تَتَمكَّنَ مِنْ رُؤيةِ التَّطبيق حَتَّى تُنهيه.",
+                        "female": "سَيَكونُ لَديكِ **#وقت** **دَقيقةٍ** فَقَطْ لِحَلِّ هَذا الامتِحان، لِذا سَيَكونُ هُناكَ مُؤَقِّتٌ سَيَبْدأُ العَدَّ التَّنازُليَّ فَورَ ضَغطِكِ عَلى زِرِّ البِدايةِ. نَنْصَحُكِ بِأنْ تَدرُسي الوِحدةَ الدِّراسيّةَ بِشَكلٍ جَيِّدٍ قَبلَ أنْ تَبدأي الامتِحان، لِأنَّهُ عِندَما تَبدأي بِهِ، لَنْ تَتَمكَّني مِنْ رُؤيةِ التَّطبيق حَتَّى تُنهيه."
+                    }
+                },
+                "buttons": {
+                    "proceed": {
+                        "en": "Proceed",
+                        "ar": {
+                            "male": "ابْدأ",
+                            "female": "ابْدأي"
+                        }
+                    }
+                }
+            },
+            "times-up": {
+                "title": {
+                    "en": "Time's Up!",
+                    "ar": "انتَهى الوَقْت!"
+                },
+                "paragraph": {
+                    "en": "You couldn't finish the examination in time, try again later.",
+                    "ar": {
+                        "male": "لَمْ تَتَمَكَّنْ مِنْ إِنهاءِ الامتِحانِ عَلى الوَقْت، حاوِلْ لاحِقاً مُجدَّداً.",
+                        "female": "لَمْ تَتَمَكَّني مِنْ إِنهاءِ الامتِحانِ عَلى الوَقْت، حاوِلي لاحِقاً مُجدَّداً."
+                    }
+                },
+                "buttons": {
+                    "reset": {
+                        "en": "Reset",
+                        "ar": "إعادةُ ضَبط"
+                    }
+                }
+            },
+            "question": {
+                "points": {
+                    "singular": {
+                        "en": "point",
+                        "ar": "نُقطة"
+                    },
+                    "plural": {
+                        "en": "points",
+                        "ar": "نِقاط"
+                    }
+                },
+                "buttons": {
+                    "previous": {
+                        "en": "Previous",
+                        "ar": "السَّابِق"
+                    },
+                    "next": {
+                        "en": "Next",
+                        "ar": "التَّالي"
+                    }
+                }
+            },
+            "modals": {
+                "disclaimer": {
+                    "title": {
+                        "en": "You Have an Exam!",
+                        "ar": {
+                            "male": "لَديكَ امتِحان!",
+                            "female": "لَديكِ امتِحان!"
+                        }
+                    },
+                    "paragraph": {
+                        "en": "You have started an examination that you should be solving right now. You can't browse the application until you finish your exam!",
+                        "ar": {
+                            "male": "لَقَدْ قُمتَ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكَ أنْ تَقومَ بِحَلِّهِ الآَن. لا يُسمَحُ لَكَ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهيَ مِنْ امتِحانِك.",
+                            "female": "لَقَدْ قُمتِ بِبَدئِ امتِحانٍ يَجِبُ عَلَيكِ أنْ تَقومي بِحَلِّهِ الآَن. لا يُسمَحُ لَكِ بِتَصَفُّحِ التَّطبيقِ حَتَّى تَنتَهي مِنْ امتِحانِك."
+                        }
+                    },
+                    "buttons": {
+                        "go-to-exam": {
+                            "en": "Go to Exam",
+                            "ar": "الذَّهابُ إلى الامتِحان"
+                        }
+                    }
+                },
+                "result-suspense": {
+                    "title": {
+                        "en": "Your Exam is Finished!",
+                        "ar": {
+                            "male": "امتِحانُكَ قَدْ انتَهى!",
+                            "female": "امتِحانُكِ قَدْ انتَهى!"
+                        }
+                    },
+                    "paragraph": {
+                        "en": "Your exam has been finalized, are you ready to see your results?",
+                        "ar": {
+                            "male": "قَدْ انتَهى امتِحانُكَ بِالفِعل، هَلْ أنتَ مُستَعِدٌّ لِرُؤيةِ نَتائِجك؟",
+                            "female": "قَدْ انتَهى امتِحانُكِ بِالفِعل، هَلْ أنتِ مُستَعِدّةٌ لِرُؤيةِ نَتائِجك؟"
+                        }
+                    },
+                    "buttons": {
+                        "show-results": {
+                            "en": "Show Results",
+                            "ar": "اظهِرْ النَّتائِج"
+                        }
+                    }
+                },
+                "result-display": {
+                    "title": {
+                        "failed": {
+                            "en": "Tough Luck",
+                            "ar": "حَظٌّ أوْفَر"
+                        },
+                        "close": {
+                            "en": "So Close!",
+                            "ar": {
+                                "male": "اقتَرَبتَ جِدَّاً!",
+                                "female": "اقتَرَبتِ جِدَّاً!"
+                            }
+                        },
+                        "passed": {
+                            "en": "Congratulations!",
+                            "ar": {
+                                "male": "مُبارَكٌ لَكَ!",
+                                "female": "مُبارَكٌ لَكِ!"
+                            }
+                        },
+                        "good": {
+                            "en": "Great Job!",
+                            "ar": "عَملٌ رائِع!"
+                        },
+                        "excellent": {
+                            "en": "Outstanding!",
+                            "ar": {
+                                "male": "أَحسَنتَ تَقديماً!",
+                                "female": "أَحسَنتِ تَقديماً!"
+                            }
+                        }
+                    },
+                    "paragraph": {
+                        "failed": {
+                            "en": "Unfortunately, you didn't pass the exam. However, don't let this frustrate you and keep trying!",
+                            "ar": {
+                                "male": "بِبالِغِ الأسَفِ، لَمْ تَتَمَكَّنْ مِنْ اجتِيازِ الامتِحان. ولَكِن لا تَدَعْ هَذا يُحبِطُكَ وتابِعْ المُحاولة.",
+                                "female": "بِبالِغِ الأسَفِ، لَمْ تَتَمَكَّني مِنْ اجتِيازِ الامتِحان. ولَكِن لا تَدَعي هَذا يُحبِطُكِ وتابِعي المُحاولة."
+                            }
+                        },
+                        "close": {
+                            "en": "You were so close to pass the exam. You can make it don't worry, there's room for improvement. Keep studying!",
+                            "ar": {
+                                "male": "لَقَدِ كُنتَ قَريباً جِدَّاً لِاجتيازِ الامتِحان. يُمكِنُكَ فِعلُها فَلا تَقلَقْ، أنتَ قادِرٌ عَلى التَّحسُّن. تابِعْ المُذاكَرة!",
+                                "female": "لَقَدِ كُنتِ قَريبةً جِدَّاً لِاجتيازِ الامتِحان. يُمكِنُكِ فِعلُها فَلا تَقلَقي، أنتِ قادِرةٌ عَلى التَّحسُّن. تابِعي المُذاكَرة!"
+                            }
+                        },
+                        "passed": {
+                            "en": "You have successfully passed the exam! Keep up the good work!",
+                            "ar": {
+                                "male": "قَدْ اجتَزتَ الامتِحانَ بِكُلِّ نَجاحٍ! تابِعْ عَلى هَذا المِنوال!",
+                                "female": "قَدْ اجتَزتِ الامتِحانَ بِكُلِّ نَجاحٍ! تابِعي عَلى هَذا المِنوال!"
+                            }
+                        },
+                        "good": {
+                            "en": "You did a great job on the exam! Your hard work is paying off.",
+                            "ar": {
+                                "male": "أَدَّيتَ أَداءً مُمتازاً في الامتِحان! بَدأَ جُهْدُكَ بِإيتاءِ ثِمارِه.",
+                                "female": "أَدَّيتِ أَداءً مُمتازاً في الامتِحان! بَدأَ جُهْدُكِ بِإيتاءِ ثِمارِه."
+                            }
+                        },
+                        "excellent": {
+                            "en": "Outstanding performance! You aced the exam - well done!",
+                            "ar": {
+                                "male": "أَداءٌ مُبهرٌ! لَقَدْ تَفَوَّقتَ في الامتِحان - أَحسَنتَ!",
+                                "female": "أَداءٌ مُبهرٌ! لَقَدْ تَفَوَّقتِ في الامتِحان - أَحسَنتِ!"
+                            }
+                        }
+                    },
+                    "information": {
+                        "time": {
+                            "en": "Time",
+                            "ar": "الوَقْت"
+                        },
+                        "points": {
+                            "en": "Points",
+                            "ar": "النِّقاط"
+                        },
+                        "grade": {
+                            "en": "Grade",
+                            "ar": "العَلامة"
+                        }
+                    },
+                    "buttons": {
+                        "check-my-answers": {
+                            "en": "Check My Answers",
+                            "ar": "التَّحَقُّقُ مِنْ نَتائِجي"
+                        },
+                        "exit": {
+                            "en": "Exit",
+                            "ar": "إِغْلاق"
+                        }
+                    }
                 }
             }
         }

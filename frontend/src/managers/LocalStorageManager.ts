@@ -34,6 +34,31 @@ export const LocalStorageSchema = z.object({
         .enum(Object.getEnumValues(WritingDirectionModeEnum))
         .default("auto"),
     "theme-mode": z.enum(Object.getEnumValues(ThemeModeEnum)).default("system"),
+    examination: z
+        .object({
+            finalized: z.boolean().default(false),
+            "check-my-answers": z.boolean().default(false),
+            "finished-at": z.string().datetime("datetime").nullish(),
+            courseID: z.string({ required_error: "required" }),
+            moduleID: z.string({ required_error: "required" }),
+            lessonID: z.string({ required_error: "required" }),
+            "finishes-at": z
+                .string({ required_error: "required" })
+                .datetime("datetime"),
+            "last-tab": z
+                .number({ required_error: "required" })
+                .int("integer")
+                .nonnegative("nonnegative")
+                .default(0),
+            "chosen-answers": z.array(
+                z.union([
+                    z.number().nullish(),
+                    z.array(z.number({ required_error: "required" })),
+                ])
+            ),
+        })
+        .refine((data) => !data.finalized || data["finished-at"] != null)
+        .nullish(),
 });
 
 export type LocalStorageDTO = z.infer<typeof LocalStorageSchema>;

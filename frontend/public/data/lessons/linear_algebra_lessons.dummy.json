@@ -179,7 +179,240 @@
     {
         "id": "la-systems-and-solutions-27",
         "title": "Examination: System and Solutions",
-        "type": "examination"
+        "type": "examination",
+        "time": 90,
+        "questions": [
+            {
+                "title": "Which of the following best describes the solution to a system of two linear equations in two variables that correspond to two parallel lines?",
+                "options": [
+                    "One unique solution",
+                    "Infinitely many solutions",
+                    "No solution",
+                    "Two solutions"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "In 3D space, each linear equation in three variables represents a:",
+                "options": ["Point", "Line", "Plane", "Sphere"],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "What is the result of the row operation $ R_2 \\leftarrow R_2 - 2R_1 $ applied to the matrix: $ \\left[\\begin{array}{cc|c}1 & 3 & 4 \\\\ 2 & 5 & 7\\end{array}\\right] $",
+                "options": [
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & -1 & -1 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & 1 & -1 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 0 & 0 & 0 \\end{array}\\right] $",
+                    "$ \\left[\\begin{array}{cc|c} 1 & 3 & 4 \\\\ 2 & -1 & -1 \\end{array}\\right] $"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 0
+            },
+            {
+                "title": "Which elementary row operations are valid? (Select all that apply)",
+                "options": [
+                    "Swap two rows",
+                    "Multiply a row by zero",
+                    "Add a multiple of one row to another",
+                    "Multiply a row by a nonzero scalar"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [0, 2, 3]
+            },
+            {
+                "title": "A system of linear equations has a unique solution. What must be true about the row-echelon form of its augmented matrix?",
+                "options": [
+                    "There is at least one row of all zeros",
+                    "There is a pivot in every column of the coefficient matrix",
+                    "There is a pivot in every row, and no row of the form $ [0\\ 0\\ |\\ 1] $",
+                    "There is a free variable"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "The vector $ \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} $ is in the span of which of the following sets? (Select all that apply)",
+                "options": [
+                    "$ \\left\\{ \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix}, \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} \\right\\} $",
+                    "$ \\left\\{ \\begin{bmatrix} 2 \\\\ 4 \\end{bmatrix} \\right\\} $",
+                    "$ \\left\\{ \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}, \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} \\right\\} $",
+                    "$ \\left\\{ \\begin{bmatrix} -1 \\\\ -2 \\end{bmatrix} \\right\\} $"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [0, 2]
+            },
+            {
+                "title": "What is $ \\text{Span}\\left\\{ \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} \\right\\} $ in $ \\mathbb{R}^2 $?",
+                "options": [
+                    "The entire plane",
+                    "The line $ y = x $",
+                    "The x-axis",
+                    "Only the origin"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 1
+            },
+            {
+                "title": "Which of the following is a linear combination of $ \\vec{v}_1 = \\begin{bmatrix} 1 \\\\ 0 \\end{bmatrix} $ and $ \\vec{v}_2 = \\begin{bmatrix} 0 \\\\ 1 \\end{bmatrix} $?",
+                "options": [
+                    "$ \\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 2 \\\\ -1 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 0 \\\\ 0 \\end{bmatrix} $",
+                    "All of the above"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 3
+            },
+            {
+                "title": "For the equation $ A\\vec{x} = \\vec{b} $, what does it mean geometrically if $ \\vec{b} $ is not in the column space of $ A $?",
+                "options": [
+                    "The system has a unique solution",
+                    "The system has infinitely many solutions",
+                    "The system has no solution",
+                    "The system has a trivial solution"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "Let $ A $ be a $ 3 \\times 4 $ matrix. Which of the following is possible? (Select all that apply)",
+                "options": [
+                    "The columns of $ A $ span $ \\mathbb{R}^3 $",
+                    "The null space of $ A $ contains only $ \\vec{0} $",
+                    "The equation $ A\\vec{x} = \\vec{b} $ has a unique solution for some $ \\vec{b} $",
+                    "The homogeneous system $ A\\vec{x} = \\vec{0} $ has non-trivial solutions"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [0, 3]
+            },
+            {
+                "title": "The solution set of $ A\\vec{x} = \\vec{b} $ (where $ \\vec{b} \\neq \\vec{0} $) is a subspace of $ \\mathbb{R}^n $.",
+                "options": [
+                    "Always true",
+                    "Sometimes true",
+                    "Never true",
+                    "Only if $ \\vec{b} = \\vec{0} $"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "Which of the following systems is homogeneous?",
+                "options": [
+                    "$ 2x + y = 0 $",
+                    "$ x - y = 1 $",
+                    "$ A\\vec{x} = \\vec{b} $ where $ \\vec{b} \\neq \\vec{0} $",
+                    "$ A\\vec{x} = \\vec{0} $"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 3
+            },
+            {
+                "title": "Suppose $ \\vec{v}_1 = \\begin{bmatrix} 1 \\\\ 2 \\end{bmatrix} $, $ \\vec{v}_2 = \\begin{bmatrix} 2 \\\\ 4 \\end{bmatrix} $. Which statements are true? (Select all that apply)",
+                "options": [
+                    "The vectors are linearly independent",
+                    "The vectors are linearly dependent",
+                    "$ \\text{Span}\\{\\vec{v}_1, \\vec{v}_2\\} $ is a line",
+                    "$ \\vec{v}_2 $ can be written as a multiple of $ \\vec{v}_1 $"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [1, 2, 3]
+            },
+            {
+                "title": "If the null space of a matrix $ A $ is a line in $ \\mathbb{R}^3 $, how many free variables does $ A\\vec{x} = \\vec{0} $ have?",
+                "options": ["0", "1", "2", "3"],
+                "points": 1,
+                "type": "choose",
+                "answer": 1
+            },
+            {
+                "title": "The general solution to $ A\\vec{x} = \\vec{b} $ is $ \\vec{x} = \\vec{x}_p + \\vec{x}_h $. What is $ \\vec{x}_p $?",
+                "options": [
+                    "A solution to $ A\\vec{x} = \\vec{0} $",
+                    "Any vector in the null space",
+                    "A particular solution to $ A\\vec{x} = \\vec{b} $",
+                    "The zero vector"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "Which of the following matrices has linearly independent columns? (Select all that apply)",
+                "options": [
+                    "$ \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 1 & 2 \\\\ 2 & 4 \\end{bmatrix} $",
+                    "$ \\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{bmatrix} $ with pivot in each column",
+                    "$ \\begin{bmatrix} 1 & 1 \\\\ 1 & 1 \\end{bmatrix} $"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [0, 2]
+            },
+            {
+                "title": "The system $ A\\vec{x} = \\vec{b} $ has no solution. What can we conclude?",
+                "options": [
+                    "$ \\vec{b} $ is in the column space of $ A $",
+                    "$ \\vec{b} $ is not in the column space of $ A $",
+                    "The columns of $ A $ are linearly independent",
+                    "The null space is trivial"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 1
+            },
+            {
+                "title": "Which of the following is a property of the null space of a matrix $ A $?",
+                "options": [
+                    "It contains all solutions to $ A\\vec{x} = \\vec{b} $",
+                    "It is always a line",
+                    "It is a subspace of $ \\mathbb{R}^n $",
+                    "It only contains the zero vector"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 2
+            },
+            {
+                "title": "Let $ A $ be a $ 2 \\times 3 $ matrix. Which of the following must be true? (Select all that apply)",
+                "options": [
+                    "The columns of $ A $ cannot span $ \\mathbb{R}^2 $",
+                    "The homogeneous system has non-trivial solutions",
+                    "There is at least one free variable",
+                    "The null space is at least 1-dimensional"
+                ],
+                "points": 2,
+                "type": "select",
+                "answers": [1, 2, 3]
+            },
+            {
+                "title": "Suppose $ A\\vec{x} = \\vec{b} $ has a solution, and the columns of $ A $ are linearly independent. Then the solution is:",
+                "options": [
+                    "Unique",
+                    "Infinite",
+                    "Nonexistent",
+                    "Dependent on $ \\vec{b} $"
+                ],
+                "points": 1,
+                "type": "choose",
+                "answer": 0
+            }
+        ]
     },
     {
         "id": "la-transformations-and-matrices-1",
@@ -212,7 +445,8 @@
     {
         "id": "la-transformations-and-matrices-5",
         "title": "From Vectors to Transformations",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-transformations-and-matrices-6",
@@ -245,7 +479,8 @@
     {
         "id": "la-transformations-and-matrices-10",
         "title": "Linear Transformations and Matrix Representation",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-transformations-and-matrices-11",
@@ -278,7 +513,8 @@
     {
         "id": "la-transformations-and-matrices-15",
         "title": "Matrix Multiplication and Composition of Maps",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-transformations-and-matrices-16",
@@ -311,7 +547,8 @@
     {
         "id": "la-transformations-and-matrices-20",
         "title": "Matrix Inverses and Solving Systems",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-transformations-and-matrices-21",
@@ -344,7 +581,8 @@
     {
         "id": "la-transformations-and-matrices-25",
         "title": "Invertibility and the Big Theorem",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-transformations-and-matrices-26",
@@ -368,7 +606,8 @@
     {
         "id": "la-vector-spaces-and-bases-3",
         "title": "Determinants and Invertibility Criteria",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-vector-spaces-and-bases-4",
@@ -401,7 +640,8 @@
     {
         "id": "la-vector-spaces-and-bases-8",
         "title": "Vector Spaces and Subspaces",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-vector-spaces-and-bases-9",
@@ -434,7 +674,8 @@
     {
         "id": "la-vector-spaces-and-bases-13",
         "title": "Null Space, Column Space, and Bases",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-vector-spaces-and-bases-14",
@@ -467,7 +708,8 @@
     {
         "id": "la-vector-spaces-and-bases-18",
         "title": "Coordinates, Dimensions, and Grid Lines",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-vector-spaces-and-bases-19",
@@ -500,7 +742,8 @@
     {
         "id": "la-vector-spaces-and-bases-23",
         "title": "Rank, Nullity, and Change of Basis",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-vector-spaces-and-bases-24",
@@ -531,7 +774,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-4",
         "title": "Introduction to Eigenvalues and Eigenvectors",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-eigenvalues-and-orthogonality-5",
@@ -564,7 +808,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-9",
         "title": "Diagonalization and Its Applications",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-eigenvalues-and-orthogonality-10",
@@ -597,7 +842,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-14",
         "title": "Eigenbases, Similarity, and Matrix Powers",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-eigenvalues-and-orthogonality-15",
@@ -630,7 +876,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-19",
         "title": "Geometry of Vectors and Orthogonality",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-eigenvalues-and-orthogonality-20",
@@ -663,7 +910,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-24",
         "title": "Projections, Gram-Schmidt, and Least Squares",
-        "type": "reading"
+        "type": "reading",
+        "estimated-reading-time": 0
     },
     {
         "id": "la-eigenvalues-and-orthogonality-25",
