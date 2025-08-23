@@ -180,8 +180,7 @@
         "id": "la-systems-and-solutions-27",
         "title": "Examination: System and Solutions",
         "type": "examination",
-        "time": 90,
-        "attempts": 3,
+        "time": 1,
         "questions": [
             {
                 "title": "Which of the following best describes the solution to a system of two linear equations in two variables that correspond to two parallel lines?",

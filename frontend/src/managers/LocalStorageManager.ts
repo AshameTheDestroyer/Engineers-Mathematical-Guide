@@ -50,11 +50,6 @@ export const LocalStorageSchema = z.object({
                 .int("integer")
                 .nonnegative("nonnegative")
                 .default(0),
-            "attempt-counter": z
-                .number({ required_error: "required" })
-                .int("integer")
-                .nonnegative("nonnegative")
-                .default(0),
             "chosen-answers": z.array(
                 z.union([
                     z.number().nullish(),

@@ -3,17 +3,13 @@ import { useMain } from "@/contexts";
 import { twJoin } from "tailwind-merge";
 import { useParams } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { Button } from "@/components/Button/Button";
-import { Locale } from "@/components/Locale/Locale";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { LessonTypeEnum } from "@/schemas/LessonSchema";
 import { VideoLesson } from "../components/VideoLesson";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { ReadingLesson } from "../components/ReadingLesson";
-import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { LessonDropView } from "../components/LessonDropView";
 import { LessonButtonProps } from "../components/LessonButton";
-import { Typography } from "@/components/Typography/Typography";
 import { ExaminationLesson } from "../components/ExaminationLesson";
 import { useGetLessonByID } from "@/services/Lessons/useGetLessonByID";
 import { useGetModuleByID } from "@/services/Modules/useGetModuleByID";
@@ -23,9 +19,6 @@ import { useScreenSize } from "@/components/ScreenSizeProvider/ScreenSizeProvide
 import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { SearchResultDisplay } from "@/components/SearchResultDisplay/SearchResultDisplay";
-
-import check_icon from "@icons/check.svg";
-import check_filled_icon from "@icons/check_filled.svg";
 
 import locales from "@localization/modules_page.json";
 
@@ -38,11 +31,7 @@ export const LessonPage: FC = () => {
     const { courseID, moduleID, lessonID } =
         useParams<keyof typeof DISCOVER_ROUTES.base.routes>();
 
-    const {
-        FinalizeExamination,
-        TerminateExamination,
-        examinationInformation,
-    } = useExamination();
+    const { examinationInformation } = useExamination();
 
     const { data: module } = useGetModuleByID(courseID, moduleID, {
         usesSuspense: true,
@@ -103,26 +92,6 @@ export const LessonPage: FC = () => {
                   ? "unenrolled"
                   : "enrolled";
 
-    const isExaminationDue =
-        examinationInformation != null &&
-        [
-            examinationInformation.courseID == courseID,
-            examinationInformation.moduleID == moduleID,
-            examinationInformation.lessonID == lessonID,
-        ].every(Boolean);
-
-    const isExaminationFinished =
-        isExaminationDue &&
-        (examinationInformation["check-my-answers"] ||
-            (!examinationInformation.finalized &&
-                examinationInformation["chosen-answers"]
-                    .map((answer) =>
-                        Array.isArray(answer)
-                            ? answer.length > 0
-                            : answer != null
-                    )
-                    .every(Boolean)));
-
     return (
         <Flexbox
             className="grow"
@@ -146,115 +115,33 @@ export const LessonPage: FC = () => {
                 }
             />
 
-            <Flexbox className="grow" gap="8" direction="column">
-                <Typography
-                    className="text-xl font-bold max-sm:text-lg"
-                    variant="h1"
-                >
-                    {lesson.title}{" "}
-                    <span className="text-lg">
-                        {(() => {
-                            switch (lesson.type) {
-                                case LessonTypeEnum.video:
-                                    return `(${Intl.DateTimeFormat("en-US", { minute: "2-digit", second: "2-digit" }).format(new Date(0, 0, 0, 0, 0, lesson.duration - 1))})`;
-                                case LessonTypeEnum.reading:
-                                    return `(${Intl.DateTimeFormat("en-US", { minute: "numeric" }).format(new Date(0, 0, 0, 0, 0, lesson["estimated-reading-time"]))} minutes of reading)`;
-                                case LessonTypeEnum.examination:
-                                    return `(${lesson.time}:00 minutes and ${lesson.attempts} attempts left)`;
-                            }
-                        })()}
-                    </span>
-                </Typography>
-
-                <Flexbox
-                    className={twJoin(
-                        "border-background-darker relative min-h-[60dvh] grow rounded-2xl border-2 p-4",
-                        isDarkThemed
-                            ? "bg-background-normal/50"
-                            : "bg-background-dark/50"
-                    )}
-                >
-                    {(() => {
-                        switch (lesson.type) {
-                            case LessonTypeEnum.video:
-                                return <VideoLesson lesson={lesson} />;
-                            case LessonTypeEnum.reading:
-                                return <ReadingLesson lesson={lesson} />;
-                            case LessonTypeEnum.examination:
-                                return (
-                                    <ExaminationLesson
-                                        key={`${examinationInformation?.finalized ?? false}${examinationInformation?.["check-my-answers"] ?? false}`}
-                                        lesson={lesson}
-                                        {...{ courseID, moduleID, lessonID }}
-                                        showCorrectAnswers={
-                                            isExaminationDue &&
-                                            examinationInformation.finalized &&
-                                            examinationInformation[
-                                                "check-my-answers"
-                                            ]
-                                        }
-                                    />
-                                );
-                        }
-                    })()}
-                </Flexbox>
-
-                <ButtonBox direction="reverse-row">
-                    <Button
-                        className={twJoin(
-                            enrollment_ == "passed" && "font-bold",
-                            enrollment_ == "unenrolled" &&
-                                "pointer-events-none opacity-0"
-                        )}
-                        thickness="thick"
-                        variant={
-                            enrollment_ == "passed" ? "success" : "default"
-                        }
-                        disabled={
-                            enrollment_ != "enrolled" ||
-                            (lesson.type == LessonTypeEnum.examination &&
-                                !isExaminationFinished)
-                        }
-                        tabIndex={
-                            enrollment_ != "enrolled" ||
-                            (lesson.type == LessonTypeEnum.examination &&
-                                !isExaminationFinished)
-                                ? 0
-                                : -1
-                        }
-                        icon={
-                            isExaminationDue && enrollment_ != "passed"
-                                ? undefined
-                                : {
-                                      placement: "right",
-                                      source:
-                                          enrollment_ == "passed"
-                                              ? check_filled_icon
-                                              : check_icon,
-                                  }
-                        }
-                        onClick={(_e) =>
-                            examinationInformation?.["check-my-answers"]
-                                ? TerminateExamination()
-                                : isExaminationDue
-                                  ? FinalizeExamination()
-                                  : undefined
-                        }
-                    >
-                        <Locale>
-                            {
-                                locales.lessons.buttons[
-                                    enrollment_ == "passed"
-                                        ? "completed"
-                                        : isExaminationDue
-                                          ? "finish-exam"
-                                          : "mark-completeness"
-                                ]
-                            }
-                        </Locale>
-                    </Button>
-                </ButtonBox>
-            </Flexbox>
+            {(() => {
+                switch (lesson.type) {
+                    case LessonTypeEnum.video:
+                        return (
+                            <VideoLesson
+                                lesson={lesson}
+                                enrollment={enrollment_}
+                            />
+                        );
+                    case LessonTypeEnum.reading:
+                        return (
+                            <ReadingLesson
+                                lesson={lesson}
+                                enrollment={enrollment_}
+                            />
+                        );
+                    case LessonTypeEnum.examination:
+                        return (
+                            <ExaminationLesson
+                                key={`${examinationInformation?.finalized ?? false}${examinationInformation?.["check-my-answers"] ?? false}`}
+                                lesson={lesson}
+                                enrollment={enrollment_}
+                                {...{ courseID, moduleID, lessonID }}
+                            />
+                        );
+                }
+            })()}
         </Flexbox>
     );
 };

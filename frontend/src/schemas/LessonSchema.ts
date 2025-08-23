@@ -20,11 +20,11 @@ export const VideoLessonSchema = z.intersection(
         type: z.nativeEnum(Object.pick(LessonTypeEnum, "video"), {
             errorMap: () => ({ message: "required" }),
         }),
+        url: z.string({ required_error: "required" }).url("pattern"),
         duration: z
             .number({ required_error: "required" })
             .int("integer")
             .nonnegative("nonnegative"),
-        url: z.string({ required_error: "required" }).url("pattern"),
     })
 );
 
@@ -48,16 +48,11 @@ export const ExaminationLessonSchema = z.intersection(
         type: z.nativeEnum(Object.pick(LessonTypeEnum, "examination"), {
             errorMap: () => ({ message: "required" }),
         }),
+        questions: z.array(QuestionSchema),
         time: z
             .number({ required_error: "required" })
             .int("integer")
             .nonnegative("nonnegative"),
-        attempts: z
-            .number({ required_error: "required" })
-            .int("integer")
-            .nonnegative("nonnegative")
-            .default(1),
-        questions: z.array(QuestionSchema),
     })
 );
 
