@@ -1,22 +1,38 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { Type } from "class-transformer"
+import { IsEnum, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator"
+import { LocalString } from "src/utils/local-string"
+import { LessonType } from "src/utils/types"
 
 export class CreateLessonDto {
-    @IsNotEmpty()
-    @IsString()
-    @ApiProperty()
-    title: string
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    title: LocalString
     
-    @IsNotEmpty()
-    @IsString()
-    @ApiProperty()
-    content: string
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    content: LocalString
     
     @IsNotEmpty()
     @IsString()
     @ApiProperty()
     video: string
     
+    @IsNotEmpty()
+    @IsNumber()
+    @ApiProperty()
+    duration: number
+    
+    @ApiProperty({ 
+        enum: LessonType, 
+        example: LessonType.READING 
+    })
+    @IsEnum(LessonType, { message: 'Invalid lessonType reading OR video' })
+    @IsNotEmpty({ message: 'LessonType is required' })
+    type: LessonType
+
     @IsNotEmpty()
     @IsNumber()
     @ApiProperty()

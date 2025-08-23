@@ -29,7 +29,7 @@ export class CourseController {
     @Body() createCourseDto: CreateCourseDto,
     @UploadedFile() file: Express.Multer.File
   ) : Promise<Course> {
-    const image = file.filename || "";
+    const image = file?.filename || "";
     return await this.courseService.create({...createCourseDto,image});
   }
 

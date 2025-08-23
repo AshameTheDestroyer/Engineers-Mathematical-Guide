@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { LocalString } from "src/utils/local-string";
 import { Column, Entity, ObjectId, ObjectIdColumn } from "typeorm";
 
 @Entity('chapters')
@@ -8,11 +9,11 @@ export class Chapter {
   
   @Column()
   @ApiProperty()
-  title: string
+  title: LocalString
   
   @Column()
   @ApiProperty()
-  description: string
+  description: LocalString
   
   @Column()
   @ApiProperty()

@@ -1,11 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsArray, IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { Type } from "class-transformer"
+import { IsArray, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator"
+import { LocalString } from "src/utils/local-string"
 
 export class CreateQuestionDto {
-    @IsNotEmpty()
-    @IsString()
-    @ApiProperty()
-    question: string
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    question: LocalString
     
     @IsNotEmpty()
     @IsArray()
@@ -13,9 +15,9 @@ export class CreateQuestionDto {
     options: string[]
     
     @IsNotEmpty()
-    @IsString()
+    @IsArray()
     @ApiProperty()
-    answer: string
+    answer: string[]
     
     @IsNotEmpty()
     @IsNumber()

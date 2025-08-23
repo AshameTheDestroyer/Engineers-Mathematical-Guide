@@ -1,57 +1,50 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { Transform } from "class-transformer";
-import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { Transform, Type } from "class-transformer";
+import { IsArray, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { LocalString } from "src/utils/local-string";
 
 export class CreateCourseDto {
-    @IsNotEmpty()
-    @ApiProperty()
-    @IsString()
-    title: string
-    
-    @IsNotEmpty()
-    @ApiProperty()
-    @IsString()
-    description: string
-
-    @IsNumber()
-    @ApiProperty()
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
     @Transform(({ value }) => {
-        if (typeof value === 'string') {
-            return Number(value);
+        if(typeof value=='string') {
+            value = JSON.parse(value);
+            value = new LocalString(value.en,value.ar);
         }
         return value;
     })
-    examDuration: number
+    title: LocalString
     
-    @IsNumber()
-    @ApiProperty()
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
     @Transform(({ value }) => {
-        if (typeof value === 'string') {
-            return Number(value);
+        if(typeof value=='string') {
+            value = JSON.parse(value);
+            value = new LocalString(value.en,value.ar);
         }
         return value;
     })
-    examXP: number
+    description: LocalString
     
     @IsArray()
     @IsOptional()
     @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
+    @Transform(({ value }) => {return new Array(value);})
     prerequisites: string[]
     
     @IsArray()
     @IsOptional()
     @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
+    @Transform(({ value }) => {return new Array(value);})
     postrequisites: string[]
     
     @IsArray()
     @IsNotEmpty()
     @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
+    @Transform(({ value }) => {return new Array(value);})
     chapters: string[]
-
-    @IsArray()
-    @IsNotEmpty()
-    @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
-    examQuestions: string[]
 
     @IsOptional()
     @ApiProperty({ 

@@ -1,5 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, min } from "class-validator";
+import { Type } from "class-transformer";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, Max, Min, min, ValidateNested } from "class-validator";
+import { LocalString } from "src/utils/local-string";
 
 export class CreateCourseRatingDto {
     @IsNotEmpty()
@@ -19,8 +21,8 @@ export class CreateCourseRatingDto {
     @ApiProperty()
     rating: number
 
-    @IsOptional()
-    @IsString()
-    @ApiProperty()
-    feedback: string
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    feedback: LocalString
 }

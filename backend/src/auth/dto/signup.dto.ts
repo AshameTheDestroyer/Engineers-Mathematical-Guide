@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator';
+import { LocalString } from 'src/utils/local-string';
 
 export class SignUpDTO {
   @IsString()
@@ -22,24 +24,25 @@ export class SignUpDTO {
   @ApiProperty()
   phoneNumber: string;
   
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  name: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  name: LocalString;
   
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
-  surname: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  surname: LocalString;
   
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
   country: string;
   
-  @IsString()
-  @IsOptional()
-  bio: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  bio: LocalString;
 
   @IsOptional()
   @ApiProperty({ 

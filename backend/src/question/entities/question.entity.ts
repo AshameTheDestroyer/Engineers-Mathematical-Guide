@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { LocalString } from "src/utils/local-string";
 import { Column, Entity, ObjectId, ObjectIdColumn } from "typeorm";
 
 @Entity('questions')
@@ -8,7 +9,7 @@ export class Question {
 
   @Column()
   @ApiProperty()
-  question: string
+  question: LocalString
 
   @Column()
   @ApiProperty()
@@ -16,7 +17,7 @@ export class Question {
 
   @Column()
   @ApiProperty()
-  answer: string
+  answer: string[]
 
   @Column()
   @ApiProperty()
