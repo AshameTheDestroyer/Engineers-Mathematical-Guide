@@ -22,8 +22,8 @@ export const VideoLessonSchema = z.intersection(
         }),
         duration: z
             .number({ required_error: "required" })
-            .nonnegative("nonnegative")
-            .int("integer"),
+            .int("integer")
+            .nonnegative("nonnegative"),
         url: z.string({ required_error: "required" }).url("pattern"),
     })
 );
@@ -36,8 +36,8 @@ export const ReadingLessonSchema = z.intersection(
         }),
         "estimated-reading-time": z
             .number({ required_error: "required" })
-            .nonnegative("nonnegative")
             .int("integer")
+            .nonnegative("nonnegative")
             .default(0),
     })
 );
