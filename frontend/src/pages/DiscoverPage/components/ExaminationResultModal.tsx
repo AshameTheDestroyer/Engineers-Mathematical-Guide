@@ -1,6 +1,6 @@
-import { FC, useState } from "react";
 import { useMain } from "@/contexts";
 import { createPortal } from "react-dom";
+import { FC, useMemo, useState } from "react";
 import { Icon } from "@/components/Icon/Icon";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Modal } from "@/components/Modal/Modal";
@@ -59,6 +59,70 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
         grade: string;
         points: string;
     }>();
+
+    const rankInformation = useMemo(() => {
+        if (results == null) {
+            return undefined;
+        }
+
+        switch (results.rank) {
+            case "failed":
+                return {
+                    modalClassName: "from-vibrant-red-normal",
+                    speed: 0.1,
+                    icon: face_sad_icon,
+                    colours: [
+                        "--color-vibrant-red-light",
+                        "--color-vibrant-red-normal",
+                        "--color-vibrant-red-dark",
+                    ],
+                };
+            case "close":
+                return {
+                    modalClassName: "from-vibrant-yellow-normal",
+                    speed: 0.5,
+                    icon: face_grimace_icon,
+                    colours: [
+                        "--color-vibrant-yellow-light",
+                        "--color-vibrant-yellow-normal",
+                        "--color-vibrant-yellow-dark",
+                    ],
+                };
+            case "passed":
+                return {
+                    modalClassName: "from-vibrant-purple-normal",
+                    speed: 1,
+                    icon: face_straight_icon,
+                    colours: [
+                        "--color-vibrant-purple-light",
+                        "--color-vibrant-purple-normal",
+                        "--color-vibrant-purple-dark",
+                    ],
+                };
+            case "good":
+                return {
+                    modalClassName: "from-vibrant-blue-normal",
+                    speed: 2,
+                    icon: face_happy_icon,
+                    colours: [
+                        "--color-vibrant-blue-light",
+                        "--color-vibrant-blue-normal",
+                        "--color-vibrant-blue-dark",
+                    ],
+                };
+            case "excellent":
+                return {
+                    modalClassName: "from-vibrant-green-normal",
+                    speed: 3,
+                    icon: face_amazed_icon,
+                    colours: [
+                        "--color-vibrant-green-light",
+                        "--color-vibrant-green-normal",
+                        "--color-vibrant-green-dark",
+                    ],
+                };
+        }
+    }, [results]);
 
     function CalculateTime(
         startedAt: string,
@@ -136,7 +200,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
         return Number(percentage.toFixed(2));
     }
 
-    function CalculateRank(grade: number) {
+    function CalculateRank(grade: number): Rank {
         return (
             [
                 { limit: 20, rank: "failed" },
@@ -231,39 +295,15 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                     <Fireworks
                         className="pointer-events-none fixed inset-0 z-[100000] h-screen w-screen"
                         autorun={{
-                            speed: (
-                                {
-                                    failed: 0.1,
-                                    close: 0.5,
-                                    passed: 1,
-                                    good: 2,
-                                    excellent: 3,
-                                } as Record<Rank, number>
-                            )[results!.rank],
+                            speed: rankInformation!.speed,
                         }}
                         decorateOptions={(options) => ({
-                            colors: [
+                            colors: rankInformation!.colours.map((colour) =>
                                 document.body
                                     .computedStyleMap()
-                                    .get(
-                                        (
-                                            {
-                                                failed: "--color-vibrant-red-normal",
-                                                close: "--color-vibrant-yellow-normal",
-                                                passed: "--color-vibrant-purple-normal",
-                                                good: "--color-vibrant-blue-normal",
-                                                excellent:
-                                                    "--color-vibrant-green-normal",
-                                            } as Record<
-                                                ReturnType<
-                                                    typeof CalculateRank
-                                                >,
-                                                string
-                                            >
-                                        )[results!.rank]
-                                    )!
-                                    .toString(),
-                            ],
+                                    .get(colour)!
+                                    .toString()
+                            ),
                             ...options,
                         })}
                     />,
@@ -271,20 +311,8 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                 )}
 
                 <Icon
-                    className={twJoin(
-                        "aspect-square w-[128px] place-self-center [&>svg]:h-full [&>svg]:w-full"
-                    )}
-                    source={
-                        (
-                            {
-                                failed: face_sad_icon,
-                                close: face_grimace_icon,
-                                passed: face_straight_icon,
-                                good: face_happy_icon,
-                                excellent: face_amazed_icon,
-                            } as Record<Rank, string>
-                        )[results!.rank]
-                    }
+                    className="aspect-square w-[128px] place-self-center [&>svg]:h-full [&>svg]:w-full"
+                    source={rankInformation!.icon}
                 />
                 <Locale
                     className="text-lg font-bold"
@@ -393,16 +421,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                 "bg-background-light gap-4 overflow-hidden max-sm:w-[90vw]",
                 results != null &&
                     "to-background-light bg-gradient-to-b to-50%",
-                results != null &&
-                    (
-                        {
-                            failed: "from-vibrant-red-normal",
-                            close: "from-vibrant-yellow-normal",
-                            passed: "from-vibrant-purple-normal",
-                            good: "from-vibrant-blue-normal",
-                            excellent: "from-vibrant-green-normal",
-                        } as Record<Rank, string>
-                    )[results.rank],
+                results != null && rankInformation!.modalClassName,
                 className
             )}
             hasCloseButton={(results != null) as true}
