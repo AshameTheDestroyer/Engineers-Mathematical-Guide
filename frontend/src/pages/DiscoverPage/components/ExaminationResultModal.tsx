@@ -12,13 +12,12 @@ import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { Typography } from "@/components/Typography/Typography";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
 import { LessonDTO, LessonTypeEnum } from "@/schemas/LessonSchema";
+import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 import { useGetLessonByID } from "@/services/Lessons/useGetLessonByID";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
 import { QuestionDTO, QuestionTypeEnum } from "@/schemas/QuestionSchema";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
 import { useExamination } from "@/components/ExaminationProvider/ExaminationProvider";
-
-import Fireworks from "react-canvas-confetti/dist/presets/fireworks";
 
 import face_sad_icon from "@icons/face_sad.svg";
 import face_happy_icon from "@icons/face_happy.svg";
@@ -55,10 +54,10 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
     );
 
     const [results, setResults] = useState<{
+        rank: Rank;
         time: string;
         grade: string;
         points: string;
-        rank: ReturnType<typeof CalculateRank>;
     }>();
 
     function CalculateTime(
@@ -145,7 +144,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                 { limit: 60, rank: "passed" },
                 { limit: 80, rank: "good" },
                 { limit: Infinity, rank: "excellent" },
-            ] as const
+            ] as Array<{ limit: number; rank: Rank }>
         ).find((level) => grade < level.limit)!.rank;
     }
 
@@ -239,10 +238,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                                     passed: 1,
                                     good: 2,
                                     excellent: 3,
-                                } as Record<
-                                    ReturnType<typeof CalculateRank>,
-                                    number
-                                >
+                                } as Record<Rank, number>
                             )[results!.rank],
                         }}
                         decorateOptions={(options) => ({
@@ -286,10 +282,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                                 passed: face_straight_icon,
                                 good: face_happy_icon,
                                 excellent: face_amazed_icon,
-                            } as Record<
-                                ReturnType<typeof CalculateRank>,
-                                string
-                            >
+                            } as Record<Rank, string>
                         )[results!.rank]
                     }
                 />
@@ -408,7 +401,7 @@ export const ExaminationResultModal: FC<ExaminationResultModalProps> = ({
                             passed: "from-vibrant-purple-normal",
                             good: "from-vibrant-blue-normal",
                             excellent: "from-vibrant-green-normal",
-                        } as Record<ReturnType<typeof CalculateRank>, string>
+                        } as Record<Rank, string>
                     )[results.rank],
                 className
             )}
