@@ -1,7 +1,6 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
@@ -9,16 +8,30 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/routes.json";
 
-const LoginPage = LazyImport("./pages/RegistrationPage/pages/LoginPage");
-const SignupPage = LazyImport("./pages/RegistrationPage/pages/SignupPage");
-const RegistrationPage = LazyImport(
-    "./pages/RegistrationPage/RegistrationPage"
+const LoginPage = lazy(() =>
+    import("../pages/RegistrationPage/pages/LoginPage").then((module) => ({
+        default: module.LoginPage,
+    }))
 );
-const ForgotPasswordPage = LazyImport(
-    "./pages/RegistrationPage/pages/ForgotPasswordPage"
+const SignupPage = lazy(() =>
+    import("../pages/RegistrationPage/pages/SignupPage").then((module) => ({
+        default: module.SignupPage,
+    }))
 );
-const TermsAndConditionsPage = LazyImport(
-    "./pages/RegistrationPage/pages/TermsAndConditionsPage"
+const RegistrationPage = lazy(() =>
+    import("../pages/RegistrationPage/RegistrationPage").then((module) => ({
+        default: module.RegistrationPage,
+    }))
+);
+const ForgotPasswordPage = lazy(() =>
+    import("../pages/RegistrationPage/pages/ForgotPasswordPage").then(
+        (module) => ({ default: module.ForgotPasswordPage })
+    )
+);
+const TermsAndConditionsPage = lazy(() =>
+    import("../pages/RegistrationPage/pages/TermsAndConditionsPage").then(
+        (module) => ({ default: module.TermsAndConditionsPage })
+    )
 );
 
 export const REGISTRATION_ROUTES = BuildRouter({

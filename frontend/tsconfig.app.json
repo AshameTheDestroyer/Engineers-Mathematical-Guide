@@ -27,16 +27,16 @@
                 "src/*"
             ],
             "@icons/*": [
-                "src/assets/icons/*"
+                "public/icons/*"
             ],
             "@audios/*": [
-                "src/assets/audios/*"
+                "public/audios/*"
             ],
             "@images/*": [
-                "src/assets/images/*"
+                "public/images/*"
             ],
             "@videos/*": [
-                "src/assets/videos/*"
+                "public/videos/*"
             ],
             "@components/*": [
                 "src/components/*"

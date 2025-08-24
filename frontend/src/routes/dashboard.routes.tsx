@@ -1,8 +1,7 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { RoleEnum } from "@/schemas/UserSchema";
 import { Title } from "@/components/Title/Title";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
@@ -10,18 +9,30 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/routes.json";
 
-const DashboardPage = LazyImport("./pages/DashboardPage/DashboardPage");
-const UserDashboardPage = LazyImport(
-    "./pages/DashboardPage/pages/UserDashboardPage"
+const DashboardPage = lazy(() =>
+    import("../pages/DashboardPage/DashboardPage").then((module) => ({
+        default: module.DashboardPage,
+    }))
 );
-const CourseDashboardPage = LazyImport(
-    "./pages/DashboardPage/pages/CourseDashboardPage"
+const UserDashboardPage = lazy(() =>
+    import("../pages/DashboardPage/pages/UserDashboardPage").then((module) => ({
+        default: module.UserDashboardPage,
+    }))
 );
-const LearningTrackDashboardPage = LazyImport(
-    "./pages/DashboardPage/pages/LearningTrackDashboardPage"
+const CourseDashboardPage = lazy(() =>
+    import("../pages/DashboardPage/pages/CourseDashboardPage").then(
+        (module) => ({ default: module.CourseDashboardPage })
+    )
 );
-const MathEquationDashboardPage = LazyImport(
-    "./pages/DashboardPage/pages/MathEquationDashboardPage"
+const LearningTrackDashboardPage = lazy(() =>
+    import("../pages/DashboardPage/pages/LearningTrackDashboardPage").then(
+        (module) => ({ default: module.LearningTrackDashboardPage })
+    )
+);
+const MathEquationDashboardPage = lazy(() =>
+    import("../pages/DashboardPage/pages/MathEquationDashboardPage").then(
+        (module) => ({ default: module.MathEquationDashboardPage })
+    )
 );
 
 export const DASHBOARD_ROUTES = BuildRouter({

@@ -1,13 +1,20 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { RoleEnum } from "@/schemas/UserSchema";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
 
-const ProfilePage = LazyImport("./pages/ApplicationPage/pages/ProfilePage");
-const ApplicationPage = LazyImport("./pages/ApplicationPage/ApplicationPage");
+const ProfilePage = lazy(() =>
+    import("../pages/ApplicationPage/pages/ProfilePage").then((module) => ({
+        default: module.ProfilePage,
+    }))
+);
+const ApplicationPage = lazy(() =>
+    import("../pages/ApplicationPage/ApplicationPage").then((module) => ({
+        default: module.ApplicationPage,
+    }))
+);
 
 export const APPLICATION_ROUTES = BuildRouter({
     base: {

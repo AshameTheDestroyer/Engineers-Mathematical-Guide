@@ -16,7 +16,7 @@ import {
     useImperativeHandle,
 } from "react";
 
-import cross_icon from "@/assets/icons/cross.svg";
+import cross_icon from "@icons/cross.svg";
 
 import "./modal.css";
 

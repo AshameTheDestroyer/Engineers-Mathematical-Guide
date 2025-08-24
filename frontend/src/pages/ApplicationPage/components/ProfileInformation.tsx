@@ -1,4 +1,5 @@
 import { FC, Fragment } from "react";
+import { GenderBadge } from "./GenderBadge";
 import { Icon } from "@/components/Icon/Icon";
 import { useNavigate } from "react-router-dom";
 import { Gender } from "@/schemas/SignupSchema";
@@ -21,10 +22,9 @@ import email_icon from "@icons/email.svg";
 import location_icon from "@icons/location.svg";
 import electricity_icon from "@icons/electricity.svg";
 import progress_arrow_icon from "@icons/progress_arrow.svg";
-import graduation_cap_icon from "@/assets/icons/graduation_cap.svg";
+import graduation_cap_icon from "@icons/graduation_cap.svg";
 
 import locales from "@localization/profile_page.json";
-import { GenderBadge } from "./GenderBadge";
 
 export type ProfileInformationProps = {
     user: DetailedUserDTO;

@@ -1,8 +1,7 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { RoleEnum } from "@/schemas/UserSchema";
 import { Title } from "@/components/Title/Title";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
@@ -11,12 +10,36 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/routes.json";
 
-const WebsitePage = LazyImport("./pages/WebsitePage/WebsitePage");
-const HomePage = LazyImport("./pages/WebsitePage/pages/HomePage");
-const HelpPage = LazyImport("./pages/WebsitePage/pages/HelpPage");
-const AboutPage = LazyImport("./pages/WebsitePage/pages/AboutPage");
-const ContactUsPage = LazyImport("./pages/WebsitePage/pages/ContactUsPage");
-const ReferencesPage = LazyImport("./pages/WebsitePage/pages/ReferencesPage");
+const HomePage = lazy(() =>
+    import("../pages/WebsitePage/pages/HomePage").then((module) => ({
+        default: module.HomePage,
+    }))
+);
+const HelpPage = lazy(() =>
+    import("../pages/WebsitePage/pages/HelpPage").then((module) => ({
+        default: module.HelpPage,
+    }))
+);
+const WebsitePage = lazy(() =>
+    import("../pages/WebsitePage/WebsitePage").then((module) => ({
+        default: module.WebsitePage,
+    }))
+);
+const AboutPage = lazy(() =>
+    import("../pages/WebsitePage/pages/AboutPage").then((module) => ({
+        default: module.AboutPage,
+    }))
+);
+const ContactUsPage = lazy(() =>
+    import("../pages/WebsitePage/pages/ContactUsPage").then((module) => ({
+        default: module.ContactUsPage,
+    }))
+);
+const ReferencesPage = lazy(() =>
+    import("../pages/WebsitePage/pages/ReferencesPage").then((module) => ({
+        default: module.ReferencesPage,
+    }))
+);
 
 export const WEBSITE_ROUTES = BuildRouter({
     base: {

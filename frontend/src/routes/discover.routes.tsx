@@ -1,7 +1,6 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { LazyComponent } from "@/components/Lazy/components/LazyComponent";
@@ -9,26 +8,60 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/routes.json";
 
-const DiscoverPage = LazyImport("./pages/DiscoverPage/DiscoverPage");
-const ModulePage = LazyImport("./pages/DiscoverPage/pages/ModulePage");
-const LessonPage = LazyImport("./pages/DiscoverPage/pages/LessonPage");
-const CoursePage = LazyImport("./pages/DiscoverPage/pages/CoursePage");
-const ModulesPage = LazyImport("./pages/DiscoverPage/pages/ModulesPage");
-const CoursesPage = LazyImport("./pages/DiscoverPage/pages/CoursesPage");
-const LearningTrackPage = LazyImport(
-    "./pages/DiscoverPage/pages/LearningTrackPage"
+const DiscoverPage = lazy(() =>
+    import("../pages/DiscoverPage/DiscoverPage").then((module) => ({
+        default: module.DiscoverPage,
+    }))
 );
-const LearningTrackCoursesPage = LazyImport(
-    "./pages/DiscoverPage/pages/LearningTrackCoursesPage"
+const ModulePage = lazy(() =>
+    import("../pages/DiscoverPage/pages/ModulePage").then((module) => ({
+        default: module.ModulePage,
+    }))
 );
-const LearningTracksPage = LazyImport(
-    "./pages/DiscoverPage/pages/LearningTracksPage"
+const LessonPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/LessonPage").then((module) => ({
+        default: module.LessonPage,
+    }))
 );
-const MathEquationPage = LazyImport(
-    "./pages/DiscoverPage/pages/MathEquationPage"
+const CoursePage = lazy(() =>
+    import("../pages/DiscoverPage/pages/CoursePage").then((module) => ({
+        default: module.CoursePage,
+    }))
 );
-const MathEquationsPage = LazyImport(
-    "./pages/DiscoverPage/pages/MathEquationsPage"
+const ModulesPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/ModulesPage").then((module) => ({
+        default: module.ModulesPage,
+    }))
+);
+const CoursesPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/CoursesPage").then((module) => ({
+        default: module.CoursesPage,
+    }))
+);
+const MathEquationPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/MathEquationPage").then((module) => ({
+        default: module.MathEquationPage,
+    }))
+);
+const MathEquationsPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/MathEquationsPage").then((module) => ({
+        default: module.MathEquationsPage,
+    }))
+);
+const LearningTrackPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/LearningTrackPage").then((module) => ({
+        default: module.LearningTrackPage,
+    }))
+);
+const LearningTracksPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/LearningTracksPage").then((module) => ({
+        default: module.LearningTracksPage,
+    }))
+);
+const LearningTrackCoursesPage = lazy(() =>
+    import("../pages/DiscoverPage/pages/LearningTrackCoursesPage").then(
+        (module) => ({ default: module.LearningTrackCoursesPage })
+    )
 );
 
 export const DISCOVER_ROUTES = BuildRouter({

@@ -1,7 +1,6 @@
-import { FC } from "react";
+import { FC, lazy } from "react";
 import { Route } from "react-router-dom";
 import { Title } from "@/components/Title/Title";
-import { LazyImport } from "@/components/Lazy/Lazy";
 import { BuildRouter } from "@/functions/BuildRouter";
 import { LazyPage } from "@/components/Lazy/components/LazyPage";
 import { EnvironmentVariables } from "@/managers/EnvironmentVariables";
@@ -10,11 +9,31 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 
 import locales from "@localization/routes.json";
 
-const TestPage = LazyImport("./pages/TestPage/TestPage");
-const ColoursPage = LazyImport("./pages/TestPage/pages/ColoursPage");
-const PalettesPage = LazyImport("./pages/TestPage/pages/PalettesPage");
-const TypographyPage = LazyImport("./pages/TestPage/pages/TypographyPage");
-const ComponentsPage = LazyImport("./pages/TestPage/pages/ComponentsPage");
+const TestPage = lazy(() =>
+    import("../pages/TestPage/TestPage").then((module) => ({
+        default: module.TestPage,
+    }))
+);
+const ColoursPage = lazy(() =>
+    import("../pages/TestPage/pages/ColoursPage").then((module) => ({
+        default: module.ColoursPage,
+    }))
+);
+const PalettesPage = lazy(() =>
+    import("../pages/TestPage/pages/PalettesPage").then((module) => ({
+        default: module.PalettesPage,
+    }))
+);
+const TypographyPage = lazy(() =>
+    import("../pages/TestPage/pages/TypographyPage").then((module) => ({
+        default: module.TypographyPage,
+    }))
+);
+const ComponentsPage = lazy(() =>
+    import("../pages/TestPage/pages/ComponentsPage").then((module) => ({
+        default: module.ComponentsPage,
+    }))
+);
 
 export const TEST_ROUTES = BuildRouter({
     base: {

@@ -6,7 +6,7 @@
         "enrollment-count": 89231,
         "rating": 4.3,
         "rating-count": 76245,
-        "image": "src/assets/images/calculus_i.jpg",
+        "image": "images/calculus_i.jpg",
         "modules": [
             "ci-limits",
             "ci-derivatives",
@@ -83,7 +83,7 @@
         "enrollment-count": 67452,
         "rating": 4.2,
         "rating-count": 41239,
-        "image": "src/assets/images/calculus_ii.jpg",
+        "image": "images/calculus_ii.jpg",
         "modules": [
             "cii-advanced-integration",
             "cii-sequences",
@@ -158,7 +158,7 @@
         "enrollment-count": 54301,
         "rating": 3.4,
         "rating-count": 68321,
-        "image": "src/assets/images/linear_algebra.jpg",
+        "image": "images/linear_algebra.jpg",
         "modules": [
             "la-systems-and-solutions",
             "la-transformations-and-matrices",
@@ -235,7 +235,7 @@
         "enrollment-count": 49876,
         "rating": 3.2,
         "rating-count": 38472,
-        "image": "src/assets/images/differential_equations.jpg",
+        "image": "images/differential_equations.jpg",
         "modules": [
             "de-first-order-odes",
             "de-second-order-odes",
@@ -308,7 +308,7 @@
         "enrollment-count": 61234,
         "rating": 2.1,
         "rating-count": 52389,
-        "image": "src/assets/images/probability_theory.jpg",
+        "image": "images/probability_theory.jpg",
         "modules": [
             "pt-basic-probability",
             "pt-random-variables",
@@ -381,7 +381,7 @@
         "enrollment-count": 34567,
         "rating": 2.6,
         "rating-count": 26789,
-        "image": "src/assets/images/abstract_algebra.jpg",
+        "image": "images/abstract_algebra.jpg",
         "modules": ["aa-groups", "aa-rings", "aa-fields", "aa-homomorphisms"],
         "prerequisites": ["linear-algebra"],
         "postrequisites": ["category-theory"],
@@ -449,7 +449,7 @@
         "enrollment-count": 45678,
         "rating": 1.9,
         "rating-count": 40123,
-        "image": "src/assets/images/multivariable_calculus.jpg",
+        "image": "images/multivariable_calculus.jpg",
         "modules": [
             "mc-partial-derivatives",
             "mc-multiple-integrals",
@@ -527,7 +527,7 @@
         "enrollment-count": 23456,
         "rating": 1.1,
         "rating-count": 19876,
-        "image": "src/assets/images/real_analysis.jpg",
+        "image": "images/real_analysis.jpg",
         "modules": [
             "ra-real-numbers",
             "ra-sequences",
@@ -602,7 +602,7 @@
         "enrollment-count": 12098,
         "rating": 0.1,
         "rating-count": 14321,
-        "image": "src/assets/images/complex_analysis.jpg",
+        "image": "images/complex_analysis.jpg",
         "modules": [
             "ca-complex-numbers",
             "ca-analytic-functions",
@@ -674,7 +674,7 @@
         "enrollment-count": 18976,
         "rating": 0.7,
         "rating-count": 35678,
-        "image": "src/assets/images/numerical_methods.jpg",
+        "image": "images/numerical_methods.jpg",
         "modules": [
             "nm-root-finding",
             "nm-interpolation",
@@ -747,7 +747,7 @@
         "enrollment-count": 98765,
         "rating": 4.5,
         "rating-count": 73210,
-        "image": "src/assets/images/discrete_mathematics.jpg",
+        "image": "images/discrete_mathematics.jpg",
         "modules": [
             "dm-logic",
             "dm-set-theory",
@@ -821,7 +821,7 @@
         "enrollment-count": 56789,
         "rating": 4.3,
         "rating-count": 34567,
-        "image": "src/assets/images/mathematical_statistics.jpg",
+        "image": "images/mathematical_statistics.jpg",
         "modules": [
             "ms-estimation",
             "ms-hypothesis-testing",
@@ -893,7 +893,7 @@
         "enrollment-count": 23456,
         "rating": 4,
         "rating-count": 18976,
-        "image": "src/assets/images/topology.jpg",
+        "image": "images/topology.jpg",
         "modules": [
             "t-topological-spaces",
             "t-continuity",
@@ -967,7 +967,7 @@
         "enrollment-count": 45678,
         "rating": 4.1,
         "rating-count": 28901,
-        "image": "src/assets/images/partial_differential_equations.jpg",
+        "image": "images/partial_differential_equations.jpg",
         "modules": [
             "pde-wave-equation",
             "pde-heat-equation",
@@ -1040,7 +1040,7 @@
         "enrollment-count": 54321,
         "rating": 4.2,
         "rating-count": 33456,
-        "image": "src/assets/images/optimization_theory.jpg",
+        "image": "images/optimization_theory.jpg",
         "modules": [
             "ot-linear-programming",
             "ot-convex-optimization",
@@ -1113,7 +1113,7 @@
         "enrollment-count": 34567,
         "rating": 4.1,
         "rating-count": 22345,
-        "image": "src/assets/images/fourier_analysis.jpg",
+        "image": "images/fourier_analysis.jpg",
         "modules": [
             "fa-fourier-series",
             "fa-fourier-transform",
@@ -1185,7 +1185,7 @@
         "enrollment-count": 76543,
         "rating": 4.4,
         "rating-count": 48901,
-        "image": "src/assets/images/graph_theory.jpg",
+        "image": "images/graph_theory.jpg",
         "modules": [
             "gt-graph-basics",
             "gt-trees",
@@ -1259,7 +1259,7 @@
         "enrollment-count": 65432,
         "rating": 4.3,
         "rating-count": 27890,
-        "image": "src/assets/images/game_theory.jpg",
+        "image": "images/game_theory.jpg",
         "modules": [
             "gt-zero-sum-games",
             "gt-nash-equilibrium",
@@ -1332,7 +1332,7 @@
         "enrollment-count": 23456,
         "rating": 4,
         "rating-count": 12345,
-        "image": "src/assets/images/category_theory.jpg",
+        "image": "images/category_theory.jpg",
         "modules": [
             "ct-categories",
             "ct-functors",
@@ -1405,7 +1405,7 @@
         "enrollment-count": 34567,
         "rating": 4.1,
         "rating-count": 21234,
-        "image": "src/assets/images/set_theory.jpg",
+        "image": "images/set_theory.jpg",
         "modules": [
             "st-sets",
             "st-relations",
