@@ -3,6 +3,8 @@ import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Locale } from "@/components/Locale/Locale";
 import locales from "@localization/testimonial_page.json";
 import { Separator } from "@/components/Separator/Separator";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { Button } from "@/components/Button/Button";
 
 export const TestimonialPage: FC = () => {
     return (
@@ -174,7 +176,8 @@ export const TestimonialPage: FC = () => {
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
-                    className="from-primary-normal to-primary-dark rounded-2xl bg-gradient-to-br p-8 text-center text-white shadow-xl"
+                    gap={5}
+                    className="rounded-2xl bg-amber-500 bg-gradient-to-br from-amber-700 p-8 text-center text-white shadow-xl"
                 >
                     <Locale
                         variant="h2"
@@ -182,12 +185,14 @@ export const TestimonialPage: FC = () => {
                     >
                         {locales.cta.title}
                     </Locale>
-                    <a
-                        href="/signup"
-                        className="text-primary-normal mt-6 rounded-full bg-white px-8 py-3 text-lg font-semibold shadow-lg transition hover:bg-gray-100"
+
+                    <Button
+                        className="h-2/3 w-1/4"
+                        link={DISCOVER_ROUTES.base.routes["learning-tracks"]}
+                        variant="primary"
                     >
                         <Locale>{locales.cta.button}</Locale>
-                    </a>
+                    </Button>
                 </Flexbox>
             </Flexbox>
         </Flexbox>

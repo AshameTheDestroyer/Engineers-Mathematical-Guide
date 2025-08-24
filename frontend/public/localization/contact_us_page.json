@@ -1,0 +1,93 @@
+{
+  "header": {
+    "title": {
+      "en": "We’re here to help.",
+      "ar": "نحن هنا لمساعدتك."
+    },
+    "subtitle": {
+      "en": "Got questions, feedback, or partnership ideas? Reach out — we’d love to hear from you.",
+      "ar": "هل لديك أسئلة، ملاحظات، أو أفكار للتعاون؟ تواصل معنا — يسرّنا أن نسمع منك."
+    }
+  },
+  "form": {
+    "name": {
+      "en": "Name",
+      "ar": "الاسم"
+    },
+    "email": {
+      "en": "Email",
+      "ar": "البريد الإلكتروني"
+    },
+    "subject": {
+      "en": "Subject",
+      "ar": "الموضوع"
+    },
+    "subjectOptions": [
+      { "value": "feedback", "en": "Feedback", "ar": "ملاحظات" },
+      { "value": "partnership", "en": "Partnership", "ar": "تعاون" },
+      { "value": "technical", "en": "Technical Issue", "ar": "مشكلة تقنية" },
+      { "value": "general", "en": "General Inquiry", "ar": "استفسار عام" }
+    ],
+    "message": {
+      "en": "Message",
+      "ar": "الرسالة"
+    },
+    "submit": {
+      "en": "Send Message",
+      "ar": "أرسل الرسالة"
+    }
+  },
+  "contactInfo": {
+    "title": {
+      "en": "Direct Contact",
+      "ar": "التواصل المباشر"
+    },
+    "emailLabel": {
+      "en": "Email",
+      "ar": "البريد الإلكتروني"
+    },
+    "email": "support@mathware.app",
+    "hours": {
+      "en": "We respond within 24–48 hours.",
+      "ar": "نرد خلال 24–48 ساعة."
+    }
+  },
+  "social": {
+    "title": {
+      "en": "Follow Us",
+      "ar": "تابعنا"
+    },
+    "links": [
+      { "platform": "LinkedIn", "url": "https://linkedin.com/company/mathware", "icon": "linkedin" },
+      { "platform": "YouTube", "url": "https://youtube.com/@mathware", "icon": "youtube" },
+      { "platform": "Instagram", "url": "https://instagram.com/mathware.app", "icon": "instagram" }
+    ]
+  },
+  "address": {
+    "title": {
+      "en": "Our Base",
+      "ar": "مقرّنا"
+    },
+    "line": {
+      "en": "Cairo, Egypt",
+      "ar": "القاهرة، مصر"
+    }
+  },
+  "faq": {
+    "title": {
+      "en": "Before contacting us, check out our Help Center:",
+      "ar": "قبل التواصل معنا، راجع مركز المساعدة:"
+    },
+    "links": [
+      { "en": "Account Help", "ar": "مساعدة الحساب", "url": "/help/account" },
+      { "en": "Billing Issues", "ar": "مشاكل الدفع", "url": "/help/billing" },
+      { "en": "Access Problems", "ar": "مشاكل الوصول", "url": "/help/access" }
+    ]
+  },
+  "cta": {
+    "text": {
+      "en": "Your feedback helps us improve. Send us a message!",
+      "ar": "ملاحظاتك تساعدنا على التطور. أرسل لنا رسالة!"
+    }
+  }
+}

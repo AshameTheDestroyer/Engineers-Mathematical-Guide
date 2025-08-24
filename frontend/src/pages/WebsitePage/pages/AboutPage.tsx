@@ -7,6 +7,7 @@ import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RichText } from "@/components/RichText/RichText";
 import { Button } from "@/components/Button/Button";
+import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 
 export const AboutPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
@@ -142,7 +143,13 @@ export const AboutPage: FC = () => {
                 <Locale variant="h2" className="text-xl">
                     {locales.readyToGetStarted}
                 </Locale>
-                <Button className="h-2/3 w-1/4">Explore Courses</Button>
+                <Button
+                    className="h-2/3 w-1/4"
+                    link={DISCOVER_ROUTES.base.absolute}
+                    variant="primary"
+                >
+                    <Locale>{locales.buttons.explore}</Locale>
+                </Button>
             </Flexbox>
 
             {/* -------------------------------------------------- */}
