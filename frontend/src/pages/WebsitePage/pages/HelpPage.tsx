@@ -5,6 +5,7 @@ import { Typography } from "@/components/Typography/Typography";
 import locales from "@localization/help_page.json";
 import { Button } from "@/components/Button/Button";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
+import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 
 export const HelpPage: FC = () => {
     return (
@@ -143,14 +144,14 @@ export const HelpPage: FC = () => {
                     >
                         {locales.feedback.question}
                     </Locale>
-                    <Flexbox direction="row" gap="4">
-                        <Button>
+                    <ButtonBox className="w-32">
+                        <Button className="flex-1">
                             <Locale>{locales.feedback.yes}</Locale>
                         </Button>
-                        <Button>
+                        <Button className="flex-1">
                             <Locale>{locales.feedback.no}</Locale>
                         </Button>
-                    </Flexbox>
+                    </ButtonBox>
                 </Flexbox>
 
                 <Flexbox

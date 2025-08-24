@@ -18,7 +18,7 @@
                 "en": "This site broke down Laplace transforms in a way my professor never did. I aced my controls exam!",
                 "ar": "شرح هذا الموقع تحويلات لابلاس بطريقة لم يفعلها أستاذي قط. نجحت في امتحان التحكم الخاص بي بنجاح باهر!"
             },
-            "image": "/testimonials/layla.jpg",
+            "image": "/src/assets/images/person2.jpg",
             "linkedin": "https://linkedin.com/in/laylaahmed"
         },
         {
@@ -35,7 +35,7 @@
                 "en": "I recommend Mathware to all my students. It turns abstract concepts into real engineering insight.",
                 "ar": "أنصح جميع طلابي باستخدام Mathware. يحوّل المفاهيم المجردة إلى فهم هندسي حقيقي."
             },
-            "image": "/testimonials/omar.jpg",
+            "image": "/src/assets/images/person1.jpg",
             "linkedin": "https://linkedin.com/in/omarfayed"
         },
         {
@@ -52,7 +52,7 @@
                 "en": "From struggling with differential equations to building AI models — Mathware gave me the foundation.",
                 "ar": "من معاناتي مع المعادلات التفاضلية إلى بناء نماذج الذكاء الاصطناعي — منحني Mathware الأساس."
             },
-            "image": "/frontend/src/assets/images/person1.jpg",
+            "image": "/src/assets/images/person3.jpg",
             "linkedin": null        }
     ],
     "caseStudies": {
@@ -71,12 +71,12 @@
                     "en": "Passed Her FE Exam on the First Try",
                     "ar": "نجحت في امتحان FE من أول محاولة"
                 },
-                "image": "/case-studies/maria.jpg",
+                "image": "/src/assets/images/person4.jpg",
                 "summary": {
                     "en": "Maria was overwhelmed by the breadth of math on the Fundamentals of Engineering exam. Using Mathware’s targeted review courses and timed practice exams, she built confidence and passed with a top score — all in just 8 weeks.",
                     "ar": "كانت ماريا تشعر بالإرهاق من تنوع الرياضيات في امتحان الأساسيات الهندسية. باستخدام مسارات المراجعة المستهدفة والامتحانات التجريبية المُوَقَّتة من Mathware، بنت ثقتها ونجحت بدرجة عالية — وكل ذلك خلال 8 أسابيع فقط."
                 },
-                "link": "/frontend/src/assets/images/person5.jpg"
+                "link": "/src/assets/images/person5.jpg"
             },
             {
                 "id": 2,
@@ -88,12 +88,12 @@
                     "en": "From Struggling to Confident in Dynamics",
                     "ar": "من التردد إلى الثقة في مادة الدينا ميك"
                 },
-                "image": "/case-studies/john.jpg",
+                "image": "/src/assets/images/person5.jpg",
                 "summary": {
                     "en": "John struggled with dynamics and failed his midterm. After discovering Mathware’s step-by-step problem breakdowns and visual simulators, he mastered the core concepts and aced his final exam.",
                     "ar": "عانى جون من مادة الدينا ميك ورسب في الامتحان الفصلي. بعد اكتشافه لشرح المسائل خطوة بخطوة والمحاكّيات البصرية في Mathware، أتقن المفاهيم الأساسية ونجح بنجاح باهر في الامتحان النهائي."
                 },
-                "link": "/frontend/src/assets/images/person4.jpg"
+                "link": "/src/assets/images/person4.jpg"
             }
         ]
     },

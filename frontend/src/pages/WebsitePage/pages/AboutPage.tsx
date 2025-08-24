@@ -145,7 +145,7 @@ export const AboutPage: FC = () => {
                 </Locale>
                 <Button
                     className="h-2/3 w-1/4"
-                    link={DISCOVER_ROUTES.base.absolute}
+                    link={DISCOVER_ROUTES.base.routes.courses.absolute}
                     variant="primary"
                 >
                     <Locale>{locales.buttons.explore}</Locale>
