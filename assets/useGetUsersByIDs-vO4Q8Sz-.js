@@ -1,1 +1,0 @@
-import{o as a,G as _,y as c}from"./index-BaPsShaQ.js";const l="get-users-by-ids",f=(u,r,m)=>a({schema:_,queryFn:()=>u.map(e=>c.find(s=>s.username==e)).filter(e=>e!=null),parseFn:(e,s)=>(e==null?void 0:e.map(y=>s.parse(y)))??[],...r,queryKey:[l,...u,...(r==null?void 0:r.queryKey)??[]]},m);export{f as u};
