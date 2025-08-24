@@ -1,0 +1,1 @@
+import{a as r,b as u}from"./LessonSchema-sY3GGGV9.js";import{o as t}from"./index-C0wR2zzs.js";const E="get-lesson-by-id",b=(e,y,l,a,S)=>t({schema:u,enabled:e!=null&&y!=null&&l!=null,queryFn:()=>(e!=null?r[e]??[]:[]).find(m=>m.id==e.split("-").map(n=>n[0]).join("")+"-"+y+"-"+l),...a,queryKey:[E,e,y,l,...(a==null?void 0:a.queryKey)??[]]},S);export{b as u};
