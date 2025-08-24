@@ -111,7 +111,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                 //         {activeWidget}
                 //     </div>
                 // </div>
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/25">
                     <div className="relative max-h-screen max-w-4xl overflow-hidden rounded-xl bg-white p-1 shadow-2xl">
                         {activeWidget}
                     </div>
