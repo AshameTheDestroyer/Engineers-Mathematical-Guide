@@ -1,0 +1,1 @@
+import{j as m,t as d}from"./index-QL9QGgjq.js";const s=({id:o,ref:t,className:a,orientation:e,thickness:r="normal"})=>m.jsx("hr",{id:o,ref:t,className:d("border-foreground-dark block h-auto w-auto rounded-full",e=="horizontal"?"mx-0 h-0":"my-0 w-0",r=="thick"?"border-3 m-2":r=="thin"?"border-1 m-0.5":"m-1 border-2",a)});export{s as S};
