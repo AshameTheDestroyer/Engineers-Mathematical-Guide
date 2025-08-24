@@ -1,0 +1,1 @@
+function r(t,s){return function(l){const n=t==null?void 0:t.trimAll();if(n==null||n=="")return!0;const u=n.toLowerCase().split(" "),i=Object.values(s);return u.some(m=>i.some(o=>o==null?void 0:o(l,m)))}}export{r as C};

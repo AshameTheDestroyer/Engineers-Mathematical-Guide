@@ -1,1 +1,0 @@
-type Primitive = boolean | string | number | bigint | symbol | null | undefined;

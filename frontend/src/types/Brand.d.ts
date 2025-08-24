@@ -1,1 +1,0 @@
-type Brand<T, B extends string | symbol> = T & { __brand__: B; };

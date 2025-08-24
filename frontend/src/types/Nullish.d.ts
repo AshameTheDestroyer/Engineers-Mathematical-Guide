@@ -1,1 +1,0 @@
-type Nullish = null | undefined;

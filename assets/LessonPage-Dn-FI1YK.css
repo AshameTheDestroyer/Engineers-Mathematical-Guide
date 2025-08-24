@@ -1,0 +1,1 @@
+.hourglass-icon{animation:hourglass-rotation 2s linear forwards infinite}@keyframes hourglass-rotation{0%{transform:rotate(0)}25%{transform:rotate(180deg)}50%{transform:rotate(180deg)}75%{transform:rotate(360deg)}to{transform:rotate(360deg)}}
