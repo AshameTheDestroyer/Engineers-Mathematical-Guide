@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { LocalString } from "src/utils/local-string";
 import { Column, Entity, JoinColumn, ObjectId, ObjectIdColumn, OneToOne } from "typeorm";
 
 @Entity('course-ratings')
@@ -20,5 +21,5 @@ export class CourseRating {
   
   @Column()
   @ApiProperty()
-  feedback: string
+  feedback: LocalString
 }

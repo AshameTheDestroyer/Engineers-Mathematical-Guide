@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { LocalString } from 'src/utils/local-string';
 import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 
 @Entity('courses')
@@ -8,11 +9,11 @@ export class Course {
 
   @Column()
   @ApiProperty()
-  title: string
+  title: LocalString
   
   @Column()
   @ApiProperty()
-  description: string
+  description: LocalString
 
   @Column()
   @ApiProperty()
@@ -38,14 +39,6 @@ export class Course {
   @ApiProperty()
   averageRate!: number
   
-  @Column({default:0})
-  @ApiProperty()
-  examDuration: number
-  
-  @Column({default:0})
-  @ApiProperty()
-  examXP: number
-  
   @Column({default:[]})
   @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
   prerequisites: string[]
@@ -57,8 +50,4 @@ export class Course {
   @Column({default:[]})
   @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
   chapters: string[]
-  
-  @Column({default:[]})
-  @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
-  examQuestions: string[]
 }

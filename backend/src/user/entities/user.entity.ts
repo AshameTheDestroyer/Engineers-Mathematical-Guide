@@ -1,6 +1,8 @@
 import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 import * as bcryptjs from 'bcryptjs';
 import { ApiProperty } from '@nestjs/swagger';
+import { LocalString } from 'src/utils/local-string';
+import { UserGender } from 'src/utils/types';
 
 @Entity('users')
 export class User {
@@ -25,15 +27,15 @@ export class User {
   
   @Column()
   @ApiProperty()
-  name: string;
+  name: LocalString;
   
   @Column()
   @ApiProperty()
-  surname: string;
+  surname: LocalString;
 
   @Column()
   @ApiProperty()
-  bio: string;
+  bio: LocalString;
   
   @Column()
   @ApiProperty()
@@ -69,6 +71,17 @@ export class User {
   @Column({default: Date.now()})
   @ApiProperty()
   lastSeen!: Date;
+
+  @ApiProperty({ 
+    enum: UserGender, 
+    example: UserGender.MALE, 
+  })
+  @Column({
+    type: 'enum',
+    enum: UserGender,
+    nullable: false
+  })
+  type: UserGender
   
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcryptjs.hash(password, this.salt);

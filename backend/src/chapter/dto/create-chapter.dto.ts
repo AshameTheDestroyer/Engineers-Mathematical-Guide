@@ -1,16 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsArray, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsArray, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator";
+import { LocalString } from "src/utils/local-string";
 
 export class CreateChapterDto {
-    @IsString()
-    @IsNotEmpty()
-    @ApiProperty()
-    title: string
-
-    @IsString()
-    @IsNotEmpty()
-    @ApiProperty()
-    description: string
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    title: LocalString
+    
+    @ValidateNested()
+    @Type(() => LocalString)
+    @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+    description: LocalString
     
     @IsNumber()
     @IsNotEmpty()
@@ -27,7 +29,7 @@ export class CreateChapterDto {
     @ApiProperty()
     sortNumber: number
     
-    @IsNumber()
+    @IsString()
     @IsNotEmpty()
     @ApiProperty()
     courseId: string

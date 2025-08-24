@@ -12,7 +12,6 @@ import { CourseModule } from './course/course.module';
 import { LessonModule } from './lesson/lesson.module';
 import { QuestionModule } from './question/question.module';
 import { LastMonthActivitiesModule } from './last-month-activities/last-month-activities.module';
-import { AchievementModule } from './achievement/achievement.module';
 import { FollowersModule } from './followers/followers.module';
 import { CourseRatingModule } from './course-rating/course-rating.module';
 import { TagsModule } from './tags/tags.module';
@@ -37,7 +36,6 @@ import { MathEquationModule } from './math-equation/math-equation.module';
     LessonModule,
     QuestionModule,
     LastMonthActivitiesModule,
-    AchievementModule,
     FollowersModule,
     CourseRatingModule,
     TagsModule,

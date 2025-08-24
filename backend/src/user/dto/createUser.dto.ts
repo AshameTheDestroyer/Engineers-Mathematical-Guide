@@ -1,4 +1,8 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator';
+import { LocalString } from 'src/utils/local-string';
+import { UserGender } from 'src/utils/types';
 
 export class CreateUserDTO {
   @IsString()
@@ -17,13 +21,15 @@ export class CreateUserDTO {
   @IsNotEmpty()
   phoneNumber: string;
 
-  @IsString()
-  @IsNotEmpty()
-  name: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  name: LocalString;
 
-  @IsString()
-  @IsNotEmpty()
-  surname: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  surname: LocalString;
 
   @IsString()
   @IsNotEmpty()
@@ -37,9 +43,18 @@ export class CreateUserDTO {
   @IsOptional()
   coverImage: string;
 
-  @IsString()
-  @IsOptional()
-  bio: string;
+  @ValidateNested()
+  @Type(() => LocalString)
+  @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
+  bio: LocalString;
+
+  @ApiProperty({ 
+      enum: UserGender, 
+      example: UserGender.MALE
+  })
+  @IsEnum(UserGender, { message: 'Invalid UserGender male OR female' })
+  @IsNotEmpty({ message: 'UserGender is required' })
+  type: UserGender
 
   @IsOptional()
   salt?: string;

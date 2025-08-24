@@ -60,8 +60,8 @@ export class AuthController {
     coverImage?: Express.Multer.File[] 
   },
   ): Promise<{ accessToken: string }> {
-    const profileImage = files.profileImage?.[0].filename || "";
-    const coverImage = files.coverImage?.[0].filename || "";
+    const profileImage = files?.profileImage?.[0].filename || "";
+    const coverImage = files?.coverImage?.[0].filename || "";
     return await this.authService.signUp({...signUpDTO,profileImage,coverImage});
   }
   

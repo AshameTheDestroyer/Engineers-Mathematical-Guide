@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { ObjectId } from "mongodb";
+import { LocalString } from "src/utils/local-string";
 import { Column, Entity, ObjectIdColumn } from "typeorm";
 
 @Entity('math-equations')
@@ -17,11 +18,11 @@ export class MathEquation {
     
     @Column()
     @ApiProperty()
-    description: string
+    description: LocalString
     
     @Column()
     @ApiProperty()
-    discoverer: string
+    discoverer: LocalString
     
     @Column()
     @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
