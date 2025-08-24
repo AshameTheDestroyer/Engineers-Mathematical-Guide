@@ -1,0 +1,1 @@
+import{C as y}from"./CourseSchema-D8G-WHV5.js";import{o as _}from"./index-BRPsueAE.js";import{c as a}from"./courses.dummy-zCi7JDTP.js";const f="get-courses-by-ids",h=(m,r,u)=>_({schema:y,queryFn:()=>m.map(e=>a.find(s=>s.id==e)).filter(e=>e!=null),parseFn:(e,s)=>(e==null?void 0:e.map(c=>s.parse(c)))??[],...r,queryKey:[f,...m,...(r==null?void 0:r.queryKey)??[]]},u);export{h as u};
