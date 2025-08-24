@@ -1,0 +1,1 @@
+import{j as l,t}from"./index-zHgfL_3a.js";const a=({id:r,children:s,className:o,direction:e="row"})=>l.jsx("div",{id:r,className:t("flex flex-wrap place-items-stretch gap-4",e=="column"?"flex-col":e=="reverse-column"?"flex-col-reverse":e=="reverse-row"?"flex-row-reverse":"flex-row",o),children:s});export{a as B};
