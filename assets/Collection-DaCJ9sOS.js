@@ -1,0 +1,1 @@
+import{j as e,F as a,d as c,t as i}from"./index-C1_kRMwr.js";const m=({id:l,ref:n,title:x,children:r,className:t,typography:s})=>e.jsxs(a,{id:l,ref:n,className:t,gap:"8",direction:"column",children:[e.jsx(c,{variant:"h1",...s,className:i("text-xl font-bold",s==null?void 0:s.className),children:x}),e.jsx(a,{wrap:"wrap",gap:"8",children:r})]});export{m as C};
