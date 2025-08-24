@@ -1,0 +1,158 @@
+{
+    "search": {
+        "placeholder": {
+            "en": "How can we help you?",
+            "ar": "كيف يمكننا مساعدتك؟"
+        }
+    },
+    "categories": {
+        "gettingStarted": {
+            "title": {
+                "en": "Getting Started",
+                "ar": "البدء"
+            },
+            "items": [
+                {
+                    "en": "How to create an account",
+                    "ar": "كيفية إنشاء حساب"
+                },
+                {
+                    "en": "Navigating the site",
+                    "ar": "التنقل في الموقع"
+                },
+                {
+                    "en": "Finding topics by engineering field (e.g., Civil, Electrical)",
+                    "ar": "إيجاد المواضيع حسب التخصص الهندسي (مثل: مدني، كهربائي)"
+                }
+            ]
+        },
+        "accountAccess": {
+            "title": {
+                "en": "Account & Access",
+                "ar": "الحساب والوصول"
+            },
+            "items": [
+                {
+                    "en": "Reset password",
+                    "ar": "إعادة تعيين كلمة المرور"
+                },
+                {
+                    "en": "Subscription plans & billing",
+                    "ar": "خطط الاشتراك والفواتير"
+                },
+                {
+                    "en": "Cancel or upgrade",
+                    "ar": "إلغاء أو ترقية الاشتراك"
+                }
+            ]
+        },
+        "learningResources": {
+            "title": {
+                "en": "Learning Resources",
+                "ar": "مصادري التعلّم"
+            },
+            "items": [
+                {
+                    "en": "How to use practice problems",
+                    "ar": "كيفية استخدام تمارين التدريب"
+                },
+                {
+                    "en": "Downloading PDFs or worksheets",
+                    "ar": "تحميل ملفات PDF أو أوراق العمل"
+                },
+                {
+                    "en": "Using interactive tools",
+                    "ar": "استخدام الأدوات التفاعلية"
+                }
+            ]
+        },
+        "technicalIssues": {
+            "title": {
+                "en": "Technical Issues",
+                "ar": "المشاكل التقنية"
+            },
+            "items": [
+                {
+                    "en": "Videos not loading?",
+                    "ar": "مقاطع الفيديو لا تُحمّل؟"
+                },
+                {
+                    "en": "Mobile vs. desktop experience",
+                    "ar": "تجربة الجوال مقابل الحاسوب"
+                },
+                {
+                    "en": "Browser compatibility",
+                    "ar": "توافق المتصفح"
+                }
+            ]
+        },
+        "forEducators": {
+            "title": {
+                "en": "For Educators",
+                "ar": "للمعلّمين"
+            },
+            "items": [
+                {
+                    "en": "Using content in the classroom",
+                    "ar": "استخدام المحتوى في الصف"
+                },
+                {
+                    "en": "Requesting instructor access",
+                    "ar": "طلب صلاحيات المُدرّس"
+                }
+            ]
+        }
+    },
+    "popularArticles": {
+        "title": {
+            "en": "Popular Articles",
+            "ar": "مقالات شهيرة"
+        },
+        "articles": [
+            {
+                "en": "How to Master Laplace Transforms for Control Systems",
+                "ar": "كيف تتقن تحويلات لابلاس لأنظمة التحكم"
+            },
+            {
+                "en": "5 Tips for Solving Differential Equations Faster",
+                "ar": "5 نصائح لحل المعادلات التفاضلية بسرعة أكبر"
+            }
+        ]
+    },
+    "support": {
+        "chat": {
+            "text": {
+                "en": "Still stuck? [Chat with support]",
+                "ar": "ما زلت عالقًا؟ [دردش مع الدعم]"
+            }
+        }
+    },
+    "feedback": {
+        "question": {
+            "en": "Was this page helpful?",
+            "ar": "هل كانت هذه الصفحة مفيدة؟"
+        },
+        "yes": {
+            "en": "Yes",
+            "ar": "نعم"
+        },
+        "no": {
+            "en": "No",
+            "ar": "لا"
+        }
+    },
+    "cta": {
+        "text": {
+            "en": "Can’t find what you need?",
+            "ar": "لا يمكنك العثور على ما تحتاجه؟"
+        },
+        "link": {
+            "en": "Contact Us",
+            "ar": "اتصل بنا"
+        }
+    },
+    "readParagraph": {
+        "en": "Read paragraph →",
+        "ar": "اقرأ المقال →"
+    }
+}
