@@ -16,7 +16,7 @@ export const AboutPage: FC = () => {
     return (
         <Flexbox className="grow" variant="main" direction="column" gap="25">
             <Flexbox direction="column" gap={10} className="min-[80dvh]">
-                <Locale variant="h1" className="text-2xl">
+                <Locale variant="h1" className="text-3xl">
                     {locales.title}
                 </Locale>
                 <div className="relative">
@@ -96,12 +96,12 @@ export const AboutPage: FC = () => {
                 ))}
             </Flexbox> */}
 
-            <Flexbox gap={5} alignItems="center">
+            <Flexbox gap={5} alignItems="center" direction="column">
                 <Locale variant="h2" className="text-xl">
                     {locales.readyToGetStarted}
                 </Locale>
                 <Button
-                    className="h-2/3 w-1/4"
+                    className="h-18 w-1/2 text-xl"
                     link={DISCOVER_ROUTES.base.routes.courses.absolute}
                     variant="primary"
                 >

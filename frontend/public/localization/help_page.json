@@ -160,5 +160,83 @@
     "readParagraph": {
         "en": "Read paragraph →",
         "ar": "اقرأ المقال →"
+    },
+    "paragraphs": {
+        "gettingStarted": {
+            "content1": {
+                "en": "Creating an account is simple. Click 'Sign Up' at the top right, enter your email and password, then confirm your registration via the email we send you.",
+                "ar": "إنشاء حساب بسيط. انقر على 'تسجيل' في الأعلى يمينًا، وأدخل بريدك الإلكتروني وكلمة المرور، ثم أكد التسجيل عبر البريد الذي سنرسله إليك."
+            },
+            "content2": {
+                "en": "Use the main menu or search bar to navigate. Key sections like Learning Resources and Account Settings are available in the top navigation bar.",
+                "ar": "استخدم القائمة الرئيسية أو شريط البحث للتنقل. توجد أقسام مهمة مثل مصادر التعلّم وإعدادات الحساب في شريط التنقل العلوي."
+            },
+            "content3": {
+                "en": "Browse by engineering discipline using the 'Subjects' dropdown. Select Civil, Electrical, Mechanical, or others to filter content relevant to your field.",
+                "ar": "تصفح حسب التخصص الهندسي باستخدام قائمة 'المواضيع'. اختر مدني، كهربائي، ميكانيكي، أو غيرها لتصفية المحتوى المناسب لتخصصك."
+            }
+        },
+        "accountAccess": {
+            "content1": {
+                "en": "Go to the login page and click 'Forgot Password'. Enter your email to receive a secure link to reset your password instantly.",
+                "ar": "اذهب إلى صفحة تسجيل الدخول وانقر على 'نسيت كلمة المرور'. أدخل بريدك الإلكتروني لتلقي رابطًا آمنًا لإعادة تعيين كلمة المرور فورًا."
+            },
+            "content2": {
+                "en": "We offer monthly and yearly subscription plans. Billing is handled securely through Stripe or PayPal, and you can view invoices in your account dashboard.",
+                "ar": "نقدّم خطط اشتراك شهرية وسنوية. يتم التعامل مع الفوترة بشكل آمن عبر Stripe أو PayPal، ويمكنك عرض الفواتير من لوحة تحكم حسابك."
+            },
+            "content3": {
+                "en": "You can cancel or upgrade your subscription anytime. Go to 'Billing' in your settings to change your plan or cancel with no hidden fees.",
+                "ar": "يمكنك إلغاء أو ترقية اشتراكك في أي وقت. اذهب إلى 'الفوترة' في إعداداتك لتغيير خطتك أو الإلغاء دون رسوم خفية."
+            }
+        },
+        "learningResources": {
+            "content1": {
+                "en": "Practice problems are located under each topic. Try them to test your understanding. Instant feedback and step-by-step solutions help you learn from mistakes.",
+                "ar": "توجد تمارين التدريب أسفل كل موضوع. جرّبها لاختبار فهمك. توفر لك التغذية الراجعة الفورية والحلول خطوة بخطوة المساعدة في التعلم من الأخطاء."
+            },
+            "content2": {
+                "en": "Look for the download icon next to worksheets or summaries. Click it to save PDFs to your device for offline study or printing.",
+                "ar": "ابحث عن أيقونة التنزيل بجانب أوراق العمل أو الملخصات. انقر عليها لحفظ ملفات PDF على جهازك للدراسة دون اتصال أو الطباعة."
+            },
+            "content3": {
+                "en": "Interactive tools like circuit simulators or 3D stress analyzers are embedded in relevant lessons. Click to launch, adjust parameters, and see real-time results.",
+                "ar": "تم دمج أدوات تفاعلية مثل محاكيات الدوائر أو مُحلّلات الإجهاد ثلاثية الأبعاد في الدروس ذات الصلة. انقر للتشغيل، عدّل المعاملات، وشاهد النتائج فورًا."
+            }
+        },
+        "technicalIssues": {
+            "content1": {
+                "en": "If videos aren’t loading, check your internet connection. Try refreshing the page, clearing your browser cache, or switching to a supported browser like Chrome or Firefox.",
+                "ar": "إذا لم تُحمّل مقاطع الفيديو، تحقق من اتصال الإنترنت لديك. جرّب إعادة تحميل الصفحة، مسح ذاكرة التخزين المؤقت للمتصفح، أو التبديل إلى متصفح مدعوم مثل Chrome أو Firefox."
+            },
+            "content2": {
+                "en": "Our platform works on both mobile and desktop. Some interactive tools perform better on larger screens. For best experience, use a tablet or computer.",
+                "ar": "يعمل منصتنا على الجوال والحاسوب. تعمل بعض الأدوات التفاعلية بشكل أفضل على الشاشات الكبيرة. لتجربة مثالية، استخدم جهاز لوحي أو حاسوبًا."
+            },
+            "content3": {
+                "en": "We support Chrome, Firefox, Safari, and Edge (latest versions). Older browsers may cause display or functionality issues. Update your browser for full compatibility.",
+                "ar": "ندعم Chrome وFirefox وSafari وEdge (الإصدارات الحديثة). قد تسبب المتصفحات القديمة مشاكل في العرض أو الأداء. حدّث متصفحك للحصول على توافق تام."
+            }
+        },
+        "forEducators": {
+            "content1": {
+                "en": "All content is free to use in classrooms. You can project lessons, assign practice problems, and download worksheets for your students.",
+                "ar": "جميع المحتويات مجانية للاستخدام في الصفوف الدراسية. يمكنك عرض الدروس، تعيين تمارين، وتحميل أوراق عمل لتلاميذك."
+            },
+            "content2": {
+                "en": "To get instructor access, contact us with your school email or accreditation details. We’ll verify and grant access to additional teaching resources.",
+                "ar": "للحصول على صلاحيات المُدرّس، اتصل بنا باستخدام بريدك المدرسي أو وثائق الاعتماد. سنقوم بالتحقق ومنحك وصولاً إلى موارد تعليمية إضافية."
+            }
+        },
+        "popularArticles": {
+            "content1": {
+                "en": "Laplace Transforms simplify solving linear differential equations in control systems. Learn how to apply them using step functions, s-domain analysis, and inverse transforms.",
+                "ar": "تبسّط تحويلات لابلاس حل المعادلات التفاضلية الخطية في أنظمة التحكم. تعلّم كيفية تطبيقها باستخدام دوال الدرجة، والتحليل في مجال s، والتحويلات العكسية."
+            },
+            "content2": {
+                "en": "Master differential equations faster by identifying the type first, using standard forms, practicing initial conditions, leveraging symmetry, and checking solutions numerically.",
+                "ar": "أتقن حل المعادلات التفاضلية بسرعة أكبر من خلال تمييز النوع أولًا، واستخدام الأشكال القياسية، وممارسة الشروط الابتدائية، واستغلال التماثل، والتحقق من الحلول عدديًا."
+            }
+        }
     }
 }

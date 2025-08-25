@@ -6,6 +6,7 @@ import locales from "@localization/contact_us_page.json";
 import { Button } from "@/components/Button/Button";
 import { Input } from "@/components/Input/Input";
 import { Select } from "@/components/Select/Select";
+import { Image } from "@/components/Image/Image";
 
 export const ContactUsPage: FC = () => {
     return (
@@ -37,7 +38,7 @@ export const ContactUsPage: FC = () => {
                                 name="name"
                                 label={<Locale>{locales.form.name}</Locale>}
                                 type="text"
-                                className="border-foreground-light bg-foreground-light"
+                                className="border-foreground-light bg-background-normal"
                                 placeholder="Ahmed Mohamed"
                             />
                         </Flexbox>
@@ -49,7 +50,7 @@ export const ContactUsPage: FC = () => {
                             <Input
                                 name="email"
                                 type="email"
-                                className="bg-foreground-light border-foreground-light w-full rounded-lg border px-4 py-2"
+                                className="bg-background-normal border-foreground-light w-full rounded-lg border px-4 py-2"
                                 placeholder="ahmed@example.com"
                             />
                         </Flexbox>
@@ -90,14 +91,10 @@ export const ContactUsPage: FC = () => {
                             </label>
                             <textarea
                                 rows={5}
-                                className="bg-foreground-light border-foreground-light w-full rounded-lg border px-4 py-2"
+                                className="bg-background-light border-foreground-light w-full rounded-lg border px-4 py-2"
                                 placeholder="اكتب رسالتك هنا..."
                             ></textarea>
                         </Flexbox>
-
-                        <div className="rounded-lg border border-gray-200 bg-gray-50 p-3 text-center text-sm text-gray-500 dark:border-gray-700 dark:bg-gray-900">
-                            This site is protected by reCAPTCHA.
-                        </div>
 
                         <Button type="submit">
                             <Locale>{locales.form.submit}</Locale>
@@ -105,7 +102,11 @@ export const ContactUsPage: FC = () => {
                     </form>
                 </Flexbox>
 
-                <Flexbox direction="column" gap="6" className="min-w-64 flex-1">
+                <Flexbox
+                    direction="column"
+                    gap="6"
+                    className="min-w-100 flex-1"
+                >
                     <Flexbox direction="column" gap="3">
                         <Locale variant="h3" className="text-xl font-semibold">
                             {locales.contactInfo.title}
@@ -113,7 +114,7 @@ export const ContactUsPage: FC = () => {
                         <div>
                             <Typography
                                 variant="p"
-                                className="font-medium text-gray-700 dark:text-gray-300"
+                                className="text-foreground-normal font-medium"
                             >
                                 <Locale>
                                     {locales.contactInfo.emailLabel}
@@ -129,7 +130,7 @@ export const ContactUsPage: FC = () => {
                         </div>
                         <Typography
                             variant="p"
-                            className="text-sm text-gray-500 dark:text-gray-400"
+                            className="text-foreground-normal text-sm"
                         >
                             <Locale>{locales.contactInfo.hours}</Locale>
                         </Typography>
@@ -141,18 +142,7 @@ export const ContactUsPage: FC = () => {
                         </Locale>
                         <Flexbox direction="row" gap="4">
                             {locales.social.links.map((link) => (
-                                <a
-                                    key={link.platform}
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-primary-normal text-2xl transition"
-                                    aria-label={link.platform}
-                                >
-                                    <span className="text-gray-600 dark:text-gray-400">
-                                        🔗
-                                    </span>
-                                </a>
+                                <div>linkedin-icon</div>
                             ))}
                         </Flexbox>
                     </Flexbox>
@@ -163,16 +153,16 @@ export const ContactUsPage: FC = () => {
                         </Locale>
                         <Typography
                             variant="p"
-                            className="text-gray-700 dark:text-gray-300"
+                            className="text-foreground-dark"
                         >
                             <Locale>{locales.address.line}</Locale>
                         </Typography>
                     </Flexbox>
 
-                    <Flexbox direction="column" gap="2">
+                    {/* <Flexbox direction="column" gap="2">
                         <Locale
                             variant="p"
-                            className="font-medium text-gray-700 dark:text-gray-300"
+                            className="text-foreground-normal font-medium"
                         >
                             {locales.faq.title}
                         </Locale>
@@ -184,24 +174,30 @@ export const ContactUsPage: FC = () => {
                                         className="text-primary-normal text-sm hover:underline"
                                     >
                                         <Locale>{link}</Locale>
-                                    </a>
+                                    </a>    
                                 </li>
                             ))}
                         </ul>
-                    </Flexbox>
+                    </Flexbox> */}
                 </Flexbox>
             </Flexbox>
 
             <Flexbox
                 direction="column"
-                className="mt-10 rounded-2xl bg-gray-100 p-8 text-center dark:bg-gray-800"
+                className="bg-background-normal mt-10 rounded-2xl p-8 text-center"
             >
                 <Locale variant="h2" className="text-xl font-bold md:text-2xl">
                     {locales.cta.text}
                 </Locale>
             </Flexbox>
 
-            <Flexbox direction="column" gap="6" className="px-4 py-8 md:px-0">
+            <Flexbox
+                direction="column"
+                gap="6"
+                justifyContent="center"
+                placeItems="center"
+                className="px-4 py-8 md:px-0"
+            >
                 <Locale variant="h2" className="text-center text-2xl font-bold">
                     {locales.team.title}
                 </Locale>
@@ -210,20 +206,27 @@ export const ContactUsPage: FC = () => {
                     direction="row"
                     wrap="wrap"
                     justifyContent="center"
+                    placeItems="center"
                     gap="8"
-                    className="gap-y-12"
+                    className="w-300 gap-y-12"
                 >
                     {locales.team.members.map((member, index) => (
                         <Flexbox
                             key={index}
                             direction="column"
-                            className="w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-80 dark:bg-gray-800"
+                            className="bg-background-normal h-300 min-w-140 w-full flex-col overflow-hidden rounded-xl shadow-md transition-transform duration-300 hover:scale-105 sm:w-80"
                         >
-                            <div className="h-48 w-full overflow-hidden">
+                            <div className="h-auto w-full overflow-hidden">
+                                {/* <Image
+                                    source={member.image}
+                                    alternative={member.name.en}
+                                    className="w-full object-cover"
+                                /> */}
+
                                 <img
                                     src={member.image}
                                     alt={member.name.en}
-                                    className="h-full w-full object-cover"
+                                    className="h-200"
                                 />
                             </div>
 
@@ -237,28 +240,28 @@ export const ContactUsPage: FC = () => {
 
                                 <Locale
                                     variant="p"
-                                    className="text-sm font-medium text-gray-600 dark:text-gray-300"
+                                    className="text-foreground-light font-medium"
                                 >
                                     {member.role}
                                 </Locale>
 
                                 <Locale
                                     variant="p"
-                                    className="text-sm italic text-blue-600 dark:text-blue-400"
+                                    className="text-secondary-normal italic"
                                 >
                                     {member.credentials}
                                 </Locale>
 
                                 <Locale
                                     variant="p"
-                                    className="mt-2 text-gray-700 dark:text-gray-200"
+                                    className="text-foreground-normal mt-2"
                                 >
                                     {member.bio}
                                 </Locale>
 
                                 <Locale
                                     variant="p"
-                                    className="mt-3 border-t pt-2 text-xs italic text-gray-500 dark:text-gray-400"
+                                    className="text-foreground-dark-active mt-3 border-t pt-2 italic"
                                 >
                                     {member.personal}
                                 </Locale>

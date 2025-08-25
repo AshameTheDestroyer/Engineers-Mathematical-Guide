@@ -32,7 +32,7 @@ export const TestimonialPage: FC = () => {
                 {locales.featured.map((testimonial) => (
                     <Flexbox
                         direction="column"
-                        className="max-w-140 bg-foreground-light w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6 dark:bg-gray-800"
+                        className="max-w-140 bg-background-normal w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6"
                     >
                         <Flexbox
                             direction="row"
@@ -48,13 +48,13 @@ export const TestimonialPage: FC = () => {
                             <div>
                                 <Locale
                                     variant="h3"
-                                    className="text-foreground-dark text-xl font-bold"
+                                    className="text-primary-dark text-xl font-bold"
                                 >
                                     {testimonial.name}
                                 </Locale>
                                 <Locale
                                     variant="p"
-                                    className="text-foreground-dark"
+                                    className="text-secondary-dark"
                                 >
                                     {testimonial.title}
                                 </Locale>
@@ -95,7 +95,7 @@ export const TestimonialPage: FC = () => {
                         <Flexbox
                             key={story.id}
                             direction="column"
-                            className="max-w-140 bg-foreground-light w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6"
+                            className="max-w-140 bg-background-normal w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6"
                         >
                             <Image
                                 source={story.image}
@@ -104,19 +104,19 @@ export const TestimonialPage: FC = () => {
                             />
                             <Locale
                                 variant="h3"
-                                className="mt-4 text-lg font-bold text-gray-900 dark:text-white"
+                                className="text-foreground-dark mt-4 text-2xl font-bold"
                             >
                                 {story.name}
                             </Locale>
                             <Locale
                                 variant="p"
-                                className="text-primary-normal dark:text-primary-light"
+                                className="text-primary-normal text-xl"
                             >
                                 {story.title}
                             </Locale>
                             <Locale
                                 variant="p"
-                                className="mt-3 leading-relaxed text-gray-700 dark:text-gray-300"
+                                className="text-foreground-dark mt-3 leading-relaxed"
                             >
                                 {story.summary}
                             </Locale>
@@ -160,18 +160,18 @@ export const TestimonialPage: FC = () => {
                     alignItems="center"
                     justifyContent="center"
                     gap={5}
-                    className="text-foreground-light bg-foreground-light rounded-2xl p-8 text-center shadow-xl"
+                    className="text-foreground-light bg-background-dark rounded-2xl p-8 text-center shadow-xl"
                 >
                     <Locale
                         variant="h2"
-                        className="text-2xl font-bold text-white md:text-3xl"
+                        className="text-foreground-dark text-2xl font-bold md:text-3xl"
                     >
                         {locales.cta.title}
                     </Locale>
 
                     <Button
                         className="h-20 w-1/2 text-2xl"
-                        link={DISCOVER_ROUTES.base.routes["learning-tracks"]}
+                        link={DISCOVER_ROUTES.base.routes.courses}
                         variant="primary"
                     >
                         <Locale>{locales.cta.button}</Locale>
