@@ -1,4 +1,6 @@
+import { useMain } from "@/contexts";
 import { Image } from "../Image/Image";
+import { Locale } from "../Locale/Locale";
 import { twJoin, twMerge } from "tailwind-merge";
 import { Input } from "@/components/Input/Input";
 import { Modal, ModalProps } from "../Modal/Modal";
@@ -16,6 +18,8 @@ import { SearchResultDisplay } from "../SearchResultDisplay/SearchResultDisplay"
 import pi_icon from "@icons/pi.svg";
 import pi_image from "@images/pi.png";
 
+import locales from "@localization/pi_assistant_modal.json";
+
 export type PIAssistantModalProps = ModalProps;
 
 export const PIAssistantModal: FC<PIAssistantModalProps> = ({
@@ -25,9 +29,11 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
     ...props
 }) => {
     const { isDarkThemed } = useThemeMode();
-    const { direction } = useLocalization();
+    const { GetGenderedLocale, language } = useLocalization();
 
     const [messages, setMessages] = useState(PIAssistant.Instance.messages);
+
+    const { myUser } = useMain();
 
     const chatReference = useRef<HTMLDivElement>(null);
     const modalReference = useRef<HTMLDivElement>(null);
@@ -127,12 +133,9 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
             hasCloseButton
             closeButtonProps={{ isSquare: true }}
         >
-            <Typography
-                className="text-2xl font-bold max-sm:text-lg"
-                variant="h1"
-            >
-                Welcome to PI Assistant
-            </Typography>
+            <Locale className="text-2xl font-bold max-sm:text-lg" variant="h1">
+                {locales.title}
+            </Locale>
             <Flexbox
                 ref={chatReference}
                 className={twJoin(
@@ -148,9 +151,17 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                     <SearchResultDisplay
                         className="max-w-[32rem] grow place-self-center"
                         iconType="custom"
-                        title="Ask a Question!"
                         iconProps={{ source: pi_icon }}
-                        paragraph="Start a conversation with a mathematics PhD professor AI assistant, preferably called **PI Assistant**. Ask anything you wish to know the answer of."
+                        title={GetGenderedLocale(
+                            locales.display.title,
+                            language,
+                            myUser?.gender ?? "male"
+                        )}
+                        paragraph={GetGenderedLocale(
+                            locales.display.paragraph,
+                            language,
+                            myUser?.gender ?? "male"
+                        )}
                     />
                 )}
                 {messages.map((message, i) => (
@@ -158,13 +169,15 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                         <Flexbox
                             gap="4"
                             placeItems="baseline"
-                            direction={
-                                direction == "ltr" ? "row-reverse" : "row"
-                            }
+                            direction="row-reverse"
                         >
-                            <span className="you bg-secondary-normal rounded-full px-2 py-1 font-bold">
-                                You
-                            </span>
+                            <Locale
+                                className="you bg-secondary-normal rounded-full px-2 py-1 font-bold"
+                                variant="span"
+                                gender={myUser?.gender ?? "male"}
+                            >
+                                {locales.you}
+                            </Locale>
                             <Typography variant="p">
                                 {message.question}
                             </Typography>
@@ -196,9 +209,19 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                     name="question"
                     variant="primary"
                     onKeyDown={(e) => e.key == "Enter" && Ask()}
+                    label={
+                        <Locale
+                            variant="label"
+                            gender={myUser?.gender ?? "male"}
+                        >
+                            {locales.inputs.question}
+                        </Locale>
+                    }
                 />
                 <Button className="flex-[0.3]" variant="primary" onClick={Ask}>
-                    Ask
+                    <Locale gender={myUser?.gender ?? "male"}>
+                        {locales.buttons.ask}
+                    </Locale>
                 </Button>
             </Flexbox>
         </Modal>

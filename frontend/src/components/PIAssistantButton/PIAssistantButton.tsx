@@ -33,7 +33,6 @@ export const PIAssistantButton: FC<PIAssistantButtonProps> = ({
                 onClick={(e) => (onClick?.(e), setIsModalOpen(true))}
                 {...props}
             />
-
             <PIAssistantModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
         </>
     );
