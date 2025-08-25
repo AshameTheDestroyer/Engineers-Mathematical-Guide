@@ -12,7 +12,7 @@
             }
         },
         "paragraph": {
-            "en": "Start a conversation with a mathematics PhD professor AI assistant, preferably called PI Assistant. Ask anything you wish to know the answer of.",
+            "en": "Start a conversation with a mathematics PhD professor AI assistant, preferably called **PI Assistant**. Ask anything you wish to know the answer of.",
             "ar": {
                 "male": "ابدأْ مُحادَثةً مَعْ ذَكاءٍ اصطِناعيٍّ يَلعبُ دَورَ أُستاذٍ جامِعيٍّ حاصِلٍ عَلى شَهادةِ الدُّكتوراه، المَدعوُّ بِـ **PI Assistant**. اسأَلْ أيَّ شَيءٍ تُريدُ مَعرِفةَ جَوابِه.",
                 "female": "ابدئي مُحادَثةً مَعْ ذَكاءٍ اصطِناعيٍّ يَلعبُ دَورَ أُستاذٍ جامِعيٍّ حاصِلٍ عَلى شَهادةِ الدُّكتوراه، المَدعوُّ بِـ **PI Assistant**. اسأَلي أيَّ شَيءٍ تُريدينَ مَعرِفةَ جَوابِه."
