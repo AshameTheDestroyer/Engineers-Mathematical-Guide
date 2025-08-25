@@ -1,6 +1,14 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+
+@font-face {
+    font-family: "Exo 2";
+    src: url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+}
+
+@font-face {
+    font-family: "El Messiri";
+    src: url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap");
+}
 
 @font-face {
     font-family: "offline-font-en";
