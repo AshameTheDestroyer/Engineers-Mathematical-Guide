@@ -9,6 +9,10 @@ import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
 import { SearchHeader } from "@/components/SearchHeader";
 import { useSchematicSearch } from "@/hooks/useSchematicSearch";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+import {
+    FeedbackPopup,
+    InlineFeedbackSection,
+} from "../components/FeedBackPopUp";
 
 const sections = [
     locales.categories.gettingStarted,
@@ -21,6 +25,7 @@ const sections = [
 export const HelpPage: FC = () => {
     const { language, GetLocale } = useLocalization();
     const { searchQuery, setSearchQuery } = useSchematicSearch();
+    const [showFeedback, setShowFeedback] = useState(false);
 
     const [openSections, setOpenSections] = useState<Record<string, boolean>>(
         Object.fromEntries(sections.map((s) => [s.title.en, true]))
@@ -29,6 +34,7 @@ export const HelpPage: FC = () => {
     const [openParagraphs, setOpenParagraphs] = useState<
         Record<string, boolean>
     >({});
+    const [userFeedback, setUserFeedback] = useState("");
 
     const toggleSection = (titleKey: string) => {
         setOpenSections((prev) => ({
@@ -231,18 +237,31 @@ export const HelpPage: FC = () => {
                 </Flexbox>
 
                 <Flexbox direction="column" gap="3" className="items-center">
-                    <Locale variant="p" className="text-foreground-dark">
+                    {/* <Locale variant="p" className="text-foreground-dark">
                         {locales.feedback.question}
                     </Locale>
                     <ButtonBox className="w-32">
-                        <Button className="flex-1">
+                        <Button
+                            className="flex-1"
+                            onClick={() => setShowFeedback(true)}
+                        >
                             <Locale>{locales.feedback.yes}</Locale>
                         </Button>
-                        <Button className="flex-1">
+                        <Button
+                            className="flex-1"
+                            onClick={() => setShowFeedback(false)}
+                        >
                             <Locale>{locales.feedback.no}</Locale>
                         </Button>
-                    </ButtonBox>
+                    </ButtonBox> */}
                 </Flexbox>
+
+                {/* <FeedbackPopup
+                    isOpen={showFeedback}
+                    onClose={() => setShowFeedback(false)}
+                /> */}
+
+                <InlineFeedbackSection />
 
                 <Flexbox
                     direction="column"
