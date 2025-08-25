@@ -4,7 +4,7 @@ import { IconButton, IconButtonProps } from "../IconButton/IconButton";
 import { PIAssistantModal } from "../PIAssistantModal/PIAssistantModal";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 
-import pi_image from "@icons/pi.svg";
+import pi_icon from "@icons/pi.svg";
 
 export type PIAssistantButtonProps = Omit<IconButtonProps, "icon">;
 
@@ -29,7 +29,7 @@ export const PIAssistantButton: FC<PIAssistantButtonProps> = ({
                     className
                 )}
                 variant="primary"
-                icon={{ source: pi_image }}
+                icon={{ source: pi_icon }}
                 onClick={(e) => (onClick?.(e), setIsModalOpen(true))}
                 {...props}
             />

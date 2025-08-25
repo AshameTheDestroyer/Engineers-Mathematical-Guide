@@ -11,7 +11,9 @@ import { DoubleCogIcon } from "../DoubleCogIcon/DoubleCogIcon";
 import { FC, useEffect, useImperativeHandle, useRef, useState } from "react";
 import { useLocalization } from "../LocalizationProvider/LocalizationProvider";
 import { useThemeMode } from "@/components/ThemeModeProvider/ThemeModeProvider";
+import { SearchResultDisplay } from "../SearchResultDisplay/SearchResultDisplay";
 
+import pi_icon from "@icons/pi.svg";
 import pi_image from "@images/pi.png";
 
 export type PIAssistantModalProps = ModalProps;
@@ -142,6 +144,15 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                 gap="8"
                 direction="column"
             >
+                {messages.length == 0 && (
+                    <SearchResultDisplay
+                        className="max-w-[32rem] grow place-self-center"
+                        iconType="custom"
+                        title="Ask a Question!"
+                        iconProps={{ source: pi_icon }}
+                        paragraph="Start a conversation with a mathematics PhD professor AI assistant, preferably called **PI Assistant**. Ask anything you wish to know the answer of."
+                    />
+                )}
                 {messages.map((message, i) => (
                     <Flexbox key={i} gap="4" direction="column">
                         <Flexbox
@@ -183,9 +194,10 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                 <Input
                     className="grow"
                     name="question"
+                    variant="primary"
                     onKeyDown={(e) => e.key == "Enter" && Ask()}
                 />
-                <Button variant="primary" onClick={Ask}>
+                <Button className="flex-[0.3]" variant="primary" onClick={Ask}>
                     Ask
                 </Button>
             </Flexbox>
