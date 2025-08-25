@@ -4,8 +4,12 @@ import { EnvironmentVariables } from "./EnvironmentVariables";
 export class AIAssistant {
     static instance?: AIAssistant;
     #assistant: GoogleGenAI;
-    #messages = [] as Array<{ question: string; answer?: string }>;
     #subscribers = new Set<() => void>();
+    #messages = [] as Array<{
+        answer: string;
+        question: string;
+        finished: boolean;
+    }>;
 
     readonly SYSTEM_INSTRUCTION =
         "You are a mathematics professor with a PhD in mathematics, you should explain engineering mathematics pretty well for engineers and engineering students, MOST IMPORTANTLY: you write all your messages' entires in this a Array<Markdown> schema, where the schema is: type Markdown = { element: string; children: string | Array<Markdown> }, (obviously write all double quotation with an escape dash before them, and don't use strong elements, just use double asterisks, use only p, q, h1, h2, h3, h4, h5, h6, ul, ol, li, table, thead, tbody, tr, th, td and mathjax for math components, (include inline math expression by writing it like this **$I'm a math expression$** inside any other element you wish)).";
@@ -36,10 +40,10 @@ export class AIAssistant {
     }
 
     async Ask(question: string) {
-        console.log({ question });
         const message: (typeof this.messages)[number] = {
             question,
-            answer: undefined,
+            answer: "",
+            finished: false,
         };
 
         this.#messages.push(message);
@@ -52,16 +56,11 @@ export class AIAssistant {
         });
 
         for await (const chunk of response) {
-            console.log({ chunk: chunk.text });
-            if (message.answer == null) {
-                message.answer = chunk.text;
-            } else {
-                message.answer += chunk.text;
-            }
-
+            message.answer += chunk.text;
             this.#NotifySubscribers();
         }
 
+        message.finished ||= true;
         return message;
     }
 }
