@@ -25,6 +25,7 @@ export type PIAssistantModalProps = ModalProps;
 export const PIAssistantModal: FC<PIAssistantModalProps> = ({
     id,
     ref,
+    isOpen,
     className,
     ...props
 }) => {
@@ -41,19 +42,24 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
     useImperativeHandle(ref, () => modalReference.current!);
 
     useEffect(() => {
+        console.log([...PIAssistant.Instance.messages]);
+        setMessages([...PIAssistant.Instance.messages]);
+
         const Unsubscribe = PIAssistant.Instance.Subscribe(() => {
             setMessages([...PIAssistant.Instance.messages]);
 
             const messages =
                 chatReference.current?.querySelectorAll(".message");
 
-            messages
-                ?.item(messages.length - 1)
-                ?.scrollIntoView({ behavior: "smooth", block: "end" });
+            messages?.item(messages.length - 1)?.scrollIntoView({
+                behavior: "instant",
+                block: "end",
+                inline: "end",
+            });
         });
 
         return Unsubscribe;
-    }, []);
+    }, [isOpen]);
 
     function RenderedMarkdown({
         message,
@@ -85,6 +91,7 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
         try {
             const text = message.answer.replace(/\n/g, "").match(/\[.+\]/)![0];
 
+            console.log(message.answer.split("},"));
             return Array.from(
                 text.matchAll(/\{\ *\"element\":\ \"[^\{\}]+\"\ *\}/g),
                 (item) => item[0]
@@ -129,6 +136,7 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                 "bg-background-light h-[90dvh] w-[90vw] gap-4 max-sm:p-4",
                 className
             )}
+            isOpen={isOpen}
             {...props}
             hasCloseButton
             closeButtonProps={{ isSquare: true }}
@@ -172,7 +180,7 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
                             direction="row-reverse"
                         >
                             <Locale
-                                className="you bg-secondary-normal rounded-full px-2 py-1 font-bold"
+                                className="you bg-secondary-normal rounded-full px-2 py-1 font-bold text-white"
                                 variant="span"
                                 gender={myUser?.gender ?? "male"}
                             >
