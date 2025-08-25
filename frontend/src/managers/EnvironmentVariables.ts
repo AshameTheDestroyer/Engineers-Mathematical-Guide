@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const EnvironmentVariablesSchema = z.object({
+    AI_KEY: z.string(),
     BACKEND_API_URL: z.string().url(),
     ENVIRONMENT: z.enum(["development", "production"]),
 });
