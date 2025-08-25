@@ -60,11 +60,7 @@ export const ContextProviders = [
             {children}
         </QueryClientProvider>
     ),
-    ({ children }: PropsWithChildren) => (
-        <HashRouter basename={window.location.pathname || ""}>
-            {children}
-        </HashRouter>
-    ),
+    ({ children }: PropsWithChildren) => <HashRouter>{children}</HashRouter>,
     ({ children }: PropsWithChildren) => (
         <LocalizationProvider>{children}</LocalizationProvider>
     ),
