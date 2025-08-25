@@ -11,9 +11,6 @@ export class PIAssistant {
         finished: boolean;
     }>;
 
-    readonly SYSTEM_INSTRUCTION =
-        "You are a mathematics professor with a PhD in mathematics, you should explain engineering mathematics pretty well for engineers and engineering students and write them formulae they ask for, MOST IMPORTANTLY: you write all your messages' entires in this a Array<Markdown> schema, where the schema is: type Markdown = { element: string; children: string | Array<Markdown> }, (obviously write all double quotation with an escape dash before them, and don't use strong elements, just use double asterisks, use only p, q, h1, h2, h3, h4, h5, h6, ul, ol, li, table, thead, tbody, tr, th, td and mathjax for math components, (include inline math expression by writing it like this **$I'm a math expression$** inside any other element you wish)).";
-
     static get Instance() {
         return (this.instance ??= new PIAssistant());
     }
@@ -55,7 +52,10 @@ export class PIAssistant {
                 {
                     contents: [{ role: "user", parts: [{ text: question }] }],
                     model: "gemini-2.5-flash",
-                    config: { systemInstruction: this.SYSTEM_INSTRUCTION },
+                    config: {
+                        systemInstruction:
+                            EnvironmentVariables.AI_SYSTEM_INSTRUCTIONS,
+                    },
                 }
             );
 
