@@ -1,7 +1,7 @@
 {
     "introParagraph": {
-        "en": "The proof is in the experience — hear from real engineers, students, and educators who’ve turned complex math into confidence with Mathware",
-        "ar": "البُرهانُ في التَّجربةِ — اسمعْ من مُهندسينَ وطالباتٍ ومحترفينَ حقيقيينَ حوّلوا الرِّياضيّاتِ المعقّدةَ إلى ثقةٍ مع Mathware"
+        "en": "Hear from engineers, students, and educators who’ve turned complex math into confidence with Mathware.",
+        "ar": "اسْمَع من مُهَنْدِسينَ، طُلابٍ، ومُعَلِّمينَ حوَّلوا الرياضياتِ المعقَّدةَ إلى ثِقةٍ مع Mathware."
     },
     "featured": [
         {
@@ -18,8 +18,7 @@
                 "en": "This site broke down Laplace transforms in a way my professor never did. I aced my controls exam!",
                 "ar": "شرح هذا الموقع تحويلات لابلاس بطريقة لم يفعلها أستاذي قط. نجحت في امتحان التحكم الخاص بي بنجاح باهر!"
             },
-            "image": "/src/assets/images/person2.jpg",
-            "linkedin": "https://linkedin.com/in/laylaahmed"
+            "image": "/src/assets/images/person2.jpg"
         },
         {
             "id": 2,
@@ -35,8 +34,7 @@
                 "en": "I recommend Mathware to all my students. It turns abstract concepts into real engineering insight.",
                 "ar": "أنصح جميع طلابي باستخدام Mathware. يحوّل المفاهيم المجردة إلى فهم هندسي حقيقي."
             },
-            "image": "/src/assets/images/person1.jpg",
-            "linkedin": "https://linkedin.com/in/omarfayed"
+            "image": "/src/assets/images/person1.jpg"
         },
         {
             "id": 3,
@@ -49,11 +47,11 @@
                 "ar": "خريج هندسة حاسوب، عين شمس"
             },
             "quote": {
-                "en": "From struggling with differential equations to building AI models — Mathware gave me the foundation.",
-                "ar": "من معاناتي مع المعادلات التفاضلية إلى بناء نماذج الذكاء الاصطناعي — منحني Mathware الأساس."
+                "en": "From struggling with differential equations to building AI models Mathware gave me the foundation.",
+                "ar": "من معاناتي مع المعادلات التفاضلية إلى بناء نماذج الذكاء الاصطناعي منحني Mathware الأساس."
             },
-            "image": "/src/assets/images/person3.jpg",
-            "linkedin": null        }
+            "image": "/src/assets/images/person3.jpg"
+             }
     ],
     "caseStudies": {
         "title": {
@@ -90,7 +88,7 @@
                 },
                 "image": "/src/assets/images/person5.jpg",
                 "summary": {
-                    "en": "John struggled with dynamics and failed his midterm. After discovering Mathware’s step-by-step problem breakdowns and visual simulators, he mastered the core concepts and aced his final exam.",
+                    "en": "John struggled with dynamics and failed his midterm. After discovering Mathware’s step by step problem breakdowns and visual simulators, he mastered the core concepts and aced his final exam.",
                     "ar": "عانى جون من مادة الدينا ميك ورسب في الامتحان الفصلي. بعد اكتشافه لشرح المسائل خطوة بخطوة والمحاكّيات البصرية في Mathware، أتقن المفاهيم الأساسية ونجح بنجاح باهر في الامتحان النهائي."
                 },
                 "link": "/src/assets/images/person4.jpg"
@@ -106,5 +104,9 @@
             "en": "Start Learning Now",
             "ar": "ابدأ التعلّم الآن"
         }
-    }
+    },
+     "linkedinImage": {
+        "source": "/src/assets/icons/linkedin",
+        "alternative": "linkedin-icon"
+     }
 }

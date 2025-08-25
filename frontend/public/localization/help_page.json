@@ -1,8 +1,14 @@
 {
-    "search": {
-        "placeholder": {
-            "en": "How can we help you?",
-            "ar": "كيف يمكننا مساعدتك؟"
+    "title": {
+        "en": "Help",
+        "ar": "المساعدة"
+    },
+    "inputs": {
+        "search": {
+            "label": {
+                "en": "How can we help you?",
+                "ar": "كيف يمكننا مساعدتك؟"
+            }
         }
     },
     "categories": {

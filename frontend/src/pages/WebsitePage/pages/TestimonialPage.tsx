@@ -5,23 +5,22 @@ import locales from "@localization/testimonial_page.json";
 import { Separator } from "@/components/Separator/Separator";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Button } from "@/components/Button/Button";
+import { Image } from "@/components/Image/Image";
 
 export const TestimonialPage: FC = () => {
     return (
         <Flexbox
             variant="main"
             direction="column"
-            gap="8"
-            className="mx-auto max-w-6xl px-4 py-10 md:px-6"
+            gap={20}
+            className="max-w-8xl mx-auto px-4 py-10 md:px-6"
         >
             <Locale
                 variant="h1"
-                className="text-center text-xl font-bold md:text-2xl"
+                className="text-center text-2xl font-bold md:text-3xl"
             >
                 {locales.introParagraph}
             </Locale>
-
-            <Separator orientation="horizontal" />
 
             <Flexbox
                 direction="row"
@@ -33,7 +32,7 @@ export const TestimonialPage: FC = () => {
                 {locales.featured.map((testimonial) => (
                     <Flexbox
                         direction="column"
-                        className="w-full max-w-sm overflow-hidden rounded-xl bg-white p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6 dark:bg-gray-800"
+                        className="max-w-140 bg-foreground-light w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6 dark:bg-gray-800"
                     >
                         <Flexbox
                             direction="row"
@@ -41,21 +40,21 @@ export const TestimonialPage: FC = () => {
                             alignItems="center"
                             className="mb-4"
                         >
-                            <img
-                                src={testimonial.image}
-                                alt={testimonial.name.en}
-                                className="border-primary-light dark:border-primary-dark h-14 w-14 rounded-full border-2 object-cover"
+                            <Image
+                                source={testimonial.image}
+                                alternative={testimonial.name.en}
+                                className="border-primary-light dark:border-primary-dark h-50 w-50 rounded-full border-2 object-cover"
                             />
                             <div>
                                 <Locale
                                     variant="h3"
-                                    className="text-sm font-bold text-gray-900 sm:text-base dark:text-white"
+                                    className="text-foreground-dark text-xl font-bold"
                                 >
                                     {testimonial.name}
                                 </Locale>
                                 <Locale
                                     variant="p"
-                                    className="text-xs text-gray-600 dark:text-gray-300"
+                                    className="text-foreground-dark"
                                 >
                                     {testimonial.title}
                                 </Locale>
@@ -64,31 +63,23 @@ export const TestimonialPage: FC = () => {
 
                         <Locale
                             variant="p"
-                            className="mb-4 italic leading-relaxed text-gray-800 dark:text-gray-200"
+                            className="text-foreground-dark mb-4 italic leading-relaxed"
                         >
                             {testimonial.quote}
                         </Locale>
 
-                        <Flexbox direction="row" gap="3" className="mt-auto">
-                            {testimonial.linkedin && (
-                                <a
-                                    href={testimonial.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm text-blue-600 hover:underline dark:text-blue-400"
-                                >
-                                    LinkedIn
-                                </a>
-                            )}
-                        </Flexbox>
+                        <Image
+                            source={locales.linkedinImage.source}
+                            alternative={locales.linkedinImage.alternative}
+                        />
                     </Flexbox>
                 ))}
             </Flexbox>
 
-            <Flexbox direction="column" gap="8" className="mt-12">
+            <Flexbox direction="column" gap={15} className="mt-12">
                 <Locale
                     variant="h2"
-                    className="text-center text-xl font-bold md:text-2xl"
+                    className="text-center text-2xl font-bold md:text-3xl"
                 >
                     {locales.caseStudies.title}
                 </Locale>
@@ -104,12 +95,12 @@ export const TestimonialPage: FC = () => {
                         <Flexbox
                             key={story.id}
                             direction="column"
-                            className="w-full max-w-sm overflow-hidden rounded-xl bg-white p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6 dark:bg-gray-800"
+                            className="max-w-140 bg-foreground-light w-full overflow-hidden rounded-xl p-5 shadow-lg transition-all duration-300 hover:shadow-xl sm:p-6"
                         >
-                            <img
-                                src={story.image}
-                                alt={story.name.en}
-                                className="h-40 w-full rounded-lg object-cover"
+                            <Image
+                                source={story.image}
+                                alternative={story.name.en}
+                                className="w-full rounded-lg object-cover"
                             />
                             <Locale
                                 variant="h3"
@@ -119,22 +110,16 @@ export const TestimonialPage: FC = () => {
                             </Locale>
                             <Locale
                                 variant="p"
-                                className="text-primary-normal dark:text-primary-light text-sm"
+                                className="text-primary-normal dark:text-primary-light"
                             >
                                 {story.title}
                             </Locale>
                             <Locale
                                 variant="p"
-                                className="mt-3 text-sm leading-relaxed text-gray-700 dark:text-gray-300"
+                                className="mt-3 leading-relaxed text-gray-700 dark:text-gray-300"
                             >
                                 {story.summary}
                             </Locale>
-                            <a
-                                href={story.link}
-                                className="mt-4 inline-flex w-fit rounded bg-gray-100 px-3 py-1.5 text-xs font-medium text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
-                            >
-                                <Locale>اقرأ القصة</Locale>
-                            </a>
                         </Flexbox>
                     ))}
                 </Flexbox>
@@ -170,14 +155,12 @@ export const TestimonialPage: FC = () => {
                     </Flexbox>
                 </Flexbox> */}
 
-                <Separator orientation="horizontal" className="my-10" />
-
                 <Flexbox
                     direction="column"
                     alignItems="center"
                     justifyContent="center"
                     gap={5}
-                    className="rounded-2xl bg-amber-500 bg-gradient-to-br from-amber-700 p-8 text-center text-white shadow-xl"
+                    className="text-foreground-light bg-foreground-light rounded-2xl p-8 text-center shadow-xl"
                 >
                     <Locale
                         variant="h2"
@@ -187,7 +170,7 @@ export const TestimonialPage: FC = () => {
                     </Locale>
 
                     <Button
-                        className="h-2/3 w-1/4"
+                        className="h-20 w-1/2 text-2xl"
                         link={DISCOVER_ROUTES.base.routes["learning-tracks"]}
                         variant="primary"
                     >

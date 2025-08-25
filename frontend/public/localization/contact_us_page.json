@@ -89,5 +89,100 @@
       "en": "Your feedback helps us improve. Send us a message!",
       "ar": "ملاحظاتك تساعدنا على التطور. أرسل لنا رسالة!"
     }
-  }
+  },
+    "team": {
+        "title": {
+            "en": "Meet the Minds Behind Mathware",
+            "ar": "تعرف على العقول وراء Mathware"
+        },
+        "members": [
+            {
+                "name": {
+                    "en": "Batoul Kazak",
+                    "ar": "بتول القزق"
+                },
+                "role": {
+                    "en": "Frontend Developer & AI Enthusiast",
+                    "ar": "مطوّر واجهات أمامية ومهتم بالذكاء الاصطناعي"
+                },
+                "credentials": {
+                    "en": "B.Sc. in Computer Science",
+                    "ar": "بكالوريوس في علوم الحاسوب"
+                },
+                "bio": {
+                    "en": "A passionate computer science student who contributed to Mathware’s frontend architecture and mathematical logic, turning complex math concepts into intuitive learning experiences.",
+                    "ar": "طالب علوم حاسوب شغوف ساهم في بنية واجهة Mathware الأمامية والمنطق الرياضي، وحوّل المفاهيم الرياضية المعقدة إلى تجارب تعليمية بديهية."
+                },
+                "personal": {
+                    "en": "Passionate about math and problem solving, with a focus on translating logical concepts into clear and intuitive user interfaces.",
+                    "ar": "شغوف بالرياضيات وحل المسائل، ويهتم بتحويل المفاهيم المنطقية إلى واجهات مستخدم واضحة وبديهية."
+                },
+                "image": "/src/assets/images/batoul_kazak.jpg",
+                "links": {
+                    "github": "https://github.com/Batoul-Kazak",
+                    "linkedin": "https://www.linkedin.com/in/batoul-kazak-460a80304/",
+                    "telegram": "https://t.me/BatoulKazak",
+                    "gmail": "batoulkazak297@gmail.com"
+                }
+            },
+            {
+                "name": {
+                    "en": "Hashem Wannous",
+                    "ar": "هاشم ونوس"
+                },
+                "role": {
+                    "en": "Leader of project, worked on the front-end side too.",
+                    "ar": "مشرف المشرو يعمل front-end  "
+                },
+                "credentials": {
+                    "en": "Majored in Information Technology at Syrian Virtual University and Applied Faculty.",
+                    "ar": "تخصص في تكنولوجيا المعلومات في الجامعة الافتراضية السورية والكلية التطبيقية."
+                },
+                "bio": {
+                    "en": "A student who’s passionate about keeping learning as much information as possible, with a dream of topping it, and a will to CARVE his name in the world of technology.",
+                    "ar": "طالب شغوف بمواصلة تعلم أكبر قدر ممكن من المعلومات، ولديه حلم بالتفوق عليه، وإرادة لنحت اسمه في عالم التكنولوجيا."
+                },
+                "personal": {
+                    "en": "I create websites, applications, games, and currently learning artificial intelligence.",
+                    "ar": "أقوم بإنشاء مواقع الويب والتطبيقات والألعاب وأتعلم حاليًا الذكاء الاصطناعي."
+                },
+                "image": "/src/assets/images/hashem_wannous.jpg",
+                "links": {
+                    "github": "https://github.com/ahmedtariq",
+                    "linkedin": "https://linkedin.com/in/ahmedtariq",
+                    "telegram": "https://t.me/ahmedtariq",
+                    "gmail": "ahmed.tariq.dev@gmail.com"
+                }
+            },
+            {
+                "name": {
+                    "en": "Ahmed Tariq",
+                    "ar": "أحمد طارق"
+                },
+                "role": {
+                    "en": "Frontend Developer & AI Enthusiast",
+                    "ar": "مطوّر واجهات أمامية ومهتم بالذكاء الاصطناعي"
+                },
+                "credentials": {
+                    "en": "B.Sc. in Computer Science (Expected Graduation: June 2025)",
+                    "ar": "بكالوريوس في علوم الحاسوب (التخرج المتوقع: يونيو 2025)"
+                },
+                "bio": {
+                    "en": "A passionate computer science student deeply interested in machine learning, mathematical modeling, and algorithm design. Contributed to Mathware's frontend architecture, turning complex math concepts into intuitive, interactive experiences. Believes clean code and clear math go hand in hand.",
+                    "ar": "طالب في علوم الحاسوب، شغوف بالذكاء الاصطناعي، والنمذجة الرياضية، وتصميم الخوارزميات. ساهم في هيكلة واجهة Mathware الأمامية، وحوّل المفاهيم الرياضية المعقدة إلى تجارب تفاعلية بسيطة. يؤمن أن الكود النظيف يسير جنبًا إلى جنب مع الرياضيات الواضحة."
+                },
+                "personal": {
+                    "en": "Loves solving LeetCode puzzles and writing math explainers on Reddit.",
+                    "ar": "يحب حلّ ألغاز LeetCode وكتابة شروحات رياضية على Reddit."
+                },
+                "image": "/src/assets/images/person1.jpg",
+                "links": {
+                    "github": "https://github.com/ahmedtariq",
+                    "linkedin": "https://linkedin.com/in/ahmedtariq",
+                    "telegram": "https://t.me/ahmedtariq",
+                    "gmail": "ahmed.tariq.dev@gmail.com"
+                }
+            }
+        ]
+    }
 }

@@ -6,8 +6,27 @@ import locales from "@localization/help_page.json";
 import { Button } from "@/components/Button/Button";
 import { WEBSITE_ROUTES } from "@/routes/website.routes";
 import { ButtonBox } from "@/components/ButtonBox/ButtonBox";
+import { SearchHeader } from "@/components/SearchHeader";
+import { useSchematicSearch } from "@/hooks/useSchematicSearch";
+import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
+
+const sections = [
+    locales.categories.gettingStarted,
+
+    locales.categories.accountAccess,
+
+    locales.categories.learningResources,
+
+    locales.categories.technicalIssues,
+
+    locales.categories.forEducators,
+];
 
 export const HelpPage: FC = () => {
+    const { language, GetLocale } = useLocalization();
+
+    const { searchQuery, setSearchQuery } = useSchematicSearch();
+
     return (
         <Flexbox
             variant="main"
@@ -15,45 +34,16 @@ export const HelpPage: FC = () => {
             gap="8"
             className="mx-auto w-full max-w-4xl px-4 py-10 md:px-6"
         >
-            <Flexbox direction="column" className="w-full">
-                <div className="relative mx-auto w-full max-w-2xl">
-                    <input
-                        type="text"
-                        placeholder={locales.search.placeholder.en}
-                        aria-label={locales.search.placeholder.en}
-                        className="focus:ring-primary-light w-full rounded-full border border-gray-300 bg-white px-6 py-3 pl-12 shadow-sm focus:outline-none focus:ring-2 dark:border-gray-600 dark:bg-gray-800 dark:text-white"
-                    />
-                    <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-4 text-gray-500 dark:text-gray-400">
-                        🔍
-                    </span>
-                </div>
-            </Flexbox>
-
+            <SearchHeader
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                title={GetLocale(locales.title, language)}
+                inputLabel={GetLocale(locales.inputs.search.label, language)}
+            />
             <Flexbox direction="column" gap="6" className="mt-8">
-                {[
-                    {
-                        key: "gettingStarted",
-                        data: locales.categories.gettingStarted,
-                    },
-                    {
-                        key: "accountAccess",
-                        data: locales.categories.accountAccess,
-                    },
-                    {
-                        key: "learningResources",
-                        data: locales.categories.learningResources,
-                    },
-                    {
-                        key: "technicalIssues",
-                        data: locales.categories.technicalIssues,
-                    },
-                    {
-                        key: "forEducators",
-                        data: locales.categories.forEducators,
-                    },
-                ].map(({ key, data }) => (
+                {sections.map((item) => (
                     <Flexbox
-                        key={key}
+                        key={item.title.en}
                         direction="column"
                         className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm dark:border-gray-700 dark:bg-gray-800"
                     >
@@ -61,26 +51,25 @@ export const HelpPage: FC = () => {
                             variant="h3"
                             className="text-primary-normal mb-4 text-lg font-semibold"
                         >
-                            {data.title}
+                            {item.title}
                         </Locale>
                         <ul className="space-y-2">
-                            {data.items.map(
+                            {item.items.map(
                                 (
-                                    item: { en: string; ar: string },
+                                    // item: { en: string; ar: string },
+                                    item,
                                     idx: number
                                 ) => (
-                                    <li key={idx}>
-                                        <a
-                                            href={`/help/${key}/${idx}`}
-                                            className="hover:text-primary-normal flex items-center justify-between rounded px-3 py-2 text-sm text-gray-800 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
-                                        >
-                                            <Locale>{item}</Locale>
-                                            <div className="text-sm text-gray-500 dark:text-gray-400">
-                                                <Locale>
-                                                    {locales.readParagraph}
-                                                </Locale>
-                                            </div>
-                                        </a>
+                                    <li
+                                        key={idx}
+                                        className="hover:text-primary-normal flex items-center justify-between rounded px-3 py-2 text-gray-800 transition hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+                                    >
+                                        <Locale>{item}</Locale>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">
+                                            <Locale>
+                                                {locales.readParagraph}
+                                            </Locale>
+                                        </div>
                                     </li>
                                 )
                             )}

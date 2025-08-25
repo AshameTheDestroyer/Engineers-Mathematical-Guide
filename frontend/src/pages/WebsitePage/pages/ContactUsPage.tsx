@@ -4,6 +4,8 @@ import { Locale } from "@/components/Locale/Locale";
 import { Typography } from "@/components/Typography/Typography";
 import locales from "@localization/contact_us_page.json";
 import { Button } from "@/components/Button/Button";
+import { Input } from "@/components/Input/Input";
+import { Select } from "@/components/Select/Select";
 
 export const ContactUsPage: FC = () => {
     return (
@@ -17,10 +19,7 @@ export const ContactUsPage: FC = () => {
                 <Locale variant="h1" className="text-2xl font-bold md:text-3xl">
                     {locales.header.title}
                 </Locale>
-                <Locale
-                    variant="p"
-                    className="text-gray-600 dark:text-gray-300"
-                >
+                <Locale variant="p" className="text-foreground-normal">
                     {locales.header.subtitle}
                 </Locale>
             </Flexbox>
@@ -34,12 +33,11 @@ export const ContactUsPage: FC = () => {
                 <Flexbox direction="column" className="min-w-80 flex-1">
                     <form className="space-y-5">
                         <Flexbox direction="column" gap="1">
-                            <label>
-                                <Locale>{locales.form.name}</Locale>
-                            </label>
-                            <input
+                            <Input
+                                name="name"
+                                label={<Locale>{locales.form.name}</Locale>}
                                 type="text"
-                                className="w-full rounded-lg border border-gray-300 px-4 py-2 dark:border-gray-600 dark:bg-gray-800"
+                                className="border-foreground-light bg-foreground-light"
                                 placeholder="Ahmed Mohamed"
                             />
                         </Flexbox>
@@ -48,9 +46,10 @@ export const ContactUsPage: FC = () => {
                             <label>
                                 <Locale>{locales.form.email}</Locale>
                             </label>
-                            <input
+                            <Input
+                                name="email"
                                 type="email"
-                                className="w-full rounded-lg border border-gray-300 px-4 py-2 dark:border-gray-600 dark:bg-gray-800"
+                                className="bg-foreground-light border-foreground-light w-full rounded-lg border px-4 py-2"
                                 placeholder="ahmed@example.com"
                             />
                         </Flexbox>
@@ -59,13 +58,30 @@ export const ContactUsPage: FC = () => {
                             <label>
                                 <Locale>{locales.form.subject}</Locale>
                             </label>
-                            <select className="w-full rounded-lg border border-gray-300 px-4 py-2 dark:border-gray-600 dark:bg-gray-800">
-                                {locales.form.subjectOptions.map((opt) => (
-                                    <option key={opt.value} value={opt.value}>
-                                        <Locale>{opt}</Locale>
-                                    </option>
-                                ))}
-                            </select>
+                            {/* <Select
+                                className="bg-foreground-light border-foreground-light w-full rounded-lg border px-4 py-2"
+                                options={[locales.form.locales.form.subjectOptions]}
+                            /> */}
+                            <Select
+                                name="subject"
+                                label="Subject"
+                                options={locales.form.subjectOptions.map(
+                                    (o) => o.value
+                                )}
+                                RendersOptions={(value) => {
+                                    const option =
+                                        locales.form.subjectOptions.find(
+                                            (o) => o.value === value
+                                        );
+                                    if (!option) return value;
+                                    return (
+                                        <Locale>
+                                            {/* {{ en: option.en, ar: option.ar }} */}
+                                            {option}
+                                        </Locale>
+                                    );
+                                }}
+                            />
                         </Flexbox>
 
                         <Flexbox direction="column" gap="1">
@@ -74,7 +90,7 @@ export const ContactUsPage: FC = () => {
                             </label>
                             <textarea
                                 rows={5}
-                                className="w-full rounded-lg border border-gray-300 px-4 py-2 dark:border-gray-600 dark:bg-gray-800"
+                                className="bg-foreground-light border-foreground-light w-full rounded-lg border px-4 py-2"
                                 placeholder="اكتب رسالتك هنا..."
                             ></textarea>
                         </Flexbox>
@@ -183,6 +199,73 @@ export const ContactUsPage: FC = () => {
                 <Locale variant="h2" className="text-xl font-bold md:text-2xl">
                     {locales.cta.text}
                 </Locale>
+            </Flexbox>
+
+            <Flexbox direction="column" gap="6" className="px-4 py-8 md:px-0">
+                <Locale variant="h2" className="text-center text-2xl font-bold">
+                    {locales.team.title}
+                </Locale>
+
+                <Flexbox
+                    direction="row"
+                    wrap="wrap"
+                    justifyContent="center"
+                    gap="8"
+                    className="gap-y-12"
+                >
+                    {locales.team.members.map((member, index) => (
+                        <Flexbox
+                            key={index}
+                            direction="column"
+                            className="w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-80 dark:bg-gray-800"
+                        >
+                            <div className="h-48 w-full overflow-hidden">
+                                <img
+                                    src={member.image}
+                                    alt={member.name.en}
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+
+                            <Flexbox direction="column" className="p-5" gap="2">
+                                <Locale
+                                    variant="h3"
+                                    className="text-primary-normal text-xl font-bold"
+                                >
+                                    {member.name}
+                                </Locale>
+
+                                <Locale
+                                    variant="p"
+                                    className="text-sm font-medium text-gray-600 dark:text-gray-300"
+                                >
+                                    {member.role}
+                                </Locale>
+
+                                <Locale
+                                    variant="p"
+                                    className="text-sm italic text-blue-600 dark:text-blue-400"
+                                >
+                                    {member.credentials}
+                                </Locale>
+
+                                <Locale
+                                    variant="p"
+                                    className="mt-2 text-gray-700 dark:text-gray-200"
+                                >
+                                    {member.bio}
+                                </Locale>
+
+                                <Locale
+                                    variant="p"
+                                    className="mt-3 border-t pt-2 text-xs italic text-gray-500 dark:text-gray-400"
+                                >
+                                    {member.personal}
+                                </Locale>
+                            </Flexbox>
+                        </Flexbox>
+                    ))}
+                </Flexbox>
             </Flexbox>
         </Flexbox>
         // <div></div>

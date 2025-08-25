@@ -8,136 +8,93 @@ import { useLocalization } from "@/components/LocalizationProvider/LocalizationP
 import { RichText } from "@/components/RichText/RichText";
 import { Button } from "@/components/Button/Button";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
+import { Image } from "@/components/Image/Image";
 
 export const AboutPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
-        <Flexbox className="grow" variant="main" direction="column" gap="8">
-            <Locale variant="h1" className="text-2xl">
-                {locales.title}
-            </Locale>
-
-            <Flexbox direction="column" gap={5}>
-                <Locale variant="h2" className="text-xl">
-                    {locales.heroSection.title}
+        <Flexbox className="grow" variant="main" direction="column" gap="25">
+            <Flexbox direction="column" gap={10} className="min-[80dvh]">
+                <Locale variant="h1" className="text-2xl">
+                    {locales.title}
                 </Locale>
-                <Locale variant="p">{locales.heroSection.content}</Locale>
+                <div className="relative">
+                    <Image
+                        source={locales.heroSection.image.source}
+                        alternative={locales.heroSection.image.alt}
+                        className="h-150 w-full bg-red-500"
+                    />
+                    <div className="w-450 h-150 z-2 absolute left-0 top-0 bg-black/60"></div>
+                    <Locale
+                        variant="h2"
+                        className="z-3 top-50 absolute left-10 p-10 text-justify text-xl text-white"
+                    >
+                        {locales.heroSection.content}
+                    </Locale>
+                </div>
             </Flexbox>
 
-            <Separator orientation="horizontal" />
-
-            <Flexbox direction="column" gap={2}>
-                <Locale variant="h2" className="text-xl">
+            <Flexbox direction="column" gap={2} className="min-[80dvh]">
+                <Locale variant="h2" className="text-2xl">
                     {locales.whatWeOffer.title}
                 </Locale>
 
-                <Flexbox direction="column" gap={3}>
+                <Flexbox direction="column" gap={10}>
                     {locales.whatWeOffer.content.map((part, i) => (
-                        <Flexbox direction="row" gap={3}>
-                            <div>🔘</div>
-                            <RichText
-                                variant="p"
-                                ExtractedTextRenders={(text) => (
-                                    <span className="text-primary-normal font-bold">
-                                        {text}
-                                    </span>
-                                )}
+                        <div
+                            key={i}
+                            className={`flex flex-col gap-8 md:flex-row ${
+                                i % 2 === 0 ? "md:flex-row-reverse" : ""
+                            }`}
+                        >
+                            <Flexbox
+                                className="w-full md:w-1/2"
+                                justifyContent="center"
+                                alignItems="center"
                             >
-                                {GetLocale(part, language)}
-                            </RichText>
-                            <br />
-                        </Flexbox>
+                                <RichText
+                                    variant="p"
+                                    className="text-xl"
+                                    ExtractedTextRenders={(text) => (
+                                        <span className="text-primary-normal font-bold">
+                                            {text}
+                                        </span>
+                                    )}
+                                >
+                                    {GetLocale(part, language)}
+                                </RichText>
+                            </Flexbox>
+
+                            <Flexbox
+                                placeItems="center"
+                                justifyContent="center"
+                                className="w-full md:w-1/2"
+                            >
+                                <Image
+                                    source={part.image}
+                                    alternative={part.alternative}
+                                    className="h-auto max-h-full w-auto max-w-full"
+                                />
+                            </Flexbox>
+                        </div>
                     ))}
                 </Flexbox>
             </Flexbox>
 
-            <Separator orientation="horizontal" />
-
-            {/* <Separator orientation="horizontal" /> */}
-
-            {/* <Flexbox direction="column" gap="6" className="px-4 py-8 md:px-0">
-                <Locale variant="h2" className="text-center text-2xl font-bold">
-                    {locales.team.title}
-                </Locale>
-
-                <Flexbox
-                    direction="row"
-                    wrap="wrap"
-                    justifyContent="center"
-                    gap="8"
-                    className="gap-y-12"
-                >
-                    {locales.team.members.map((member, index) => (
-                        <Flexbox
-                            key={index}
-                            direction="column"
-                            className="w-full flex-col overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-80 dark:bg-gray-800"
-                        >
-                            <div className="h-48 w-full overflow-hidden">
-                                <img
-                                    src={member.image}
-                                    alt={member.name.en}
-                                    className="h-full w-full object-cover"
-                                />
-                            </div>
-
-                            <Flexbox direction="column" className="p-5" gap="2">
-                                <Locale
-                                    variant="h3"
-                                    className="text-primary-normal text-xl font-bold"
-                                >
-                                    {member.name}
-                                </Locale>
-
-                                <Locale
-                                    variant="p"
-                                    className="text-sm font-medium text-gray-600 dark:text-gray-300"
-                                >
-                                    {member.role}
-                                </Locale>
-
-                                <Locale
-                                    variant="p"
-                                    className="text-sm italic text-blue-600 dark:text-blue-400"
-                                >
-                                    {member.credentials}
-                                </Locale>
-
-                                <Locale
-                                    variant="p"
-                                    className="mt-2 text-gray-700 dark:text-gray-200"
-                                >
-                                    {member.bio}
-                                </Locale>
-
-                                <Locale
-                                    variant="p"
-                                    className="mt-3 border-t pt-2 text-xs italic text-gray-500 dark:text-gray-400"
-                                >
-                                    {member.personal}
-                                </Locale>
-                            </Flexbox>
-                        </Flexbox>
-                    ))}
-                </Flexbox>
-            </Flexbox> */}
-
-            <Flexbox direction="column" gap="6">
+            {/* <Flexbox direction="column" gap="6">
                 <Locale variant="h2" className="text-xl">
                     {locales.whyEngineersLoveUs.title}
                 </Locale>
                 {locales.whyEngineersLoveUs.points.map((point, index) => (
-                    <Flexbox gap={5}>
-                        <Typography variant="span">🔳</Typography>
+                    <Flexbox gap={5} alignItems="center">
+                        <div className="bg-foreground-dark h-3 w-3"></div>
                         <Locale key={index} variant="p">
                             {point}
                         </Locale>
                     </Flexbox>
                 ))}
-            </Flexbox>
-
-            <Separator orientation="horizontal" />
+            </Flexbox> */}
 
             <Flexbox gap={5} alignItems="center">
                 <Locale variant="h2" className="text-xl">
