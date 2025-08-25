@@ -99,7 +99,7 @@ export const UserDashboardPage: FC = () => {
                             return (
                                 <img
                                     className="w-[64px] drop-shadow-[3px_3px_1px_#0000004c]"
-                                    src={`/flags/${value}.svg`}
+                                    src={`flags/${value}.svg`}
                                     width={64}
                                     height={64}
                                 />

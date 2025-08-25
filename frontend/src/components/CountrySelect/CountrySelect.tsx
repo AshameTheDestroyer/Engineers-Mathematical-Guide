@@ -42,7 +42,7 @@ export const CountrySelect: FC<CountrySelectProps> = ({
             </Locale>
             <img
                 className="h-[24px] place-self-center drop-shadow-[3px_3px_1px_#0000004c]"
-                src={`/flags/${country.code.toLowerCase()}.svg`}
+                src={`flags/${country.code.toLowerCase()}.svg`}
                 width={32}
                 height={32}
             />

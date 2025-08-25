@@ -58,7 +58,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({
                 </Typography>
                 <img
                     className="h-[48px] translate-y-0 drop-shadow-[3px_3px_1px_#0000004c]"
-                    src={`/flags/${user.flag}.svg`}
+                    src={`flags/${user.flag}.svg`}
                     width={48}
                     height={48}
                 />

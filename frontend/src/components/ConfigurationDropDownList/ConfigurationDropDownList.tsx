@@ -229,7 +229,7 @@ export const ConfigurationDropDownList: FC<ConfigurationDropDownListProps> = ({
                             className: "drop-shadow-[3px_3px_1px_#0000004c]",
                             width: 32,
                             height: 32,
-                            source: `/flags/${language_["flag-code"]}.svg`,
+                            source: `flags/${language_["flag-code"]}.svg`,
                             placement: direction == "ltr" ? "left" : "right",
                         }}
                         onClick={(_e) => SetLanguage(language_.code)}
