@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs/Breadcrumbs";
 import { useThemeMode } from "../ThemeModeProvider/ThemeModeProvider";
 import { useScreenSize } from "../ScreenSizeProvider/ScreenSizeProvider";
 import { JumpToStartButton } from "../JumpToStartButton/JumpToStartButton";
+import { PIAssistantButton } from "../PIAssistantButton/PIAssistantButton";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { NavigationMenuButton } from "@/components/Drawer/components/NavigationMenuButton";
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
@@ -93,6 +94,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
             {isScreenSize["max-lg"] && (
                 <JumpToStartButton orientation="vertical" />
             )}
+            <PIAssistantButton />
         </Header>
     );
 };
