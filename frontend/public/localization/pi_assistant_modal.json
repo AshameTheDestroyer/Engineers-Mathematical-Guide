@@ -1,0 +1,47 @@
+{
+    "title": {
+        "en": "Welcome to PI Assistant",
+        "ar": "مَرحَباً بِكَ في PI Assistant"
+    },
+    "display": {
+        "title": {
+            "en": "Ask a Question!",
+            "ar": {
+                "male": "اسأَلْ سُؤالَك!",
+                "female": "اسأَلي سُؤالَك!"
+            }
+        },
+        "paragraph": {
+            "en": "Start a conversation with a mathematics PhD professor AI assistant, preferably called PI Assistant. Ask anything you wish to know the answer of.",
+            "ar": {
+                "male": "ابدأْ مُحادَثةً مَعْ ذَكاءٍ اصطِناعيٍّ يَلعبُ دَورَ أُستاذٍ جامِعيٍّ حاصِلٍ عَلى شَهادةِ الدُّكتوراه، المَدعوُّ بِـ **PI Assistant**. اسأَلْ أيَّ شَيءٍ تُريدُ مَعرِفةَ جَوابِه.",
+                "female": "ابدئي مُحادَثةً مَعْ ذَكاءٍ اصطِناعيٍّ يَلعبُ دَورَ أُستاذٍ جامِعيٍّ حاصِلٍ عَلى شَهادةِ الدُّكتوراه، المَدعوُّ بِـ **PI Assistant**. اسأَلي أيَّ شَيءٍ تُريدينَ مَعرِفةَ جَوابِه."
+            }
+        }
+    },
+    "you": {
+        "en": "You",
+        "ar": {
+            "male": "أنتَ",
+            "female": "أنتِ"
+        }
+    },
+    "inputs": {
+        "question": {
+            "en": "Enter the question",
+            "ar": {
+                "male": "ادخِلْ سُؤالَك",
+                "female": "ادخِلي سُؤالَك"
+            }
+        }
+    },
+    "buttons": {
+        "ask": {
+            "en": "Ask",
+            "ar": {
+                "male": "اسأَلْ",
+                "female": "اسأَلي"
+            }
+        }
+    }
+}
