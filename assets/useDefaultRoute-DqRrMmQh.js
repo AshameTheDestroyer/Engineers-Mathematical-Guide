@@ -1,0 +1,1 @@
+import{X as r,v as p,r as u}from"./index-nnsqk7fk.js";const f=(e,a)=>{const s=r(),c=p(),o=s.pathname.split("/").filter(t=>t!="").join("/");u.useEffect(()=>{const t=e.replace(/^\//,""),n=a.replace(/^\//,""),i=`/${t}/${n}`;o==t&&c(i.replace(/^\/\//,"/"))},[o,e,a])};export{f as u};
