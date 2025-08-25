@@ -156,8 +156,8 @@
             },
             {
                 "name": {
-                    "en": "Ahmed Tariq",
-                    "ar": "أحمد طارق"
+                    "en": "Mouhammed Alaa Tarabishi",
+                    "ar": "محمد علاء طرابيشي"
                 },
                 "role": {
                     "en": "Frontend Developer & AI Enthusiast",
@@ -177,10 +177,10 @@
                 },
                 "image": "/src/assets/images/person1.jpg",
                 "links": {
-                    "github": "https://github.com/ahmedtariq",
-                    "linkedin": "https://linkedin.com/in/ahmedtariq",
-                    "telegram": "https://t.me/ahmedtariq",
-                    "gmail": "ahmed.tariq.dev@gmail.com"
+                    "github": "https://github.com/mouhammedAlaaTarabishi",
+                    "linkedin": "https://linkedin.com/in/mouhammedAlaaTarabishi",
+                    "telegram": "https://t.me/mouhammedAlaaTarabishi",
+                    "gmail": "mouhammedAlaaTarabishi@gmail.com"
                 }
             }
         ]
