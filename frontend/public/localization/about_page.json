@@ -25,7 +25,7 @@
     },
     "whatWeOffer": {
         "title": {
-            "en": "What we offer",
+            "en": "What we offer?",
             "ar": "ماذا يقدم موقعنا؟"
         },
         "content": [
@@ -44,7 +44,7 @@
             {
                 "en": "Customized learning tracks: Choose your path — such as the **AI track** — and follow a curated sequence of math courses **tailored to your field** of interest.",
                 "ar": "مسارات تعليمية مخصصة: اختر مسارك — مثل **مسار الذكاء الاصطناعي** — واتبع سلسلة من الدروس الرياضية **المُصمّمة خصيصًا لمجالك** المفضّل.",
-                     "image": "/src/assets/images/clear-approach.jpg",
+                     "image": "/src/assets/images/learning_tracks.png",
                 "alternative": "f"
             },
             {
@@ -64,25 +64,20 @@
                 "ar": "**دردشة مدعومة بالذكاء الاصطناعي**: احصل على **إجابات فورية** لأسئلتك و**توجيهات مباشرة** متى ما واجهت صعوبة."
             },
             {
-                "en": "Personalized user profiles: Track your **progress**, **completed courses**, **learning streaks**, and **bookmarked favorites** in one intuitive dashboard.",
-                "ar": "ملف شخصي مخصّص لكل مستخدم: راقب **تقدّمك**، **الدورات المكتملة**، **سلسلة التعلّم اليومية**، و**المسارات المفضّلة (Bookmarked)** من خلال لوحة تحكّم واحدة."
+                "en": "Personalized user profiles: Track your **progress**, **completed courses**, **learning streaks**, and **bookmarked favorites** in one intuitive dashboard, Intuitive, **user-friendly interface** designed for **seamless navigation** and a **distraction-free experience** Light social features: **Follow peers**, **share achievements**, and grow together in a **supportive learning community**.",
+                "ar": " ملف شخصي مخصّص لكل مستخدم: راقب **تقدّمك**، **الدورات المكتملة**، **سلسلة التعلّم اليومية**، و**المسارات المفضّلة (Bookmarked)** من خلال لوحة تحكّم واحدة. واجهة **سهلة الاستخدام** مُصمّمة لـ **تنقّل سلس** وتجربة تعلّم خالية من المشتتات. مزايا اجتماعية بسيطة: **تابع الزملاء**، **شارك إنجازاتك**، وانمُوا معًا في **مجتمع تعلّم داعم**."
             },
             {
-                "en": "Gamified learning: Earn **XP points**, maintain **daily streaks**, and view your **ranking among peers** to stay motivated and engaged.",
+                "en": "Gamified learning: Earn **XP points**, maintain **daily streaks**, and view your **ranking among peers** to stay motivated and engaged. ",
                 "ar": "تعلّم بتقنية التلعيب: اكسب **نقاط الخبرة (XP)**، حافظ على **سلسلتك اليومية**، واطّلع على **ترتيبك بين الزملاء** للاستمرار بالتحفيز والانخراط."
             },
-            {
-                "en": "Light social features: **Follow peers**, **share achievements**, and grow together in a **supportive learning community**.",
-                "ar": "مزايا اجتماعية بسيطة: **تابع الزملاء**، **شارك إنجازاتك**، وانمُوا معًا في **مجتمع تعلّم داعم**."
-            },
-            {
-                "en": "Intuitive, **user-friendly interface** designed for **seamless navigation** and a **distraction-free experience**.",
-                "ar": "واجهة **سهلة الاستخدام** مُصمّمة لـ **تنقّل سلس** وتجربة تعلّم خالية من المشتتات."
-            },
+
             {
                 "en": "Full visual customization: Choose **color themes** and switch between **light and dark modes** to match your preferences and reduce eye strain.",
-                "ar": "تخصيص بصري كامل: اختر **السمات اللونية** وبدّل بين **الوضع الفاتح والداكن** لتتناسب مع تفضيلاتك وتقليل إجهاد العين."
-            }
+                "ar": "تخصيص بصري كامل: اختر **السمات اللونية** وبدّل بين **الوضع الفاتح والداكن** لتتناسب مع تفضيلاتك وتقليل إجهاد العين.",
+                "image": "/src/assets/images/theme-palettes.png",
+                "alternative": "theme-palettes"
+            }   
         ]
     },
     "readyToGetStarted": {

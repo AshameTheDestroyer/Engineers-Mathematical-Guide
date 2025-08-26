@@ -14,8 +14,8 @@ export const AboutPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
 
     return (
-        <Flexbox className="grow" variant="main" direction="column" gap="25">
-            <Flexbox direction="column" gap={10} className="min-[80dvh]">
+        <Flexbox className="grow" variant="main" direction="column" gap={30}>
+            <Flexbox direction="column" gap={30} className="min-[80dvh]">
                 <Locale variant="h1" className="text-3xl">
                     {locales.title}
                 </Locale>
@@ -35,8 +35,8 @@ export const AboutPage: FC = () => {
                 </div>
             </Flexbox>
 
-            <Flexbox direction="column" gap={2} className="min-[80dvh]">
-                <Locale variant="h2" className="text-2xl">
+            <Flexbox direction="column" gap={15} className="min-[80dvh]">
+                <Locale variant="h2" className="text-3xl">
                     {locales.whatWeOffer.title}
                 </Locale>
 
@@ -45,7 +45,7 @@ export const AboutPage: FC = () => {
                         <div
                             key={i}
                             className={`flex flex-col gap-8 md:flex-row ${
-                                i % 2 === 0 ? "md:flex-row-reverse" : ""
+                                i % 2 !== 0 ? "md:flex-row-reverse" : ""
                             }`}
                         >
                             <Flexbox
