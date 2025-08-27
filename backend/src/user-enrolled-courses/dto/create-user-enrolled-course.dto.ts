@@ -11,11 +11,17 @@ export class CreateUserEnrolledCourseDto {
   @IsString()
   courseId: string
 
-  moduleNum: number = 1
+  XP: number = 0
+
+  chapterNum: number = 1
   
   lessonNum: number = 1
+
+  chapterId: string = ""
   
-  progress: number = 0
+  lessonId: string = ""
+
+  canDoExam: boolean = false
 
   lastStudied: Date = new Date()
 }

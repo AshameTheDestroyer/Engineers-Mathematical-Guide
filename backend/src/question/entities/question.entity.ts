@@ -17,7 +17,11 @@ export class Question {
 
   @Column()
   @ApiProperty()
-  answer: string[]
+  answers: string[]
+  
+  @Column()
+  @ApiProperty()
+  multipleAnswers: boolean
 
   @Column()
   @ApiProperty()
@@ -26,8 +30,4 @@ export class Question {
   @Column()
   @ApiProperty()
   chapterId: string
-
-  @Column()
-  @ApiProperty()
-  courseId: string
 }

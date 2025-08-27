@@ -16,13 +16,8 @@ export class CreateChapterDto {
     
     @IsNumber()
     @IsNotEmpty()
-    @ApiProperty()
-    quizDuration: number
-
-    @IsNumber()
-    @IsNotEmpty()
-    @ApiProperty()
-    quizXP: number
+    @ApiProperty({description: "should be in minutes"})
+    examDuration: number
     
     @IsNumber()
     @IsNotEmpty()
@@ -42,5 +37,5 @@ export class CreateChapterDto {
     @IsArray()
     @IsNotEmpty()
     @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
-    quizQuestions: string[]
+    examQuestions: string[]
 }

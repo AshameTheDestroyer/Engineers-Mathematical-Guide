@@ -10,5 +10,6 @@ import { QueryBuilderModule } from 'src/query-builder/query-builder.module';
   controllers: [ChapterController],
   providers: [ChapterService],
   imports:[BaseModule.forFeature(Chapter),TypeOrmModule.forFeature([Chapter]), QueryBuilderModule.forFeature(Chapter)],
+  exports: [ChapterService]
 })
 export class ChapterModule {}

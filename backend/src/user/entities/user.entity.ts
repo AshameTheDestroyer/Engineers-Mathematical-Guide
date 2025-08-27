@@ -2,7 +2,7 @@ import { Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
 import * as bcryptjs from 'bcryptjs';
 import { ApiProperty } from '@nestjs/swagger';
 import { LocalString } from 'src/utils/local-string';
-import { UserGender } from 'src/utils/types';
+import { UserGender, UserRole } from 'src/utils/types';
 
 @Entity('users')
 export class User {
@@ -81,7 +81,18 @@ export class User {
     enum: UserGender,
     nullable: false
   })
-  type: UserGender
+  gender: UserGender
+
+  @ApiProperty({ 
+    enum: UserRole, 
+    example: UserRole.USER, 
+  })
+  @Column({
+    type: 'enum',
+    enum: UserRole,
+    nullable: false
+  })
+  role: UserRole
   
   async validatePassword(password: string): Promise<boolean> {
     const hash = await bcryptjs.hash(password, this.salt);

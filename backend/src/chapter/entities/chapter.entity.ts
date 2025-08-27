@@ -17,11 +17,7 @@ export class Chapter {
   
   @Column()
   @ApiProperty()
-  quizDuration: number
-  
-  @Column()
-  @ApiProperty()
-  quizXP: number
+  examDuration: number
   
   @Column()
   @ApiProperty()
@@ -29,7 +25,7 @@ export class Chapter {
   
   @Column()
   @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})
-  quizQuestions: string[]
+  examQuestions: string[]
 
   @Column()
   @ApiProperty({example:['67d7414c67c250f6268bd2d8','67d7414c67c250f6268bd2d2']})

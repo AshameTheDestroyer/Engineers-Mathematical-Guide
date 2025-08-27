@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger"
 import { Type } from "class-transformer"
-import { IsArray, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator"
+import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsString, ValidateNested } from "class-validator"
 import { LocalString } from "src/utils/local-string"
 
 export class CreateQuestionDto {
@@ -17,7 +17,12 @@ export class CreateQuestionDto {
     @IsNotEmpty()
     @IsArray()
     @ApiProperty()
-    answer: string[]
+    answers: string[]
+    
+    @IsNotEmpty()
+    @IsBoolean()
+    @ApiProperty()
+    multipleAnswers: boolean
     
     @IsNotEmpty()
     @IsNumber()
@@ -28,9 +33,4 @@ export class CreateQuestionDto {
     @IsString()
     @ApiProperty()
     chapterId: string
-    
-    @IsNotEmpty()
-    @IsString()
-    @ApiProperty()
-    courseId: string
 }
