@@ -15,6 +15,7 @@ import { NavigationMenuButton } from "@/components/Drawer/components/NavigationM
 import { ConfigurationDropDownList } from "@/components/ConfigurationDropDownList/ConfigurationDropDownList";
 
 import locales from "@localization/routes.json";
+// import { MathTools } from "../MathTools/MathTools";
 
 export type ApplicationBarProps = ComponentProps<HTMLDivElement> & {
     baseRoute: string;
@@ -88,6 +89,7 @@ export const ApplicationBar: FC<ApplicationBarProps> = ({
                         base={baseRoute}
                         routes={GetRouteLocales(routes, locales, language)}
                     />
+                    {/* <MathTools /> */}
                 </ButtonBox>
             </ButtonBox>
             {isScreenSize["max-lg"] && (
