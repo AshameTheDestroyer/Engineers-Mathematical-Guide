@@ -1,9 +1,9 @@
-// components/FAQ.tsx
 import { FC, useState } from "react";
 import { Locale } from "@/components/Locale/Locale";
 import { RichText } from "@/components/RichText/RichText";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
+import { Typography } from "@/components/Typography/Typography";
 
 const Accordion = ({ faqs }) => {
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -11,9 +11,9 @@ const Accordion = ({ faqs }) => {
 
     return (
         <div className="mb-8">
-            <h2 className="mb-6 text-2xl font-semibold">
+            <Typography variant="h2" className="mb-6 text-2xl font-semibold">
                 <Locale variant="h2">Frequently Asked Questions</Locale>
-            </h2>
+            </Typography>
             <Flexbox direction="column" className="space-y-4" gap={5}>
                 {faqs.map((item, index) => (
                     <div
@@ -37,13 +37,14 @@ const Accordion = ({ faqs }) => {
                             >
                                 {GetLocale(item.question, language)}
                             </RichText>
-                            <span
+                            <Typography
+                                variant="span"
                                 className={`transform transition-transform duration-300 ${
                                     openIndex === index ? "rotate-180" : ""
                                 }`}
                             >
                                 ▼
-                            </span>
+                            </Typography>
                         </button>
                         <div
                             className={`overflow-hidden px-6 transition-all duration-300 ${
@@ -52,7 +53,10 @@ const Accordion = ({ faqs }) => {
                                     : "max-h-0 pb-0 pt-0 opacity-0"
                             }`}
                         >
-                            <p className="leading-relaxed text-gray-600">
+                            <Typography
+                                variant="p"
+                                className="leading-relaxed text-gray-600"
+                            >
                                 <RichText
                                     variant="p"
                                     className="text-foreground-dark p-5 text-justify"
@@ -64,7 +68,7 @@ const Accordion = ({ faqs }) => {
                                 >
                                     {GetLocale(item.answer, language)}
                                 </RichText>
-                            </p>
+                            </Typography>
                         </div>
                     </div>
                 ))}

@@ -36,6 +36,7 @@ export const AboutPage: FC = () => {
                     </Locale>
                 </Flexbox>
             </Flexbox>
+            {/* <UnitCircleWidget /> */}
 
             <Flexbox direction="column" gap={15} className="min-[80dvh]">
                 <Locale variant="h2" className="text-3xl">

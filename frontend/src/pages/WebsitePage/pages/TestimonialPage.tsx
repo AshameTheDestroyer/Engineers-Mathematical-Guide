@@ -54,7 +54,7 @@ export const TestimonialPage: FC = () => {
                                 </Locale>
                                 <Locale
                                     variant="p"
-                                    className="text-secondary-dark"
+                                    className="text-secondary-normal"
                                 >
                                     {testimonial.title}
                                 </Locale>

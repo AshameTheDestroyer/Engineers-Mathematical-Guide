@@ -501,6 +501,37 @@ body.dark-themed {
   animation: pulse-glow 1s ease-in-out infinite;
 }
 
+/* In your globals.css or Tailwind styles */
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 1rem; /* Match your widget's border radius */
+  box-shadow: 0 0 15px 6px rgba(59, 130, 246, 0.6); /* Blue glow */
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes pulse-ring {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+}
+
 @layer base {
     ::-webkit-scrollbar {
         @apply h-3 w-3;
