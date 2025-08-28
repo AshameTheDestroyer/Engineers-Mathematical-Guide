@@ -65,6 +65,7 @@
         "gender": "male",
         "country": "Egypt",
         "phone-number": "+201234567890",
+        "avatar": "src/assets/images/person-4.jpg",
         "surname": "Ali",
         "day-streak": 327,
         "city": "Cairo",

@@ -474,6 +474,33 @@ body.dark-themed {
   color: white;
 }
 
+.dark-text-hue {
+  text-shadow: 
+    0 0 8px #000c4a,    /* Pink/Magenta */
+    0 0 16px #004141,   /* Cyan */
+    0 0 24px #043600;   /* Yellow */
+  color: black;
+}
+
+@keyframes pulse-glow {
+  0% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(7.05);
+  }
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
 @layer base {
     ::-webkit-scrollbar {
         @apply h-3 w-3;

@@ -18,7 +18,7 @@
                 "en": "This site broke down Laplace transforms in a way my professor never did. I aced my controls exam!",
                 "ar": "شرح هذا الموقع تحويلات لابلاس بطريقة لم يفعلها أستاذي قط. نجحت في امتحان التحكم الخاص بي بنجاح باهر!"
             },
-            "image": "/src/assets/images/person2.jpg"
+            "image": "/src/assets/images/person-profile-3.png"
         },
         {
             "id": 2,
@@ -50,7 +50,7 @@
                 "en": "From struggling with differential equations to building AI models Mathware gave me the foundation.",
                 "ar": "من معاناتي مع المعادلات التفاضلية إلى بناء نماذج الذكاء الاصطناعي منحني Mathware الأساس."
             },
-            "image": "/src/assets/images/person3.jpg"
+            "image": "/src/assets/images/person-2.jpg"
              }
     ],
     "caseStudies": {

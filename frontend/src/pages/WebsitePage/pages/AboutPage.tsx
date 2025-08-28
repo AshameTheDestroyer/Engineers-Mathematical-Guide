@@ -20,17 +20,17 @@ export const AboutPage: FC = () => {
                     {locales.title}
                 </Locale>
                 <Flexbox className="relative">
-                    <div className="relative bg-transparent">
+                    <div className="relative inline-block bg-transparent">
                         <Image
                             source={locales.heroSection.image.source}
                             alternative={locales.heroSection.image.alt}
                             className="h-150 w-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/100"></div>
+                        <div className="absolute inset-0 animate-pulse rounded-2xl bg-gradient-to-r from-blue-300/40 to-purple-300/40 blur-sm"></div>
                     </div>
                     <Locale
                         variant="h2"
-                        className="z-3 top-50 absolute left-10 p-10 text-justify text-xl text-white"
+                        className="z-3 top-50 text-azure-foreground-light absolute left-10 p-10 text-justify text-xl"
                     >
                         {locales.heroSection.content}
                     </Locale>
