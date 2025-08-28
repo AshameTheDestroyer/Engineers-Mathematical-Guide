@@ -9,7 +9,7 @@
             "ar": "نُجسِّر الفجوة بين الرِّياضيّات المُجرَّدة والابتكار المُلموس، مُحوّلينَ الأفكارَ المعقدةَ إلى تجاربَ تعليميةٍ واضحةٍ ووَضّاءةٍ تُمكّنُ المُهندسينَ من القيادةِ بالثِّقةِ والرُّؤيةِ. مَع دروسٍ شيّقةٍ، وامتحاناتٍ مُوَقَّتةٍ، وأدواتٍ رِياضيّةٍ مُدمَجةٍ قويّةٍ، يُصبحُ إتقانُ الرِّياضيّاتِ الهندسيةِ فعّالاً ومُمتعاً بِحَقٍّ. صُمّمَ المنصَةُ بِأناقةٍ، وبِألوانٍ قابلةٍ للتخصيصِ، ووضعِ الإضاءةِ الفاتحِ والداكنِ، لتُوفّرَ بيئةً مُريحةً ومُخصّصةً تُلائمُ كُلِّ مُستخدمٍ، وتُشجّعُ على الرِّحلةِ التعليميةِ بِمتعةٍ واندماجٍ."
         },
         "image": {
-            "source": "/src/assets/images/theoretical_computer_science.jpg",
+            "source": "/src/assets/images/mathematical_statistics.jpg",
             "alt": "hero-section-image"
         }
     },
@@ -32,14 +32,14 @@
             {
                 "en": "A comprehensive platform dedicated to teaching **advanced mathematics** to engineers across all disciplines, transforming **complex topics** — from calculus to abstract algebra — into **clear, approachable concepts**.",
                 "ar": "منصة شاملة مُخصّصة لتعليم **الرياضيات المتقدمة** للمهندسين في جميع التخصّصات، وتحويل **المفاهيم المعقدة** — من التفاضل إلى الجبر المجرّد — إلى **مفاهيم واضحة وسهلة الفهم**.",
-                "image": "/src/assets/images/444.jpg",
-                "alternative": "f"
+                "image": "/src/assets/images/reading-lesson.jpg",
+                "alternative": "reading-lesson"
             },
             {
                 "en": "Step-by-step interactive lessons covering all essential areas of **engineering math**, enriched with **real-world applications** in AI, electrical systems, mechanical design, and more.",
                 "ar": "دروس تفاعلية خطوة بخطوة تغطي جميع المجالات الأساسية في **الرياضيات الهندسية**، معزّزة بتطبيقات **من الواقع العملي** في الذكاء الاصطناعي، والأنظمة الكهربائية، والتصميم الميكانيكي، وغيرها.",
-               "image": "/src/assets/images/435345.jpg",
-                "alternative": "f"
+               "image": "/src/assets/images/step-by-step-interactive-lessons.jpg",
+                "alternative": "step-by-step-interactive-lessons"
             },
             {
                 "en": "Customized learning tracks: Choose your path — such as the **AI track** — and follow a curated sequence of math courses **tailored to your field** of interest.",
@@ -49,27 +49,39 @@
             },
             {
                 "en": "Engaging video lessons, practice problems with **detailed solutions**, and **full-length timed final exams** that prepare you for academic and professional success.",
-                "ar": "دروس فيديو جذّابة، وتمارين مع **حلول تفصيلية**، و**امتحانات نهائية كاملة ومُوَقّتة** تحضّرك للنجاح الأكاديمي والمهني."
+                "ar": "دروس فيديو جذّابة، وتمارين مع **حلول تفصيلية**، و**امتحانات نهائية كاملة ومُوَقّتة** تحضّرك للنجاح الأكاديمي والمهني.",
+                "image": "/src/assets/images/video_lesson.png",
+                "alternative": "video-lesson"
             },
             {
                 "en": "Built-in interactive tools: **Smart calculators**, **visual simulators**, and problem-solving environments that make mastering tough concepts **intuitive and effective**.",
-                "ar": "أدوات تفاعلية مدمجة: **آلات حاسبة ذكية**، و**محاكّيات بصرية**، وبيئات لحل المسائل تجعل إتقان المفاهيم الصعبة **شيئًا بديهيًا وفعالًا**."
+                "ar": "أدوات تفاعلية مدمجة: **آلات حاسبة ذكية**، و**محاكّيات بصرية**، وبيئات لحل المسائل تجعل إتقان المفاهيم الصعبة **شيئًا بديهيًا وفعالًا**.",
+                "image": "/src/assets/images/UnitCirculeMathTool.png",
+                "alternative": "unitcircule-mathtool"
             },
             {
                 "en": "Dedicated equations hub: Easily browse and search for any mathematical formula, with instant access to **explanations and engineering applications**.",
-                "ar": "قسم مخصّص للمعادلات: تصفّح وابحث عن أي صيغة رياضية بسهولة، مع وصول فوري إلى **الشروحات والتطبيقات الهندسية**."
+                "ar": "قسم مخصّص للمعادلات: تصفّح وابحث عن أي صيغة رياضية بسهولة، مع وصول فوري إلى **الشروحات والتطبيقات الهندسية**.",
+                "image": "/src/assets/images/math_equation.png",
+                "alternative": "math-equation"
             },
             {
                 "en": "**AI-powered chat assistance**: Get **instant answers** to your questions and **real-time guidance** whenever you're stuck.",
-                "ar": "**دردشة مدعومة بالذكاء الاصطناعي**: احصل على **إجابات فورية** لأسئلتك و**توجيهات مباشرة** متى ما واجهت صعوبة."
+                "ar": "**دردشة مدعومة بالذكاء الاصطناعي**: احصل على **إجابات فورية** لأسئلتك و**توجيهات مباشرة** متى ما واجهت صعوبة.",
+                "image": "/src/assets/images/pi_assistant.png",
+                "alternative": "pi-assistant"
             },
             {
                 "en": "Personalized user profiles: Track your **progress**, **completed courses**, **learning streaks**, and **bookmarked favorites** in one intuitive dashboard, Intuitive, **user-friendly interface** designed for **seamless navigation** and a **distraction-free experience** Light social features: **Follow peers**, **share achievements**, and grow together in a **supportive learning community**.",
-                "ar": " ملف شخصي مخصّص لكل مستخدم: راقب **تقدّمك**، **الدورات المكتملة**، **سلسلة التعلّم اليومية**، و**المسارات المفضّلة (Bookmarked)** من خلال لوحة تحكّم واحدة. واجهة **سهلة الاستخدام** مُصمّمة لـ **تنقّل سلس** وتجربة تعلّم خالية من المشتتات. مزايا اجتماعية بسيطة: **تابع الزملاء**، **شارك إنجازاتك**، وانمُوا معًا في **مجتمع تعلّم داعم**."
+                "ar": " ملف شخصي مخصّص لكل مستخدم: راقب **تقدّمك**، **الدورات المكتملة**، **سلسلة التعلّم اليومية**، و**المسارات المفضّلة (Bookmarked)** من خلال لوحة تحكّم واحدة. واجهة **سهلة الاستخدام** مُصمّمة لـ **تنقّل سلس** وتجربة تعلّم خالية من المشتتات. مزايا اجتماعية بسيطة: **تابع الزملاء**، **شارك إنجازاتك**، وانمُوا معًا في **مجتمع تعلّم داعم**.",
+                "image": "/src/assets/images/batoul'r-profile.png",
+                "alternative":"batoul's-profile"
             },
             {
                 "en": "Gamified learning: Earn **XP points**, maintain **daily streaks**, and view your **ranking among peers** to stay motivated and engaged. ",
-                "ar": "تعلّم بتقنية التلعيب: اكسب **نقاط الخبرة (XP)**، حافظ على **سلسلتك اليومية**، واطّلع على **ترتيبك بين الزملاء** للاستمرار بالتحفيز والانخراط."
+                "ar": "تعلّم بتقنية التلعيب: اكسب **نقاط الخبرة (XP)**، حافظ على **سلسلتك اليومية**، واطّلع على **ترتيبك بين الزملاء** للاستمرار بالتحفيز والانخراط.",
+                "image": "/src/assets/images/couraging-users.png",
+                "alternative": "couraging-users"
             },
 
             {

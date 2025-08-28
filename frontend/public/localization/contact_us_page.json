@@ -58,9 +58,9 @@
       "ar": "تابعنا"
     },
     "links": [
-      { "platform": "LinkedIn", "url": "https://linkedin.com/company/mathware", "icon": "linkedin" },
-      { "platform": "YouTube", "url": "https://youtube.com/@mathware", "icon": "youtube" },
-      { "platform": "Instagram", "url": "https://instagram.com/mathware.app", "icon": "instagram" }
+      { "developer": "Batoul Kazak", "url": "https://linkedin.com/batoulkazak" },
+      { "developer": "Hashem Wannous", "url": "https://linkedin.com/hashemwannous" },
+      { "developer": "Mouhammed Alaa Tarabishi", "url": "https://linkedin.com/mouhammedalaatarabishi" }
     ]
   },
   "address": {
@@ -86,7 +86,7 @@
   },
   "cta": {
     "text": {
-      "en": "Your feedback helps us improve. Send us a message!",
+      "en": "Your feedback helps us improve, Send us a message!",
       "ar": "ملاحظاتك تساعدنا على التطور. أرسل لنا رسالة!"
     }
   },
@@ -103,7 +103,7 @@
                 },
                 "role": {
                     "en": "Frontend Developer & AI Enthusiast",
-                    "ar": "مطوّر واجهات أمامية ومهتم بالذكاء الاصطناعي"
+                    "ar": "مطوّرة واجهات أمامية ومهتمة بالذكاء الاصطناعي"
                 },
                 "credentials": {
                     "en": "B.Sc. in Computer Science",
@@ -111,11 +111,11 @@
                 },
                 "bio": {
                     "en": "A passionate computer science student who contributed to Mathware’s frontend architecture and mathematical logic, turning complex math concepts into intuitive learning experiences.",
-                    "ar": "طالب علوم حاسوب شغوف ساهم في بنية واجهة Mathware الأمامية والمنطق الرياضي، وحوّل المفاهيم الرياضية المعقدة إلى تجارب تعليمية بديهية."
+                    "ar": "طالبة علوم حاسوب شغوفة ساهمت في بنية واجهة Mathware الأمامية والمنطق الرياضي، وحوّلت المفاهيم الرياضية المعقدة إلى تجارب تعليمية بديهية."
                 },
                 "personal": {
-                    "en": "Passionate about math and problem solving, with a focus on translating logical concepts into clear and intuitive user interfaces.",
-                    "ar": "شغوف بالرياضيات وحل المسائل، ويهتم بتحويل المفاهيم المنطقية إلى واجهات مستخدم واضحة وبديهية."
+                    "en": "I am passionate about math and problem solving, with a focus on translating logical concepts into clear and intuitive user interfaces.",
+                    "ar": "انا شغوفة بالرياضيات وحل المسائل، وأهتم بتحويل المفاهيم المنطقية إلى واجهات مستخدم واضحة وبديهية."
                 },
                 "image": "/src/assets/images/batoul_kazak.jpg",
                 "links": {

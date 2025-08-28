@@ -161,82 +161,166 @@
         "en": "Read paragraph →",
         "ar": "اقرأ المقال →"
     },
-    "paragraphs": {
-        "gettingStarted": {
-            "content1": {
-                "en": "Creating an account is simple. Click 'Sign Up' at the top right, enter your email and password, then confirm your registration via the email we send you.",
-                "ar": "إنشاء حساب بسيط. انقر على 'تسجيل' في الأعلى يمينًا، وأدخل بريدك الإلكتروني وكلمة المرور، ثم أكد التسجيل عبر البريد الذي سنرسله إليك."
-            },
-            "content2": {
-                "en": "Use the main menu or search bar to navigate. Key sections like Learning Resources and Account Settings are available in the top navigation bar.",
-                "ar": "استخدم القائمة الرئيسية أو شريط البحث للتنقل. توجد أقسام مهمة مثل مصادر التعلّم وإعدادات الحساب في شريط التنقل العلوي."
-            },
-            "content3": {
-                "en": "Browse by engineering discipline using the 'Subjects' dropdown. Select Civil, Electrical, Mechanical, or others to filter content relevant to your field.",
-                "ar": "تصفح حسب التخصص الهندسي باستخدام قائمة 'المواضيع'. اختر مدني، كهربائي، ميكانيكي، أو غيرها لتصفية المحتوى المناسب لتخصصك."
-            }
-        },
-        "accountAccess": {
-            "content1": {
-                "en": "Go to the login page and click 'Forgot Password'. Enter your email to receive a secure link to reset your password instantly.",
-                "ar": "اذهب إلى صفحة تسجيل الدخول وانقر على 'نسيت كلمة المرور'. أدخل بريدك الإلكتروني لتلقي رابطًا آمنًا لإعادة تعيين كلمة المرور فورًا."
-            },
-            "content2": {
-                "en": "We offer monthly and yearly subscription plans. Billing is handled securely through Stripe or PayPal, and you can view invoices in your account dashboard.",
-                "ar": "نقدّم خطط اشتراك شهرية وسنوية. يتم التعامل مع الفوترة بشكل آمن عبر Stripe أو PayPal، ويمكنك عرض الفواتير من لوحة تحكم حسابك."
-            },
-            "content3": {
-                "en": "You can cancel or upgrade your subscription anytime. Go to 'Billing' in your settings to change your plan or cancel with no hidden fees.",
-                "ar": "يمكنك إلغاء أو ترقية اشتراكك في أي وقت. اذهب إلى 'الفوترة' في إعداداتك لتغيير خطتك أو الإلغاء دون رسوم خفية."
-            }
-        },
-        "learningResources": {
-            "content1": {
-                "en": "Practice problems are located under each topic. Try them to test your understanding. Instant feedback and step-by-step solutions help you learn from mistakes.",
-                "ar": "توجد تمارين التدريب أسفل كل موضوع. جرّبها لاختبار فهمك. توفر لك التغذية الراجعة الفورية والحلول خطوة بخطوة المساعدة في التعلم من الأخطاء."
-            },
-            "content2": {
-                "en": "Look for the download icon next to worksheets or summaries. Click it to save PDFs to your device for offline study or printing.",
-                "ar": "ابحث عن أيقونة التنزيل بجانب أوراق العمل أو الملخصات. انقر عليها لحفظ ملفات PDF على جهازك للدراسة دون اتصال أو الطباعة."
-            },
-            "content3": {
-                "en": "Interactive tools like circuit simulators or 3D stress analyzers are embedded in relevant lessons. Click to launch, adjust parameters, and see real-time results.",
-                "ar": "تم دمج أدوات تفاعلية مثل محاكيات الدوائر أو مُحلّلات الإجهاد ثلاثية الأبعاد في الدروس ذات الصلة. انقر للتشغيل، عدّل المعاملات، وشاهد النتائج فورًا."
-            }
-        },
-        "technicalIssues": {
-            "content1": {
-                "en": "If videos aren’t loading, check your internet connection. Try refreshing the page, clearing your browser cache, or switching to a supported browser like Chrome or Firefox.",
-                "ar": "إذا لم تُحمّل مقاطع الفيديو، تحقق من اتصال الإنترنت لديك. جرّب إعادة تحميل الصفحة، مسح ذاكرة التخزين المؤقت للمتصفح، أو التبديل إلى متصفح مدعوم مثل Chrome أو Firefox."
-            },
-            "content2": {
-                "en": "Our platform works on both mobile and desktop. Some interactive tools perform better on larger screens. For best experience, use a tablet or computer.",
-                "ar": "يعمل منصتنا على الجوال والحاسوب. تعمل بعض الأدوات التفاعلية بشكل أفضل على الشاشات الكبيرة. لتجربة مثالية، استخدم جهاز لوحي أو حاسوبًا."
-            },
-            "content3": {
-                "en": "We support Chrome, Firefox, Safari, and Edge (latest versions). Older browsers may cause display or functionality issues. Update your browser for full compatibility.",
-                "ar": "ندعم Chrome وFirefox وSafari وEdge (الإصدارات الحديثة). قد تسبب المتصفحات القديمة مشاكل في العرض أو الأداء. حدّث متصفحك للحصول على توافق تام."
-            }
-        },
-        "forEducators": {
-            "content1": {
-                "en": "All content is free to use in classrooms. You can project lessons, assign practice problems, and download worksheets for your students.",
-                "ar": "جميع المحتويات مجانية للاستخدام في الصفوف الدراسية. يمكنك عرض الدروس، تعيين تمارين، وتحميل أوراق عمل لتلاميذك."
-            },
-            "content2": {
-                "en": "To get instructor access, contact us with your school email or accreditation details. We’ll verify and grant access to additional teaching resources.",
-                "ar": "للحصول على صلاحيات المُدرّس، اتصل بنا باستخدام بريدك المدرسي أو وثائق الاعتماد. سنقوم بالتحقق ومنحك وصولاً إلى موارد تعليمية إضافية."
-            }
-        },
-        "popularArticles": {
-            "content1": {
-                "en": "Laplace Transforms simplify solving linear differential equations in control systems. Learn how to apply them using step functions, s-domain analysis, and inverse transforms.",
-                "ar": "تبسّط تحويلات لابلاس حل المعادلات التفاضلية الخطية في أنظمة التحكم. تعلّم كيفية تطبيقها باستخدام دوال الدرجة، والتحليل في مجال s، والتحويلات العكسية."
-            },
-            "content2": {
-                "en": "Master differential equations faster by identifying the type first, using standard forms, practicing initial conditions, leveraging symmetry, and checking solutions numerically.",
-                "ar": "أتقن حل المعادلات التفاضلية بسرعة أكبر من خلال تمييز النوع أولًا، واستخدام الأشكال القياسية، وممارسة الشروط الابتدائية، واستغلال التماثل، والتحقق من الحلول عدديًا."
-            }
-        }
+    "paragraphs":[
+  {
+    "question": {
+      "en": "How does **Mathware** ensure the accuracy and academic quality of its content?",
+      "ar": "كيف تضمن **Mathware** دقة ونقاء المحتوى الأكاديمي؟"
+    },
+    "answer": {
+      "en": "**Mathware** collaborates closely with university professors, engineering educators, and academic specialists in mathematics and engineering to develop and review all course materials. Every lesson, example, and exercise is vetted by subject-matter experts to ensure conceptual accuracy, pedagogical clarity, and alignment with real-world engineering applications. This collaboration ensures that the platform doesn’t just teach math — it teaches it correctly, at the right level, and in context. From curriculum design to final review, expert input guides every stage of development. The result is a learning experience grounded in academic rigor, not just algorithmic delivery.",
+      "ar": "تتعاون **Mathware** بشكل وثيق مع أساتذة الجامعات، ومدرسي الهندسة، والمتخصصين الأكاديميين في الرياضيات والهندسة لتطوير مراجعة جميع المواد التعليمية. كل درس، مثال، وتمرين يتم مراجعته من قبل خبراء في المجال لضمان الدقة المفاهيمية، والوضوح التربوي، والتوازن مع التطبيقات الهندسية الواقعية. هذا التعاون يضمن أن المنصة لا تُعلّم الرياضيات فقط، بل تُعلّمها بشكل صحيح، على المستوى المناسب، وفي سياق عملي. من تصميم المناهج إلى المراجعة النهائية، توجه الخبرة العلمية كل مرحلة من مراحل التطوير. النتيجة هي تجربة تعليمية مبنية على صلة أكاديمية قوية، وليس مجرد توصيل خوارزمي."
     }
+  },
+  {
+    "question": {
+      "en": "Can I use **Mathware** to track my progress across multiple courses and chapters?",
+      "ar": "هل يمكنني استخدام **Mathware** لتتبع تقدمي عبر عدة مقررات ووحدات؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** provides a comprehensive dashboard where you can monitor your progress across all enrolled courses, including completion rates, exam grades, XP earned, and daily learning streaks. The system tracks your performance per chapter, lesson, and even individual question type, giving you a granular view of your strengths and areas for improvement. You’ll see how much time you’ve spent, how many points you’ve earned, and what percentage of each module you’ve completed. This data is visualized in an intuitive way, so you can quickly identify which topics need more attention. With this insight, you can adjust your study plan and stay motivated toward mastery.",
+      "ar": "نعم، توفر **Mathware** لوحة تحكم شاملة يمكنك من خلالها متابعة تقدمك عبر جميع المقررات المسجلة، بما في ذلك نسب الإكمال، ودرجات الاختبارات، وعدد النقاط (XP) التي اكتسبتها، وسلسلة التعلم اليومية. يسجل النظام أدائك لكل فصل، درس، وحتى نوع السؤال الفردي، مما يمنحك رؤية دقيقة لنقاط القوة ومحاور التحسين. ستتمكن من رؤية الوقت الذي قضيته، وعدد النقاط التي اكتسبتها، ونسبة إكمال كل وحدة. يتم عرض هذه البيانات بطريقة بصرية سهلة، بحيث يمكنك تحديد المواضيع التي تحتاج إلى مزيد من الانتباه بسرعة. وباستخدام هذه الرؤية، يمكنك تعديل خطة دراستك ومواصلة التحفيز نحو الإتقان."
+    }
+  },
+  {
+    "question": {
+      "en": "What happens after I complete an exam on **Mathware**? Is there instant feedback?",
+      "ar": "ماذا يحدث بعد إكمالي لامتحان في **Mathware**؟ هل هناك تغذية راجعة فورية؟"
+    },
+    "answer": {
+      "en": "After completing an exam, **Mathware** instantly evaluates your performance and displays a personalized results screen with confetti animations, a grade, XP earned, and time taken. You’ll see a smiley face reflecting your score — from 'Outstanding!' to 'Great Job!' — along with detailed breakdowns of your answers. The system highlights which questions you got right or wrong, explains why, and shows you the correct solutions. You can also review your answers immediately or exit to continue learning. This immediate feedback loop reinforces learning, helps you correct misconceptions, and keeps you engaged through celebration and clarity.",
+      "ar": "بعد إكمال الامتحان، تقوم **Mathware** بتقييم أدائك فورًا وتعرض شاشة نتائج شخصية مع رسومات حفلات، ودرجة، وعدد النقاط (XP)، ووقت الاستجابة. ستظهر لك وجهة ابتسامة تعكس درجتك — من 'ممتاز!' إلى 'أداء رائع!' — مع تفاصيل عن إجاباتك. يوضح النظام أي الأسئلة أجبت عنها بشكل صحيح أو غير صحيح، ويشرح السبب، ويعرض الحل الصحيح. يمكنك مراجعة إجاباتك فورًا أو الخروج واستمرار التعلم. هذه الحلقة التغذوية الفورية تعزز التعلم، وتساعدك على تصحيح المفاهيم الخاطئة، وتحافظ على تفاعلך من خلال الاحتفال والوضوح."
+    }
+  },
+  {
+    "question": {
+      "en": "Does **Mathware** offer interactive tools for solving math problems like matrices or equations?",
+      "ar": "هل تقدم **Mathware** أدوات تفاعلية لحل المسائل الرياضية مثل المصفوفات أو المعادلات؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** includes a suite of interactive tools designed to help you explore and solve mathematical problems hands-on. These include a matrix calculator, graphing tool, equation solver, and determinant analyzer — all built with precision and real-time feedback. For example, you can input a matrix and instantly see its determinant, eigenvalues, or inverse, with step-by-step explanations. The tools are not just calculators — they’re educational aids that show you how the math works behind the scenes. They support both simple and advanced operations, and you can save or export your results for later use in projects or notes. These tools make abstract concepts tangible and deepen your understanding.",
+      "ar": "نعم، تضم **Mathware** مجموعة من الأدوات التفاعلية المصممة لمساعدتك على استكشاف وحل المشكلات الرياضية بأسلوب تفاعلي. تشمل هذه الأدوات آلة حاسبة للمصفوفات، وأداة رسم بياني، وحلّول للمعادلات، وتحليل لمحدد المصفوفة — كلها مبنية بدقة وتقديم تغذية راجعة فورية. على سبيل المثال، يمكنك إدخال مصفوفة ورؤية محدداتها، أو القيم الذاتية، أو العكس، مع شرح خطوة بخطوة. هذه الأدوات ليست مجرد آلات حاسبة — بل هي أدوات تعليمية تعرض لك كيف تعمل الرياضيات خلف الكواليس. تدعم العمليات البسيطة والمتقدمة، ويمكنك حفظ أو تصدير النتائج لاستخدامها لاحقًا في المشاريع أو الملاحظات. تجعل هذه الأدوات المفاهيم المجردة ملموسة وتعمق فهمك."
+    }
+  },
+  {
+    "question": {
+      "en": "How does the AI assistant, PI Assistant, help me understand difficult math concepts?",
+      "ar": "كيف يساعدني المساعد الذكي PI Assistant على فهم المفاهيم الرياضية الصعبة؟"
+    },
+    "answer": {
+      "en": "The **Mathware** PI Assistant is an intelligent, conversational AI that acts as your personal tutor. Instead of giving direct answers, it breaks down complex topics into digestible parts, using clear language and visual explanations. For example, when you ask 'What’s the determinant of a matrix?', it responds with a structured explanation covering geometric interpretation, algebraic meaning, and practical relevance for engineers. It adapts to your learning style, offering hints, examples, and alternative approaches. Whether you're struggling with linear algebra, calculus, or differential equations, the assistant guides you step-by-step, reinforcing understanding without doing the work for you. It’s like having a patient, always-available professor at your fingertips.",
+      "ar": "يُعدّ مساعد **Mathware** PI Assistant هو مساعد ذكي تفاعلي يعمل كمدرس شخصي. بدلًا من إعطاء إجابات مباشرة، يُفكِّك المفاهيم المعقدة إلى أجزاء قابلة للهضم، باستخدام لغة واضحة وشروحات بصرية. على سبيل المثال، عند سؤالك: 'ما هو المحدد للمصفوفة؟'، يرد بإجابة منظمة تغطي التفسير الهندسي، والمعنى الجبري، والصلة العملية بالمهندسين. يتكيف مع أسلوب تعلمك، ويقدم تلميحات، أمثلة، وطرق بديلة. سواء كنت تواجه صعوبة في الجبر الخطي، أو التفاضل، أو المعادلات التفاضلية، يرشدك المساعد خطوة بخطوة، مع تعزيز الفهم دون أن يقوم بالعمل نيابة عنك. إنه مثل وجود أستاذ متأنٍ دائم التوفر بين أصابعك."
+    }
+  },
+  {
+    "question": {
+      "en": "Can I follow other users and see their progress on **Mathware**?",
+      "ar": "هل يمكنني متابعة مستخدمين آخرين ورؤية تقدمهم في **Mathware**؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** includes a social learning feature that allows you to follow peers, view their progress, and engage in a community-driven learning environment. You can see their learning streaks, XP levels, completed courses, and even their top-performing exams. This creates a sense of healthy competition and motivation, encouraging you to stay consistent and push forward. The system respects privacy — you can choose who to follow and what information to share. By connecting with others, you gain inspiration, discover new learning paths, and build a network of fellow learners. This collaborative culture enhances engagement and makes learning more enjoyable.",
+      "ar": "نعم، تضم **Mathware** ميزة تعلّم اجتماعي تمكنك من متابعة زملائك، ورؤية تقدمهم، والانخراط في بيئة تعليمية قائمة على المجتمع. يمكنك رؤية سلاسل التعلم، ومستويات النقاط (XP)، والمقررات المكتملة، وحتى أفضل اختباراتهم. هذا يخلق شعورًا بالتنافس الإيجابي والتحفيز، مما يشجعك على البقاء منظمًا والمضي قدمًا. يحترم النظام الخصوصية — يمكنك اختيار من تتبع وماذا تشارك. من خلال الربط مع الآخرين، تكتسب إلهامًا، واكتشف مسارات تعلم جديدة، وبناء شبكة من المتعلمين. هذه الثقافة التعايشية تعزز التفاعل وتجعل التعلم أكثر متعة."
+    }
+  },
+  {
+    "question": {
+      "en": "Is there a way to search for specific math equations or formulas in **Mathware**?",
+      "ar": "هل هناك طريقة للبحث عن معادلات أو صيغ رياضية محددة في **Mathware**؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** features an Equation Explorer that lets you search for any mathematical formula by name, topic, or application. Whether you're looking for Euler’s formula, Maxwell’s equations, or the Laplace transform, you can find it quickly and easily. Each entry includes a description, historical context, discoverer, and links to related courses and lessons. This tool is perfect for quick reference during problem-solving or research. It also helps you discover new equations you might not have encountered yet, broadening your knowledge base. The explorer is fully searchable and organized by category, making it a powerful resource for engineers and students alike.",
+      "ar": "نعم، تضم **Mathware** مستكشف المعادلات الذي يسمح لك بالبحث عن أي صيغة رياضية باسمها، أو موضوعها، أو تطبيقها. سواء كنت تبحث عن صيغة أويلر، أو معادلات ماكسويل، أو تحويل لابلاس، يمكنك العثور عليها بسرعة وسهولة. يتضمن كل سجل وصفًا، وسياقًا تاريخيًا، واسم المكتشف، وروابط إلى دورات ودروس مرتبطة. هذه الأداة مثالية كمرجع سريع أثناء حل المشكلات أو البحث. كما تساعدك على اكتشاف معادلات جديدة قد لم تقابلها بعد، مما يوسع قاعدة معرفتك. المستكشف قابل للبحث بالكامل ومنظمة حسب الفئات، مما يجعلها موردًا قويًا للمهندسين والطلاب على حد سواء."
+    }
+  },
+  {
+    "question": {
+      "en": "How does **Mathware** handle prerequisites and course dependencies?",
+      "ar": "كيف تتعامل **Mathware** مع الشروط المسبقة واعتماديات المقررات؟"
+    },
+    "answer": {
+      "en": "**Mathware** uses a smart course dependency system that automatically recommends prerequisite courses before you start a new one. For example, if you try to enroll in a course on partial differential equations, the system will suggest first completing courses on ordinary differential equations and multivariable calculus. This ensures you build a strong foundation before tackling advanced topics. The system is transparent — you can see all prerequisites and post-requisites for any course. If you already have the required knowledge, you can bypass them. This approach prevents knowledge gaps and supports efficient, logical progression through the curriculum.",
+      "ar": "تستخدم **Mathware** نظامًا ذكيًا لإدارة التبعيات بين المقررات يقترح تلقائيًا المقررات المسبقة قبل بدء مقرر جديد. على سبيل المثال، إذا حاولت التسجيل في مقرر حول المعادلات التفاضلية الجزئية، سيقترح النظام أولًا إكمال مقررات في المعادلات التفاضلية العادية والتفاضل المتعدد المتغيرات. هذا يضمن بناء أساس قوي قبل التعامل مع المواضيع المتقدمة. النظام شفاف — يمكنك رؤية جميع الشروط المسبقة واللاحقة لأي مقرر. وإذا كان لديك المعرفة المطلوبة بالفعل، يمكنك تجاوزها. هذا النهج يمنع فجوات المعرفة ويدعم التقدم المنطقي والفعال عبر المنهاج."
+    }
+  },
+  {
+    "question": {
+      "en": "Are there different types of assessments on **Mathware**? How do they work?",
+      "ar": "هل هناك أنواع مختلفة من التقييمات في **Mathware**؟ كيف تعمل؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** offers multiple assessment types to evaluate different skills. You’ll encounter single-choice questions, multiple-correct-answer questions, and open-ended problems. Each quiz is timed and graded automatically, with instant feedback and detailed explanations. The system uses a five-tier grading scale — Fail, Close, Pass, Good, Excellent — based on accuracy, speed, and completeness. After each exam, you receive a personalized summary with XP earned, time used, and performance insights. This variety ensures a well-rounded evaluation of your understanding, from basic recall to deep analytical thinking.",
+      "ar": "نعم، تقدم **Mathware** أنواعًا متعددة من التقييمات لتقييم مهارات مختلفة. ستجد أسئلة اختيار من متعدد، وأسئلة ذات إجابات صحيحة متعددة، ومسائل مفتوحة. كل اختبار موقّت ويُصنف تلقائيًا، مع تغذية راجعة فورية وشرح مفصل. يستخدم النظام مقياس تقييم خماسي — راسب، قريب، ناجح، جيد، ممتاز — بناءً على الدقة، السرعة، والاكتمال. بعد كل امتحان، تتلقى ملخصًا شخصيًا يوضح عدد النقاط (XP)، والوقت المستخدم، ورؤى الأداء. تنوع هذه الأنواع يضمن تقييمًا شاملاً لفهمك، من الحفظ الأساسي إلى التفكير التحليلي العميق."
+    }
+  },
+  {
+    "question": {
+      "en": "Can I access **Mathware** on mobile devices and tablets?",
+      "ar": "هل يمكنني الوصول إلى **Mathware** من الأجهزة المحمولة والأجهزة اللوحية؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** is fully responsive and optimized for all devices, including smartphones, tablets, and desktops. Whether you're studying on the go or reviewing material at home, the interface adjusts seamlessly to your screen size. All core features — lessons, exams, tools, and the AI assistant — are available on mobile. The app supports touch gestures, swipe navigation, and offline mode for downloaded content. This flexibility means you can learn anytime, anywhere, without sacrificing quality or functionality.",
+      "ar": "نعم، تتميز **Mathware** بتصميم متجاوب ومحسّن لجميع الأجهزة، بما في ذلك الهواتف الذكية، والأجهزة اللوحية، وأجهزة الكمبيوتر. سواء كنت تتعلم أثناء التنقل أو تراجع المادة дома، فإن الواجهة تتكيف بسلاسة مع حجم الشاشة. جميع الميزات الأساسية — الدروس، والامتحانات، والأدوات، والمساعد الذكي — متاحة على الهاتف المحمول. يدعم التطبيق حركات اللمس، وتصفح السحب، ووضع عدم الاتصال للحصول على المحتوى المُنزل. هذه المرونة تعني أنه يمكنك التعلم في أي وقت وفي أي مكان، دون فقدان الجودة أو الوظائف."
+    }
+  },
+  {
+    "question": {
+      "en": "What kind of support is available if I get stuck on a problem?",
+      "ar": "ما نوع الدعم المتاح إذا تعطلت في حل مشكلة؟"
+    },
+    "answer": {
+      "en": "If you’re stuck, **Mathware**’s PI Assistant is always ready to help. You can type your question directly into the chat, and the AI will guide you step-by-step, offering hints, explanations, and alternative methods. It never gives you the full answer — instead, it teaches you how to solve it yourself. Additionally, you can review video lessons, reading materials, or use the interactive tools to explore the concept further. The system encourages self-discovery and independent thinking, ensuring you don’t just get the answer, but truly understand it.",
+      "ar": "إذا تعطلت، يكون مساعد **Mathware** PI Assistant دائمًا جاهزًا للمساعدة. يمكنك كتابة سؤالك مباشرة في الدردشة، وسيقوم الذكاء الاصطناعي بإرشادك خطوة بخطوة، مع تقديم تلميحات، وشرح، وطرق بديلة. لا يقدم لك الإجابة الكاملة — بل يعلّمك كيفية حلها بنفسك. بالإضافة إلى ذلك، يمكنك مراجعة الدروس المصورة، والمواد الكتابية، أو استخدام الأدوات التفاعلية لاستكشاف المفهوم أكثر. يشجع النظام على الاكتشاف الذاتي والتفكير المستقل، مما يضمن أنك لا تحصل فقط على الإجابة، بل تفهمها حقًا."
+    }
+  },
+  {
+    "question": {
+      "en": "Does **Mathware** offer certificates for completed courses?",
+      "ar": "هل تقدم **Mathware** شهادات للمقررات المكتملة؟"
+    },
+    "answer": {
+      "en": "Yes, upon successfully completing a course, **Mathware** issues a downloadable and shareable certificate. The certificate includes your name, course title, completion date, and overall grade. It’s designed to be professional and credible, suitable for inclusion in your LinkedIn profile, resume, or portfolio. Certificates are automatically generated and stored in your profile, so you can access them anytime. This recognition adds value to your learning journey and demonstrates your commitment to mastering advanced engineering mathematics.",
+      "ar": "نعم، عند إكمالك المقرر بنجاح، تصدر **Mathware** شهادة قابلة للتنزيل والمشاركة. تشمل الشهادة اسمك، وعنوان المقرر، وتاريخ الإكمال، والدرجة العامة. تم تصميمها لتكون احترافية وموثوقة، مناسبة للإدراج في ملفك الشخصي على لينكدإن، أو سيرتك الذاتية، أو محفظتك. يتم إنشاء الشهادات تلقائيًا وتخزينها في ملفك الشخصي، بحيث يمكنك الوصول إليها في أي وقت. هذه الشهادة تضيف قيمة لرحلتك التعليمية وتثبت التزامك بتحقيق إتقان الرياضيات الهندسية المتقدمة."
+    }
+  },
+  {
+    "question": {
+      "en": "How does **Mathware** personalize the learning experience for different users?",
+      "ar": "كيف تشخص **Mathware** تجربة التعلم لمستخدمين مختلفين؟"
+    },
+    "answer": {
+      "en": "**Mathware** personalizes learning through adaptive pathways, AI-powered recommendations, and user-specific dashboards. Based on your specialization — such as AI, robotics, or civil engineering — the platform suggests relevant courses and modules. It tracks your progress, identifies weak areas, and recommends targeted practice. The system learns your preferences over time, adjusting difficulty, pacing, and content delivery. Whether you’re a beginner or an expert, **Mathware** adapts to your needs, ensuring a tailored, effective, and engaging learning journey.",
+      "ar": "تُخصّص **Mathware** التجربة التعليمية من خلال المسارات التكيفية، والتوصيات المدعومة بالذكاء الاصطناعي، ولوحات تحكم خاصة بكل مستخدم. بناءً على تخصصك — مثل الذكاء الاصطناعي، أو الروبوتات، أو الهندسة المدنية — تُقترح عليك دورات ووحدات ذات صلة. تتبع المنصة تقدمك، وتحديد نقاط الضعف، وتوصي بممارسة موجَّهة. تتعلم النظام تفضيلاتك بمرور الوقت، وتعدل الصعوبة، وتوازن التقدم، وطريقة تقديم المحتوى. سواء كنت مبتدئًا أو خبيرًا، تتكيف **Mathware** مع احتياجاتك، مما يضمن رحلة تعليمية مخصصة، فعالة، وجذابة."
+    }
+  },
+  {
+    "question": {
+      "en": "Can I bookmark or save courses for later study?",
+      "ar": "هل يمكنني وضع علامة على المقررات لدراسة لاحقة؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** allows you to bookmark any course or lesson for future reference. Simply click the 'Save' button, and it will appear in your 'Bookmarked Courses' section. This feature is perfect for saving topics you want to revisit, compare, or study later. You can organize your bookmarks by category, search them, or remove them anytime. It helps you keep track of important content without losing it in a long list of courses.",
+      "ar": "نعم، تسمح **Mathware** لك بوضع علامة على أي مقرر أو درس للرجوع إليه لاحقًا. فقط انقر على زر 'حفظ'، وسيظهر في قسم 'المقررات المحفوظة'. هذه الميزة مثالية لحفظ المواضيع التي تريد مراجعتها، أو مقارنتها، أو دراستها لاحقًا. يمكنك تنظيم محفوظاتك حسب الفئة، أو البحث فيها، أو حذفها في أي وقت. تساعدك هذه الميزة على تتبع المحتوى المهم دون فقدانه في قائمة طويلة من المقررات."
+    }
+  },
+  {
+    "question": {
+      "en": "Is **Mathware** available in Arabic and other languages?",
+      "ar": "هل **Mathware** متاحة باللغة العربية ولغات أخرى؟"
+    },
+    "answer": {
+      "en": "Yes, **Mathware** is fully bilingual, supporting both English and Arabic. All lessons, interface elements, and documentation are available in both languages. The platform automatically detects your browser language preference and switches accordingly. You can also manually change the language at any time in your settings. This dual-language support makes **Mathware** accessible to a wider audience, including Arabic-speaking students and professionals in engineering and science fields.",
+      "ar": "نعم، تدعم **Mathware** اللغة العربية والإنجليزية بالكامل. جميع الدروس، وعناصر الواجهة، والوثائق متاحة باللغتين. تكتشف المنصة تفضيلك اللغوي تلقائيًا من متصفحك وتتحول تلقائيًا. يمكنك أيضًا تغيير اللغة يدويًا في أي وقت من إعداداتك. هذا الدعم الثنائي للغات يجعل **Mathware** متاحة لجمهور أوسع، بما في ذلك الطلاب والمهنيين الناطقين بالعربية في مجالات الهندسة والعلوم."
+    }
+  },
+  {
+    "question": {
+      "en": "How does **Mathware** encourage continuous learning and motivation?",
+      "ar": "كيف تشجع **Mathware** على التعلم المستمر والتحفيز؟"
+    },
+    "answer": {
+      "en": "**Mathware** uses gamification techniques to keep you engaged and motivated. You earn XP for completing lessons, passing exams, and achieving milestones. Your progress is tracked with daily streaks, leaderboards, and achievement badges. The system celebrates your success with animated confetti and positive messages after each exam. These small rewards create a sense of accomplishment and encourage consistency. Combined with personalized goals and feedback, **Mathware** turns learning into a rewarding, enjoyable journey.",
+      "ar": "تستخدم **Mathware** تقنيات تشبه الألعاب للحفاظ على تفاعلך وتحفيزك. تكسب نقاط (XP) عند إكمال الدروس، واجتياز الامتحانات، وتحقيق المراحل. يتم تتبع تقدمك من خلال سلاسل يومية، وقوائم ترتيب، وشارات إنجاز. تحتفل المنصة بنجاحك برسومات حفلات ورسائل إيجابية بعد كل امتحان. هذه المكافآت الصغيرة تخلق شعورًا بالإنجاز وتشجع على الاستمرارية. مع الأهداف الشخصية والتغذية الراجعة، تحوّل **Mathware** التعلم إلى رحلة مجزية وممتعة."
+    }
+  }
+]
 }

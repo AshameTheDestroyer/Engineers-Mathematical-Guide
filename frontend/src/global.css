@@ -441,6 +441,39 @@ body.dark-themed {
     }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes swivel {
+  0% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+  }
+  50% {
+    transform: perspective(1000px) rotateX(-5deg) rotateY(5deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+  }
+}
+
+.animate-swivel {
+  animation: swivel 2s ease-in-out infinite;
+}
+
+.text-hue {
+  text-shadow: 
+    0 0 8px #002aff,    /* Pink/Magenta */
+    0 0 16px #00ffff,   /* Cyan */
+    0 0 24px #15ff00;   /* Yellow */
+  color: white;
+}
+
 @layer base {
     ::-webkit-scrollbar {
         @apply h-3 w-3;

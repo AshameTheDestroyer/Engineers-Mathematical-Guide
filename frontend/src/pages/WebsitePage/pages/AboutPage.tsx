@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { Flexbox } from "@/components/Flexbox/Flexbox";
 import { Locale } from "@/components/Locale/Locale";
-import { Separator } from "@/components/Separator/Separator";
 import locales from "@localization/about_page.json";
-import { Typography } from "@/components/Typography/Typography";
 import { useLocalization } from "@/components/LocalizationProvider/LocalizationProvider";
 import { RichText } from "@/components/RichText/RichText";
 import { Button } from "@/components/Button/Button";
 import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Image } from "@/components/Image/Image";
+import UnitCircleWidget from "@/components/MathTools/UnitCircleWidget";
+import { Separator } from "@/components/Separator/Separator";
 
 export const AboutPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
@@ -19,20 +19,22 @@ export const AboutPage: FC = () => {
                 <Locale variant="h1" className="text-3xl">
                     {locales.title}
                 </Locale>
-                <div className="relative">
-                    <Image
-                        source={locales.heroSection.image.source}
-                        alternative={locales.heroSection.image.alt}
-                        className="h-150 w-full bg-red-500"
-                    />
-                    <div className="w-450 h-150 z-2 absolute left-0 top-0 bg-black/60"></div>
+                <Flexbox className="relative">
+                    <div className="relative bg-transparent">
+                        <Image
+                            source={locales.heroSection.image.source}
+                            alternative={locales.heroSection.image.alt}
+                            className="h-150 w-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/100"></div>
+                    </div>
                     <Locale
                         variant="h2"
                         className="z-3 top-50 absolute left-10 p-10 text-justify text-xl text-white"
                     >
                         {locales.heroSection.content}
                     </Locale>
-                </div>
+                </Flexbox>
             </Flexbox>
 
             <Flexbox direction="column" gap={15} className="min-[80dvh]">
@@ -48,14 +50,16 @@ export const AboutPage: FC = () => {
                                 i % 2 !== 0 ? "md:flex-row-reverse" : ""
                             }`}
                         >
+                            <Separator orientation="horizontal" />
+
                             <Flexbox
-                                className="w-full md:w-1/2"
+                                className={`border-l-5 animate-float border-l-foreground-normal w-full px-10 md:w-1/2 ${direction === "ltr" && i % 2 !== 0 ? "pl-15" : "pr-15"}`}
                                 justifyContent="center"
                                 alignItems="center"
                             >
                                 <RichText
                                     variant="p"
-                                    className="text-xl"
+                                    className="text-justify text-xl"
                                     ExtractedTextRenders={(text) => (
                                         <span className="text-primary-normal font-bold">
                                             {text}
@@ -71,37 +75,33 @@ export const AboutPage: FC = () => {
                                 justifyContent="center"
                                 className="w-full md:w-1/2"
                             >
-                                <Image
-                                    source={part.image}
-                                    alternative={part.alternative}
-                                    className="h-auto max-h-full w-auto max-w-full"
-                                />
+                                <div className="transform overflow-hidden rounded-2xl shadow-lg transition duration-500 hover:scale-105 hover:shadow-xl">
+                                    <Image
+                                        source={part.image}
+                                        alternative={part.alternative}
+                                        className="h-auto max-h-full w-full max-w-full object-cover"
+                                    />
+                                </div>
                             </Flexbox>
                         </div>
                     ))}
                 </Flexbox>
             </Flexbox>
 
-            {/* <Flexbox direction="column" gap="6">
-                <Locale variant="h2" className="text-xl">
-                    {locales.whyEngineersLoveUs.title}
-                </Locale>
-                {locales.whyEngineersLoveUs.points.map((point, index) => (
-                    <Flexbox gap={5} alignItems="center">
-                        <div className="bg-foreground-dark h-3 w-3"></div>
-                        <Locale key={index} variant="p">
-                            {point}
-                        </Locale>
-                    </Flexbox>
-                ))}
-            </Flexbox> */}
-
-            <Flexbox gap={5} alignItems="center" direction="column">
-                <Locale variant="h2" className="text-xl">
+            <Flexbox
+                gap={15}
+                alignItems="center"
+                direction="column"
+                className="py-10"
+            >
+                <Locale
+                    variant="h2"
+                    className="text-secondary-normal text-hue text-2xl"
+                >
                     {locales.readyToGetStarted}
                 </Locale>
                 <Button
-                    className="h-18 w-1/2 text-xl"
+                    className="h-25 w-1/2 text-xl"
                     link={DISCOVER_ROUTES.base.routes.courses.absolute}
                     variant="primary"
                 >
@@ -146,6 +146,7 @@ export const AboutPage: FC = () => {
                 <Typography variant="p"></Typography>
                 <img src="" alt="" />
             </Flexbox> */}
+            {/* <UnitCircleWidget /> */}
         </Flexbox>
     );
 };
