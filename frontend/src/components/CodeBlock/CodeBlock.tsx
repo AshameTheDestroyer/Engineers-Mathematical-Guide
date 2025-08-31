@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { useClipboard } from "@/hooks/useClipboard";
 import { IconButton } from "../IconButton/IconButton";
 import { ChildlessComponentProps } from "@/types/ComponentProps";
-import * as styles from "react-syntax-highlighter/dist/esm/styles/prism";
+// import * as styles from "react-syntax-highlighter/dist/esm/styles/prism";
 import {
     SyntaxHighlighterProps,
     Prism as SyntaxHighlighter,
@@ -13,7 +13,7 @@ import copy_icon from "@icons/copy.svg";
 
 export type CodeBlockProps = {
     hideCopyButton?: boolean;
-    theme?: keyof typeof styles;
+    // theme?: keyof typeof styles;
 } & OmitIndexSignature<SyntaxHighlighterProps> &
     ChildlessComponentProps<HTMLDivElement>;
 

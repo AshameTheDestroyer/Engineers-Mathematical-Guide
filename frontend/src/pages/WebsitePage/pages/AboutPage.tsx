@@ -9,6 +9,7 @@ import { DISCOVER_ROUTES } from "@/routes/discover.routes";
 import { Image } from "@/components/Image/Image";
 import UnitCircleWidget from "@/components/MathTools/UnitCircleWidget";
 import { Separator } from "@/components/Separator/Separator";
+import { MathGraphWidget } from "@/components/MathTools/MathGraphWidget";
 
 export const AboutPage: FC = () => {
     const { direction, GetLocale, language } = useLocalization();
@@ -37,6 +38,7 @@ export const AboutPage: FC = () => {
                 </Flexbox>
             </Flexbox>
             {/* <UnitCircleWidget /> */}
+            <MathGraphWidget />
 
             <Flexbox direction="column" gap={15} className="min-[80dvh]">
                 <Locale variant="h2" className="text-3xl">

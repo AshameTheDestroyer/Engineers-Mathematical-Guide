@@ -3,14 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { Typography } from "../Typography/Typography";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
+import nerdamer from "nerdamer";
+// import "../../../js/nerdamer.core";
+// import "../../../js/Calculus";
 
-declare global {
-    interface Window {
-        nerdamer: any;
-    }
-}
-
-const { nerdamer } = window;
+// declare global {
+//     interface Window {
+//         nerdamer: any;
+//     }
+// }
 
 type Graph = {
     id: number;
