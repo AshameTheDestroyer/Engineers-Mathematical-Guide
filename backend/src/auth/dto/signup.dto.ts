@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator';
 import { LocalString } from 'src/utils/local-string';
+import { UserGender, UserRole } from 'src/utils/types';
 
 export class SignUpDTO {
   @IsString()
@@ -44,6 +45,14 @@ export class SignUpDTO {
   @ApiProperty({example:{"ar":"مرحبا","en":"Hello"}})
   bio: LocalString;
 
+  @ApiProperty({ 
+    enum: UserGender, 
+    example: UserGender.MALE
+  })
+  @IsEnum(UserGender, { message: 'Invalid UserGender male OR female' })
+  @IsNotEmpty({ message: 'UserGender is required' })
+  gender: UserGender
+
   @IsOptional()
   @ApiProperty({ 
     type: 'string', 
@@ -65,4 +74,6 @@ export class SignUpDTO {
   followersCount: number = 0
   
   followeeCount: number = 0
+
+  role: UserRole = UserRole.USER
 }

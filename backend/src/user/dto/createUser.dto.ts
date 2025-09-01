@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString, MinLength, ValidateNested } from 'class-validator';
 import { LocalString } from 'src/utils/local-string';
-import { UserGender } from 'src/utils/types';
+import { UserGender, UserRole } from 'src/utils/types';
 
 export class CreateUserDTO {
   @IsString()
@@ -54,7 +54,15 @@ export class CreateUserDTO {
   })
   @IsEnum(UserGender, { message: 'Invalid UserGender male OR female' })
   @IsNotEmpty({ message: 'UserGender is required' })
-  type: UserGender
+  gender: UserGender
+
+  @ApiProperty({ 
+      enum: UserRole, 
+      example: UserRole.USER
+  })
+  @IsEnum(UserRole, { message: 'Invalid UserRole male OR female' })
+  @IsNotEmpty({ message: 'UserRole is required' })
+  role: UserRole
 
   @IsOptional()
   salt?: string;

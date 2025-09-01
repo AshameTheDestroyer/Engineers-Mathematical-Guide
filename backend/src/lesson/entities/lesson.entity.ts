@@ -18,12 +18,12 @@ export class Lesson {
   
   @Column()
   @ApiProperty()
-  video: string
-  
+  videoUrl: string
+
   @Column()
   @ApiProperty()
   sortNumber: number
-
+  
   @Column()
   @ApiProperty()
   duration: number
@@ -38,8 +38,12 @@ export class Lesson {
     nullable: false
   })
   type: LessonType
-
+  
   @Column()
   @ApiProperty()
   XP: number
+  
+  @Column()
+  @ApiProperty()
+  chapterId: string
 }

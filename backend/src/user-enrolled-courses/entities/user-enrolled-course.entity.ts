@@ -16,6 +16,10 @@ export class UserEnrolledCourse {
   
   @Column()
   @ApiProperty()
+  XP: number
+
+  @Column()
+  @ApiProperty()
   chapterNum: number
   
   @Column()
@@ -24,11 +28,15 @@ export class UserEnrolledCourse {
 
   @Column()
   @ApiProperty()
-  canDoExam: boolean
+  chapterId: string
   
   @Column()
   @ApiProperty()
-  progress: number
+  lessonId: string
+
+  @Column()
+  @ApiProperty()
+  canDoExam: boolean
   
   @Column()
   @ApiProperty()

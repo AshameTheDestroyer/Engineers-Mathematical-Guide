@@ -5,6 +5,7 @@ import { UserEnrolledCourse } from './entities/user-enrolled-course.entity';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { Course } from 'src/course/entities/course.entity';
 import { CourseService } from 'src/course/course.service';
+import { CompleteLessonDto } from './dto/complete-lesson.dto';
 
 @Controller('user-enrolled-courses')
 export class UserEnrolledCoursesController {
@@ -20,8 +21,20 @@ export class UserEnrolledCoursesController {
   @ApiResponse({ status: 403, description: 'Forbidden' })
   @UsePipes(ValidationPipe)
   async create(@Body() createUserEnrolledCourseDto: CreateUserEnrolledCourseDto) : Promise<UserEnrolledCourse> {
+    let result: UserEnrolledCourse = await this.userEnrolledCoursesService.create(createUserEnrolledCourseDto);
     await this.courseService.increaseEnrollmentCount(createUserEnrolledCourseDto.courseId);
-    return await this.userEnrolledCoursesService.create(createUserEnrolledCourseDto);
+    return result;
+  }
+
+  @Post('complete-lesson/:id')
+  @ApiOperation({ summary: 'Mark The Lesson As Completed' })
+  @ApiOperation({ summary: 'Find Enrolled Courses For A User' })
+  @ApiBody({type: CompleteLessonDto})
+  @ApiResponse({ status: 201, description: 'UserEnrolledCourse Created',type:UserEnrolledCourse })
+  @ApiResponse({ status: 403, description: 'Forbidden' })
+  @UsePipes(ValidationPipe)
+  async completeLesson(@Param('id') id: string, @Body() completeLessonDto: CompleteLessonDto) : Promise<UserEnrolledCourse> {
+    return await this.userEnrolledCoursesService.completeLesson(id,completeLessonDto);
   }
 
   @Get('user/:userId')

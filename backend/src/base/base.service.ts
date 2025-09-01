@@ -12,8 +12,8 @@ export class BaseService<Repo extends ObjectLiteral> {
 
   async create(createDto: DeepPartial<Repo>) : Promise<Repo> {
     try {
-      const prevDoc = await this.repository.find(createDto);
-      if(prevDoc.length>0) throw new ConflictException("The Document Has Been Inserted Before");
+      const prevDoc = await this.repository.findOne({where:{createDto}});
+      if(prevDoc) throw new ConflictException("The Document Has Been Inserted Before");
       return await this.repository.save(createDto);
     } catch(error) {
       Logger.warn(error);

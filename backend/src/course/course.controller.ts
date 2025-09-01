@@ -11,10 +11,15 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { join } from 'path';
 import { Response } from 'express';
 import { existsSync } from 'fs';
+import { UserEnrolledCourse } from 'src/user-enrolled-courses/entities/user-enrolled-course.entity';
+import { UserEnrolledCoursesService } from 'src/user-enrolled-courses/user-enrolled-courses.service';
 
 @Controller('courses')
 export class CourseController {
-  constructor(private readonly courseService: CourseService) {}
+  constructor(
+    private readonly courseService: CourseService,
+    private readonly userEnrolledCoursesService: UserEnrolledCoursesService,
+  ) {}
   private readonly uploadsPath = join(process.cwd(), 'uploads');
 
   @Post()
@@ -53,6 +58,19 @@ export class CourseController {
   @UsePipes(ValidationPipe)
   async findAll(@Query() option: QueryOptionsDto) : Promise<PaginatedResult<Course>> {
     return await this.courseService.findAll(option as QueryOptions<Course>);
+  }
+
+  @Get('top10/:id')
+  @ApiOperation({ summary: 'Find top 10 Users For A Course' })
+  @ApiParam({
+    name: 'id',
+    required: true,
+    type: String,
+  })
+  @ApiResponse({ status: 200 })
+  @UsePipes(ValidationPipe)
+  async findTop10Users(@Param('id') id: string) : Promise<UserEnrolledCourse[]> {
+    return await this.userEnrolledCoursesService.findTop10Users(id);
   }
   
   @Get(':id')

@@ -11,16 +11,6 @@ export class CreateUserPassedCourseDto {
     @ApiProperty()
     @IsString()
     courseId: string;
-    
-    @IsNotEmpty()
-    @ApiProperty()
-    @IsNumber()
-    grade: number;
-    
-    @IsNotEmpty()
-    @ApiProperty()
-    @IsString()
-    certificateLink: string;
 
     gradedDate: Date = new Date();
 }

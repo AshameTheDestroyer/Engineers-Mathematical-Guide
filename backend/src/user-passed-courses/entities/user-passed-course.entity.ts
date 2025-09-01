@@ -16,13 +16,5 @@ export class UserPassedCourse {
   
 	@Column()
   @ApiProperty()
-	grade: number
-  
-	@Column()
-  @ApiProperty()
 	gradedDate: Date
-  
-	@Column()
-  @ApiProperty()
-  certificateLink: string
 }

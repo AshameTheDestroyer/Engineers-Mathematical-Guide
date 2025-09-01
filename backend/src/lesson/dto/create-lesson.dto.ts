@@ -18,7 +18,12 @@ export class CreateLessonDto {
     @IsNotEmpty()
     @IsString()
     @ApiProperty()
-    video: string
+    videoUrl: string
+
+    @IsNotEmpty()
+    @IsString()
+    @ApiProperty()
+    chapterId: string
     
     @IsNotEmpty()
     @IsNumber()

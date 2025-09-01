@@ -11,7 +11,6 @@ import { UserBookmarkedCoursesModule } from './user-bookmarked-courses/user-book
 import { CourseModule } from './course/course.module';
 import { LessonModule } from './lesson/lesson.module';
 import { QuestionModule } from './question/question.module';
-import { LastMonthActivitiesModule } from './last-month-activities/last-month-activities.module';
 import { FollowersModule } from './followers/followers.module';
 import { CourseRatingModule } from './course-rating/course-rating.module';
 import { TagsModule } from './tags/tags.module';
@@ -21,6 +20,7 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { ChapterModule } from './chapter/chapter.module';
 import { MathEquationModule } from './math-equation/math-equation.module';
+import { UserExamModule } from "./user-exam/user-exam.module";
 
 @Module({
   imports: [
@@ -35,7 +35,6 @@ import { MathEquationModule } from './math-equation/math-equation.module';
     CourseModule,
     LessonModule,
     QuestionModule,
-    LastMonthActivitiesModule,
     FollowersModule,
     CourseRatingModule,
     TagsModule,
@@ -46,6 +45,7 @@ import { MathEquationModule } from './math-equation/math-equation.module';
     }),
     ChapterModule,
     MathEquationModule,
+    UserExamModule,
   ],
 })
 export class AppModule implements OnModuleInit, OnApplicationBootstrap{
