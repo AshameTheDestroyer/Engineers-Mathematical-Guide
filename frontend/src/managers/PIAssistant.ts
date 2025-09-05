@@ -43,7 +43,6 @@ export class PIAssistant {
             finished: false,
         };
 
-        console.log({ message });
         this.#messages.push(message);
         this.#NotifySubscribers();
 
@@ -60,7 +59,6 @@ export class PIAssistant {
             );
 
             for await (const chunk of response) {
-                console.log({ chunk: chunk.text });
                 message.answer += chunk.text;
                 this.#NotifySubscribers();
             }

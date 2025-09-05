@@ -42,7 +42,6 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
     useImperativeHandle(ref, () => modalReference.current!);
 
     useEffect(() => {
-        console.log([...PIAssistant.Instance.messages]);
         setMessages([...PIAssistant.Instance.messages]);
 
         const Unsubscribe = PIAssistant.Instance.Subscribe(() => {
@@ -90,8 +89,6 @@ export const PIAssistantModal: FC<PIAssistantModalProps> = ({
 
         try {
             const text = message.answer.replace(/\n/g, "").match(/\[.+\]/)![0];
-
-            console.log(message.answer.split("},"));
             return Array.from(
                 text.matchAll(/\{\ *\"element\":\ \"[^\{\}]+\"\ *\}/g),
                 (item) => item[0]
