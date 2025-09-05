@@ -6,6 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
     base: "/Engineers-Mathematical-Guide/",
     plugins: [react(), tailwindcss()],
+    optimizeDeps: {
+        exclude: ["react-syntax-highlighter/dist/esm/styles/prism"],
+    },
     resolve: {
         alias: {
             "@json": "/public/json",
