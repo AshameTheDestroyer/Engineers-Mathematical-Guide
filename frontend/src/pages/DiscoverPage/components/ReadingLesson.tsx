@@ -49,7 +49,7 @@ export const ReadingLesson: FC<ReadingLessonProps> = ({
             </Flexbox>
             <Flexbox
                 className={twJoin(
-                    "sm:border-background-darker grow sm:h-[60dvh] sm:overflow-auto sm:rounded-2xl sm:border-2 sm:p-8 max-sm:[&::-webkit-scrollbar]:hidden",
+                    "sm:border-background-darker grow overflow-auto sm:h-[60dvh] sm:rounded-2xl sm:border-2 sm:p-8 max-sm:[&::-webkit-scrollbar]:hidden",
                     isDarkThemed
                         ? "sm:bg-background-normal/50"
                         : "sm:bg-background-dark/50"
