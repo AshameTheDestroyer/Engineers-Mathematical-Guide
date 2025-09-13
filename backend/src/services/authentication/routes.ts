@@ -30,7 +30,7 @@ AuthenticationRouter.post(
 // UNTESTED!
 AuthenticationRouter.post(
     `${AUTHENTICATION_ROUTE}/forgot-password`,
-    ForgotPassword(RESET_TOKEN_EXPIRATION_TIME, (_props) => {
+    ForgotPassword(RESET_TOKEN_EXPIRATION_TIME, (props) => {
         // EmailManager.Send({
         //     receiver: props.email,
         //     title: "Password Reset Token",
@@ -39,7 +39,7 @@ AuthenticationRouter.post(
         //         "If you didn't ask for this, please ignore this message.",
         // });
         //
-        // console.log(props.resetToken);
+        console.log(props.resetToken);
     })
 );
 // UNTESTED!

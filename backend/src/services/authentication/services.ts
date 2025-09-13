@@ -129,7 +129,7 @@ export const ForgotPassword: (
 export const ResetPassword: RequestHandler = async (request, response) => {
     try {
         const user = await UserModel.findOne({
-            _resetToken: request.body["resetToken"],
+            _resetToken: request.body["reset-token"],
             _resetTokenExpirationDate: { $gt: Date.now() },
         });
 
@@ -139,7 +139,7 @@ export const ResetPassword: RequestHandler = async (request, response) => {
                 .send({ message: "Reset token is either invalid or expired." });
         }
 
-        const hashedPassword = await HashPassword(request.body["newPassword"]);
+        const hashedPassword = await HashPassword(request.body["password"]);
 
         user.password = hashedPassword;
         user._resetToken = undefined;
