@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES2023",
+        "module": "commonjs",
+        "lib": [
+            "ES2023"
+        ],
+        "strict": true,
+        "baseUrl": ".",
+        "outDir": "./dist",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "ts-node": {
+        "require": [
+            "tsconfig-paths/register"
+        ]
+    },
+}

@@ -1,0 +1,37 @@
+{
+    "name": "engineers-mathematical-guide",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "dev": "nodemon src/index.ts",
+        "serve": "node dist/index.js",
+        "start": "ts-node src/index.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/bcrypt": "^6.0.0",
+        "@types/config": "^3.3.5",
+        "@types/express": "^5.0.3",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/morgan": "^1.9.10",
+        "@types/node": "^24.3.2",
+        "express": "^5.1.0",
+        "ts-node": "^10.9.2",
+        "ts-node-dev": "^2.0.0",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.9.2"
+    },
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "config": "^4.1.1",
+        "cross-env": "^10.0.0",
+        "dotenv": "^17.2.2",
+        "express-rate-limit": "^8.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.18.1",
+        "morgan": "^1.10.1",
+        "nodemon": "^3.1.10"
+    }
+}
