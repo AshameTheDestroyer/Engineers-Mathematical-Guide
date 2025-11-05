@@ -9,13 +9,10 @@ export enum GenderEnum {
 export type Gender = ExtractEnumValue<GenderEnum>;
 
 export const SignupCredentialsSchema = z.object({
-    email: z.string({ required_error: "required" }).email("pattern"),
-    password: z
-        .string({ required_error: "required" })
-        .min(8, "minimum")
-        .max(20, "maximum"),
-    "confirm-password": z.string({ required_error: "required" }),
-    "terms-and-conditions": z.boolean({ required_error: "required" }),
+    email: z.email("required"),
+    password: z.string("required").min(8, "minimum").max(20, "maximum"),
+    "confirm-password": z.string("required"),
+    "terms-and-conditions": z.boolean("required"),
 });
 
 export const SignupStepSchemas = {
@@ -31,12 +28,12 @@ export const SignupStepSchemas = {
     }),
     "personal-information": z.object({
         username: z
-            .string({ required_error: "required" })
+            .string("required")
             .regex(/^[a-zA-Z0-9\_]+$/, "pattern")
             .min(2, "minimum")
             .max(20, "maximum"),
         name: z
-            .string({ required_error: "required" })
+            .string("required")
             .regex(/^[a-zA-Zأ-ي0-9]+(\ [a-zA-Zأ-ي0-9]+)?$/, "pattern")
             .min(2, "minimum")
             .max(20, "maximum"),
@@ -46,12 +43,10 @@ export const SignupStepSchemas = {
             .min(2, "minimum")
             .max(20, "maximum")
             .optional(),
-        gender: z.nativeEnum(GenderEnum, {
-            errorMap: () => ({ message: "required" }),
-        }),
-        country: z.string({ required_error: "required" }).nonempty("empty"),
+        gender: z.enum(GenderEnum, "required"),
+        country: z.string("required").nonempty("empty"),
         "phone-number": z
-            .string({ required_error: "required" })
+            .string("required")
             .regex(
                 /^\+*(\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}([\s.-]?\d{3})?[\s.-]?\d{3,4}$/,
                 "pattern"

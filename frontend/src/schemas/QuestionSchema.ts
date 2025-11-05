@@ -9,35 +9,28 @@ export type QuestionType = ExtractEnumValue<QuestionTypeEnum>;
 
 export const QuestionSchema = z.intersection(
     z.object({
-        title: z.string({ required_error: "required" }),
+        title: z.string("required"),
         options: z
-            .array(z.string({ required_error: "required" }))
+            .array(z.string("required"))
             .min(2, "minimum")
             .max(4, "maximum"),
-        points: z
-            .number({ required_error: "required" })
-            .int("integer")
-            .nonnegative("nonnegative"),
+        points: z.number("required").int("integer").nonnegative("nonnegative"),
     }),
     z.union([
         z.object({
-            type: z.nativeEnum(Object.pick(QuestionTypeEnum, "choose"), {
-                errorMap: () => ({ message: "required" }),
-            }),
+            type: z.enum(Object.pick(QuestionTypeEnum, "choose"), "required"),
             answer: z
-                .number({ required_error: "required" })
+                .number("required")
                 .int("integer")
                 .min(0, "minimum")
                 .max(3, "maximum"),
         }),
         z.object({
-            type: z.nativeEnum(Object.pick(QuestionTypeEnum, "select"), {
-                errorMap: () => ({ message: "required" }),
-            }),
+            type: z.enum(Object.pick(QuestionTypeEnum, "select"), "required"),
             answers: z
                 .array(
                     z
-                        .number({ required_error: "required" })
+                        .number("required")
                         .int("integer")
                         .min(0, "minimum")
                         .max(3, "maximum")

@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 export const ModuleSchema = z.object({
-    id: z.string({ required_error: "required" }),
-    title: z.string({ required_error: "required" }),
-    description: z.string({ required_error: "required" }),
+    id: z.string("required"),
+    title: z.string("required"),
+    description: z.string("required"),
     "lesson-count": z
-        .number({ required_error: "required" })
+        .number("required")
         .nonnegative("nonnegative")
         .int("integer"),
 });

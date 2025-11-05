@@ -1,9 +1,9 @@
 import { CheckRole } from "../utils";
 import { RequestHandler } from "express";
-import { UserModel, UserProps } from "src/services/users";
+import { RoleEnum, UserModel } from "../services/user";
 
 export const ValidateAuthority: (
-    ...requiredRoles: Array<UserProps["role"]>
+    ...requiredRoles: Array<RoleEnum>
 ) => RequestHandler =
     (...requiredRoles) =>
     (request, response, next) =>

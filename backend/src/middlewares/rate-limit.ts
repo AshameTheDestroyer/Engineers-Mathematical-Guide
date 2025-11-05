@@ -1,7 +1,7 @@
 import { CheckRole } from "../utils";
 import { RequestHandler } from "express";
 import RateLimit from "express-rate-limit";
-import { UserModel } from "src/services/users";
+import { RoleEnum, UserModel } from "../services/user";
 
 const RATE_LIMIT = 1000;
 const RATE_LIMIT_TIMER = 15 * 60 * 1000;
@@ -25,7 +25,7 @@ export const ValidateRateLimit: (props?: {
             : CheckRole({
                   onAuthorized: next,
                   userModel: UserModel,
-                  requiredRoles: ["admin"],
+                  requiredRoles: [RoleEnum.admin],
                   onUnauthorized: () => rateLimit(request, response, next),
                   userID: (request as typeof request & { userID: string })[
                       "userID"

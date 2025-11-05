@@ -17,7 +17,7 @@ export const UserSchema = ZodIntersectMany(
         avatar: z.string().optional(),
         "personal-image": z.string().optional(),
         "day-streak": z
-            .number({ required_error: "required" })
+            .number("required")
             .nonnegative("nonnegative")
             .int("integer"),
     })
@@ -26,33 +26,17 @@ export const UserSchema = ZodIntersectMany(
 export const DetailedUserSchema = z.intersection(
     UserSchema,
     z.object({
+        city: z.string("required"),
         banner: z.string().optional(),
+        biography: z.string("required"),
+        role: z.enum(RoleEnum, "required"),
         specialization: z.string().optional(),
-        city: z.string({ required_error: "required" }),
-        biography: z.string({ required_error: "required" }),
-        role: z.nativeEnum(RoleEnum, {
-            errorMap: () => ({ message: "required" }),
-        }),
-        xp: z
-            .number({ required_error: "required" })
-            .nonnegative("nonnegative")
-            .int("integer"),
-        followees: z.array(z.string({ required_error: "required" }), {
-            required_error: "required",
-        }),
-        followers: z.array(z.string({ required_error: "required" }), {
-            required_error: "required",
-        }),
-        "finished-courses": z.array(z.string({ required_error: "required" }), {
-            required_error: "required",
-        }),
-        "enrolled-courses": z.array(z.string({ required_error: "required" }), {
-            required_error: "required",
-        }),
-        "bookmarked-courses": z.array(
-            z.string({ required_error: "required" }),
-            { required_error: "required" }
-        ),
+        followees: z.array(z.string("required"), "required"),
+        followers: z.array(z.string("required"), "required"),
+        "finished-courses": z.array(z.string("required"), "required"),
+        "enrolled-courses": z.array(z.string("required"), "required"),
+        "bookmarked-courses": z.array(z.string("required"), "required"),
+        xp: z.number("required").nonnegative("nonnegative").int("integer"),
     })
 );
 

@@ -28,10 +28,7 @@ import locales from "@localization/modules_page.json";
 import "./examination_lesson.css";
 
 export const ExaminationLessonQueryParamsSchema = z.object({
-    tab: z
-        .string({ required_error: "required" })
-        .regex(/\d*/, "pattern")
-        .default("0"),
+    tab: z.string("required").regex(/\d*/, "pattern").default("0"),
 });
 
 export type ExaminationLessonProps = {
@@ -185,7 +182,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                 {isExaminationDue && timer >= 0 && (
                     <Flexbox
                         className={twJoin(
-                            "border-background-darker max-sm:text-md translate-y-2 text-nowrap rounded-2xl border-2 px-4 py-2 text-lg",
+                            "border-background-darker max-sm:text-md translate-y-2 rounded-2xl border-2 px-4 py-2 text-lg text-nowrap",
                             isDarkThemed
                                 ? "bg-background-normal/50"
                                 : "bg-background-dark/50"
@@ -213,7 +210,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
             >
                 {examinationInformation == null ? (
                     <SearchResultDisplay
-                        className="sm:-translate-1/2 sm:absolute sm:left-1/2 sm:top-1/2"
+                        className="sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-1/2"
                         iconType="custom"
                         iconProps={{ source: warning_icon }}
                         title={GetGenderedLocale(
@@ -266,7 +263,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                     />
                 ) : timer == -1 && examinationInformation != null ? (
                     <SearchResultDisplay
-                        className="sm:-translate-1/2 sm:absolute sm:left-1/2 sm:top-1/2"
+                        className="sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-1/2"
                         iconType="custom"
                         iconProps={{ source: hourglass_icon }}
                         title={GetGenderedLocale(
@@ -368,7 +365,7 @@ export const ExaminationLesson: FC<ExaminationLessonProps> = ({
                                 </Locale>
                             </Button>
                             <Typography
-                                className="bg-tertiary-normal text-tertiary-light min-w-[calc(3ch+2rem)] place-self-start text-nowrap rounded-full px-4 py-2 text-center font-bold"
+                                className="bg-tertiary-normal text-tertiary-light min-w-[calc(3ch+2rem)] place-self-start rounded-full px-4 py-2 text-center font-bold text-nowrap"
                                 variant="p"
                             >
                                 {tab + 1}

@@ -4,6 +4,7 @@ const BaseMarkdownSchema = z.object({
     element: z.string(),
     props: z
         .record(
+            z.string(),
             z.union([
                 z.string(),
                 z.number(),

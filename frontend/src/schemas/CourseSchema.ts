@@ -2,47 +2,40 @@ import { z } from "zod";
 
 export const CourseSchema = z.object({
     image: z.string().optional(),
-    id: z.string({ required_error: "required" }),
-    title: z.string({ required_error: "required" }),
-    description: z.string({ required_error: "required" }),
-    rating: z
-        .number({ required_error: "required" })
-        .min(0, "minimum")
-        .max(5, "maximum"),
+    id: z.string("required"),
+    title: z.string("required"),
+    description: z.string("required"),
+    rating: z.number("required").min(0, "minimum").max(5, "maximum"),
     "rating-count": z
-        .number({ required_error: "required" })
+        .number("required")
         .nonnegative("nonnegative")
         .int("integer"),
     "enrollment-count": z
-        .number({ required_error: "required" })
+        .number("required")
         .nonnegative("nonnegative")
         .int("integer"),
-    tags: z.array(z.string({ required_error: "required" }), {
-        required_error: "required",
-    }),
-    locked: z.boolean({ required_error: "required" }),
+    tags: z.array(z.string("required"), "required"),
+    locked: z.boolean("required"),
 });
 
 export const DetailedCourseSchema = z.intersection(
     CourseSchema,
     z.object({
-        modules: z.array(z.string(), { required_error: "required" }),
-        "detailed-description": z.string({ required_error: "required" }),
-        prerequisites: z.array(z.string(), { required_error: "required" }),
-        postrequisites: z.array(z.string(), { required_error: "required" }),
-        "exam-xp": z
-            .number({ required_error: "required" })
-            .nonnegative("nonnegative"),
+        modules: z.array(z.string(), "required"),
+        "detailed-description": z.string("required"),
+        prerequisites: z.array(z.string(), "required"),
+        postrequisites: z.array(z.string(), "required"),
+        "exam-xp": z.number("required").nonnegative("nonnegative"),
         "exam-duration": z
-            .number({ required_error: "required" })
+            .number("required")
             .min(10, "minimum")
             .max(90, "maximum"),
         "top-10-students": z
             .array(
                 z.object({
-                    username: z.string({ required_error: "required" }),
+                    username: z.string("required"),
                     grade: z
-                        .number({ required_error: "required" })
+                        .number("required")
                         .min(0, "minimum")
                         .max(100, "maximum"),
                 })

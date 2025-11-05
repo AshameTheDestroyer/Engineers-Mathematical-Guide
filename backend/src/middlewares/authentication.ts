@@ -1,6 +1,6 @@
 import { RequestHandler } from "express";
+import { UserModel } from "../services/user";
 import Jwt, { JwtPayload } from "jsonwebtoken";
-import { UserModel } from "../services/users/schema";
 
 export const ValidateAuthenticity: RequestHandler = async (
     request,

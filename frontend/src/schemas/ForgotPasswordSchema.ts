@@ -4,18 +4,15 @@ import { ZodIntersectMany } from "@/functions/Zod.IntersectMany";
 
 export const ForgotPasswordStepSchemas = {
     "code-request": z.object({
-        email: z.string({ required_error: "required" }).email("pattern"),
+        email: z.email("required"),
     }),
     "code-verification": z.object({
-        code: z.string({ required_error: "required" }).length(6, "length"),
+        code: z.string("required").length(6, "length"),
     }),
     "reset-password": z
         .object({
-            password: z
-                .string({ required_error: "required" })
-                .min(8, "minimum")
-                .max(20, "maximum"),
-            "confirm-password": z.string({ required_error: "required" }),
+            password: z.string("required").min(8, "minimum").max(20, "maximum"),
+            "confirm-password": z.string("required"),
         })
         .refine((data) => data.password == data["confirm-password"], {
             message: "match",

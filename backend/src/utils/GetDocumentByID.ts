@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { RequestHandlerWithID } from "../types";
+import { RequestHandlerWithID } from "../types/RequestHandler";
 
 export function GetDocumentByID<T>(
     model: Model<T>,

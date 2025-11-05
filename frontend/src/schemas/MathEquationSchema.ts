@@ -9,22 +9,18 @@ export enum MathEquationLevelEnum {
 export type MathEquationLevel = ExtractEnumValue<MathEquationLevelEnum>;
 
 export const MathEquationSchema = z.object({
-    id: z.string({ required_error: "required" }),
-    title: z.string({ required_error: "required" }),
-    equation: z.string({ required_error: "required" }),
-    description: z.string({ required_error: "required" }),
-    level: z.nativeEnum(MathEquationLevelEnum, {
-        errorMap: () => ({ message: "required" }),
-    }),
+    id: z.string("required"),
+    title: z.string("required"),
+    equation: z.string("required"),
+    description: z.string("required"),
+    level: z.enum(MathEquationLevelEnum, "required"),
 });
 
 export const DetailedMathEquationSchema = z.intersection(
     MathEquationSchema,
     z.object({
-        discoverer: z.string({ required_error: "required" }),
-        "related-courses": z.array(z.string({ required_error: "required" }), {
-            required_error: "required",
-        }),
+        discoverer: z.string("required"),
+        "related-courses": z.array(z.string("required"), "required"),
     })
 );
 

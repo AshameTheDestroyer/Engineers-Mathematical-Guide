@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
 
-export async function CheckRole<T extends { role: string }>(props: {
+export async function CheckRole<T extends { role?: string }>(props: {
     userID: string;
     userModel: Model<T>;
     requiredRoles: Array<T["role"]>;

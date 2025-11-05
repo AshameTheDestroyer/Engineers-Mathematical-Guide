@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { RequestHandlerWithID } from "../types/index";
+import { RequestHandlerWithID } from "../types/RequestHandler";
 
 export function DeleteDocumentByID<T>(model: Model<T>): RequestHandlerWithID {
     return async (request, response) => {

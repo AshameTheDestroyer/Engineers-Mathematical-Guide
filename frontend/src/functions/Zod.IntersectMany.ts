@@ -1,7 +1,6 @@
-import { z, ZodEffects, ZodIntersection, ZodObject, ZodRawShape } from "zod";
+import { z, ZodIntersection, ZodObject, ZodRawShape } from "zod";
 
 export type ZodObjectLike =
-    | ZodEffects<ZodObject<ZodRawShape>>
     | ZodObject<ZodRawShape>
     | ZodIntersection<ZodObject<ZodRawShape>, ZodObject<ZodRawShape>>;
 

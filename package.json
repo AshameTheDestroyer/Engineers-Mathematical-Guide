@@ -1,0 +1,12 @@
+{
+    "name": "engineers-mathematical-guide",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "cd backend && npm run dev",
+        "client": "cd frontend && npm run dev",
+        "dev": "concurrently \"npm run start\" \"npm run client\""
+    },
+    "dependencies": {
+        "concurrently": "^9.2.1"
+    }
+}

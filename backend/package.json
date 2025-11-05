@@ -1,37 +1,43 @@
 {
     "name": "engineers-mathematical-guide",
-    "version": "1.0.0",
-    "main": "index.js",
+    "license": "ISC",
+    "version": "0.0.0",
+    "main": "src/server.ts",
+    "author": "ashamethedestroyer",
     "scripts": {
         "build": "tsc",
-        "dev": "nodemon src/index.ts",
+        "start": "ts-node src/index.ts",
         "serve": "node dist/index.js",
-        "start": "ts-node src/index.ts"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "@types/bcrypt": "^6.0.0",
-        "@types/config": "^3.3.5",
-        "@types/express": "^5.0.3",
-        "@types/jsonwebtoken": "^9.0.10",
-        "@types/morgan": "^1.9.10",
-        "@types/node": "^24.3.2",
-        "express": "^5.1.0",
-        "ts-node": "^10.9.2",
-        "ts-node-dev": "^2.0.0",
-        "tsconfig-paths": "^4.2.0",
-        "typescript": "^5.9.2"
+        "dev": "nodemon src/server.ts",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
+        "@google-cloud/storage": "^7.17.2",
+        "@google/genai": "^1.28.0",
         "bcrypt": "^6.0.0",
-        "config": "^4.1.1",
-        "cross-env": "^10.0.0",
+        "cors": "^2.8.5",
         "dotenv": "^17.2.2",
+        "express": "^5.1.0",
         "express-rate-limit": "^8.1.0",
+        "gridfs-stream": "^1.1.1",
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.18.1",
-        "morgan": "^1.10.1",
-        "nodemon": "^3.1.10"
+        "multer": "^2.0.2",
+        "nodemon": "^3.1.10",
+        "zod": "^4.1.11"
+    },
+    "devDependencies": {
+        "@types/bcrypt": "^6.0.0",
+        "@types/cors": "^2.8.19",
+        "@types/express": "^5.0.3",
+        "@types/gridfs-stream": "^0.5.39",
+        "@types/jest": "^30.0.0",
+        "@types/jsonwebtoken": "^9.0.10",
+        "@types/multer": "^2.0.0",
+        "@types/node": "^24.5.2",
+        "jest": "^30.2.0",
+        "ts-jest": "^29.4.5",
+        "ts-node": "^10.9.2",
+        "tsconfig-paths": "^4.2.0"
     }
 }
