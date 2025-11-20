@@ -21,7 +21,7 @@
             "halacodes",
             "omarbakridev"
         ],
-        "finished-courses": ["calculus-i", "abstract-algebra"],
+        "finished-courses": ["calculus-i", "calculus-ii", "abstract-algebra"],
         "enrolled-courses": ["category-theory", "linear-algebra", "set-theory"],
         "bookmarked-courses": [
             "linear-algebra",

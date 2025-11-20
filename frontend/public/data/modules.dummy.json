@@ -1,5 +1,53 @@
 [
     {
+        "id": "ci-precalculus-and-limits",
+        "title": "Precalculus and Limits",
+        "description": "Build a strong foundation for calculus by reviewing essential algebra, functions, graphs, trigonometry, and the core concept of limits—exploring how functions behave as they approach specific points or infinity.",
+        "lesson-count": 21
+    },
+    {
+        "id": "ci-derivatives-and-differentiation",
+        "title": "Derivatives and Differentiation",
+        "description": "Discover the derivative as the instantaneous rate of change, master differentiation rules—from power and product to chain and implicit—and learn how calculus brings motion and change to life through velocity, acceleration, and more.",
+        "lesson-count": 16
+    },
+    {
+        "id": "ci-applications-of-derivatives",
+        "title": "Applications of Derivatives",
+        "description": "Go beyond computation to see how derivatives shape real-world understanding—analyzing function behavior, sketching curves, solving optimization problems, and applying profound theorems like Rolle’s and the Mean Value Theorem.",
+        "lesson-count": 22
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions",
+        "title": "Integration and Transcendental Functions",
+        "description": "Unlock the power of integration as the inverse of differentiation, explore the Fundamental Theorem of Calculus, and extend your toolkit to logarithmic, exponential, and inverse trigonometric functions—revealing the deep connections between area, accumulation, and change.",
+        "lesson-count": 31
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration",
+        "title": "Differential Equations and Applications of Integration",
+        "description": "Explore foundational differential equations and harness the power of integration to compute areas, volumes, and physical quantities—bridging abstract calculus with real-world modeling and geometry.",
+        "lesson-count": 16
+    },
+    {
+        "id": "ci-advanced-integration-techniques",
+        "title": "Advanced Integration Techniques",
+        "description": "Master sophisticated methods like trigonometric substitution, partial fractions, and improper integrals—including convergence analysis and clever substitutions such as Weierstrass—to tackle even the most challenging antiderivatives.",
+        "lesson-count": 8
+    },
+    {
+        "id": "ci-infinite-series-and-power-series",
+        "title": "Infinite Series and Power Series",
+        "description": "Dive into the fascinating world of infinite sums: test for convergence, approximate functions with Taylor and Maclaurin series, and unlock the ability to represent complex functions as polynomials with precise error control.",
+        "lesson-count": 23
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus",
+        "title": "Parametric, Polar, and Vector Calculus",
+        "description": "Move beyond Cartesian coordinates to explore curves defined parametrically or in polar form, then venture into three dimensions with vector functions, surfaces, curvature, and the geometric language of multivariable calculus.",
+        "lesson-count": 21
+    },
+    {
         "id": "la-systems-and-solutions",
         "title": "Systems and Solutions",
         "description": "Covers the fundamentals of linear systems, including solving systems using row operations, geometric interpretations, matrix notation, solution types, and the concepts of span and linear independence.",

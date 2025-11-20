@@ -1,0 +1,615 @@
+[
+    {
+        "id": "ci-precalculus-and-limits-1",
+        "title": "Review of Algebraic Factoring Techniques",
+        "type": "video",
+        "duration": 801,
+        "url": "https://www.youtube.com/watch?v=LmFz8H6FrD0"
+    },
+    {
+        "id": "ci-precalculus-and-limits-2",
+        "title": "Introduction to Graphing Functions",
+        "type": "video",
+        "duration": 865,
+        "url": "https://www.youtube.com/watch?v=LWuN4IX9dEE"
+    },
+    {
+        "id": "ci-precalculus-and-limits-3",
+        "title": "Linear Models and Interpreting Rates of Change",
+        "type": "video",
+        "duration": 721,
+        "url": "https://www.youtube.com/watch?v=AnJlHSVOXTk"
+    },
+    {
+        "id": "ci-precalculus-and-limits-4",
+        "title": "Understanding Functions and Their Graphical Representations",
+        "type": "video",
+        "duration": 1261,
+        "url": "https://www.youtube.com/watch?v=DKLYIiqjKEc"
+    },
+    {
+        "id": "ci-precalculus-and-limits-5",
+        "title": "Foundations of Precalculus: Functions, Graphs, and Linear Models",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-precalculus-and-limits-6",
+        "title": "Review of Trigonometric Functions",
+        "type": "video",
+        "duration": 964,
+        "url": "https://www.youtube.com/watch?v=wwykal6Ms_g"
+    },
+    {
+        "id": "ci-precalculus-and-limits-7",
+        "title": "Solving Trigonometric Equations",
+        "type": "video",
+        "duration": 532,
+        "url": "https://www.youtube.com/watch?v=SSsu_24dss4"
+    },
+    {
+        "id": "ci-precalculus-and-limits-8",
+        "title": "Graphing Sine, Cosine, and Other Trigonometric Functions",
+        "type": "video",
+        "duration": 375,
+        "url": "https://www.youtube.com/watch?v=dJ2dl9KQ-B0"
+    },
+    {
+        "id": "ci-precalculus-and-limits-9",
+        "title": "An Introduction to the Core Ideas of Calculus",
+        "type": "video",
+        "duration": 466,
+        "url": "https://www.youtube.com/watch?v=2-eZ6wkZrh8"
+    },
+    {
+        "id": "ci-precalculus-and-limits-10",
+        "title": "Trigonometry and the Gateway to Calculus",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-precalculus-and-limits-11",
+        "title": "Evaluating Limits Using Numerical and Graphical Methods",
+        "type": "video",
+        "duration": 701,
+        "url": "https://www.youtube.com/watch?v=tQCtDc3D0Ls"
+    },
+    {
+        "id": "ci-precalculus-and-limits-12",
+        "title": "When Limits Do Not Exist: Oscillation, Jump, and Infinite Behavior",
+        "type": "video",
+        "duration": 454,
+        "url": "https://www.youtube.com/watch?v=HVHDuFSy7TQ"
+    },
+    {
+        "id": "ci-precalculus-and-limits-13",
+        "title": "The Formal Epsilon-Delta Definition of a Limit",
+        "type": "video",
+        "duration": 647,
+        "url": "https://www.youtube.com/watch?v=x0Jx5IC-IRI"
+    },
+    {
+        "id": "ci-precalculus-and-limits-14",
+        "title": "Algebraic Properties and Rules for Computing Limits",
+        "type": "video",
+        "duration": 947,
+        "url": "https://www.youtube.com/watch?v=98gn6FBSHAk"
+    },
+    {
+        "id": "ci-precalculus-and-limits-15",
+        "title": "Understanding Limits: Intuition, Formalism, and Computation",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-precalculus-and-limits-16",
+        "title": "Evaluating Limits of Indeterminate Forms",
+        "type": "video",
+        "duration": 892,
+        "url": "https://www.youtube.com/watch?v=gaSwzp7qp5k"
+    },
+    {
+        "id": "ci-precalculus-and-limits-17",
+        "title": "Understanding Continuity and Continuous Functions",
+        "type": "video",
+        "duration": 1179,
+        "url": "https://www.youtube.com/watch?v=j8bdlwYNwe8"
+    },
+    {
+        "id": "ci-precalculus-and-limits-18",
+        "title": "Properties and Theorems Involving Continuous Functions",
+        "type": "video",
+        "duration": 588,
+        "url": "https://www.youtube.com/watch?v=3j3439F_yIY"
+    },
+    {
+        "id": "ci-precalculus-and-limits-19",
+        "title": "The Intermediate Value Theorem and Its Applications",
+        "type": "video",
+        "duration": 780,
+        "url": "https://www.youtube.com/watch?v=U4ybtvvZKS0"
+    },
+    {
+        "id": "ci-precalculus-and-limits-20",
+        "title": "Continuity and the Behavior of Functions on Intervals",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-precalculus-and-limits-21",
+        "title": "Examination: Precalculus and Limits",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-1",
+        "title": "Infinite Limits and Their Behavior Near Vertical Asymptotes",
+        "type": "video",
+        "duration": 664,
+        "url": "https://www.youtube.com/watch?v=tcgRbvChHPw"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-2",
+        "title": "Identifying and Analyzing Vertical Asymptotes",
+        "type": "video",
+        "duration": 432,
+        "url": "https://www.youtube.com/watch?v=btWKhXFTcPQ"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-3",
+        "title": "Finding the Slope of a Tangent Line Using the Limit Definition",
+        "type": "video",
+        "duration": 1121,
+        "url": "https://www.youtube.com/watch?v=foJyD3g8mLw"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-4",
+        "title": "Defining the Derivative from First Principles",
+        "type": "video",
+        "duration": 749,
+        "url": "https://www.youtube.com/watch?v=tyoukQr2_ck"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-5",
+        "title": "From Limits to Derivatives: The Birth of Differential Calculus",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-6",
+        "title": "Basic Differentiation Rules: Power, Constant, and Sum Rules",
+        "type": "video",
+        "duration": 623,
+        "url": "https://www.youtube.com/watch?v=Vx_81lSo6Pk"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-7",
+        "title": "Applying Derivatives to Position, Velocity, and Acceleration",
+        "type": "video",
+        "duration": 703,
+        "url": "https://www.youtube.com/watch?v=fZj7VhywNmE"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-8",
+        "title": "The Product and Quotient Rules for Differentiation",
+        "type": "video",
+        "duration": 981,
+        "url": "https://www.youtube.com/watch?v=L66FBwEF8vc"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-9",
+        "title": "Derivatives of Trigonometric Functions and Higher-Order Derivatives",
+        "type": "video",
+        "duration": 563,
+        "url": "https://www.youtube.com/watch?v=cHaZmLIyWjg"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-10",
+        "title": "Core Differentiation Techniques and Physical Interpretations",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-11",
+        "title": "The Chain Rule and General Power Rule for Composite Functions",
+        "type": "video",
+        "duration": 822,
+        "url": "https://www.youtube.com/watch?v=Ptz1fa8lLyg"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-12",
+        "title": "Strategies and Practice Problems for Differentiation",
+        "type": "video",
+        "duration": 772,
+        "url": "https://www.youtube.com/watch?v=IOOuXYCoQ4I"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-13",
+        "title": "Implicit Differentiation for Equations Not Solved for y",
+        "type": "video",
+        "duration": 820,
+        "url": "https://www.youtube.com/watch?v=0BmSo_M3iKo"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-14",
+        "title": "Related Rates Problems Involving Circles",
+        "type": "video",
+        "duration": 629,
+        "url": "https://www.youtube.com/watch?v=2s7SOe3tSKI"
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-15",
+        "title": "Advanced Differentiation: Chain Rule, Implicit Methods, and Applications",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-derivatives-and-differentiation-16",
+        "title": "Examination: Derivatives and Differentiation",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-applications-of-derivatives-1",
+        "title": "Related Rates Problems Involving Triangles and Right-Angle Geometry",
+        "type": "video",
+        "duration": 739,
+        "url": "https://www.youtube.com/watch?v=EqVOHGAXnpY"
+    },
+    {
+        "id": "ci-applications-of-derivatives-2",
+        "title": "Relative and Absolute Extrema: Local and Global Maximums and Minimums",
+        "type": "video",
+        "duration": 625,
+        "url": "https://www.youtube.com/watch?v=BfJauiDEc_M"
+    },
+    {
+        "id": "ci-applications-of-derivatives-3",
+        "title": "Critical Numbers and Their Role in Finding Extrema",
+        "type": "video",
+        "duration": 1244,
+        "url": "https://www.youtube.com/watch?v=kjunIwj2sv0"
+    },
+    {
+        "id": "ci-applications-of-derivatives-4",
+        "title": "Rolle’s Theorem: Conditions and Applications",
+        "type": "video",
+        "duration": 711,
+        "url": "https://www.youtube.com/watch?v=xG7V6x8HSXg"
+    },
+    {
+        "id": "ci-applications-of-derivatives-5",
+        "title": "Extrema, Critical Points, and Theoretical Foundations",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-applications-of-derivatives-6",
+        "title": "The Mean Value Theorem and Its Geometric Interpretation",
+        "type": "video",
+        "duration": 839,
+        "url": "https://www.youtube.com/watch?v=dg4SuoKxk3g"
+    },
+    {
+        "id": "ci-applications-of-derivatives-7",
+        "title": "Determining Where Functions Are Increasing or Decreasing",
+        "type": "video",
+        "duration": 813,
+        "url": "https://www.youtube.com/watch?v=0JlO_zHCajM"
+    },
+    {
+        "id": "ci-applications-of-derivatives-8",
+        "title": "The First Derivative Test for Local Extrema",
+        "type": "video",
+        "duration": 781,
+        "url": "https://www.youtube.com/watch?v=ySpumpFbVlU"
+    },
+    {
+        "id": "ci-applications-of-derivatives-9",
+        "title": "Concavity, Inflection Points, and the Second Derivative",
+        "type": "video",
+        "duration": 1106,
+        "url": "https://www.youtube.com/watch?v=B9xZ8len2gQ"
+    },
+    {
+        "id": "ci-applications-of-derivatives-10",
+        "title": "Analyzing Function Behavior with First and Second Derivatives",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-applications-of-derivatives-11",
+        "title": "The Second Derivative Test for Classifying Extrema",
+        "type": "video",
+        "duration": 666,
+        "url": "https://www.youtube.com/watch?v=q5DlN-7dppY"
+    },
+    {
+        "id": "ci-applications-of-derivatives-12",
+        "title": "Limits at Infinity and End Behavior of Functions",
+        "type": "video",
+        "duration": 442,
+        "url": "https://www.youtube.com/watch?v=NLYMsgDykOk"
+    },
+    {
+        "id": "ci-applications-of-derivatives-13",
+        "title": "Horizontal Asymptotes and Advanced Techniques for Limits at Infinity",
+        "type": "video",
+        "duration": 1217,
+        "url": "https://www.youtube.com/watch?v=km6-zDe0zJY"
+    },
+    {
+        "id": "ci-applications-of-derivatives-14",
+        "title": "Curve Sketching Using Key Graph Features",
+        "type": "video",
+        "duration": 657,
+        "url": "https://www.youtube.com/watch?v=F8aXjLq4nuA"
+    },
+    {
+        "id": "ci-applications-of-derivatives-15",
+        "title": "Curve Sketching and Asymptotic Behavior",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-applications-of-derivatives-16",
+        "title": "Comprehensive Curve Sketching Using First and Second Derivatives",
+        "type": "video",
+        "duration": 848,
+        "url": "https://www.youtube.com/watch?v=uMdP-VTEC38"
+    },
+    {
+        "id": "ci-applications-of-derivatives-17",
+        "title": "Optimization Problems: Setting Up and Solving Real-World Max/Min Scenarios",
+        "type": "video",
+        "duration": 997,
+        "url": "https://www.youtube.com/watch?v=W6FYEfsShm0"
+    },
+    {
+        "id": "ci-applications-of-derivatives-18",
+        "title": "Advanced Optimization Practice Problems",
+        "type": "video",
+        "duration": 432,
+        "url": "https://www.youtube.com/watch?v=bwLD4nEPN_8"
+    },
+    {
+        "id": "ci-applications-of-derivatives-19",
+        "title": "Linear Approximation and Differentials",
+        "type": "video",
+        "duration": 1082,
+        "url": "https://www.youtube.com/watch?v=lUs7DlfTpgM"
+    },
+    {
+        "id": "ci-applications-of-derivatives-20",
+        "title": "Applications of Derivatives: Optimization and Approximation",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-applications-of-derivatives-21",
+        "title": "Propagated Error and Relative Error Using Differentials",
+        "type": "video",
+        "duration": 516,
+        "url": "https://www.youtube.com/watch?v=FuX0i5dGmzI"
+    },
+    {
+        "id": "ci-applications-of-derivatives-22",
+        "title": "Examination: Applications of Derivatives",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-1",
+        "title": "Antiderivatives and General Solutions to Differential Equations",
+        "type": "video",
+        "duration": 695,
+        "url": "https://www.youtube.com/watch?v=1e4KTBlQ-Yc"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-2",
+        "title": "Using Initial Conditions to Find Particular Solutions",
+        "type": "video",
+        "duration": 640,
+        "url": "https://www.youtube.com/watch?v=HHYVGhHiiu0"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-3",
+        "title": "Sigma Notation and Common Summation Formulas",
+        "type": "video",
+        "duration": 715,
+        "url": "https://www.youtube.com/watch?v=hWZp1ld9184"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-4",
+        "title": "Approximating Area Under a Curve Using Rectangles",
+        "type": "video",
+        "duration": 1183,
+        "url": "https://www.youtube.com/watch?v=yaSOGR0xb90"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-5",
+        "title": "Introduction to Integration: Antiderivatives and Sums",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-6",
+        "title": "Exact Area Under a Curve Using the Limit of Riemann Sums",
+        "type": "video",
+        "duration": 948,
+        "url": "https://www.youtube.com/watch?v=m-6psP0zwzw"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-7",
+        "title": "Riemann Sums and the Formal Definition of the Definite Integral",
+        "type": "video",
+        "duration": 500,
+        "url": "https://www.youtube.com/watch?v=8W3gEuaj_0s"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-8",
+        "title": "Evaluating Definite Integrals Without the Fundamental Theorem",
+        "type": "video",
+        "duration": 1196,
+        "url": "https://www.youtube.com/watch?v=yx0xTkdrYK8"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-9",
+        "title": "The Definite Integral and the Concept of Accumulated Change",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-10",
+        "title": "The Fundamental Theorem of Calculus (Part 1)",
+        "type": "video",
+        "duration": 1147,
+        "url": "https://www.youtube.com/watch?v=yfi5HUf9154"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-11",
+        "title": "Mean Value Theorem for Integrals and Average Value of a Function",
+        "type": "video",
+        "duration": 834,
+        "url": "https://www.youtube.com/watch?v=PqLgoyzgi40"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-12",
+        "title": "The Second Fundamental Theorem of Calculus",
+        "type": "video",
+        "duration": 353,
+        "url": "https://www.youtube.com/watch?v=ovAzNQs-GEE"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-13",
+        "title": "Integration by Substitution for Indefinite Integrals",
+        "type": "video",
+        "duration": 1261,
+        "url": "https://www.youtube.com/watch?v=4bflZuXoQ0s"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-14",
+        "title": "The Fundamental Theorem and Techniques of Integration",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-15",
+        "title": "Integration by Substitution for Definite Integrals",
+        "type": "video",
+        "duration": 571,
+        "url": "https://www.youtube.com/watch?v=lBMJdzRMgu4"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-16",
+        "title": "Review of Logarithmic and Exponential Functions",
+        "type": "video",
+        "duration": 1090,
+        "url": "https://www.youtube.com/watch?v=rFhfPzdo_2A"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-17",
+        "title": "Differentiating the Natural Logarithmic Function",
+        "type": "video",
+        "duration": 745,
+        "url": "https://www.youtube.com/watch?v=A0fzikOCTi8"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-18",
+        "title": "Integrating the Natural Logarithmic Function",
+        "type": "video",
+        "duration": 456,
+        "url": "https://www.youtube.com/watch?v=Bh1nhf4a04o"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-19",
+        "title": "Logarithmic and Exponential Functions in Calculus",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-20",
+        "title": "Challenging Examples of Natural Logarithmic Integration",
+        "type": "video",
+        "duration": 633,
+        "url": "https://www.youtube.com/watch?v=6ctiDVmcEWo"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-21",
+        "title": "Finding and Understanding Inverse Functions",
+        "type": "video",
+        "duration": 869,
+        "url": "https://www.youtube.com/watch?v=YN8WzBCFLgQ"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-22",
+        "title": "The Derivative of an Inverse Function",
+        "type": "video",
+        "duration": 495,
+        "url": "https://www.youtube.com/watch?v=xZ6YgEZufLQ"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-23",
+        "title": "Derivatives and Integrals of the Natural Exponential Function",
+        "type": "video",
+        "duration": 783,
+        "url": "https://www.youtube.com/watch?v=ZeG2pTnj06M"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-24",
+        "title": "Inverse Functions and Exponential Calculus",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-25",
+        "title": "Differentiation and Integration of General Exponential and Logarithmic Functions",
+        "type": "video",
+        "duration": 1016,
+        "url": "https://www.youtube.com/watch?v=j5Y8b-f9B28"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-26",
+        "title": "Indeterminate Forms and L’Hôpital’s Rule",
+        "type": "video",
+        "duration": 968,
+        "url": "https://www.youtube.com/watch?v=nspCbwCFZaI"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-27",
+        "title": "Review of Inverse Trigonometric Functions",
+        "type": "video",
+        "duration": 958,
+        "url": "https://www.youtube.com/watch?v=OMOBHc7Ct_Y"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-28",
+        "title": "Differentiating Inverse Trigonometric Functions",
+        "type": "video",
+        "duration": 649,
+        "url": "https://www.youtube.com/watch?v=xoBwEFKVHKE"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-29",
+        "title": "Advanced Techniques: L’Hôpital’s Rule and Inverse Trigonometric Calculus",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-30",
+        "title": "Integrating Inverse Trigonometric Functions",
+        "type": "video",
+        "duration": 1118,
+        "url": "https://www.youtube.com/watch?v=Fd7incsGR74"
+    },
+    {
+        "id": "ci-integration-and-transcendental-functions-31",
+        "title": "Examination: Integration and Transcendental Functions",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    }
+]

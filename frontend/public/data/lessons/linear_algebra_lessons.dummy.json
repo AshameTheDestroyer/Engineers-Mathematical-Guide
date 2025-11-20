@@ -587,7 +587,9 @@
     {
         "id": "la-transformations-and-matrices-26",
         "title": "Examination: Transformations and Matrices",
-        "type": "examination"
+        "type": "examination",
+        "time": 90,
+        "questions": []
     },
     {
         "id": "la-vector-spaces-and-bases-1",
@@ -748,7 +750,9 @@
     {
         "id": "la-vector-spaces-and-bases-24",
         "title": "Examination: Vector Spaces and Bases",
-        "type": "examination"
+        "type": "examination",
+        "time": 90,
+        "questions": []
     },
     {
         "id": "la-eigenvalues-and-orthogonality-1",
@@ -937,6 +941,8 @@
     {
         "id": "la-eigenvalues-and-orthogonality-28",
         "title": "Examination: Eigenvalues and Orthogonality",
-        "type": "examination"
+        "type": "examination",
+        "time": 90,
+        "questions": []
     }
 ]

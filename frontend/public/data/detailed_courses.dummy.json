@@ -8,10 +8,10 @@
         "rating-count": 76245,
         "image": "images/calculus_i.jpg",
         "modules": [
-            "ci-limits",
-            "ci-derivatives",
-            "ci-integrals",
-            "ci-applications-of-integration"
+            "ci-precalculus-and-limits",
+            "ci-derivatives-and-differentiation",
+            "ci-applications-of-derivatives",
+            "ci-integration-and-transcendental-functions"
         ],
         "prerequisites": [],
         "postrequisites": [
@@ -74,7 +74,7 @@
             "applications of derivatives",
             "basic functions"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "calculus-ii",
@@ -85,10 +85,10 @@
         "rating-count": 41239,
         "image": "images/calculus_ii.jpg",
         "modules": [
-            "cii-advanced-integration",
-            "cii-sequences",
-            "cii-series",
-            "cii-parametric-and-polar-equations"
+            "ci-differential-equations-and-applications-of-integration",
+            "ci-advanced-integration-techniques",
+            "ci-infinite-series-and-power-series",
+            "ci-parametric-polar-and-vector-calculus"
         ],
         "prerequisites": ["calculus-i"],
         "postrequisites": [
@@ -149,7 +149,7 @@
             "improper integrals",
             "applications of integration"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "linear-algebra",

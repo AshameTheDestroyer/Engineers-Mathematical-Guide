@@ -1,5 +1,25 @@
 [
     {
+        "course": "calculus-i",
+        "username": "ashamethedestroyer",
+        "progress": [
+            {
+                "module": "ci-precalculus-and-limits",
+                "finished-lessons": 1
+            }
+        ]
+    },
+    {
+        "course": "calculus-ii",
+        "username": "ashamethedestroyer",
+        "progress": [
+            {
+                "module": "ci-differential-equations-and-applications-of-integration",
+                "finished-lessons": 3
+            }
+        ]
+    },
+    {
         "course": "linear-algebra",
         "username": "ashamethedestroyer",
         "progress": [

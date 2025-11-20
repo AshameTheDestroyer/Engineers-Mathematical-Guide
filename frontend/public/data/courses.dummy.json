@@ -16,7 +16,7 @@
             "applications of derivatives",
             "basic functions"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "calculus-ii",
@@ -35,7 +35,7 @@
             "improper integrals",
             "applications of integration"
         ],
-        "locked": true
+        "locked": false
     },
     {
         "id": "linear-algebra",

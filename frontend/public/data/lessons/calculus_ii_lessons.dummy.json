@@ -1,0 +1,467 @@
+[
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-1",
+        "title": "Course Introduction and Overview",
+        "type": "video",
+        "duration": 609,
+        "url": "https://www.youtube.com/watch?v=GlqcFkOrDK8"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-2",
+        "title": "Introduction to Differential Equations",
+        "type": "video",
+        "duration": 807,
+        "url": "https://www.youtube.com/watch?v=SrG09zIB3tI"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-3",
+        "title": "Solving Separable Differential Equations",
+        "type": "video",
+        "duration": 965,
+        "url": "https://www.youtube.com/watch?v=nVBY6lGKiaE"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-4",
+        "title": "First-Order Linear Differential Equations",
+        "type": "video",
+        "duration": 1117,
+        "url": "https://www.youtube.com/watch?v=uYmAf_iL87o"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-5",
+        "title": "Differential Equations: Concepts and Solution Strategies",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-6",
+        "title": "Worked Examples of Linear Differential Equations",
+        "type": "video",
+        "duration": 915,
+        "url": "https://www.youtube.com/watch?v=u8VousUegjc"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-7",
+        "title": "Area Between Two Curves",
+        "type": "video",
+        "duration": 2881,
+        "url": "https://www.youtube.com/watch?v=7c-4Qx6FwJ4"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-8",
+        "title": "Integration by Parts: Core Technique",
+        "type": "video",
+        "duration": 463,
+        "url": "https://www.youtube.com/watch?v=mlSqmMTSoik"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-9",
+        "title": "Integration by Parts: Advanced Examples",
+        "type": "video",
+        "duration": 1253,
+        "url": "https://www.youtube.com/watch?v=Nl-dT56rD7g"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-10",
+        "title": "Advanced Integration and Applications of Area",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-11",
+        "title": "Volumes of Solids of Revolution",
+        "type": "video",
+        "duration": 2345,
+        "url": "https://www.youtube.com/watch?v=CEhAwvTUUSI"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-12",
+        "title": "Disk Method for Volumes of Revolution",
+        "type": "video",
+        "duration": 1798,
+        "url": "https://www.youtube.com/watch?v=7uhKK3ip62A"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-13",
+        "title": "Shell Method for Volumes of Revolution",
+        "type": "video",
+        "duration": 2173,
+        "url": "https://www.youtube.com/watch?v=8BtRlzt_ZYY"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-14",
+        "title": "Reduction Formulas in Integration",
+        "type": "video",
+        "duration": 2301,
+        "url": "https://www.youtube.com/watch?v=an8vp2QhONE"
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-15",
+        "title": "Techniques of Integration and Volume Applications",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-differential-equations-and-applications-of-integration-16",
+        "title": "Examination: Differential Equations and Applications of Integration",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-advanced-integration-techniques-1",
+        "title": "Trigonometric Integrals",
+        "type": "video",
+        "duration": 3773,
+        "url": "https://www.youtube.com/watch?v=tRxtK3We7sA"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-2",
+        "title": "Trigonometric Substitution",
+        "type": "video",
+        "duration": 2910,
+        "url": "https://www.youtube.com/watch?v=g1xgPR4pyHc"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-3",
+        "title": "Integration Using Partial Fractions",
+        "type": "video",
+        "duration": 3241,
+        "url": "https://www.youtube.com/watch?v=oHhR25qMjmw"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-4",
+        "title": "Improper Integrals",
+        "type": "video",
+        "duration": 1579,
+        "url": "https://www.youtube.com/watch?v=l-IJhFC3WMc"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-5",
+        "title": "Advanced Integration Techniques",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-advanced-integration-techniques-6",
+        "title": "Comparison Test for Improper Integrals",
+        "type": "video",
+        "duration": 1611,
+        "url": "https://www.youtube.com/watch?v=MLTKHtrIZ4A"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-7",
+        "title": "Weierstrass Substitution (Tangent Half-Angle)",
+        "type": "video",
+        "duration": 1043,
+        "url": "https://www.youtube.com/watch?v=XxWgdrc-fYI"
+    },
+    {
+        "id": "ci-advanced-integration-techniques-8",
+        "title": "Examination: Advanced Integration Techniques",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-1",
+        "title": "Introduction to Infinite Series and Convergence",
+        "type": "video",
+        "duration": 1411,
+        "url": "https://www.youtube.com/watch?v=QDjwP47Cz6Y"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-2",
+        "title": "Geometric and Telescoping Series",
+        "type": "video",
+        "duration": 2224,
+        "url": "https://www.youtube.com/watch?v=0RE6vz5XQx8"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-3",
+        "title": "Foundations of Series Convergence",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-4",
+        "title": "The Integral Test for Series",
+        "type": "video",
+        "duration": 1218,
+        "url": "https://www.youtube.com/watch?v=vhar5MZkUCU"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-5",
+        "title": "Estimating Series Using the Integral Test",
+        "type": "video",
+        "duration": 1266,
+        "url": "https://www.youtube.com/watch?v=VFNUuju-NeM"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-6",
+        "title": "Direct Comparison Test",
+        "type": "video",
+        "duration": 840,
+        "url": "https://www.youtube.com/watch?v=ETRI80rAqow"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-7",
+        "title": "Limit Comparison Test",
+        "type": "video",
+        "duration": 785,
+        "url": "https://www.youtube.com/watch?v=6soxJgjzDfU"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-8",
+        "title": "Comparison Tests and Series Estimation",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-9",
+        "title": "Alternating Series and the Alternating Series Test",
+        "type": "video",
+        "duration": 836,
+        "url": "https://www.youtube.com/watch?v=N5BOPI67LnI"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-10",
+        "title": "Alternating Series Estimation Theorem",
+        "type": "video",
+        "duration": 1176,
+        "url": "https://www.youtube.com/watch?v=qU_cMtRD6c0"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-11",
+        "title": "The Ratio Test",
+        "type": "video",
+        "duration": 1434,
+        "url": "https://www.youtube.com/watch?v=kwUli9K_k-w"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-12",
+        "title": "The Root Test",
+        "type": "video",
+        "duration": 657,
+        "url": "https://www.youtube.com/watch?v=GVdnVcrO0Wc"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-13",
+        "title": "Absolute and Conditional Convergence",
+        "type": "video",
+        "duration": 2459,
+        "url": "https://www.youtube.com/watch?v=J9aTHDOAmEE"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-14",
+        "title": "Midterm Review Session",
+        "type": "video",
+        "duration": 6671,
+        "url": "https://www.youtube.com/watch?v=XY0pGKCjUOQ"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-15",
+        "title": "Convergence Tests and Series Behavior",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-16",
+        "title": "Power Series: Radius and Interval of Convergence",
+        "type": "video",
+        "duration": 2636,
+        "url": "https://www.youtube.com/watch?v=UMQBzmm_hSc"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-17",
+        "title": "Representing Functions as Power Series",
+        "type": "video",
+        "duration": 1120,
+        "url": "https://www.youtube.com/watch?v=0hYKj5ZZgGU"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-18",
+        "title": "Differentiation and Integration of Power Series",
+        "type": "video",
+        "duration": 3488,
+        "url": "https://www.youtube.com/watch?v=vB252S1Jt0c"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-19",
+        "title": "Taylor and Maclaurin Series",
+        "type": "video",
+        "duration": 2767,
+        "url": "https://www.youtube.com/watch?v=vn5MFrkoXLE"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-20",
+        "title": "Power Series and Function Approximation",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-21",
+        "title": "Taylor's Inequality and Error Bounds",
+        "type": "video",
+        "duration": 1571,
+        "url": "https://www.youtube.com/watch?v=QCDJjT4OPx4"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-22",
+        "title": "Binomial Series Expansion",
+        "type": "video",
+        "duration": 773,
+        "url": "https://www.youtube.com/watch?v=iNnrWYZ05A4"
+    },
+    {
+        "id": "ci-infinite-series-and-power-series-23",
+        "title": "Examination: Infinite Series and Power Series",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-1",
+        "title": "Introduction to Parametric Curves",
+        "type": "video",
+        "duration": 1205,
+        "url": "https://www.youtube.com/watch?v=xsc3lfV6nxk"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-2",
+        "title": "Tangents to Parametric Curves",
+        "type": "video",
+        "duration": 1970,
+        "url": "https://www.youtube.com/watch?v=QE4xskjkDL8"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-3",
+        "title": "Integration Over Parametric Curves",
+        "type": "video",
+        "duration": 1156,
+        "url": "https://www.youtube.com/watch?v=9hwn4SSAUzM"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-4",
+        "title": "Parametric and Polar Representations",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-5",
+        "title": "Polar Coordinates",
+        "type": "video",
+        "duration": 1372,
+        "url": "https://www.youtube.com/watch?v=0R7Z_gl2xsA"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-6",
+        "title": "Tangents to Polar Curves",
+        "type": "video",
+        "duration": 1278,
+        "url": "https://www.youtube.com/watch?v=pwiWD2bvQd0"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-7",
+        "title": "Integration Over Polar Curves",
+        "type": "video",
+        "duration": 1985,
+        "url": "https://www.youtube.com/watch?v=49_Gcm7451M"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-8",
+        "title": "Equations of Lines and Planes in 3D",
+        "type": "video",
+        "duration": 2338,
+        "url": "https://www.youtube.com/watch?v=Tg1gJEaq1T8"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-9",
+        "title": "Multivariable Geometry and Coordinate Systems",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-10",
+        "title": "Cylinders and Quadric Surfaces",
+        "type": "video",
+        "duration": 2214,
+        "url": "https://www.youtube.com/watch?v=Pgv5-hSbcwg"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-11",
+        "title": "Cylindrical and Spherical Coordinates",
+        "type": "video",
+        "duration": 3081,
+        "url": "https://www.youtube.com/watch?v=gYjQyehGynQ"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-12",
+        "title": "Vector Functions and Space Curves",
+        "type": "video",
+        "duration": 434,
+        "url": "https://www.youtube.com/watch?v=pg1vElh21zg"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-13",
+        "title": "Parametrization of Surfaces",
+        "type": "video",
+        "duration": 1349,
+        "url": "https://www.youtube.com/watch?v=ZL3ByR8URdw"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-14",
+        "title": "Calculus of Vector Functions",
+        "type": "reading",
+        "estimated-reading-time": 0
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-15",
+        "title": "Limits, Derivatives, and Integrals of Vector Functions",
+        "type": "video",
+        "duration": 1564,
+        "url": "https://www.youtube.com/watch?v=IrW-9upgVbQ"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-16",
+        "title": "Arc Length of a Curve",
+        "type": "video",
+        "duration": 2226,
+        "url": "https://www.youtube.com/watch?v=AfDLc9Gd44w"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-17",
+        "title": "Surface Area of Revolution",
+        "type": "video",
+        "duration": 796,
+        "url": "https://www.youtube.com/watch?v=9NxVDPzXm30"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-18",
+        "title": "Curvature of a Curve",
+        "type": "video",
+        "duration": 830,
+        "url": "https://www.youtube.com/watch?v=geHd-ZcOvMs"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-19",
+        "title": "Unit Tangent, Normal, and Binormal Vectors",
+        "type": "video",
+        "duration": 1594,
+        "url": "https://www.youtube.com/watch?v=-IATViIcx5o"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-20",
+        "title": "Final Exam Review Session",
+        "type": "video",
+        "duration": 9027,
+        "url": "https://www.youtube.com/watch?v=vEDpQ1jSex0"
+    },
+    {
+        "id": "ci-parametric-polar-and-vector-calculus-21",
+        "title": "Examination: Parametric, Polar, and Vector Calculus",
+        "type": "examination",
+        "time": 90,
+        "questions": []
+    }
+]
